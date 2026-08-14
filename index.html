@@ -1,109 +1,198 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FootballCards</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #111;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Cards</title>
 
-    header {
-      background: #111;
-      color: white;
-      padding: 18px;
-      text-align: center;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f5;
+  color: #111;
+}
 
-    .search {
-      padding: 20px;
-      text-align: center;
-    }
+header {
+  background: #111;
+  color: white;
+  padding: 18px;
+  text-align: center;
+}
 
-    .search input {
-      width: 85%;
-      max-width: 500px;
-      padding: 14px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-    }
+header h1 {
+  margin: 0;
+  font-size: 28px;
+}
 
-    .container {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+header p {
+  margin: 6px 0 0;
+  color: #ccc;
+}
 
-    .card {
-      background: white;
-      border-radius: 14px;
-      padding: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
+.search {
+  padding: 20px;
+  background: white;
+  text-align: center;
+}
 
-    .card h2 {
-      margin-top: 0;
-    }
+.search input {
+  width: 90%;
+  max-width: 600px;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+}
 
-    .price {
-      font-size: 20px;
-      font-weight: bold;
-    }
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
 
-    button {
-      background: #111;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 9px;
-      cursor: pointer;
-    }
+.sell {
+  background: #111;
+  color: white;
+  padding: 16px;
+  border-radius: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-    button:hover {
-      background: #333;
-    }
-  </style>
+.sell h2 {
+  margin-top: 0;
+}
+
+.sell button,
+.card button {
+  border: none;
+  background: white;
+  color: #111;
+  padding: 11px 18px;
+  border-radius: 9px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.card-image {
+  height: 180px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #222, #777);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 45px;
+}
+
+.card h3 {
+  margin-bottom: 6px;
+}
+
+.price {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.info {
+  color: #666;
+}
+
+.card button {
+  background: #111;
+  color: white;
+  width: 100%;
+  margin-top: 8px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>⚽ FootballCards</h1>
+  <h1>⚽ Pixel Cards</h1>
   <p>Der Marktplatz für Fußballkarten</p>
 </header>
 
 <div class="search">
-  <input type="text" placeholder="Fußballkarte suchen...">
+  <input type="text" placeholder="🔎 Suche nach Spieler, Verein oder Karte...">
 </div>
 
 <div class="container">
 
-  <div class="card">
-    <h2>Topps Fußballkarte</h2>
-    <p>Sehr guter Zustand</p>
-    <p class="price">5,00 €</p>
-    <button>Kaufen</button>
+  <div class="sell">
+    <h2>Du willst eine Karte verkaufen?</h2>
+    <p>Stelle deine Fußballkarte schnell und einfach ein.</p>
+    <button onclick="alert('Die Verkaufsfunktion kommt als Nächstes!')">
+      + Karte verkaufen
+    </button>
   </div>
 
-  <div class="card">
-    <h2>Panini Fußballkarte</h2>
-    <p>Guter Zustand</p>
-    <p class="price">3,50 €</p>
-    <button>Kaufen</button>
+  <h2>🔥 Aktuelle Karten</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-image">⚽</div>
+      <h3>Topps Fußballkarte</h3>
+      <p class="info">Sehr guter Zustand</p>
+      <p class="price">5,00 €</p>
+      <button onclick="alert('Kauf-Funktion kommt als Nächstes!')">
+        Kaufen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-image">🏆</div>
+      <h3>Panini Fußballkarte</h3>
+      <p class="info">Guter Zustand</p>
+      <p class="price">3,50 €</p>
+      <button onclick="alert('Kauf-Funktion kommt als Nächstes!')">
+        Kaufen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-image">⭐</div>
+      <h3>Champions League Karte</h3>
+      <p class="info">Wie neu</p>
+      <p class="price">8,00 €</p>
+      <button onclick="alert('Kauf-Funktion kommt als Nächstes!')">
+        Kaufen
+      </button>
+    </div>
+
   </div>
 
 </div>
+
+<footer>
+  © 2026 Pixel Cards
+</footer>
 
 </body>
 </html>
