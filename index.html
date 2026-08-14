@@ -218,7 +218,9 @@ const image = document.getElementById("image").files[0];
   newCard.className = "card";
 
   newCard.innerHTML = `
-    <div class="card-image">⚽</div>
+    <div class="card-image">
+  <img src="${URL.createObjectURL(image)}" alt="${player}">
+</div>
     <h3>${player}</h3>
     <p class="info">${club}</p>
     <p class="price">${price} €</p>
