@@ -148,29 +148,20 @@ footer {
     <form id="sellForm">
   <input id="player" type="text" placeholder="Spieler" required>
   <input id="club" type="text" placeholder="Verein" required>
-  <input id="price" type="number" placeholder="Preis in €" min="0" step="0.01" required>
-  <button type="submit">Karte einstellen</button>
-</form>
-   </form>
-  <input type="text" placeholder="Spieler" required>
-  <input type="text" placeholder="Verein" required>
-  <input type="number" placeholder="Preis in €" min="0" step="0.01" required>
-    <input id="image" type="file" accept="image/*" required>
-  <button type="submit">Karte einstellen</button>
-</form> 
-    <form onsubmit="event.preventDefault(); alert('Deine Karte wurde als Demo eingestellt!');">
-  <input type="text" placeholder="Spieler" required>
-  <input type="text" placeholder="Verein" required>
-  <input type="number" placeholder="Preis in €" min="0" step="0.01" required>
-  <button type="submit">Karte einstellen</button>
-    <h2>Du willst eine Karte verkaufen?</h2>
-    <p>Stelle deine Fußballkarte schnell und einfach ein.</p>
-    <button onclick="alert('Die Verkaufsfunktion kommt als Nächstes!')">
-      + Karte verkaufen
-    </button>
-  </div>
+  <div class="sell">
+  <h2>Du willst eine Karte verkaufen?</h2>
+  <p>Stelle deine Fußballkarte schnell und einfach ein.</p>
 
-  <h2>🔥 Aktuelle Karten</h2>
+  <form id="sellForm">
+    <input id="player" type="text" placeholder="Spieler" required>
+    <input id="club" type="text" placeholder="Verein" required>
+    <input id="price" type="number" placeholder="Preis in €" min="0" step="0.01" required>
+    <input id="image" type="file" accept="image/*" required>
+    <button type="submit">Karte einstellen</button>
+  </form>
+</div>
+
+<h2>🔥 Aktuelle Karten</h2>
 
   <div class="cards">
 
