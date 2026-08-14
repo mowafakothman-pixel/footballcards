@@ -218,23 +218,6 @@ document.getElementById("sellForm").addEventListener("submit", function(event) {
   const club = document.getElementById("club").value;
   const price = document.getElementById("price").value;
 
-  alert(
-    "Karte eingestellt!\n\n" +
-    "Spieler: " + player + "\n" +
-    "Verein: " + club + "\n" +
-    "Preis: " + price + " €"
-  );
-
-  this.reset();
-});
-<script>
-document.getElementById("sellForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const player = document.getElementById("player").value;
-  const club = document.getElementById("club").value;
-  const price = document.getElementById("price").value;
-
   const cards = document.querySelector(".cards");
 
   const newCard = document.createElement("div");
