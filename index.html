@@ -145,6 +145,17 @@ footer {
 <div class="container">
 
   <div class="sell">
+   <form onsubmit="event.preventDefault(); alert('Deine Karte wurde als Demo eingestellt!');">
+  <input type="text" placeholder="Spieler" required>
+  <input type="text" placeholder="Verein" required>
+  <input type="number" placeholder="Preis in €" min="0" step="0.01" required>
+  <button type="submit">Karte einstellen</button>
+</form> 
+    <form onsubmit="event.preventDefault(); alert('Deine Karte wurde als Demo eingestellt!');">
+  <input type="text" placeholder="Spieler" required>
+  <input type="text" placeholder="Verein" required>
+  <input type="number" placeholder="Preis in €" min="0" step="0.01" required>
+  <button type="submit">Karte einstellen</button>
     <h2>Du willst eine Karte verkaufen?</h2>
     <p>Stelle deine Fußballkarte schnell und einfach ein.</p>
     <button onclick="alert('Die Verkaufsfunktion kommt als Nächstes!')">
