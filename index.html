@@ -235,12 +235,22 @@ document.getElementById("sellForm").addEventListener("submit", function(event) {
   const club = document.getElementById("club").value;
   const price = document.getElementById("price").value;
 
-  alert(
-    "Karte eingestellt!\n\n" +
-    "Spieler: " + player + "\n" +
-    "Verein: " + club + "\n" +
-    "Preis: " + price + " €"
-  );
+  const cards = document.querySelector(".cards");
+
+  const newCard = document.createElement("div");
+  newCard.className = "card";
+
+  newCard.innerHTML = `
+    <div class="card-image">⚽</div>
+    <h3>${player}</h3>
+    <p class="info">${club}</p>
+    <p class="price">${price} €</p>
+    <button onclick="alert('Kauf-Funktion kommt später!')">Kaufen</button>
+  `;
+
+  cards.prepend(newCard);
+
+  alert("Deine Karte wurde eingestellt!");
 
   this.reset();
 });
