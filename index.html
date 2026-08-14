@@ -145,6 +145,12 @@ footer {
 <div class="container">
 
   <div class="sell">
+    <form id="sellForm">
+  <input id="player" type="text" placeholder="Spieler" required>
+  <input id="club" type="text" placeholder="Verein" required>
+  <input id="price" type="number" placeholder="Preis in €" min="0" step="0.01" required>
+  <button type="submit">Karte einstellen</button>
+</form>
    </form>
   <input type="text" placeholder="Spieler" required>
   <input type="text" placeholder="Verein" required>
@@ -204,6 +210,40 @@ footer {
 <footer>
   © 2026 Pixel Cards
 </footer>
+<script>
+document.getElementById("sellForm").addEventListener("submit", function(event) {
+  event.preventDefault();
 
+  const player = document.getElementById("player").value;
+  const club = document.getElementById("club").value;
+  const price = document.getElementById("price").value;
+
+  alert(
+    "Karte eingestellt!\n\n" +
+    "Spieler: " + player + "\n" +
+    "Verein: " + club + "\n" +
+    "Preis: " + price + " €"
+  );
+
+  this.reset();
+});
+<script>
+document.getElementById("sellForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const player = document.getElementById("player").value;
+  const club = document.getElementById("club").value;
+  const price = document.getElementById("price").value;
+
+  alert(
+    "Karte eingestellt!\n\n" +
+    "Spieler: " + player + "\n" +
+    "Verein: " + club + "\n" +
+    "Preis: " + price + " €"
+  );
+
+  this.reset();
+});
+</script>
 </body>
 </html>
