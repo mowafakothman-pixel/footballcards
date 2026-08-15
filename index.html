@@ -158,55 +158,28 @@ footer {
 <div class="search">
   <input type="text" placeholder="🔎 Suche nach Spieler, Verein oder Karte...">
 </div>
-
 <div class="container">
 
   <div class="sell">
+    <h2>Du willst eine Karte verkaufen?</h2>
+    <p>Stelle deine Fußballkarte schnell und einfach ein.</p>
+
     <form id="sellForm">
-  <input id="player" type="text" placeholder="Spieler" required>
-  <input id="club" type="text" placeholder="Verein" required>
-  <div class="sell">
-  <h2>Du willst eine Karte verkaufen?</h2>
-  <p>Stelle deine Fußballkarte schnell und einfach ein.</p>
-
-  <form id="sellForm">
-    <input id="player" type="text" placeholder="Spieler" required>
-    <input id="club" type="text" placeholder="Verein" required>
-    <input id="price" type="number" placeholder="Preis in €" min="0" step="0.01" required>
-    <input id="image" type="file" accept="image/*" required>
-    <button type="submit">Karte einstellen</button>
-  </form>
-</div>
-
-<h2>🔥 Aktuelle Karten</h2>
-<h2>🃏 Meine Karten</h2>
-<div class="my-cards"></div>
-  <div class="cards">
-
-    <div class="card">
-    </div>
-
-    <div class="card">
-      <div class="card-image">🏆</div>
-      <h3>Panini Fußballkarte</h3>
-      <p class="info">Guter Zustand</p>
-      <p class="price">3,50 €</p>
-      <button onclick="alert('Kauf-Funktion kommt als Nächstes!')">
-        Kaufen
-      </button>
-    </div>
-
-    <div class="card">
-      <div class="card-image">⭐</div>
-      <h3>Champions League Karte</h3>
-      <p class="info">Wie neu</p>
-      <p class="price">8,00 €</p>
-      <button onclick="alert('Kauf-Funktion kommt als Nächstes!')">
-        Kaufen
-      </button>
-    </div>
-
+      <input id="player" type="text" placeholder="Spieler" required>
+      <input id="club" type="text" placeholder="Verein" required>
+      <input id="price" type="number" placeholder="Preis in €" min="0" step="0.01" required>
+      <input id="image" type="file" accept="image/*" required>
+      <button type="submit">Karte einstellen</button>
+    </form>
   </div>
+
+  <h2>🔥 Aktuelle Karten</h2>
+
+  <div class="cards"></div>
+
+  <h2>🃏 Meine Karten</h2>
+
+  <div class="my-cards"></div>
 
 </div>
 
