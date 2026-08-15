@@ -208,6 +208,9 @@ function createCard(player, club, price, imageData) {
     <button onclick="showCard('${player}', '${club}', '${price}', '${imageData}')">
   Karte ansehen
 </button>
+<button onclick="toggleFavorite('${player}', '${club}', '${price}', '${imageData}')">
+  ❤️ Favorit
+</button>
   `;
 
   cards.appendChild(newCard);
