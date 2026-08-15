@@ -479,6 +479,43 @@ localStorage.setItem(
 loadFavorites();
 loadCards();
 }
+function loadPurchaseRequests() {
+  const requests =
+    JSON.parse(localStorage.getItem("purchaseRequests")) || [];
+
+  const requestBox = document.querySelector(".purchase-requests");
+  const requestTitle = document.getElementById("requestTitle");
+
+  requestTitle.textContent =
+    "📩 Meine Kaufanfragen (" + requests.length + ")";
+
+  requestBox.innerHTML = "";
+
+  if (requests.length === 0) {
+    requestBox.innerHTML =
+      "<p>Noch keine Kaufanfragen gesendet.</p>";
+    return;
+  }
+
+  requests.forEach(request => {
+    const item = document.createElement("div");
+    item.className = "card";
+
+    item.innerHTML = `
+      <div class="card-image">
+        <img src="${request.image}" alt="${request.player}">
+      </div>
+
+      <h3>${request.player}</h3>
+      <p class="info">${request.club}</p>
+      <p class="price">${request.price} €</p>
+
+      <p>🕐 Kaufanfrage gesendet</p>
+    `;
+
+    requestBox.appendChild(item);
+  });
+}
 function buyCard(player, club, price, imageData) {
   const confirmBuy = confirm(
     "Möchtest du diese Karte kaufen?\n\n" +
@@ -487,12 +524,29 @@ function buyCard(player, club, price, imageData) {
   );
 
   if (confirmBuy) {
-    alert(
-      "Kaufanfrage für " +
-      player +
-      " wurde gesendet!"
-    );
-  }
+  const requests =
+    JSON.parse(localStorage.getItem("purchaseRequests")) || [];
+
+  requests.push({
+    player: player,
+    club: club,
+    price: price,
+    image: imageData
+  });
+
+  localStorage.setItem(
+    "purchaseRequests",
+    JSON.stringify(requests)
+  );
+
+  loadPurchaseRequests();
+
+  alert(
+    "Kaufanfrage für " +
+    player +
+    " wurde gespeichert!"
+  );
+}
 }
 function showCard(player, club, price, imageData) {
   const overlay = document.createElement("div");
@@ -529,7 +583,6 @@ function showCard(player, club, price, imageData) {
           border-radius:12px;
         "
       >
-
       <h2>${player}</h2>
       <p>${club}</p>
 
@@ -558,11 +611,14 @@ function showCard(player, club, price, imageData) {
 
   document.getElementById("closeCard").onclick = function() {
     overlay.remove();
-  };
+};
+
 }
 loadCards();
 loadMyCards();
 loadFavorites();
+loadPurchaseRequests();
+    
 </script>
 </body>
 </html>
