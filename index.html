@@ -2,495 +2,619 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Pixel Cards</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f4f5f7;
-  color:#111;
+ margin:0;
+ font-family:Arial,Helvetica,sans-serif;
+ background:#f4f6f8;
+ color:#111;
 }
 
+button,input,select,textarea{font:inherit}
+
 header{
-  background:linear-gradient(135deg,#111,#292929);
-  color:white;
-  text-align:center;
-  padding:25px 15px;
+ background:linear-gradient(135deg,#090909,#252525);
+ color:#fff;
+ padding:28px 18px;
+ text-align:center;
 }
 
 header h1{
-  margin:0;
-  font-size:31px;
+ margin:0;
+ font-size:32px;
 }
 
 header p{
-  color:#bbb;
-  margin:7px 0 0;
+ margin:7px 0 0;
+ color:#bbb;
 }
 
 .topbar{
-  background:white;
-  border-bottom:1px solid #ddd;
-  padding:12px 16px;
-  position:sticky;
-  top:0;
-  z-index:100;
+ position:sticky;
+ top:0;
+ z-index:100;
+ background:rgba(255,255,255,.96);
+ backdrop-filter:blur(12px);
+ border-bottom:1px solid #ddd;
 }
 
-.topbar-inner{
-  max-width:1100px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
+.top-inner{
+ max-width:1150px;
+ margin:auto;
+ padding:11px 15px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:12px;
 }
 
-.user-box{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:bold;
+.user{
+ display:flex;
+ align-items:center;
+ gap:9px;
+ font-weight:bold;
 }
 
 .avatar{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:#111;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
+ width:42px;
+ height:42px;
+ border-radius:50%;
+ background:#111;
+ color:#fff;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:bold;
 }
 
-.user-controls{
-  display:flex;
-  gap:7px;
+.user-actions{
+ display:flex;
+ gap:7px;
 }
 
-.user-controls input{
-  width:150px;
-  padding:10px;
-  border:1px solid #ddd;
-  border-radius:10px;
+.user-actions input{
+ width:150px;
+ border:1px solid #ddd;
+ border-radius:10px;
+ padding:10px;
 }
 
-.black-btn{
-  border:0;
-  background:#111;
-  color:white;
-  padding:10px 14px;
-  border-radius:10px;
-  font-weight:bold;
+.btn{
+ border:0;
+ border-radius:10px;
+ padding:10px 14px;
+ font-weight:bold;
+ cursor:pointer;
 }
 
-.search{
-  background:white;
-  padding:18px;
-  text-align:center;
-}
+.dark{background:#111;color:#fff}
+.light{background:#eee;color:#111}
+.green{background:#16a34a;color:#fff}
+.red{background:#dc2626;color:#fff}
 
-.search input{
-  width:90%;
-  max-width:650px;
-  padding:14px;
-  border:1px solid #ddd;
-  border-radius:13px;
-  font-size:16px;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:20px;
-}
-
-.sell{
-  background:linear-gradient(135deg,#111,#292929);
-  color:white;
-  padding:22px;
-  border-radius:20px;
-  margin-bottom:20px;
-  text-align:center;
-  box-shadow:0 8px 25px rgba(0,0,0,.12);
-}
-
-.sell h2{
-  margin-top:0;
-}
-
-.sell form{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:8px;
-}
-
-.sell input{
-  padding:12px;
-  border:0;
-  border-radius:9px;
-}
-
-.sell button{
-  border:0;
-  background:white;
-  color:#111;
-  padding:12px 18px;
-  border-radius:9px;
-  font-weight:bold;
-}
-
-.navigation{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:9px;
-  margin-bottom:22px;
-}
-
-.navigation button{
-  position:relative;
-  border:0;
-  background:white;
-  padding:14px 7px;
-  border-radius:13px;
-  font-weight:bold;
-  box-shadow:0 3px 12px rgba(0,0,0,.06);
-}
-
-.navigation button.active{
-  background:#111;
-  color:white;
+.notify-btn{
+ position:relative;
+ background:#111;
+ color:#fff;
+ border:0;
+ width:43px;
+ height:43px;
+ border-radius:12px;
+ font-size:20px;
+ cursor:pointer;
 }
 
 .badge{
-  position:absolute;
-  top:-6px;
-  right:-4px;
-  background:#e53935;
-  color:white;
-  min-width:20px;
-  height:20px;
-  padding:2px 6px;
-  border-radius:20px;
-  font-size:12px;
-  display:none;
-  align-items:center;
-  justify-content:center;
+ position:absolute;
+ top:-6px;
+ right:-5px;
+ min-width:20px;
+ height:20px;
+ padding:2px 6px;
+ background:#e53935;
+ color:#fff;
+ border-radius:20px;
+ font-size:11px;
+ display:none;
+ align-items:center;
+ justify-content:center;
 }
 
-.badge.show{
-  display:flex;
+.badge.show{display:flex}
+
+.search-area{
+ background:#fff;
+ padding:18px;
 }
 
-.page{
-  display:none;
+.search-row{
+ max-width:1150px;
+ margin:auto;
+ display:flex;
+ gap:9px;
 }
 
-.page.active{
-  display:block;
+.search-row input{
+ flex:1;
+ padding:14px;
+ border:1px solid #ddd;
+ border-radius:13px;
 }
+
+.filters{
+ max-width:1150px;
+ margin:10px auto 0;
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+}
+
+.filters select{
+ padding:10px;
+ border:1px solid #ddd;
+ border-radius:10px;
+ background:#fff;
+}
+
+.container{
+ max-width:1150px;
+ margin:auto;
+ padding:20px 15px;
+}
+
+.sell{
+ background:linear-gradient(135deg,#111,#303030);
+ color:#fff;
+ border-radius:21px;
+ padding:23px;
+ box-shadow:0 10px 30px rgba(0,0,0,.12);
+ margin-bottom:20px;
+}
+
+.sell h2{margin-top:0}
+
+.sell form{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+}
+
+.sell input{
+ flex:1;
+ min-width:130px;
+ border:0;
+ padding:12px;
+ border-radius:10px;
+}
+
+.sell button{
+ border:0;
+ background:#fff;
+ color:#111;
+ padding:12px 18px;
+ border-radius:10px;
+ font-weight:bold;
+}
+
+.nav{
+ display:grid;
+ grid-template-columns:repeat(6,1fr);
+ gap:8px;
+ margin-bottom:20px;
+}
+
+.nav button{
+ position:relative;
+ border:0;
+ background:#fff;
+ padding:13px 5px;
+ border-radius:13px;
+ font-weight:bold;
+ box-shadow:0 3px 12px rgba(0,0,0,.06);
+ cursor:pointer;
+}
+
+.nav button.active{
+ background:#111;
+ color:#fff;
+}
+
+.page{display:none}
+.page.active{display:block}
 
 .cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
-  gap:17px;
+ display:grid;
+ grid-template-columns:repeat(auto-fill,minmax(245px,1fr));
+ gap:17px;
 }
 
 .card{
-  background:white;
-  padding:16px;
-  border-radius:19px;
-  box-shadow:0 5px 18px rgba(0,0,0,.08);
+ background:#fff;
+ padding:15px;
+ border-radius:19px;
+ box-shadow:0 5px 20px rgba(0,0,0,.07);
+ transition:.18s;
 }
 
-.card-image{
-  width:100%;
-  height:205px;
-  background:#f0f1f2;
-  border-radius:14px;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.card:hover{
+ transform:translateY(-2px);
+ box-shadow:0 9px 25px rgba(0,0,0,.1);
 }
 
-.card-image img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
+.card-img{
+ width:100%;
+ height:205px;
+ background:#f0f1f3;
+ border-radius:14px;
+ overflow:hidden;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+
+.card-img img{
+ width:100%;
+ height:100%;
+ object-fit:contain;
 }
 
 .card h3{
-  margin:12px 0 5px;
+ margin:12px 0 5px;
 }
 
-.info{
-  color:#666;
+.muted{
+ color:#707070;
 }
 
 .price{
-  font-size:23px;
-  font-weight:bold;
-  margin:10px 0;
+ font-size:23px;
+ font-weight:bold;
+ margin:10px 0;
 }
 
 .card button{
-  width:100%;
-  border:0;
-  background:#111;
-  color:white;
-  padding:11px;
-  border-radius:9px;
-  font-weight:bold;
-  margin-top:7px;
+ width:100%;
+ border:0;
+ padding:11px;
+ margin-top:7px;
+ border-radius:10px;
+ font-weight:bold;
+ cursor:pointer;
+ background:#111;
+ color:#fff;
 }
 
-.card button.gray{
-  background:#eee;
-  color:#111;
+.card button.secondary{
+ background:#eee;
+ color:#111;
+}
+
+.own-label{
+ display:block;
+ background:#f0f0f0;
+ color:#555;
+ padding:9px;
+ border-radius:9px;
+ text-align:center;
+ font-weight:bold;
+ margin-top:7px;
 }
 
 .empty{
-  background:white;
-  padding:25px;
-  border-radius:15px;
-  color:#777;
-  text-align:center;
+ background:#fff;
+ border-radius:17px;
+ padding:30px;
+ text-align:center;
+ color:#777;
 }
 
 .request{
-  background:white;
-  padding:17px;
-  border-radius:17px;
-  margin-bottom:13px;
-  box-shadow:0 4px 14px rgba(0,0,0,.07);
+ background:#fff;
+ border-radius:18px;
+ padding:16px;
+ margin-bottom:12px;
+ box-shadow:0 4px 16px rgba(0,0,0,.06);
 }
 
 .request-top{
-  display:flex;
-  gap:14px;
-  align-items:center;
+ display:flex;
+ gap:13px;
+ align-items:center;
 }
 
-.request-image{
-  width:90px;
-  height:90px;
-  object-fit:contain;
-  background:#f1f1f1;
-  border-radius:12px;
-  flex-shrink:0;
+.request-img{
+ width:85px;
+ height:85px;
+ object-fit:contain;
+ background:#f1f1f1;
+ border-radius:12px;
+ flex-shrink:0;
 }
 
-.request-info{
-  flex:1;
-}
-
-.request-info h3{
-  margin:0 0 6px;
-}
+.request-info{flex:1}
 
 .status{
-  display:inline-block;
-  padding:7px 10px;
-  border-radius:9px;
-  font-size:13px;
-  font-weight:bold;
+ display:inline-block;
+ padding:7px 10px;
+ border-radius:9px;
+ font-size:12px;
+ font-weight:bold;
 }
 
-.pending{
-  background:#fff1d6;
-  color:#946200;
-}
-
-.accepted{
-  background:#dcfce7;
-  color:#137333;
-}
-
-.rejected{
-  background:#fee2e2;
-  color:#b42318;
-}
+.pending{background:#fff1d6;color:#946200}
+.accepted{background:#dcfce7;color:#137333}
+.rejected{background:#fee2e2;color:#b42318}
 
 .request-actions{
-  display:flex;
-  gap:9px;
-  margin-top:14px;
+ display:flex;
+ gap:8px;
+ margin-top:13px;
 }
 
-.accept{
-  flex:1;
-  border:0;
-  background:#16a34a;
-  color:white;
-  padding:12px;
-  border-radius:10px;
-  font-weight:bold;
-}
-
-.reject{
-  flex:1;
-  border:0;
-  background:#dc2626;
-  color:white;
-  padding:12px;
-  border-radius:10px;
-  font-weight:bold;
+.request-actions button{
+ flex:1;
+ border:0;
+ padding:12px;
+ border-radius:10px;
+ font-weight:bold;
 }
 
 .profile{
-  background:white;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 5px 18px rgba(0,0,0,.08);
+ background:#fff;
+ border-radius:20px;
+ padding:23px;
+ box-shadow:0 5px 20px rgba(0,0,0,.07);
 }
 
 .profile-head{
-  display:flex;
-  align-items:center;
-  gap:15px;
+ display:flex;
+ gap:15px;
+ align-items:center;
 }
 
 .big-avatar{
-  width:75px;
-  height:75px;
-  border-radius:50%;
-  background:#111;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  font-weight:bold;
+ width:75px;
+ height:75px;
+ border-radius:50%;
+ background:#111;
+ color:#fff;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:28px;
+ font-weight:bold;
 }
 
 .rating{
-  color:#f2a900;
-  font-size:21px;
+ color:#f2a900;
+ font-size:20px;
 }
 
 .stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:20px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:9px;
+ margin-top:20px;
 }
 
 .stat{
-  background:#f5f5f5;
-  padding:15px;
-  text-align:center;
-  border-radius:13px;
+ background:#f5f5f5;
+ border-radius:13px;
+ padding:15px;
+ text-align:center;
 }
 
 .stat strong{
-  display:block;
-  font-size:23px;
+ display:block;
+ font-size:22px;
 }
 
 .stat span{
-  color:#777;
-  font-size:13px;
+ color:#777;
+ font-size:12px;
 }
 
 .review{
-  background:#f6f6f6;
-  padding:13px;
-  border-radius:12px;
-  margin-top:10px;
+ background:#f5f5f5;
+ border-radius:12px;
+ padding:12px;
+ margin-top:9px;
 }
 
-.stars{
-  color:#f2a900;
-}
+.stars{color:#f2a900}
 
 .rating-box{
-  background:#f5f5f5;
-  padding:17px;
-  border-radius:14px;
-  margin-top:15px;
+ background:#f5f5f5;
+ border-radius:14px;
+ padding:15px;
+ margin-top:13px;
 }
 
-.star-select{
-  display:flex;
-  gap:4px;
-  margin:8px 0;
+.star-row{
+ display:flex;
+ gap:3px;
+ margin:7px 0;
 }
 
-.star-btn{
-  border:0;
-  background:transparent;
-  font-size:30px;
-  color:#ccc;
-  cursor:pointer;
+.star{
+ border:0;
+ background:transparent;
+ font-size:30px;
+ color:#ccc;
+ cursor:pointer;
 }
 
-.star-btn.selected{
-  color:#f2a900;
+.star.selected{color:#f2a900}
+
+.rating-box textarea{
+ width:100%;
+ min-height:70px;
+ border:1px solid #ddd;
+ border-radius:10px;
+ padding:10px;
+ resize:vertical;
 }
 
-.rating-comment{
-  width:100%;
-  min-height:70px;
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:10px;
+.notification-panel{
+ position:fixed;
+ right:15px;
+ top:70px;
+ width:min(390px,calc(100% - 30px));
+ max-height:75vh;
+ overflow:auto;
+ background:#fff;
+ border-radius:17px;
+ box-shadow:0 12px 40px rgba(0,0,0,.2);
+ z-index:500;
+ display:none;
+}
+
+.notification-panel.show{display:block}
+
+.notification-head{
+ padding:15px;
+ border-bottom:1px solid #eee;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.notification{
+ padding:13px;
+ border-bottom:1px solid #eee;
+ cursor:pointer;
+}
+
+.notification.unread{
+ background:#f1f5f9;
+}
+
+.chat{
+ background:#fff;
+ border-radius:18px;
+ padding:15px;
+ box-shadow:0 4px 17px rgba(0,0,0,.06);
+}
+
+.chat-users{
+ display:flex;
+ gap:7px;
+ flex-wrap:wrap;
+ margin-bottom:15px;
+}
+
+.chat-user{
+ border:0;
+ background:#eee;
+ padding:9px 12px;
+ border-radius:10px;
+ font-weight:bold;
+ cursor:pointer;
+}
+
+.chat-user.active{
+ background:#111;
+ color:#fff;
+}
+
+.messages{
+ height:390px;
+ overflow:auto;
+ background:#f4f5f6;
+ border-radius:14px;
+ padding:13px;
+}
+
+.message{
+ max-width:75%;
+ padding:10px 12px;
+ border-radius:14px;
+ margin-bottom:8px;
+}
+
+.message.mine{
+ margin-left:auto;
+ background:#111;
+ color:#fff;
+}
+
+.message.theirs{
+ background:#fff;
+}
+
+.message small{
+ display:block;
+ opacity:.6;
+ margin-top:4px;
+}
+
+.chat-input{
+ display:flex;
+ gap:7px;
+ margin-top:9px;
+}
+
+.chat-input input{
+ flex:1;
+ padding:12px;
+ border:1px solid #ddd;
+ border-radius:10px;
 }
 
 footer{
-  text-align:center;
-  color:#777;
-  padding:35px;
+ text-align:center;
+ padding:35px;
+ color:#777;
 }
 
-@media(max-width:700px){
+@media(max-width:750px){
 
-  .topbar-inner{
-    flex-direction:column;
-  }
+ .top-inner{
+  flex-wrap:wrap;
+ }
 
-  .user-controls{
-    width:100%;
-  }
+ .user-actions{
+  width:100%;
+ }
 
-  .user-controls input{
-    flex:1;
-    width:auto;
-  }
+ .user-actions input{
+  flex:1;
+  width:auto;
+ }
 
-  .navigation{
-    grid-template-columns:repeat(2,1fr);
-  }
+ .nav{
+  grid-template-columns:repeat(3,1fr);
+ }
 
-  .navigation button:last-child{
-    grid-column:span 2;
-  }
+ .stats{
+  grid-template-columns:repeat(2,1fr);
+ }
 
-  .sell input,
-  .sell button{
-    width:100%;
-  }
+ .search-row{
+  flex-direction:column;
+ }
 
-  .request-top{
-    align-items:flex-start;
-  }
+}
 
-  .request-actions{
-    flex-direction:column;
-  }
+@media(max-width:480px){
 
-  .stats{
-    grid-template-columns:1fr;
-  }
+ .nav{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .stats{
+  grid-template-columns:1fr 1fr;
+ }
+
+ .request-top{
+  align-items:flex-start;
+ }
+
 }
 </style>
 </head>
@@ -498,1887 +622,1489 @@ footer{
 <body>
 
 <header>
-  <h1>⚽ Pixel Cards</h1>
-  <p>Der Marktplatz für Fußballkarten</p>
+<h1>⚽ Pixel Cards</h1>
+<p>Der Marktplatz für Fußballkarten</p>
 </header>
 
 <div class="topbar">
-  <div class="topbar-inner">
+<div class="top-inner">
 
-    <div class="user-box">
-      <div class="avatar" id="avatar">?</div>
-      <span id="currentUser">Kein Benutzer</span>
-    </div>
-
-    <div class="user-controls">
-      <input
-        id="usernameInput"
-        maxlength="20"
-        placeholder="Benutzername"
-      >
-      <button class="black-btn" onclick="saveUsername()">
-        Speichern
-      </button>
-    </div>
-
-  </div>
+<div class="user">
+<div class="avatar" id="avatar">?</div>
+<span id="currentUser">Kein Benutzer</span>
 </div>
 
-<div class="search">
-  <input
-    id="searchInput"
-    placeholder="🔎 Spieler, Verein oder Verkäufer suchen..."
-  >
+<div class="user-actions">
+<input id="usernameInput" maxlength="20" placeholder="Benutzername">
+<button class="btn dark" onclick="saveUsername()">Speichern</button>
+
+<button class="notify-btn" onclick="toggleNotifications()">
+🔔
+<span id="notificationBadge" class="badge">0</span>
+</button>
+</div>
+
+</div>
+</div>
+
+<div id="notificationPanel" class="notification-panel">
+
+<div class="notification-head">
+<strong>🔔 Benachrichtigungen</strong>
+<button class="btn light" onclick="markNotificationsRead()">Gelesen</button>
+</div>
+
+<div id="notificationList"></div>
+
+</div>
+
+<div class="search-area">
+
+<div class="search-row">
+<input id="search" placeholder="🔎 Spieler, Verein oder Verkäufer suchen...">
+</div>
+
+<div class="filters">
+
+<select id="clubFilter">
+<option value="">Alle Vereine</option>
+</select>
+
+<select id="sortFilter">
+<option value="new">Neueste zuerst</option>
+<option value="cheap">Preis aufsteigend</option>
+<option value="expensive">Preis absteigend</option>
+<option value="name">Spieler A–Z</option>
+</select>
+
+</div>
+
 </div>
 
 <div class="container">
 
 <div class="sell">
-  <h2>🎟️ Karte verkaufen</h2>
-  <p>Stelle deine Fußballkarte schnell und einfach ein.</p>
 
-  <form id="sellForm">
+<h2>🎟️ Karte verkaufen</h2>
+<p>Stelle deine Fußballkarte schnell und einfach ein.</p>
 
-    <input
-      id="player"
-      placeholder="Spieler"
-      required
-    >
+<form id="sellForm">
 
-    <input
-      id="club"
-      placeholder="Verein"
-      required
-    >
+<input id="player" placeholder="Spieler" required>
+<input id="club" placeholder="Verein" required>
+<input id="price" type="number" min="0" step=".01" placeholder="Preis in €" required>
+<input id="image" type="file" accept="image/*" required>
 
-    <input
-      id="price"
-      type="number"
-      min="0"
-      step="0.01"
-      placeholder="Preis in €"
-      required
-    >
+<button type="submit">Karte einstellen</button>
 
-    <input
-      id="image"
-      type="file"
-      accept="image/*"
-      required
-    >
+</form>
 
-    <button type="submit">
-      Karte einstellen
-    </button>
-
-  </form>
 </div>
 
-<div class="navigation">
+<div class="nav">
 
-<button
-id="navMarket"
-class="active"
-onclick="openPage('market','navMarket')"
->
+<button id="navMarket" class="active" onclick="openPage('market','navMarket')">
 🔥 Karten
 </button>
 
-<button
-id="navFavorites"
-onclick="openPage('favorites','navFavorites')"
->
+<button id="navFav" onclick="openPage('favorites','navFav')">
 ❤️ Favoriten
 </button>
 
-<button
-id="navMine"
-onclick="openPage('mine','navMine')"
->
+<button id="navMine" onclick="openPage('mine','navMine')">
 🃏 Meine Karten
 </button>
 
-<button
-id="navRequests"
-onclick="openPage('requests','navRequests')"
->
+<button id="navRequests" onclick="openPage('requests','navRequests')">
 📩 Anfragen
 <span id="requestBadge" class="badge">0</span>
 </button>
 
-<button
-id="navProfile"
-onclick="openPage('profile','navProfile')"
->
+<button id="navMessages" onclick="openPage('messages','navMessages')">
+💬 Nachrichten
+<span id="messageBadge" class="badge">0</span>
+</button>
+
+<button id="navProfile" onclick="openPage('profile','navProfile')">
 👤 Profil
 </button>
 
 </div>
 
 <section id="market" class="page active">
-  <h2>🔥 Aktuelle Karten</h2>
-  <div id="cards" class="cards"></div>
+<h2>🔥 Aktuelle Karten</h2>
+<div id="cards" class="cards"></div>
 </section>
 
 <section id="favorites" class="page">
-  <h2 id="favoriteTitle">❤️ Favoriten (0)</h2>
-  <div id="favoriteCards" class="cards"></div>
+<h2>❤️ Meine Favoriten</h2>
+<div id="favoritesBox" class="cards"></div>
 </section>
 
 <section id="mine" class="page">
-  <h2>🃏 Meine Karten</h2>
-  <div id="myCards" class="cards"></div>
+<h2>🃏 Meine Karten</h2>
+<div id="mineBox" class="cards"></div>
 </section>
 
 <section id="requests" class="page">
 
-  <h2 id="buyerRequestTitle">
-    📩 Meine Kaufanfragen (0)
-  </h2>
+<h2>📩 Meine Kaufanfragen</h2>
+<div id="buyerRequests"></div>
 
-  <div id="buyerRequests"></div>
+<h2 style="margin-top:30px">📥 Anfragen für meine Karten</h2>
+<div id="sellerRequests"></div>
 
-  <h2 id="sellerRequestTitle" style="margin-top:30px;">
-    📥 Anfragen für meine Karten (0)
-  </h2>
+</section>
 
-  <div id="sellerRequests"></div>
+<section id="messages" class="page">
+
+<h2>💬 Nachrichten</h2>
+
+<div class="chat">
+
+<div id="chatUsers" class="chat-users"></div>
+
+<div id="messagesBox" class="messages">
+<div class="empty">Wähle einen Benutzer aus.</div>
+</div>
+
+<div class="chat-input">
+<input id="messageInput" placeholder="Nachricht schreiben...">
+<button class="btn dark" onclick="sendMessage()">Senden</button>
+</div>
+
+</div>
 
 </section>
 
 <section id="profile" class="page">
-  <h2>👤 Mein Profil</h2>
-  <div id="profileContent"></div>
+<h2>👤 Profil</h2>
+<div id="profileBox"></div>
 </section>
 
 </div>
 
 <footer>
-  © 2026 Pixel Cards
+© 2026 Pixel Cards
 </footer>
 
 <script>
 
-/* =========================
-   DATEN
-========================= */
+const KEY={
+ cards:"pc_cards",
+ requests:"pc_requests",
+ favorites:"pc_favorites",
+ ratings:"pc_ratings",
+ notifications:"pc_notifications",
+ messages:"pc_messages",
+ user:"pc_user"
+};
 
-function cards(){
-  return JSON.parse(
-    localStorage.getItem("pixel_cards") || "[]"
-  );
+let selectedChat="";
+let selectedStars={};
+
+function get(key,fallback=[]){
+ try{
+  return JSON.parse(localStorage.getItem(key)) ?? fallback;
+ }catch{
+  return fallback;
+ }
 }
 
-function saveCards(data){
-  localStorage.setItem(
-    "pixel_cards",
-    JSON.stringify(data)
-  );
+function set(key,value){
+ localStorage.setItem(key,JSON.stringify(value));
 }
 
-function requests(){
-  return JSON.parse(
-    localStorage.getItem("pixel_requests") || "[]"
-  );
+function user(){
+ return localStorage.getItem(KEY.user)||"";
 }
 
-function saveRequests(data){
-  localStorage.setItem(
-    "pixel_requests",
-    JSON.stringify(data)
-  );
+function esc(v){
+ return String(v)
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;")
+ .replaceAll('"',"&quot;")
+ .replaceAll("'","&#039;");
 }
 
-function favorites(){
-  return JSON.parse(
-    localStorage.getItem("pixel_favorites") || "[]"
-  );
+function uid(){
+ return Date.now()+"_"+Math.random().toString(36).slice(2);
 }
-
-function saveFavorites(data){
-  localStorage.setItem(
-    "pixel_favorites",
-    JSON.stringify(data)
-  );
-}
-
-function ratings(){
-  return JSON.parse(
-    localStorage.getItem("pixel_ratings") || "{}"
-  );
-}
-
-function saveRatings(data){
-  localStorage.setItem(
-    "pixel_ratings",
-    JSON.stringify(data)
-  );
-}
-
-function username(){
-  return (
-    localStorage.getItem("pixel_username") || ""
-  );
-}
-
-
-/* =========================
-   BENUTZER
-========================= */
 
 function saveUsername(){
 
-  const input =
-    document.getElementById("usernameInput");
+ const value=document.getElementById("usernameInput").value.trim();
 
-  const name =
-    input.value.trim();
+ if(!value){
+  alert("Bitte gib einen Benutzernamen ein.");
+  return;
+ }
 
-  if(!name){
-    alert("Bitte gib einen Benutzernamen ein.");
-    return;
-  }
+ localStorage.setItem(KEY.user,value);
+ updateUser();
+ renderAll();
 
-  localStorage.setItem(
-    "pixel_username",
-    name
-  );
-
-  updateUser();
-  renderAll();
-
-  alert("👤 Profil gespeichert!");
+ alert("👤 Benutzername gespeichert!");
 
 }
 
 function updateUser(){
 
-  const name = username();
+ const name=user();
 
-  document.getElementById(
-    "currentUser"
-  ).textContent =
-    name || "Kein Benutzer";
-
-  document.getElementById(
-    "usernameInput"
-  ).value = name;
-
-  document.getElementById(
-    "avatar"
-  ).textContent =
-    name
-    ? name.charAt(0).toUpperCase()
-    : "?";
+ document.getElementById("currentUser").textContent=name||"Kein Benutzer";
+ document.getElementById("usernameInput").value=name;
+ document.getElementById("avatar").textContent=name?name[0].toUpperCase():"?";
 
 }
 
+function openPage(page,button){
 
-/* =========================
-   NAVIGATION
-========================= */
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(page).classList.add("active");
 
-function openPage(page,id){
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+ document.getElementById(button).classList.add("active");
 
-  document
-    .querySelectorAll(".page")
-    .forEach(p =>
-      p.classList.remove("active")
-    );
-
-  document
-    .getElementById(page)
-    .classList.add("active");
-
-  document
-    .querySelectorAll(".navigation button")
-    .forEach(b =>
-      b.classList.remove("active")
-    );
-
-  document
-    .getElementById(id)
-    .classList.add("active");
+ if(page==="messages") renderChat();
+ if(page==="profile") renderProfile(user());
 
 }
 
+function toggleNotifications(){
 
-/* =========================
-   BENACHRICHTIGUNG
-========================= */
+ const panel=document.getElementById("notificationPanel");
+ panel.classList.toggle("show");
 
-function updateBadge(){
-
-  const name = username();
-
-  const count =
-    requests().filter(r =>
-      r.seller === name &&
-      r.status === "pending"
-    ).length;
-
-  const badge =
-    document.getElementById(
-      "requestBadge"
-    );
-
-  if(count > 0){
-
-    badge.textContent = count;
-    badge.classList.add("show");
-
-  }else{
-
-    badge.classList.remove("show");
-
-  }
+ if(panel.classList.contains("show")){
+  renderNotifications();
+ }
 
 }
 
+function notifications(){
+ return get(KEY.notifications,[]);
+}
 
-/* =========================
-   KARTE ERSTELLEN
-========================= */
+function addNotification(to,type,text){
 
-function cardHTML(card){
+ const data=notifications();
 
-  const name = username();
+ data.unshift({
+  id:uid(),
+  to,
+  type,
+  text,
+  read:false,
+  time:new Date().toLocaleString("de-DE")
+ });
 
-  const fav =
-    favorites().includes(card.id);
+ set(KEY.notifications,data);
 
-  let buyButton = "";
+}
 
-  if(card.owner === name){
+function renderNotifications(){
 
-    buyButton = `
-      <button
-        class="gray"
-        onclick="ownCard()"
-      >
-        🚫 Eigene Karte
-      </button>
-    `;
+ const name=user();
+ const box=document.getElementById("notificationList");
 
-  }else if(!name){
+ const data=notifications().filter(n=>n.to===name);
 
-    buyButton = `
-      <button onclick="needUser()">
-        🛒 Kaufen
-      </button>
-    `;
+ if(!data.length){
+  box.innerHTML='<div class="empty">Keine Benachrichtigungen.</div>';
+  return;
+ }
 
-  }else{
+ box.innerHTML=data.slice(0,40).map(n=>`
 
-    const existing =
-      requests().find(r =>
-        r.cardId === card.id &&
-        r.buyer === name &&
-        (
-          r.status === "pending" ||
-          r.status === "accepted"
-        )
-      );
+ <div class="notification ${n.read?"":"unread"}"
+ onclick="readNotification('${n.id}')">
 
-    if(existing){
+ <strong>${esc(n.text)}</strong>
+ <small>${esc(n.time)}</small>
 
-      if(existing.status === "accepted"){
+ </div>
 
-        buyButton = `
-          <button class="gray">
-            ✅ Angenommen
-          </button>
-        `;
+ `).join("");
 
-      }else{
+}
 
-        buyButton = `
-          <button class="gray">
-            🕐 Anfrage offen
-          </button>
-        `;
+function readNotification(id){
 
-      }
+ const data=notifications();
+ const n=data.find(x=>x.id===id);
 
-    }else{
+ if(n)n.read=true;
 
-      buyButton = `
-        <button
-          onclick="buy('${card.id}')"
-        >
-          🛒 Kaufen
-        </button>
-      `;
+ set(KEY.notifications,data);
+ renderNotifications();
+ updateBadges();
 
-    }
+}
 
-  }
+function markNotificationsRead(){
 
-  return `
+ const name=user();
+ const data=notifications();
 
-    <div class="card">
+ data.forEach(n=>{
+  if(n.to===name)n.read=true;
+ });
 
-      <div class="card-image">
-        <img src="${card.image}">
-      </div>
+ set(KEY.notifications,data);
+ renderNotifications();
+ updateBadges();
 
-      <h3>${escapeHTML(card.player)}</h3>
+}
 
-      <p class="info">
-        ${escapeHTML(card.club)}
-      </p>
+function updateBadges(){
 
-      <p class="price">
-        ${card.price} €
-      </p>
+ const name=user();
 
-      <p class="info">
-        👤 Verkäufer:
-        <strong>
-          ${escapeHTML(card.owner)}
-        </strong>
-      </p>
+ const unread=notifications().filter(
+  n=>n.to===name&&!n.read
+ ).length;
 
-      <button
-        onclick="showCard('${card.id}')"
-      >
-        👀 Karte ansehen
-      </button>
+ const badge=document.getElementById("notificationBadge");
 
-      ${buyButton}
+ badge.textContent=unread;
+ badge.classList.toggle("show",unread>0);
 
-      <button
-        class="gray"
-        onclick="toggleFavorite('${card.id}')"
-      >
-        ${fav ? "❤️ Favorisiert" : "♡ Favorit"}
-      </button>
+ const requests=get(KEY.requests,[]);
 
-      <button
-        class="gray"
-        onclick="showSeller('${escapeAttr(card.owner)}')"
-      >
-        👤 Verkäuferprofil
-      </button>
+ const sellerPending=requests.filter(
+  r=>r.seller===name&&r.status==="pending"
+ ).length;
 
-    </div>
+ const buyerPending=requests.filter(
+  r=>r.buyer===name&&r.status==="pending"
+ ).length;
+
+ const rb=document.getElementById("requestBadge");
+
+ rb.textContent=sellerPending+buyerPending;
+ rb.classList.toggle("show",sellerPending+buyerPending>0);
+
+ const messages=get(KEY.messages,[]);
+
+ const unreadMessages=messages.filter(
+  m=>m.to===name&&!m.read
+ ).length;
+
+ const mb=document.getElementById("messageBadge");
+
+ mb.textContent=unreadMessages;
+ mb.classList.toggle("show",unreadMessages>0);
+
+}
+
+function createCardHTML(card){
+
+ const name=user();
+
+ const isOwn=card.owner===name;
+ const fav=get(KEY.favorites,[]).includes(card.id);
+
+ let actions="";
+
+ if(isOwn){
+
+  actions+=`
+  <span class="own-label">🚫 Deine Karte</span>
   `;
+
+ }else{
+
+  const req=get(KEY.requests,[]).find(r=>
+   r.cardId===card.id&&
+   r.buyer===name&&
+   (r.status==="pending"||r.status==="accepted")
+  );
+
+  if(!name){
+
+   actions+=`
+   <button onclick="needUser()">🛒 Kaufen</button>
+   `;
+
+  }else if(req){
+
+   actions+=req.status==="accepted"
+   ?`<button class="secondary">✅ Angenommen</button>`
+   :`<button class="secondary">🕐 Anfrage offen</button>`;
+
+  }else{
+
+   actions+=`
+   <button onclick="buyCard('${card.id}')">
+   🛒 Kaufen
+   </button>
+   `;
+
+  }
+
+ }
+
+ if(!isOwn){
+
+  actions+=`
+  <button class="secondary" onclick="toggleFavorite('${card.id}')">
+  ${fav?"❤️ Favorisiert":"♡ Favorit"}
+  </button>
+  `;
+
+ }else{
+
+  actions+=`
+  <span class="own-label">❤️ Eigene Karten können nicht favorisiert werden</span>
+  `;
+
+ }
+
+ actions+=`
+ <button class="secondary" onclick="showCard('${card.id}')">
+ 👀 Karte ansehen
+ </button>
+
+ <button class="secondary" onclick="showProfile('${esc(card.owner)}')">
+ 👤 Verkäuferprofil
+ </button>
+ `;
+
+ return`
+
+ <div class="card">
+
+ <div class="card-img">
+ <img src="${card.image}" alt="${esc(card.player)}">
+ </div>
+
+ <h3>${esc(card.player)}</h3>
+ <div class="muted">${esc(card.club)}</div>
+
+ <div class="price">${esc(card.price)} €</div>
+
+ <div class="muted">
+ 👤 ${esc(card.owner)}
+ </div>
+
+ ${actions}
+
+ </div>
+
+ `;
+
 }
-
-
-/* =========================
-   AKTUELLE KARTEN
-========================= */
 
 function renderCards(){
 
-  const box =
-    document.getElementById("cards");
+ const box=document.getElementById("cards");
 
-  const search =
-    document.getElementById(
-      "searchInput"
-    ).value.toLowerCase();
+ let data=get(KEY.cards,[]).filter(c=>!c.sold);
 
-  const result =
-    cards().filter(c =>
-      !c.sold &&
-      (
-        c.player.toLowerCase().includes(search) ||
-        c.club.toLowerCase().includes(search) ||
-        c.owner.toLowerCase().includes(search)
-      )
-    );
+ const search=document.getElementById("search").value.toLowerCase();
+ const club=document.getElementById("clubFilter").value;
+ const sort=document.getElementById("sortFilter").value;
 
-  if(!result.length){
+ data=data.filter(c=>
+  (!search||
+   c.player.toLowerCase().includes(search)||
+   c.club.toLowerCase().includes(search)||
+   c.owner.toLowerCase().includes(search)
+  )&&
+  (!club||c.club===club)
+ );
 
-    box.innerHTML =
-      `<div class="empty">
-        Keine Karten gefunden.
-      </div>`;
+ if(sort==="cheap")
+  data.sort((a,b)=>Number(a.price)-Number(b.price));
 
-    return;
+ if(sort==="expensive")
+  data.sort((a,b)=>Number(b.price)-Number(a.price));
 
-  }
+ if(sort==="name")
+  data.sort((a,b)=>a.player.localeCompare(b.player));
 
-  box.innerHTML =
-    result.map(cardHTML).join("");
+ if(!data.length){
+  box.innerHTML='<div class="empty">Keine Karten gefunden.</div>';
+  return;
+ }
+
+ box.innerHTML=data.map(createCardHTML).join("");
+
+ updateClubFilter();
 
 }
 
+function updateClubFilter(){
 
-/* =========================
-   VERKAUFEN
-========================= */
+ const select=document.getElementById("clubFilter");
+ const current=select.value;
 
-document
-  .getElementById("sellForm")
-  .addEventListener(
-    "submit",
-    function(e){
+ const clubs=[...new Set(
+  get(KEY.cards,[]).map(c=>c.club)
+ )].sort();
 
-      e.preventDefault();
+ select.innerHTML='<option value="">Alle Vereine</option>'+
+ clubs.map(c=>`<option>${esc(c)}</option>`).join("");
 
-      const name = username();
-
-      if(!name){
-
-        alert(
-          "👤 Bitte zuerst deinen Benutzernamen speichern."
-        );
-
-        return;
-      }
-
-      const player =
-        document.getElementById(
-          "player"
-        ).value.trim();
-
-      const club =
-        document.getElementById(
-          "club"
-        ).value.trim();
-
-      const price =
-        document.getElementById(
-          "price"
-        ).value;
-
-      const file =
-        document.getElementById(
-          "image"
-        ).files[0];
-
-      if(!file){
-
-        alert("Bitte wähle ein Bild.");
-        return;
-
-      }
-
-      const reader =
-        new FileReader();
-
-      reader.onload = function(){
-
-        const img = new Image();
-
-        img.onload = function(){
-
-          const canvas =
-            document.createElement(
-              "canvas"
-            );
-
-          const max = 700;
-
-          let w = img.width;
-          let h = img.height;
-
-          if(w > h && w > max){
-
-            h = h * max / w;
-            w = max;
-
-          }else if(h > max){
-
-            w = w * max / h;
-            h = max;
-
-          }
-
-          canvas.width = w;
-          canvas.height = h;
-
-          canvas
-            .getContext("2d")
-            .drawImage(
-              img,
-              0,
-              0,
-              w,
-              h
-            );
-
-          const image =
-            canvas.toDataURL(
-              "image/jpeg",
-              0.65
-            );
-
-          const data = cards();
-
-          data.unshift({
-
-            id:
-              Date.now() +
-              "_" +
-              Math.random()
-                .toString(36)
-                .slice(2),
-
-            player,
-            club,
-            price,
-            image,
-            owner:name,
-            sold:false,
-            soldTo:null
-
-          });
-
-          try{
-
-            saveCards(data);
-
-          }catch(err){
-
-            alert(
-              "Der Speicher ist voll."
-            );
-
-            return;
-
-          }
-
-          document
-            .getElementById("sellForm")
-            .reset();
-
-          renderAll();
-
-          alert(
-            "🎉 Deine Karte wurde eingestellt!"
-          );
-
-        };
-
-        img.src = reader.result;
-
-      };
-
-      reader.readAsDataURL(file);
-
-    }
-  );
-
-
-/* =========================
-   KAUFEN
-========================= */
-
-function buy(id){
-
-  const name = username();
-
-  if(!name){
-
-    needUser();
-    return;
-
-  }
-
-  const card =
-    cards().find(c => c.id === id);
-
-  if(!card) return;
-
-  if(card.owner === name){
-
-    ownCard();
-    return;
-
-  }
-
-  if(card.sold){
-
-    alert(
-      "Diese Karte wurde bereits verkauft."
-    );
-
-    return;
-
-  }
-
-  const exists =
-    requests().some(r =>
-      r.cardId === id &&
-      r.buyer === name &&
-      (
-        r.status === "pending" ||
-        r.status === "accepted"
-      )
-    );
-
-  if(exists){
-
-    alert(
-      "🕐 Du hast diese Karte bereits angefragt."
-    );
-
-    return;
-
-  }
-
-  if(!confirm(
-    "Möchtest du diese Karte kaufen?\n\n" +
-    card.player +
-    " – " +
-    card.club +
-    "\nPreis: " +
-    card.price +
-    " €"
-  )) return;
-
-  const data = requests();
-
-  data.push({
-
-    id:
-      Date.now() +
-      "_" +
-      Math.random()
-        .toString(36)
-        .slice(2),
-
-    cardId:id,
-
-    player:card.player,
-    club:card.club,
-    price:card.price,
-    image:card.image,
-
-    buyer:name,
-    seller:card.owner,
-
-    status:"pending",
-
-    rated:false
-
-  });
-
-  saveRequests(data);
-
-  renderAll();
-
-  alert(
-    "📩 Kaufanfrage wurde gesendet!"
-  );
+ select.value=clubs.includes(current)?current:"";
 
 }
 
+document.getElementById("search").addEventListener("input",renderCards);
+document.getElementById("clubFilter").addEventListener("change",renderCards);
+document.getElementById("sortFilter").addEventListener("change",renderCards);
 
-/* =========================
-   ANNEHMEN
-========================= */
+document.getElementById("sellForm").addEventListener("submit",function(e){
+
+ e.preventDefault();
+
+ const name=user();
+
+ if(!name){
+  needUser();
+  return;
+ }
+
+ const player=document.getElementById("player").value.trim();
+ const club=document.getElementById("club").value.trim();
+ const price=document.getElementById("price").value;
+ const file=document.getElementById("image").files[0];
+
+ if(!file)return;
+
+ const reader=new FileReader();
+
+ reader.onload=function(){
+
+  const img=new Image();
+
+  img.onload=function(){
+
+   const canvas=document.createElement("canvas");
+   const max=700;
+
+   let w=img.width;
+   let h=img.height;
+
+   if(w>h&&w>max){
+    h*=max/w;
+    w=max;
+   }else if(h>max){
+    w*=max/h;
+    h=max;
+   }
+
+   canvas.width=w;
+   canvas.height=h;
+
+   canvas.getContext("2d").drawImage(img,0,0,w,h);
+
+   const image=canvas.toDataURL("image/jpeg",.65);
+
+   const data=get(KEY.cards,[]);
+
+   data.unshift({
+    id:uid(),
+    player,
+    club,
+    price,
+    image,
+    owner:name,
+    sold:false,
+    soldTo:null,
+    created:Date.now()
+   });
+
+   try{
+    set(KEY.cards,data);
+   }catch{
+    alert("Der Speicher ist voll.");
+    return;
+   }
+
+   document.getElementById("sellForm").reset();
+   renderAll();
+
+   alert("🎉 Karte erfolgreich eingestellt!");
+
+  };
+
+  img.src=reader.result;
+
+ };
+
+ reader.readAsDataURL(file);
+
+});
+
+function buyCard(id){
+
+ const name=user();
+
+ if(!name){
+  needUser();
+  return;
+ }
+
+ const data=get(KEY.cards,[]);
+ const card=data.find(c=>c.id===id);
+
+ if(!card)return;
+
+ if(card.owner===name){
+  alert("🚫 Du kannst deine eigene Karte nicht kaufen.");
+  return;
+ }
+
+ if(card.sold){
+  alert("Diese Karte wurde bereits verkauft.");
+  return;
+ }
+
+ const requests=get(KEY.requests,[]);
+
+ const already=requests.some(r=>
+  r.cardId===id&&
+  r.buyer===name&&
+  (r.status==="pending"||r.status==="accepted")
+ );
+
+ if(already){
+  alert("🕐 Du hast diese Karte bereits angefragt.");
+  return;
+ }
+
+ if(!confirm(
+  "Karte kaufen?\n\n"+
+  card.player+" – "+card.club+
+  "\nPreis: "+card.price+" €"
+ ))return;
+
+ requests.push({
+  id:uid(),
+  cardId:id,
+  player:card.player,
+  club:card.club,
+  price:card.price,
+  image:card.image,
+  buyer:name,
+  seller:card.owner,
+  status:"pending",
+  rated:false
+ });
+
+ set(KEY.requests,requests);
+
+ addNotification(
+  card.owner,
+  "request",
+  name+" möchte deine Karte "+card.player+" kaufen."
+ );
+
+ renderAll();
+
+ alert("📩 Kaufanfrage gesendet!");
+
+}
 
 function acceptRequest(id){
 
-  const name = username();
+ const name=user();
+ const requests=get(KEY.requests,[]);
+ const request=requests.find(r=>r.id===id);
 
-  const data = requests();
+ if(!request)return;
 
-  const request =
-    data.find(r => r.id === id);
+ if(request.seller!==name){
+  alert("🚫 Nur der Besitzer kann die Anfrage annehmen.");
+  return;
+ }
 
-  if(!request) return;
+ if(request.status!=="pending")return;
 
-  if(request.seller !== name){
+ request.status="accepted";
 
-    alert(
-      "🚫 Nur der Besitzer der Karte kann diese Anfrage annehmen."
-    );
+ const cards=get(KEY.cards,[]);
+ const card=cards.find(c=>c.id===request.cardId);
 
-    return;
+ if(card){
+  card.sold=true;
+  card.soldTo=request.buyer;
+ }
 
+ /*
+ Andere offene Anfragen für dieselbe Karte
+ werden automatisch abgelehnt.
+ */
+ requests.forEach(r=>{
+  if(
+   r.cardId===request.cardId&&
+   r.id!==request.id&&
+   r.status==="pending"
+  ){
+   r.status="rejected";
+
+   addNotification(
+    r.buyer,
+    "rejected",
+    "Die Karte "+r.player+" wurde an jemand anderen verkauft."
+   );
   }
+ });
 
-  if(request.status !== "pending")
-    return;
+ set(KEY.cards,cards);
+ set(KEY.requests,requests);
 
-  request.status = "accepted";
+ addNotification(
+  request.buyer,
+  "accepted",
+  name+" hat deine Kaufanfrage für "+request.player+" angenommen."
+ );
 
-  const allCards = cards();
+ renderAll();
 
-  const card =
-    allCards.find(
-      c => c.id === request.cardId
-    );
-
-  if(card){
-
-    card.sold = true;
-    card.soldTo = request.buyer;
-
-  }
-
-  saveCards(allCards);
-  saveRequests(data);
-
-  renderAll();
-
-  alert(
-    "🟢 Kaufanfrage angenommen!"
-  );
+ alert("🟢 Kaufanfrage angenommen!");
 
 }
-
-
-/* =========================
-   ABLEHNEN
-========================= */
 
 function rejectRequest(id){
 
-  const name = username();
+ const name=user();
+ const requests=get(KEY.requests,[]);
+ const request=requests.find(r=>r.id===id);
 
-  const data = requests();
+ if(!request)return;
 
-  const request =
-    data.find(r => r.id === id);
+ if(request.seller!==name){
+  alert("🚫 Nur der Besitzer kann die Anfrage ablehnen.");
+  return;
+ }
 
-  if(!request) return;
+ if(request.status!=="pending")return;
 
-  if(request.seller !== name){
+ request.status="rejected";
 
-    alert(
-      "🚫 Nur der Besitzer der Karte kann diese Anfrage ablehnen."
-    );
+ set(KEY.requests,requests);
 
-    return;
+ addNotification(
+  request.buyer,
+  "rejected",
+  name+" hat deine Kaufanfrage für "+request.player+" abgelehnt."
+ );
 
-  }
+ renderAll();
 
-  if(request.status !== "pending")
-    return;
-
-  request.status = "rejected";
-
-  saveRequests(data);
-
-  renderAll();
-
-  alert(
-    "🔴 Kaufanfrage abgelehnt."
-  );
+ alert("🔴 Kaufanfrage abgelehnt.");
 
 }
 
+function renderRequests(){
 
-/* =========================
-   KÄUFER ANFRAGEN
-========================= */
+ const name=user();
 
-function renderBuyerRequests(){
+ const requests=get(KEY.requests,[]);
 
-  const name = username();
+ const buyer= requests.filter(r=>r.buyer===name);
+ const seller= requests.filter(r=>r.seller===name);
 
-  const box =
-    document.getElementById(
-      "buyerRequests"
-    );
+ document.getElementById("buyerRequests").innerHTML=
+ buyer.length
+ ?buyer.map(renderBuyerRequest).join("")
+ :'<div class="empty">Noch keine Kaufanfragen.</div>';
 
-  const data =
-    requests().filter(
-      r => r.buyer === name
-    );
-
-  document.getElementById(
-    "buyerRequestTitle"
-  ).textContent =
-    "📩 Meine Kaufanfragen (" +
-    data.length +
-    ")";
-
-  if(!data.length){
-
-    box.innerHTML =
-      `<div class="empty">
-        Noch keine Kaufanfragen.
-      </div>`;
-
-    return;
-
-  }
-
-  box.innerHTML =
-    data.map(r => {
-
-      let status;
-
-      if(r.status === "accepted"){
-
-        status =
-          `<span class="status accepted">
-            ✅ Angenommen
-          </span>`;
-
-      }else if(r.status === "rejected"){
-
-        status =
-          `<span class="status rejected">
-            ❌ Abgelehnt
-          </span>`;
-
-      }else{
-
-        status =
-          `<span class="status pending">
-            🕐 Offen
-          </span>`;
-
-      }
-
-      let rating = "";
-
-      if(
-        r.status === "accepted" &&
-        !r.rated
-      ){
-
-        rating = ratingBox(r);
-
-      }
-
-      return `
-
-        <div class="request">
-
-          <div class="request-top">
-
-            <img
-              class="request-image"
-              src="${r.image}"
-            >
-
-            <div class="request-info">
-
-              <h3>
-                ${escapeHTML(r.player)}
-              </h3>
-
-              <p class="info">
-                ${escapeHTML(r.club)}
-              </p>
-
-              <p class="price">
-                ${r.price} €
-              </p>
-
-              <p class="info">
-                👤 Verkäufer:
-                <strong>
-                  ${escapeHTML(r.seller)}
-                </strong>
-              </p>
-
-              ${status}
-
-            </div>
-
-          </div>
-
-          ${rating}
-
-        </div>
-      `;
-
-    }).join("");
+ document.getElementById("sellerRequests").innerHTML=
+ seller.length
+ ?seller.map(renderSellerRequest).join("")
+ :'<div class="empty">Noch keine Anfragen für deine Karten.</div>';
 
 }
 
+function renderBuyerRequest(r){
 
-/* =========================
-   VERKÄUFER ANFRAGEN
-========================= */
+ let status="";
 
-function renderSellerRequests(){
+ if(r.status==="pending")
+  status='<span class="status pending">🕐 Offen</span>';
 
-  const name = username();
+ if(r.status==="accepted")
+  status='<span class="status accepted">✅ Angenommen</span>';
 
-  const box =
-    document.getElementById(
-      "sellerRequests"
-    );
+ if(r.status==="rejected")
+  status='<span class="status rejected">❌ Abgelehnt</span>';
 
-  const data =
-    requests().filter(
-      r => r.seller === name
-    );
+ return`
 
-  document.getElementById(
-    "sellerRequestTitle"
-  ).textContent =
-    "📥 Anfragen für meine Karten (" +
-    data.length +
-    ")";
+ <div class="request">
 
-  if(!data.length){
+ <div class="request-top">
 
-    box.innerHTML =
-      `<div class="empty">
-        Noch keine Anfragen für deine Karten.
-      </div>`;
+ <img class="request-img" src="${r.image}">
 
-    return;
+ <div class="request-info">
 
-  }
+ <h3>${esc(r.player)}</h3>
 
-  box.innerHTML =
-    data.map(r => {
+ <div class="muted">${esc(r.club)}</div>
 
-      let status;
+ <div class="price">${esc(r.price)} €</div>
 
-      if(r.status === "accepted"){
+ <div class="muted">
+ 👤 Verkäufer: <strong>${esc(r.seller)}</strong>
+ </div>
 
-        status =
-          `<span class="status accepted">
-            ✅ Angenommen
-          </span>`;
+ <br>${status}
 
-      }else if(r.status === "rejected"){
+ </div>
 
-        status =
-          `<span class="status rejected">
-            ❌ Abgelehnt
-          </span>`;
+ </div>
 
-      }else{
+ ${r.status==="accepted"&&!r.rated?ratingBox(r):""}
 
-        status =
-          `<span class="status pending">
-            🕐 Offen
-          </span>`;
+ </div>
 
-      }
-
-      let actions = "";
-
-      if(r.status === "pending"){
-
-        actions = `
-
-          <div class="request-actions">
-
-            <button
-              class="accept"
-              onclick="acceptRequest('${r.id}')"
-            >
-              🟢 Annehmen
-            </button>
-
-            <button
-              class="reject"
-              onclick="rejectRequest('${r.id}')"
-            >
-              🔴 Ablehnen
-            </button>
-
-          </div>
-
-        `;
-
-      }
-
-      return `
-
-        <div class="request">
-
-          <div class="request-top">
-
-            <img
-              class="request-image"
-              src="${r.image}"
-            >
-
-            <div class="request-info">
-
-              <h3>
-                ${escapeHTML(r.buyer)}
-                möchte deine Karte kaufen
-              </h3>
-
-              <p class="info">
-                🎟️ ${escapeHTML(r.player)}
-              </p>
-
-              <p class="price">
-                ${r.price} €
-              </p>
-
-              ${status}
-
-            </div>
-
-          </div>
-
-          ${actions}
-
-        </div>
-
-      `;
-
-    }).join("");
+ `;
 
 }
 
+function renderSellerRequest(r){
 
-/* =========================
-   BEWERTUNG
-========================= */
+ let status="";
 
-function ratingBox(request){
+ if(r.status==="pending")
+  status='<span class="status pending">🕐 Offen</span>';
 
-  return `
+ if(r.status==="accepted")
+  status='<span class="status accepted">✅ Angenommen</span>';
 
-    <div class="rating-box">
+ if(r.status==="rejected")
+  status='<span class="status rejected">❌ Abgelehnt</span>';
 
-      <strong>
-        ⭐ Wie war dein Kauf bei ${escapeHTML(request.seller)}?
-      </strong>
+ return`
 
-      <div
-        class="star-select"
-        id="stars-${request.id}"
-      >
+ <div class="request">
 
-        <button
-          class="star-btn"
-          onclick="selectStar('${request.id}',1)"
-        >★</button>
+ <div class="request-top">
 
-        <button
-          class="star-btn"
-          onclick="selectStar('${request.id}',2)"
-        >★</button>
+ <img class="request-img" src="${r.image}">
 
-        <button
-          class="star-btn"
-          onclick="selectStar('${request.id}',3)"
-        >★</button>
+ <div class="request-info">
 
-        <button
-          class="star-btn"
-          onclick="selectStar('${request.id}',4)"
-        >★</button>
+ <h3>${esc(r.buyer)} möchte deine Karte kaufen</h3>
 
-        <button
-          class="star-btn"
-          onclick="selectStar('${request.id}',5)"
-        >★</button>
+ <div class="muted">
+ 🎟️ ${esc(r.player)} · ${esc(r.club)}
+ </div>
 
-      </div>
+ <div class="price">${esc(r.price)} €</div>
 
-      <textarea
-        class="rating-comment"
-        id="comment-${request.id}"
-        placeholder="Kommentar (optional)"
-      ></textarea>
+ <br>${status}
 
-      <button
-        class="black-btn"
-        style="margin-top:8px"
-        onclick="submitRating('${request.id}')"
-      >
-        ⭐ Bewertung absenden
-      </button>
+ </div>
 
-    </div>
+ </div>
 
-  `;
+ ${r.status==="pending"?`
+
+ <div class="request-actions">
+
+ <button class="green" onclick="acceptRequest('${r.id}')">
+ 🟢 Annehmen
+ </button>
+
+ <button class="red" onclick="rejectRequest('${r.id}')">
+ 🔴 Ablehnen
+ </button>
+
+ </div>
+
+ `:""}
+
+ </div>
+
+ `;
 
 }
 
+function ratingBox(r){
 
-const selectedStars = {};
+ return`
 
+ <div class="rating-box">
 
-function selectStar(id,value){
+ <strong>
+ ⭐ Wie war dein Kauf bei ${esc(r.seller)}?
+ </strong>
 
-  selectedStars[id] = value;
+ <div class="star-row" id="stars-${r.id}">
 
-  const box =
-    document.getElementById(
-      "stars-" + id
-    );
+ ${[1,2,3,4,5].map(n=>`
+ <button class="star" onclick="selectStar('${r.id}',${n})">★</button>
+ `).join("")}
 
-  const buttons =
-    box.querySelectorAll(
-      ".star-btn"
-    );
+ </div>
 
-  buttons.forEach(
-    (button,index) => {
+ <textarea id="comment-${r.id}" placeholder="Kommentar optional"></textarea>
 
-      button.classList.toggle(
-        "selected",
-        index < value
-      );
+ <button class="btn dark" style="margin-top:8px" onclick="submitRating('${r.id}')">
+ ⭐ Bewertung abgeben
+ </button>
 
-    }
-  );
+ </div>
+
+ `;
 
 }
 
+function selectStar(id,n){
+
+ selectedStars[id]=n;
+
+ const box=document.getElementById("stars-"+id);
+
+ [...box.children].forEach((b,i)=>{
+  b.classList.toggle("selected",i<n);
+ });
+
+}
 
 function submitRating(id){
 
-  const name = username();
+ const name=user();
 
-  const data = requests();
+ const requests=get(KEY.requests,[]);
+ const r=requests.find(x=>x.id===id);
 
-  const request =
-    data.find(r => r.id === id);
+ if(!r||r.buyer!==name||r.status!=="accepted"){
+  alert("Bewertung nicht möglich.");
+  return;
+ }
 
-  if(!request) return;
+ if(r.rated){
+  alert("Du hast bereits bewertet.");
+  return;
+ }
 
-  if(
-    request.buyer !== name ||
-    request.status !== "accepted"
-  ){
+ const stars=selectedStars[id]||0;
 
-    alert(
-      "Diese Bewertung ist nicht möglich."
-    );
+ if(!stars){
+  alert("⭐ Bitte Sterne auswählen.");
+  return;
+ }
 
-    return;
+ const comment=document.getElementById("comment-"+id).value.trim();
 
-  }
+ const ratings=get(KEY.ratings,{});
 
-  if(request.rated){
+ if(!ratings[r.seller])
+  ratings[r.seller]=[];
 
-    alert(
-      "Du hast diesen Kauf bereits bewertet."
-    );
+ ratings[r.seller].push({
+  buyer:name,
+  stars,
+  comment,
+  date:Date.now()
+ });
 
-    return;
+ r.rated=true;
 
-  }
+ set(KEY.ratings,ratings);
+ set(KEY.requests,requests);
 
-  const stars =
-    selectedStars[id] || 0;
+ addNotification(
+  r.seller,
+  "rating",
+  name+" hat dich mit "+stars+" Sternen bewertet."
+ );
 
-  if(stars === 0){
+ renderAll();
 
-    alert(
-      "⭐ Bitte wähle zuerst Sterne."
-    );
-
-    return;
-
-  }
-
-  const comment =
-    document.getElementById(
-      "comment-" + id
-    ).value.trim();
-
-  const allRatings = ratings();
-
-  if(!allRatings[request.seller]){
-    allRatings[request.seller] = [];
-  }
-
-  allRatings[request.seller].push({
-
-    buyer:name,
-    stars,
-    comment,
-    requestId:id
-
-  });
-
-  request.rated = true;
-
-  saveRatings(allRatings);
-  saveRequests(data);
-
-  renderAll();
-
-  alert(
-    "⭐ Bewertung gespeichert!"
-  );
+ alert("⭐ Bewertung gespeichert!");
 
 }
-
-
-/* =========================
-   FAVORITEN
-========================= */
 
 function toggleFavorite(id){
 
-  const data = favorites();
+ const name=user();
 
-  const index =
-    data.indexOf(id);
+ if(!name){
+  needUser();
+  return;
+ }
 
-  if(index >= 0){
+ const cards=get(KEY.cards,[]);
+ const card=cards.find(c=>c.id===id);
 
-    data.splice(index,1);
+ if(!card)return;
 
-  }else{
+ if(card.owner===name){
+  alert("🚫 Deine eigenen Karten können nicht favorisiert werden.");
+  return;
+ }
 
-    data.push(id);
+ const data=get(KEY.favorites,[]);
 
-  }
+ const index=data.indexOf(id);
 
-  saveFavorites(data);
+ if(index>=0)
+  data.splice(index,1);
+ else
+  data.push(id);
 
-  renderAll();
+ set(KEY.favorites,data);
+ renderAll();
 
 }
-
 
 function renderFavorites(){
 
-  const ids = favorites();
+ const name=user();
+ const box=document.getElementById("favoritesBox");
 
-  const box =
-    document.getElementById(
-      "favoriteCards"
-    );
+ const ids=get(KEY.favorites,[]);
 
-  document.getElementById(
-    "favoriteTitle"
-  ).textContent =
-    "❤️ Favoriten (" +
-    ids.length +
-    ")";
+ const data=get(KEY.cards,[]).filter(c=>
+  ids.includes(c.id)&&c.owner!==name
+ );
 
-  const data =
-    cards().filter(
-      c => ids.includes(c.id)
-    );
+ if(!data.length){
+  box.innerHTML='<div class="empty">Noch keine Favoriten.</div>';
+  return;
+ }
 
-  if(!data.length){
-
-    box.innerHTML =
-      `<div class="empty">
-        Noch keine Favoriten.
-      </div>`;
-
-    return;
-
-  }
-
-  box.innerHTML =
-    data.map(cardHTML).join("");
+ box.innerHTML=data.map(createCardHTML).join("");
 
 }
-
-
-/* =========================
-   MEINE KARTEN
-========================= */
 
 function renderMine(){
 
-  const name = username();
+ const name=user();
+ const box=document.getElementById("mineBox");
 
-  const box =
-    document.getElementById(
-      "myCards"
-    );
+ if(!name){
+  box.innerHTML='<div class="empty">👤 Bitte zuerst einen Benutzernamen speichern.</div>';
+  return;
+ }
 
-  if(!name){
+ const data=get(KEY.cards,[]).filter(c=>c.owner===name);
 
-    box.innerHTML =
-      `<div class="empty">
-        👤 Bitte zuerst einen Benutzernamen speichern.
-      </div>`;
+ if(!data.length){
+  box.innerHTML='<div class="empty">Du hast noch keine Karten eingestellt.</div>';
+  return;
+ }
 
-    return;
+ box.innerHTML=data.map(c=>`
 
-  }
+ <div class="card">
 
-  const data =
-    cards().filter(
-      c => c.owner === name
-    );
+ <div class="card-img">
+ <img src="${c.image}">
+ </div>
 
-  if(!data.length){
+ <h3>${esc(c.player)}</h3>
 
-    box.innerHTML =
-      `<div class="empty">
-        🃏 Du hast noch keine Karten eingestellt.
-      </div>`;
+ <div class="muted">${esc(c.club)}</div>
 
-    return;
+ <div class="price">${esc(c.price)} €</div>
 
-  }
+ ${
+  c.sold
+  ?`<span class="status accepted">✅ Verkauft an ${esc(c.soldTo)}</span>`
+  :`<span class="status pending">🟢 Zum Verkauf</span>`
+ }
 
-  box.innerHTML =
-    data.map(card => `
+ <button onclick="showCard('${c.id}')">👀 Karte ansehen</button>
 
-      <div class="card">
+ <button class="secondary" onclick="deleteCard('${c.id}')">
+ 🗑️ Löschen
+ </button>
 
-        <div class="card-image">
-          <img src="${card.image}">
-        </div>
+ </div>
 
-        <h3>
-          ${escapeHTML(card.player)}
-        </h3>
-
-        <p class="info">
-          ${escapeHTML(card.club)}
-        </p>
-
-        <p class="price">
-          ${card.price} €
-        </p>
-
-        ${
-          card.sold
-          ? `
-            <span class="status accepted">
-              ✅ Verkauft an ${escapeHTML(card.soldTo)}
-            </span>
-          `
-          : `
-            <span class="status pending">
-              🟢 Zum Verkauf
-            </span>
-          `
-        }
-
-        <button
-          class="gray"
-          onclick="showCard('${card.id}')"
-        >
-          👀 Karte ansehen
-        </button>
-
-        <button
-          class="gray"
-          onclick="deleteCard('${card.id}')"
-        >
-          🗑️ Karte löschen
-        </button>
-
-      </div>
-
-    `).join("");
+ `).join("");
 
 }
-
 
 function deleteCard(id){
 
-  const name = username();
+ const name=user();
+ const data=get(KEY.cards,[]);
+ const card=data.find(c=>c.id===id);
 
-  const data = cards();
+ if(!card||card.owner!==name){
+  alert("🚫 Du kannst diese Karte nicht löschen.");
+  return;
+ }
 
-  const card =
-    data.find(c => c.id === id);
+ if(card.sold){
+  alert("Verkaufte Karten können nicht gelöscht werden.");
+  return;
+ }
 
-  if(!card || card.owner !== name){
+ if(!confirm("Karte wirklich löschen?"))return;
 
-    alert(
-      "🚫 Du kannst diese Karte nicht löschen."
-    );
+ set(KEY.cards,data.filter(c=>c.id!==id));
 
-    return;
-
-  }
-
-  if(!confirm(
-    "Möchtest du diese Karte wirklich löschen?"
-  )) return;
-
-  saveCards(
-    data.filter(c => c.id !== id)
-  );
-
-  renderAll();
+ renderAll();
 
 }
 
+function showProfile(name){
 
-/* =========================
-   PROFIL
-========================= */
-
-function showSeller(name){
-
-  openPage(
-    "profile",
-    "navProfile"
-  );
-
-  renderProfile(name);
+ openPage("profile","navProfile");
+ renderProfile(name);
 
 }
-
 
 function renderProfile(name){
 
-  const box =
-    document.getElementById(
-      "profileContent"
-    );
+ const box=document.getElementById("profileBox");
 
-  const offers =
-    cards().filter(
-      c => c.owner === name
-    );
+ if(!name){
+  box.innerHTML='<div class="empty">Kein Profil ausgewählt.</div>';
+  return;
+ }
 
-  const sold =
-    offers.filter(
-      c => c.sold
-    );
+ const cards=get(KEY.cards,[]);
+ const ratings=get(KEY.ratings,{});
 
-  const reviews =
-    (ratings()[name] || []);
+ const offers=cards.filter(c=>c.owner===name);
+ const sold=offers.filter(c=>c.sold);
 
-  let average = 0;
+ const reviews=ratings[name]||[];
 
-  if(reviews.length){
+ const average=reviews.length
+ ?reviews.reduce((a,b)=>a+Number(b.stars),0)/reviews.length
+ :0;
 
-    average =
-      reviews.reduce(
-        (sum,r) =>
-          sum + Number(r.stars),
-        0
-      ) / reviews.length;
+ const stars=average
+ ?"★".repeat(Math.round(average))
+ :"Noch keine Bewertung";
 
-  }
+ box.innerHTML=`
 
-  const stars =
-    average
-    ? "★".repeat(
-        Math.round(average)
-      )
-    : "Noch keine Bewertung";
+ <div class="profile">
 
-  box.innerHTML = `
+ <div class="profile-head">
 
-    <div class="profile">
+ <div class="big-avatar">
+ ${esc(name[0].toUpperCase())}
+ </div>
 
-      <div class="profile-head">
+ <div>
 
-        <div class="big-avatar">
-          ${escapeHTML(
-            name.charAt(0).toUpperCase()
-          )}
-        </div>
+ <h2>${esc(name)}</h2>
 
-        <div>
+ <div class="rating">${stars}</div>
 
-          <h2>
-            ${escapeHTML(name)}
-          </h2>
+ <div class="muted">
+ ${reviews.length
+ ?average.toFixed(1)+" / 5 · "+reviews.length+" Bewertungen"
+ :"Noch keine Bewertungen"}
+ </div>
 
-          <div class="rating">
-            ${stars}
-          </div>
+ </div>
 
-          <small>
-            ${
-              reviews.length
-              ? average.toFixed(1) +
-                " / 5 (" +
-                reviews.length +
-                " Bewertungen)"
-              : "Noch keine Bewertungen"
-            }
-          </small>
+ </div>
 
-        </div>
+ <div class="stats">
 
-      </div>
+ <div class="stat">
+ <strong>${sold.length}</strong>
+ <span>Verkauft</span>
+ </div>
 
-      <div class="stats">
+ <div class="stat">
+ <strong>${offers.length}</strong>
+ <span>Angebote</span>
+ </div>
 
-        <div class="stat">
-          <strong>${sold.length}</strong>
-          <span>Verkauft</span>
-        </div>
+ <div class="stat">
+ <strong>${average?average.toFixed(1):"-"}</strong>
+ <span>Bewertung</span>
+ </div>
 
-        <div class="stat">
-          <strong>${offers.length}</strong>
-          <span>Angebote</span>
-        </div>
+ <div class="stat">
+ <strong>⭐</strong>
+ <span>Seller</span>
+ </div>
 
-        <div class="stat">
-          <strong>
-            ${average ? average.toFixed(1) : "-"}
-          </strong>
-          <span>Bewertung</span>
-        </div>
+ </div>
 
-      </div>
+ <h2 style="margin-top:28px">🎟️ Angebote</h2>
 
-      <h2 style="margin-top:30px">
-        🎟️ Eigene Angebote
-      </h2>
+ <div id="profileOffers" class="cards"></div>
 
-      <div class="cards" id="profileOffers"></div>
+ <h2 style="margin-top:28px">⭐ Bewertungen</h2>
 
-      <h2 style="margin-top:30px">
-        ⭐ Bewertungen
-      </h2>
+ <div id="profileReviews"></div>
 
-      <div id="profileReviews"></div>
+ </div>
 
-    </div>
+ `;
 
-  `;
+ const offersBox=document.getElementById("profileOffers");
 
-  const offersBox =
-    document.getElementById(
-      "profileOffers"
-    );
+ const activeOffers=offers.filter(c=>!c.sold);
 
-  if(!offers.length){
+ offersBox.innerHTML=activeOffers.length
+ ?activeOffers.map(createCardHTML).join("")
+ :'<div class="empty">Keine aktuellen Angebote.</div>';
 
-    offersBox.innerHTML =
-      `<div class="empty">
-        Keine Angebote.
-      </div>`;
+ const reviewBox=document.getElementById("profileReviews");
 
-  }else{
+ reviewBox.innerHTML=reviews.length
+ ?reviews.slice().reverse().map(r=>`
 
-    offersBox.innerHTML =
-      offers
-        .filter(c => !c.sold)
-        .map(cardHTML)
-        .join("");
+ <div class="review">
 
-  }
+ <strong>${esc(r.buyer)}</strong>
 
-  const reviewsBox =
-    document.getElementById(
-      "profileReviews"
-    );
+ <div class="stars">${"★".repeat(r.stars)}</div>
 
-  if(!reviews.length){
+ ${r.comment?`<p>${esc(r.comment)}</p>`:""}
 
-    reviewsBox.innerHTML =
-      `<div class="empty">
-        Noch keine Bewertungen.
-      </div>`;
+ </div>
 
-  }else{
-
-    reviewsBox.innerHTML =
-      reviews
-        .slice()
-        .reverse()
-        .map(r => `
-
-          <div class="review">
-
-            <strong>
-              ${escapeHTML(r.buyer)}
-            </strong>
-
-            <div class="stars">
-              ${"★".repeat(r.stars)}
-            </div>
-
-            ${
-              r.comment
-              ? `<p>${escapeHTML(r.comment)}</p>`
-              : ""
-            }
-
-          </div>
-
-        `)
-        .join("");
-
-  }
+ `).join("")
+ :'<div class="empty">Noch keine Bewertungen.</div>';
 
 }
-
-
-/* =========================
-   KARTE ANSEHEN
-========================= */
 
 function showCard(id){
 
-  const card =
-    cards().find(
-      c => c.id === id
-    );
+ const card=get(KEY.cards,[]).find(c=>c.id===id);
 
-  if(!card) return;
+ if(!card)return;
 
-  const overlay =
-    document.createElement("div");
+ const overlay=document.createElement("div");
 
-  overlay.style.position="fixed";
-  overlay.style.inset="0";
-  overlay.style.background="rgba(0,0,0,.72)";
-  overlay.style.display="flex";
-  overlay.style.alignItems="center";
-  overlay.style.justifyContent="center";
-  overlay.style.padding="20px";
-  overlay.style.zIndex="9999";
+ overlay.style.cssText=`
+ position:fixed;
+ inset:0;
+ z-index:9999;
+ background:rgba(0,0,0,.72);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ `;
 
-  overlay.innerHTML = `
+ overlay.innerHTML=`
 
-    <div style="
-      background:white;
-      width:100%;
-      max-width:420px;
-      padding:22px;
-      border-radius:20px;
-      text-align:center;
-    ">
+ <div style="
+ background:#fff;
+ width:100%;
+ max-width:430px;
+ padding:22px;
+ border-radius:22px;
+ text-align:center;
+ ">
 
-      <img
-        src="${card.image}"
-        style="
-          width:100%;
-          max-height:350px;
-          object-fit:contain;
-          border-radius:14px;
-        "
-      >
+ <img src="${card.image}" style="
+ width:100%;
+ max-height:340px;
+ object-fit:contain;
+ border-radius:15px;
+ ">
 
-      <h2>
-        ${escapeHTML(card.player)}
-      </h2>
+ <h2>${esc(card.player)}</h2>
 
-      <p>
-        ${escapeHTML(card.club)}
-      </p>
+ <p>${esc(card.club)}</p>
 
-      <p style="
-        font-size:25px;
-        font-weight:bold;
-      ">
-        ${card.price} €
-      </p>
+ <div style="
+ font-size:26px;
+ font-weight:bold;
+ margin:10px;
+ ">${esc(card.price)} €</div>
 
-      <p>
-        👤 Verkäufer:
-        <strong>
-          ${escapeHTML(card.owner)}
-        </strong>
-      </p>
+ <p>
+ 👤 ${esc(card.owner)}
+ </p>
 
-      <button
-        id="closeOverlay"
-        style="
-          width:100%;
-          border:0;
-          background:#111;
-          color:white;
-          padding:13px;
-          border-radius:10px;
-          font-weight:bold;
-        "
-      >
-        Schließen
-      </button>
+ <button id="closeModal" class="btn dark" style="width:100%">
+ Schließen
+ </button>
 
-    </div>
-  `;
+ </div>
 
-  document.body.appendChild(
-    overlay
-  );
+ `;
 
-  document
-    .getElementById(
-      "closeOverlay"
-    )
-    .onclick = () =>
-      overlay.remove();
+ document.body.appendChild(overlay);
 
-}
-
-
-/* =========================
-   HILFSFUNKTIONEN
-========================= */
-
-function ownCard(){
-
-  alert(
-    "🚫 Du kannst deine eigene Karte nicht kaufen."
-  );
+ document.getElementById("closeModal").onclick=()=>overlay.remove();
 
 }
 
 function needUser(){
-
-  alert(
-    "👤 Bitte zuerst einen Benutzernamen speichern."
-  );
-
-}
-
-function escapeHTML(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-function escapeAttr(value){
-
-  return String(value)
-    .replaceAll("\\","\\\\")
-    .replaceAll("'","\\'");
-
+ alert("👤 Bitte zuerst einen Benutzernamen speichern.");
 }
 
 
-/* =========================
-   SUCHE
-========================= */
+/* CHAT */
 
-document
-  .getElementById("searchInput")
-  .addEventListener(
-    "input",
-    renderCards
-  );
+function renderChatUsers(){
 
+ const name=user();
+ const box=document.getElementById("chatUsers");
 
-/* =========================
-   ALLES AKTUALISIEREN
-========================= */
+ const people=new Set();
+
+ get(KEY.messages,[]).forEach(m=>{
+  if(m.from===name)people.add(m.to);
+  if(m.to===name)people.add(m.from);
+ });
+
+ get(KEY.requests,[]).forEach(r=>{
+  if(r.buyer===name)people.add(r.seller);
+  if(r.seller===name)people.add(r.buyer);
+ });
+
+ people.delete(name);
+
+ if(!people.size){
+  box.innerHTML='<div class="muted">Noch keine Gesprächspartner.</div>';
+  return;
+ }
+
+ box.innerHTML=[...people].map(p=>`
+
+ <button class="chat-user ${selectedChat===p?"active":""}"
+ onclick="selectChat('${esc(p)}')">
+ 💬 ${esc(p)}
+ </button>
+
+ `).join("");
+
+}
+
+function selectChat(name){
+
+ selectedChat=name;
+
+ const messages=get(KEY.messages,[]);
+
+ messages.forEach(m=>{
+  if(m.from===name&&m.to===user())
+   m.read=true;
+ });
+
+ set(KEY.messages,messages);
+
+ renderChat();
+ updateBadges();
+
+}
+
+function renderChat(){
+
+ renderChatUsers();
+
+ const box=document.getElementById("messagesBox");
+
+ if(!selectedChat){
+  box.innerHTML='<div class="empty">Wähle einen Benutzer aus.</div>';
+  return;
+ }
+
+ const name=user();
+
+ const messages=get(KEY.messages,[]).filter(m=>
+  (m.from===name&&m.to===selectedChat)||
+  (m.from===selectedChat&&m.to===name)
+ );
+
+ if(!messages.length){
+  box.innerHTML='<div class="empty">Noch keine Nachrichten.</div>';
+  return;
+ }
+
+ box.innerHTML=messages.map(m=>`
+
+ <div class="message ${m.from===name?"mine":"theirs"}">
+
+ ${esc(m.text)}
+
+ <small>${esc(m.time)}</small>
+
+ </div>
+
+ `).join("");
+
+ box.scrollTop=box.scrollHeight;
+
+}
+
+function sendMessage(){
+
+ const name=user();
+
+ if(!name){
+  needUser();
+  return;
+ }
+
+ if(!selectedChat){
+  alert("Bitte zuerst einen Gesprächspartner auswählen.");
+  return;
+ }
+
+ const input=document.getElementById("messageInput");
+ const text=input.value.trim();
+
+ if(!text)return;
+
+ const data=get(KEY.messages,[]);
+
+ data.push({
+  id:uid(),
+  from:name,
+  to:selectedChat,
+  text,
+  time:new Date().toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"}),
+  read:false
+ });
+
+ set(KEY.messages,data);
+
+ addNotification(
+  selectedChat,
+  "message",
+  name+" hat dir eine Nachricht geschickt."
+ );
+
+ input.value="";
+
+ renderChat();
+ updateBadges();
+
+}
+
+document.getElementById("messageInput").addEventListener("keydown",e=>{
+ if(e.key==="Enter")sendMessage();
+});
+
 
 function renderAll(){
 
-  updateUser();
-  updateBadge();
+ updateUser();
+ updateBadges();
+ renderCards();
+ renderFavorites();
+ renderMine();
+ renderRequests();
+ renderChatUsers();
 
-  renderCards();
-  renderFavorites();
-  renderMine();
-
-  renderBuyerRequests();
-  renderSellerRequests();
-
-  const name = username();
-
-  if(name){
-    renderProfile(name);
-  }
+ if(document.getElementById("profile").classList.contains("active"))
+  renderProfile(user());
 
 }
 
-
-/* =========================
-   START
-========================= */
-
+updateUser();
 renderAll();
 
 </script>
 
 </body>
-</html> 
+</html>
