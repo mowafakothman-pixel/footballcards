@@ -208,27 +208,11 @@ function createCard(player, club, price, imageData) {
 
   cards.prepend(newCard);
 }
-
 function loadCards() {
   const savedCards = JSON.parse(localStorage.getItem("footballCards")) || [];
-  const myCards = document.querySelector(".my-cards");
 
   savedCards.forEach(card => {
     createCard(card.player, card.club, card.price, card.image);
-
-    const myCard = document.createElement("div");
-    myCard.className = "card";
-
-    myCard.innerHTML = `
-      <div class="card-image">
-        <img src="${card.image}" alt="${card.player}">
-      </div>
-      <h3>${card.player}</h3>
-      <p class="info">${card.club}</p>
-      <p class="price">${card.price} €</p>
-    `;
-
-    myCards.prepend(myCard);
   });
 }
 
