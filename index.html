@@ -237,6 +237,9 @@ const favoriteText = isFavorite
     <button onclick="showCard('${player}', '${club}', '${price}', '${imageData}')">
   Karte ansehen
 </button>
+<button onclick="buyCard('${player}', '${club}', '${price}', '${imageData}')">
+  🛒 Kaufen
+</button>
 <button onclick="toggleFavorite('${player}', '${club}', '${price}', '${imageData}')">
   ${favoriteText}
 </button>
@@ -473,6 +476,21 @@ localStorage.setItem(
 
 loadFavorites();
 loadCards();
+}
+function buyCard(player, club, price, imageData) {
+  const confirmBuy = confirm(
+    "Möchtest du diese Karte kaufen?\n\n" +
+    player + " – " + club + "\n" +
+    "Preis: " + price + " €"
+  );
+
+  if (confirmBuy) {
+    alert(
+      "Kaufanfrage für " +
+      player +
+      " wurde gesendet!"
+    );
+  }
 }
 function showCard(player, club, price, imageData) {
   const overlay = document.createElement("div");
