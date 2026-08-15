@@ -449,12 +449,13 @@ function toggleFavorite(player, club, price, imageData) {
     alert("Zu Favoriten hinzugefügt!");
   }
 
-  localStorage.setItem(
-    "favoriteCards",
-    JSON.stringify(favorites)
-  );
+localStorage.setItem(
+  "favoriteCards",
+  JSON.stringify(favorites)
+);
 
-  loadFavorites();
+loadFavorites();
+loadCards();
 }
 function showCard(player, club, price, imageData) {
   const overlay = document.createElement("div");
