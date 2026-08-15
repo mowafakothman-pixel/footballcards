@@ -197,7 +197,19 @@ const favoriteCards = document.querySelector(".favorite-cards");
 function createCard(player, club, price, imageData) {
   const newCard = document.createElement("div");
   newCard.className = "card";
+const favorites =
+  JSON.parse(localStorage.getItem("favoriteCards")) || [];
 
+const isFavorite = favorites.some(card =>
+  card.player === player &&
+  card.club === club &&
+  card.price === price &&
+  card.image === imageData
+);
+
+const favoriteText = isFavorite
+  ? "❤️ Favorisiert"
+  : "♡ Favorit";
   newCard.innerHTML = `
     <div class="card-image">
       <img src="${imageData}" alt="${player}">
@@ -209,7 +221,7 @@ function createCard(player, club, price, imageData) {
   Karte ansehen
 </button>
 <button onclick="toggleFavorite('${player}', '${club}', '${price}', '${imageData}')">
-  ❤️ Favorit
+  ♡ Favorit
 </button>
   `;
 
