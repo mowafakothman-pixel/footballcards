@@ -205,7 +205,9 @@ function createCard(player, club, price, imageData) {
     <p class="price">${price} €</p>
     <button onclick="alert('Diese Karte wurde ausgewählt!')">
       Kaufen
-    </button>
+    <button onclick="showCard('${player}', '${club}', '${price}', '${imageData}')">
+  Karte ansehen
+</button>
   `;
 
   cards.appendChild(newCard);
@@ -370,6 +372,13 @@ function deleteCard(index) {
 searchInput.addEventListener("input", function() {
   loadCards();
 });
+function showCard(player, club, price, imageData) {
+  alert(
+    "Spieler: " + player +
+    "\nVerein: " + club +
+    "\nPreis: " + price + " €"
+  );
+}
 loadCards();
 loadMyCards();
 </script>
