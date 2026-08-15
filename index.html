@@ -176,7 +176,9 @@ footer {
   <h2>🔥 Aktuelle Karten</h2>
 
   <div class="cards"></div>
+<h2>❤️ Favoriten</h2>
 
+<div class="favorite-cards"></div>
   <h2>🃏 Meine Karten</h2>
 
   <div class="my-cards"></div>
@@ -191,7 +193,7 @@ const sellForm = document.getElementById("sellForm");
 const searchInput = document.querySelector(".search input");
 const cards = document.querySelector(".cards");
 const myCards = document.querySelector(".my-cards");
-
+const favoriteCards = document.querySelector(".favorite-cards");
 function createCard(player, club, price, imageData) {
   const newCard = document.createElement("div");
   newCard.className = "card";
@@ -245,7 +247,43 @@ function loadMyCards() {
       "<p>Noch keine eigenen Karten eingestellt.</p>";
     return;
   }
+function loadFavorites() {
+  const favorites =
+    JSON.parse(localStorage.getItem("favoriteCards")) || [];
 
+  favoriteCards.innerHTML = "";
+
+  if (favorites.length === 0) {
+    favoriteCards.innerHTML =
+      "<p>Noch keine Favoriten gespeichert.</p>";
+    return;
+  }
+
+  favorites.forEach(card => {
+    const item = document.createElement("div");
+    item.className = "card";
+
+    item.innerHTML = `
+      <div class="card-image">
+        <img src="${card.image}" alt="${card.player}">
+      </div>
+
+      <h3>${card.player}</h3>
+      <p class="info">${card.club}</p>
+      <p class="price">${card.price} €</p>
+
+      <button onclick="showCard('${card.player}', '${card.club}', '${card.price}', '${card.image}')">
+        Karte ansehen
+      </button>
+
+      <button onclick="toggleFavorite('${card.player}', '${card.club}', '${card.price}', '${card.image}')">
+        ❤️ Entfernen
+      </button>
+    `;
+
+    favoriteCards.appendChild(item);
+  });
+}
   savedCards.forEach((card, index) => {
     const item = document.createElement("div");
 
@@ -272,6 +310,7 @@ function loadMyCards() {
       <button onclick="deleteCard(${index})">
         🗑️ Löschen
       </button>
+      
     `;
 
     myCards.appendChild(item);
@@ -370,6 +409,37 @@ function deleteCard(index) {
 searchInput.addEventListener("input", function() {
   loadCards();
 });
+function toggleFavorite(player, club, price, imageData) {
+  const favorites =
+    JSON.parse(localStorage.getItem("favoriteCards")) || [];
+
+  const existingIndex = favorites.findIndex(card =>
+    card.player === player &&
+    card.club === club &&
+    card.price === price &&
+    card.image === imageData
+  );
+
+  if (existingIndex !== -1) {
+    favorites.splice(existingIndex, 1);
+    alert("Aus Favoriten entfernt!");
+  } else {
+    favorites.push({
+      player: player,
+      club: club,
+      price: price,
+      image: imageData
+    });
+    alert("Zu Favoriten hinzugefügt!");
+  }
+
+  localStorage.setItem(
+    "favoriteCards",
+    JSON.stringify(favorites)
+  );
+
+  loadFavorites();
+}
 function showCard(player, club, price, imageData) {
   const overlay = document.createElement("div");
 
@@ -438,6 +508,7 @@ function showCard(player, club, price, imageData) {
 }
 loadCards();
 loadMyCards();
+loadFavorites();
 </script>
 </body>
 </html>
