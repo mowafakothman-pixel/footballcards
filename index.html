@@ -207,7 +207,23 @@ function createCard(player, club, price, imageData) {
     </button>
   `;
 
-  cards.prepend(newCard);
+  cards.appendChild(newCard);
+}
+
+function loadCards() {
+  const savedCards =
+    JSON.parse(localStorage.getItem("footballCards")) || [];
+
+  cards.innerHTML = "";
+
+  savedCards.forEach(card => {
+    createCard(
+      card.player,
+      card.club,
+      card.price,
+      card.image
+    );
+  });
 }
 
 function loadMyCards() {
@@ -217,7 +233,8 @@ function loadMyCards() {
   myCards.innerHTML = "";
 
   if (savedCards.length === 0) {
-    myCards.innerHTML = "<p>Noch keine eigenen Karten eingestellt.</p>";
+    myCards.innerHTML =
+      "<p>Noch keine eigenen Karten eingestellt.</p>";
     return;
   }
 
@@ -245,29 +262,6 @@ function loadMyCards() {
       </div>
 
       <button onclick="deleteCard(${index})">
-        🗑️ Löschen
-      </button>
-    `;
-
-    myCards.appendChild(item);
-  });
-}
-
-  savedCards.forEach((card, index) => {
-    const item = document.createElement("div");
-
-    item.style.background = "white";
-    item.style.padding = "12px";
-    item.style.marginBottom = "10px";
-    item.style.borderRadius = "10px";
-
-    item.innerHTML = `
-      <strong>${card.player}</strong><br>
-      ${card.club} · ${card.price} €
-      <button
-        onclick="deleteCard(${index})"
-        style="margin-left:10px;"
-      >
         🗑️ Löschen
       </button>
     `;
