@@ -6,248 +6,249 @@
 <title>Pixel Cards</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f4f5;
+  color:#111;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f4f5;
-  color: #111;
+header{
+  background:#111;
+  color:white;
+  padding:18px;
+  text-align:center;
 }
 
-header {
-  background: #111;
-  color: white;
-  padding: 18px;
-  text-align: center;
+header h1{margin:0;font-size:28px}
+header p{margin:6px 0;color:#ccc}
+
+.profile{
+  background:white;
+  padding:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  border-bottom:1px solid #ddd;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 28px;
+.profile input{
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:9px;
 }
 
-header p {
-  margin: 6px 0 0;
-  color: #ccc;
+.profile button{
+  border:none;
+  background:#111;
+  color:white;
+  padding:10px 15px;
+  border-radius:9px;
+  font-weight:bold;
 }
 
-.search {
-  padding: 20px;
-  background: white;
-  text-align: center;
+.search{
+  padding:20px;
+  background:white;
+  text-align:center;
 }
 
-.search input {
-  width: 90%;
-  max-width: 600px;
-  padding: 14px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  font-size: 16px;
+.search input{
+  width:90%;
+  max-width:600px;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
 }
 
-.sell {
-  background: #111;
-  color: white;
-  padding: 18px;
-  border-radius: 14px;
-  text-align: center;
-  margin-bottom: 20px;
+.sell{
+  background:#111;
+  color:white;
+  padding:18px;
+  border-radius:14px;
+  text-align:center;
+  margin-bottom:20px;
 }
 
-.sell input {
-  padding: 11px;
-  margin: 4px;
-  border-radius: 8px;
-  border: none;
+.sell input{
+  padding:11px;
+  margin:4px;
+  border-radius:8px;
+  border:none;
 }
 
-.sell button {
-  border: none;
-  background: white;
-  color: #111;
-  padding: 11px 18px;
-  border-radius: 9px;
-  font-weight: bold;
-  cursor: pointer;
+.sell button{
+  border:none;
+  background:white;
+  color:#111;
+  padding:11px 18px;
+  border-radius:9px;
+  font-weight:bold;
 }
 
-.nav {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 20px;
+.nav{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:20px;
 }
 
-.nav button {
-  border: none;
-  background: white;
-  padding: 14px 8px;
-  border-radius: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 3px 10px rgba(0,0,0,.08);
+.nav button{
+  border:none;
+  background:white;
+  padding:14px 8px;
+  border-radius:12px;
+  font-weight:bold;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
 }
 
-.nav button.active {
-  background: #111;
-  color: white;
+.nav button.active{
+  background:#111;
+  color:white;
 }
 
-.page {
-  display: none;
+.page{display:none}
+.page.active{display:block}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
 }
 
-.page.active {
-  display: block;
+.card{
+  background:white;
+  border-radius:18px;
+  padding:16px;
+  box-shadow:0 5px 18px rgba(0,0,0,.1);
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
+.card-image{
+  width:100%;
+  height:200px;
+  border-radius:14px;
+  background:#f1f1f1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
 }
 
-.card {
-  background: white;
-  border-radius: 18px;
-  padding: 16px;
-  box-shadow: 0 5px 18px rgba(0,0,0,.10);
+.card-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
 }
 
-.card-image {
-  width: 100%;
-  height: 200px;
-  border-radius: 14px;
-  background: #f1f1f1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+.price{
+  font-size:23px;
+  font-weight:bold;
+  margin:10px 0;
 }
 
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.info{color:#666}
+
+.card button{
+  width:100%;
+  margin-top:8px;
+  border:none;
+  padding:11px;
+  border-radius:9px;
+  background:#111;
+  color:white;
+  font-weight:bold;
 }
 
-.price {
-  font-size: 23px;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.info {
-  color: #666;
-}
-
-.card button {
-  width: 100%;
-  margin-top: 8px;
-  border: none;
-  padding: 11px;
-  border-radius: 9px;
-  background: #111;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.card button.gray {
-  background: #eee;
-  color: #111;
+.card button.gray{
+  background:#eee;
+  color:#111;
 }
 
 .card button.green,
-.request button.green {
-  background: #16803c;
-  color: white;
+.request button.green{
+  background:#16803c;
+  color:white;
 }
 
 .card button.red,
-.request button.red {
-  background: #c62828;
-  color: white;
+.request button.red{
+  background:#c62828;
+  color:white;
 }
 
-.request {
-  background: white;
-  border-radius: 16px;
-  padding: 15px;
-  margin-bottom: 12px;
-  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+.request{
+  background:white;
+  border-radius:16px;
+  padding:15px;
+  margin-bottom:12px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.request img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  border-radius: 10px;
-  background: #f1f1f1;
-  float: left;
-  margin-right: 14px;
+.request img{
+  width:80px;
+  height:80px;
+  object-fit:contain;
+  border-radius:10px;
+  background:#f1f1f1;
+  float:left;
+  margin-right:14px;
 }
 
-.request::after {
-  content: "";
-  display: block;
-  clear: both;
+.request::after{
+  content:"";
+  display:block;
+  clear:both;
 }
 
-.request button {
-  border: none;
-  padding: 10px 15px;
-  border-radius: 9px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-right: 6px;
-  margin-top: 5px;
+.request button{
+  border:none;
+  padding:10px 15px;
+  border-radius:9px;
+  font-weight:bold;
+  margin:5px 6px 0 0;
 }
 
-.status {
-  font-weight: bold;
+.pending{color:#d17b00;font-weight:bold}
+.accepted{color:#16803c;font-weight:bold}
+.rejected{color:#c62828;font-weight:bold}
+.empty{color:#777}
+
+.profile-card{
+  background:white;
+  padding:20px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
 }
 
-.pending {
-  color: #d17b00;
+.profile-name{
+  font-size:25px;
+  font-weight:bold;
 }
 
-.accepted {
-  color: #16803c;
+footer{
+  text-align:center;
+  padding:30px;
+  color:#777;
 }
 
-.rejected {
-  color: #c62828;
-}
+@media(max-width:600px){
+  .nav{grid-template-columns:repeat(2,1fr)}
 
-.empty {
-  color: #777;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  color: #777;
-}
-
-@media(max-width:600px) {
-  .nav {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .sell input {
-    width: 100%;
-    margin: 5px 0;
+  .sell input{
+    width:100%;
+    margin:5px 0;
   }
 }
 </style>
@@ -260,12 +261,33 @@ footer {
   <p>Der Marktplatz für Fußballkarten</p>
 </header>
 
+<div class="profile">
+
+  <strong id="welcome">
+    👤 Kein Benutzer
+  </strong>
+
+  <input
+    id="usernameInput"
+    type="text"
+    maxlength="20"
+    placeholder="Benutzername"
+  >
+
+  <button onclick="saveUsername()">
+    Profil speichern
+  </button>
+
+</div>
+
 <div class="search">
+
   <input
     id="searchInput"
     type="text"
     placeholder="🔎 Suche nach Spieler oder Verein..."
   >
+
 </div>
 
 <div class="container">
@@ -346,77 +368,50 @@ onclick="showPage('minePage','navMine')"
 id="navRequests"
 onclick="showPage('requestsPage','navRequests')"
 >
-📩 Kaufanfragen
+📩 Anfragen
 </button>
 
 </div>
 
-<div
-id="cardsPage"
-class="page active"
->
+<div id="cardsPage" class="page active">
 
 <h2>🔥 Aktuelle Karten</h2>
 
-<div
-id="cards"
-class="cards"
-></div>
+<div id="cards" class="cards"></div>
 
 </div>
 
-<div
-id="favoritesPage"
-class="page"
->
+<div id="favoritesPage" class="page">
 
 <h2 id="favoriteTitle">
 ❤️ Favoriten (0)
 </h2>
 
-<div
-id="favoriteCards"
-class="cards"
-></div>
+<div id="favoriteCards" class="cards"></div>
 
 </div>
 
-<div
-id="minePage"
-class="page"
->
+<div id="minePage" class="page">
 
-<h2>
-🃏 Meine Karten
-</h2>
+<h2>🃏 Meine Karten</h2>
 
-<div
-id="myCards"
-class="cards"
-></div>
+<div id="myCards" class="cards"></div>
 
 </div>
 
-<div
-id="requestsPage"
-class="page"
->
+<div id="requestsPage" class="page">
 
 <h2 id="requestTitle">
 📩 Meine Kaufanfragen (0)
 </h2>
 
-<div
-id="purchaseRequests"
-></div>
+<div id="purchaseRequests"></div>
 
 <h2 id="sellerRequestTitle">
 📥 Anfragen für meine Karten (0)
 </h2>
 
-<div
-id="sellerRequests"
-></div>
+<div id="sellerRequests"></div>
 
 </div>
 
@@ -450,1267 +445,1400 @@ const sellerRequests =
 document.getElementById("sellerRequests");
 
 
-function getCards() {
+/* =========================
+   BENUTZERPROFIL
+========================= */
 
-return JSON.parse(
-localStorage.getItem("footballCards")
-) || [];
+function getUsername(){
 
-}
-
-
-function getFavorites() {
-
-return JSON.parse(
-localStorage.getItem("favoriteCards")
-) || [];
+  return localStorage.getItem("pixelUsername") || "";
 
 }
 
 
-function getRequests() {
+function saveUsername(){
 
-const requests =
-JSON.parse(
-localStorage.getItem("purchaseRequests")
-) || [];
+  const input =
+    document.getElementById("usernameInput");
 
-/*
-Alte Kaufanfragen aus früheren Versionen
-bekommen automatisch den Status "pending".
-*/
+  const name =
+    input.value.trim();
 
-let changed = false;
+  if(!name){
 
-requests.forEach(request => {
+    alert("Bitte gib einen Benutzernamen ein.");
 
-if (!request.status) {
+    return;
+  }
 
-request.status = "pending";
+  localStorage.setItem(
+    "pixelUsername",
+    name
+  );
 
-changed = true;
+  updateProfile();
 
-}
-
-});
-
-if (changed) {
-
-localStorage.setItem(
-"purchaseRequests",
-JSON.stringify(requests)
-);
+  alert(
+    "👤 Profil gespeichert!"
+  );
 
 }
 
-return requests;
+
+function updateProfile(){
+
+  const name =
+    getUsername();
+
+  const welcome =
+    document.getElementById("welcome");
+
+  const input =
+    document.getElementById("usernameInput");
+
+  if(name){
+
+    welcome.textContent =
+      "👤 " + name;
+
+    input.value = name;
+
+  }else{
+
+    welcome.textContent =
+      "👤 Kein Benutzer";
+
+  }
 
 }
 
+
+/* =========================
+   DATEN
+========================= */
+
+function getCards(){
+
+  return JSON.parse(
+    localStorage.getItem(
+      "footballCards"
+    )
+  ) || [];
+
+}
+
+
+function getFavorites(){
+
+  return JSON.parse(
+    localStorage.getItem(
+      "favoriteCards"
+    )
+  ) || [];
+
+}
+
+
+function getRequests(){
+
+  const requests =
+    JSON.parse(
+      localStorage.getItem(
+        "purchaseRequests"
+      )
+    ) || [];
+
+  let changed = false;
+
+  requests.forEach(request => {
+
+    if(!request.status){
+
+      request.status =
+        "pending";
+
+      changed = true;
+
+    }
+
+  });
+
+  if(changed){
+
+    localStorage.setItem(
+      "purchaseRequests",
+      JSON.stringify(requests)
+    );
+
+  }
+
+  return requests;
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
 
 function showPage(
-pageId,
-buttonId
-) {
+  pageId,
+  buttonId
+){
 
-document
-.querySelectorAll(".page")
-.forEach(page => {
+  document
+    .querySelectorAll(".page")
+    .forEach(page =>
+      page.classList.remove(
+        "active"
+      )
+    );
 
-page.classList.remove("active");
+  document
+    .getElementById(pageId)
+    .classList.add("active");
 
-});
+  document
+    .querySelectorAll(".nav button")
+    .forEach(button =>
+      button.classList.remove(
+        "active"
+      )
+    );
 
-document
-.getElementById(pageId)
-.classList.add("active");
-
-document
-.querySelectorAll(".nav button")
-.forEach(button => {
-
-button.classList.remove("active");
-
-});
-
-document
-.getElementById(buttonId)
-.classList.add("active");
-
-}
-
-
-function createCard(card) {
-
-const item =
-document.createElement("div");
-
-item.className =
-"card";
-
-const favorites =
-getFavorites();
-
-const favorite =
-favorites.find(
-f => f.id === card.id
-);
-
-const requests =
-getRequests();
-
-const request =
-requests.find(
-r =>
-r.cardId === card.id &&
-r.status !== "rejected"
-);
-
-let buyButton;
-
-if (!request) {
-
-buyButton = `
-
-<button
-onclick="buyCard('${card.id}')"
->
-🛒 Kaufen
-</button>
-
-`;
-
-}
-
-else if (
-request.status === "pending"
-) {
-
-buyButton = `
-
-<button
-class="gray"
-disabled
->
-🕐 Anfrage gesendet
-</button>
-
-`;
-
-}
-
-else {
-
-buyButton = `
-
-<button
-class="gray"
-disabled
->
-✅ Angenommen
-</button>
-
-`;
-
-}
-
-item.innerHTML = `
-
-<div class="card-image">
-
-<img
-src="${card.image}"
-alt="${card.player}"
->
-
-</div>
-
-<h3>
-${card.player}
-</h3>
-
-<p class="info">
-${card.club}
-</p>
-
-<p class="price">
-${card.price} €
-</p>
-
-<button
-onclick="showCard('${card.id}')"
->
-👀 Karte ansehen
-</button>
-
-${buyButton}
-
-<button
-class="gray"
-onclick="toggleFavorite('${card.id}')"
->
-${
-favorite
-? "❤️ Favorisiert"
-: "♡ Favorit"
-}
-</button>
-
-`;
-
-cards.appendChild(item);
+  document
+    .getElementById(buttonId)
+    .classList.add("active");
 
 }
 
 
-function loadCards() {
+/* =========================
+   KARTEN
+========================= */
 
-cards.innerHTML = "";
+function createCard(card){
 
-const savedCards =
-getCards();
+  const item =
+    document.createElement(
+      "div"
+    );
 
-const text =
-searchInput.value
-.toLowerCase()
-.trim();
+  item.className =
+    "card";
 
-const filtered =
-savedCards.filter(card =>
+  const username =
+    getUsername();
 
-card.player
-.toLowerCase()
-.includes(text)
+  const favorites =
+    getFavorites();
 
-||
+  const favorite =
+    favorites.find(
+      f => f.id === card.id
+    );
 
-card.club
-.toLowerCase()
-.includes(text)
+  const requests =
+    getRequests();
 
-);
+  const request =
+    requests.find(
+      r =>
+        r.cardId === card.id &&
+        r.buyer === username &&
+        r.status !== "rejected"
+    );
 
-if (
-filtered.length === 0
-) {
+  let buyButton = "";
 
-cards.innerHTML =
-"<p class='empty'>Keine Karten gefunden.</p>";
+  if(card.owner === username){
 
-return;
+    buyButton = `
+      <button
+        class="gray"
+        disabled
+      >
+        🏷️ Deine Karte
+      </button>
+    `;
 
-}
+  }else if(!username){
 
-filtered.forEach(
-card =>
-createCard(card)
-);
+    buyButton = `
+      <button
+        onclick="needUsername()"
+      >
+        🛒 Kaufen
+      </button>
+    `;
 
-}
+  }else if(!request){
 
+    buyButton = `
+      <button
+        onclick="buyCard('${card.id}')"
+      >
+        🛒 Kaufen
+      </button>
+    `;
 
-function loadFavorites() {
+  }else if(
+    request.status === "pending"
+  ){
 
-const favorites =
-getFavorites();
+    buyButton = `
+      <button
+        class="gray"
+        disabled
+      >
+        🕐 Anfrage gesendet
+      </button>
+    `;
 
-document
-.getElementById("favoriteTitle")
-.textContent =
-"❤️ Favoriten (" +
-favorites.length +
-")";
+  }else{
 
-favoriteCards.innerHTML = "";
+    buyButton = `
+      <button
+        class="gray"
+        disabled
+      >
+        ✅ Angenommen
+      </button>
+    `;
 
-if (
-favorites.length === 0
-) {
+  }
 
-favoriteCards.innerHTML =
-"<p class='empty'>Noch keine Favoriten.</p>";
+  item.innerHTML = `
 
-return;
+    <div class="card-image">
 
-}
+      <img
+        src="${card.image}"
+        alt="${card.player}"
+      >
 
-favorites.forEach(card => {
+    </div>
 
-const item =
-document.createElement("div");
+    <h3>
+      ${card.player}
+    </h3>
 
-item.className =
-"card";
+    <p class="info">
+      ${card.club}
+    </p>
 
-item.innerHTML = `
+    <p class="price">
+      ${card.price} €
+    </p>
 
-<div class="card-image">
+    <p class="info">
+      👤 ${card.owner || "Verkäufer"}
+    </p>
 
-<img
-src="${card.image}"
-alt="${card.player}"
->
+    <button
+      onclick="showCard('${card.id}')"
+    >
+      👀 Karte ansehen
+    </button>
 
-</div>
+    ${buyButton}
 
-<h3>
-${card.player}
-</h3>
+    <button
+      class="gray"
+      onclick="toggleFavorite('${card.id}')"
+    >
+      ${
+        favorite
+        ? "❤️ Favorisiert"
+        : "♡ Favorit"
+      }
+    </button>
 
-<p class="info">
-${card.club}
-</p>
+  `;
 
-<p class="price">
-${card.price} €
-</p>
-
-<button
-onclick="showCard('${card.id}')"
->
-👀 Karte ansehen
-</button>
-
-<button
-class="gray"
-onclick="toggleFavorite('${card.id}')"
->
-❤️ Entfernen
-</button>
-
-`;
-
-favoriteCards.appendChild(item);
-
-});
-
-}
-
-
-function loadMyCards() {
-
-myCards.innerHTML = "";
-
-const savedCards =
-getCards();
-
-if (
-savedCards.length === 0
-) {
-
-myCards.innerHTML =
-"<p class='empty'>Noch keine eigenen Karten.</p>";
-
-return;
-
-}
-
-savedCards.forEach(card => {
-
-const item =
-document.createElement("div");
-
-item.className =
-"card";
-
-item.innerHTML = `
-
-<div class="card-image">
-
-<img
-src="${card.image}"
-alt="${card.player}"
->
-
-</div>
-
-<h3>
-${card.player}
-</h3>
-
-<p class="info">
-${card.club}
-</p>
-
-<p class="price">
-${card.price} €
-</p>
-
-<button
-class="red"
-onclick="deleteCard('${card.id}')"
->
-🗑️ Löschen
-</button>
-
-`;
-
-myCards.appendChild(item);
-
-});
+  cards.appendChild(item);
 
 }
 
+
+function loadCards(){
+
+  cards.innerHTML = "";
+
+  const savedCards =
+    getCards();
+
+  const text =
+    searchInput.value
+      .toLowerCase()
+      .trim();
+
+  const filtered =
+    savedCards.filter(card =>
+
+      card.player
+        .toLowerCase()
+        .includes(text)
+
+      ||
+
+      card.club
+        .toLowerCase()
+        .includes(text)
+
+    );
+
+  if(!filtered.length){
+
+    cards.innerHTML =
+      "<p class='empty'>Keine Karten gefunden.</p>";
+
+    return;
+
+  }
+
+  filtered.forEach(
+    card => createCard(card)
+  );
+
+}
+
+
+/* =========================
+   KARTE EINSTELLEN
+========================= */
 
 sellForm.addEventListener(
-"submit",
-function(event) {
+  "submit",
+  function(event){
 
-event.preventDefault();
+    event.preventDefault();
 
-const player =
-document
-.getElementById("player")
-.value
-.trim();
+    const username =
+      getUsername();
 
-const club =
-document
-.getElementById("club")
-.value
-.trim();
+    if(!username){
 
-const price =
-document
-.getElementById("price")
-.value;
+      alert(
+        "👤 Bitte zuerst einen Benutzernamen speichern."
+      );
 
-const image =
-document
-.getElementById("image")
-.files[0];
+      return;
+    }
 
-if (!image) {
+    const player =
+      document
+        .getElementById("player")
+        .value
+        .trim();
 
-alert(
-"Bitte wähle ein Foto aus!"
+    const club =
+      document
+        .getElementById("club")
+        .value
+        .trim();
+
+    const price =
+      document
+        .getElementById("price")
+        .value;
+
+    const image =
+      document
+        .getElementById("image")
+        .files[0];
+
+    if(!image){
+
+      alert(
+        "Bitte wähle ein Foto aus!"
+      );
+
+      return;
+    }
+
+    const reader =
+      new FileReader();
+
+    reader.onload =
+      function(){
+
+        const img =
+          new Image();
+
+        img.onload =
+          function(){
+
+            const canvas =
+              document.createElement(
+                "canvas"
+              );
+
+            const maxSize = 700;
+
+            let width =
+              img.width;
+
+            let height =
+              img.height;
+
+            if(
+              width > height &&
+              width > maxSize
+            ){
+
+              height =
+                height *
+                (maxSize / width);
+
+              width =
+                maxSize;
+
+            }else if(
+              height > maxSize
+            ){
+
+              width =
+                width *
+                (maxSize / height);
+
+              height =
+                maxSize;
+
+            }
+
+            canvas.width =
+              width;
+
+            canvas.height =
+              height;
+
+            const ctx =
+              canvas.getContext(
+                "2d"
+              );
+
+            ctx.drawImage(
+              img,
+              0,
+              0,
+              width,
+              height
+            );
+
+            const imageData =
+              canvas.toDataURL(
+                "image/jpeg",
+                0.6
+              );
+
+            const savedCards =
+              getCards();
+
+            savedCards.unshift({
+
+              id:
+                Date.now() +
+                "-" +
+                Math.random()
+                  .toString(36)
+                  .substring(2),
+
+              player:
+                player,
+
+              club:
+                club,
+
+              price:
+                price,
+
+              image:
+                imageData,
+
+              owner:
+                username
+
+            });
+
+            localStorage.setItem(
+              "footballCards",
+              JSON.stringify(
+                savedCards
+              )
+            );
+
+            sellForm.reset();
+
+            loadCards();
+            loadMyCards();
+
+            alert(
+              "🎉 Karte wurde eingestellt!"
+            );
+
+          };
+
+        img.src =
+          reader.result;
+
+      };
+
+    reader.readAsDataURL(
+      image
+    );
+
+  }
 );
 
-return;
 
-}
+/* =========================
+   MEINE KARTEN
+========================= */
 
-const reader =
-new FileReader();
+function loadMyCards(){
 
-reader.onload =
-function() {
+  myCards.innerHTML = "";
 
-const img =
-new Image();
+  const username =
+    getUsername();
 
-img.onload =
-function() {
+  const savedCards =
+    getCards().filter(
+      card =>
+        card.owner === username
+    );
 
-const canvas =
-document.createElement(
-"canvas"
-);
+  if(!username){
 
-const maxSize =
-700;
+    myCards.innerHTML =
+      "<p class='empty'>Bitte zuerst einen Benutzernamen speichern.</p>";
 
-let width =
-img.width;
+    return;
+  }
 
-let height =
-img.height;
+  if(!savedCards.length){
 
-if (
-width > height &&
-width > maxSize
-) {
+    myCards.innerHTML =
+      "<p class='empty'>Du hast noch keine Karten eingestellt.</p>";
 
-height =
-height *
-(maxSize / width);
+    return;
+  }
 
-width =
-maxSize;
+  savedCards.forEach(card => {
 
-}
+    const item =
+      document.createElement(
+        "div"
+      );
 
-else if (
-height > maxSize
-) {
+    item.className =
+      "card";
 
-width =
-width *
-(maxSize / height);
+    item.innerHTML = `
 
-height =
-maxSize;
+      <div class="card-image">
 
-}
+        <img
+          src="${card.image}"
+          alt="${card.player}"
+        >
 
-canvas.width =
-width;
+      </div>
 
-canvas.height =
-height;
+      <h3>
+        ${card.player}
+      </h3>
 
-const ctx =
-canvas.getContext(
-"2d"
-);
+      <p class="info">
+        ${card.club}
+      </p>
 
-ctx.drawImage(
-img,
-0,
-0,
-width,
-height
-);
+      <p class="price">
+        ${card.price} €
+      </p>
 
-const imageData =
-canvas.toDataURL(
-"image/jpeg",
-0.6
-);
+      <button
+        class="red"
+        onclick="deleteCard('${card.id}')"
+      >
+        🗑️ Löschen
+      </button>
 
-const savedCards =
-getCards();
+    `;
 
-savedCards.unshift({
+    myCards.appendChild(item);
 
-id:
-Date.now() +
-"-" +
-Math.random()
-.toString(36)
-.substring(2),
-
-player:
-player,
-
-club:
-club,
-
-price:
-price,
-
-image:
-imageData
-
-});
-
-localStorage.setItem(
-"footballCards",
-JSON.stringify(
-savedCards
-)
-);
-
-sellForm.reset();
-
-loadCards();
-
-loadMyCards();
-
-alert(
-"🎉 Karte wurde eingestellt!"
-);
-
-};
-
-img.src =
-reader.result;
-
-};
-
-reader.readAsDataURL(
-image
-);
-
-}
-);
-
-
-function deleteCard(cardId) {
-
-if (
-!confirm(
-"Karte wirklich löschen?"
-)
-) {
-
-return;
-
-}
-
-let savedCards =
-getCards();
-
-savedCards =
-savedCards.filter(
-card =>
-card.id !== cardId
-);
-
-localStorage.setItem(
-"footballCards",
-JSON.stringify(
-savedCards
-)
-);
-
-loadCards();
-
-loadMyCards();
-
-}
-
-
-function toggleFavorite(
-cardId
-) {
-
-const savedCards =
-getCards();
-
-const card =
-savedCards.find(
-c => c.id === cardId
-);
-
-if (!card) return;
-
-let favorites =
-getFavorites();
-
-const index =
-favorites.findIndex(
-f => f.id === cardId
-);
-
-if (index !== -1) {
-
-favorites.splice(
-index,
-1
-);
-
-alert(
-"❤️ Aus Favoriten entfernt!"
-);
-
-}
-
-else {
-
-favorites.push(card);
-
-alert(
-"❤️ Zu Favoriten hinzugefügt!"
-);
-
-}
-
-localStorage.setItem(
-"favoriteCards",
-JSON.stringify(
-favorites
-)
-);
-
-loadFavorites();
-
-loadCards();
-
-}
-
-
-function buyCard(
-cardId
-) {
-
-const card =
-getCards().find(
-c => c.id === cardId
-);
-
-if (!card) return;
-
-const requests =
-getRequests();
-
-/*
-Wichtig:
-Eine Karte kann nicht mehrfach
-gleichzeitig angefragt werden.
-*/
-
-const existing =
-requests.find(
-r =>
-r.cardId === cardId &&
-r.status !== "rejected"
-);
-
-if (existing) {
-
-if (
-existing.status ===
-"accepted"
-) {
-
-alert(
-"✅ Diese Karte wurde bereits angenommen!"
-);
-
-}
-
-else {
-
-alert(
-"🕐 Du hast diese Karte bereits angefragt!"
-);
-
-}
-
-return;
-
-}
-
-const confirmBuy =
-confirm(
-
-"Möchtest du diese Karte kaufen?\n\n" +
-
-card.player +
-" – " +
-card.club +
-
-"\nPreis: " +
-card.price +
-" €"
-
-);
-
-if (!confirmBuy) {
-
-return;
-
-}
-
-requests.push({
-
-id:
-Date.now() +
-"-" +
-Math.random()
-.toString(36)
-.substring(2),
-
-cardId:
-card.id,
-
-player:
-card.player,
-
-club:
-card.club,
-
-price:
-card.price,
-
-image:
-card.image,
-
-buyer:
-"Käufer",
-
-status:
-"pending"
-
-});
-
-localStorage.setItem(
-"purchaseRequests",
-JSON.stringify(
-requests
-)
-);
-
-loadCards();
-
-loadPurchaseRequests();
-
-loadSellerRequests();
-
-showPage(
-"requestsPage",
-"navRequests"
-);
-
-alert(
-"📩 Kaufanfrage wurde gesendet!"
-);
+  });
 
 }
 
 
-function loadPurchaseRequests() {
+function deleteCard(cardId){
 
-const requests =
-getRequests();
+  if(
+    !confirm(
+      "Karte wirklich löschen?"
+    )
+  ){
 
-document
-.getElementById(
-"requestTitle"
-)
-.textContent =
-"📩 Meine Kaufanfragen (" +
-requests.length +
-")";
+    return;
+  }
 
-purchaseRequests.innerHTML = "";
+  let savedCards =
+    getCards();
 
-if (
-requests.length === 0
-) {
+  savedCards =
+    savedCards.filter(
+      card =>
+        card.id !== cardId
+    );
 
-purchaseRequests.innerHTML =
-"<p class='empty'>Noch keine Kaufanfragen.</p>";
+  localStorage.setItem(
+    "footballCards",
+    JSON.stringify(
+      savedCards
+    )
+  );
 
-return;
-
-}
-
-requests.forEach(request => {
-
-const item =
-document.createElement(
-"div"
-);
-
-item.className =
-"request";
-
-let status;
-
-if (
-request.status ===
-"accepted"
-) {
-
-status =
-"<span class='accepted'>✅ Angenommen</span>";
-
-}
-
-else if (
-request.status ===
-"rejected"
-) {
-
-status =
-"<span class='rejected'>❌ Abgelehnt</span>";
-
-}
-
-else {
-
-status =
-"<span class='pending'>🕐 Offen</span>";
-
-}
-
-item.innerHTML = `
-
-<img
-src="${request.image}"
-alt="${request.player}"
->
-
-<h3>
-${request.player}
-</h3>
-
-<p>
-${request.club}
-</p>
-
-<p>
-${request.price} €
-</p>
-
-<p class="status">
-${status}
-</p>
-
-`;
-
-purchaseRequests.appendChild(
-item
-);
-
-});
+  loadCards();
+  loadMyCards();
 
 }
 
 
-function loadSellerRequests() {
+/* =========================
+   FAVORITEN
+========================= */
 
-const requests =
-getRequests();
+function toggleFavorite(cardId){
 
-const myCards =
-getCards();
+  const card =
+    getCards().find(
+      c => c.id === cardId
+    );
 
-const myIds =
-myCards.map(
-card => card.id
-);
+  if(!card) return;
 
-const incoming =
-requests.filter(
-request =>
-myIds.includes(
-request.cardId
-)
-);
+  let favorites =
+    getFavorites();
 
-document
-.getElementById(
-"sellerRequestTitle"
-)
-.textContent =
-"📥 Anfragen für meine Karten (" +
-incoming.length +
-")";
+  const index =
+    favorites.findIndex(
+      f => f.id === cardId
+    );
 
-sellerRequests.innerHTML = "";
+  if(index !== -1){
 
-if (
-incoming.length === 0
-) {
+    favorites.splice(
+      index,
+      1
+    );
 
-sellerRequests.innerHTML =
-"<p class='empty'>Noch keine Anfragen für deine Karten.</p>";
+    alert(
+      "❤️ Aus Favoriten entfernt!"
+    );
 
-return;
+  }else{
 
-}
+    favorites.push(card);
 
-incoming.forEach(request => {
+    alert(
+      "❤️ Zu Favoriten hinzugefügt!"
+    );
 
-const item =
-document.createElement(
-"div"
-);
+  }
 
-item.className =
-"request";
+  localStorage.setItem(
+    "favoriteCards",
+    JSON.stringify(
+      favorites
+    )
+  );
 
-let status;
-
-if (
-request.status ===
-"accepted"
-) {
-
-status =
-"<span class='accepted'>✅ Angenommen</span>";
+  loadFavorites();
+  loadCards();
 
 }
 
-else if (
-request.status ===
-"rejected"
-) {
 
-status =
-"<span class='rejected'>❌ Abgelehnt</span>";
+function loadFavorites(){
+
+  const favorites =
+    getFavorites();
+
+  document
+    .getElementById(
+      "favoriteTitle"
+    )
+    .textContent =
+      "❤️ Favoriten (" +
+      favorites.length +
+      ")";
+
+  favoriteCards.innerHTML = "";
+
+  if(!favorites.length){
+
+    favoriteCards.innerHTML =
+      "<p class='empty'>Noch keine Favoriten.</p>";
+
+    return;
+  }
+
+  favorites.forEach(card => {
+
+    const item =
+      document.createElement(
+        "div"
+      );
+
+    item.className =
+      "card";
+
+    item.innerHTML = `
+
+      <div class="card-image">
+
+        <img
+          src="${card.image}"
+          alt="${card.player}"
+        >
+
+      </div>
+
+      <h3>
+        ${card.player}
+      </h3>
+
+      <p class="info">
+        ${card.club}
+      </p>
+
+      <p class="price">
+        ${card.price} €
+      </p>
+
+      <button
+        onclick="showCard('${card.id}')"
+      >
+        👀 Karte ansehen
+      </button>
+
+      <button
+        class="gray"
+        onclick="toggleFavorite('${card.id}')"
+      >
+        ❤️ Entfernen
+      </button>
+
+    `;
+
+    favoriteCards.appendChild(
+      item
+    );
+
+  });
 
 }
 
-else {
 
-status =
-"<span class='pending'>🕐 Offen</span>";
+/* =========================
+   KAUFANFRAGE
+========================= */
+
+function buyCard(cardId){
+
+  const username =
+    getUsername();
+
+  if(!username){
+
+    needUsername();
+
+    return;
+  }
+
+  const card =
+    getCards().find(
+      c => c.id === cardId
+    );
+
+  if(!card) return;
+
+  if(card.owner === username){
+
+    alert(
+      "❌ Du kannst deine eigene Karte nicht kaufen."
+    );
+
+    return;
+  }
+
+  const requests =
+    getRequests();
+
+  const existing =
+    requests.find(
+      r =>
+        r.cardId === cardId &&
+        r.buyer === username &&
+        r.status !== "rejected"
+    );
+
+  if(existing){
+
+    alert(
+      existing.status === "accepted"
+      ? "✅ Diese Anfrage wurde bereits angenommen!"
+      : "🕐 Du hast diese Karte bereits angefragt!"
+    );
+
+    return;
+  }
+
+  const confirmBuy =
+    confirm(
+
+      "Möchtest du diese Karte kaufen?\n\n" +
+
+      card.player +
+      " – " +
+      card.club +
+
+      "\nPreis: " +
+      card.price +
+      " €"
+
+    );
+
+  if(!confirmBuy) return;
+
+  requests.push({
+
+    id:
+      Date.now() +
+      "-" +
+      Math.random()
+        .toString(36)
+        .substring(2),
+
+    cardId:
+      card.id,
+
+    player:
+      card.player,
+
+    club:
+      card.club,
+
+    price:
+      card.price,
+
+    image:
+      card.image,
+
+    buyer:
+      username,
+
+    seller:
+      card.owner,
+
+    status:
+      "pending"
+
+  });
+
+  localStorage.setItem(
+    "purchaseRequests",
+    JSON.stringify(
+      requests
+    )
+  );
+
+  loadCards();
+  loadPurchaseRequests();
+  loadSellerRequests();
+
+  showPage(
+    "requestsPage",
+    "navRequests"
+  );
+
+  alert(
+    "📩 Kaufanfrage wurde gesendet!"
+  );
 
 }
 
-item.innerHTML = `
 
-<img
-src="${request.image}"
-alt="${request.player}"
->
+/* =========================
+   KAUFANFRAGEN
+========================= */
 
-<h3>
-${request.player}
-</h3>
+function loadPurchaseRequests(){
 
-<p>
-Käufer: 👤 ${request.buyer || "Käufer"}
-</p>
+  const username =
+    getUsername();
 
-<p>
-${request.price} €
-</p>
+  const requests =
+    getRequests().filter(
+      request =>
+        request.buyer === username
+    );
 
-<p class="status">
-${status}
-</p>
+  document
+    .getElementById(
+      "requestTitle"
+    )
+    .textContent =
+      "📩 Meine Kaufanfragen (" +
+      requests.length +
+      ")";
 
-${
-request.status === "pending"
-?
+  purchaseRequests.innerHTML = "";
 
-`
+  if(!requests.length){
 
-<button
-class="green"
-onclick="acceptRequest('${request.id}')"
->
-✅ Annehmen
-</button>
+    purchaseRequests.innerHTML =
+      "<p class='empty'>Noch keine Kaufanfragen.</p>";
 
-<button
-class="red"
-onclick="rejectRequest('${request.id}')"
->
-❌ Ablehnen
-</button>
+    return;
+  }
 
-`
+  requests.forEach(request => {
 
-:
+    const item =
+      document.createElement(
+        "div"
+      );
 
-""
+    item.className =
+      "request";
+
+    let status;
+
+    if(
+      request.status ===
+      "accepted"
+    ){
+
+      status =
+        "<span class='accepted'>✅ Angenommen</span>";
+
+    }else if(
+      request.status ===
+      "rejected"
+    ){
+
+      status =
+        "<span class='rejected'>❌ Abgelehnt</span>";
+
+    }else{
+
+      status =
+        "<span class='pending'>🕐 Offen</span>";
+
+    }
+
+    item.innerHTML = `
+
+      <img
+        src="${request.image}"
+        alt="${request.player}"
+      >
+
+      <h3>
+        ${request.player}
+      </h3>
+
+      <p>
+        ${request.club}
+      </p>
+
+      <p>
+        ${request.price} €
+      </p>
+
+      <p>
+        Verkäufer:
+        👤 ${request.seller || "Verkäufer"}
+      </p>
+
+      <p>
+        ${status}
+      </p>
+
+    `;
+
+    purchaseRequests.appendChild(
+      item
+    );
+
+  });
 
 }
 
-`;
 
-sellerRequests.appendChild(
-item
-);
+/* =========================
+   VERKÄUFER-ANFRAGEN
+========================= */
 
-});
+function loadSellerRequests(){
+
+  const username =
+    getUsername();
+
+  const requests =
+    getRequests().filter(
+      request =>
+        request.seller === username
+    );
+
+  document
+    .getElementById(
+      "sellerRequestTitle"
+    )
+    .textContent =
+      "📥 Anfragen für meine Karten (" +
+      requests.length +
+      ")";
+
+  sellerRequests.innerHTML = "";
+
+  if(!requests.length){
+
+    sellerRequests.innerHTML =
+      "<p class='empty'>Noch keine Anfragen für deine Karten.</p>";
+
+    return;
+  }
+
+  requests.forEach(request => {
+
+    const item =
+      document.createElement(
+        "div"
+      );
+
+    item.className =
+      "request";
+
+    let status;
+
+    if(
+      request.status ===
+      "accepted"
+    ){
+
+      status =
+        "<span class='accepted'>✅ Angenommen</span>";
+
+    }else if(
+      request.status ===
+      "rejected"
+    ){
+
+      status =
+        "<span class='rejected'>❌ Abgelehnt</span>";
+
+    }else{
+
+      status =
+        "<span class='pending'>🕐 Offen</span>";
+
+    }
+
+    item.innerHTML = `
+
+      <img
+        src="${request.image}"
+        alt="${request.player}"
+      >
+
+      <h3>
+        ${request.player}
+      </h3>
+
+      <p>
+        Käufer:
+        👤 ${request.buyer || "Käufer"}
+      </p>
+
+      <p>
+        ${request.price} €
+      </p>
+
+      <p>
+        ${status}
+      </p>
+
+      ${
+        request.status === "pending"
+        ?
+
+        `
+
+        <button
+          class="green"
+          onclick="acceptRequest('${request.id}')"
+        >
+          ✅ Annehmen
+        </button>
+
+        <button
+          class="red"
+          onclick="rejectRequest('${request.id}')"
+        >
+          ❌ Ablehnen
+        </button>
+
+        `
+
+        :
+
+        ""
+      }
+
+    `;
+
+    sellerRequests.appendChild(
+      item
+    );
+
+  });
 
 }
 
 
 function acceptRequest(
-requestId
-) {
+  requestId
+){
 
-const requests =
-getRequests();
+  const requests =
+    getRequests();
 
-const request =
-requests.find(
-r =>
-r.id === requestId
-);
+  const request =
+    requests.find(
+      r =>
+        r.id === requestId
+    );
 
-if (!request) return;
+  if(!request) return;
 
-request.status =
-"accepted";
+  request.status =
+    "accepted";
 
-localStorage.setItem(
-"purchaseRequests",
-JSON.stringify(
-requests
-)
-);
+  localStorage.setItem(
+    "purchaseRequests",
+    JSON.stringify(
+      requests
+    )
+  );
 
-loadCards();
+  loadCards();
+  loadPurchaseRequests();
+  loadSellerRequests();
 
-loadPurchaseRequests();
-
-loadSellerRequests();
-
-alert(
-"✅ Anfrage angenommen!"
-);
+  alert(
+    "✅ Anfrage angenommen!"
+  );
 
 }
 
 
 function rejectRequest(
-requestId
-) {
+  requestId
+){
 
-const requests =
-getRequests();
+  const requests =
+    getRequests();
 
-const request =
-requests.find(
-r =>
-r.id === requestId
-);
+  const request =
+    requests.find(
+      r =>
+        r.id === requestId
+    );
 
-if (!request) return;
+  if(!request) return;
 
-if (
-!confirm(
-"Anfrage wirklich ablehnen?"
-)
-) {
+  if(
+    !confirm(
+      "Anfrage wirklich ablehnen?"
+    )
+  ){
 
-return;
+    return;
+  }
 
-}
+  request.status =
+    "rejected";
 
-request.status =
-"rejected";
+  localStorage.setItem(
+    "purchaseRequests",
+    JSON.stringify(
+      requests
+    )
+  );
 
-localStorage.setItem(
-"purchaseRequests",
-JSON.stringify(
-requests
-)
-);
+  loadCards();
+  loadPurchaseRequests();
+  loadSellerRequests();
 
-loadCards();
-
-loadPurchaseRequests();
-
-loadSellerRequests();
-
-alert(
-"❌ Anfrage abgelehnt!"
-);
+  alert(
+    "❌ Anfrage abgelehnt!"
+  );
 
 }
 
+
+/* =========================
+   KARTENDETAILS
+========================= */
 
 function showCard(
-cardId
-) {
+  cardId
+){
 
-const card =
-getCards().find(
-c =>
-c.id === cardId
-);
+  const card =
+    getCards().find(
+      c =>
+        c.id === cardId
+    );
 
-if (!card) return;
+  if(!card) return;
 
-const overlay =
-document.createElement(
-"div"
-);
+  const overlay =
+    document.createElement(
+      "div"
+    );
 
-overlay.style.position =
-"fixed";
+  overlay.style.position =
+    "fixed";
 
-overlay.style.top =
-"0";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100%";
+  overlay.style.height = "100%";
 
-overlay.style.left =
-"0";
+  overlay.style.background =
+    "rgba(0,0,0,.7)";
 
-overlay.style.width =
-"100%";
+  overlay.style.display =
+    "flex";
 
-overlay.style.height =
-"100%";
+  overlay.style.alignItems =
+    "center";
 
-overlay.style.background =
-"rgba(0,0,0,.7)";
+  overlay.style.justifyContent =
+    "center";
 
-overlay.style.display =
-"flex";
+  overlay.style.zIndex =
+    "9999";
 
-overlay.style.alignItems =
-"center";
+  overlay.style.padding =
+    "20px";
 
-overlay.style.justifyContent =
-"center";
+  overlay.innerHTML = `
 
-overlay.style.zIndex =
-"9999";
+    <div style="
+      background:white;
+      padding:20px;
+      border-radius:18px;
+      width:100%;
+      max-width:400px;
+      text-align:center;
+    ">
 
-overlay.style.padding =
-"20px";
+      <img
+        src="${card.image}"
+        alt="${card.player}"
+        style="
+          width:100%;
+          max-height:350px;
+          object-fit:contain;
+          border-radius:12px;
+        "
+      >
 
-overlay.innerHTML = `
+      <h2>
+        ${card.player}
+      </h2>
 
-<div style="
-background:white;
-padding:20px;
-border-radius:18px;
-width:100%;
-max-width:400px;
-text-align:center;
-">
+      <p>
+        ${card.club}
+      </p>
 
-<img
-src="${card.image}"
-alt="${card.player}"
-style="
-width:100%;
-max-height:350px;
-object-fit:contain;
-border-radius:12px;
-">
+      <p style="
+        font-size:24px;
+        font-weight:bold;
+      ">
+        ${card.price} €
+      </p>
 
-<h2>
-${card.player}
-</h2>
+      <p>
+        👤 ${card.owner || "Verkäufer"}
+      </p>
 
-<p>
-${card.club}
-</p>
+      <button
+        id="closeCard"
+        style="
+          border:none;
+          background:#111;
+          color:white;
+          padding:12px 22px;
+          border-radius:10px;
+          font-weight:bold;
+        "
+      >
+        Schließen
+      </button>
 
-<p style="
-font-size:24px;
-font-weight:bold;
-">
-${card.price} €
-</p>
+    </div>
 
-<button
-id="closeCard"
-style="
-border:none;
-background:#111;
-color:white;
-padding:12px 22px;
-border-radius:10px;
-font-weight:bold;
-"
->
-Schließen
-</button>
+  `;
 
-</div>
+  document.body.appendChild(
+    overlay
+  );
 
-`;
+  document
+    .getElementById(
+      "closeCard"
+    )
+    .onclick =
+      function(){
 
-document.body.appendChild(
-overlay
-);
+        overlay.remove();
 
-document
-.getElementById(
-"closeCard"
-)
-.onclick =
-function() {
-
-overlay.remove();
-
-};
+      };
 
 }
 
 
+/* =========================
+   HILFE
+========================= */
+
+function needUsername(){
+
+  alert(
+    "👤 Bitte zuerst oben einen Benutzernamen speichern."
+  );
+
+}
+
+
+/* =========================
+   START
+========================= */
+
 searchInput.addEventListener(
-"input",
-loadCards
+  "input",
+  loadCards
 );
 
-
-/*
-Beim Start werden alle Bereiche geladen.
-*/
+updateProfile();
 
 loadCards();
 
