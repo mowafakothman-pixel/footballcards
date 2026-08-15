@@ -222,34 +222,76 @@ footer {
   © 2026 Pixel Cards
 </footer>
 <script>
-document.getElementById("sellForm").addEventListener("submit", function(event) {
-  event.preventDefault();
+const sellForm = document.getElementById("sellForm");
+const cards = document.querySelector(".cards");
 
-  const player = document.getElementById("player").value;
-  const club = document.getElementById("club").value;
-  const price = document.getElementById("price").value;
-const image = document.getElementById("image").files[0];
-  const cards = document.querySelector(".cards");
-
+function createCard(player, club, price, imageData) {
   const newCard = document.createElement("div");
   newCard.className = "card";
 
   newCard.innerHTML = `
     <div class="card-image">
-  <img src="${URL.createObjectURL(image)}" alt="${player}">
-</div>
+      <img src="${imageData}" alt="${player}">
+    </div>
     <h3>${player}</h3>
     <p class="info">${club}</p>
     <p class="price">${price} €</p>
-<button onclick="alert('Diese Karte wurde ausgewählt!')">Kaufen</button>
+    <button onclick="alert('Diese Karte wurde ausgewählt!')">
+      Kaufen
+    </button>
   `;
 
   cards.prepend(newCard);
+}
 
-  alert("Deine Karte wurde eingestellt!");
+function loadCards() {
+  const savedCards = JSON.parse(localStorage.getItem("footballCards")) || [];
 
-  this.reset();
+  savedCards.forEach(card => {
+    createCard(card.player, card.club, card.price, card.image);
+  });
+}
+
+sellForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const player = document.getElementById("player").value;
+  const club = document.getElementById("club").value;
+  const price = document.getElementById("price").value;
+  const image = document.getElementById("image").files[0];
+
+  if (!image) {
+    alert("Bitte wähle ein Foto aus!");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function() {
+    const imageData = reader.result;
+
+    const savedCards = JSON.parse(localStorage.getItem("footballCards")) || [];
+
+    savedCards.unshift({
+      player: player,
+      club: club,
+      price: price,
+      image: imageData
+    });
+
+    localStorage.setItem("footballCards", JSON.stringify(savedCards));
+
+    createCard(player, club, price, imageData);
+
+    alert("Deine Karte wurde eingestellt und gespeichert!");
+
+    sellForm.reset();
+  };
+
+  reader.readAsDataURL(image);
 });
+
+loadCards();
 </script>
 </body>
 </html>
