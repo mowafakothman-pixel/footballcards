@@ -61,38 +61,54 @@ header p {
   padding: 18px;
   border-radius: 14px;
   text-align: center;
-  margin-bottom: 25px;
-}
-
-.sell h2 {
-  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .sell input {
-  width: 100%;
-  max-width: 500px;
-  margin: 5px;
-  padding: 12px;
+  padding: 11px;
+  margin: 4px;
+  border-radius: 8px;
   border: none;
-  border-radius: 9px;
 }
 
 .sell button {
   border: none;
   background: white;
   color: #111;
-  padding: 12px 20px;
+  padding: 11px 18px;
   border-radius: 9px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 8px;
 }
 
-.section {
-  background: white;
-  padding: 18px;
-  border-radius: 16px;
+.nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
   margin-bottom: 20px;
+}
+
+.nav button {
+  border: none;
+  background: white;
+  padding: 14px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,.08);
+}
+
+.nav button.active {
+  background: #111;
+  color: white;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
 }
 
 .cards {
@@ -105,7 +121,7 @@ header p {
   background: white;
   border-radius: 18px;
   padding: 16px;
-  box-shadow: 0 5px 18px rgba(0,0,0,0.10);
+  box-shadow: 0 5px 18px rgba(0,0,0,.10);
 }
 
 .card-image {
@@ -114,8 +130,8 @@ header p {
   border-radius: 14px;
   background: #f1f1f1;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
 }
 
@@ -123,11 +139,6 @@ header p {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: 12px;
-}
-
-.card h3 {
-  margin-bottom: 6px;
 }
 
 .price {
@@ -146,94 +157,84 @@ header p {
   border: none;
   padding: 11px;
   border-radius: 9px;
-  font-weight: bold;
-  cursor: pointer;
   background: #111;
   color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.card button.secondary {
-  background: #f1f1f1;
+.card button.gray {
+  background: #eee;
   color: #111;
 }
 
 .card button.green {
   background: #16803c;
-  color: white;
 }
 
 .card button.red {
   background: #c62828;
-  color: white;
 }
 
-.request-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
-}
-
-.request-card {
-  background: #f8f8f8;
-  border-radius: 14px;
-  padding: 14px;
-  border: 1px solid #ddd;
-}
-
-.request-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: contain;
+.request {
   background: white;
+  border-radius: 16px;
+  padding: 15px;
+  margin-bottom: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+}
+
+.request img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
   border-radius: 10px;
+  background: #f1f1f1;
+  float: left;
+  margin-right: 14px;
+}
+
+.request::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .status {
   font-weight: bold;
-  margin: 10px 0;
 }
 
-.status.pending {
+.pending {
   color: #d17b00;
 }
 
-.status.accepted {
+.accepted {
   color: #16803c;
 }
 
-.status.rejected {
+.rejected {
   color: #c62828;
 }
 
 .empty {
   color: #777;
-  padding: 10px 0;
-}
-
-.user-box {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.user-box input {
-  padding: 11px;
-  border: 1px solid #ddd;
-  border-radius: 9px;
-}
-
-.user-box button {
-  padding: 11px 16px;
-  border: none;
-  border-radius: 9px;
-  background: #111;
-  color: white;
-  font-weight: bold;
 }
 
 footer {
   text-align: center;
   padding: 30px;
   color: #777;
+}
+
+@media(max-width:600px) {
+  .nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sell input {
+    width: 100%;
+    margin: 5px 0;
+  }
 }
 </style>
 </head>
@@ -244,13 +245,6 @@ footer {
   <h1>⚽ Pixel Cards</h1>
   <p>Der Marktplatz für Fußballkarten</p>
 </header>
-
-<div class="user-box">
-  <p>👤 Dein Benutzername</p>
-  <input id="username" type="text" placeholder="Benutzername">
-  <button onclick="saveUsername()">Speichern</button>
-  <p id="welcome"></p>
-</div>
 
 <div class="search">
   <input
@@ -267,8 +261,21 @@ footer {
     <p>Stelle deine Fußballkarte schnell und einfach ein.</p>
 
     <form id="sellForm">
-      <input id="player" type="text" placeholder="Spieler" required>
-      <input id="club" type="text" placeholder="Verein" required>
+
+      <input
+        id="player"
+        type="text"
+        placeholder="Spieler"
+        required
+      >
+
+      <input
+        id="club"
+        type="text"
+        placeholder="Verein"
+        required
+      >
+
       <input
         id="price"
         type="number"
@@ -277,35 +284,103 @@ footer {
         step="0.01"
         required
       >
-      <input id="image" type="file" accept="image/*" required>
-      <br>
-      <button type="submit">Karte einstellen</button>
+
+      <input
+        id="image"
+        type="file"
+        accept="image/*"
+        required
+      >
+
+      <button type="submit">
+        Karte einstellen
+      </button>
+
     </form>
   </div>
 
-  <div class="section">
+  <div class="nav">
+
+    <button
+      id="navCards"
+      class="active"
+      onclick="showPage('cardsPage','navCards')"
+    >
+      🔥 Karten
+    </button>
+
+    <button
+      id="navFavorites"
+      onclick="showPage('favoritesPage','navFavorites')"
+    >
+      ❤️ Favoriten
+    </button>
+
+    <button
+      id="navMine"
+      onclick="showPage('minePage','navMine')"
+    >
+      🃏 Meine Karten
+    </button>
+
+    <button
+      id="navRequests"
+      onclick="showPage('requestsPage','navRequests')"
+    >
+      📩 Kaufanfragen
+    </button>
+
+  </div>
+
+  <div id="cardsPage" class="page active">
+
     <h2>🔥 Aktuelle Karten</h2>
-    <div class="cards" id="cards"></div>
+
+    <div
+      id="cards"
+      class="cards"
+    ></div>
+
   </div>
 
-  <div class="section">
-    <h2 id="favoriteTitle">❤️ Favoriten (0)</h2>
-    <div class="cards" id="favoriteCards"></div>
+  <div id="favoritesPage" class="page">
+
+    <h2 id="favoriteTitle">
+      ❤️ Favoriten (0)
+    </h2>
+
+    <div
+      id="favoriteCards"
+      class="cards"
+    ></div>
+
   </div>
 
-  <div class="section">
+  <div id="minePage" class="page">
+
     <h2>🃏 Meine Karten</h2>
-    <div class="cards" id="myCards"></div>
+
+    <div
+      id="myCards"
+      class="cards"
+    ></div>
+
   </div>
 
-  <div class="section">
-    <h2 id="requestTitle">📩 Meine Kaufanfragen (0)</h2>
-    <div class="request-grid" id="purchaseRequests"></div>
-  </div>
+  <div id="requestsPage" class="page">
 
-  <div class="section">
-    <h2 id="sellerRequestTitle">📥 Anfragen für meine Karten (0)</h2>
-    <div class="request-grid" id="sellerRequests"></div>
+    <h2 id="requestTitle">
+      📩 Meine Kaufanfragen (0)
+    </h2>
+
+    <div id="purchaseRequests"></div>
+
+    <h2 id="sellerRequestTitle">
+      📥 Anfragen für meine Karten (0)
+    </h2>
+
+    <div id="sellerRequests"></div>
+
   </div>
 
 </div>
@@ -316,109 +391,144 @@ footer {
 
 <script>
 
-const sellForm = document.getElementById("sellForm");
-const searchInput = document.getElementById("searchInput");
-const cards = document.getElementById("cards");
-const myCards = document.getElementById("myCards");
-const favoriteCards = document.getElementById("favoriteCards");
-const purchaseRequests = document.getElementById("purchaseRequests");
-const sellerRequests = document.getElementById("sellerRequests");
+const sellForm =
+  document.getElementById("sellForm");
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const cards =
+  document.getElementById("cards");
+
+const favoriteCards =
+  document.getElementById("favoriteCards");
+
+const myCards =
+  document.getElementById("myCards");
+
+const purchaseRequests =
+  document.getElementById("purchaseRequests");
+
+const sellerRequests =
+  document.getElementById("sellerRequests");
+
 
 function getCards() {
-  return JSON.parse(localStorage.getItem("footballCards")) || [];
+
+  return JSON.parse(
+    localStorage.getItem("footballCards")
+  ) || [];
+
 }
+
 
 function getFavorites() {
-  return JSON.parse(localStorage.getItem("favoriteCards")) || [];
+
+  return JSON.parse(
+    localStorage.getItem("favoriteCards")
+  ) || [];
+
 }
+
 
 function getRequests() {
-  return JSON.parse(localStorage.getItem("purchaseRequests")) || [];
+
+  return JSON.parse(
+    localStorage.getItem("purchaseRequests")
+  ) || [];
+
 }
 
-function getUsername() {
-  return localStorage.getItem("pixelUsername") || "";
+
+function showPage(pageId, buttonId) {
+
+  document.querySelectorAll(".page")
+    .forEach(page => {
+      page.classList.remove("active");
+    });
+
+  document.getElementById(pageId)
+    .classList.add("active");
+
+  document.querySelectorAll(".nav button")
+    .forEach(button => {
+      button.classList.remove("active");
+    });
+
+  document.getElementById(buttonId)
+    .classList.add("active");
+
 }
 
-function saveUsername() {
-  const username = document.getElementById("username").value.trim();
-
-  if (!username) {
-    alert("Bitte gib einen Benutzernamen ein.");
-    return;
-  }
-
-  localStorage.setItem("pixelUsername", username);
-  updateUsername();
-  alert("Benutzername gespeichert!");
-}
-
-function updateUsername() {
-  const username = getUsername();
-
-  document.getElementById("username").value = username;
-
-  if (username) {
-    document.getElementById("welcome").textContent =
-      "👋 Willkommen, " + username + "!";
-  }
-}
 
 function createCard(card) {
 
-  const item = document.createElement("div");
+  const item =
+    document.createElement("div");
+
   item.className = "card";
 
-  const favorites = getFavorites();
+  const favorites =
+    getFavorites();
 
-  const isFavorite = favorites.some(fav =>
-    fav.id === card.id
-  );
+  const favorite =
+    favorites.find(f => f.id === card.id);
 
-  const requests = getRequests();
+  const requests =
+    getRequests();
 
-  const activeRequest = requests.find(request =>
-    request.cardId === card.id &&
-    request.status !== "rejected"
-  );
+  const request =
+    requests.find(r =>
+      r.cardId === card.id &&
+      r.status !== "rejected"
+    );
 
-  let buyButton = "";
+  let buyButton;
 
-  if (activeRequest) {
-
-    if (activeRequest.status === "accepted") {
-      buyButton = `
-        <button class="secondary" disabled>
-          ✅ Kauf angenommen
-        </button>
-      `;
-    } else {
-      buyButton = `
-        <button class="secondary" disabled>
-          🕐 Anfrage gesendet
-        </button>
-      `;
-    }
-
-  } else {
+  if (!request) {
 
     buyButton = `
       <button onclick="buyCard('${card.id}')">
         🛒 Kaufen
       </button>
     `;
+
+  } else if (request.status === "pending") {
+
+    buyButton = `
+      <button class="gray" disabled>
+        🕐 Anfrage gesendet
+      </button>
+    `;
+
+  } else {
+
+    buyButton = `
+      <button class="gray" disabled>
+        ✅ Angenommen
+      </button>
+    `;
+
   }
 
   item.innerHTML = `
+
     <div class="card-image">
-      <img src="${card.image}" alt="${card.player}">
+      <img
+        src="${card.image}"
+        alt="${card.player}"
+      >
     </div>
 
     <h3>${card.player}</h3>
 
-    <p class="info">${card.club}</p>
+    <p class="info">
+      ${card.club}
+    </p>
 
-    <p class="price">${card.price} €</p>
+    <p class="price">
+      ${card.price} €
+    </p>
 
     <button onclick="showCard('${card.id}')">
       👀 Karte ansehen
@@ -427,418 +537,514 @@ function createCard(card) {
     ${buyButton}
 
     <button
-      class="secondary"
+      class="gray"
       onclick="toggleFavorite('${card.id}')"
     >
-      ${isFavorite ? "❤️ Favorisiert" : "♡ Favorit"}
+      ${favorite
+        ? "❤️ Favorisiert"
+        : "♡ Favorit"}
     </button>
+
   `;
 
   cards.appendChild(item);
+
 }
+
 
 function loadCards() {
 
   cards.innerHTML = "";
 
-  const savedCards = getCards();
+  const savedCards =
+    getCards();
 
-  const searchText =
-    searchInput.value.toLowerCase().trim();
+  const text =
+    searchInput.value
+      .toLowerCase()
+      .trim();
 
-  const filteredCards = savedCards.filter(card =>
-    card.player.toLowerCase().includes(searchText) ||
-    card.club.toLowerCase().includes(searchText)
-  );
+  const filtered =
+    savedCards.filter(card =>
+      card.player
+        .toLowerCase()
+        .includes(text) ||
+      card.club
+        .toLowerCase()
+        .includes(text)
+    );
 
-  if (filteredCards.length === 0) {
+  if (filtered.length === 0) {
+
     cards.innerHTML =
       "<p class='empty'>Keine Karten gefunden.</p>";
+
     return;
   }
 
-  filteredCards.forEach(card => {
-    createCard(card);
-  });
+  filtered.forEach(card =>
+    createCard(card)
+  );
+
 }
+
+
+function loadFavorites() {
+
+  const favorites =
+    getFavorites();
+
+  document.getElementById(
+    "favoriteTitle"
+  ).textContent =
+    "❤️ Favoriten (" +
+    favorites.length +
+    ")";
+
+  favoriteCards.innerHTML = "";
+
+  if (favorites.length === 0) {
+
+    favoriteCards.innerHTML =
+      "<p class='empty'>Noch keine Favoriten.</p>";
+
+    return;
+  }
+
+  favorites.forEach(card => {
+
+    const item =
+      document.createElement("div");
+
+    item.className = "card";
+
+    item.innerHTML = `
+
+      <div class="card-image">
+        <img
+          src="${card.image}"
+          alt="${card.player}"
+        >
+      </div>
+
+      <h3>${card.player}</h3>
+
+      <p class="info">
+        ${card.club}
+      </p>
+
+      <p class="price">
+        ${card.price} €
+      </p>
+
+      <button
+        onclick="showCard('${card.id}')"
+      >
+        👀 Karte ansehen
+      </button>
+
+      <button
+        class="gray"
+        onclick="toggleFavorite('${card.id}')"
+      >
+        ❤️ Entfernen
+      </button>
+
+    `;
+
+    favoriteCards.appendChild(item);
+
+  });
+
+}
+
 
 function loadMyCards() {
 
   myCards.innerHTML = "";
 
-  const savedCards = getCards();
+  const savedCards =
+    getCards();
 
   if (savedCards.length === 0) {
+
     myCards.innerHTML =
-      "<p class='empty'>Noch keine eigenen Karten eingestellt.</p>";
+      "<p class='empty'>Noch keine eigenen Karten.</p>";
+
     return;
   }
 
   savedCards.forEach(card => {
 
-    const item = document.createElement("div");
+    const item =
+      document.createElement("div");
+
     item.className = "card";
 
     item.innerHTML = `
+
       <div class="card-image">
-        <img src="${card.image}" alt="${card.player}">
+        <img
+          src="${card.image}"
+          alt="${card.player}"
+        >
       </div>
 
       <h3>${card.player}</h3>
 
-      <p class="info">${card.club}</p>
+      <p class="info">
+        ${card.club}
+      </p>
 
-      <p class="price">${card.price} €</p>
+      <p class="price">
+        ${card.price} €
+      </p>
 
       <button
         class="red"
         onclick="deleteCard('${card.id}')"
       >
-        🗑️ Karte löschen
+        🗑️ Löschen
       </button>
+
     `;
 
     myCards.appendChild(item);
+
   });
+
 }
 
-function loadFavorites() {
 
-  const favorites = getFavorites();
+sellForm.addEventListener(
+  "submit",
+  function(event) {
 
-  document.getElementById("favoriteTitle").textContent =
-    "❤️ Favoriten (" + favorites.length + ")";
+    event.preventDefault();
 
-  favoriteCards.innerHTML = "";
+    const player =
+      document.getElementById("player")
+        .value.trim();
 
-  if (favorites.length === 0) {
-    favoriteCards.innerHTML =
-      "<p class='empty'>Noch keine Favoriten gespeichert.</p>";
-    return;
-  }
+    const club =
+      document.getElementById("club")
+        .value.trim();
 
-  favorites.forEach(favorite => {
+    const price =
+      document.getElementById("price")
+        .value;
 
-    const item = document.createElement("div");
-    item.className = "card";
+    const image =
+      document.getElementById("image")
+        .files[0];
 
-    item.innerHTML = `
-      <div class="card-image">
-        <img src="${favorite.image}" alt="${favorite.player}">
-      </div>
-
-      <h3>${favorite.player}</h3>
-
-      <p class="info">${favorite.club}</p>
-
-      <p class="price">${favorite.price} €</p>
-
-      <button onclick="showCard('${favorite.id}')">
-        👀 Karte ansehen
-      </button>
-
-      <button
-        class="secondary"
-        onclick="toggleFavorite('${favorite.id}')"
-      >
-        ❤️ Entfernen
-      </button>
-    `;
-
-    favoriteCards.appendChild(item);
-  });
-}
-
-sellForm.addEventListener("submit", function(event) {
-
-  event.preventDefault();
-
-  const player =
-    document.getElementById("player").value.trim();
-
-  const club =
-    document.getElementById("club").value.trim();
-
-  const price =
-    document.getElementById("price").value;
-
-  const image =
-    document.getElementById("image").files[0];
-
-  if (!image) {
-    alert("Bitte wähle ein Foto aus!");
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = function() {
-
-    const img = new Image();
-
-    img.onload = function() {
-
-      const canvas =
-        document.createElement("canvas");
-
-      const maxSize = 700;
-
-      let width = img.width;
-      let height = img.height;
-
-      if (width > height && width > maxSize) {
-
-        height =
-          height * (maxSize / width);
-
-        width = maxSize;
-
-      } else if (height > maxSize) {
-
-        width =
-          width * (maxSize / height);
-
-        height = maxSize;
-      }
-
-      canvas.width = width;
-      canvas.height = height;
-
-      const ctx = canvas.getContext("2d");
-
-      ctx.drawImage(
-        img,
-        0,
-        0,
-        width,
-        height
-      );
-
-      const imageData =
-        canvas.toDataURL(
-          "image/jpeg",
-          0.6
-        );
-
-      const savedCards = getCards();
-
-      const newCard = {
-
-        id:
-          Date.now().toString() +
-          Math.random().toString(36).substring(2),
-
-        player: player,
-        club: club,
-        price: price,
-        image: imageData
-      };
-
-      savedCards.unshift(newCard);
-
-      try {
-
-        localStorage.setItem(
-          "footballCards",
-          JSON.stringify(savedCards)
-        );
-
-      } catch(error) {
-
-        alert(
-          "Der Speicher ist voll. Bitte lösche zuerst eine Karte."
-        );
-
-        return;
-      }
-
-      sellForm.reset();
-
-      loadCards();
-      loadMyCards();
+    if (!image) {
 
       alert(
-        "🎉 Deine Karte wurde eingestellt!"
+        "Bitte wähle ein Foto aus!"
       );
-    };
 
-    img.src = reader.result;
-  };
+      return;
+    }
 
-  reader.readAsDataURL(image);
-});
+    const reader =
+      new FileReader();
+
+    reader.onload =
+      function() {
+
+        const img =
+          new Image();
+
+        img.onload =
+          function() {
+
+            const canvas =
+              document.createElement(
+                "canvas"
+              );
+
+            const maxSize = 700;
+
+            let width =
+              img.width;
+
+            let height =
+              img.height;
+
+            if (
+              width > height &&
+              width > maxSize
+            ) {
+
+              height =
+                height *
+                (maxSize / width);
+
+              width = maxSize;
+
+            } else if (
+              height > maxSize
+            ) {
+
+              width =
+                width *
+                (maxSize / height);
+
+              height = maxSize;
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+
+            const ctx =
+              canvas.getContext("2d");
+
+            ctx.drawImage(
+              img,
+              0,
+              0,
+              width,
+              height
+            );
+
+            const imageData =
+              canvas.toDataURL(
+                "image/jpeg",
+                0.6
+              );
+
+            const savedCards =
+              getCards();
+
+            savedCards.unshift({
+
+              id:
+                Date.now() +
+                "-" +
+                Math.random()
+                  .toString(36)
+                  .substring(2),
+
+              player: player,
+
+              club: club,
+
+              price: price,
+
+              image: imageData
+
+            });
+
+            localStorage.setItem(
+              "footballCards",
+              JSON.stringify(
+                savedCards
+              )
+            );
+
+            sellForm.reset();
+
+            loadCards();
+            loadMyCards();
+
+            alert(
+              "🎉 Karte wurde eingestellt!"
+            );
+
+          };
+
+        img.src =
+          reader.result;
+
+      };
+
+    reader.readAsDataURL(image);
+
+  }
+);
+
 
 function deleteCard(cardId) {
 
-  if (!confirm("Möchtest du diese Karte wirklich löschen?")) {
+  if (
+    !confirm(
+      "Karte wirklich löschen?"
+    )
+  ) {
     return;
   }
 
-  let savedCards = getCards();
+  let savedCards =
+    getCards();
 
   savedCards =
-    savedCards.filter(card =>
-      card.id !== cardId
+    savedCards.filter(
+      card => card.id !== cardId
     );
 
   localStorage.setItem(
     "footballCards",
-    JSON.stringify(savedCards)
-  );
-
-  let favorites = getFavorites();
-
-  favorites =
-    favorites.filter(favorite =>
-      favorite.id !== cardId
-    );
-
-  localStorage.setItem(
-    "favoriteCards",
-    JSON.stringify(favorites)
+    JSON.stringify(
+      savedCards
+    )
   );
 
   loadCards();
   loadMyCards();
-  loadFavorites();
+
 }
+
 
 function toggleFavorite(cardId) {
 
-  const savedCards = getCards();
+  const savedCards =
+    getCards();
 
   const card =
-    savedCards.find(card =>
-      card.id === cardId
+    savedCards.find(
+      c => c.id === cardId
     );
 
-  if (!card) {
-    return;
-  }
+  if (!card) return;
 
-  let favorites = getFavorites();
+  let favorites =
+    getFavorites();
 
-  const existingIndex =
-    favorites.findIndex(favorite =>
-      favorite.id === cardId
+  const index =
+    favorites.findIndex(
+      f => f.id === cardId
     );
 
-  if (existingIndex !== -1) {
+  if (index !== -1) {
 
-    favorites.splice(existingIndex, 1);
-
-    alert("Aus Favoriten entfernt!");
+    favorites.splice(index, 1);
 
   } else {
 
     favorites.push(card);
 
-    alert("❤️ Zu Favoriten hinzugefügt!");
   }
 
   localStorage.setItem(
     "favoriteCards",
-    JSON.stringify(favorites)
+    JSON.stringify(
+      favorites
+    )
   );
 
   loadFavorites();
   loadCards();
+
 }
+
 
 function buyCard(cardId) {
 
-  const savedCards = getCards();
-
   const card =
-    savedCards.find(card =>
-      card.id === cardId
+    getCards().find(
+      c => c.id === cardId
     );
 
-  if (!card) {
-    alert("Diese Karte wurde nicht gefunden.");
-    return;
-  }
+  if (!card) return;
 
-  const requests = getRequests();
+  const requests =
+    getRequests();
 
-  const existingRequest =
-    requests.find(request =>
-      request.cardId === cardId &&
-      request.status !== "rejected"
+  const alreadyRequested =
+    requests.find(
+      r =>
+        r.cardId === cardId &&
+        r.status !== "rejected"
     );
 
-  if (existingRequest) {
+  if (alreadyRequested) {
 
-    if (existingRequest.status === "accepted") {
-
-      alert(
-        "Diese Karte wurde bereits angenommen!"
-      );
-
-    } else {
-
-      alert(
-        "🕐 Du hast diese Karte bereits angefragt!"
-      );
-    }
+    alert(
+      alreadyRequested.status === "accepted"
+        ? "✅ Diese Karte wurde bereits angenommen!"
+        : "🕐 Du hast diese Karte bereits angefragt!"
+    );
 
     return;
   }
 
-  const confirmBuy = confirm(
-    "Möchtest du diese Karte kaufen?\n\n" +
-    card.player +
-    " – " +
-    card.club +
-    "\nPreis: " +
-    card.price +
-    " €"
-  );
+  const confirmBuy =
+    confirm(
+      "Möchtest du diese Karte kaufen?\n\n" +
+      card.player +
+      " – " +
+      card.club +
+      "\nPreis: " +
+      card.price +
+      " €"
+    );
 
-  if (!confirmBuy) {
-    return;
-  }
-
-  const username =
-    getUsername() || "Unbekannter Käufer";
+  if (!confirmBuy) return;
 
   requests.push({
 
     id:
-      Date.now().toString() +
-      Math.random().toString(36).substring(2),
+      Date.now() +
+      "-" +
+      Math.random()
+        .toString(36)
+        .substring(2),
 
-    cardId: card.id,
+    cardId:
+      card.id,
 
-    player: card.player,
-    club: card.club,
-    price: card.price,
-    image: card.image,
+    player:
+      card.player,
 
-    buyer: username,
+    club:
+      card.club,
 
-    status: "pending"
+    price:
+      card.price,
+
+    image:
+      card.image,
+
+    buyer:
+      "Käufer",
+
+    status:
+      "pending"
+
   });
 
   localStorage.setItem(
     "purchaseRequests",
-    JSON.stringify(requests)
+    JSON.stringify(
+      requests
+    )
   );
 
+  loadCards();
   loadPurchaseRequests();
   loadSellerRequests();
-  loadCards();
+
+  showPage(
+    "requestsPage",
+    "navRequests"
+  );
 
   alert(
     "📩 Kaufanfrage wurde gesendet!"
   );
+
 }
+
 
 function loadPurchaseRequests() {
 
-  const requests = getRequests();
+  const requests =
+    getRequests();
 
-  document.getElementById("requestTitle").textContent =
+  document.getElementById(
+    "requestTitle"
+  ).textContent =
     "📩 Meine Kaufanfragen (" +
     requests.length +
     ")";
@@ -848,7 +1054,7 @@ function loadPurchaseRequests() {
   if (requests.length === 0) {
 
     purchaseRequests.innerHTML =
-      "<p class='empty'>Noch keine Kaufanfragen gesendet.</p>";
+      "<p class='empty'>Noch keine Kaufanfragen.</p>";
 
     return;
   }
@@ -858,25 +1064,32 @@ function loadPurchaseRequests() {
     const item =
       document.createElement("div");
 
-    item.className = "request-card";
+    item.className =
+      "request";
 
-    let statusText = "";
-    let statusClass = "";
+    let status = "";
 
-    if (request.status === "pending") {
+    if (
+      request.status ===
+      "pending"
+    ) {
 
-      statusText = "🕐 Offen";
-      statusClass = "pending";
+      status =
+        "<span class='pending'>🕐 Offen</span>";
 
-    } else if (request.status === "accepted") {
+    } else if (
+      request.status ===
+      "accepted"
+    ) {
 
-      statusText = "✅ Angenommen";
-      statusClass = "accepted";
+      status =
+        "<span class='accepted'>✅ Angenommen</span>";
 
     } else {
 
-      statusText = "❌ Abgelehnt";
-      statusClass = "rejected";
+      status =
+        "<span class='rejected'>❌ Abgelehnt</span>";
+
     }
 
     item.innerHTML = `
@@ -886,67 +1099,70 @@ function loadPurchaseRequests() {
         alt="${request.player}"
       >
 
-      <h3>${request.player}</h3>
+      <h3>
+        ${request.player}
+      </h3>
 
-      <p class="info">
+      <p>
         ${request.club}
       </p>
 
-      <p class="price">
+      <p>
         ${request.price} €
       </p>
 
-      <p class="status ${statusClass}">
-        ${statusText}
+      <p class="status">
+        ${status}
       </p>
 
       ${
-        request.status === "pending"
-          ? "<p>Die Anfrage wartet auf eine Antwort.</p>"
-          : ""
-      }
-
-      ${
-        request.status === "accepted"
-          ? "<p>🎉 Der Verkäufer hat deine Anfrage angenommen!</p>"
-          : ""
-      }
-
-      ${
         request.status === "rejected"
-          ? "<p>Die Anfrage wurde abgelehnt. Du kannst erneut anfragen.</p>"
+          ? "<p>Du kannst die Karte erneut anfragen.</p>"
           : ""
       }
+
     `;
 
-    purchaseRequests.appendChild(item);
+    purchaseRequests.appendChild(
+      item
+    );
+
   });
+
 }
+
 
 function loadSellerRequests() {
 
-  const requests = getRequests();
+  const requests =
+    getRequests();
 
-  const cards = getCards();
+  const myCards =
+    getCards();
 
-  const myCardIds =
-    cards.map(card => card.id);
+  const myIds =
+    myCards.map(
+      card => card.id
+    );
 
-  const incomingRequests =
-    requests.filter(request =>
-      myCardIds.includes(request.cardId)
+  const incoming =
+    requests.filter(
+      request =>
+        myIds.includes(
+          request.cardId
+        )
     );
 
   document.getElementById(
     "sellerRequestTitle"
   ).textContent =
     "📥 Anfragen für meine Karten (" +
-    incomingRequests.length +
+    incoming.length +
     ")";
 
   sellerRequests.innerHTML = "";
 
-  if (incomingRequests.length === 0) {
+  if (incoming.length === 0) {
 
     sellerRequests.innerHTML =
       "<p class='empty'>Noch keine Anfragen für deine Karten.</p>";
@@ -954,30 +1170,37 @@ function loadSellerRequests() {
     return;
   }
 
-  incomingRequests.forEach(request => {
+  incoming.forEach(request => {
 
     const item =
       document.createElement("div");
 
-    item.className = "request-card";
+    item.className =
+      "request";
 
-    let statusText = "";
-    let statusClass = "";
+    let status = "";
 
-    if (request.status === "pending") {
+    if (
+      request.status ===
+      "pending"
+    ) {
 
-      statusText = "🕐 Offen";
-      statusClass = "pending";
+      status =
+        "<span class='pending'>🕐 Offen</span>";
 
-    } else if (request.status === "accepted") {
+    } else if (
+      request.status ===
+      "accepted"
+    ) {
 
-      statusText = "✅ Angenommen";
-      statusClass = "accepted";
+      status =
+        "<span class='accepted'>✅ Angenommen</span>";
 
     } else {
 
-      statusText = "❌ Abgelehnt";
-      statusClass = "rejected";
+      status =
+        "<span class='rejected'>❌ Abgelehnt</span>";
+
     }
 
     item.innerHTML = `
@@ -987,22 +1210,20 @@ function loadSellerRequests() {
         alt="${request.player}"
       >
 
-      <h3>${request.player}</h3>
+      <h3>
+        ${request.player}
+      </h3>
 
-      <p class="info">
-        ${request.club}
-      </p>
-
-      <p class="price">
-        ${request.price} €
+      <p>
+        Käufer: 👤 ${request.buyer}
       </p>
 
       <p>
-        👤 Käufer: ${request.buyer}
+        ${request.price} €
       </p>
 
-      <p class="status ${statusClass}">
-        ${statusText}
+      <p class="status">
+        ${status}
       </p>
 
       ${
@@ -1027,104 +1248,132 @@ function loadSellerRequests() {
 
     `;
 
-    sellerRequests.appendChild(item);
+    sellerRequests.appendChild(
+      item
+    );
+
   });
+
 }
+
 
 function acceptRequest(requestId) {
 
-  const requests = getRequests();
+  const requests =
+    getRequests();
 
   const request =
-    requests.find(item =>
-      item.id === requestId
+    requests.find(
+      r => r.id === requestId
     );
 
-  if (!request) {
-    return;
-  }
+  if (!request) return;
 
-  request.status = "accepted";
+  request.status =
+    "accepted";
 
   localStorage.setItem(
     "purchaseRequests",
-    JSON.stringify(requests)
+    JSON.stringify(
+      requests
+    )
   );
 
+  loadCards();
   loadPurchaseRequests();
   loadSellerRequests();
-  loadCards();
 
   alert(
-    "✅ Kaufanfrage wurde angenommen!"
+    "✅ Anfrage angenommen!"
   );
+
 }
+
 
 function rejectRequest(requestId) {
 
-  const requests = getRequests();
+  const requests =
+    getRequests();
 
   const request =
-    requests.find(item =>
-      item.id === requestId
+    requests.find(
+      r => r.id === requestId
     );
 
-  if (!request) {
-    return;
-  }
+  if (!request) return;
 
   if (
     !confirm(
-      "Möchtest du diese Anfrage wirklich ablehnen?"
+      "Anfrage wirklich ablehnen?"
     )
   ) {
     return;
   }
 
-  request.status = "rejected";
+  request.status =
+    "rejected";
 
   localStorage.setItem(
     "purchaseRequests",
-    JSON.stringify(requests)
+    JSON.stringify(
+      requests
+    )
   );
 
+  loadCards();
   loadPurchaseRequests();
   loadSellerRequests();
-  loadCards();
 
   alert(
-    "❌ Kaufanfrage wurde abgelehnt."
+    "❌ Anfrage abgelehnt!"
   );
+
 }
+
 
 function showCard(cardId) {
 
-  const savedCards = getCards();
-
   const card =
-    savedCards.find(item =>
-      item.id === cardId
+    getCards().find(
+      c => c.id === cardId
     );
 
-  if (!card) {
-    return;
-  }
+  if (!card) return;
 
   const overlay =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
-  overlay.style.position = "fixed";
+  overlay.style.position =
+    "fixed";
+
   overlay.style.top = "0";
   overlay.style.left = "0";
-  overlay.style.width = "100%";
-  overlay.style.height = "100%";
+
+  overlay.style.width =
+    "100%";
+
+  overlay.style.height =
+    "100%";
+
   overlay.style.background =
-    "rgba(0,0,0,0.7)";
-  overlay.style.display = "flex";
-  overlay.style.alignItems = "center";
-  overlay.style.justifyContent = "center";
-  overlay.style.zIndex = "9999";
-  overlay.style.padding = "20px";
+    "rgba(0,0,0,.7)";
+
+  overlay.style.display =
+    "flex";
+
+  overlay.style.alignItems =
+    "center";
+
+  overlay.style.justifyContent =
+    "center";
+
+  overlay.style.zIndex =
+    "9999";
+
+  overlay.style.padding =
+    "20px";
 
   overlay.innerHTML = `
 
@@ -1139,7 +1388,6 @@ function showCard(cardId) {
 
       <img
         src="${card.image}"
-        alt="${card.player}"
         style="
           width:100%;
           max-height:350px;
@@ -1148,9 +1396,13 @@ function showCard(cardId) {
         "
       >
 
-      <h2>${card.player}</h2>
+      <h2>
+        ${card.player}
+      </h2>
 
-      <p>${card.club}</p>
+      <p>
+        ${card.club}
+      </p>
 
       <p style="
         font-size:24px;
@@ -1174,29 +1426,34 @@ function showCard(cardId) {
       </button>
 
     </div>
+
   `;
 
-  document.body.appendChild(overlay);
+  document.body.appendChild(
+    overlay
+  );
 
   document.getElementById(
     "closeCard"
-  ).onclick = function() {
+  ).onclick =
+    function() {
 
-    overlay.remove();
-  };
+      overlay.remove();
+
+    };
+
 }
+
 
 searchInput.addEventListener(
   "input",
-  function() {
-    loadCards();
-  }
+  loadCards
 );
 
-updateUsername();
+
 loadCards();
-loadMyCards();
 loadFavorites();
+loadMyCards();
 loadPurchaseRequests();
 loadSellerRequests();
 
