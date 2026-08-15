@@ -189,6 +189,7 @@ footer {
 <script>
 const sellForm = document.getElementById("sellForm");
 const cards = document.querySelector(".cards");
+const myCards = document.querySelector(".my-cards");
 
 function createCard(player, club, price, imageData) {
   const newCard = document.createElement("div");
@@ -208,11 +209,54 @@ function createCard(player, club, price, imageData) {
 
   cards.prepend(newCard);
 }
+
 function loadCards() {
-  const savedCards = JSON.parse(localStorage.getItem("footballCards")) || [];
+  const savedCards =
+    JSON.parse(localStorage.getItem("footballCards")) || [];
+
+  cards.innerHTML = "";
 
   savedCards.forEach(card => {
-    createCard(card.player, card.club, card.price, card.image);
+    createCard(
+      card.player,
+      card.club,
+      card.price,
+      card.image
+    );
+  });
+}
+
+function loadMyCards() {
+  const savedCards =
+    JSON.parse(localStorage.getItem("footballCards")) || [];
+
+  myCards.innerHTML = "";
+
+  if (savedCards.length === 0) {
+    myCards.innerHTML = "<p>Noch keine eigenen Karten eingestellt.</p>";
+    return;
+  }
+
+  savedCards.forEach((card, index) => {
+    const item = document.createElement("div");
+
+    item.style.background = "white";
+    item.style.padding = "12px";
+    item.style.marginBottom = "10px";
+    item.style.borderRadius = "10px";
+
+    item.innerHTML = `
+      <strong>${card.player}</strong><br>
+      ${card.club} · ${card.price} €
+      <button
+        onclick="deleteCard(${index})"
+        style="margin-left:10px;"
+      >
+        🗑️ Löschen
+      </button>
+    `;
+
+    myCards.appendChild(item);
   });
 }
 
@@ -232,66 +276,48 @@ sellForm.addEventListener("submit", function(event) {
   const reader = new FileReader();
 
   reader.onload = function() {
-    const imageData = reader.result;
-
-    const savedCards = JSON.parse(localStorage.getItem("footballCards")) || [];
+    const savedCards =
+      JSON.parse(localStorage.getItem("footballCards")) || [];
 
     savedCards.unshift({
       player: player,
       club: club,
       price: price,
-      image: imageData
+      image: reader.result
     });
 
-    localStorage.setItem("footballCards", JSON.stringify(savedCards));
-
-    createCard(player, club, price, imageData);
-
-    alert("Deine Karte wurde eingestellt und gespeichert!");
+    localStorage.setItem(
+      "footballCards",
+      JSON.stringify(savedCards)
+    );
 
     sellForm.reset();
+
+    loadCards();
+    loadMyCards();
+
+    alert("Deine Karte wurde eingestellt und gespeichert!");
   };
 
   reader.readAsDataURL(image);
 });
 
-loadCards();
-function loadMyCards() {
-  const savedCards = JSON.parse(localStorage.getItem("footballCards")) || [];
-  const myCards = document.querySelector(".my-cards");
-
-  myCards.innerHTML = "";
-
-  savedCards.forEach((card, index) => {
-    const myCard = document.createElement("div");
-    myCard.className = "card";
-
-    myCard.innerHTML = `
-      <div class="card-image">
-        <img src="${card.image}" alt="${card.player}">
-      </div>
-      <h3>${card.player}</h3>
-      <p class="info">${card.club}</p>
-      <p class="price">${card.price} €</p>
-      <button onclick="deleteCard(${index})">
-        🗑️ Karte löschen
-      </button>
-    `;
-
-    myCards.prepend(myCard);
-  });
-}
-
 function deleteCard(index) {
-  const savedCards = JSON.parse(localStorage.getItem("footballCards")) || [];
+  const savedCards =
+    JSON.parse(localStorage.getItem("footballCards")) || [];
 
   savedCards.splice(index, 1);
 
-  localStorage.setItem("footballCards", JSON.stringify(savedCards));
+  localStorage.setItem(
+    "footballCards",
+    JSON.stringify(savedCards)
+  );
 
-  location.reload();
+  loadCards();
+  loadMyCards();
 }
 
+loadCards();
 loadMyCards();
 </script>
 </body>
