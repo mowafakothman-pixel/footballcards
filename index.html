@@ -210,20 +210,27 @@ function createCard(player, club, price, imageData) {
 
   cards.appendChild(newCard);
 }
-
 function loadCards() {
   const savedCards =
     JSON.parse(localStorage.getItem("footballCards")) || [];
 
   cards.innerHTML = "";
 
+  const searchText = searchInput.value.toLowerCase();
+
   savedCards.forEach(card => {
-    createCard(
-      card.player,
-      card.club,
-      card.price,
-      card.image
-    );
+    const matches =
+      card.player.toLowerCase().includes(searchText) ||
+      card.club.toLowerCase().includes(searchText);
+
+    if (matches) {
+      createCard(
+        card.player,
+        card.club,
+        card.price,
+        card.image
+      );
+    }
   });
 }
 
@@ -360,7 +367,9 @@ function deleteCard(index) {
   loadCards();
   loadMyCards();
 }
-
+searchInput.addEventListener("input", function() {
+  loadCards();
+});
 loadCards();
 loadMyCards();
 </script>
