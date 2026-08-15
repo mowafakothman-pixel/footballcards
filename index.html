@@ -286,7 +286,8 @@ function loadMyCards() {
 function loadFavorites() {
   const favorites =
     JSON.parse(localStorage.getItem("favoriteCards")) || [];
-
+document.getElementById("favoriteTitle").textContent =
+  "❤️ Favoriten (" + favorites.length + ")";
   favoriteCards.innerHTML = "";
 
   if (favorites.length === 0) {
