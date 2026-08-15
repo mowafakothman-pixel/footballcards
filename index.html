@@ -250,6 +250,39 @@ function loadMyCards() {
       "<p>Noch keine eigenen Karten eingestellt.</p>";
     return;
   }
+
+  savedCards.forEach((card, index) => {
+    const item = document.createElement("div");
+
+    item.style.background = "white";
+    item.style.padding = "12px";
+    item.style.marginBottom = "10px";
+    item.style.borderRadius = "10px";
+    item.style.display = "flex";
+    item.style.alignItems = "center";
+    item.style.gap = "12px";
+
+    item.innerHTML = `
+      <img
+        src="${card.image}"
+        alt="${card.player}"
+        style="width:70px;height:70px;object-fit:contain;border-radius:8px;"
+      >
+
+      <div style="flex:1;">
+        <strong>${card.player}</strong><br>
+        ${card.club} · ${card.price} €
+      </div>
+
+      <button onclick="deleteCard(${index})">
+        🗑️ Löschen
+      </button>
+    `;
+
+    myCards.appendChild(item);
+  });
+}
+
 function loadFavorites() {
   const favorites =
     JSON.parse(localStorage.getItem("favoriteCards")) || [];
@@ -287,39 +320,6 @@ function loadFavorites() {
     favoriteCards.appendChild(item);
   });
 }
-  savedCards.forEach((card, index) => {
-    const item = document.createElement("div");
-
-    item.style.background = "white";
-    item.style.padding = "12px";
-    item.style.marginBottom = "10px";
-    item.style.borderRadius = "10px";
-    item.style.display = "flex";
-    item.style.alignItems = "center";
-    item.style.gap = "12px";
-
-    item.innerHTML = `
-      <img
-        src="${card.image}"
-        alt="${card.player}"
-        style="width:70px;height:70px;object-fit:contain;border-radius:8px;"
-      >
-
-      <div style="flex:1;">
-        <strong>${card.player}</strong><br>
-        ${card.club} · ${card.price} €
-      </div>
-
-      <button onclick="deleteCard(${index})">
-        🗑️ Löschen
-      </button>
-      
-    `;
-
-    myCards.appendChild(item);
-  });
-}
-
 sellForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
