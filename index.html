@@ -2,30 +2,25 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Pixel Cards</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 :root{
-  --bg:#080808;
+  --bg:#090909;
   --panel:#111;
   --panel2:#171717;
-  --panel3:#202020;
-  --text:#fff;
-  --muted:#a1a1aa;
   --border:#292929;
-  --green:#22c55e;
-  --red:#ef4444;
-  --yellow:#facc15;
+  --text:#fff;
+  --muted:#999;
+  --accent:#fff;
+  --danger:#ef4444;
+  --success:#22c55e;
 }
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
@@ -34,14 +29,12 @@ body{
   color:var(--text);
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ================= HEADER ================= */
 
 header{
   background:#050505;
-  border-bottom:1px solid #202020;
-  padding:20px 18px;
+  border-bottom:1px solid #222;
+  padding:18px 22px;
 }
 
 .header-inner{
@@ -50,25 +43,13 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
+  gap:15px;
 }
 
 .logo{
   display:flex;
   align-items:center;
-  gap:12px;
-}
-
-.logo-icon{
-  width:45px;
-  height:45px;
-  border-radius:13px;
-  background:#fff;
-  color:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:23px;
+  gap:10px;
 }
 
 .logo h1{
@@ -76,47 +57,85 @@ header{
   font-size:25px;
 }
 
-.logo p{
-  margin:3px 0 0;
-  color:#888;
+.logo span{
+  color:#777;
   font-size:13px;
 }
 
-/* =========================
-   PROFILE TOP
-========================= */
+/* ================= TOP NAVIGATION ================= */
 
-.profile-bar{
-  background:#0d0d0d;
-  border-bottom:1px solid #242424;
+.topbar{
   position:sticky;
   top:0;
-  z-index:1000;
+  z-index:2000;
+  background:rgba(9,9,9,.96);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #222;
 }
 
-.profile-inner{
+.nav-inner{
   max-width:1250px;
   margin:auto;
-  min-height:65px;
+  padding:10px 16px;
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:8px;
 }
 
-.profile-spacer{
+.navigation{
+  display:flex;
+  gap:7px;
   flex:1;
+  overflow-x:auto;
+  scrollbar-width:none;
 }
 
-.profile-user{
+.navigation::-webkit-scrollbar{
+  display:none;
+}
+
+.nav-btn{
+  position:relative;
+  flex-shrink:0;
+  border:1px solid #292929;
+  background:#141414;
+  color:#aaa;
+  padding:11px 15px;
+  border-radius:11px;
+  font-weight:bold;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.nav-btn:hover{
+  background:#1d1d1d;
+  color:#fff;
+}
+
+.nav-btn.active{
+  background:#fff;
+  color:#000;
+  border-color:#fff;
+}
+
+/* ================= PROFILE ================= */
+
+.profile-button{
+  flex-shrink:0;
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:8px;
+  background:#151515;
+  border:1px solid #292929;
+  color:#fff;
+  padding:7px 11px;
+  border-radius:12px;
   cursor:pointer;
 }
 
 .avatar{
-  width:40px;
-  height:40px;
+  width:32px;
+  height:32px;
   border-radius:50%;
   background:#fff;
   color:#000;
@@ -124,41 +143,22 @@ header{
   align-items:center;
   justify-content:center;
   font-weight:bold;
-  overflow:hidden;
-}
-
-.avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
 }
 
 .profile-name{
+  max-width:100px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
   font-weight:bold;
 }
 
-.profile-edit-btn{
-  border:1px solid #333;
-  background:#181818;
-  color:#fff;
-  padding:9px 12px;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.profile-edit-btn:hover{
-  background:#252525;
-}
-
-/* =========================
-   SEARCH
-========================= */
+/* ================= SEARCH ================= */
 
 .search-area{
-  background:#0b0b0b;
-  padding:18px;
-  border-bottom:1px solid #1d1d1d;
+  background:#0c0c0c;
+  border-bottom:1px solid #222;
+  padding:15px 16px;
 }
 
 .search-inner{
@@ -168,100 +168,90 @@ header{
   gap:10px;
 }
 
-.search-box{
+.search-input{
   flex:1;
-  background:#171717;
-  border:1px solid #303030;
+  min-width:0;
+  background:#151515;
   color:#fff;
-  padding:14px 16px;
-  border-radius:13px;
-  font-size:16px;
+  border:1px solid #292929;
+  border-radius:12px;
+  padding:13px 15px;
+  font-size:15px;
   outline:none;
 }
 
-.search-box:focus{
-  border-color:#666;
+.search-input:focus{
+  border-color:#555;
 }
 
-.search-box::placeholder{
-  color:#777;
-}
-
-/* =========================
-   CONTAINER
-========================= */
+/* ================= CONTAINER ================= */
 
 .container{
   max-width:1250px;
   margin:auto;
-  padding:20px;
+  padding:20px 16px 40px;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
+/* ================= SELL ================= */
 
-.navigation{
-  position:sticky;
-  top:65px;
-  z-index:900;
-  display:flex;
-  gap:8px;
-  padding:12px 0;
-  margin-bottom:20px;
-  background:var(--bg);
-  overflow-x:auto;
-  scrollbar-width:none;
-}
-
-.navigation::-webkit-scrollbar{
-  display:none;
-}
-
-.navigation button{
-  position:relative;
+.sell{
+  background:linear-gradient(135deg,#171717,#0d0d0d);
   border:1px solid #292929;
-  background:#151515;
-  color:#aaa;
-  padding:12px 16px;
-  border-radius:12px;
-  font-weight:bold;
-  white-space:nowrap;
-  cursor:pointer;
-  transition:.18s;
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:22px;
 }
 
-.navigation button:hover{
-  background:#222;
+.sell-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:15px;
+}
+
+.sell h2{
+  margin:0;
+  font-size:20px;
+}
+
+.sell p{
+  margin:5px 0 0;
+  color:#888;
+  font-size:14px;
+}
+
+.sell form{
+  display:grid;
+  grid-template-columns:1fr 1fr 140px auto;
+  gap:9px;
+}
+
+.sell input{
+  width:100%;
+  background:#191919;
   color:#fff;
+  border:1px solid #303030;
+  border-radius:10px;
+  padding:12px;
+  outline:none;
 }
 
-.navigation button.active{
+.sell input:focus{
+  border-color:#666;
+}
+
+.sell button{
+  border:0;
+  border-radius:10px;
+  padding:12px 17px;
   background:#fff;
   color:#000;
-  border-color:#fff;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.badge{
-  position:absolute;
-  top:-7px;
-  right:-5px;
-  min-width:20px;
-  height:20px;
-  padding:2px 6px;
-  border-radius:20px;
-  background:#ef4444;
-  color:#fff;
-  font-size:11px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:2px solid #080808;
-}
-
-/* =========================
-   PAGES
-========================= */
+/* ================= PAGES ================= */
 
 .page{
   display:none;
@@ -273,124 +263,48 @@ header{
 
 .page-title{
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   gap:10px;
-  margin-bottom:18px;
+  margin-bottom:15px;
 }
 
 .page-title h2{
   margin:0;
+  font-size:22px;
 }
 
-/* =========================
-   SELL
-========================= */
-
-.sell{
-  background:linear-gradient(145deg,#171717,#0e0e0e);
-  border:1px solid #292929;
-  border-radius:20px;
-  padding:22px;
-  margin-bottom:20px;
-}
-
-.sell h2{
-  margin:0 0 6px;
-}
-
-.sell p{
-  color:#999;
-  margin-top:0;
-}
-
-.sell-form{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:18px;
-}
-
-.input{
-  width:100%;
-  background:#080808;
-  border:1px solid #303030;
-  color:#fff;
-  padding:13px;
-  border-radius:11px;
-  outline:none;
-}
-
-.input:focus{
-  border-color:#777;
-}
-
-.photo-input{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff;
-  color:#000;
-  border-radius:11px;
-  padding:13px;
-  font-weight:bold;
-  cursor:pointer;
-  min-height:46px;
-}
-
-.photo-input input{
-  display:none;
-}
-
-.sell-button{
-  border:none;
-  border-radius:11px;
-  background:#fff;
-  color:#000;
-  font-weight:bold;
-  cursor:pointer;
-  padding:13px;
-}
-
-.sell-button:hover{
-  background:#ddd;
-}
-
-/* =========================
-   CARDS
-========================= */
+/* ================= CARDS ================= */
 
 .cards{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:16px;
+  gap:15px;
 }
 
 .card{
-  position:relative;
   background:#111;
   border:1px solid #252525;
-  border-radius:18px;
+  border-radius:16px;
   padding:12px;
-  overflow:hidden;
   transition:.18s;
+  min-width:0;
 }
 
 .card:hover{
-  transform:translateY(-3px);
-  border-color:#444;
+  transform:translateY(-2px);
+  border-color:#3a3a3a;
 }
 
 .card-image{
   width:100%;
-  height:220px;
-  background:#1a1a1a;
-  border-radius:13px;
+  height:210px;
+  background:#181818;
+  border-radius:12px;
   overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
-  position:relative;
 }
 
 .card-image img{
@@ -399,77 +313,39 @@ header{
   object-fit:contain;
 }
 
-.new-badge{
-  position:absolute;
-  top:9px;
-  left:9px;
-  background:#fff;
-  color:#000;
-  font-size:11px;
-  font-weight:bold;
-  padding:6px 8px;
-  border-radius:8px;
-  z-index:2;
-}
-
-.sold-badge{
-  position:absolute;
-  top:9px;
-  right:9px;
-  background:#ef4444;
-  color:#fff;
-  font-size:11px;
-  font-weight:bold;
-  padding:6px 8px;
-  border-radius:8px;
-  z-index:2;
-}
-
 .card h3{
-  margin:12px 2px 4px;
+  margin:11px 0 4px;
   font-size:17px;
 }
 
 .info{
-  color:#999;
-  margin:6px 2px;
+  color:#888;
+  margin:5px 0;
   font-size:14px;
 }
 
 .price{
   font-size:21px;
   font-weight:bold;
-  margin:10px 2px;
-}
-
-.card-actions{
-  display:grid;
-  gap:7px;
-  margin-top:10px;
+  margin:9px 0;
 }
 
 .card button{
   width:100%;
-  border:none;
-  border-radius:9px;
+  margin-top:7px;
   padding:10px;
+  border:0;
+  border-radius:9px;
   background:#fff;
   color:#000;
   font-weight:bold;
   cursor:pointer;
 }
 
-.card button:hover{
-  background:#ddd;
-}
-
 .card button.gray{
-  background:#242424;
+  background:#202020;
   color:#fff;
-}
-
-.card button.gray:hover{
-  background:#303030;
+  border:1px solid #303030;
 }
 
 .card button:disabled{
@@ -480,14 +356,43 @@ header{
 .favorite-row{
   display:flex;
   justify-content:space-between;
-  color:#888;
+  color:#777;
   font-size:13px;
-  margin-top:10px;
+  margin-top:8px;
 }
 
-/* =========================
-   REQUESTS
-========================= */
+/* ================= BADGE ================= */
+
+.badge{
+  position:absolute;
+  top:-6px;
+  right:-5px;
+  min-width:19px;
+  height:19px;
+  padding:2px 5px;
+  border-radius:20px;
+  background:#ef4444;
+  color:#fff;
+  font-size:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid #090909;
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+  grid-column:1/-1;
+  background:#111;
+  border:1px solid #252525;
+  border-radius:15px;
+  padding:30px 20px;
+  color:#777;
+  text-align:center;
+}
+
+/* ================= REQUESTS ================= */
 
 .request-list{
   display:grid;
@@ -496,9 +401,9 @@ header{
 
 .request{
   background:#111;
-  border:1px solid #292929;
-  border-radius:17px;
-  padding:16px;
+  border:1px solid #252525;
+  border-radius:16px;
+  padding:15px;
 }
 
 .request-top{
@@ -508,344 +413,285 @@ header{
 }
 
 .request-image{
-  width:90px;
-  height:90px;
+  width:85px;
+  height:85px;
   object-fit:contain;
-  background:#1c1c1c;
-  border-radius:12px;
+  background:#181818;
+  border-radius:11px;
   flex-shrink:0;
 }
 
 .request-info{
   flex:1;
+  min-width:0;
 }
 
 .request-info h3{
-  margin:0 0 7px;
+  margin:0 0 6px;
 }
 
 .request-actions{
   display:flex;
   gap:8px;
-  margin-top:14px;
+  margin-top:13px;
 }
 
 .accept-btn,
 .reject-btn,
 .rate-btn{
-  border:none;
-  padding:11px 15px;
-  border-radius:10px;
+  border:0;
   color:#fff;
+  padding:11px 15px;
+  border-radius:9px;
   font-weight:bold;
-  cursor:pointer;
   flex:1;
+  cursor:pointer;
 }
 
-.accept-btn{
-  background:#16a34a;
-}
-
-.reject-btn{
-  background:#dc2626;
-}
-
-.rate-btn{
-  background:#fff;
-  color:#000;
-}
+.accept-btn{background:#16a34a}
+.reject-btn{background:#dc2626}
+.rate-btn{background:#222}
 
 .status{
   display:inline-block;
   padding:6px 9px;
   border-radius:8px;
-  font-size:12px;
+  font-size:13px;
   font-weight:bold;
-  margin-top:5px;
 }
 
 .status.open{
-  background:#332b15;
-  color:#facc15;
+  background:#332b19;
+  color:#f5c451;
 }
 
 .status.accepted{
-  background:#102d1b;
+  background:#12331d;
   color:#4ade80;
 }
 
 .status.rejected{
-  background:#321717;
+  background:#351818;
   color:#f87171;
 }
 
-/* =========================
-   PROFILE PAGE
-========================= */
+/* ================= PROFILE ================= */
 
-.seller-profile{
+.profile-box{
   background:#111;
-  border:1px solid #292929;
-  border-radius:20px;
+  border:1px solid #252525;
+  border-radius:18px;
   padding:22px;
 }
 
-.seller-header{
+.profile-header{
   display:flex;
   align-items:center;
   gap:15px;
 }
 
 .big-avatar{
-  width:75px;
-  height:75px;
+  width:70px;
+  height:70px;
   border-radius:50%;
   background:#fff;
   color:#000;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:27px;
+  font-size:26px;
   font-weight:bold;
-  overflow:hidden;
-}
-
-.big-avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
 }
 
 .rating{
-  font-size:20px;
-  margin-top:7px;
+  margin-top:6px;
+  font-size:18px;
 }
 
-.seller-stats{
+.profile-stats{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
   margin-top:20px;
 }
 
-.seller-stat{
-  background:#1a1a1a;
+.profile-stat{
+  background:#191919;
   border:1px solid #292929;
-  border-radius:13px;
-  padding:15px;
+  border-radius:11px;
+  padding:13px;
   text-align:center;
 }
 
-.seller-stat strong{
+.profile-stat strong{
   display:block;
-  font-size:22px;
+  font-size:21px;
 }
 
-.seller-stat span{
-  color:#888;
+.profile-stat span{
+  color:#777;
   font-size:12px;
 }
+
+/* ================= PROFILE SETTINGS ================= */
+
+.profile-settings{
+  background:#111;
+  border:1px solid #252525;
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:15px;
+}
+
+.profile-settings h2{
+  margin-top:0;
+}
+
+.profile-settings-row{
+  display:flex;
+  gap:8px;
+}
+
+.profile-settings input{
+  flex:1;
+  min-width:0;
+  background:#191919;
+  color:#fff;
+  border:1px solid #303030;
+  border-radius:10px;
+  padding:12px;
+}
+
+.primary-btn{
+  border:0;
+  background:#fff;
+  color:#000;
+  padding:11px 16px;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* ================= RATING ================= */
 
 .rating-stars{
   display:flex;
   justify-content:center;
-  gap:6px;
+  gap:5px;
   margin:15px 0;
 }
 
 .rating-stars button{
-  border:none;
+  border:0;
   background:#222;
-  color:#fff;
   border-radius:8px;
   padding:8px;
-  font-size:19px;
   cursor:pointer;
 }
 
 .rating-stars button.selected{
-  background:#594d18;
-}
-
-/* =========================
-   EMPTY
-========================= */
-
-.empty{
-  background:#111;
-  border:1px solid #292929;
-  border-radius:15px;
-  padding:25px;
-  text-align:center;
-  color:#888;
-}
-
-/* =========================
-   PROFILE MODAL
-========================= */
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.82);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  padding:18px;
-}
-
-.modal-box{
-  width:100%;
-  max-width:430px;
-  background:#111;
-  border:1px solid #333;
-  border-radius:20px;
-  padding:22px;
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
-}
-
-.modal-box h2{
-  margin-top:0;
-}
-
-.modal-buttons{
-  display:grid;
-  gap:8px;
-  margin-top:12px;
-}
-
-.modal-primary{
-  border:none;
   background:#fff;
-  color:#000;
-  padding:12px;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
 }
 
-.modal-secondary{
-  border:none;
-  background:#252525;
-  color:#fff;
-  padding:12px;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.profile-photo-label{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height:100px;
-  border:1px dashed #555;
-  border-radius:14px;
-  background:#171717;
-  cursor:pointer;
-  margin-bottom:12px;
-  color:#bbb;
-  text-align:center;
-}
-
-.profile-photo-label input{
-  display:none;
-}
-
-/* =========================
-   FOOTER
-========================= */
+/* ================= FOOTER ================= */
 
 footer{
   text-align:center;
-  padding:35px 15px;
-  color:#666;
+  padding:30px;
+  color:#555;
+  font-size:13px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ================= TABLET ================= */
 
-@media(max-width:1050px){
+@media(max-width:1000px){
 
   .cards{
     grid-template-columns:repeat(3,minmax(0,1fr));
   }
 
-}
-
-@media(max-width:800px){
-
-  .cards{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .sell-form{
+  .sell form{
     grid-template-columns:1fr 1fr;
   }
 
+  .sell button{
+    width:100%;
+  }
 }
 
-@media(max-width:600px){
+/* ================= HANDY ================= */
+
+@media(max-width:700px){
 
   header{
-    padding:15px;
+    padding:14px 14px;
   }
 
   .header-inner{
-    gap:10px;
+    justify-content:center;
   }
 
-  .logo h1{
-    font-size:21px;
-  }
-
-  .logo p{
+  .logo span{
     display:none;
   }
 
-  .profile-inner{
-    padding:8px 12px;
+  .logo h1{
+    font-size:22px;
+  }
+
+  .nav-inner{
+    padding:8px 10px;
+  }
+
+  .navigation{
+    order:1;
+  }
+
+  .profile-button{
+    order:2;
   }
 
   .profile-name{
     display:none;
   }
 
-  .profile-edit-btn{
-    padding:8px 10px;
+  .profile-button{
+    padding:6px;
   }
 
-  .navigation{
-    top:57px;
-    margin-bottom:13px;
+  .search-area{
+    padding:10px;
   }
 
   .container{
-    padding:13px;
+    padding:14px 10px 30px;
   }
 
   .sell{
-    padding:16px;
+    padding:15px;
   }
 
-  .sell-form{
+  .sell-header{
+    align-items:flex-start;
+  }
+
+  .sell form{
+    display:grid;
     grid-template-columns:1fr;
   }
 
   .cards{
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px;
   }
 
   .card{
     padding:9px;
-    border-radius:15px;
+    border-radius:13px;
   }
 
   .card-image{
-    height:175px;
+    height:150px;
   }
 
   .card h3{
@@ -866,30 +712,47 @@ footer{
   }
 
   .request-image{
-    width:75px;
-    height:75px;
+    width:70px;
+    height:70px;
   }
 
   .request-actions{
     flex-direction:column;
   }
 
-  .seller-stats{
-    grid-template-columns:1fr;
+  .profile-stats{
+    grid-template-columns:1fr 1fr 1fr;
   }
 
+  .profile-stat{
+    padding:10px 5px;
+  }
+
+  .profile-stat strong{
+    font-size:18px;
+  }
+
+  .profile-settings-row{
+    flex-direction:column;
+  }
 }
 
-@media(max-width:380px){
+/* ================= VERY SMALL PHONES ================= */
+
+@media(max-width:390px){
 
   .cards{
-    grid-template-columns:1fr;
+    grid-template-columns:1fr 1fr;
   }
 
   .card-image{
-    height:230px;
+    height:130px;
   }
 
+  .nav-btn{
+    padding:9px 11px;
+    font-size:12px;
+  }
 }
 </style>
 </head>
@@ -899,188 +762,126 @@ footer{
 <header>
   <div class="header-inner">
     <div class="logo">
-      <div class="logo-icon">⚽</div>
-      <div>
-        <h1>Pixel Cards</h1>
-        <p>Der Marktplatz für Fußballkarten</p>
-      </div>
+      <h1>⚽ Pixel Cards</h1>
+      <span>Der Marktplatz für Fußballkarten</span>
     </div>
   </div>
 </header>
 
-<!-- =========================
-     PROFIL OBEN RECHTS
-========================= -->
+<!-- ================= NAVIGATION ================= -->
 
-<div class="profile-bar">
+<div class="topbar">
+  <div class="nav-inner">
 
-  <div class="profile-inner">
+    <div class="navigation">
 
-    <div class="profile-spacer"></div>
+      <button id="navCards"
+        class="nav-btn active"
+        onclick="showPage('cardsPage','navCards')">
+        🔥 Karten
+      </button>
 
-    <div
-      class="profile-user"
-      onclick="openOwnProfile()"
-    >
+      <button id="navFavorites"
+        class="nav-btn"
+        onclick="showPage('favoritesPage','navFavorites')">
+        ❤️ Favoriten
+      </button>
 
-      <div id="avatar" class="avatar">?</div>
+      <button id="navMine"
+        class="nav-btn"
+        onclick="showPage('minePage','navMine')">
+        🃏 Meine Karten
+      </button>
 
-      <span id="profileName" class="profile-name">
-        Kein Benutzer
-      </span>
+      <button id="navRequests"
+        class="nav-btn"
+        onclick="showPage('requestsPage','navRequests')">
+        📩 Anfragen
+        <span id="requestBadge"
+          class="badge"
+          style="display:none">0</span>
+      </button>
 
     </div>
 
-    <button
-      class="profile-edit-btn"
-      onclick="openProfileEditor()"
-    >
-      ✏️ Profil
+    <!-- PROFIL GANZ RECHTS -->
+
+    <button class="profile-button"
+      onclick="showPage('profilePage','navProfile')">
+
+      <div id="avatar" class="avatar">?</div>
+
+      <span id="profileName"
+        class="profile-name">
+        Profil
+      </span>
+
     </button>
 
   </div>
-
 </div>
 
-<!-- =========================
-     SUCHE
-========================= -->
+<!-- ================= SEARCH ================= -->
 
 <div class="search-area">
-
   <div class="search-inner">
 
     <input
       id="searchInput"
-      class="search-box"
+      class="search-input"
       type="text"
-      placeholder="🔎 Spieler, Verein oder Karte suchen..."
+      placeholder="🔎 Spieler, Verein oder Verkäufer suchen..."
     >
 
   </div>
-
 </div>
 
 <div class="container">
 
-<!-- =========================
-     VERKAUFEN
-========================= -->
+<!-- ================= SELL ================= -->
 
 <div class="sell">
 
-  <h2>🎟️ Karte verkaufen</h2>
+  <div class="sell-header">
+    <div>
+      <h2>🎟️ Karte verkaufen</h2>
+      <p>Stelle deine Fußballkarte schnell ein.</p>
+    </div>
+  </div>
 
-  <p>
-    Stelle deine Fußballkarte schnell und einfach ein.
-  </p>
+  <form id="sellForm">
 
-  <form id="sellForm" class="sell-form">
-
-    <input
-      id="player"
-      class="input"
+    <input id="player"
       type="text"
       placeholder="Spieler"
-      required
-    >
+      required>
 
-    <input
-      id="club"
-      class="input"
+    <input id="club"
       type="text"
       placeholder="Verein"
-      required
-    >
+      required>
 
-    <input
-      id="price"
-      class="input"
+    <input id="price"
       type="number"
       min="0"
       step="0.01"
-      placeholder="Preis in €"
-      required
-    >
+      placeholder="Preis €"
+      required>
 
-    <label class="photo-input">
-      📷 Foto hinzufügen
-      <input
-        id="image"
-        type="file"
-        accept="image/*"
-        required
-      >
-    </label>
+    <input id="image"
+      type="file"
+      accept="image/*"
+      required>
 
-    <button
-      class="sell-button"
-      type="submit"
-    >
-      ➕ Karte einstellen
+    <button type="submit">
+      📷 Foto auswählen & Karte einstellen
     </button>
 
   </form>
 
 </div>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
-<div class="navigation">
-
-  <button
-    id="navCards"
-    class="active"
-    onclick="showPage('cardsPage','navCards')"
-  >
-    🔥 Karten
-  </button>
-
-  <button
-    id="navFavorites"
-    onclick="showPage('favoritesPage','navFavorites')"
-  >
-    ❤️ Favoriten
-    <span
-      id="favoriteBadge"
-      class="badge"
-      style="display:none"
-    >0</span>
-  </button>
-
-  <button
-    id="navMine"
-    onclick="showPage('minePage','navMine')"
-  >
-    🃏 Meine Karten
-  </button>
-
-  <button
-    id="navRequests"
-    onclick="showPage('requestsPage','navRequests')"
-  >
-    📩 Anfragen
-    <span
-      id="requestBadge"
-      class="badge"
-      style="display:none"
-    >0</span>
-  </button>
-
-  <button
-    id="navProfile"
-    onclick="showPage('profilePage','navProfile')"
-  >
-    👤 Profil
-  </button>
-
-</div>
-
-<!-- =========================
-     KARTEN
-========================= -->
+<!-- ================= KARTEN ================= -->
 
 <section id="cardsPage" class="page active">
 
@@ -1092,28 +893,19 @@ footer{
 
 </section>
 
-<!-- =========================
-     FAVORITEN
-========================= -->
+<!-- ================= FAVORITEN ================= -->
 
 <section id="favoritesPage" class="page">
 
   <div class="page-title">
-    <h2 id="favoriteTitle">
-      ❤️ Favoriten (0)
-    </h2>
+    <h2 id="favoriteTitle">❤️ Favoriten (0)</h2>
   </div>
 
-  <div
-    id="favoriteCards"
-    class="cards"
-  ></div>
+  <div id="favoriteCards" class="cards"></div>
 
 </section>
 
-<!-- =========================
-     MEINE KARTEN
-========================= -->
+<!-- ================= MEINE KARTEN ================= -->
 
 <section id="minePage" class="page">
 
@@ -1121,29 +913,20 @@ footer{
     <h2>🃏 Meine Karten</h2>
   </div>
 
-  <div
-    id="myCards"
-    class="cards"
-  ></div>
+  <div id="myCards" class="cards"></div>
 
 </section>
 
-<!-- =========================
-     ANFRAGEN
-========================= -->
+<!-- ================= ANFRAGEN ================= -->
 
 <section id="requestsPage" class="page">
 
   <div class="page-title">
-    <h2 id="requestTitle">
-      📩 Meine Kaufanfragen (0)
-    </h2>
+    <h2 id="requestTitle">📩 Meine Kaufanfragen (0)</h2>
   </div>
 
-  <div
-    id="purchaseRequests"
-    class="request-list"
-  ></div>
+  <div id="purchaseRequests"
+    class="request-list"></div>
 
   <br>
 
@@ -1153,27 +936,43 @@ footer{
     </h2>
   </div>
 
-  <div
-    id="sellerRequests"
-    class="request-list"
-  ></div>
+  <div id="sellerRequests"
+    class="request-list"></div>
 
 </section>
 
-<!-- =========================
-     PROFIL
-========================= -->
+<!-- ================= PROFIL ================= -->
 
 <section id="profilePage" class="page">
 
-  <div class="page-title">
-    <h2>👤 Verkäuferprofil</h2>
+  <div class="profile-settings">
+
+    <h2>👤 Mein Profil</h2>
+
+    <p class="info">
+      Ändere hier deinen Benutzernamen.
+    </p>
+
+    <div class="profile-settings-row">
+
+      <input
+        id="usernameInput"
+        type="text"
+        maxlength="20"
+        placeholder="Benutzername">
+
+      <button
+        class="primary-btn"
+        onclick="saveUsername()">
+        Profil speichern
+      </button>
+
+    </div>
+
   </div>
 
-  <div
-    id="profileBox"
-    class="seller-profile"
-  ></div>
+  <div id="profileBox"
+    class="profile-box"></div>
 
 </section>
 
@@ -1190,19 +989,10 @@ footer{
 ========================================================= */
 
 function getUsername(){
-
   return localStorage.getItem("pixelUsername") || "";
-
-}
-
-function getProfileImage(){
-
-  return localStorage.getItem("pixelProfileImage") || "";
-
 }
 
 function getCards(){
-
   try{
     return JSON.parse(
       localStorage.getItem("footballCards")
@@ -1210,11 +1000,9 @@ function getCards(){
   }catch(e){
     return [];
   }
-
 }
 
 function getRequests(){
-
   try{
     return JSON.parse(
       localStorage.getItem("purchaseRequests")
@@ -1222,11 +1010,9 @@ function getRequests(){
   }catch(e){
     return [];
   }
-
 }
 
 function getFavorites(){
-
   try{
     return JSON.parse(
       localStorage.getItem("favoriteCards")
@@ -1234,11 +1020,9 @@ function getFavorites(){
   }catch(e){
     return [];
   }
-
 }
 
 function getFavoriteUsers(){
-
   try{
     return JSON.parse(
       localStorage.getItem("favoriteUsers")
@@ -1246,11 +1030,9 @@ function getFavoriteUsers(){
   }catch(e){
     return {};
   }
-
 }
 
 function getRatings(){
-
   try{
     return JSON.parse(
       localStorage.getItem("sellerRatings")
@@ -1258,18 +1040,14 @@ function getRatings(){
   }catch(e){
     return {};
   }
-
 }
 
 function saveData(key,data){
-
   localStorage.setItem(
     key,
     JSON.stringify(data)
   );
-
 }
-
 
 /* =========================================================
    PROFIL
@@ -1279,259 +1057,44 @@ function updateProfile(){
 
   const name=getUsername();
 
-  const avatar=document.getElementById("avatar");
-
   document.getElementById("profileName").textContent=
-    name || "Kein Benutzer";
+    name || "Profil";
 
-  const image=getProfileImage();
-
-  if(image){
-
-    avatar.innerHTML=
-      `<img src="${image}" alt="Profilbild">`;
-
-  }else{
-
-    avatar.textContent=
-      name
+  document.getElementById("avatar").textContent=
+    name
       ? name.charAt(0).toUpperCase()
       : "?";
 
-  }
-
+  document.getElementById("usernameInput").value=name;
 }
-
 
 function saveUsername(){
 
   const input=
-    document.getElementById("profileUsernameInput");
-
-  if(!input) return;
+    document.getElementById("usernameInput");
 
   const name=input.value.trim();
 
   if(!name){
-
     alert("Bitte gib einen Benutzernamen ein.");
     return;
-
   }
 
-  const oldName=getUsername();
+  if(name.length<2){
+    alert("Der Benutzername muss mindestens 2 Zeichen haben.");
+    return;
+  }
 
   localStorage.setItem(
     "pixelUsername",
     name
   );
 
-  /*
-   * Bestehende Karten werden bewusst NICHT
-   * automatisch umbenannt. Dadurch bleiben
-   * die bisherigen Daten stabil.
-   */
-
   updateProfile();
   loadAll();
 
-  if(oldName && oldName!==name){
-
-    alert(
-      "👤 Benutzername geändert zu: "+name
-    );
-
-  }else{
-
-    alert("👤 Profil gespeichert!");
-
-  }
-
+  alert("👤 Profil gespeichert!");
 }
-
-
-function openProfileEditor(){
-
-  const overlay=document.createElement("div");
-
-  overlay.className="modal";
-
-  const currentName=getUsername();
-
-  overlay.innerHTML=`
-
-    <div class="modal-box">
-
-      <h2>✏️ Profil bearbeiten</h2>
-
-      <p class="info">
-        Ändere hier deinen Benutzernamen oder
-        dein Profilbild.
-      </p>
-
-      <input
-        id="profileUsernameInput"
-        class="input"
-        type="text"
-        maxlength="20"
-        placeholder="Benutzername"
-        value="${escapeHTML(currentName)}"
-      >
-
-      <br><br>
-
-      <label class="profile-photo-label">
-
-        📷 Profilbild auswählen
-
-        <input
-          id="profilePhotoInput"
-          type="file"
-          accept="image/*"
-        >
-
-      </label>
-
-      <div class="modal-buttons">
-
-        <button
-          class="modal-primary"
-          id="saveProfileButton"
-        >
-          💾 Profil speichern
-        </button>
-
-        <button
-          class="modal-secondary"
-          id="removeProfilePhoto"
-        >
-          🗑️ Profilbild entfernen
-        </button>
-
-        <button
-          class="modal-secondary"
-          id="closeProfileButton"
-        >
-          Abbrechen
-        </button>
-
-      </div>
-
-    </div>
-  `;
-
-  document.body.appendChild(overlay);
-
-  overlay.querySelector(
-    "#closeProfileButton"
-  ).onclick=()=>overlay.remove();
-
-  overlay.querySelector(
-    "#removeProfilePhoto"
-  ).onclick=()=>{
-
-    localStorage.removeItem(
-      "pixelProfileImage"
-    );
-
-    updateProfile();
-
-    overlay.remove();
-
-    alert("🗑️ Profilbild entfernt.");
-
-  };
-
-  overlay.querySelector(
-    "#saveProfileButton"
-  ).onclick=()=>{
-
-    const input=
-      overlay.querySelector(
-        "#profileUsernameInput"
-      );
-
-    const name=input.value.trim();
-
-    if(!name){
-
-      alert(
-        "Bitte gib einen Benutzernamen ein."
-      );
-
-      return;
-
-    }
-
-    localStorage.setItem(
-      "pixelUsername",
-      name
-    );
-
-    const photoInput=
-      overlay.querySelector(
-        "#profilePhotoInput"
-      );
-
-    const file=
-      photoInput.files[0];
-
-    if(file){
-
-      const reader=new FileReader();
-
-      reader.onload=function(){
-
-        localStorage.setItem(
-          "pixelProfileImage",
-          reader.result
-        );
-
-        updateProfile();
-        loadAll();
-        overlay.remove();
-
-        alert("👤 Profil gespeichert!");
-
-      };
-
-      reader.readAsDataURL(file);
-
-    }else{
-
-      updateProfile();
-      loadAll();
-      overlay.remove();
-
-      alert("👤 Profil gespeichert!");
-
-    }
-
-  };
-
-}
-
-
-function openOwnProfile(){
-
-  const username=getUsername();
-
-  if(!username){
-
-    openProfileEditor();
-    return;
-
-  }
-
-  showPage(
-    "profilePage",
-    "navProfile"
-  );
-
-  loadSellerProfile(username);
-
-}
-
 
 /* =========================================================
    NAVIGATION
@@ -1539,36 +1102,54 @@ function openOwnProfile(){
 
 function showPage(pageId,buttonId){
 
-  document.querySelectorAll(".page")
+  document
+    .querySelectorAll(".page")
     .forEach(page=>{
       page.classList.remove("active");
     });
 
-  const page=
-    document.getElementById(pageId);
+  const page=document.getElementById(pageId);
 
   if(page){
     page.classList.add("active");
   }
 
-  document.querySelectorAll(
-    ".navigation button"
-  ).forEach(button=>{
-    button.classList.remove("active");
-  });
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(button=>{
+      button.classList.remove("active");
+    });
 
-  const button=
-    document.getElementById(buttonId);
+  if(buttonId){
 
-  if(button){
-    button.classList.add("active");
+    const button=
+      document.getElementById(buttonId);
+
+    if(button){
+      button.classList.add("active");
+    }
   }
 
+  if(pageId==="requestsPage"){
+    updateRequestBadge();
+  }
+
+  if(pageId==="profilePage"){
+    const username=getUsername();
+
+    if(username){
+      loadSellerProfile(username);
+    }
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
 
-
 /* =========================================================
-   BADGES
+   BADGE
 ========================================================= */
 
 function updateRequestBadge(){
@@ -1585,9 +1166,7 @@ function updateRequestBadge(){
     : 0;
 
   const badge=
-    document.getElementById(
-      "requestBadge"
-    );
+    document.getElementById("requestBadge");
 
   if(count>0){
 
@@ -1599,41 +1178,10 @@ function updateRequestBadge(){
     badge.style.display="none";
 
   }
-
 }
-
-
-function updateFavoriteBadge(){
-
-  const username=getUsername();
-
-  const count=username
-    ? getFavorites().filter(
-        item=>item.favoriteBy===username
-      ).length
-    : 0;
-
-  const badge=
-    document.getElementById(
-      "favoriteBadge"
-    );
-
-  if(count>0){
-
-    badge.style.display="flex";
-    badge.textContent=count;
-
-  }else{
-
-    badge.style.display="none";
-
-  }
-
-}
-
 
 /* =========================================================
-   KARTEN
+   KARTEN LADEN
 ========================================================= */
 
 function loadCards(){
@@ -1644,31 +1192,33 @@ function loadCards(){
   box.innerHTML="";
 
   const search=
-    document.getElementById(
-      "searchInput"
-    ).value
-    .toLowerCase()
-    .trim();
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
 
   const cards=getCards();
 
   const filtered=cards.filter(card=>{
 
-    return String(card.player||"")
-      .toLowerCase()
-      .includes(search)
+    if(card.sold===true){
+      return false;
+    }
 
+    return(
+      String(card.player||"")
+        .toLowerCase()
+        .includes(search)
       ||
-
       String(card.club||"")
-      .toLowerCase()
-      .includes(search)
-
+        .toLowerCase()
+        .includes(search)
       ||
-
       String(card.owner||"")
-      .toLowerCase()
-      .includes(search);
+        .toLowerCase()
+        .includes(search)
+    );
 
   });
 
@@ -1680,15 +1230,12 @@ function loadCards(){
       </div>`;
 
     return;
-
   }
 
   filtered.forEach(card=>{
     createCard(card,box);
   });
-
 }
-
 
 /* =========================================================
    FAVORITEN
@@ -1704,22 +1251,16 @@ function isFavorite(cardId){
     item.id===cardId &&
     item.favoriteBy===username
   );
-
 }
-
 
 function getFavoriteCount(cardId){
 
   const users=getFavoriteUsers();
 
-  if(!Array.isArray(users[cardId])){
-    return 0;
-  }
-
-  return users[cardId].length;
-
+  return Array.isArray(users[cardId])
+    ? users[cardId].length
+    : 0;
 }
-
 
 function toggleFavorite(cardId){
 
@@ -1728,11 +1269,10 @@ function toggleFavorite(cardId){
   if(!username){
 
     alert(
-      "👤 Bitte zuerst einen Benutzernamen festlegen."
+      "👤 Bitte zuerst dein Profil einrichten."
     );
 
     return;
-
   }
 
   const cards=getCards();
@@ -1749,16 +1289,9 @@ function toggleFavorite(cardId){
     );
 
     return;
-
   }
 
   let favorites=getFavorites();
-
-  const existingIndex=
-    favorites.findIndex(item=>
-      item.id===cardId &&
-      item.favoriteBy===username
-    );
 
   let users=getFavoriteUsers();
 
@@ -1766,17 +1299,19 @@ function toggleFavorite(cardId){
     users[cardId]=[];
   }
 
-  if(existingIndex!==-1){
-
-    favorites.splice(
-      existingIndex,
-      1
+  const index=
+    favorites.findIndex(item=>
+      item.id===cardId &&
+      item.favoriteBy===username
     );
 
-    users[cardId]=
-      users[cardId].filter(
-        user=>user!==username
-      );
+  if(index!==-1){
+
+    favorites.splice(index,1);
+
+    users[cardId]=users[cardId].filter(
+      user=>user!==username
+    );
 
   }else{
 
@@ -1785,15 +1320,9 @@ function toggleFavorite(cardId){
       favoriteBy:username
     });
 
-    if(
-      !users[cardId]
-        .includes(username)
-    ){
-
+    if(!users[cardId].includes(username)){
       users[cardId].push(username);
-
     }
-
   }
 
   saveData(
@@ -1807,35 +1336,28 @@ function toggleFavorite(cardId){
   );
 
   loadAll();
-
 }
-
 
 function loadFavorites(){
 
   const box=
-    document.getElementById(
-      "favoriteCards"
-    );
+    document.getElementById("favoriteCards");
 
   box.innerHTML="";
 
   const username=getUsername();
 
-  const favorites=getFavorites();
-
   const cards=getCards();
 
-  const myFavorites=
-    favorites
-      .filter(
-        item=>item.favoriteBy===username
+  const favorites=
+    getFavorites()
+      .filter(item=>
+        item.favoriteBy===username
       )
-      .map(
-        item=>
-          cards.find(
-            card=>card.id===item.id
-          )
+      .map(item=>
+        cards.find(card=>
+          card.id===item.id
+        )
       )
       .filter(Boolean);
 
@@ -1843,10 +1365,10 @@ function loadFavorites(){
     "favoriteTitle"
   ).textContent=
     "❤️ Favoriten ("+
-    myFavorites.length+
+    favorites.length+
     ")";
 
-  if(!myFavorites.length){
+  if(!favorites.length){
 
     box.innerHTML=
       `<div class="empty">
@@ -1854,26 +1376,22 @@ function loadFavorites(){
       </div>`;
 
     return;
-
   }
 
-  myFavorites.forEach(card=>{
+  favorites.forEach(card=>{
     createCard(card,box);
   });
-
 }
 
-
 /* =========================================================
-   KARTE ERSTELLEN
+   KARTE
 ========================================================= */
 
 function createCard(card,box){
 
   const username=getUsername();
 
-  const favorite=
-    isFavorite(card.id);
+  const favorite=isFavorite(card.id);
 
   const favoriteCount=
     getFavoriteCount(card.id);
@@ -1890,145 +1408,75 @@ function createCard(card,box){
       )
     );
 
-  const item=
-    document.createElement("div");
-
-  item.className="card";
-
-  const isNew=
-    card.createdAt &&
-    Date.now()-
-      new Date(card.createdAt).getTime()
-      <
-      1000*60*60*24*3;
-
-  let badges="";
-
-  if(isNew && !card.sold){
-
-    badges+=
-      `<span class="new-badge">
-        NEU
-      </span>`;
-
-  }
-
-  if(card.sold){
-
-    badges+=
-      `<span class="sold-badge">
-        VERKAUFT
-      </span>`;
-
-  }
-
   let buyButton="";
 
   if(card.owner===username){
 
-    buyButton=
-      `<button
-        class="gray"
-        onclick="ownCardMessage()"
-      >
-        🚫 Deine Karte
-      </button>`;
+    buyButton=`
+      <button class="gray"
+        onclick="ownCardMessage()">
+        Deine Karte
+      </button>
+    `;
 
   }else if(!username){
 
-    buyButton=
-      `<button
-        onclick="needUsername()"
-      >
+    buyButton=`
+      <button onclick="needUsername()">
         🛒 Kaufen
-      </button>`;
-
-  }else if(card.sold===true){
-
-    buyButton=
-      `<button
-        class="gray"
-        disabled
-      >
-        ❌ Verkauft
-      </button>`;
+      </button>
+    `;
 
   }else if(myRequest){
 
-    if(
-      myRequest.status==="accepted"
-    ){
-
-      buyButton=
-        `<button
-          class="gray"
-          disabled
-        >
-          ✅ Angenommen
-        </button>`;
-
-    }else{
-
-      buyButton=
-        `<button
-          class="gray"
-          disabled
-        >
-          🕐 Anfrage offen
-        </button>`;
-
-    }
+    buyButton=`
+      <button class="gray" disabled>
+        ${
+          myRequest.status==="accepted"
+          ? "✅ Angenommen"
+          : "🕐 Anfrage offen"
+        }
+      </button>
+    `;
 
   }else{
 
-    buyButton=
-      `<button
-        onclick="buyCard('${card.id}')"
-      >
+    buyButton=`
+      <button onclick="buyCard('${card.id}')">
         🛒 Kaufen
-      </button>`;
-
+      </button>
+    `;
   }
 
-  let favoriteButton="";
-
-  if(card.owner===username){
-
-    favoriteButton=
-      `<button
-        class="gray"
-        disabled
-      >
-        🚫 Eigene Karte
-      </button>`;
-
-  }else{
-
-    favoriteButton=
-      `<button
-        class="gray"
-        onclick="toggleFavorite('${card.id}')"
-      >
+  const favoriteButton=
+    card.owner===username
+    ? `
+      <button class="gray" disabled>
+        ♡ Eigene Karte
+      </button>
+    `
+    : `
+      <button class="gray"
+        onclick="toggleFavorite('${card.id}')">
         ${
           favorite
           ? "❤️ Favorisiert"
           : "♡ Favorit"
         }
-      </button>`;
+      </button>
+    `;
 
-  }
+  const item=
+    document.createElement("div");
+
+  item.className="card";
 
   item.innerHTML=`
 
     <div class="card-image">
-
-      ${badges}
-
       <img
         src="${card.image}"
-        alt="${escapeHTML(card.player)}"
-      >
-
+        alt="${escapeHTML(card.player)}">
     </div>
 
     <h3>
@@ -2044,65 +1492,47 @@ function createCard(card,box){
     </p>
 
     <div class="favorite-row">
-
       <span>
         ❤️ ${favoriteCount}
-        ${
-          favoriteCount===1
-          ? "Favorit"
-          : "Favoriten"
-        }
       </span>
-
     </div>
 
-    <div class="card-actions">
+    <button
+      onclick="showCard('${card.id}')">
+      👀 Karte ansehen
+    </button>
 
-      <button
-        onclick="showCard('${card.id}')"
-      >
-        👀 Karte ansehen
-      </button>
+    ${buyButton}
 
-      ${buyButton}
-
-      ${favoriteButton}
-
-      <button
-        class="gray"
-        onclick="openSellerProfile('${escapeAttribute(card.owner||"")}')"
-      >
-        👤 Profil ansehen
-      </button>
-
-    </div>
+    ${favoriteButton}
 
   `;
 
   box.appendChild(item);
-
 }
 
-
 /* =========================================================
-   KAUFEN
+   KAUFANFRAGE
 ========================================================= */
+
+function needUsername(){
+
+  alert(
+    "👤 Bitte zuerst dein Profil einrichten."
+  );
+
+  showPage(
+    "profilePage",
+    null
+  );
+}
 
 function ownCardMessage(){
 
   alert(
     "🚫 Du kannst deine eigene Karte nicht kaufen."
   );
-
 }
-
-
-function needUsername(){
-
-  openProfileEditor();
-
-}
-
 
 function buyCard(cardId){
 
@@ -2112,7 +1542,6 @@ function buyCard(cardId){
 
     needUsername();
     return;
-
   }
 
   const cards=getCards();
@@ -2126,7 +1555,6 @@ function buyCard(cardId){
 
     ownCardMessage();
     return;
-
   }
 
   if(card.sold===true){
@@ -2136,7 +1564,6 @@ function buyCard(cardId){
     );
 
     return;
-
   }
 
   const requests=getRequests();
@@ -2158,7 +1585,6 @@ function buyCard(cardId){
     );
 
     return;
-
   }
 
   const confirmed=confirm(
@@ -2176,8 +1602,7 @@ function buyCard(cardId){
   requests.push({
 
     id:
-      Date.now()+
-      "-" +
+      Date.now()+"-"+
       Math.random()
         .toString(36)
         .substring(2),
@@ -2203,16 +1628,12 @@ function buyCard(cardId){
     requests
   );
 
-  updateRequestBadge();
-
   loadAll();
 
   alert(
-    "📩 Kaufanfrage wurde gesendet!"
+    "📩 Kaufanfrage gesendet!"
   );
-
 }
-
 
 /* =========================================================
    KÄUFER-ANFRAGEN
@@ -2230,8 +1651,8 @@ function loadPurchaseRequests(){
   box.innerHTML="";
 
   const requests=
-    getRequests().filter(
-      request=>request.buyer===username
+    getRequests().filter(request=>
+      request.buyer===username
     );
 
   document.getElementById(
@@ -2249,7 +1670,6 @@ function loadPurchaseRequests(){
       </div>`;
 
     return;
-
   }
 
   requests.forEach(request=>{
@@ -2281,14 +1701,11 @@ function loadPurchaseRequests(){
         `<span class="status open">
           🕐 Offen
         </span>`;
-
     }
 
     let ratingButton="";
 
-    if(
-      request.status==="accepted"
-    ){
+    if(request.status==="accepted"){
 
       const ratings=getRatings();
 
@@ -2301,28 +1718,22 @@ function loadPurchaseRequests(){
             rating.requestId===request.id
         );
 
-      if(alreadyRated){
-
-        ratingButton=
-          `<button
+      ratingButton=
+        alreadyRated
+        ? `
+          <button
             class="rate-btn"
-            disabled
-          >
+            disabled>
             ⭐ Bereits bewertet
-          </button>`;
-
-      }else{
-
-        ratingButton=
-          `<button
+          </button>
+        `
+        : `
+          <button
             class="rate-btn"
-            onclick="openRating('${request.id}')"
-          >
+            onclick="openRating('${request.id}')">
             ⭐ Verkäufer bewerten
-          </button>`;
-
-      }
-
+          </button>
+        `;
     }
 
     item.innerHTML=`
@@ -2332,8 +1743,7 @@ function loadPurchaseRequests(){
         <img
           class="request-image"
           src="${request.image}"
-          alt="${escapeHTML(request.player)}"
-        >
+          alt="${escapeHTML(request.player)}">
 
         <div class="request-info">
 
@@ -2349,33 +1759,26 @@ function loadPurchaseRequests(){
             ${escapeHTML(String(request.price))} €
           </p>
 
+          <p class="info">
+            Verkäufer:
+            <strong>
+              ${escapeHTML(request.seller)}
+            </strong>
+          </p>
+
           ${status}
 
         </div>
 
       </div>
 
-      <div class="request-actions">
-
-        <button
-          class="rate-btn"
-          onclick="openSellerProfile('${escapeAttribute(request.seller||"")}')"
-        >
-          👤 Profil
-        </button>
-
-        ${ratingButton}
-
-      </div>
+      ${ratingButton}
 
     `;
 
     box.appendChild(item);
-
   });
-
 }
-
 
 /* =========================================================
    VERKÄUFER-ANFRAGEN
@@ -2393,8 +1796,8 @@ function loadSellerRequests(){
   box.innerHTML="";
 
   const requests=
-    getRequests().filter(
-      request=>request.seller===username
+    getRequests().filter(request=>
+      request.seller===username
     );
 
   document.getElementById(
@@ -2412,7 +1815,6 @@ function loadSellerRequests(){
       </div>`;
 
     return;
-
   }
 
   requests.forEach(request=>{
@@ -2444,7 +1846,6 @@ function loadSellerRequests(){
         `<span class="status open">
           🕐 Offen
         </span>`;
-
     }
 
     let buttons="";
@@ -2457,22 +1858,18 @@ function loadSellerRequests(){
 
           <button
             class="accept-btn"
-            onclick="acceptRequest('${request.id}')"
-          >
+            onclick="acceptRequest('${request.id}')">
             🟢 Annehmen
           </button>
 
           <button
             class="reject-btn"
-            onclick="rejectRequest('${request.id}')"
-          >
+            onclick="rejectRequest('${request.id}')">
             🔴 Ablehnen
           </button>
 
         </div>
-
       `;
-
     }
 
     item.innerHTML=`
@@ -2482,8 +1879,7 @@ function loadSellerRequests(){
         <img
           class="request-image"
           src="${request.image}"
-          alt="${escapeHTML(request.player)}"
-        >
+          alt="${escapeHTML(request.player)}">
 
         <div class="request-info">
 
@@ -2493,7 +1889,15 @@ function loadSellerRequests(){
           </h3>
 
           <p class="info">
-            ${escapeHTML(request.player)}
+            Karte:
+            <strong>
+              ${escapeHTML(request.player)}
+            </strong>
+          </p>
+
+          <p class="info">
+            Verein:
+            ${escapeHTML(request.club)}
           </p>
 
           <p class="price">
@@ -2511,11 +1915,8 @@ function loadSellerRequests(){
     `;
 
     box.appendChild(item);
-
   });
-
 }
-
 
 /* =========================================================
    ANNEHMEN
@@ -2528,20 +1929,17 @@ function acceptRequest(requestId){
   const requests=getRequests();
 
   const request=
-    requests.find(
-      r=>r.id===requestId
-    );
+    requests.find(r=>r.id===requestId);
 
   if(!request) return;
 
   if(request.seller!==username){
 
     alert(
-      "🚫 Nur der Besitzer der Karte kann diese Anfrage annehmen."
+      "🚫 Nur der Verkäufer kann diese Anfrage annehmen."
     );
 
     return;
-
   }
 
   if(request.status!=="pending"){
@@ -2551,14 +1949,13 @@ function acceptRequest(requestId){
     );
 
     return;
-
   }
 
   const cards=getCards();
 
   const card=
-    cards.find(
-      c=>c.id===request.cardId
+    cards.find(c=>
+      c.id===request.cardId
     );
 
   if(!card){
@@ -2568,7 +1965,6 @@ function acceptRequest(requestId){
     );
 
     return;
-
   }
 
   if(card.sold===true){
@@ -2578,16 +1974,15 @@ function acceptRequest(requestId){
     );
 
     return;
-
   }
 
-  const confirmed=confirm(
+  if(!confirm(
     "Möchtest du die Anfrage von "+
     request.buyer+
     " annehmen?"
-  );
-
-  if(!confirmed) return;
+  )){
+    return;
+  }
 
   request.status="accepted";
 
@@ -2601,9 +1996,7 @@ function acceptRequest(requestId){
       other.id!==request.id &&
       other.status==="pending"
     ){
-
       other.status="rejected";
-
     }
 
   });
@@ -2623,9 +2016,7 @@ function acceptRequest(requestId){
   alert(
     "🟢 Anfrage angenommen!"
   );
-
 }
-
 
 /* =========================================================
    ABLEHNEN
@@ -2638,20 +2029,17 @@ function rejectRequest(requestId){
   const requests=getRequests();
 
   const request=
-    requests.find(
-      r=>r.id===requestId
-    );
+    requests.find(r=>r.id===requestId);
 
   if(!request) return;
 
   if(request.seller!==username){
 
     alert(
-      "🚫 Nur der Besitzer der Karte kann diese Anfrage ablehnen."
+      "🚫 Nur der Verkäufer kann diese Anfrage ablehnen."
     );
 
     return;
-
   }
 
   if(request.status!=="pending"){
@@ -2661,16 +2049,15 @@ function rejectRequest(requestId){
     );
 
     return;
-
   }
 
-  const confirmed=confirm(
+  if(!confirm(
     "Möchtest du die Anfrage von "+
     request.buyer+
     " wirklich ablehnen?"
-  );
-
-  if(!confirmed) return;
+  )){
+    return;
+  }
 
   request.status="rejected";
 
@@ -2684,9 +2071,7 @@ function rejectRequest(requestId){
   alert(
     "🔴 Anfrage abgelehnt."
   );
-
 }
-
 
 /* =========================================================
    MEINE KARTEN
@@ -2695,9 +2080,7 @@ function rejectRequest(requestId){
 function loadMyCards(){
 
   const box=
-    document.getElementById(
-      "myCards"
-    );
+    document.getElementById("myCards");
 
   box.innerHTML="";
 
@@ -2707,16 +2090,15 @@ function loadMyCards(){
 
     box.innerHTML=
       `<div class="empty">
-        👤 Bitte zuerst ein Profil erstellen.
+        👤 Bitte zuerst dein Profil einrichten.
       </div>`;
 
     return;
-
   }
 
   const cards=
-    getCards().filter(
-      card=>card.owner===username
+    getCards().filter(card=>
+      card.owner===username
     );
 
   if(!cards.length){
@@ -2727,7 +2109,6 @@ function loadMyCards(){
       </div>`;
 
     return;
-
   }
 
   cards.forEach(card=>{
@@ -2747,24 +2128,12 @@ function loadMyCards(){
       `
       : "";
 
-    const favoriteCount=
-      getFavoriteCount(card.id);
-
     item.innerHTML=`
 
       <div class="card-image">
-
-        ${
-          !card.sold
-          ? `<span class="new-badge">DEINE KARTE</span>`
-          : `<span class="sold-badge">VERKAUFT</span>`
-        }
-
         <img
           src="${card.image}"
-          alt="${escapeHTML(card.player)}"
-        >
-
+          alt="${escapeHTML(card.player)}">
       </div>
 
       <h3>
@@ -2782,39 +2151,25 @@ function loadMyCards(){
       ${soldText}
 
       <div class="favorite-row">
-        ❤️ ${favoriteCount}
-        ${
-          favoriteCount===1
-          ? "Favorit"
-          : "Favoriten"
-        }
+        ❤️ ${getFavoriteCount(card.id)}
       </div>
 
-      <div class="card-actions">
+      <button
+        onclick="showCard('${card.id}')">
+        👀 Karte ansehen
+      </button>
 
-        <button
-          onclick="showCard('${card.id}')"
-        >
-          👀 Karte ansehen
-        </button>
-
-        <button
-          class="gray"
-          onclick="deleteCard('${card.id}')"
-        >
-          🗑️ Löschen
-        </button>
-
-      </div>
+      <button
+        class="gray"
+        onclick="deleteCard('${card.id}')">
+        🗑️ Löschen
+      </button>
 
     `;
 
     box.appendChild(item);
-
   });
-
 }
-
 
 /* =========================================================
    LÖSCHEN
@@ -2827,9 +2182,7 @@ function deleteCard(cardId){
   let cards=getCards();
 
   const card=
-    cards.find(
-      c=>c.id===cardId
-    );
+    cards.find(c=>c.id===cardId);
 
   if(!card) return;
 
@@ -2840,22 +2193,17 @@ function deleteCard(cardId){
     );
 
     return;
-
   }
 
-  if(
-    !confirm(
-      "Möchtest du diese Karte wirklich löschen?"
-    )
-  ){
-
+  if(!confirm(
+    "Möchtest du diese Karte wirklich löschen?"
+  )){
     return;
-
   }
 
   cards=
-    cards.filter(
-      c=>c.id!==cardId
+    cards.filter(c=>
+      c.id!==cardId
     );
 
   saveData(
@@ -2863,19 +2211,14 @@ function deleteCard(cardId){
     cards
   );
 
-  let favorites=
-    getFavorites()
-      .filter(
-        item=>item.id!==cardId
-      );
-
   saveData(
     "favoriteCards",
-    favorites
+    getFavorites().filter(
+      item=>item.id!==cardId
+    )
   );
 
-  const users=
-    getFavoriteUsers();
+  const users=getFavoriteUsers();
 
   delete users[cardId];
 
@@ -2885,9 +2228,7 @@ function deleteCard(cardId){
   );
 
   loadAll();
-
 }
-
 
 /* =========================================================
    VERKÄUFERPROFIL
@@ -2899,13 +2240,11 @@ function openSellerProfile(seller){
 
   showPage(
     "profilePage",
-    "navProfile"
+    null
   );
 
   loadSellerProfile(seller);
-
 }
-
 
 function loadSellerProfile(seller){
 
@@ -2915,17 +2254,16 @@ function loadSellerProfile(seller){
     );
 
   const cards=
-    getCards().filter(
-      card=>card.owner===seller
+    getCards().filter(card=>
+      card.owner===seller
     );
 
   const soldCards=
-    cards.filter(
-      card=>card.sold===true
+    cards.filter(card=>
+      card.sold===true
     );
 
-  const ratings=
-    getRatings();
+  const ratings=getRatings();
 
   const sellerRatings=
     Array.isArray(ratings[seller])
@@ -2939,46 +2277,27 @@ function loadSellerProfile(seller){
     average=
       sellerRatings.reduce(
         (sum,item)=>
-          sum+
-          Number(item.stars||0),
+          sum+Number(item.stars||0),
         0
-      )
-      /
+      ) /
       sellerRatings.length;
-
   }
 
-  const rounded=
-    Math.round(average);
+  const rounded=Math.round(average);
 
   const stars=
-    rounded>0
+    rounded
     ? "⭐".repeat(rounded)
     : "Noch keine Bewertungen";
 
-  const profileImage=
-    seller===getUsername()
-    ? getProfileImage()
-    : "";
-
   box.innerHTML=`
 
-    <div class="seller-header">
+    <div class="profile-header">
 
       <div class="big-avatar">
-
-        ${
-          profileImage
-          ? `<img
-               src="${profileImage}"
-               alt="Profilbild"
-             >`
-          : escapeHTML(
-              seller.charAt(0)
-                .toUpperCase()
-            )
-        }
-
+        ${escapeHTML(
+          seller.charAt(0).toUpperCase()
+        )}
       </div>
 
       <div>
@@ -2993,39 +2312,30 @@ function loadSellerProfile(seller){
 
         <p class="info">
           ${sellerRatings.length}
-          ${
-            sellerRatings.length===1
-            ? "Bewertung"
-            : "Bewertungen"
-          }
+          Bewertung${sellerRatings.length===1?"":"en"}
         </p>
 
       </div>
 
     </div>
 
-    <div class="seller-stats">
+    <div class="profile-stats">
 
-      <div class="seller-stat">
-        <strong>
-          ${soldCards.length}
-        </strong>
+      <div class="profile-stat">
+        <strong>${soldCards.length}</strong>
         <span>Verkauft</span>
       </div>
 
-      <div class="seller-stat">
-        <strong>
-          ${cards.length}
-        </strong>
+      <div class="profile-stat">
+        <strong>${cards.length}</strong>
         <span>Angebote</span>
       </div>
 
-      <div class="seller-stat">
+      <div class="profile-stat">
         <strong>
           ${average
             ? average.toFixed(1)
-            : "-"
-          }
+            : "-"}
         </strong>
         <span>Bewertung</span>
       </div>
@@ -3034,15 +2344,12 @@ function loadSellerProfile(seller){
 
     <br>
 
-    <h2>
-      🏆 Angebote
-    </h2>
+    <h2>🏆 Angebote</h2>
 
     <div
       id="sellerOffers"
-      class="cards"
-    ></div>
-
+      class="cards">
+    </div>
   `;
 
   const offers=
@@ -3058,26 +2365,21 @@ function loadSellerProfile(seller){
       </div>`;
 
     return;
-
   }
 
   cards.forEach(card=>{
     createCard(card,offers);
   });
-
 }
 
-
 /* =========================================================
-   BEWERTUNGEN
+   BEWERTUNG
 ========================================================= */
 
 function openRating(requestId){
 
-  const requests=getRequests();
-
   const request=
-    requests.find(
+    getRequests().find(
       r=>r.id===requestId
     );
 
@@ -3088,130 +2390,122 @@ function openRating(requestId){
   if(request.buyer!==username){
 
     alert(
-      "🚫 Nur der Käufer kann diese Bewertung abgeben."
+      "🚫 Nur der Käufer kann bewerten."
     );
 
     return;
-
   }
 
   if(request.status!=="accepted"){
 
     alert(
-      "⭐ Bewerten kannst du erst nach einer angenommenen Anfrage."
+      "⭐ Bewerten kannst du erst nach Annahme."
     );
 
     return;
-
   }
 
   const ratings=getRatings();
 
-  if(!Array.isArray(
-    ratings[request.seller]
-  )){
-
+  if(!Array.isArray(ratings[request.seller])){
     ratings[request.seller]=[];
-
   }
 
   if(
     ratings[request.seller].some(
-      rating=>
-        rating.requestId===requestId
+      r=>r.requestId===requestId
     )
   ){
 
     alert(
-      "⭐ Du hast diesen Verkäufer bereits bewertet."
+      "⭐ Bereits bewertet."
     );
 
     return;
-
   }
 
   const overlay=
     document.createElement("div");
 
-  overlay.className="modal";
+  overlay.style.cssText=`
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    padding:20px;
+  `;
 
   overlay.innerHTML=`
 
-    <div class="modal-box">
+    <div style="
+      background:#111;
+      color:#fff;
+      border:1px solid #333;
+      width:100%;
+      max-width:400px;
+      padding:24px;
+      border-radius:18px;
+      text-align:center;
+    ">
 
-      <h2>
-        ⭐ Verkäufer bewerten
-      </h2>
+      <h2>⭐ Verkäufer bewerten</h2>
 
-      <p class="info">
+      <p>
         Wie war deine Erfahrung mit
         <strong>
           ${escapeHTML(request.seller)}
         </strong>?
       </p>
 
-      <div
-        id="ratingStars"
-        class="rating-stars"
-      >
+      <div id="ratingStars"
+        class="rating-stars">
 
-        <button data-stars="1">
-          ⭐
-        </button>
-
-        <button data-stars="2">
-          ⭐⭐
-        </button>
-
-        <button data-stars="3">
-          ⭐⭐⭐
-        </button>
-
-        <button data-stars="4">
-          ⭐⭐⭐⭐
-        </button>
-
-        <button data-stars="5">
-          ⭐⭐⭐⭐⭐
-        </button>
+        <button data-stars="1">⭐</button>
+        <button data-stars="2">⭐⭐</button>
+        <button data-stars="3">⭐⭐⭐</button>
+        <button data-stars="4">⭐⭐⭐⭐</button>
+        <button data-stars="5">⭐⭐⭐⭐⭐</button>
 
       </div>
 
-      <div class="modal-buttons">
+      <button
+        id="submitRating"
+        class="rate-btn"
+        style="width:100%"
+        disabled>
+        Bewertung speichern
+      </button>
 
-        <button
-          id="submitRating"
-          class="modal-primary"
-          disabled
-        >
-          ⭐ Bewertung speichern
-        </button>
-
-        <button
-          id="cancelRating"
-          class="modal-secondary"
-        >
-          Abbrechen
-        </button>
-
-      </div>
+      <button
+        id="cancelRating"
+        class="gray"
+        style="
+          width:100%;
+          border:0;
+          padding:11px;
+          border-radius:9px;
+          margin-top:8px;
+          cursor:pointer;
+        ">
+        Abbrechen
+      </button>
 
     </div>
-
   `;
 
-  document.body.appendChild(
-    overlay
-  );
+  document.body.appendChild(overlay);
 
   let selected=0;
 
-  const starButtons=
+  const buttons=
     overlay.querySelectorAll(
       "#ratingStars button"
     );
 
-  starButtons.forEach(button=>{
+  buttons.forEach(button=>{
 
     button.onclick=()=>{
 
@@ -3220,23 +2514,19 @@ function openRating(requestId){
           button.dataset.stars
         );
 
-      starButtons.forEach(btn=>{
-
+      buttons.forEach(btn=>{
         btn.classList.toggle(
           "selected",
           Number(
             btn.dataset.stars
           )===selected
         );
-
       });
 
       overlay.querySelector(
         "#submitRating"
       ).disabled=false;
-
     };
-
   });
 
   overlay.querySelector(
@@ -3249,49 +2539,19 @@ function openRating(requestId){
     "#submitRating"
   ).onclick=()=>{
 
-    if(
-      selected<1 ||
-      selected>5
-    ){
-
+    if(selected<1 || selected>5){
       return;
-
     }
 
-    const currentRatings=
-      getRatings();
+    const current=getRatings();
 
-    if(
-      !Array.isArray(
-        currentRatings[request.seller]
-      )
-    ){
-
-      currentRatings[request.seller]=[];
-
+    if(!Array.isArray(
+      current[request.seller]
+    )){
+      current[request.seller]=[];
     }
 
-    if(
-      currentRatings[request.seller]
-        .some(
-          rating=>
-            rating.requestId===requestId
-        )
-    ){
-
-      alert(
-        "⭐ Bereits bewertet."
-      );
-
-      overlay.remove();
-
-      return;
-
-    }
-
-    currentRatings[
-      request.seller
-    ].push({
+    current[request.seller].push({
 
       requestId:request.id,
       buyer:username,
@@ -3303,7 +2563,7 @@ function openRating(requestId){
 
     saveData(
       "sellerRatings",
-      currentRatings
+      current
     );
 
     overlay.remove();
@@ -3313,11 +2573,8 @@ function openRating(requestId){
     alert(
       "⭐ Bewertung gespeichert!"
     );
-
   };
-
 }
-
 
 /* =========================================================
    KARTE ANSEHEN
@@ -3335,32 +2592,40 @@ function showCard(cardId){
   const overlay=
     document.createElement("div");
 
-  overlay.className="modal";
-
-  const favoriteCount=
-    getFavoriteCount(card.id);
+  overlay.style.cssText=`
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.82);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    padding:15px;
+  `;
 
   overlay.innerHTML=`
 
-    <div
-      class="modal-box"
-      style="
-        max-height:90vh;
-        overflow:auto;
-      "
-    >
+    <div style="
+      background:#111;
+      color:#fff;
+      border:1px solid #333;
+      width:100%;
+      max-width:430px;
+      padding:20px;
+      border-radius:18px;
+      text-align:center;
+      max-height:90vh;
+      overflow:auto;
+    ">
 
       <img
         src="${card.image}"
-        alt="${escapeHTML(card.player)}"
         style="
           width:100%;
           max-height:350px;
           object-fit:contain;
-          border-radius:14px;
-          background:#181818;
-        "
-      >
+          border-radius:12px;
+        ">
 
       <h2>
         ${escapeHTML(card.player)}
@@ -3375,44 +2640,38 @@ function showCard(cardId){
       </p>
 
       <p class="info">
-        ❤️ ${favoriteCount}
-        ${
-          favoriteCount===1
-          ? "Favorit"
-          : "Favoriten"
-        }
+        ❤️ ${getFavoriteCount(card.id)}
       </p>
 
-      <div class="modal-buttons">
-
-        <button
-          class="modal-primary"
-          id="closeCard"
-        >
-          Schließen
-        </button>
-
-      </div>
+      <button
+        id="closeCard"
+        style="
+          width:100%;
+          border:0;
+          background:#fff;
+          color:#000;
+          padding:12px;
+          border-radius:10px;
+          font-weight:bold;
+          cursor:pointer;
+        ">
+        Schließen
+      </button>
 
     </div>
-
   `;
 
-  document.body.appendChild(
-    overlay
-  );
+  document.body.appendChild(overlay);
 
   overlay.querySelector(
     "#closeCard"
   ).onclick=()=>{
     overlay.remove();
   };
-
 }
 
-
 /* =========================================================
-   VERKAUFEN
+   KARTE EINSTELLEN
 ========================================================= */
 
 document
@@ -3423,49 +2682,49 @@ document
 
       event.preventDefault();
 
-      const username=
-        getUsername();
+      const username=getUsername();
 
       if(!username){
 
         alert(
-          "👤 Bitte zuerst ein Profil erstellen."
+          "👤 Bitte zuerst dein Profil einrichten."
         );
 
-        openProfileEditor();
+        showPage(
+          "profilePage",
+          null
+        );
 
         return;
-
       }
 
       const player=
-        document.getElementById(
-          "player"
-        ).value.trim();
+        document
+          .getElementById("player")
+          .value.trim();
 
       const club=
-        document.getElementById(
-          "club"
-        ).value.trim();
+        document
+          .getElementById("club")
+          .value.trim();
 
       const price=
-        document.getElementById(
-          "price"
-        ).value;
+        document
+          .getElementById("price")
+          .value;
 
       const file=
-        document.getElementById(
-          "image"
-        ).files[0];
+        document
+          .getElementById("image")
+          .files[0];
 
       if(!file){
 
         alert(
-          "📷 Bitte füge ein Foto hinzu."
+          "📷 Bitte zuerst ein Foto auswählen."
         );
 
         return;
-
       }
 
       const reader=
@@ -3498,30 +2757,26 @@ document
 
             width=max;
 
-          }else if(
-            height>max
-          ){
+          }else if(height>max){
 
             width=
               width*max/height;
 
             height=max;
-
           }
 
           canvas.width=width;
           canvas.height=height;
 
-          const ctx=
-            canvas.getContext("2d");
-
-          ctx.drawImage(
-            image,
-            0,
-            0,
-            width,
-            height
-          );
+          canvas
+            .getContext("2d")
+            .drawImage(
+              image,
+              0,
+              0,
+              width,
+              height
+            );
 
           const imageData=
             canvas.toDataURL(
@@ -3534,8 +2789,7 @@ document
           cards.unshift({
 
             id:
-              Date.now()+
-              "-" +
+              Date.now()+"-"+
               Math.random()
                 .toString(36)
                 .substring(2),
@@ -3548,10 +2802,7 @@ document
             owner:username,
 
             sold:false,
-            soldTo:null,
-
-            createdAt:
-              new Date().toISOString()
+            soldTo:null
 
           });
 
@@ -3565,17 +2816,14 @@ document
           }catch(error){
 
             alert(
-              "Der Speicher ist voll. Bitte lösche zuerst Karten."
+              "Der Speicher ist voll. Bitte lösche zuerst einige Karten."
             );
 
             return;
-
           }
 
           document
-            .getElementById(
-              "sellForm"
-            )
+            .getElementById("sellForm")
             .reset();
 
           loadAll();
@@ -3583,37 +2831,25 @@ document
           alert(
             "🎉 Deine Karte wurde eingestellt!"
           );
-
         };
 
-        image.src=
-          reader.result;
-
+        image.src=reader.result;
       };
 
       reader.readAsDataURL(file);
-
     }
   );
-
 
 /* =========================================================
    SUCHE
 ========================================================= */
 
 document
-  .getElementById(
-    "searchInput"
-  )
+  .getElementById("searchInput")
   .addEventListener(
     "input",
-    function(){
-
-      loadCards();
-
-    }
+    loadCards
   );
-
 
 /* =========================================================
    SICHERHEIT
@@ -3622,44 +2858,12 @@ document
 function escapeHTML(value){
 
   return String(value)
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-    .replace(
-      /</g,
-      "&lt;"
-    )
-    .replace(
-      />/g,
-      "&gt;"
-    )
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-    .replace(
-      /'/g,
-      "&#039;"
-    );
-
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
-
-
-function escapeAttribute(value){
-
-  return String(value)
-    .replace(
-      /\\/g,
-      "\\\\"
-    )
-    .replace(
-      /'/g,
-      "\\'"
-    );
-
-}
-
 
 /* =========================================================
    ALLES AKTUALISIEREN
@@ -3681,17 +2885,29 @@ function loadAll(){
 
   updateRequestBadge();
 
-  updateFavoriteBadge();
+  const username=getUsername();
 
+  if(username){
+
+    loadSellerProfile(username);
+
+  }else{
+
+    document.getElementById(
+      "profileBox"
+    ).innerHTML=`
+      <div class="empty">
+        👤 Richte zuerst dein Profil ein.
+      </div>
+    `;
+  }
 }
-
 
 /* =========================================================
    START
 ========================================================= */
 
 updateProfile();
-
 loadAll();
 
 </script>
