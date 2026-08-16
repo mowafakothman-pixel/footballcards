@@ -7,29 +7,34 @@
 
 <style>
 :root{
-  --bg:#080b12;
-  --bg2:#0d111b;
-  --panel:#111722;
-  --panel2:#171e2b;
-  --panel3:#1c2534;
-  --border:#273143;
-  --border2:#344058;
+  --bg:#071014;
+  --bg2:#0b171a;
+  --panel:#101d21;
+  --panel2:#14252a;
+  --panel3:#193038;
 
-  --text:#f7f9ff;
-  --muted:#8f9aae;
+  --border:#22383d;
+  --border2:#315058;
 
-  --accent:#7357ff;
-  --accent2:#9b7cff;
-  --green:#39d69b;
-  --red:#ff6070;
-  --yellow:#ffc857;
-  --blue:#4ca3ff;
+  --text:#f4fbfa;
+  --muted:#8fa6a8;
+
+  --accent:#16c79a;
+  --accent2:#35e0b2;
+  --accent-dark:#0b8d70;
+
+  --blue:#3b9cff;
+  --yellow:#ffd166;
+  --red:#ff6474;
 
   --radius:18px;
-  --radius2:24px;
+  --radius2:25px;
 
-  --shadow:0 18px 55px rgba(0,0,0,.28);
-  --shadow2:0 10px 30px rgba(0,0,0,.2);
+  --shadow:
+    0 22px 65px rgba(0,0,0,.32);
+
+  --shadow2:
+    0 10px 30px rgba(0,0,0,.22);
 }
 
 *{
@@ -44,7 +49,9 @@ html{
 
 body{
   min-height:100vh;
+
   color:var(--text);
+
   font-family:
     Inter,
     system-ui,
@@ -55,16 +62,21 @@ body{
 
   background:
     radial-gradient(
-      circle at 15% -10%,
-      rgba(115,87,255,.18),
+      circle at 0% 0%,
+      rgba(22,199,154,.12),
       transparent 28%
     ),
     radial-gradient(
-      circle at 100% 0%,
-      rgba(57,214,155,.07),
-      transparent 24%
+      circle at 100% 10%,
+      rgba(59,156,255,.08),
+      transparent 25%
     ),
-    linear-gradient(180deg,#080b12 0%,#090c13 100%);
+    linear-gradient(
+      180deg,
+      #071014 0%,
+      #081215 45%,
+      #061013 100%
+    );
 }
 
 button,
@@ -88,7 +100,7 @@ a{
 }
 
 /* =========================================================
-   TOP NAVIGATION
+   NAVIGATION
 ========================================================= */
 
 .topbar{
@@ -96,24 +108,33 @@ a{
   top:0;
   z-index:1000;
 
-  background:rgba(8,11,18,.88);
+  background:
+    rgba(7,16,20,.91);
+
   backdrop-filter:blur(24px);
 
-  border-bottom:1px solid rgba(255,255,255,.07);
+  border-bottom:
+    1px solid rgba(255,255,255,.07);
 
   box-shadow:
-    0 8px 30px rgba(0,0,0,.18);
+    0 10px 35px rgba(0,0,0,.22);
 }
 
 .nav{
-  width:min(1400px,calc(100% - 28px));
+  width:min(1450px,calc(100% - 28px));
+
   margin:auto;
 
-  padding:13px 0 14px;
+  min-height:82px;
 
   display:grid;
-  grid-template-columns:190px 1fr;
-  gap:18px;
+
+  grid-template-columns:
+    190px
+    1fr;
+
+  gap:20px;
+
   align-items:center;
 }
 
@@ -122,21 +143,23 @@ a{
 .logo{
   border:0;
   background:none;
+
   color:white;
 
   display:flex;
   align-items:center;
+
   gap:12px;
 
+  font-size:21px;
   font-weight:950;
-  font-size:20px;
 
   white-space:nowrap;
 }
 
 .logo-icon{
-  width:48px;
-  height:48px;
+  width:50px;
+  height:50px;
 
   display:grid;
   place-items:center;
@@ -147,17 +170,18 @@ a{
     linear-gradient(
       135deg,
       var(--accent),
-      #9a63ff
+      var(--accent-dark)
     );
 
   box-shadow:
-    0 10px 35px rgba(115,87,255,.35);
+    0 10px 30px
+    rgba(22,199,154,.25);
 
-  font-size:22px;
+  font-size:23px;
 }
 
 /* =========================================================
-   7 NAV ITEMS
+   7 NAVIGATION BUTTONS
    3 LINKS | VERKAUFEN | 3 LINKS
 ========================================================= */
 
@@ -168,37 +192,39 @@ a{
     1fr
     1fr
     1fr
-    1.35fr
+    1.3fr
     1fr
     1fr
     1fr;
 
-  gap:8px;
+  gap:9px;
 
-  align-items:stretch;
+  align-items:center;
 }
 
 .nav-btn{
-  min-height:52px;
+  position:relative;
 
-  border:1px solid transparent;
-  border-radius:15px;
+  min-height:56px;
 
-  background:rgba(255,255,255,.025);
+  padding:
+    10px 8px;
 
-  color:#aeb7c8;
+  border:
+    1px solid transparent;
 
-  font-weight:800;
+  border-radius:16px;
+
+  background:
+    rgba(255,255,255,.025);
+
+  color:#9db0b3;
+
   font-size:14px;
-
-  padding:10px 8px;
+  font-weight:850;
 
   transition:
-    background .2s ease,
-    border .2s ease,
-    color .2s ease,
-    transform .2s ease,
-    box-shadow .2s ease;
+    .2s ease;
 }
 
 .nav-btn:hover{
@@ -208,91 +234,80 @@ a{
     rgba(255,255,255,.06);
 
   border-color:
-    rgba(255,255,255,.08);
+    rgba(255,255,255,.09);
 
-  transform:translateY(-2px);
+  transform:
+    translateY(-2px);
 }
 
 .nav-btn.active{
   color:white;
 
   background:
-    linear-gradient(
-      135deg,
-      rgba(115,87,255,.25),
-      rgba(115,87,255,.08)
-    );
+    rgba(22,199,154,.11);
 
   border-color:
-    rgba(115,87,255,.35);
+    rgba(22,199,154,.3);
 
   box-shadow:
-    0 8px 25px rgba(115,87,255,.12);
+    0 8px 25px
+    rgba(22,199,154,.08);
 }
 
-/* VERKAUFEN IMMER IN DER MITTE */
+/* VERKAUFEN */
 
 .nav-btn.sell-main{
-  color:white;
+  color:#03130e;
 
   background:
     linear-gradient(
       135deg,
-      #7357ff,
-      #9a68ff
+      var(--accent),
+      var(--accent2)
     );
 
   border-color:
-    rgba(255,255,255,.12);
-
-  box-shadow:
-    0 10px 30px rgba(115,87,255,.30);
+    rgba(255,255,255,.18);
 
   font-size:15px;
-  font-weight:950;
+  font-weight:1000;
+
+  box-shadow:
+    0 12px 35px
+    rgba(22,199,154,.25);
 }
 
 .nav-btn.sell-main:hover{
+  color:#03130e;
+
   transform:
     translateY(-3px)
     scale(1.015);
 
   box-shadow:
-    0 15px 40px rgba(115,87,255,.38);
+    0 17px 42px
+    rgba(22,199,154,.35);
 }
 
-.nav-btn.sell-main.active{
-  background:
-    linear-gradient(
-      135deg,
-      #805fff,
-      #a06bff
-    );
-}
-
-/* notification number */
-
-.nav-notification{
-  position:relative;
-}
+/* BADGE */
 
 .badge{
   position:absolute;
 
-  right:8px;
+  right:7px;
   top:6px;
 
-  min-width:19px;
-  height:19px;
+  min-width:20px;
+  height:20px;
 
   padding:0 5px;
 
-  border-radius:20px;
-
-  background:var(--red);
-
   display:grid;
   place-items:center;
+
+  border-radius:50px;
+
+  background:var(--red);
 
   color:white;
 
@@ -300,7 +315,8 @@ a{
   font-weight:950;
 
   box-shadow:
-    0 5px 15px rgba(255,96,112,.35);
+    0 5px 15px
+    rgba(255,100,116,.3);
 }
 
 /* =========================================================
@@ -308,7 +324,8 @@ a{
 ========================================================= */
 
 .container{
-  width:min(1400px,calc(100% - 28px));
+  width:min(1450px,calc(100% - 28px));
+
   margin:auto;
 }
 
@@ -316,12 +333,12 @@ a{
   display:none;
 
   padding:
-    34px
+    35px
     0
     90px;
 
   animation:
-    pageIn .3s ease;
+    pageIn .28s ease;
 }
 
 .page.active{
@@ -348,9 +365,13 @@ a{
   position:relative;
   overflow:hidden;
 
-  min-height:350px;
+  min-height:390px;
 
-  padding:50px;
+  padding:55px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 
   border:
     1px solid var(--border);
@@ -359,9 +380,10 @@ a{
 
   background:
     linear-gradient(
-      120deg,
-      rgba(115,87,255,.22),
-      rgba(17,23,34,.96) 60%
+      125deg,
+      rgba(22,199,154,.16),
+      rgba(16,29,33,.98) 55%,
+      rgba(10,20,24,.98)
     );
 
   box-shadow:var(--shadow);
@@ -372,18 +394,18 @@ a{
 
   position:absolute;
 
-  width:420px;
-  height:420px;
+  width:550px;
+  height:550px;
 
-  right:-180px;
-  top:-210px;
+  right:-240px;
+  top:-260px;
 
   border-radius:50%;
 
   background:
     radial-gradient(
       circle,
-      rgba(115,87,255,.22),
+      rgba(22,199,154,.17),
       transparent 68%
     );
 }
@@ -393,25 +415,24 @@ a{
 
   position:absolute;
 
-  right:70px;
-  bottom:35px;
+  right:65px;
+  bottom:20px;
 
-  font-size:120px;
+  font-size:145px;
 
-  opacity:.055;
+  opacity:.045;
 
-  transform:
-    rotate(-12deg);
+  transform:rotate(-12deg);
 }
 
 .hero h1{
   position:relative;
   z-index:1;
 
-  max-width:780px;
+  max-width:850px;
 
   font-size:
-    clamp(38px,6vw,70px);
+    clamp(40px,6vw,72px);
 
   line-height:.98;
 
@@ -425,15 +446,13 @@ a{
   max-width:650px;
 
   margin:
-    22px
-    0
-    28px;
+    22px 0 30px;
 
   color:var(--muted);
 
-  line-height:1.7;
+  font-size:16px;
 
-  font-size:15px;
+  line-height:1.7;
 }
 
 .hero-buttons{
@@ -441,6 +460,7 @@ a{
   z-index:2;
 
   display:flex;
+
   gap:11px;
 
   flex-wrap:wrap;
@@ -456,33 +476,37 @@ a{
   border-radius:13px;
 
   padding:
-    12px
-    18px;
+    13px 19px;
 
-  color:white;
+  color:#03130e;
 
   background:
     linear-gradient(
       135deg,
       var(--accent),
-      #9565ff
+      var(--accent2)
     );
 
-  font-weight:900;
+  font-weight:950;
 
   box-shadow:
-    0 8px 25px rgba(115,87,255,.17);
+    0 9px 25px
+    rgba(22,199,154,.17);
 
   transition:.2s;
 }
 
 .btn:hover{
   transform:translateY(-2px);
-  filter:brightness(1.07);
+
+  filter:brightness(1.06);
 }
 
 .btn.secondary{
-  background:var(--panel2);
+  color:white;
+
+  background:
+    var(--panel2);
 
   border:
     1px solid var(--border);
@@ -491,18 +515,22 @@ a{
 }
 
 .btn.green{
-  background:var(--green);
-  color:#04130e;
+  color:#03130e;
+
+  background:
+    var(--accent);
 }
 
 .btn.red{
-  background:var(--red);
+  color:white;
+
+  background:
+    var(--red);
 }
 
 .btn.small{
   padding:
-    9px
-    12px;
+    10px 13px;
 
   font-size:12px;
 }
@@ -520,13 +548,12 @@ a{
   gap:15px;
 
   margin:
-    32px
-    0
-    17px;
+    34px 0 17px;
 }
 
 .section-head h2{
-  font-size:24px;
+  font-size:25px;
+
   letter-spacing:-.5px;
 }
 
@@ -552,21 +579,40 @@ a{
 .stat{
   position:relative;
 
-  padding:22px;
+  padding:23px;
+
+  overflow:hidden;
 
   border:
     1px solid var(--border);
 
-  border-radius:19px;
+  border-radius:20px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(23,30,43,.96),
-      rgba(14,19,29,.96)
+      rgba(20,37,42,.98),
+      rgba(12,24,28,.98)
     );
 
   transition:.2s;
+}
+
+.stat:after{
+  content:"";
+
+  position:absolute;
+
+  right:-30px;
+  bottom:-40px;
+
+  width:100px;
+  height:100px;
+
+  border-radius:50%;
+
+  background:
+    rgba(22,199,154,.06);
 }
 
 .stat:hover{
@@ -577,11 +623,17 @@ a{
 }
 
 .stat-number{
-  font-size:29px;
-  font-weight:950;
+  position:relative;
+  z-index:1;
+
+  font-size:30px;
+  font-weight:1000;
 }
 
 .stat-label{
+  position:relative;
+  z-index:1;
+
   margin-top:5px;
 
   color:var(--muted);
@@ -590,11 +642,11 @@ a{
 }
 
 /* =========================================================
-   MARKET FILTERS
+   MARKET
 ========================================================= */
 
 .market-tools{
-  padding:18px;
+  padding:19px;
 
   border:
     1px solid var(--border);
@@ -602,11 +654,7 @@ a{
   border-radius:21px;
 
   background:
-    linear-gradient(
-      145deg,
-      rgba(17,23,34,.98),
-      rgba(13,17,26,.98)
-    );
+    rgba(15,29,33,.92);
 
   box-shadow:var(--shadow2);
 }
@@ -615,9 +663,7 @@ a{
   display:grid;
 
   grid-template-columns:
-    2fr
-    1fr
-    1fr;
+    2fr 1fr 1fr;
 
   gap:10px;
 }
@@ -626,10 +672,7 @@ a{
   display:grid;
 
   grid-template-columns:
-    1.1fr
-    1fr
-    1fr
-    auto;
+    1.2fr 1fr auto;
 
   gap:10px;
 
@@ -654,14 +697,13 @@ a{
   color:white;
 
   padding:
-    13px
-    14px;
+    13px 14px;
 
   transition:.2s;
 }
 
 .input::placeholder{
-  color:#707b90;
+  color:#71888b;
 }
 
 .input:focus,
@@ -672,11 +714,12 @@ a{
 
   box-shadow:
     0 0 0 3px
-    rgba(115,87,255,.10);
+    rgba(22,199,154,.09);
 }
 
 .textarea{
   min-height:130px;
+
   resize:vertical;
 }
 
@@ -705,30 +748,31 @@ a{
   background:
     linear-gradient(
       145deg,
-      #121925,
-      #0e141e
+      #122126,
+      #0c171b
     );
 
   box-shadow:
-    0 10px 35px rgba(0,0,0,.17);
+    0 12px 38px
+    rgba(0,0,0,.2);
 
   transition:
-    transform .25s,
-    border .25s,
-    box-shadow .25s;
+    .25s ease;
 
   animation:
     cardIn .35s ease both;
 }
 
 .card:hover{
-  transform:translateY(-6px);
+  transform:
+    translateY(-6px);
 
   border-color:
-    #3a465e;
+    #38545a;
 
   box-shadow:
-    0 22px 50px rgba(0,0,0,.28);
+    0 25px 55px
+    rgba(0,0,0,.3);
 }
 
 @keyframes cardIn{
@@ -746,7 +790,7 @@ a{
 .card-image{
   position:relative;
 
-  height:220px;
+  height:225px;
 
   display:grid;
   place-items:center;
@@ -756,13 +800,13 @@ a{
   background:
     radial-gradient(
       circle at 50% 35%,
-      rgba(255,255,255,.12),
+      rgba(255,255,255,.11),
       transparent 27%
     ),
     linear-gradient(
       135deg,
-      #202a3d,
-      #0b1019
+      #1c353b,
+      #091317
     );
 }
 
@@ -774,11 +818,12 @@ a{
 }
 
 .ball{
-  font-size:75px;
+  font-size:76px;
 
   filter:
     drop-shadow(
-      0 15px 20px rgba(0,0,0,.45)
+      0 15px 20px
+      rgba(0,0,0,.45)
     );
 
   transition:.3s;
@@ -798,17 +843,16 @@ a{
   top:11px;
 
   padding:
-    6px
-    9px;
+    6px 9px;
 
   border-radius:8px;
 
-  background:var(--green);
+  background:var(--accent);
 
-  color:#04130e;
+  color:#03130e;
 
   font-size:10px;
-  font-weight:950;
+  font-weight:1000;
 }
 
 .popular-tag{
@@ -819,8 +863,7 @@ a{
   top:11px;
 
   padding:
-    6px
-    9px;
+    6px 9px;
 
   border-radius:8px;
 
@@ -842,16 +885,16 @@ a{
   right:11px;
   bottom:11px;
 
-  width:41px;
-  height:41px;
+  width:42px;
+  height:42px;
 
   border:
-    1px solid rgba(255,255,255,.14);
+    1px solid rgba(255,255,255,.13);
 
   border-radius:12px;
 
   background:
-    rgba(0,0,0,.48);
+    rgba(0,0,0,.5);
 
   color:white;
 
@@ -861,22 +904,21 @@ a{
 }
 
 .favorite:hover{
-  transform:
-    scale(1.08);
+  transform:scale(1.08);
 }
 
 .favorite.active{
-  color:#ff4d6d;
+  color:#ff5871;
 
   background:
-    rgba(255,77,109,.14);
+    rgba(255,88,113,.14);
 
   border-color:
-    rgba(255,77,109,.28);
+    rgba(255,88,113,.3);
 }
 
 .card-body{
-  padding:17px;
+  padding:18px;
 }
 
 .card-title{
@@ -891,7 +933,7 @@ a{
 
   font-size:12px;
 
-  line-height:1.4;
+  line-height:1.45;
 }
 
 .card-bottom{
@@ -907,7 +949,7 @@ a{
 
 .price{
   font-size:21px;
-  font-weight:950;
+  font-weight:1000;
 }
 
 .seller{
@@ -923,7 +965,7 @@ a{
 ========================================================= */
 
 .panel{
-  padding:21px;
+  padding:22px;
 
   border:
     1px solid var(--border);
@@ -933,16 +975,18 @@ a{
   background:
     linear-gradient(
       145deg,
-      rgba(17,23,34,.98),
-      rgba(13,18,27,.98)
+      rgba(16,29,33,.98),
+      rgba(10,21,25,.98)
     );
 
   box-shadow:
-    0 12px 35px rgba(0,0,0,.14);
+    0 12px 35px
+    rgba(0,0,0,.14);
 }
 
 .list{
   display:grid;
+
   gap:10px;
 }
 
@@ -961,12 +1005,15 @@ a{
 
   border-radius:14px;
 
-  background:var(--panel2);
+  background:
+    var(--panel2);
 }
 
 .actions{
   display:flex;
+
   gap:7px;
+
   flex-wrap:wrap;
 }
 
@@ -985,10 +1032,12 @@ a{
     linear-gradient(
       135deg,
       var(--accent),
-      #a855f7
+      #1d8fd0
     );
 
-  font-weight:950;
+  color:#03130e;
+
+  font-weight:1000;
 }
 
 .user-info{
@@ -1023,7 +1072,7 @@ a{
 
   gap:20px;
 
-  padding:27px;
+  padding:28px;
 
   border:
     1px solid var(--border);
@@ -1033,14 +1082,14 @@ a{
   background:
     linear-gradient(
       135deg,
-      rgba(115,87,255,.13),
-      rgba(17,23,34,.98)
+      rgba(22,199,154,.11),
+      rgba(16,29,33,.98)
     );
 }
 
 .big-avatar{
-  width:86px;
-  height:86px;
+  width:88px;
+  height:88px;
 
   display:grid;
   place-items:center;
@@ -1053,18 +1102,22 @@ a{
     linear-gradient(
       135deg,
       var(--accent),
-      #a855f7
+      #1d8fd0
     );
 
+  color:#03130e;
+
   font-size:31px;
-  font-weight:950;
+  font-weight:1000;
 
   box-shadow:
-    0 12px 35px rgba(115,87,255,.22);
+    0 12px 35px
+    rgba(22,199,154,.18);
 }
 
 .rating{
   margin-top:5px;
+
   color:var(--yellow);
 }
 
@@ -1087,11 +1140,12 @@ a{
   color:var(--muted);
 
   background:
-    rgba(17,23,34,.4);
+    rgba(16,29,33,.45);
 }
 
 .empty-icon{
   margin-bottom:11px;
+
   font-size:43px;
 }
 
@@ -1114,7 +1168,7 @@ a{
   overflow:auto;
 
   background:
-    rgba(0,0,0,.76);
+    rgba(0,0,0,.78);
 
   backdrop-filter:blur(12px);
 }
@@ -1144,8 +1198,8 @@ a{
   background:
     linear-gradient(
       145deg,
-      #151c29,
-      #0e141e
+      #14262b,
+      #0b171b
     );
 
   box-shadow:var(--shadow);
@@ -1157,7 +1211,9 @@ a{
 @keyframes modalIn{
   from{
     opacity:0;
-    transform:translateY(15px) scale(.97);
+    transform:
+      translateY(15px)
+      scale(.97);
   }
 
   to{
@@ -1184,7 +1240,8 @@ a{
 
   border-radius:11px;
 
-  background:var(--panel2);
+  background:
+    var(--panel2);
 
   color:white;
 
@@ -1237,15 +1294,15 @@ a{
     calc(100% - 36px);
 
   padding:
-    14px
-    17px;
+    14px 17px;
 
   border:
     1px solid var(--border);
 
   border-radius:14px;
 
-  background:#202a3b;
+  background:
+    #193238;
 
   box-shadow:var(--shadow);
 
@@ -1260,6 +1317,7 @@ a{
 
 .toast.show{
   opacity:1;
+
   transform:none;
 }
 
@@ -1271,7 +1329,11 @@ a{
 
   .nav{
     grid-template-columns:1fr;
+
     gap:10px;
+
+    padding:
+      10px 0 12px;
   }
 
   .logo{
@@ -1302,31 +1364,12 @@ a{
 
   .nav{
     width:
-      calc(100% - 12px);
-
-    padding:
-      9px 0
-      10px;
+      calc(100% - 10px);
   }
-
-  .logo{
-    font-size:18px;
-  }
-
-  .logo-icon{
-    width:43px;
-    height:43px;
-  }
-
-  /*
-     3 links
-     VERKAUFEN
-     3 links
-
-     bleibt ohne horizontales Scrollen
-  */
 
   .nav-links{
+    display:grid;
+
     grid-template-columns:
       repeat(3,1fr);
 
@@ -1334,7 +1377,7 @@ a{
   }
 
   .nav-btn{
-    min-height:48px;
+    min-height:51px;
 
     padding:
       8px 4px;
@@ -1343,22 +1386,24 @@ a{
   }
 
   /*
-     Verkauf nimmt die komplette
-     mittlere Position ein
+    Die Reihenfolge bleibt:
+    1 2 3
+    4 5 6
+    7
+
+    VERKAUFEN bleibt also
+    exakt der mittlere Button.
   */
 
   .nav-btn.sell-main{
-    grid-column:
-      2;
-
-    grid-row:
-      1;
+    grid-column:2;
+    grid-row:1;
 
     font-size:12px;
   }
 
   .hero{
-    padding:29px;
+    padding:30px;
 
     min-height:auto;
 
@@ -1367,12 +1412,14 @@ a{
 
   .hero h1{
     font-size:40px;
+
     letter-spacing:-2px;
   }
 
   .hero:after{
     right:-15px;
     bottom:15px;
+
     font-size:90px;
   }
 
@@ -1432,7 +1479,8 @@ a{
 @media(max-width:430px){
 
   .nav-btn{
-    min-height:46px;
+    min-height:48px;
+
     font-size:10px;
   }
 
@@ -1447,10 +1495,6 @@ a{
   .hero h1{
     font-size:34px;
   }
-
-  .section-head{
-    align-items:flex-start;
-  }
 }
 </style>
 </head>
@@ -1461,73 +1505,95 @@ a{
 
 <nav class="nav">
 
-<button class="logo" onclick="showPage('home')">
+<button
+  class="logo"
+  onclick="showPage('home')">
+
   <span class="logo-icon">⚽</span>
+
   <span>Pixel Cards</span>
+
 </button>
+
 
 <div class="nav-links">
 
-<!-- 1 -->
 <button
   class="nav-btn active"
   data-page="home"
   onclick="showPage('home')">
+
   🏠 Start
+
 </button>
 
-<!-- 2 -->
+
 <button
   class="nav-btn"
   data-page="market"
   onclick="showPage('market')">
+
   🛒 Markt
+
 </button>
 
-<!-- 3 -->
+
 <button
   class="nav-btn"
   data-page="favorites"
   onclick="showPage('favorites')">
+
   ❤️ Favoriten
+
 </button>
 
-<!-- 4 = MITTE -->
+
 <button
   class="nav-btn sell-main"
   data-page="sell"
   onclick="showPage('sell')">
+
   ➕ VERKAUFEN
+
 </button>
 
-<!-- 5 -->
+
 <button
   class="nav-btn"
   data-page="messages"
   onclick="showPage('messages')">
+
   💬 Nachrichten
+
 </button>
 
-<!-- 6 -->
+
 <button
   class="nav-btn"
   data-page="notifications"
   onclick="showPage('notifications')">
+
   🔔 Benachrichtigungen
+
   <span
     id="notificationBadge"
     class="badge"
     style="display:none">
+
     0
+
   </span>
+
 </button>
 
-<!-- 7 -->
+
 <button
   class="nav-btn"
   data-page="profile"
   onclick="showPage('profile')">
+
   👤 Profil
+
 </button>
 
 </div>
@@ -1539,9 +1605,7 @@ a{
 
 <main class="container">
 
-<!-- =====================================================
-     HOME
-===================================================== -->
+<!-- HOME -->
 
 <section
   id="home"
@@ -1566,13 +1630,17 @@ Fußball-Community entdecken.
 <button
   class="btn"
   onclick="showPage('market')">
+
   Karten entdecken →
+
 </button>
 
 <button
   class="btn secondary"
   onclick="showPage('sell')">
+
   Karte einstellen
+
 </button>
 
 </div>
@@ -1583,45 +1651,66 @@ Fußball-Community entdecken.
 <div class="stats">
 
 <div class="stat">
+
 <div
   class="stat-number"
   id="statCards">
-0
+
+  0
+
 </div>
+
 <div class="stat-label">
 Karten online
 </div>
+
 </div>
 
+
 <div class="stat">
+
 <div
   class="stat-number"
   id="statFavorites">
-0
+
+  0
+
 </div>
+
 <div class="stat-label">
 Favoriten
 </div>
+
 </div>
 
+
 <div class="stat">
+
 <div
   class="stat-number"
   id="statRequests">
-0
+
+  0
+
 </div>
+
 <div class="stat-label">
 Kaufanfragen
 </div>
+
 </div>
 
+
 <div class="stat">
+
 <div class="stat-number">
 4.9★
 </div>
+
 <div class="stat-label">
 Community Rating
 </div>
+
 </div>
 
 </div>
@@ -1630,19 +1719,27 @@ Community Rating
 <div class="section-head">
 
 <div>
-<h2>🔥 Aktuelle Karten</h2>
+
+<h2>
+🔥 Aktuelle Karten
+</h2>
+
 <span class="muted">
 Die neuesten Angebote
 </span>
+
 </div>
 
 <button
   class="btn small secondary"
   onclick="showPage('market')">
+
   Alle anzeigen
+
 </button>
 
 </div>
+
 
 <div
   id="homeCards"
@@ -1653,13 +1750,19 @@ Die neuesten Angebote
 <div class="section-head">
 
 <div>
-<h2>🔥 Beliebte Karten</h2>
+
+<h2>
+🔥 Beliebte Karten
+</h2>
+
 <span class="muted">
 Viele Aufrufe und Favoriten
 </span>
+
 </div>
 
 </div>
+
 
 <div
   id="popularCards"
@@ -1669,9 +1772,7 @@ Viele Aufrufe und Favoriten
 </section>
 
 
-<!-- =====================================================
-     MARKET
-===================================================== -->
+<!-- MARKET -->
 
 <section
   id="market"
@@ -1680,10 +1781,15 @@ Viele Aufrufe und Favoriten
 <div class="section-head">
 
 <div>
-<h2>🛒 Marktplatz</h2>
+
+<h2>
+🛒 Marktplatz
+</h2>
+
 <span class="muted">
-Finde genau die Karte, die du suchst
+Finde deine nächste Karte
 </span>
+
 </div>
 
 </div>
@@ -1695,10 +1801,10 @@ Finde genau die Karte, die du suchst
 
 <input
   id="searchInput"
-  class="input search-main"
+  class="input"
   placeholder="🔎 Spieler, Verein oder Karte..."
-  oninput="renderMarket()"
->
+  oninput="renderMarket()">
+
 
 <input
   id="minPrice"
@@ -1707,8 +1813,8 @@ Finde genau die Karte, die du suchst
   min="0"
   step="0.01"
   placeholder="Min. €"
-  oninput="renderMarket()"
->
+  oninput="renderMarket()">
+
 
 <input
   id="maxPrice"
@@ -1717,8 +1823,7 @@ Finde genau die Karte, die du suchst
   min="0"
   step="0.01"
   placeholder="Max. €"
-  oninput="renderMarket()"
->
+  oninput="renderMarket()">
 
 </div>
 
@@ -1730,8 +1835,8 @@ Finde genau die Karte, die du suchst
   class="input"
   list="clubSuggestions"
   placeholder="🏟️ Verein"
-  oninput="renderMarket()"
->
+  oninput="renderMarket()">
+
 
 <select
   id="conditionFilter"
@@ -1750,38 +1855,12 @@ Finde genau die Karte, die du suchst
 </select>
 
 
-<select
-  id="sortFilter"
-  class="select"
-  onchange="renderMarket()">
-
-<option value="new">
-🆕 Neueste
-</option>
-
-<option value="cheap">
-💶 Preis niedrig → hoch
-</option>
-
-<option value="expensive">
-💶 Preis hoch → niedrig
-</option>
-
-<option value="popular">
-🔥 Beliebteste
-</option>
-
-<option value="views">
-👁️ Meiste Aufrufe
-</option>
-
-</select>
-
-
 <button
   class="btn secondary"
   onclick="resetFilters()">
-↻ Zurücksetzen
+
+  ↻ Zurücksetzen
+
 </button>
 
 </div>
@@ -1812,12 +1891,10 @@ Finde genau die Karte, die du suchst
 
 <div class="section-head">
 
-<div>
 <span
   id="marketCount"
   class="muted">
 </span>
-</div>
 
 </div>
 
@@ -1831,13 +1908,19 @@ Finde genau die Karte, die du suchst
 <div class="section-head">
 
 <div>
-<h2>👁️ Zuletzt angesehen</h2>
+
+<h2>
+👁️ Zuletzt angesehen
+</h2>
+
 <span class="muted">
 Deine zuletzt geöffneten Karten
 </span>
+
 </div>
 
 </div>
+
 
 <div
   id="recentCards"
@@ -1847,9 +1930,7 @@ Deine zuletzt geöffneten Karten
 </section>
 
 
-<!-- =====================================================
-     SELL
-===================================================== -->
+<!-- SELL -->
 
 <section
   id="sell"
@@ -1858,10 +1939,15 @@ Deine zuletzt geöffneten Karten
 <div class="section-head">
 
 <div>
-<h2>➕ Karte verkaufen</h2>
+
+<h2>
+➕ Karte verkaufen
+</h2>
+
 <span class="muted">
 Erstelle dein eigenes Angebot
 </span>
+
 </div>
 
 </div>
@@ -1873,7 +1959,9 @@ Erstelle dein eigenes Angebot
 
 <div class="form-group">
 
-<label>Spieler</label>
+<label>
+Spieler
+</label>
 
 <input
   id="sellPlayer"
@@ -1886,7 +1974,9 @@ Erstelle dein eigenes Angebot
 
 <div class="form-group">
 
-<label>Verein</label>
+<label>
+Verein
+</label>
 
 <input
   id="sellClub"
@@ -1906,7 +1996,9 @@ Erstelle dein eigenes Angebot
 
 <div class="form-group">
 
-<label>Kartenname</label>
+<label>
+Kartenname
+</label>
 
 <input
   id="sellName"
@@ -1919,7 +2011,9 @@ Erstelle dein eigenes Angebot
 
 <div class="form-group">
 
-<label>Zustand</label>
+<label>
+Zustand
+</label>
 
 <select
   id="sellCondition"
@@ -1942,7 +2036,9 @@ Zustand auswählen
 
 <div class="form-group">
 
-<label>Preis in €</label>
+<label>
+Preis in €
+</label>
 
 <input
   id="sellPrice"
@@ -1958,7 +2054,9 @@ Zustand auswählen
 
 <div class="form-group">
 
-<label>Beschreibung</label>
+<label>
+Beschreibung
+</label>
 
 <textarea
   id="sellDescription"
@@ -1970,7 +2068,9 @@ Zustand auswählen
 
 <div class="form-group">
 
-<label>Foto der Karte</label>
+<label>
+Foto der Karte
+</label>
 
 <input
   id="sellPhoto"
@@ -1989,7 +2089,9 @@ Zustand auswählen
 <button
   class="btn"
   type="submit">
-🚀 Karte einstellen
+
+  🚀 Karte einstellen
+
 </button>
 
 </form>
@@ -1999,9 +2101,7 @@ Zustand auswählen
 </section>
 
 
-<!-- =====================================================
-     FAVORITES
-===================================================== -->
+<!-- FAVORITES -->
 
 <section
   id="favorites"
@@ -2010,13 +2110,19 @@ Zustand auswählen
 <div class="section-head">
 
 <div>
-<h2>❤️ Meine Favoriten</h2>
+
+<h2>
+❤️ Meine Favoriten
+</h2>
+
 <span class="muted">
 Gespeicherte Karten
 </span>
+
 </div>
 
 </div>
+
 
 <div
   id="favoriteCards"
@@ -2026,9 +2132,7 @@ Gespeicherte Karten
 </section>
 
 
-<!-- =====================================================
-     MESSAGES
-===================================================== -->
+<!-- MESSAGES -->
 
 <section
   id="messages"
@@ -2037,13 +2141,19 @@ Gespeicherte Karten
 <div class="section-head">
 
 <div>
-<h2>💬 Nachrichten</h2>
+
+<h2>
+💬 Nachrichten
+</h2>
+
 <span class="muted">
 Deine Unterhaltungen
 </span>
+
 </div>
 
 </div>
+
 
 <div class="panel">
 
@@ -2057,9 +2167,7 @@ Deine Unterhaltungen
 </section>
 
 
-<!-- =====================================================
-     NOTIFICATIONS
-===================================================== -->
+<!-- NOTIFICATIONS -->
 
 <section
   id="notifications"
@@ -2068,19 +2176,28 @@ Deine Unterhaltungen
 <div class="section-head">
 
 <div>
-<h2>🔔 Benachrichtigungen</h2>
+
+<h2>
+🔔 Benachrichtigungen
+</h2>
+
 <span class="muted">
 Was gerade passiert
 </span>
+
 </div>
+
 
 <button
   class="btn small secondary"
   onclick="markNotificationsRead()">
-Alle gelesen
+
+  Alle gelesen
+
 </button>
 
 </div>
+
 
 <div class="panel">
 
@@ -2094,9 +2211,7 @@ Alle gelesen
 </section>
 
 
-<!-- =====================================================
-     PROFILE
-===================================================== -->
+<!-- PROFILE -->
 
 <section
   id="profile"
@@ -2133,13 +2248,19 @@ Sammler • Verkäufer
 <div class="section-head">
 
 <div>
-<h2>📦 Meine Angebote</h2>
+
+<h2>
+📦 Meine Angebote
+</h2>
+
 </div>
 
 <button
   class="btn small"
   onclick="showPage('sell')">
-+ Karte
+
+  + Karte
+
 </button>
 
 </div>
@@ -2154,10 +2275,15 @@ Sammler • Verkäufer
 <div class="section-head">
 
 <div>
-<h2>🛍️ Kaufanfragen</h2>
+
+<h2>
+🛍️ Kaufanfragen
+</h2>
+
 <span class="muted">
 Anfragen von anderen Nutzern
 </span>
+
 </div>
 
 </div>
@@ -2177,9 +2303,7 @@ Anfragen von anderen Nutzern
 </main>
 
 
-<!-- =====================================================
-     MODAL
-===================================================== -->
+<!-- MODAL -->
 
 <div
   id="cardModal"
@@ -2205,7 +2329,9 @@ Karte
 <button
   class="close"
   onclick="closeModal()">
-✕
+
+  ✕
+
 </button>
 
 </div>
@@ -2228,13 +2354,14 @@ Karte
 <script>
 "use strict";
 
+
 /* =========================================================
    STORAGE
 ========================================================= */
 
-const STORAGE_KEY="pixelCardsData_v4";
-const VIEW_KEY="pixelCardsViewed_v4";
-const RECENT_KEY="pixelCardsRecent_v4";
+const STORAGE_KEY="pixelCardsData_v5";
+const VIEW_KEY="pixelCardsViewed_v5";
+const RECENT_KEY="pixelCardsRecent_v5";
 
 
 const knownClubs=[
@@ -2375,10 +2502,6 @@ requests:[]
 }
 
 
-/* =========================================================
-   LOAD
-========================================================= */
-
 function loadData(){
 
 try{
@@ -2402,28 +2525,23 @@ const p=JSON.parse(saved);
 
 return{
 
-cards:
-Array.isArray(p.cards)
+cards:Array.isArray(p.cards)
 ?p.cards
 :defaultCards,
 
-favorites:
-Array.isArray(p.favorites)
+favorites:Array.isArray(p.favorites)
 ?p.favorites
 :[],
 
-notifications:
-Array.isArray(p.notifications)
+notifications:Array.isArray(p.notifications)
 ?p.notifications
 :[],
 
-messages:
-Array.isArray(p.messages)
+messages:Array.isArray(p.messages)
 ?p.messages
 :[],
 
-requests:
-Array.isArray(p.requests)
+requests:Array.isArray(p.requests)
 ?p.requests
 :[]
 };
@@ -2465,7 +2583,7 @@ showToast(
 
 
 /* =========================================================
-   VIEW DATA
+   RECENT
 ========================================================= */
 
 function getViewed(){
@@ -2617,24 +2735,20 @@ function showPage(id){
 document
 .querySelectorAll(".page")
 .forEach(p=>{
-
 p.classList.toggle(
 "active",
 p.id===id
 );
-
 });
 
 
 document
 .querySelectorAll(".nav-btn")
 .forEach(b=>{
-
 b.classList.toggle(
 "active",
 b.dataset.page===id
 );
-
 });
 
 
@@ -2670,7 +2784,7 @@ behavior:"smooth"
 
 
 /* =========================================================
-   CARD
+   CARD HTML
 ========================================================= */
 
 function cardHTML(card){
@@ -2689,13 +2803,18 @@ return`
 
 <div class="card-image">
 
-${card.isNew
+${
+card.isNew
 ?`<span class="card-tag">NEU</span>`
-:""}
+:""
+}
 
-${popular
+${
+popular
 ?`<span class="popular-tag">🔥 BELIEBT</span>`
-:""}
+:""
+}
+
 
 ${
 card.photo
@@ -2713,10 +2832,10 @@ ${emoji(card.club)}
 `
 }
 
+
 <button
 class="favorite ${fav?"active":""}"
-onclick="toggleFavorite(${Number(card.id)})"
-title="Favorit">
+onclick="toggleFavorite(${Number(card.id)})">
 
 ${fav?"♥":"♡"}
 
@@ -2770,7 +2889,9 @@ ${escapeHTML(card.seller)}
 <button
 class="btn small"
 onclick="openCard(${Number(card.id)})">
+
 Ansehen
+
 </button>
 
 </div>
@@ -2794,7 +2915,8 @@ const latest=
 [...data.cards]
 .sort(
 (a,b)=>
-Number(b.created)-Number(a.created)
+Number(b.created)-
+Number(a.created)
 )
 .slice(0,4);
 
@@ -2818,8 +2940,7 @@ const popular=
 (
 Number(b.favorites||0)+
 Number(b.views||0)
-)
--
+)-
 (
 Number(a.favorites||0)+
 Number(a.views||0)
@@ -2877,12 +2998,6 @@ document.getElementById(
 )?.value||"";
 
 
-const sort=
-document.getElementById(
-"sortFilter"
-)?.value||"new";
-
-
 const minRaw=
 document.getElementById(
 "minPrice"
@@ -2934,62 +3049,11 @@ Number(c.price)<=max
 });
 
 
-if(sort==="cheap"){
-
-cards.sort(
-(a,b)=>
-Number(a.price)-
-Number(b.price)
-);
-
-}
-
-else if(sort==="expensive"){
-
-cards.sort(
-(a,b)=>
-Number(b.price)-
-Number(a.price)
-);
-
-}
-
-else if(sort==="popular"){
-
-cards.sort(
-(a,b)=>
-(
-Number(b.favorites||0)+
-Number(b.views||0)
-)
--
-(
-Number(a.favorites||0)+
-Number(a.views||0)
-)
-);
-
-}
-
-else if(sort==="views"){
-
-cards.sort(
-(a,b)=>
-Number(b.views||0)-
-Number(a.views||0)
-);
-
-}
-
-else{
-
 cards.sort(
 (a,b)=>
 Number(b.created)-
 Number(a.created)
 );
-
-}
 
 
 document.getElementById(
@@ -3039,11 +3103,6 @@ document.getElementById(
 ).value="";
 
 
-document.getElementById(
-"sortFilter"
-).value="new";
-
-
 renderMarket();
 
 showToast(
@@ -3068,9 +3127,7 @@ if(!card)return;
 
 
 const i=
-data.favorites.indexOf(
-card.id
-);
+data.favorites.indexOf(card.id);
 
 
 if(i===-1){
@@ -3151,12 +3208,6 @@ const viewed=
 getViewed();
 
 
-/*
-  EIN View pro Person.
-  Öffnen derselben Karte
-  erhöht die Zahl nicht.
-*/
-
 if(!viewed.includes(card.id)){
 
 viewed.push(card.id);
@@ -3225,7 +3276,7 @@ cards.length
 
 
 /* =========================================================
-   CARD MODAL
+   MODAL
 ========================================================= */
 
 function openCard(id){
@@ -3295,52 +3346,67 @@ ${emoji(card.club)}
 <div class="list">
 
 <div class="list-item">
+
 <span class="muted">
 Preis
 </span>
+
 <strong>
 ${price(card.price)}
 </strong>
+
 </div>
 
 
 <div class="list-item">
+
 <span class="muted">
 Verein
 </span>
+
 <strong>
 ${escapeHTML(card.club)}
 </strong>
+
 </div>
 
 
 <div class="list-item">
+
 <span class="muted">
 Zustand
 </span>
+
 <strong>
 ${escapeHTML(card.condition)}
 </strong>
+
 </div>
 
 
 <div class="list-item">
+
 <span class="muted">
 Aufrufe
 </span>
+
 <strong>
 👁️ ${Number(card.views||0)}
 </strong>
+
 </div>
 
 
 <div class="list-item">
+
 <span class="muted">
 Verkäufer
 </span>
+
 <strong>
 ${escapeHTML(card.seller)}
 </strong>
+
 </div>
 
 
@@ -3700,12 +3766,12 @@ value.toLowerCase()
 error.textContent=
 found
 ?"✓ Verein erkannt"
-:"Dieser Verein wurde nicht erkannt. Er wird nicht als gültiger Verein übernommen.";
+:"Dieser Verein wurde nicht erkannt.";
 
 
 error.style.color=
 found
-?"var(--green)"
+?"var(--accent)"
 :"var(--red)";
 
 }
@@ -3784,11 +3850,6 @@ return;
 
 }
 
-
-/*
-  Unbekannte Vereine werden NICHT
-  als echter Verein gespeichert.
-*/
 
 const officialClub=
 validClub
