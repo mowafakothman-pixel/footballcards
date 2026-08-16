@@ -7,37 +7,32 @@
 
 <style>
 :root{
-  --bg:#050505;
-  --bg2:#080808;
-  --panel:#101010;
-  --panel2:#151515;
-  --panel3:#1b1b1b;
+  --bg:#050506;
+  --bg2:#09090c;
+  --panel:#101014;
+  --panel2:#17171d;
+  --panel3:#1d1d25;
 
-  --border:#242424;
-  --border2:#333333;
+  --border:#292930;
+  --border2:#3a3a45;
 
-  --text:#f5f5f2;
-  --white:#ffffff;
-  --muted:#858581;
-  --muted2:#666662;
+  --text:#fafafa;
+  --muted:#92929d;
 
-  /* ORANGE NUR ALS AKZENT */
-  --accent:#e9823d;
-  --accent2:#ffab67;
-  --accent3:#c85e21;
+  /* CLEAN LILA → PINK */
+  --accent:#c86cff;
+  --accent2:#f47cff;
 
-  --green:#42d69b;
-  --red:#ff606a;
+  --green:#39d69b;
+  --red:#ff6070;
   --yellow:#ffc857;
+  --blue:#4ca3ff;
 
   --radius:18px;
-  --radius2:23px;
+  --radius2:24px;
 
-  --shadow:
-    0 20px 65px rgba(0,0,0,.42);
-
-  --shadow2:
-    0 10px 35px rgba(0,0,0,.28);
+  --shadow:0 18px 55px rgba(0,0,0,.42);
+  --shadow2:0 10px 30px rgba(0,0,0,.30);
 }
 
 *{
@@ -52,7 +47,6 @@ html{
 
 body{
   min-height:100vh;
-
   color:var(--text);
 
   font-family:
@@ -61,16 +55,20 @@ body{
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
-    Arial,
     sans-serif;
 
   background:
     radial-gradient(
-      circle at 18% -15%,
-      rgba(233,130,61,.055),
+      circle at 12% -12%,
+      rgba(200,108,255,.13),
       transparent 27%
     ),
-    #050505;
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(244,124,255,.055),
+      transparent 23%
+    ),
+    #050506;
 }
 
 button,
@@ -93,7 +91,6 @@ a{
   text-decoration:none;
 }
 
-
 /* =========================================================
    TOP NAVIGATION
 ========================================================= */
@@ -103,94 +100,65 @@ a{
   top:0;
   z-index:1000;
 
-  background:
-    rgba(5,5,5,.92);
-
+  background:rgba(5,5,6,.91);
   backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
 
-  border-bottom:
-    1px solid rgba(255,255,255,.055);
+  border-bottom:1px solid rgba(255,255,255,.07);
 
   box-shadow:
-    0 8px 35px rgba(0,0,0,.3);
+    0 8px 30px rgba(0,0,0,.28);
 }
 
 .nav{
-  width:min(1420px,calc(100% - 34px));
-
+  width:min(1400px,calc(100% - 28px));
   margin:auto;
 
-  min-height:78px;
+  padding:13px 0 14px;
 
   display:grid;
-
-  grid-template-columns:
-    180px
-    1fr;
-
+  grid-template-columns:190px 1fr;
   gap:18px;
-
   align-items:center;
 }
 
-
-/* =========================================================
-   LOGO
-========================================================= */
+/* LOGO */
 
 .logo{
   border:0;
   background:none;
-
   color:white;
 
   display:flex;
   align-items:center;
+  gap:12px;
 
-  justify-content:flex-start;
-
-  gap:10px;
-
-  font-size:20px;
   font-weight:950;
-
-  letter-spacing:-.7px;
+  font-size:20px;
 
   white-space:nowrap;
 }
 
 .logo-icon{
-  width:43px;
-  height:43px;
+  width:48px;
+  height:48px;
 
   display:grid;
   place-items:center;
 
-  border-radius:14px;
+  border-radius:16px;
 
   background:
     linear-gradient(
-      145deg,
-      #f3a15d,
-      var(--accent)
+      135deg,
+      #c86cff,
+      #f47cff
     );
 
-  color:#111;
-
   box-shadow:
-    0 7px 24px rgba(233,130,61,.15);
+    0 10px 35px rgba(200,108,255,.28);
 
-  font-size:20px;
-
-  transition:.2s;
+  font-size:22px;
 }
-
-.logo:hover .logo-icon{
-  box-shadow:
-    0 8px 28px rgba(233,130,61,.25);
-}
-
 
 /* =========================================================
    NAVIGATION
@@ -198,165 +166,153 @@ a{
 ========================================================= */
 
 .nav-links{
-  width:100%;
-
   display:grid;
 
   grid-template-columns:
-    repeat(3,1fr)
-    1.18fr
-    repeat(3,1fr);
+    1fr
+    1fr
+    1fr
+    1.35fr
+    1fr
+    1fr
+    1fr;
 
   gap:8px;
 
-  align-items:center;
+  align-items:stretch;
 }
 
 .nav-btn{
-  position:relative;
+  min-height:52px;
 
-  min-height:51px;
+  border:1px solid transparent;
+  border-radius:15px;
 
-  padding:
-    9px 8px;
+  background:rgba(255,255,255,.025);
 
-  border:
-    1px solid transparent;
+  color:#aeb0bb;
 
-  border-radius:14px;
+  font-weight:800;
+  font-size:14px;
 
-  background:
-    rgba(255,255,255,.025);
-
-  color:#90908c;
-
-  font-size:13px;
-  font-weight:850;
+  padding:10px 8px;
 
   transition:
     background .2s ease,
     border .2s ease,
     color .2s ease,
-    transform .2s ease;
+    transform .2s ease,
+    box-shadow .2s ease;
 }
 
 .nav-btn:hover{
-  color:#fff;
+  color:white;
 
   background:
     rgba(255,255,255,.055);
 
   border-color:
-    rgba(255,255,255,.075);
+    rgba(255,255,255,.09);
 
-  transform:
-    translateY(-1px);
+  transform:translateY(-2px);
 }
 
 .nav-btn.active{
-  color:#fff;
-
-  background:
-    rgba(255,255,255,.065);
-
-  border-color:
-    rgba(255,255,255,.10);
-}
-
-
-/* =========================================================
-   VERKAUFEN
-   ORANGE NUR HIER ALS STARKER AKZENT
-========================================================= */
-
-.nav-btn.sell-main{
-  min-height:54px;
-
-  color:#111;
+  color:white;
 
   background:
     linear-gradient(
       135deg,
-      var(--accent2),
-      var(--accent),
-      var(--accent3)
+      rgba(200,108,255,.20),
+      rgba(244,124,255,.07)
     );
 
-  border:
-    1px solid rgba(255,190,140,.25);
+  border-color:
+    rgba(200,108,255,.34);
 
   box-shadow:
-    0 8px 28px rgba(233,130,61,.16);
+    0 8px 25px rgba(200,108,255,.10);
+}
 
-  font-size:14px;
+/* VERKAUFEN IN DER MITTE */
+
+.nav-btn.sell-main{
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #c86cff,
+      #f47cff
+    );
+
+  border-color:
+    rgba(255,255,255,.14);
+
+  box-shadow:
+    0 10px 30px rgba(200,108,255,.25);
+
+  font-size:15px;
   font-weight:950;
-
-  letter-spacing:.1px;
 }
 
 .nav-btn.sell-main:hover{
-  color:#111;
-
   transform:
-    translateY(-2px);
+    translateY(-3px)
+    scale(1.015);
 
   box-shadow:
-    0 13px 34px rgba(233,130,61,.24);
+    0 15px 40px rgba(200,108,255,.34);
 }
 
 .nav-btn.sell-main.active{
   background:
     linear-gradient(
       135deg,
-      #ffb16f,
-      #e9823d,
-      #c85e21
+      #d16cff,
+      #fa80ff
     );
 }
 
+/* NOTIFICATION */
 
-/* =========================================================
-   NOTIFICATION BADGE
-========================================================= */
+.nav-notification{
+  position:relative;
+}
 
 .badge{
   position:absolute;
 
-  right:7px;
-  top:5px;
+  right:8px;
+  top:6px;
 
-  min-width:18px;
-  height:18px;
+  min-width:19px;
+  height:19px;
 
-  padding:
-    0 5px;
+  padding:0 5px;
 
   border-radius:20px;
+
+  background:var(--red);
 
   display:grid;
   place-items:center;
 
-  background:
-    var(--accent);
+  color:white;
 
-  color:#111;
-
-  font-size:9px;
+  font-size:10px;
   font-weight:950;
 
   box-shadow:
-    0 5px 16px rgba(233,130,61,.2);
+    0 5px 15px rgba(255,96,112,.35);
 }
-
 
 /* =========================================================
    MAIN
 ========================================================= */
 
 .container{
-  width:
-    min(1420px,calc(100% - 34px));
-
+  width:min(1400px,calc(100% - 28px));
   margin:auto;
 }
 
@@ -364,10 +320,12 @@ a{
   display:none;
 
   padding:
-    34px 0 90px;
+    34px
+    0
+    90px;
 
   animation:
-    pageIn .28s ease;
+    pageIn .3s ease;
 }
 
 .page.active{
@@ -377,7 +335,7 @@ a{
 @keyframes pageIn{
   from{
     opacity:0;
-    transform:translateY(8px);
+    transform:translateY(10px);
   }
 
   to{
@@ -385,7 +343,6 @@ a{
     transform:none;
   }
 }
-
 
 /* =========================================================
    HERO
@@ -395,25 +352,23 @@ a{
   position:relative;
   overflow:hidden;
 
-  min-height:355px;
+  min-height:350px;
 
-  padding:54px;
+  padding:50px;
 
   border:
-    1px solid #232323;
+    1px solid var(--border);
 
-  border-radius:28px;
+  border-radius:30px;
 
   background:
     linear-gradient(
-      135deg,
-      #111111,
-      #090909 65%,
-      #10100f
+      120deg,
+      rgba(200,108,255,.16),
+      rgba(16,16,20,.98) 60%
     );
 
-  box-shadow:
-    var(--shadow);
+  box-shadow:var(--shadow);
 }
 
 .hero:before{
@@ -421,19 +376,18 @@ a{
 
   position:absolute;
 
-  width:500px;
-  height:500px;
+  width:420px;
+  height:420px;
 
-  right:-250px;
-  top:-290px;
+  right:-180px;
+  top:-210px;
 
   border-radius:50%;
 
   background:
     radial-gradient(
       circle,
-      rgba(233,130,61,.12),
-      rgba(233,130,61,.025) 35%,
+      rgba(200,108,255,.18),
       transparent 68%
     );
 }
@@ -444,11 +398,11 @@ a{
   position:absolute;
 
   right:70px;
-  bottom:25px;
+  bottom:35px;
 
-  font-size:125px;
+  font-size:120px;
 
-  opacity:.035;
+  opacity:.045;
 
   transform:
     rotate(-12deg);
@@ -456,31 +410,30 @@ a{
 
 .hero h1{
   position:relative;
-  z-index:2;
+  z-index:1;
 
   max-width:780px;
 
   font-size:
-    clamp(40px,6vw,72px);
+    clamp(38px,6vw,70px);
 
-  line-height:.96;
+  line-height:.98;
 
-  letter-spacing:-4px;
-
-  color:#fafaf8;
+  letter-spacing:-3px;
 }
 
 .hero p{
   position:relative;
-  z-index:2;
+  z-index:1;
 
   max-width:650px;
 
   margin:
-    22px 0 29px;
+    22px
+    0
+    28px;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
   line-height:1.7;
 
@@ -489,15 +442,13 @@ a{
 
 .hero-buttons{
   position:relative;
-  z-index:3;
+  z-index:2;
 
   display:flex;
-
-  gap:10px;
+  gap:11px;
 
   flex-wrap:wrap;
 }
-
 
 /* =========================================================
    BUTTONS
@@ -506,80 +457,59 @@ a{
 .btn{
   border:0;
 
-  border-radius:12px;
+  border-radius:13px;
 
   padding:
-    12px 18px;
+    12px
+    18px;
 
-  color:#111;
+  color:white;
 
   background:
     linear-gradient(
       135deg,
-      var(--accent2),
-      var(--accent)
+      #c86cff,
+      #f47cff
     );
 
   font-weight:900;
 
   box-shadow:
-    0 7px 22px rgba(233,130,61,.10);
+    0 8px 25px rgba(200,108,255,.17);
 
-  transition:.2s ease;
+  transition:.2s;
 }
 
 .btn:hover{
-  transform:
-    translateY(-2px);
-
-  filter:
-    brightness(1.06);
-
-  box-shadow:
-    0 10px 28px rgba(233,130,61,.17);
+  transform:translateY(-2px);
+  filter:brightness(1.07);
 }
 
 .btn.secondary{
-  color:#eeeeeb;
-
-  background:
-    #151515;
+  background:#17171d;
 
   border:
-    1px solid #292929;
+    1px solid var(--border);
 
   box-shadow:none;
 }
 
-.btn.secondary:hover{
-  background:
-    #1b1b1b;
-
-  border-color:
-    #363636;
-}
-
 .btn.green{
-  background:
-    var(--green);
-
-  color:#06150f;
+  background:var(--green);
+  color:#04130e;
 }
 
 .btn.red{
-  background:
-    var(--red);
-
-  color:#160507;
+  background:var(--red);
 }
 
 .btn.small{
   padding:
-    9px 12px;
+    9px
+    12px;
 
   font-size:12px;
 }
-
 
 /* =========================================================
    SECTION HEAD
@@ -594,21 +524,19 @@ a{
   gap:15px;
 
   margin:
-    32px 0 17px;
+    32px
+    0
+    17px;
 }
 
 .section-head h2{
   font-size:24px;
-
-  letter-spacing:-.6px;
-
-  color:#f4f4f1;
+  letter-spacing:-.5px;
 }
 
 .muted{
   color:var(--muted);
 }
-
 
 /* =========================================================
    STATS
@@ -620,90 +548,96 @@ a{
   grid-template-columns:
     repeat(4,1fr);
 
-  gap:12px;
+  gap:14px;
 
   margin-top:18px;
 }
 
 .stat{
-  padding:21px;
+  position:relative;
+
+  padding:22px;
 
   border:
-    1px solid #202020;
+    1px solid var(--border);
 
-  border-radius:18px;
+  border-radius:19px;
 
   background:
     linear-gradient(
       145deg,
-      #111111,
-      #0a0a0a
+      rgba(22,22,28,.98),
+      rgba(12,12,15,.98)
     );
 
-  transition:.2s ease;
+  transition:.2s;
 }
 
 .stat:hover{
-  transform:
-    translateY(-3px);
+  transform:translateY(-3px);
 
   border-color:
-    #303030;
+    var(--border2);
 }
 
 .stat-number{
   font-size:29px;
   font-weight:950;
-
-  color:#f4f4f1;
 }
 
 .stat-label{
   margin-top:5px;
 
-  color:#777772;
+  color:var(--muted);
 
   font-size:13px;
 }
 
-
 /* =========================================================
-   MARKET TOOLS
+   MARKET FILTERS
 ========================================================= */
 
 .market-tools{
-  padding:17px;
+  padding:18px;
 
   border:
-    1px solid #222;
+    1px solid var(--border);
 
-  border-radius:20px;
+  border-radius:21px;
 
   background:
-    #0d0d0d;
+    linear-gradient(
+      145deg,
+      rgba(16,16,20,.98),
+      rgba(10,10,13,.98)
+    );
 
-  box-shadow:
-    var(--shadow2);
+  box-shadow:var(--shadow2);
 }
 
 .search-row{
   display:grid;
 
   grid-template-columns:
-    2fr 1fr 1fr;
+    2fr
+    1fr
+    1fr;
 
-  gap:9px;
+  gap:10px;
 }
 
 .filter-row{
   display:grid;
 
   grid-template-columns:
-    1.1fr 1fr 1fr auto;
+    1.1fr
+    1fr
+    1fr
+    auto;
 
-  gap:9px;
+  gap:10px;
 
-  margin-top:9px;
+  margin-top:10px;
 }
 
 .input,
@@ -712,43 +646,43 @@ a{
   width:100%;
 
   border:
-    1px solid #272727;
+    1px solid var(--border);
 
-  border-radius:12px;
+  border-radius:13px;
 
   outline:none;
 
   background:
-    #141414;
+    #17171d;
 
-  color:#f1f1ee;
+  color:white;
 
   padding:
-    13px 14px;
+    13px
+    14px;
 
   transition:.2s;
 }
 
 .input::placeholder{
-  color:#656560;
+  color:#70717b;
 }
 
 .input:focus,
 .select:focus,
 .textarea:focus{
   border-color:
-    rgba(233,130,61,.65);
+    var(--accent);
 
   box-shadow:
-    0 0 0 3px rgba(233,130,61,.06);
+    0 0 0 3px
+    rgba(200,108,255,.10);
 }
 
 .textarea{
   min-height:130px;
-
   resize:vertical;
 }
-
 
 /* =========================================================
    CARDS
@@ -760,7 +694,7 @@ a{
   grid-template-columns:
     repeat(4,1fr);
 
-  gap:15px;
+  gap:17px;
 }
 
 .card{
@@ -768,35 +702,49 @@ a{
   overflow:hidden;
 
   border:
-    1px solid #202020;
+    1px solid var(--border);
 
-  border-radius:20px;
+  border-radius:21px;
 
   background:
     linear-gradient(
       145deg,
-      #111111,
-      #0b0b0b
+      #131318,
+      #0d0d11
     );
 
   box-shadow:
-    0 12px 40px rgba(0,0,0,.26);
+    0 10px 35px rgba(0,0,0,.25);
 
   transition:
-    transform .22s ease,
-    border .22s ease,
-    box-shadow .22s ease;
+    transform .25s,
+    border .25s,
+    box-shadow .25s;
+
+  animation:
+    cardIn .35s ease both;
 }
 
 .card:hover{
-  transform:
-    translateY(-5px);
+  transform:translateY(-6px);
 
   border-color:
-    #343434;
+    #3b3b46;
 
   box-shadow:
-    0 22px 55px rgba(0,0,0,.42);
+    0 22px 50px rgba(0,0,0,.36);
+}
+
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(12px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 
 .card-image{
@@ -812,13 +760,13 @@ a{
   background:
     radial-gradient(
       circle at 50% 35%,
-      rgba(255,255,255,.075),
-      transparent 28%
+      rgba(255,255,255,.10),
+      transparent 27%
     ),
     linear-gradient(
-      145deg,
-      #1a1a1a,
-      #080808
+      135deg,
+      #202027,
+      #09090c
     );
 }
 
@@ -833,9 +781,8 @@ a{
   font-size:75px;
 
   filter:
-    grayscale(.2)
     drop-shadow(
-      0 15px 22px rgba(0,0,0,.5)
+      0 15px 20px rgba(0,0,0,.45)
     );
 
   transition:.3s;
@@ -847,90 +794,78 @@ a{
     rotate(2deg);
 }
 
-
-/* =========================================================
-   CARD TAGS
-========================================================= */
-
 .card-tag{
   position:absolute;
-
   z-index:2;
 
-  left:10px;
-  top:10px;
+  left:11px;
+  top:11px;
 
   padding:
-    6px 9px;
+    6px
+    9px;
 
   border-radius:8px;
 
   background:
-    var(--accent);
+    linear-gradient(
+      135deg,
+      #c86cff,
+      #f47cff
+    );
 
-  color:#111;
+  color:white;
 
   font-size:10px;
   font-weight:950;
 
   box-shadow:
-    0 5px 16px rgba(233,130,61,.15);
+    0 5px 18px rgba(200,108,255,.22);
 }
 
 .popular-tag{
   position:absolute;
-
   z-index:2;
 
-  right:10px;
-  top:10px;
+  right:11px;
+  top:11px;
 
   padding:
-    6px 9px;
+    6px
+    9px;
 
   border-radius:8px;
 
   background:
-    rgba(0,0,0,.72);
+    rgba(0,0,0,.68);
 
-  color:
-    var(--yellow);
-
-  border:
-    1px solid rgba(255,255,255,.08);
+  color:var(--yellow);
 
   font-size:10px;
   font-weight:900;
 
-  backdrop-filter:
-    blur(10px);
+  backdrop-filter:blur(10px);
 }
-
-
-/* =========================================================
-   FAVORITE
-========================================================= */
 
 .favorite{
   position:absolute;
-
   z-index:3;
 
-  right:10px;
-  bottom:10px;
+  right:11px;
+  bottom:11px;
 
   width:41px;
   height:41px;
 
   border:
-    1px solid rgba(255,255,255,.11);
+    1px solid rgba(255,255,255,.14);
 
   border-radius:12px;
 
   background:
-    rgba(0,0,0,.55);
+    rgba(0,0,0,.52);
 
-  color:#eee;
+  color:white;
 
   font-size:21px;
 
@@ -943,20 +878,14 @@ a{
 }
 
 .favorite.active{
-  color:
-    #ff6874;
+  color:#ff4d6d;
 
   background:
-    rgba(255,80,100,.12);
+    rgba(255,77,109,.14);
 
   border-color:
-    rgba(255,80,100,.25);
+    rgba(255,77,109,.28);
 }
-
-
-/* =========================================================
-   CARD BODY
-========================================================= */
 
 .card-body{
   padding:17px;
@@ -964,17 +893,13 @@ a{
 
 .card-title{
   font-size:17px;
-
   font-weight:950;
-
-  color:#f4f4f1;
 }
 
 .card-sub{
   margin-top:6px;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
   font-size:12px;
 
@@ -985,7 +910,6 @@ a{
   display:flex;
 
   justify-content:space-between;
-
   align-items:end;
 
   gap:8px;
@@ -995,21 +919,16 @@ a{
 
 .price{
   font-size:21px;
-
   font-weight:950;
-
-  color:#fff;
 }
 
 .seller{
   margin-top:4px;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
   font-size:11px;
 }
-
 
 /* =========================================================
    PANELS
@@ -1019,24 +938,23 @@ a{
   padding:21px;
 
   border:
-    1px solid #222;
+    1px solid var(--border);
 
   border-radius:21px;
 
   background:
     linear-gradient(
       145deg,
-      #111111,
-      #0c0c0c
+      rgba(17,17,22,.98),
+      rgba(11,11,15,.98)
     );
 
   box-shadow:
-    0 12px 35px rgba(0,0,0,.18);
+    0 12px 35px rgba(0,0,0,.20);
 }
 
 .list{
   display:grid;
-
   gap:10px;
 }
 
@@ -1044,7 +962,6 @@ a{
   display:flex;
 
   justify-content:space-between;
-
   align-items:center;
 
   gap:14px;
@@ -1052,19 +969,16 @@ a{
   padding:15px;
 
   border:
-    1px solid #252525;
+    1px solid var(--border);
 
   border-radius:14px;
 
-  background:
-    #151515;
+  background:#17171d;
 }
 
 .actions{
   display:flex;
-
   gap:7px;
-
   flex-wrap:wrap;
 }
 
@@ -1080,12 +994,11 @@ a{
   border-radius:14px;
 
   background:
-    #202020;
-
-  border:
-    1px solid #303030;
-
-  color:#fff;
+    linear-gradient(
+      135deg,
+      #c86cff,
+      #f47cff
+    );
 
   font-weight:950;
 }
@@ -1094,7 +1007,6 @@ a{
   min-width:0;
 
   display:flex;
-
   align-items:center;
 
   gap:11px;
@@ -1102,19 +1014,15 @@ a{
 
 .user-name{
   font-weight:850;
-
-  color:#f1f1ee;
 }
 
 .user-small{
   margin-top:3px;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
   font-size:12px;
 }
-
 
 /* =========================================================
    PROFILE
@@ -1130,15 +1038,15 @@ a{
   padding:27px;
 
   border:
-    1px solid #242424;
+    1px solid var(--border);
 
   border-radius:23px;
 
   background:
     linear-gradient(
       135deg,
-      #131313,
-      #0b0b0b
+      rgba(200,108,255,.10),
+      rgba(17,17,22,.98)
     );
 }
 
@@ -1151,30 +1059,26 @@ a{
 
   flex:none;
 
-  border-radius:25px;
+  border-radius:26px;
 
   background:
     linear-gradient(
-      145deg,
-      #262626,
-      #111111
+      135deg,
+      #c86cff,
+      #f47cff
     );
 
-  border:
-    1px solid #343434;
-
   font-size:31px;
-
   font-weight:950;
+
+  box-shadow:
+    0 12px 35px rgba(200,108,255,.20);
 }
 
 .rating{
   margin-top:5px;
-
-  color:
-    var(--yellow);
+  color:var(--yellow);
 }
-
 
 /* =========================================================
    EMPTY
@@ -1188,23 +1092,20 @@ a{
   text-align:center;
 
   border:
-    1px dashed #303030;
+    1px dashed var(--border);
 
   border-radius:19px;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
   background:
-    rgba(15,15,15,.55);
+    rgba(17,17,22,.4);
 }
 
 .empty-icon{
   margin-bottom:11px;
-
   font-size:43px;
 }
-
 
 /* =========================================================
    MODAL
@@ -1227,8 +1128,7 @@ a{
   background:
     rgba(0,0,0,.80);
 
-  backdrop-filter:
-    blur(12px);
+  backdrop-filter:blur(12px);
 }
 
 .modal-backdrop.show{
@@ -1239,35 +1139,28 @@ a{
 }
 
 @keyframes fadeIn{
-  from{
-    opacity:0;
-  }
-
-  to{
-    opacity:1;
-  }
+  from{opacity:0}
+  to{opacity:1}
 }
 
 .modal{
-  width:
-    min(600px,100%);
+  width:min(600px,100%);
 
   padding:25px;
 
   border:
-    1px solid #292929;
+    1px solid var(--border);
 
   border-radius:23px;
 
   background:
     linear-gradient(
       145deg,
-      #151515,
-      #0c0c0c
+      #17171e,
+      #0c0c10
     );
 
-  box-shadow:
-    var(--shadow);
+  box-shadow:var(--shadow);
 
   animation:
     modalIn .25s ease;
@@ -1276,9 +1169,7 @@ a{
 @keyframes modalIn{
   from{
     opacity:0;
-    transform:
-      translateY(15px)
-      scale(.97);
+    transform:translateY(15px) scale(.97);
   }
 
   to{
@@ -1301,13 +1192,11 @@ a{
   width:38px;
   height:38px;
 
-  border:
-    1px solid #292929;
+  border:0;
 
   border-radius:11px;
 
-  background:
-    #171717;
+  background:#19191f;
 
   color:white;
 
@@ -1323,8 +1212,7 @@ a{
 
   margin-bottom:7px;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
   font-size:13px;
 }
@@ -1333,7 +1221,6 @@ a{
   display:none;
 
   width:100%;
-
   max-height:230px;
 
   object-fit:cover;
@@ -1343,9 +1230,8 @@ a{
   border-radius:15px;
 
   border:
-    1px solid #292929;
+    1px solid var(--border);
 }
-
 
 /* =========================================================
    TOAST
@@ -1363,25 +1249,21 @@ a{
     calc(100% - 36px);
 
   padding:
-    14px 17px;
+    14px
+    17px;
 
   border:
-    1px solid #303030;
+    1px solid var(--border);
 
   border-radius:14px;
 
-  background:
-    #181818;
+  background:#202027;
 
-  color:#f4f4f1;
-
-  box-shadow:
-    var(--shadow);
+  box-shadow:var(--shadow);
 
   opacity:0;
 
-  transform:
-    translateY(80px);
+  transform:translateY(80px);
 
   pointer-events:none;
 
@@ -1390,10 +1272,8 @@ a{
 
 .toast.show{
   opacity:1;
-
   transform:none;
 }
-
 
 /* =========================================================
    TABLET
@@ -1403,17 +1283,11 @@ a{
 
   .nav{
     grid-template-columns:1fr;
-
     gap:10px;
-
-    padding:
-      10px 0;
   }
 
   .logo{
-    justify-content:flex-start;
-
-    padding-left:5px;
+    justify-content:center;
   }
 
   .cards-grid{
@@ -1426,7 +1300,6 @@ a{
       repeat(2,1fr);
   }
 }
-
 
 /* =========================================================
    MOBILE
@@ -1443,23 +1316,18 @@ a{
     width:
       calc(100% - 12px);
 
-    min-height:auto;
-
     padding:
-      8px 0 10px;
+      9px 0
+      10px;
   }
 
   .logo{
-    justify-content:flex-start;
-
-    padding-left:2px;
-
     font-size:18px;
   }
 
   .logo-icon{
-    width:42px;
-    height:42px;
+    width:43px;
+    height:43px;
   }
 
   .nav-links{
@@ -1479,9 +1347,11 @@ a{
   }
 
   .nav-btn.sell-main{
-    grid-column:2;
+    grid-column:
+      2;
 
-    grid-row:1;
+    grid-row:
+      1;
 
     font-size:12px;
   }
@@ -1496,15 +1366,12 @@ a{
 
   .hero h1{
     font-size:40px;
-
     letter-spacing:-2px;
   }
 
   .hero:after{
     right:-15px;
-
     bottom:15px;
-
     font-size:90px;
   }
 
@@ -1557,7 +1424,6 @@ a{
   }
 }
 
-
 /* =========================================================
    VERY SMALL
 ========================================================= */
@@ -1566,7 +1432,6 @@ a{
 
   .nav-btn{
     min-height:46px;
-
     font-size:10px;
   }
 
@@ -1666,11 +1531,6 @@ a{
 
 <main class="container">
 
-
-<!-- =====================================================
-     HOME
-===================================================== -->
-
 <section
   id="home"
   class="page active">
@@ -1716,12 +1576,10 @@ Fußball-Community entdecken.
   id="statCards">
 0
 </div>
-
 <div class="stat-label">
 Karten online
 </div>
 </div>
-
 
 <div class="stat">
 <div
@@ -1729,12 +1587,10 @@ Karten online
   id="statFavorites">
 0
 </div>
-
 <div class="stat-label">
 Favoriten
 </div>
 </div>
-
 
 <div class="stat">
 <div
@@ -1742,18 +1598,15 @@ Favoriten
   id="statRequests">
 0
 </div>
-
 <div class="stat-label">
 Kaufanfragen
 </div>
 </div>
 
-
 <div class="stat">
 <div class="stat-number">
 4.9★
 </div>
-
 <div class="stat-label">
 Community Rating
 </div>
@@ -1766,7 +1619,6 @@ Community Rating
 
 <div>
 <h2>🔥 Aktuelle Karten</h2>
-
 <span class="muted">
 Die neuesten Angebote
 </span>
@@ -1780,7 +1632,6 @@ Die neuesten Angebote
 
 </div>
 
-
 <div
   id="homeCards"
   class="cards-grid">
@@ -1791,14 +1642,12 @@ Die neuesten Angebote
 
 <div>
 <h2>🔥 Beliebte Karten</h2>
-
 <span class="muted">
 Viele Aufrufe und Favoriten
 </span>
 </div>
 
 </div>
-
 
 <div
   id="popularCards"
@@ -1808,10 +1657,6 @@ Viele Aufrufe und Favoriten
 </section>
 
 
-<!-- =====================================================
-     MARKET
-===================================================== -->
-
 <section
   id="market"
   class="page">
@@ -1820,7 +1665,6 @@ Viele Aufrufe und Favoriten
 
 <div>
 <h2>🛒 Marktplatz</h2>
-
 <span class="muted">
 Finde genau die Karte, die du suchst
 </span>
@@ -1835,7 +1679,7 @@ Finde genau die Karte, die du suchst
 
 <input
   id="searchInput"
-  class="input"
+  class="input search-main"
   placeholder="🔎 Spieler, Verein oder Karte..."
   oninput="renderMarket()">
 
@@ -1868,7 +1712,6 @@ Finde genau die Karte, die du suchst
   list="clubSuggestions"
   placeholder="🏟️ Verein"
   oninput="renderMarket()">
-
 
 <select
   id="conditionFilter"
@@ -1969,14 +1812,12 @@ Finde genau die Karte, die du suchst
 
 <div>
 <h2>👁️ Zuletzt angesehen</h2>
-
 <span class="muted">
 Deine zuletzt geöffneten Karten
 </span>
 </div>
 
 </div>
-
 
 <div
   id="recentCards"
@@ -1986,10 +1827,6 @@ Deine zuletzt geöffneten Karten
 </section>
 
 
-<!-- =====================================================
-     SELL
-===================================================== -->
-
 <section
   id="sell"
   class="page">
@@ -1998,7 +1835,6 @@ Deine zuletzt geöffneten Karten
 
 <div>
 <h2>➕ Karte verkaufen</h2>
-
 <span class="muted">
 Erstelle dein eigenes Angebot
 </span>
@@ -2139,10 +1975,6 @@ Zustand auswählen
 </section>
 
 
-<!-- =====================================================
-     FAVORITES
-===================================================== -->
-
 <section
   id="favorites"
   class="page">
@@ -2151,14 +1983,12 @@ Zustand auswählen
 
 <div>
 <h2>❤️ Meine Favoriten</h2>
-
 <span class="muted">
 Gespeicherte Karten
 </span>
 </div>
 
 </div>
-
 
 <div
   id="favoriteCards"
@@ -2168,10 +1998,6 @@ Gespeicherte Karten
 </section>
 
 
-<!-- =====================================================
-     MESSAGES
-===================================================== -->
-
 <section
   id="messages"
   class="page">
@@ -2180,14 +2006,12 @@ Gespeicherte Karten
 
 <div>
 <h2>💬 Nachrichten</h2>
-
 <span class="muted">
 Deine Unterhaltungen
 </span>
 </div>
 
 </div>
-
 
 <div class="panel">
 
@@ -2201,10 +2025,6 @@ Deine Unterhaltungen
 </section>
 
 
-<!-- =====================================================
-     NOTIFICATIONS
-===================================================== -->
-
 <section
   id="notifications"
   class="page">
@@ -2213,7 +2033,6 @@ Deine Unterhaltungen
 
 <div>
 <h2>🔔 Benachrichtigungen</h2>
-
 <span class="muted">
 Was gerade passiert
 </span>
@@ -2227,7 +2046,6 @@ Alle gelesen
 
 </div>
 
-
 <div class="panel">
 
 <div
@@ -2239,10 +2057,6 @@ Alle gelesen
 
 </section>
 
-
-<!-- =====================================================
-     PROFILE
-===================================================== -->
 
 <section
   id="profile"
@@ -2301,7 +2115,6 @@ Sammler • Verkäufer
 
 <div>
 <h2>🛍️ Kaufanfragen</h2>
-
 <span class="muted">
 Anfragen von anderen Nutzern
 </span>
@@ -2323,10 +2136,6 @@ Anfragen von anderen Nutzern
 
 </main>
 
-
-<!-- =====================================================
-     MODAL
-===================================================== -->
 
 <div
   id="cardModal"
@@ -2375,15 +2184,9 @@ Karte
 <script>
 "use strict";
 
-
-/* =========================================================
-   STORAGE
-========================================================= */
-
 const STORAGE_KEY="pixelCardsData_v4";
 const VIEW_KEY="pixelCardsViewed_v4";
 const RECENT_KEY="pixelCardsRecent_v4";
-
 
 const knownClubs=[
 "Real Madrid",
@@ -2402,7 +2205,6 @@ const knownClubs=[
 "Atlético Madrid",
 "Tottenham"
 ];
-
 
 const defaultCards=[
 {
@@ -2487,12 +2289,13 @@ photo:""
 }
 ];
 
-
 function initialData(){
 
 return{
 cards:JSON.parse(JSON.stringify(defaultCards)),
+
 favorites:[],
+
 notifications:[
 {
 id:1,
@@ -2501,6 +2304,7 @@ time:Date.now(),
 read:false
 }
 ],
+
 messages:[
 {
 id:1,
@@ -2517,11 +2321,11 @@ time:Date.now()-5400000,
 unread:false
 }
 ],
+
 requests:[]
 };
 
 }
-
 
 function loadData(){
 
@@ -2582,9 +2386,7 @@ return initialData();
 
 }
 
-
 let data=loadData();
-
 
 function saveData(){
 
@@ -2607,11 +2409,6 @@ showToast(
 
 }
 
-
-/* =========================================================
-   VIEW DATA
-========================================================= */
-
 function getViewed(){
 
 try{
@@ -2631,7 +2428,6 @@ return[];
 }
 
 }
-
 
 function getRecent(){
 
@@ -2653,7 +2449,6 @@ return[];
 
 }
 
-
 function saveRecent(a){
 
 try{
@@ -2667,11 +2462,6 @@ JSON.stringify(a.slice(0,8))
 
 }
 
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
 function escapeHTML(v){
 
 return String(v??"")
@@ -2683,7 +2473,6 @@ return String(v??"")
 
 }
 
-
 function price(v){
 
 return Number(v)
@@ -2692,14 +2481,12 @@ return Number(v)
 
 }
 
-
 function date(v){
 
 return new Date(v)
 .toLocaleDateString("de-DE");
 
 }
-
 
 function initials(v){
 
@@ -2711,7 +2498,6 @@ return String(v)
 .toUpperCase();
 
 }
-
 
 function emoji(club){
 
@@ -2732,7 +2518,6 @@ return e[club]||"⚽";
 
 }
 
-
 function empty(icon,text){
 
 return`
@@ -2751,9 +2536,8 @@ ${escapeHTML(text)}
 
 }
 
-
 /* =========================================================
-   NAVIGATION
+   NAV
 ========================================================= */
 
 function showPage(id){
@@ -2769,7 +2553,6 @@ p.id===id
 
 });
 
-
 document
 .querySelectorAll(".nav-btn")
 .forEach(b=>{
@@ -2780,7 +2563,6 @@ b.dataset.page===id
 );
 
 });
-
 
 if(id==="home")
 renderHome();
@@ -2804,7 +2586,6 @@ renderNotifications();
 if(id==="profile")
 renderProfile();
 
-
 window.scrollTo({
 top:0,
 behavior:"smooth"
@@ -2812,9 +2593,8 @@ behavior:"smooth"
 
 }
 
-
 /* =========================================================
-   CARD HTML
+   CARD
 ========================================================= */
 
 function cardHTML(card){
@@ -2825,7 +2605,6 @@ data.favorites.includes(card.id);
 const popular=
 Number(card.favorites||0)>=7 ||
 Number(card.views||0)>=40;
-
 
 return`
 
@@ -2868,7 +2647,6 @@ ${fav?"♥":"♡"}
 
 </div>
 
-
 <div class="card-body">
 
 <div class="card-title">
@@ -2892,7 +2670,6 @@ ${Number(card.views||0)}
 Aufrufe
 </div>
 
-
 <div class="card-bottom">
 
 <div>
@@ -2910,7 +2687,6 @@ ${escapeHTML(card.seller)}
 
 </div>
 
-
 <button
 class="btn small"
 onclick="openCard(${Number(card.id)})">
@@ -2927,7 +2703,6 @@ Ansehen
 
 }
 
-
 /* =========================================================
    HOME
 ========================================================= */
@@ -2942,7 +2717,6 @@ Number(b.created)-Number(a.created)
 )
 .slice(0,4);
 
-
 document.getElementById(
 "homeCards"
 ).innerHTML=
@@ -2953,7 +2727,6 @@ latest.length
 "📦",
 "Noch keine Karten."
 );
-
 
 const popular=
 [...data.cards]
@@ -2971,7 +2744,6 @@ Number(a.views||0)
 )
 .slice(0,4);
 
-
 document.getElementById(
 "popularCards"
 ).innerHTML=
@@ -2983,11 +2755,9 @@ popular.length
 "Noch keine beliebten Karten."
 );
 
-
 updateStats();
 
 }
-
 
 /* =========================================================
    MARKET
@@ -3004,7 +2774,6 @@ document.getElementById(
 .trim()
 .toLowerCase();
 
-
 const club=
 (
 document.getElementById(
@@ -3014,42 +2783,35 @@ document.getElementById(
 .trim()
 .toLowerCase();
 
-
 const condition=
 document.getElementById(
 "conditionFilter"
 )?.value||"";
-
 
 const sort=
 document.getElementById(
 "sortFilter"
 )?.value||"new";
 
-
 const minRaw=
 document.getElementById(
 "minPrice"
 )?.value;
-
 
 const maxRaw=
 document.getElementById(
 "maxPrice"
 )?.value;
 
-
 const min=
 minRaw===""
 ?0
 :Number(minRaw);
 
-
 const max=
 maxRaw===""
 ?Infinity
 :Number(maxRaw);
-
 
 let cards=
 data.cards.filter(c=>{
@@ -3058,25 +2820,19 @@ const text=
 `${c.player} ${c.club} ${c.name}`
 .toLowerCase();
 
-
 return(
 
 (!search||text.includes(search))&&
-
 (!club||
 c.club.toLowerCase().includes(club))&&
-
 (!condition||
 c.condition===condition)&&
-
 Number(c.price)>=min&&
-
 Number(c.price)<=max
 
 );
 
 });
-
 
 if(sort==="cheap"){
 
@@ -3135,7 +2891,6 @@ Number(a.created)
 
 }
 
-
 document.getElementById(
 "marketCount"
 ).textContent=
@@ -3144,7 +2899,6 @@ cards.length===1
 ?"Karte"
 :"Karten"
 } gefunden`;
-
 
 document.getElementById(
 "marketCards"
@@ -3158,7 +2912,6 @@ cards.length
 );
 
 }
-
 
 function resetFilters(){
 
@@ -3177,16 +2930,13 @@ el.value="";
 
 });
 
-
 document.getElementById(
 "conditionFilter"
 ).value="";
 
-
 document.getElementById(
 "sortFilter"
 ).value="new";
-
 
 renderMarket();
 
@@ -3195,7 +2945,6 @@ showToast(
 );
 
 }
-
 
 /* =========================================================
    FAVORITES
@@ -3210,12 +2959,10 @@ c=>Number(c.id)===Number(id)
 
 if(!card)return;
 
-
 const i=
 data.favorites.indexOf(
 card.id
 );
-
 
 if(i===-1){
 
@@ -3244,7 +2991,6 @@ showToast(
 
 }
 
-
 saveData();
 
 renderHome();
@@ -3254,18 +3000,12 @@ updateStats();
 
 }
 
-
-/* =========================================================
-   FAVORITES PAGE
-========================================================= */
-
 function renderFavorites(){
 
 const cards=
 data.cards.filter(
 c=>data.favorites.includes(c.id)
 );
-
 
 document.getElementById(
 "favoriteCards"
@@ -3280,7 +3020,6 @@ cards.length
 
 }
 
-
 /* =========================================================
    VIEWS
 ========================================================= */
@@ -3294,10 +3033,8 @@ c=>Number(c.id)===Number(id)
 
 if(!card)return;
 
-
 const viewed=
 getViewed();
-
 
 if(!viewed.includes(card.id)){
 
@@ -3312,17 +3049,14 @@ JSON.stringify(viewed)
 
 }catch(e){}
 
-
 card.views=
 Number(card.views||0)+1;
-
 
 const recent=
 getRecent()
 .filter(
 x=>Number(x)!==Number(card.id)
 );
-
 
 recent.unshift(card.id);
 
@@ -3334,12 +3068,10 @@ saveData();
 
 }
 
-
 function renderRecent(){
 
 const ids=
 getRecent();
-
 
 const cards=
 ids
@@ -3350,7 +3082,6 @@ c=>Number(c.id)===Number(id)
 )
 )
 .filter(Boolean);
-
 
 document.getElementById(
 "recentCards"
@@ -3365,7 +3096,6 @@ cards.length
 
 }
 
-
 /* =========================================================
    CARD MODAL
 ========================================================= */
@@ -3377,7 +3107,6 @@ data.cards.find(
 c=>Number(c.id)===Number(id)
 );
 
-
 if(!card){
 
 showToast(
@@ -3388,21 +3117,17 @@ return;
 
 }
 
-
 registerView(card.id);
-
 
 document.getElementById(
 "modalTitle"
 ).textContent=
 card.player;
 
-
 document.getElementById(
 "modalSubtitle"
 ).textContent=
 `${card.club} • ${card.name}`;
-
 
 document.getElementById(
 "modalContent"
@@ -3433,63 +3158,52 @@ ${emoji(card.club)}
 
 </div>
 
-
 <div class="list">
 
 <div class="list-item">
 <span class="muted">
 Preis
 </span>
-
 <strong>
 ${price(card.price)}
 </strong>
 </div>
 
-
 <div class="list-item">
 <span class="muted">
 Verein
 </span>
-
 <strong>
 ${escapeHTML(card.club)}
 </strong>
 </div>
 
-
 <div class="list-item">
 <span class="muted">
 Zustand
 </span>
-
 <strong>
 ${escapeHTML(card.condition)}
 </strong>
 </div>
 
-
 <div class="list-item">
 <span class="muted">
 Aufrufe
 </span>
-
 <strong>
 👁️ ${Number(card.views||0)}
 </strong>
 </div>
 
-
 <div class="list-item">
 <span class="muted">
 Verkäufer
 </span>
-
 <strong>
 ${escapeHTML(card.seller)}
 </strong>
 </div>
-
 
 <div class="panel">
 
@@ -3513,7 +3227,6 @@ card.description||
 
 </div>
 
-
 <button
 class="btn green"
 onclick="requestPurchase(${Number(card.id)})">
@@ -3521,7 +3234,6 @@ onclick="requestPurchase(${Number(card.id)})">
 🛒 Kaufanfrage senden
 
 </button>
-
 
 <button
 class="btn secondary"
@@ -3535,17 +3247,14 @@ onclick="messageSeller('${escapeHTML(card.seller)}')">
 
 `;
 
-
 document.getElementById(
 "cardModal"
 ).classList.add("show");
-
 
 renderRecent();
 renderMarket();
 
 }
-
 
 /* =========================================================
    PURCHASE
@@ -3560,14 +3269,12 @@ c=>Number(c.id)===Number(id)
 
 if(!card)return;
 
-
 const exists=
 data.requests.some(
 r=>
 Number(r.cardId)===Number(id)&&
 r.status==="pending"
 );
-
 
 if(exists){
 
@@ -3578,7 +3285,6 @@ showToast(
 return;
 
 }
-
 
 data.requests.push({
 
@@ -3598,7 +3304,6 @@ created:Date.now()
 
 });
 
-
 data.notifications.unshift({
 
 id:Date.now()+1,
@@ -3612,7 +3317,6 @@ read:false
 
 });
 
-
 saveData();
 
 closeModal();
@@ -3624,7 +3328,6 @@ showToast(
 );
 
 }
-
 
 /* =========================================================
    MESSAGES
@@ -3647,7 +3350,6 @@ unread:true
 
 });
 
-
 saveData();
 
 closeModal();
@@ -3660,14 +3362,12 @@ showToast(
 
 }
 
-
 function renderMessages(){
 
 const box=
 document.getElementById(
 "messagesList"
 );
-
 
 if(!data.messages.length){
 
@@ -3680,7 +3380,6 @@ empty(
 return;
 
 }
-
 
 box.innerHTML=
 data.messages.map(
@@ -3725,13 +3424,11 @@ ${date(m.time)}
 
 }
 
-
 /* =========================================================
    SELL
 ========================================================= */
 
 let selectedPhoto="";
-
 
 document.getElementById(
 "sellPhoto"
@@ -3740,7 +3437,6 @@ document.getElementById(
 function(){
 
 const file=this.files[0];
-
 
 if(!file){
 
@@ -3754,7 +3450,6 @@ return;
 
 }
 
-
 if(!file.type.startsWith("image/")){
 
 showToast(
@@ -3766,7 +3461,6 @@ this.value="";
 return;
 
 }
-
 
 if(file.size>1500000){
 
@@ -3780,16 +3474,13 @@ return;
 
 }
 
-
 const reader=
 new FileReader();
-
 
 reader.onload=function(){
 
 selectedPhoto=
 reader.result;
-
 
 const preview=
 document.getElementById(
@@ -3804,12 +3495,10 @@ preview.style.display=
 
 };
 
-
 reader.readAsDataURL(file);
 
 }
 );
-
 
 document.getElementById(
 "sellClub"
@@ -3820,12 +3509,10 @@ function(){
 const value=
 this.value.trim();
 
-
 const error=
 document.getElementById(
 "clubError"
 );
-
 
 if(!value){
 
@@ -3835,7 +3522,6 @@ return;
 
 }
 
-
 const found=
 knownClubs.some(
 c=>
@@ -3843,12 +3529,10 @@ c.toLowerCase()===
 value.toLowerCase()
 );
 
-
 error.textContent=
 found
 ?"✓ Verein erkannt"
 :"Dieser Verein wurde nicht erkannt. Er wird nicht als gültiger Verein übernommen.";
-
 
 error.style.color=
 found
@@ -3858,7 +3542,6 @@ found
 }
 );
 
-
 document.getElementById(
 "sellForm"
 ).addEventListener(
@@ -3867,30 +3550,25 @@ function(e){
 
 e.preventDefault();
 
-
 const player=
 document.getElementById(
 "sellPlayer"
 ).value.trim();
-
 
 const club=
 document.getElementById(
 "sellClub"
 ).value.trim();
 
-
 const name=
 document.getElementById(
 "sellName"
 ).value.trim();
 
-
 const condition=
 document.getElementById(
 "sellCondition"
 ).value;
-
 
 const priceValue=
 Number(
@@ -3899,12 +3577,10 @@ document.getElementById(
 ).value
 );
 
-
 const description=
 document.getElementById(
 "sellDescription"
 ).value.trim();
-
 
 const validClub=
 knownClubs.some(
@@ -3912,7 +3588,6 @@ c=>
 c.toLowerCase()===
 club.toLowerCase()
 );
-
 
 if(
 !player||
@@ -3931,7 +3606,6 @@ return;
 
 }
 
-
 const officialClub=
 validClub
 ?knownClubs.find(
@@ -3940,7 +3614,6 @@ c.toLowerCase()===
 club.toLowerCase()
 )
 :"Kein Verein";
-
 
 const newCard={
 
@@ -3974,11 +3647,9 @@ photo:selectedPhoto||""
 
 };
 
-
 data.cards.unshift(
 newCard
 );
-
 
 data.notifications.unshift({
 
@@ -3993,34 +3664,28 @@ read:false
 
 });
 
-
 saveData();
 
 this.reset();
 
 selectedPhoto="";
 
-
 document.getElementById(
 "photoPreview"
 ).style.display="none";
-
 
 document.getElementById(
 "clubError"
 ).textContent="";
 
-
 showToast(
 "🚀 Karte wurde erfolgreich eingestellt!"
 );
-
 
 showPage("market");
 
 }
 );
-
 
 /* =========================================================
    PROFILE
@@ -4033,7 +3698,6 @@ data.cards.filter(
 c=>c.seller==="Mein Profil"
 );
 
-
 document.getElementById(
 "myCards"
 ).innerHTML=
@@ -4045,11 +3709,9 @@ cards.length
 "Du hast noch keine Karten eingestellt."
 );
 
-
 renderRequests();
 
 }
-
 
 function renderRequests(){
 
@@ -4057,7 +3719,6 @@ const box=
 document.getElementById(
 "requestsList"
 );
-
 
 if(!data.requests.length){
 
@@ -4070,7 +3731,6 @@ empty(
 return;
 
 }
-
 
 box.innerHTML=
 data.requests.map(
@@ -4093,7 +3753,6 @@ ${date(r.created)}
 
 </div>
 
-
 <div class="actions">
 
 ${
@@ -4108,7 +3767,6 @@ onclick="acceptRequest(${Number(r.id)})">
 ✓ Annehmen
 
 </button>
-
 
 <button
 class="btn small red"
@@ -4146,7 +3804,6 @@ r.status==="accepted"
 
 }
 
-
 function acceptRequest(id){
 
 const r=
@@ -4156,9 +3813,7 @@ x=>Number(x.id)===Number(id)
 
 if(!r)return;
 
-
 r.status="accepted";
-
 
 data.notifications.unshift({
 
@@ -4173,7 +3828,6 @@ read:false
 
 });
 
-
 saveData();
 
 renderProfile();
@@ -4186,7 +3840,6 @@ showToast(
 
 }
 
-
 function rejectRequest(id){
 
 const r=
@@ -4196,9 +3849,7 @@ x=>Number(x.id)===Number(id)
 
 if(!r)return;
 
-
 r.status="rejected";
-
 
 data.notifications.unshift({
 
@@ -4213,7 +3864,6 @@ read:false
 
 });
 
-
 saveData();
 
 renderProfile();
@@ -4226,7 +3876,6 @@ showToast(
 
 }
 
-
 /* =========================================================
    NOTIFICATIONS
 ========================================================= */
@@ -4238,12 +3887,10 @@ data.notifications.filter(
 n=>!n.read
 ).length;
 
-
 const badge=
 document.getElementById(
 "notificationBadge"
 );
-
 
 badge.textContent=count;
 
@@ -4254,14 +3901,12 @@ count
 
 }
 
-
 function renderNotifications(){
 
 const box=
 document.getElementById(
 "notificationsList"
 );
-
 
 if(!data.notifications.length){
 
@@ -4274,7 +3919,6 @@ empty(
 return;
 
 }
-
 
 box.innerHTML=
 data.notifications.map(
@@ -4315,13 +3959,11 @@ ${date(n.time)}
 
 }
 
-
 function markNotificationsRead(){
 
 data.notifications.forEach(
 n=>n.read=true
 );
-
 
 saveData();
 
@@ -4335,7 +3977,6 @@ showToast(
 
 }
 
-
 /* =========================================================
    STATS
 ========================================================= */
@@ -4347,12 +3988,10 @@ document.getElementById(
 ).textContent=
 data.cards.length;
 
-
 document.getElementById(
 "statFavorites"
 ).textContent=
 data.favorites.length;
-
 
 document.getElementById(
 "statRequests"
@@ -4361,11 +4000,9 @@ data.requests.filter(
 r=>r.status==="pending"
 ).length;
 
-
 updateNotificationBadge();
 
 }
-
 
 /* =========================================================
    MODAL
@@ -4381,7 +4018,6 @@ document.getElementById(
 
 }
 
-
 document.getElementById(
 "cardModal"
 ).addEventListener(
@@ -4394,7 +4030,6 @@ closeModal();
 }
 );
 
-
 document.addEventListener(
 "keydown",
 function(e){
@@ -4405,13 +4040,11 @@ closeModal();
 }
 );
 
-
 /* =========================================================
    TOAST
 ========================================================= */
 
 let toastTimer=null;
-
 
 function showToast(message){
 
@@ -4420,18 +4053,15 @@ document.getElementById(
 "toast"
 );
 
-
 t.textContent=message;
 
 t.classList.add(
 "show"
 );
 
-
 clearTimeout(
 toastTimer
 );
-
 
 toastTimer=
 setTimeout(
@@ -4442,7 +4072,6 @@ t.classList.remove("show");
 );
 
 }
-
 
 /* =========================================================
    START
