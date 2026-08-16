@@ -13,16 +13,16 @@
   --panel2:#12121a;
   --panel3:#181820;
 
-  --border:#24222d;
-  --border2:#353143;
+  --border:#24212c;
+  --border2:#373044;
 
   --text:#f7f7fa;
   --muted:#92909e;
 
-  /* DUNKLERES LILA */
-  --accent:#4b2b78;
-  --accent2:#69409b;
-  --accent3:#8b5cc7;
+  /* CLEANES, DUNKLES LILA */
+  --accent:#553574;
+  --accent2:#704b96;
+  --accent3:#9368bd;
 
   --green:#43d69c;
   --red:#ef596b;
@@ -59,13 +59,13 @@ body{
 
   background:
     radial-gradient(
-      circle at 12% -10%,
-      rgba(75,43,120,.16),
+      circle at 10% -10%,
+      rgba(85,53,116,.13),
       transparent 30%
     ),
     radial-gradient(
-      circle at 100% 20%,
-      rgba(75,43,120,.07),
+      circle at 100% 18%,
+      rgba(112,75,150,.055),
       transparent 25%
     ),
     #050507;
@@ -100,8 +100,7 @@ a{
   top:0;
   z-index:1000;
 
-  background:
-    rgba(5,5,7,.91);
+  background:rgba(5,5,7,.92);
 
   backdrop-filter:blur(24px);
 
@@ -120,13 +119,10 @@ a{
 
   display:grid;
 
-  /*
-    LOGO LINKS
-    NAVIGATION MITTIG
-  */
-  grid-template-columns:210px 1fr;
+  /* PIXEL CARDS DEUTLICH LINKS */
+  grid-template-columns:190px 1fr;
 
-  gap:24px;
+  gap:28px;
 
   align-items:center;
 }
@@ -145,7 +141,7 @@ a{
   align-items:center;
   justify-content:flex-start;
 
-  gap:11px;
+  gap:10px;
 
   font-weight:950;
   font-size:20px;
@@ -153,40 +149,41 @@ a{
   white-space:nowrap;
 
   padding:0;
+
+  letter-spacing:-.5px;
 }
 
 .logo-icon{
-  width:45px;
-  height:45px;
+  width:44px;
+  height:44px;
 
   display:grid;
   place-items:center;
 
-  border-radius:14px;
+  border-radius:13px;
 
   background:
     linear-gradient(
       145deg,
-      #321c50,
-      #56327e
+      #39234f,
+      #5b3978
     );
 
   border:
-    1px solid rgba(139,92,199,.28);
+    1px solid rgba(147,104,189,.25);
 
   box-shadow:
-    0 8px 25px rgba(75,43,120,.25);
+    0 8px 25px rgba(85,53,116,.22);
 
-  font-size:21px;
+  font-size:20px;
 }
 
 .logo span:last-child{
-  letter-spacing:-.4px;
+  letter-spacing:-.6px;
 }
 
 /* =========================================================
    NAVIGATION
-   3 LINKS | VERKAUFEN | 3 LINKS
 ========================================================= */
 
 .nav-links{
@@ -245,10 +242,10 @@ a{
   color:#fff;
 
   background:
-    rgba(75,43,120,.20);
+    rgba(85,53,116,.20);
 
   border-color:
-    rgba(105,64,155,.38);
+    rgba(112,75,150,.34);
 
   box-shadow:
     0 8px 25px rgba(0,0,0,.15);
@@ -264,15 +261,15 @@ a{
   background:
     linear-gradient(
       135deg,
-      #4a2875,
-      #674095
+      #523171,
+      #704b96
     );
 
   border:
-    1px solid rgba(139,92,199,.30);
+    1px solid rgba(147,104,189,.28);
 
   box-shadow:
-    0 10px 30px rgba(75,43,120,.28);
+    0 10px 30px rgba(85,53,116,.24);
 
   font-size:14px;
   font-weight:950;
@@ -282,8 +279,8 @@ a{
   background:
     linear-gradient(
       135deg,
-      #563080,
-      #7548a7
+      #5d397e,
+      #7b55a2
     );
 
   transform:
@@ -378,7 +375,7 @@ a{
   background:
     linear-gradient(
       120deg,
-      rgba(75,43,120,.19),
+      rgba(85,53,116,.17),
       rgba(13,13,19,.98) 65%
     );
 
@@ -401,7 +398,7 @@ a{
   background:
     radial-gradient(
       circle,
-      rgba(105,64,155,.18),
+      rgba(112,75,150,.15),
       transparent 68%
     );
 }
@@ -480,14 +477,14 @@ a{
   background:
     linear-gradient(
       135deg,
-      #4b2b78,
-      #684099
+      #553574,
+      #704b96
     );
 
   font-weight:900;
 
   box-shadow:
-    0 8px 25px rgba(75,43,120,.22);
+    0 8px 25px rgba(85,53,116,.20);
 
   transition:.2s;
 }
@@ -677,11 +674,11 @@ a{
 .select:focus,
 .textarea:focus{
   border-color:
-    #69409b;
+    #704b96;
 
   box-shadow:
     0 0 0 3px
-    rgba(105,64,155,.10);
+    rgba(112,75,150,.10);
 }
 
 .textarea{
@@ -731,7 +728,7 @@ a{
   transform:translateY(-5px);
 
   border-color:
-    #353040;
+    #393145;
 
   box-shadow:
     0 20px 45px rgba(0,0,0,.38);
@@ -797,7 +794,7 @@ a{
   border-radius:8px;
 
   background:
-    #69409b;
+    #704b96;
 
   color:#fff;
 
@@ -973,8 +970,8 @@ a{
   background:
     linear-gradient(
       135deg,
-      #3d225f,
-      #684099
+      #3d2752,
+      #704b96
     );
 
   font-weight:950;
@@ -1022,7 +1019,7 @@ a{
   background:
     linear-gradient(
       135deg,
-      rgba(75,43,120,.13),
+      rgba(85,53,116,.12),
       #0d0d13
     );
 }
@@ -1041,15 +1038,15 @@ a{
   background:
     linear-gradient(
       135deg,
-      #3d225f,
-      #684099
+      #3d2752,
+      #704b96
     );
 
   font-size:30px;
   font-weight:950;
 
   box-shadow:
-    0 12px 35px rgba(75,43,120,.22);
+    0 12px 35px rgba(85,53,116,.20);
 }
 
 .rating{
@@ -1435,11 +1432,8 @@ a{
 <nav class="nav">
 
 <button class="logo" onclick="showPage('home')">
-
 <span class="logo-icon">⚽</span>
-
 <span>Pixel Cards</span>
-
 </button>
 
 <div class="nav-links">
@@ -1483,16 +1477,13 @@ onclick="showPage('messages')">
 class="nav-btn"
 data-page="notifications"
 onclick="showPage('notifications')">
-
 🔔 Benachrichtigungen
-
 <span
 id="notificationBadge"
 class="badge"
 style="display:none">
 0
 </span>
-
 </button>
 
 <button
@@ -1503,17 +1494,13 @@ onclick="showPage('profile')">
 </button>
 
 </div>
-
 </nav>
-
 </header>
 
 
 <main class="container">
 
-<section
-id="home"
-class="page active">
+<section id="home" class="page active">
 
 <div class="hero">
 
@@ -1544,64 +1531,29 @@ Karte einstellen
 </button>
 
 </div>
-
 </div>
 
 
 <div class="stats">
 
 <div class="stat">
-
-<div
-class="stat-number"
-id="statCards">
-0
-</div>
-
-<div class="stat-label">
-Karten online
-</div>
-
+<div class="stat-number" id="statCards">0</div>
+<div class="stat-label">Karten online</div>
 </div>
 
 <div class="stat">
-
-<div
-class="stat-number"
-id="statFavorites">
-0
-</div>
-
-<div class="stat-label">
-Favoriten
-</div>
-
+<div class="stat-number" id="statFavorites">0</div>
+<div class="stat-label">Favoriten</div>
 </div>
 
 <div class="stat">
-
-<div
-class="stat-number"
-id="statRequests">
-0
-</div>
-
-<div class="stat-label">
-Kaufanfragen
-</div>
-
+<div class="stat-number" id="statRequests">0</div>
+<div class="stat-label">Kaufanfragen</div>
 </div>
 
 <div class="stat">
-
-<div class="stat-number">
-4.9★
-</div>
-
-<div class="stat-label">
-Community Rating
-</div>
-
+<div class="stat-number">4.9★</div>
+<div class="stat-label">Community Rating</div>
 </div>
 
 </div>
@@ -1610,13 +1562,8 @@ Community Rating
 <div class="section-head">
 
 <div>
-
 <h2>🔥 Aktuelle Karten</h2>
-
-<span class="muted">
-Die neuesten Angebote
-</span>
-
+<span class="muted">Die neuesten Angebote</span>
 </div>
 
 <button
@@ -1627,48 +1574,34 @@ Alle anzeigen
 
 </div>
 
-<div
-id="homeCards"
-class="cards-grid">
-</div>
+<div id="homeCards" class="cards-grid"></div>
 
 
 <div class="section-head">
 
 <div>
-
 <h2>🔥 Beliebte Karten</h2>
-
 <span class="muted">
 Viele Aufrufe und Favoriten
 </span>
-
 </div>
 
 </div>
 
-<div
-id="popularCards"
-class="cards-grid">
-</div>
+<div id="popularCards" class="cards-grid"></div>
 
 </section>
 
 
-<section
-id="market"
-class="page">
+<section id="market" class="page">
 
 <div class="section-head">
 
 <div>
-
 <h2>🛒 Marktplatz</h2>
-
 <span class="muted">
 Finde genau die Karte, die du suchst
 </span>
-
 </div>
 
 </div>
@@ -1719,10 +1652,7 @@ id="conditionFilter"
 class="select"
 onchange="renderMarket()">
 
-<option value="">
-⭐ Alle Zustände
-</option>
-
+<option value="">⭐ Alle Zustände</option>
 <option>Neu</option>
 <option>Sehr gut</option>
 <option>Gut</option>
@@ -1736,25 +1666,11 @@ id="sortFilter"
 class="select"
 onchange="renderMarket()">
 
-<option value="new">
-🆕 Neueste
-</option>
-
-<option value="cheap">
-💶 Preis niedrig → hoch
-</option>
-
-<option value="expensive">
-💶 Preis hoch → niedrig
-</option>
-
-<option value="popular">
-🔥 Beliebteste
-</option>
-
-<option value="views">
-👁️ Meiste Aufrufe
-</option>
+<option value="new">🆕 Neueste</option>
+<option value="cheap">💶 Preis niedrig → hoch</option>
+<option value="expensive">💶 Preis hoch → niedrig</option>
+<option value="popular">🔥 Beliebteste</option>
+<option value="views">👁️ Meiste Aufrufe</option>
 
 </select>
 
@@ -1766,12 +1682,10 @@ onclick="resetFilters()">
 </button>
 
 </div>
-
 </div>
 
 
 <datalist id="clubSuggestions">
-
 <option value="Real Madrid">
 <option value="FC Barcelona">
 <option value="PSG">
@@ -1787,61 +1701,41 @@ onclick="resetFilters()">
 <option value="Juventus">
 <option value="Atlético Madrid">
 <option value="Tottenham">
-
 </datalist>
 
 
 <div class="section-head">
-
-<span
-id="marketCount"
-class="muted">
-</span>
-
+<span id="marketCount" class="muted"></span>
 </div>
 
-<div
-id="marketCards"
-class="cards-grid">
-</div>
+<div id="marketCards" class="cards-grid"></div>
 
 
 <div class="section-head">
 
 <div>
-
 <h2>👁️ Zuletzt angesehen</h2>
-
 <span class="muted">
 Deine zuletzt geöffneten Karten
 </span>
-
 </div>
 
 </div>
 
-<div
-id="recentCards"
-class="cards-grid">
-</div>
+<div id="recentCards" class="cards-grid"></div>
 
 </section>
 
 
-<section
-id="sell"
-class="page">
+<section id="sell" class="page">
 
 <div class="section-head">
 
 <div>
-
 <h2>➕ Karte verkaufen</h2>
-
 <span class="muted">
 Erstelle dein eigenes Angebot
 </span>
-
 </div>
 
 </div>
@@ -1973,82 +1867,60 @@ type="submit">
 </button>
 
 </form>
-
 </div>
 
 </section>
 
 
-<section
-id="favorites"
-class="page">
+<section id="favorites" class="page">
 
 <div class="section-head">
 
 <div>
-
 <h2>❤️ Meine Favoriten</h2>
-
 <span class="muted">
 Gespeicherte Karten
 </span>
-
 </div>
 
 </div>
 
-<div
-id="favoriteCards"
-class="cards-grid">
-</div>
+<div id="favoriteCards" class="cards-grid"></div>
 
 </section>
 
 
-<section
-id="messages"
-class="page">
+<section id="messages" class="page">
 
 <div class="section-head">
 
 <div>
-
 <h2>💬 Nachrichten</h2>
-
 <span class="muted">
 Deine Unterhaltungen
 </span>
-
 </div>
 
 </div>
 
 <div class="panel">
 
-<div
-id="messagesList"
-class="list">
-</div>
+<div id="messagesList" class="list"></div>
 
 </div>
 
 </section>
 
 
-<section
-id="notifications"
-class="page">
+<section id="notifications" class="page">
 
 <div class="section-head">
 
 <div>
-
 <h2>🔔 Benachrichtigungen</h2>
-
 <span class="muted">
 Was gerade passiert
 </span>
-
 </div>
 
 <button
@@ -2071,9 +1943,7 @@ class="list">
 </section>
 
 
-<section
-id="profile"
-class="page">
+<section id="profile" class="page">
 
 <div class="profile-head">
 
@@ -2083,15 +1953,11 @@ M
 
 <div>
 
-<h2>
-Mein Pixel-Cards-Profil
-</h2>
+<h2>Mein Pixel-Cards-Profil</h2>
 
 <div class="rating">
 ★★★★★
-<span class="muted">
-4.9
-</span>
+<span class="muted">4.9</span>
 </div>
 
 <div class="user-small">
@@ -2106,9 +1972,7 @@ Sammler • Verkäufer
 <div class="section-head">
 
 <div>
-
 <h2>📦 Meine Angebote</h2>
-
 </div>
 
 <button
@@ -2120,22 +1984,16 @@ onclick="showPage('sell')">
 </div>
 
 
-<div
-id="myCards"
-class="cards-grid">
-</div>
+<div id="myCards" class="cards-grid"></div>
 
 
 <div class="section-head">
 
 <div>
-
 <h2>🛍️ Kaufanfragen</h2>
-
 <span class="muted">
 Anfragen von anderen Nutzern
 </span>
-
 </div>
 
 </div>
@@ -2143,10 +2001,7 @@ Anfragen von anderen Nutzern
 
 <div class="panel">
 
-<div
-id="requestsList"
-class="list">
-</div>
+<div id="requestsList" class="list"></div>
 
 </div>
 
@@ -2155,9 +2010,7 @@ class="list">
 </main>
 
 
-<div
-id="cardModal"
-class="modal-backdrop">
+<div id="cardModal" class="modal-backdrop">
 
 <div class="modal">
 
@@ -2165,14 +2018,9 @@ class="modal-backdrop">
 
 <div>
 
-<h2 id="modalTitle">
-Karte
-</h2>
+<h2 id="modalTitle">Karte</h2>
 
-<div
-id="modalSubtitle"
-class="muted">
-</div>
+<div id="modalSubtitle" class="muted"></div>
 
 </div>
 
@@ -2184,18 +2032,13 @@ onclick="closeModal()">
 
 </div>
 
-<div id="modalContent">
-</div>
+<div id="modalContent"></div>
 
 </div>
-
 </div>
 
 
-<div
-id="toast"
-class="toast">
-</div>
+<div id="toast" class="toast"></div>
 
 
 <script>
@@ -2307,6 +2150,7 @@ photo:""
 ];
 
 function initialData(){
+
 return{
 cards:JSON.parse(JSON.stringify(defaultCards)),
 favorites:[],
@@ -2336,6 +2180,7 @@ unread:false
 ],
 requests:[]
 };
+
 }
 
 function loadData(){
@@ -2551,20 +2396,25 @@ b.dataset.page===id
 );
 });
 
-if(id==="home")renderHome();
+if(id==="home")
+renderHome();
 
 if(id==="market"){
 renderMarket();
 renderRecent();
 }
 
-if(id==="favorites")renderFavorites();
+if(id==="favorites")
+renderFavorites();
 
-if(id==="messages")renderMessages();
+if(id==="messages")
+renderMessages();
 
-if(id==="notifications")renderNotifications();
+if(id==="notifications")
+renderNotifications();
 
-if(id==="profile")renderProfile();
+if(id==="profile")
+renderProfile();
 
 window.scrollTo({
 top:0,
@@ -2781,16 +2631,19 @@ Number(c.price)<=max
 });
 
 if(sort==="cheap")
+
 cards.sort(
 (a,b)=>Number(a.price)-Number(b.price)
 );
 
 else if(sort==="expensive")
+
 cards.sort(
 (a,b)=>Number(b.price)-Number(a.price)
 );
 
 else if(sort==="popular")
+
 cards.sort(
 (a,b)=>
 (
@@ -2804,12 +2657,14 @@ Number(a.views||0)
 );
 
 else if(sort==="views")
+
 cards.sort(
 (a,b)=>
 Number(b.views||0)-Number(a.views||0)
 );
 
 else
+
 cards.sort(
 (a,b)=>Number(b.created)-Number(a.created)
 );
@@ -2842,7 +2697,8 @@ function resetFilters(){
 
 const el=document.getElementById(id);
 
-if(el)el.value="";
+if(el)
+el.value="";
 
 });
 
@@ -2867,7 +2723,8 @@ data.cards.find(
 c=>Number(c.id)===Number(id)
 );
 
-if(!card)return;
+if(!card)
+return;
 
 const i=
 data.favorites.indexOf(card.id);
@@ -2930,7 +2787,8 @@ data.cards.find(
 c=>Number(c.id)===Number(id)
 );
 
-if(!card)return;
+if(!card)
+return;
 
 const viewed=getViewed();
 
@@ -3100,7 +2958,7 @@ onclick="requestPurchase(${Number(card.id)})">
 
 <button
 class="btn secondary"
-onclick="messageSeller('${escapeHTML(card.seller)}')">
+onclick="messageSeller(${JSON.stringify(card.seller)})">
 
 💬 Verkäufer anschreiben
 
@@ -3126,7 +2984,8 @@ data.cards.find(
 c=>Number(c.id)===Number(id)
 );
 
-if(!card)return;
+if(!card)
+return;
 
 const exists=
 data.requests.some(
@@ -3600,17 +3459,13 @@ r.status==="pending"
 <button
 class="btn small green"
 onclick="acceptRequest(${Number(r.id)})">
-
 ✓ Annehmen
-
 </button>
 
 <button
 class="btn small red"
 onclick="rejectRequest(${Number(r.id)})">
-
 ✕ Ablehnen
-
 </button>
 
 `
@@ -3648,7 +3503,8 @@ data.requests.find(
 x=>Number(x.id)===Number(id)
 );
 
-if(!r)return;
+if(!r)
+return;
 
 r.status="accepted";
 
@@ -3684,7 +3540,8 @@ data.requests.find(
 x=>Number(x.id)===Number(id)
 );
 
-if(!r)return;
+if(!r)
+return;
 
 r.status="rejected";
 
@@ -3882,6 +3739,11 @@ t.classList.remove("show");
 );
 
 }
+
+
+/* =========================================================
+   START
+========================================================= */
 
 renderHome();
 renderMarket();
