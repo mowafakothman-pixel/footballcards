@@ -6,743 +6,874 @@
 <title>Pixel Cards</title>
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{
+  box-sizing:border-box
+}
+
+html{
+  scroll-behavior:smooth
+}
 
 body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#090909;
-color:#f5f5f5;
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#090909;
+  color:#f5f5f5
 }
 
-button,input,textarea,select{font-family:inherit}
-button{cursor:pointer}
+button,
+input,
+textarea,
+select{
+  font:inherit
+}
+
+button{
+  cursor:pointer
+}
 
 header{
-background:#050505;
-border-bottom:1px solid #222;
-padding:22px 16px;
-text-align:center;
+  background:#050505;
+  border-bottom:1px solid #222;
+  padding:22px 16px;
+  text-align:center
 }
 
-header h1{margin:0;font-size:30px}
-header p{margin:7px 0 0;color:#888}
+header h1{
+  margin:0;
+  font-size:30px
+}
 
-/* PROFILE */
+header p{
+  margin:7px 0 0;
+  color:#888
+}
+
+/* =========================
+   PROFILBAR
+========================= */
 
 .profile-bar{
-background:#0d0d0d;
-border-bottom:1px solid #222;
-position:sticky;
-top:0;
-z-index:3000;
+  background:#0d0d0d;
+  border-bottom:1px solid #222;
+  position:sticky;
+  top:0;
+  z-index:3000
 }
 
 .profile-inner{
-width:min(1250px,96%);
-margin:auto;
-min-height:68px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
+  width:min(1250px,96%);
+  margin:auto;
+  min-height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px
 }
 
 .profile-user{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:bold;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:bold
 }
 
-.avatar,.big-avatar{
-border-radius:50%;
-background:#fff;
-color:#000;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-flex-shrink:0;
+.avatar,
+.big-avatar{
+  border-radius:50%;
+  background:#fff;
+  color:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  flex-shrink:0
 }
 
-.avatar{width:40px;height:40px}
-.big-avatar{width:75px;height:75px;font-size:28px}
+.avatar{
+  width:40px;
+  height:40px
+}
+
+.big-avatar{
+  width:75px;
+  height:75px;
+  font-size:28px
+}
 
 .profile-controls{
-display:flex;
-gap:8px;
+  display:flex;
+  gap:8px
 }
 
 .profile-controls input{
-width:170px;
-padding:10px 12px;
-background:#161616;
-color:#fff;
-border:1px solid #333;
-border-radius:10px;
-outline:none;
+  width:170px;
+  padding:10px 12px;
+  background:#161616;
+  color:#fff;
+  border:1px solid #333;
+  border-radius:10px;
+  outline:none
 }
 
-.primary-btn{
-border:none;
-background:#fff;
-color:#000;
-padding:10px 15px;
-border-radius:10px;
-font-weight:bold;
+.primary-btn,
+.sell-submit{
+  border:none;
+  background:#fff;
+  color:#000;
+  padding:10px 15px;
+  border-radius:10px;
+  font-weight:bold
 }
 
-/* NAV */
+/* =========================
+   NAVIGATION
+========================= */
 
 .navigation-wrap{
-position:sticky;
-top:68px;
-z-index:2900;
-background:#090909;
-border-bottom:1px solid #222;
+  position:sticky;
+  top:68px;
+  z-index:2900;
+  background:#090909;
+  border-bottom:1px solid #222
 }
 
 .navigation{
-width:min(1250px,96%);
-margin:auto;
-padding:9px 0;
-display:grid;
-grid-template-columns:repeat(6,1fr);
-gap:7px;
+  width:min(1250px,96%);
+  margin:auto;
+  padding:9px 0;
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:7px
 }
 
 .navigation button{
-position:relative;
-min-width:0;
-border:1px solid #292929;
-background:#121212;
-color:#ddd;
-padding:12px 7px;
-border-radius:10px;
-font-size:13px;
-font-weight:bold;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis;
+  position:relative;
+  min-width:0;
+  border:1px solid #292929;
+  background:#121212;
+  color:#ddd;
+  padding:12px 7px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:bold;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis
 }
 
-.navigation button:hover{background:#1d1d1d}
+.navigation button:hover{
+  background:#1d1d1d
+}
 
 .navigation button.active{
-background:#fff;
-color:#000;
-border-color:#fff;
+  background:#fff;
+  color:#000;
+  border-color:#fff
 }
 
 .badge{
-position:absolute;
-top:-5px;
-right:-3px;
-min-width:19px;
-height:19px;
-padding:2px 5px;
-border-radius:20px;
-background:#ef233c;
-color:#fff;
-font-size:11px;
-display:flex;
-align-items:center;
-justify-content:center;
-border:2px solid #090909;
+  position:absolute;
+  top:-5px;
+  right:-3px;
+  min-width:19px;
+  height:19px;
+  padding:2px 5px;
+  border-radius:20px;
+  background:#ef233c;
+  color:#fff;
+  font-size:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid #090909
 }
 
-/* SEARCH */
+/* =========================
+   SEARCH
+========================= */
 
 .search{
-background:#0d0d0d;
-padding:14px 12px;
-border-bottom:1px solid #222;
+  background:#0d0d0d;
+  padding:14px 12px;
+  border-bottom:1px solid #222
 }
 
 .search input{
-display:block;
-width:min(850px,94%);
-margin:auto;
-padding:13px 16px;
-background:#171717;
-color:#fff;
-border:1px solid #333;
-border-radius:12px;
-font-size:15px;
-outline:none;
+  display:block;
+  width:min(850px,94%);
+  margin:auto;
+  padding:13px 16px;
+  background:#171717;
+  color:#fff;
+  border:1px solid #333;
+  border-radius:12px;
+  font-size:15px;
+  outline:none
 }
 
-/* MAIN */
+/* =========================
+   CONTAINER
+========================= */
 
 .container{
-width:min(1250px,96%);
-margin:auto;
-padding:22px 0 40px;
+  width:min(1250px,96%);
+  margin:auto;
+  padding:22px 0 40px
 }
 
-.page{display:none}
-.page.active{display:block}
-.page h2{margin-top:0}
+.page{
+  display:none
+}
 
-/* SELL */
+.page.active{
+  display:block
+}
+
+.page h2{
+  margin-top:0
+}
+
+/* =========================
+   VERKAUFEN
+========================= */
 
 .sell-launch{
-margin-bottom:22px;
-display:flex;
-justify-content:center;
+  margin-bottom:22px;
+  display:flex;
+  justify-content:center
 }
 
 .sell-main-btn{
-width:min(650px,100%);
-border:none;
-background:#fff;
-color:#000;
-padding:18px 20px;
-border-radius:15px;
-font-size:19px;
-font-weight:800;
+  width:min(650px,100%);
+  border:none;
+  background:#fff;
+  color:#000;
+  padding:18px 20px;
+  border-radius:15px;
+  font-size:19px;
+  font-weight:800
 }
 
 .sell-panel{
-display:none;
-background:#111;
-border:1px solid #292929;
-border-radius:18px;
-padding:22px;
-margin-bottom:22px;
+  display:none;
+  background:#111;
+  border:1px solid #292929;
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:22px
 }
 
-.sell-panel.open{display:block}
+.sell-panel.open{
+  display:block
+}
 
-.sell-panel h2{text-align:center}
+.sell-panel h2{
+  text-align:center
+}
 
 .sell-form{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px
 }
 
 .sell-form input,
 .sell-form textarea,
 .sell-form select{
-width:100%;
-padding:13px;
-background:#191919;
-color:#fff;
-border:1px solid #333;
-border-radius:10px;
-outline:none;
+  width:100%;
+  padding:13px;
+  background:#191919;
+  color:#fff;
+  border:1px solid #333;
+  border-radius:10px;
+  outline:none
 }
 
 .sell-form textarea{
-min-height:100px;
-resize:vertical;
+  min-height:100px;
+  resize:vertical
 }
 
-.sell-form .full{grid-column:1/-1}
+.full{
+  grid-column:1/-1
+}
 
 .photo-button{
-background:#fff;
-color:#000;
-border:none;
-padding:13px;
-border-radius:10px;
-font-weight:bold;
-text-align:center;
-cursor:pointer;
-}
-
-.sell-submit{
-border:none;
-background:#fff;
-color:#000;
-padding:14px;
-border-radius:10px;
-font-weight:bold;
+  background:#fff;
+  color:#000;
+  border:none;
+  padding:13px;
+  border-radius:10px;
+  font-weight:bold;
+  text-align:center;
+  cursor:pointer
 }
 
 .close-sell{
-background:#222;
-color:#fff;
-border:1px solid #333;
-padding:12px;
-border-radius:10px;
+  background:#222;
+  color:#fff;
+  border:1px solid #333;
+  padding:12px;
+  border-radius:10px
 }
 
-/* CARDS */
+/* =========================
+   KARTEN
+========================= */
 
 .cards{
-display:grid;
-grid-template-columns:repeat(4,minmax(0,1fr));
-gap:15px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:15px
 }
 
 .card{
-background:#111;
-border:1px solid #252525;
-border-radius:16px;
-padding:13px;
-overflow:hidden;
-transition:.18s;
+  background:#111;
+  border:1px solid #252525;
+  border-radius:16px;
+  padding:13px;
+  overflow:hidden;
+  transition:.18s
 }
 
 .card:hover{
-transform:translateY(-2px);
-border-color:#444;
+  transform:translateY(-2px);
+  border-color:#444
 }
 
 .card-image{
-width:100%;
-height:205px;
-background:#181818;
-border-radius:12px;
-overflow:hidden;
-display:flex;
-align-items:center;
-justify-content:center;
+  width:100%;
+  height:205px;
+  background:#181818;
+  border-radius:12px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center
 }
 
 .card-image img{
-width:100%;
-height:100%;
-object-fit:contain;
+  width:100%;
+  height:100%;
+  object-fit:contain
 }
 
 .card h3{
-margin:11px 0 5px;
-font-size:17px;
+  margin:11px 0 5px;
+  font-size:17px
 }
 
 .info{
-color:#999;
-margin:6px 0;
+  color:#999;
+  margin:6px 0
 }
 
 .price{
-font-size:22px;
-font-weight:800;
-margin:9px 0;
+  font-size:22px;
+  font-weight:800;
+  margin:9px 0
 }
 
 .card button{
-width:100%;
-margin-top:7px;
-padding:10px;
-border:none;
-border-radius:9px;
-background:#fff;
-color:#000;
-font-weight:bold;
+  width:100%;
+  margin-top:7px;
+  padding:10px;
+  border:none;
+  border-radius:9px;
+  background:#fff;
+  color:#000;
+  font-weight:bold
 }
 
 .card button.gray{
-background:#202020;
-color:#eee;
-border:1px solid #333;
+  background:#202020;
+  color:#eee;
+  border:1px solid #333
 }
 
 .card button:disabled{
-opacity:.55;
-cursor:not-allowed;
+  opacity:.55;
+  cursor:not-allowed
 }
 
 .favorite-row{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-top:7px;
-color:#999;
-font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:7px;
+  color:#999;
+  font-size:13px
 }
 
 .empty{
-background:#111;
-border:1px solid #252525;
-padding:28px;
-border-radius:15px;
-color:#888;
-text-align:center;
-grid-column:1/-1;
+  background:#111;
+  border:1px solid #252525;
+  padding:28px;
+  border-radius:15px;
+  color:#888;
+  text-align:center;
+  grid-column:1/-1
 }
 
-/* REQUESTS */
+/* =========================
+   ANFRAGEN
+========================= */
 
 .request-list{
-display:grid;
-gap:13px;
+  display:grid;
+  gap:13px
 }
 
 .request{
-background:#111;
-border:1px solid #292929;
-padding:16px;
-border-radius:16px;
+  background:#111;
+  border:1px solid #292929;
+  padding:16px;
+  border-radius:16px
 }
 
 .request-top{
-display:flex;
-gap:14px;
-align-items:center;
+  display:flex;
+  gap:14px;
+  align-items:center
 }
 
 .request-image{
-width:90px;
-height:90px;
-object-fit:contain;
-background:#191919;
-border-radius:10px;
-flex-shrink:0;
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  background:#191919;
+  border-radius:10px;
+  flex-shrink:0
 }
 
-.request-info{flex:1}
-.request-info h3{margin:0 0 6px}
+.request-info{
+  flex:1
+}
+
+.request-info h3{
+  margin:0 0 6px
+}
 
 .request-actions{
-display:flex;
-gap:9px;
-margin-top:14px;
+  display:flex;
+  gap:9px;
+  margin-top:14px
 }
 
 .accept-btn,
 .reject-btn,
 .rate-btn{
-border:none;
-color:#fff;
-padding:11px 15px;
-border-radius:9px;
-font-weight:bold;
-flex:1;
+  border:none;
+  padding:11px 15px;
+  border-radius:9px;
+  font-weight:bold;
+  flex:1
 }
 
-.accept-btn{background:#159447}
-.reject-btn{background:#d62839}
-.rate-btn{background:#fff;color:#000}
+.accept-btn{
+  background:#159447;
+  color:#fff
+}
+
+.reject-btn{
+  background:#d62839;
+  color:#fff
+}
+
+.rate-btn{
+  background:#fff;
+  color:#000
+}
 
 .status{
-display:inline-block;
-padding:6px 9px;
-border-radius:7px;
-font-size:13px;
-font-weight:bold;
+  display:inline-block;
+  padding:6px 9px;
+  border-radius:7px;
+  font-size:13px;
+  font-weight:bold
 }
 
 .status.open{
-background:#3b2d08;
-color:#ffd166;
+  background:#3b2d08;
+  color:#ffd166
 }
 
 .status.accepted{
-background:#0d3821;
-color:#63e6a2;
+  background:#0d3821;
+  color:#63e6a2
 }
 
 .status.rejected{
-background:#40151a;
-color:#ff8c96;
+  background:#40151a;
+  color:#ff8c96
 }
 
-/* PROFILE */
+/* =========================
+   PROFIL
+========================= */
 
 .seller-profile{
-background:#111;
-border:1px solid #292929;
-border-radius:18px;
-padding:23px;
+  background:#111;
+  border:1px solid #292929;
+  border-radius:18px;
+  padding:23px
 }
 
 .seller-header{
-display:flex;
-align-items:center;
-gap:15px;
+  display:flex;
+  align-items:center;
+  gap:15px
 }
 
-.seller-header h2{margin:0}
+.seller-header h2{
+  margin:0
+}
 
 .rating{
-font-size:20px;
-margin-top:7px;
+  font-size:20px;
+  margin-top:7px
 }
 
 .seller-stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-top:22px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:22px
 }
 
 .seller-stat{
-background:#191919;
-padding:15px;
-border-radius:11px;
-text-align:center;
+  background:#191919;
+  padding:15px;
+  border-radius:11px;
+  text-align:center
 }
 
 .seller-stat strong{
-display:block;
-font-size:22px;
+  display:block;
+  font-size:22px
 }
 
 .seller-stat span{
-color:#888;
-font-size:13px;
+  color:#888;
+  font-size:13px
 }
 
-/* CHAT */
+/* =========================
+   CHAT
+========================= */
 
 .chat-layout{
-display:grid;
-grid-template-columns:310px 1fr;
-gap:15px;
-min-height:500px;
+  display:grid;
+  grid-template-columns:310px 1fr;
+  gap:15px;
+  min-height:500px
 }
 
 .chat-list{
-background:#111;
-border:1px solid #292929;
-border-radius:16px;
-overflow:hidden;
+  background:#111;
+  border:1px solid #292929;
+  border-radius:16px;
+  overflow:hidden
 }
 
 .chat-list-title{
-padding:16px;
-font-weight:bold;
-border-bottom:1px solid #292929;
+  padding:16px;
+  font-weight:bold;
+  border-bottom:1px solid #292929
 }
 
 .chat-item{
-padding:14px;
-border-bottom:1px solid #242424;
-cursor:pointer;
+  padding:14px;
+  border-bottom:1px solid #242424;
+  cursor:pointer
 }
 
 .chat-item:hover,
 .chat-item.selected{
-background:#1b1b1b;
+  background:#1b1b1b
 }
 
-.chat-item strong{display:block}
-.chat-item span{color:#888;font-size:13px}
+.chat-item strong{
+  display:block
+}
+
+.chat-item span{
+  color:#888;
+  font-size:13px
+}
 
 .chat-window{
-background:#111;
-border:1px solid #292929;
-border-radius:16px;
-display:flex;
-flex-direction:column;
-min-height:500px;
+  background:#111;
+  border:1px solid #292929;
+  border-radius:16px;
+  display:flex;
+  flex-direction:column;
+  min-height:500px
 }
 
 .chat-header{
-padding:15px;
-border-bottom:1px solid #292929;
-font-weight:bold;
+  padding:15px;
+  border-bottom:1px solid #292929;
+  font-weight:bold
 }
 
 .messages{
-flex:1;
-padding:15px;
-overflow-y:auto;
-min-height:350px;
+  flex:1;
+  padding:15px;
+  overflow-y:auto;
+  min-height:350px
 }
 
 .message{
-max-width:75%;
-padding:10px 13px;
-border-radius:14px;
-margin-bottom:9px;
-background:#202020;
-word-break:break-word;
+  max-width:75%;
+  padding:10px 13px;
+  border-radius:14px;
+  margin-bottom:9px;
+  background:#202020;
+  white-space:pre-wrap;
+  word-break:break-word
 }
 
 .message.mine{
-margin-left:auto;
-background:#fff;
-color:#000;
+  margin-left:auto;
+  background:#fff;
+  color:#000
 }
 
 .message small{
-display:block;
-opacity:.55;
-font-size:10px;
-margin-top:4px;
+  display:block;
+  opacity:.55;
+  font-size:10px;
+  margin-top:4px
 }
 
 .chat-input{
-display:flex;
-gap:8px;
-padding:12px;
-border-top:1px solid #292929;
+  display:flex;
+  gap:8px;
+  padding:12px;
+  border-top:1px solid #292929
 }
 
 .chat-input input{
-flex:1;
-min-width:0;
-padding:12px;
-background:#191919;
-color:#fff;
-border:1px solid #333;
-border-radius:10px;
+  flex:1;
+  min-width:0;
+  padding:12px;
+  background:#191919;
+  color:#fff;
+  border:1px solid #333;
+  border-radius:10px
 }
 
 .chat-input button{
-border:none;
-background:#fff;
-color:#000;
-border-radius:10px;
-padding:0 17px;
-font-weight:bold;
+  border:none;
+  background:#fff;
+  color:#000;
+  border-radius:10px;
+  padding:0 17px;
+  font-weight:bold
 }
 
-/* MODAL */
+/* =========================
+   DETAIL
+========================= */
 
 .modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.78);
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:10000;
-padding:15px;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.78);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10000;
+  padding:15px
 }
 
 .modal-box{
-width:min(700px,100%);
-max-height:92vh;
-overflow:auto;
-background:#111;
-border:1px solid #3a3a3a;
-border-radius:20px;
-padding:20px;
+  width:min(700px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:#111;
+  border:1px solid #3a3a3a;
+  border-radius:20px;
+  padding:20px
 }
 
 .detail-image{
-width:100%;
-height:320px;
-background:#191919;
-border-radius:15px;
-object-fit:contain;
+  width:100%;
+  height:320px;
+  background:#191919;
+  border-radius:15px;
+  object-fit:contain
 }
 
 .detail-actions{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:8px;
-margin-top:14px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-top:14px
 }
 
 .detail-actions button{
-border:none;
-background:#fff;
-color:#000;
-padding:12px;
-border-radius:10px;
-font-weight:bold;
-}
-
-.detail-actions button.dark{
-background:#222;
-color:#fff;
-border:1px solid #333;
+  border:none;
+  background:#fff;
+  color:#000;
+  padding:12px;
+  border-radius:10px;
+  font-weight:bold
 }
 
 .close-modal{
-width:100%;
-margin-top:10px;
-border:none;
-background:#222;
-color:#fff;
-padding:12px;
-border-radius:10px;
+  width:100%;
+  margin-top:10px;
+  border:none;
+  background:#222;
+  color:#fff;
+  padding:12px;
+  border-radius:10px
 }
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-text-align:center;
-padding:35px;
-color:#666;
-border-top:1px solid #222;
+  text-align:center;
+  padding:35px;
+  color:#666;
+  border-top:1px solid #222
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:950px){
-.cards{grid-template-columns:repeat(3,minmax(0,1fr))}
-.chat-layout{grid-template-columns:240px 1fr}
+
+  .cards{
+    grid-template-columns:repeat(3,minmax(0,1fr))
+  }
+
+  .chat-layout{
+    grid-template-columns:240px 1fr
+  }
 }
 
 @media(max-width:700px){
 
-header h1{font-size:25px}
+  header h1{
+    font-size:25px
+  }
 
-.profile-inner{min-height:62px}
+  .profile-inner{
+    min-height:62px
+  }
 
-.profile-controls input{width:130px}
+  .profile-controls input{
+    width:130px
+  }
 
-.navigation-wrap{top:62px}
+  .navigation-wrap{
+    top:62px
+  }
 
-.navigation{
-grid-template-columns:repeat(6,minmax(0,1fr));
-gap:4px;
-}
+  .navigation{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    gap:4px
+  }
 
-.navigation button{
-padding:10px 3px;
-font-size:10px;
-}
+  .navigation button{
+    padding:10px 3px;
+    font-size:10px
+  }
 
-.cards{
-grid-template-columns:repeat(2,minmax(0,1fr));
-gap:10px;
-}
+  .cards{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px
+  }
 
-.card{padding:10px}
+  .card{
+    padding:10px
+  }
 
-.card-image{height:150px}
+  .card-image{
+    height:150px
+  }
 
-.card h3{font-size:15px}
-.price{font-size:19px}
+  .card h3{
+    font-size:15px
+  }
 
-.sell-form{grid-template-columns:1fr}
-.sell-form .full{grid-column:auto}
+  .price{
+    font-size:19px
+  }
 
-.chat-layout{grid-template-columns:1fr}
+  .sell-form{
+    grid-template-columns:1fr
+  }
 
-.chat-list{
-max-height:220px;
-overflow-y:auto;
-}
+  .full{
+    grid-column:auto
+  }
 
-.chat-window{min-height:450px}
+  .chat-layout{
+    grid-template-columns:1fr
+  }
 
-.seller-stats{grid-template-columns:1fr}
+  .chat-list{
+    max-height:220px;
+    overflow-y:auto
+  }
 
-.request-top{align-items:flex-start}
+  .chat-window{
+    min-height:450px
+  }
 
-.request-actions{flex-direction:column}
+  .seller-stats{
+    grid-template-columns:1fr
+  }
 
-.detail-image{height:250px}
-.detail-actions{grid-template-columns:1fr}
+  .request-top{
+    align-items:flex-start
+  }
+
+  .request-actions{
+    flex-direction:column
+  }
+
+  .detail-image{
+    height:250px
+  }
+
+  .detail-actions{
+    grid-template-columns:1fr
+  }
 }
 
 @media(max-width:420px){
 
-.profile-user span{
-max-width:90px;
-overflow:hidden;
-text-overflow:ellipsis;
-}
+  .profile-user span{
+    max-width:90px;
+    overflow:hidden;
+    text-overflow:ellipsis
+  }
 
-.profile-controls input{width:105px}
+  .profile-controls input{
+    width:105px
+  }
 
-.primary-btn{
-padding:9px;
-font-size:12px;
-}
+  .primary-btn{
+    padding:9px;
+    font-size:12px
+  }
 
-.navigation button{font-size:9px}
-.card-image{height:135px}
+  .navigation button{
+    font-size:9px
+  }
+
+  .card-image{
+    height:135px
+  }
 }
 </style>
 </head>
@@ -750,59 +881,110 @@ font-size:12px;
 <body>
 
 <header>
-<h1>⚽ Pixel Cards</h1>
-<p>Der Marktplatz für Fußballkarten</p>
+  <h1>⚽ Pixel Cards</h1>
+  <p>Der Marktplatz für Fußballkarten</p>
 </header>
 
 <!-- PROFIL -->
-
 <div class="profile-bar">
-<div class="profile-inner">
+  <div class="profile-inner">
 
-<div class="profile-user">
-<div id="avatar" class="avatar">?</div>
-<span id="profileName">Kein Benutzer</span>
-</div>
+    <div class="profile-user">
+      <div id="avatar" class="avatar">?</div>
+      <span id="profileName">Kein Benutzer</span>
+    </div>
 
-<div class="profile-controls">
-<input id="usernameInput" type="text" maxlength="20" placeholder="Benutzername">
-<button class="primary-btn" id="saveUsernameBtn">Profil speichern</button>
-</div>
+    <div class="profile-controls">
+      <input
+        id="usernameInput"
+        type="text"
+        maxlength="20"
+        placeholder="Benutzername"
+      >
 
-</div>
+      <button
+        id="saveUsernameBtn"
+        class="primary-btn">
+        Profil speichern
+      </button>
+    </div>
+
+  </div>
 </div>
 
 <!-- NAVIGATION -->
-
 <div class="navigation-wrap">
-<nav class="navigation">
 
-<button id="navCards" class="active">🔥 Karten</button>
+  <nav class="navigation">
 
-<button id="navFavorites">
-❤️ Favoriten
-<span id="favoriteBadge" class="badge" style="display:none">0</span>
-</button>
+    <button
+      id="navCards"
+      class="active"
+      data-page="cardsPage">
+      🔥 Karten
+    </button>
 
-<button id="navMine">🃏 Meine Karten</button>
+    <button
+      id="navFavorites"
+      data-page="favoritesPage">
+      ❤️ Favoriten
+      <span
+        id="favoriteBadge"
+        class="badge"
+        style="display:none">
+        0
+      </span>
+    </button>
 
-<button id="navRequests">
-📩 Anfragen
-<span id="requestBadge" class="badge" style="display:none">0</span>
-</button>
+    <button
+      id="navMine"
+      data-page="minePage">
+      🃏 Meine Karten
+    </button>
 
-<button id="navMessages">
-💬 Nachrichten
-<span id="messageBadge" class="badge" style="display:none">0</span>
-</button>
+    <button
+      id="navRequests"
+      data-page="requestsPage">
+      📩 Anfragen
+      <span
+        id="requestBadge"
+        class="badge"
+        style="display:none">
+        0
+      </span>
+    </button>
 
-<button id="navProfile">👤 Profil</button>
+    <button
+      id="navMessages"
+      data-page="messagesPage">
+      💬 Nachrichten
+      <span
+        id="messageBadge"
+        class="badge"
+        style="display:none">
+        0
+      </span>
+    </button>
 
-</nav>
+    <button
+      id="navProfile"
+      data-page="profilePage">
+      👤 Profil
+    </button>
+
+  </nav>
+
 </div>
 
+<!-- SUCHE -->
 <div class="search">
-<input id="searchInput" type="text" placeholder="🔎 Spieler, Verein oder Verkäufer suchen...">
+
+  <input
+    id="searchInput"
+    type="text"
+    placeholder="🔎 Spieler, Verein oder Verkäufer suchen..."
+  >
+
 </div>
 
 <div class="container">
@@ -810,215 +992,458 @@ font-size:12px;
 <!-- VERKAUFEN -->
 
 <div class="sell-launch">
-<button class="sell-main-btn" id="sellMainBtn">
-➕ Karte verkaufen
-</button>
+
+  <button
+    id="sellMainBtn"
+    class="sell-main-btn">
+    ➕ Karte verkaufen
+  </button>
+
 </div>
 
-<div id="sellPanel" class="sell-panel">
+<div
+  id="sellPanel"
+  class="sell-panel">
 
-<h2>🎟️ Karte verkaufen</h2>
+  <h2>🎟️ Karte verkaufen</h2>
 
-<p style="text-align:center;color:#888">
-Füge deine Karte wie bei einem echten Marktplatz hinzu.
-</p>
+  <p style="text-align:center;color:#888">
+    Füge deine Karte wie bei einem echten Marktplatz hinzu.
+  </p>
 
-<form id="sellForm" class="sell-form">
+  <form
+    id="sellForm"
+    class="sell-form">
 
-<input id="player" type="text" placeholder="Spieler *" required>
+    <input
+      id="player"
+      type="text"
+      placeholder="Spieler *"
+      required
+    >
 
-<input id="club" type="text" placeholder="Verein *" required>
+    <input
+      id="club"
+      type="text"
+      placeholder="Verein *"
+      required
+    >
 
-<input id="price" type="number" min="0" step="0.01" placeholder="Preis in € *" required>
+    <input
+      id="price"
+      type="number"
+      min="0"
+      step="0.01"
+      placeholder="Preis in € *"
+      required
+    >
 
-<select id="condition">
-<option value="">Zustand auswählen</option>
-<option>Neu</option>
-<option>Sehr gut</option>
-<option>Gut</option>
-<option>Akzeptabel</option>
-</select>
+    <select id="condition">
 
-<textarea id="description" class="full" placeholder="Beschreibung der Karte..."></textarea>
+      <option value="">
+        Zustand auswählen
+      </option>
 
-<label class="photo-button full">
-📷 Foto auswählen
-<input id="image" type="file" accept="image/*" required style="display:none">
-</label>
+      <option>
+        Neu
+      </option>
 
-<button type="submit" class="sell-submit">
-Karte einstellen
-</button>
+      <option>
+        Sehr gut
+      </option>
 
-<button type="button" class="close-sell" id="closeSellBtn">
-Abbrechen
-</button>
+      <option>
+        Gut
+      </option>
 
-</form>
+      <option>
+        Akzeptabel
+      </option>
+
+    </select>
+
+    <textarea
+      id="description"
+      class="full"
+      placeholder="Beschreibung der Karte..."
+    ></textarea>
+
+    <label class="photo-button full">
+
+      📷 Foto auswählen
+
+      <input
+        id="image"
+        type="file"
+        accept="image/*"
+        required
+        style="display:none"
+      >
+
+    </label>
+
+    <button
+      type="submit"
+      class="sell-submit">
+      Karte einstellen
+    </button>
+
+    <button
+      type="button"
+      id="closeSellBtn"
+      class="close-sell">
+      Abbrechen
+    </button>
+
+  </form>
+
 </div>
 
 <!-- KARTEN -->
 
-<section id="cardsPage" class="page active">
-<h2>🔥 Aktuelle Karten</h2>
-<div id="cards" class="cards"></div>
+<section
+  id="cardsPage"
+  class="page active">
+
+  <h2>
+    🔥 Aktuelle Karten
+  </h2>
+
+  <div
+    id="cards"
+    class="cards">
+  </div>
+
 </section>
 
 <!-- FAVORITEN -->
 
-<section id="favoritesPage" class="page">
-<h2 id="favoriteTitle">❤️ Favoriten (0)</h2>
-<div id="favoriteCards" class="cards"></div>
+<section
+  id="favoritesPage"
+  class="page">
+
+  <h2 id="favoriteTitle">
+    ❤️ Favoriten (0)
+  </h2>
+
+  <div
+    id="favoriteCards"
+    class="cards">
+  </div>
+
 </section>
 
 <!-- MEINE KARTEN -->
 
-<section id="minePage" class="page">
-<h2>🃏 Meine Karten</h2>
-<div id="myCards" class="cards"></div>
+<section
+  id="minePage"
+  class="page">
+
+  <h2>
+    🃏 Meine Karten
+  </h2>
+
+  <div
+    id="myCards"
+    class="cards">
+  </div>
+
 </section>
 
 <!-- ANFRAGEN -->
 
-<section id="requestsPage" class="page">
+<section
+  id="requestsPage"
+  class="page">
 
-<h2 id="requestTitle">📩 Meine Kaufanfragen (0)</h2>
-<div id="purchaseRequests" class="request-list"></div>
+  <h2 id="requestTitle">
+    📩 Meine Kaufanfragen (0)
+  </h2>
 
-<br>
+  <div
+    id="purchaseRequests"
+    class="request-list">
+  </div>
 
-<h2 id="sellerRequestTitle">📥 Anfragen für meine Karten (0)</h2>
-<div id="sellerRequests" class="request-list"></div>
+  <br>
+
+  <h2 id="sellerRequestTitle">
+    📥 Anfragen für meine Karten (0)
+  </h2>
+
+  <div
+    id="sellerRequests"
+    class="request-list">
+  </div>
 
 </section>
 
 <!-- NACHRICHTEN -->
 
-<section id="messagesPage" class="page">
+<section
+  id="messagesPage"
+  class="page">
 
-<h2>💬 Nachrichten</h2>
+  <h2>
+    💬 Nachrichten
+  </h2>
 
-<div class="chat-layout">
+  <div class="chat-layout">
 
-<div class="chat-list">
+    <div class="chat-list">
 
-<div class="chat-list-title">
-Deine Chats
-</div>
+      <div class="chat-list-title">
+        Deine Chats
+      </div>
 
-<div id="chatList"></div>
+      <div id="chatList"></div>
 
-</div>
+    </div>
 
-<div class="chat-window">
+    <div class="chat-window">
 
-<div id="chatHeader" class="chat-header">
-💬 Chat auswählen
-</div>
+      <div
+        id="chatHeader"
+        class="chat-header">
+        💬 Chat auswählen
+      </div>
 
-<div id="messages" class="messages">
-<div class="empty">
-Wähle links einen Chat aus.
-</div>
-</div>
+      <div
+        id="messages"
+        class="messages">
 
-<div class="chat-input">
+        <div class="empty">
+          Wähle links einen Chat aus.
+        </div>
 
-<input id="messageInput" type="text" placeholder="Nachricht schreiben..." disabled>
+      </div>
 
-<button id="sendMessageBtn" disabled>
-Senden
-</button>
+      <div class="chat-input">
 
-</div>
+        <input
+          id="messageInput"
+          type="text"
+          placeholder="Nachricht schreiben..."
+          disabled
+        >
 
-</div>
-</div>
+        <button
+          id="sendMessageBtn"
+          disabled>
+          Senden
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
 <!-- PROFIL -->
 
-<section id="profilePage" class="page">
+<section
+  id="profilePage"
+  class="page">
 
-<h2>👤 Verkäuferprofil</h2>
+  <h2>
+    👤 Verkäuferprofil
+  </h2>
 
-<div id="profileBox" class="seller-profile"></div>
+  <div
+    id="profileBox"
+    class="seller-profile">
+  </div>
 
 </section>
 
 </div>
 
 <footer>
-© 2026 Pixel Cards
+  © 2026 Pixel Cards
 </footer>
 
 <script>
+
+"use strict";
+
+/* =========================================================
+   SPEICHER
+========================================================= */
+
+const KEY = {
+
+  username:"pixelUsername",
+
+  cards:"footballCards",
+
+  requests:"purchaseRequests",
+
+  favorites:"favoriteCards",
+
+  favoriteUsers:"favoriteUsers",
+
+  ratings:"sellerRatings",
+
+  messages:"pixelMessages"
+
+};
+
+let selectedChatUser = "";
+
+const $ = id =>
+  document.getElementById(id);
+
 
 /* =========================================================
    DATEN
 ========================================================= */
 
-function read(key,fallback){
+function read(key,fallback=[]){
 
-try{
-const value=localStorage.getItem(key);
-return value ? JSON.parse(value) : fallback;
-}catch(error){
-return fallback;
+  try{
+
+    const raw =
+      localStorage.getItem(key);
+
+    return raw
+      ? JSON.parse(raw)
+      : fallback;
+
+  }catch(error){
+
+    return fallback;
+
+  }
+
 }
 
-}
+function write(key,data){
 
-function write(key,value){
-localStorage.setItem(key,JSON.stringify(value));
+  localStorage.setItem(
+    key,
+    JSON.stringify(data)
+  );
+
 }
 
 function getUsername(){
-return localStorage.getItem("pixelUsername") || "";
+
+  return localStorage.getItem(
+    KEY.username
+  ) || "";
+
 }
 
 function getCards(){
-return read("footballCards",[]);
+
+  return read(
+    KEY.cards,
+    []
+  );
+
 }
 
 function getRequests(){
-return read("purchaseRequests",[]);
+
+  return read(
+    KEY.requests,
+    []
+  );
+
 }
 
 function getFavorites(){
-return read("favoriteCards",[]);
+
+  return read(
+    KEY.favorites,
+    []
+  );
+
 }
 
 function getFavoriteUsers(){
-return read("favoriteUsers",{});
+
+  return read(
+    KEY.favoriteUsers,
+    {}
+  );
+
 }
 
 function getRatings(){
-return read("sellerRatings",{});
+
+  return read(
+    KEY.ratings,
+    {}
+  );
+
 }
 
 function getMessages(){
-return read("pixelMessages",[]);
+
+  return read(
+    KEY.messages,
+    []
+  );
+
 }
+
 
 /* =========================================================
-   SICHERES HTML
+   HILFSFUNKTIONEN
 ========================================================= */
 
-function escapeHTML(value){
+function safe(value){
 
-return String(value ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+  return String(
+    value ?? ""
+  ).replace(
+    /[&<>"']/g,
+    character => ({
+
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      "\"":"&quot;",
+      "'":"&#039;"
+
+    }[character])
+
+  );
 
 }
 
-function escapeId(value){
-return String(value).replace(/'/g,"\\'");
+function uid(){
+
+  return Date.now()+
+    "-" +
+    Math.random()
+      .toString(36)
+      .slice(2);
+
 }
+
+function chatKey(a,b){
+
+  return [
+    a,
+    b
+  ].sort().join("|||");
+
+}
+
+function needUsername(){
+
+  alert(
+    "👤 Bitte zuerst einen Benutzernamen festlegen."
+  );
+
+  $("usernameInput").focus();
+
+}
+
 
 /* =========================================================
    PROFIL
@@ -1026,116 +1451,250 @@ return String(value).replace(/'/g,"\\'");
 
 function updateProfile(){
 
-const name=getUsername();
+  const name =
+    getUsername();
 
-document.getElementById("profileName").textContent=
-name || "Kein Benutzer";
+  $("profileName").textContent =
+    name || "Kein Benutzer";
 
-document.getElementById("avatar").textContent=
-name ? name.charAt(0).toUpperCase() : "?";
+  $("avatar").textContent =
+    name
+      ? name.charAt(0).toUpperCase()
+      : "?";
 
-document.getElementById("usernameInput").value=name;
+  $("usernameInput").value =
+    name;
 
 }
 
 function saveUsername(){
 
-const input=document.getElementById("usernameInput");
-const name=input.value.trim();
+  const input =
+    $("usernameInput");
 
-if(!name){
-alert("Bitte gib einen Benutzernamen ein.");
-return;
+  const name =
+    input.value.trim();
+
+  const old =
+    getUsername();
+
+  if(!name){
+
+    alert(
+      "Bitte gib einen Benutzernamen ein."
+    );
+
+    return;
+
+  }
+
+  if(name === old){
+
+    updateProfile();
+
+    alert(
+      "👤 Profil gespeichert!"
+    );
+
+    return;
+
+  }
+
+  /*
+   * Karten aktualisieren
+   */
+
+  const cards =
+    getCards();
+
+  cards.forEach(card => {
+
+    if(card.owner === old){
+
+      card.owner = name;
+
+    }
+
+    if(card.soldTo === old){
+
+      card.soldTo = name;
+
+    }
+
+  });
+
+  write(
+    KEY.cards,
+    cards
+  );
+
+
+  /*
+   * Anfragen aktualisieren
+   */
+
+  const requests =
+    getRequests();
+
+  requests.forEach(request => {
+
+    if(request.buyer === old){
+
+      request.buyer = name;
+
+    }
+
+    if(request.seller === old){
+
+      request.seller = name;
+
+    }
+
+  });
+
+  write(
+    KEY.requests,
+    requests
+  );
+
+
+  /*
+   * Nachrichten aktualisieren
+   */
+
+  const messages =
+    getMessages();
+
+  messages.forEach(message => {
+
+    if(message.sender === old){
+
+      message.sender = name;
+
+    }
+
+    if(message.receiver === old){
+
+      message.receiver = name;
+
+    }
+
+    message.chat =
+      chatKey(
+        message.sender,
+        message.receiver
+      );
+
+  });
+
+  write(
+    KEY.messages,
+    messages
+  );
+
+
+  localStorage.setItem(
+    KEY.username,
+    name
+  );
+
+  if(selectedChatUser === old){
+
+    selectedChatUser = "";
+
+  }
+
+  updateProfile();
+
+  loadAll();
+
+  alert(
+    "👤 Benutzername geändert und Profil gespeichert!"
+  );
+
 }
 
-const oldName=getUsername();
-
-localStorage.setItem("pixelUsername",name);
-
-if(oldName && oldName!==name){
-
-const cards=getCards();
-
-cards.forEach(card=>{
-
-if(card.owner===oldName) card.owner=name;
-if(card.soldTo===oldName) card.soldTo=name;
-
-});
-
-write("footballCards",cards);
-
-const requests=getRequests();
-
-requests.forEach(request=>{
-
-if(request.buyer===oldName) request.buyer=name;
-if(request.seller===oldName) request.seller=name;
-
-});
-
-write("purchaseRequests",requests);
-
-const messages=getMessages();
-
-messages.forEach(message=>{
-
-if(message.sender===oldName) message.sender=name;
-if(message.receiver===oldName) message.receiver=name;
-
-});
-
-write("pixelMessages",messages);
-
-}
-
-updateProfile();
-loadAll();
-
-alert("👤 Profil gespeichert!");
-
-}
 
 /* =========================================================
    NAVIGATION
 ========================================================= */
 
-function showPage(pageId,buttonId){
+function showPage(
+  pageId,
+  buttonId
+){
 
-document.querySelectorAll(".page").forEach(page=>{
-page.classList.remove("active");
-});
+  document
+    .querySelectorAll(".page")
+    .forEach(page => {
 
-const page=document.getElementById(pageId);
+      page.classList.remove(
+        "active"
+      );
 
-if(page) page.classList.add("active");
+    });
 
-document.querySelectorAll(".navigation button").forEach(button=>{
-button.classList.remove("active");
-});
+  const page =
+    $(pageId);
 
-const button=document.getElementById(buttonId);
+  if(page){
 
-if(button) button.classList.add("active");
+    page.classList.add(
+      "active"
+    );
 
-if(pageId==="messagesPage"){
-renderChatList();
+  }
+
+
+  document
+    .querySelectorAll(
+      ".navigation button"
+    )
+    .forEach(button => {
+
+      button.classList.remove(
+        "active"
+      );
+
+    });
+
+  const button =
+    $(buttonId);
+
+  if(button){
+
+    button.classList.add(
+      "active"
+    );
+
+  }
+
+
+  if(pageId === "messagesPage"){
+
+    renderChatList();
+
+    if(selectedChatUser){
+
+      renderMessages(
+        selectedChatUser
+      );
+
+    }
+
+  }
+
+
+  if(pageId === "profilePage"){
+
+    loadSellerProfile(
+      getUsername()
+    );
+
+  }
+
 }
 
-if(pageId==="profilePage"){
-const username=getUsername();
-
-if(username){
-loadSellerProfile(username);
-}
-}
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
 
 /* =========================================================
    VERKAUFEN
@@ -1143,741 +1702,701 @@ behavior:"smooth"
 
 function toggleSellPanel(){
 
-const panel=document.getElementById("sellPanel");
+  const panel =
+    $("sellPanel");
 
-panel.classList.toggle("open");
+  panel.classList.toggle(
+    "open"
+  );
 
-if(panel.classList.contains("open")){
+  if(
+    panel.classList.contains(
+      "open"
+    )
+  ){
 
-setTimeout(()=>{
-panel.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-},50);
+    setTimeout(
+      () => {
+
+        panel.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+
+      },
+      30
+    );
+
+  }
 
 }
 
-}
 
 /* =========================================================
    BADGES
 ========================================================= */
 
-function updateRequestBadge(){
+function setBadge(
+  id,
+  number
+){
 
-const username=getUsername();
-const badge=document.getElementById("requestBadge");
+  const badge =
+    $(id);
 
-if(!username){
-badge.style.display="none";
-return;
-}
+  badge.textContent =
+    number;
 
-const count=getRequests().filter(request=>
-request.seller===username &&
-request.status==="pending"
-).length;
-
-if(count){
-badge.style.display="flex";
-badge.textContent=count;
-}else{
-badge.style.display="none";
-}
+  badge.style.display =
+    number
+      ? "flex"
+      : "none";
 
 }
 
-function updateMessageBadge(){
+function updateBadges(){
 
-const username=getUsername();
-const badge=document.getElementById("messageBadge");
+  const username =
+    getUsername();
 
-if(!username){
-badge.style.display="none";
-return;
+  if(!username){
+
+    return;
+
+  }
+
+  const requestCount =
+    getRequests().filter(
+      request =>
+        request.seller === username &&
+        request.status === "pending"
+    ).length;
+
+  const messageCount =
+    getMessages().filter(
+      message =>
+        message.receiver === username &&
+        !message.read
+    ).length;
+
+  const favoriteCount =
+    getFavorites().filter(
+      favorite =>
+        favorite.favoriteBy === username
+    ).length;
+
+  setBadge(
+    "requestBadge",
+    requestCount
+  );
+
+  setBadge(
+    "messageBadge",
+    messageCount
+  );
+
+  setBadge(
+    "favoriteBadge",
+    favoriteCount
+  );
+
 }
 
-const count=getMessages().filter(message=>
-message.receiver===username &&
-message.read!==true
-).length;
-
-if(count){
-badge.style.display="flex";
-badge.textContent=count;
-}else{
-badge.style.display="none";
-}
-
-}
 
 /* =========================================================
    FAVORITEN
 ========================================================= */
 
-function isFavorite(cardId){
+function isFavorite(id){
 
-const username=getUsername();
+  const username =
+    getUsername();
 
-if(!username) return false;
+  if(!username){
 
-return getFavorites().some(item=>
-item.id===cardId &&
-item.favoriteBy===username
-);
+    return false;
 
-}
+  }
 
-function getFavoriteCount(cardId){
-
-const users=getFavoriteUsers();
-
-return Array.isArray(users[cardId])
-? users[cardId].length
-: 0;
+  return getFavorites().some(
+    favorite =>
+      favorite.id === id &&
+      favorite.favoriteBy === username
+  );
 
 }
 
-function toggleFavorite(cardId){
+function getFavoriteCount(id){
 
-const username=getUsername();
+  const users =
+    getFavoriteUsers();
 
-if(!username){
-needUsername();
-return;
-}
-
-const cards=getCards();
-const card=cards.find(c=>c.id===cardId);
-
-if(!card) return;
-
-if(card.owner===username){
-alert("🚫 Deine eigene Karte kannst du nicht favorisieren.");
-return;
-}
-
-let favorites=getFavorites();
-let users=getFavoriteUsers();
-
-if(!Array.isArray(users[cardId])){
-users[cardId]=[];
-}
-
-const index=favorites.findIndex(item=>
-item.id===cardId &&
-item.favoriteBy===username
-);
-
-if(index>=0){
-
-favorites.splice(index,1);
-
-users[cardId]=users[cardId].filter(
-user=>user!==username
-);
-
-}else{
-
-favorites.push({
-id:cardId,
-favoriteBy:username
-});
-
-if(!users[cardId].includes(username)){
-users[cardId].push(username);
-}
+  return Array.isArray(
+    users[id]
+  )
+    ? users[id].length
+    : 0;
 
 }
 
-write("favoriteCards",favorites);
-write("favoriteUsers",users);
+function toggleFavorite(id){
 
-loadAll();
+  const username =
+    getUsername();
+
+  if(!username){
+
+    needUsername();
+
+    return;
+
+  }
+
+  const card =
+    getCards().find(
+      item => item.id === id
+    );
+
+  if(!card){
+
+    return;
+
+  }
+
+  if(card.owner === username){
+
+    alert(
+      "🚫 Deine eigene Karte kannst du nicht favorisieren."
+    );
+
+    return;
+
+  }
+
+  let favorites =
+    getFavorites();
+
+  let users =
+    getFavoriteUsers();
+
+  users[id] =
+    Array.isArray(users[id])
+      ? users[id]
+      : [];
+
+  const index =
+    favorites.findIndex(
+      item =>
+        item.id === id &&
+        item.favoriteBy === username
+    );
+
+  if(index >= 0){
+
+    favorites.splice(
+      index,
+      1
+    );
+
+    users[id] =
+      users[id].filter(
+        user =>
+          user !== username
+      );
+
+  }else{
+
+    favorites.push({
+
+      id:id,
+
+      favoriteBy:username
+
+    });
+
+    if(
+      !users[id].includes(
+        username
+      )
+    ){
+
+      users[id].push(
+        username
+      );
+
+    }
+
+  }
+
+  write(
+    KEY.favorites,
+    favorites
+  );
+
+  write(
+    KEY.favoriteUsers,
+    users
+  );
+
+  loadAll();
 
 }
+
 
 /* =========================================================
    KARTEN
 ========================================================= */
 
+function createCard(
+  card,
+  box
+){
+
+  const username =
+    getUsername();
+
+  const favorite =
+    isFavorite(
+      card.id
+    );
+
+  const favoriteCount =
+    getFavoriteCount(
+      card.id
+    );
+
+  const request =
+    getRequests().find(
+      item =>
+        item.cardId === card.id &&
+        item.buyer === username &&
+        (
+          item.status === "pending" ||
+          item.status === "accepted"
+        )
+    );
+
+  const element =
+    document.createElement(
+      "div"
+    );
+
+  element.className =
+    "card";
+
+  let buyButton = "";
+
+  if(
+    card.owner === username
+  ){
+
+    buyButton = `
+      <button
+        class="gray"
+        data-action="own">
+        🚫 Deine Karte
+      </button>
+    `;
+
+  }else if(!username){
+
+    buyButton = `
+      <button
+        data-action="need-user">
+        🛒 Kaufen
+      </button>
+    `;
+
+  }else if(request){
+
+    buyButton = `
+      <button
+        class="gray"
+        disabled>
+        ${
+          request.status === "accepted"
+          ? "✅ Angenommen"
+          : "🕐 Anfrage offen"
+        }
+      </button>
+    `;
+
+  }else{
+
+    buyButton = `
+      <button
+        data-action="buy"
+        data-id="${safe(card.id)}">
+        🛒 Kaufen
+      </button>
+    `;
+
+  }
+
+
+  const favoriteButton =
+    card.owner === username
+
+      ? `
+        <button
+          class="gray"
+          disabled>
+          🚫 Eigene Karte
+        </button>
+      `
+
+      : `
+        <button
+          class="gray"
+          data-action="favorite"
+          data-id="${safe(card.id)}">
+          ${
+            favorite
+              ? "❤️ Favorisiert"
+              : "♡ Favorit"
+          }
+        </button>
+      `;
+
+
+  element.innerHTML = `
+
+    <div class="card-image">
+
+      <img
+        src="${safe(card.image)}"
+        alt="${safe(card.player)}">
+
+    </div>
+
+    <h3>
+      ${safe(card.player)}
+    </h3>
+
+    <p class="info">
+      ${safe(card.club)}
+    </p>
+
+    <p class="price">
+      ${safe(card.price)} €
+    </p>
+
+    <div class="favorite-row">
+
+      <span>
+        ❤️ ${favoriteCount}
+        Favorit${favoriteCount === 1 ? "" : "en"}
+      </span>
+
+      <span>
+        ${
+          card.condition
+            ? safe(card.condition)
+            : ""
+        }
+      </span>
+
+    </div>
+
+    <button
+      data-action="detail"
+      data-id="${safe(card.id)}">
+      👀 Karte ansehen
+    </button>
+
+    ${buyButton}
+
+    ${favoriteButton}
+
+    <button
+      class="gray"
+      data-action="seller"
+      data-seller="${safe(card.owner || "")}">
+      👤 Verkäuferprofil
+    </button>
+
+  `;
+
+  box.appendChild(
+    element
+  );
+
+}
+
+
 function loadCards(){
 
-const box=document.getElementById("cards");
-box.innerHTML="";
+  const box =
+    $("cards");
 
-const search=
-document.getElementById("searchInput")
-.value
-.toLowerCase()
-.trim();
+  box.innerHTML = "";
 
-const cards=getCards().filter(card=>card.sold!==true);
+  const search =
+    $("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
 
-const filtered=cards.filter(card=>
-String(card.player||"").toLowerCase().includes(search) ||
-String(card.club||"").toLowerCase().includes(search) ||
-String(card.owner||"").toLowerCase().includes(search)
-);
+  const cards =
+    getCards();
 
-if(!filtered.length){
+  const filtered =
+    cards.filter(
+      card => {
 
-box.innerHTML="<div class='empty'>Keine Karten gefunden.</div>";
-return;
+        if(card.sold === true){
 
-}
+          return false;
 
-filtered.forEach(card=>createCard(card,box));
+        }
 
-}
+        return (
 
-function createCard(card,box){
+          String(card.player)
+            .toLowerCase()
+            .includes(search)
 
-const username=getUsername();
-const favorite=isFavorite(card.id);
-const favoriteCount=getFavoriteCount(card.id);
+          ||
 
-const requests=getRequests();
+          String(card.club)
+            .toLowerCase()
+            .includes(search)
 
-const existing=requests.find(request=>
-request.cardId===card.id &&
-request.buyer===username &&
-(
-request.status==="pending" ||
-request.status==="accepted"
-)
-);
+          ||
 
-const item=document.createElement("div");
-item.className="card";
+          String(card.owner)
+            .toLowerCase()
+            .includes(search)
 
-let buyButton="";
+        );
 
-if(card.owner===username){
+      }
+    );
 
-buyButton=`
-<button class="gray" data-action="own">
-🚫 Deine Karte
-</button>
-`;
+  if(!filtered.length){
 
-}else if(!username){
+    box.innerHTML =
+      `
+        <div class="empty">
+          Keine Karten gefunden.
+        </div>
+      `;
 
-buyButton=`
-<button data-action="username">
-🛒 Kaufen
-</button>
-`;
+    return;
 
-}else if(existing){
+  }
 
-buyButton=`
-<button class="gray" disabled>
-${existing.status==="accepted"
-?"✅ Angenommen"
-:"🕐 Anfrage offen"}
-</button>
-`;
-
-}else{
-
-buyButton=`
-<button data-action="buy">
-🛒 Kaufen
-</button>
-`;
+  filtered.forEach(
+    card =>
+      createCard(
+        card,
+        box
+      )
+  );
 
 }
 
-item.innerHTML=`
-
-<div class="card-image">
-<img src="${card.image}" alt="${escapeHTML(card.player)}">
-</div>
-
-<h3>${escapeHTML(card.player)}</h3>
-
-<p class="info">${escapeHTML(card.club)}</p>
-
-<p class="price">${escapeHTML(card.price)} €</p>
-
-<div class="favorite-row">
-<span>❤️ ${getFavoriteCount(card.id)}
-Favorit${getFavoriteCount(card.id)===1?"":"en"}</span>
-
-<span>
-${card.condition?escapeHTML(card.condition):""}
-</span>
-</div>
-
-<button data-action="view">
-👀 Karte ansehen
-</button>
-
-${buyButton}
-
-<button class="gray" data-action="favorite">
-${favorite?"❤️ Favorisiert":"♡ Favorit"}
-</button>
-
-<button class="gray" data-action="seller">
-👤 Verkäuferprofil
-</button>
-`;
-
-item.querySelector('[data-action="view"]').onclick=()=>{
-showCard(card.id);
-};
-
-const buy=item.querySelector('[data-action="buy"]');
-if(buy) buy.onclick=()=>buyCard(card.id);
-
-const usernameButton=item.querySelector('[data-action="username"]');
-if(usernameButton) usernameButton.onclick=needUsername;
-
-const own=item.querySelector('[data-action="own"]');
-if(own) own.onclick=ownCardMessage;
-
-item.querySelector('[data-action="favorite"]').onclick=()=>{
-toggleFavorite(card.id);
-};
-
-item.querySelector('[data-action="seller"]').onclick=()=>{
-openSellerProfile(card.owner);
-};
-
-box.appendChild(item);
-
-}
 
 /* =========================================================
-   FAVORITEN SEITE
+   FAVORITEN LADEN
 ========================================================= */
 
 function loadFavorites(){
 
-const box=document.getElementById("favoriteCards");
-box.innerHTML="";
+  const box =
+    $("favoriteCards");
 
-const username=getUsername();
+  box.innerHTML = "";
 
-const cards=getCards();
+  const username =
+    getUsername();
 
-const favorites=getFavorites()
-.filter(item=>item.favoriteBy===username)
-.map(item=>cards.find(card=>card.id===item.id))
-.filter(Boolean);
+  const cards =
+    getCards();
 
-document.getElementById("favoriteTitle").textContent=
-"❤️ Favoriten ("+favorites.length+")";
+  const favoriteCards =
+    getFavorites()
+      .filter(
+        item =>
+          item.favoriteBy === username
+      )
+      .map(
+        item =>
+          cards.find(
+            card =>
+              card.id === item.id
+          )
+      )
+      .filter(Boolean);
 
-if(!favorites.length){
+  $("favoriteTitle")
+    .textContent =
+      `❤️ Favoriten (${favoriteCards.length})`;
 
-box.innerHTML=
-"<div class='empty'>❤️ Noch keine Favoriten.</div>";
+  if(!favoriteCards.length){
 
-return;
+    box.innerHTML =
+      `
+        <div class="empty">
+          ❤️ Noch keine Favoriten.
+        </div>
+      `;
+
+    return;
+
+  }
+
+  favoriteCards.forEach(
+    card =>
+      createCard(
+        card,
+        box
+      )
+  );
 
 }
 
-favorites.forEach(card=>createCard(card,box));
-
-}
 
 /* =========================================================
    KAUFEN
 ========================================================= */
 
-function ownCardMessage(){
-alert("🚫 Du kannst deine eigene Karte nicht kaufen.");
-}
+function buyCard(id){
 
-function needUsername(){
-alert("👤 Bitte zuerst einen Benutzernamen festlegen.");
-}
+  const username =
+    getUsername();
 
-function buyCard(cardId){
+  if(!username){
 
-const username=getUsername();
+    needUsername();
 
-if(!username){
-needUsername();
-return;
-}
+    return;
 
-const cards=getCards();
-const card=cards.find(c=>c.id===cardId);
+  }
 
-if(!card) return;
+  const cards =
+    getCards();
 
-if(card.owner===username){
-ownCardMessage();
-return;
-}
+  const card =
+    cards.find(
+      item =>
+        item.id === id
+    );
 
-if(card.sold){
-alert("❌ Diese Karte wurde bereits verkauft.");
-return;
-}
+  if(!card){
 
-const requests=getRequests();
+    return;
 
-const existing=requests.find(request=>
-request.cardId===cardId &&
-request.buyer===username &&
-(
-request.status==="pending" ||
-request.status==="accepted"
-)
-);
+  }
 
-if(existing){
-alert("🕐 Du hast diese Karte bereits angefragt.");
-return;
-}
+  if(card.owner === username){
 
-const confirmed=confirm(
-"Möchtest du diese Karte kaufen?\n\n"+
-card.player+" – "+card.club+
-"\n\nPreis: "+card.price+" €"
-);
+    alert(
+      "🚫 Du kannst deine eigene Karte nicht kaufen."
+    );
 
-if(!confirmed) return;
+    return;
 
-requests.push({
+  }
 
-id:makeId(),
+  if(card.sold){
 
-cardId:card.id,
-player:card.player,
-club:card.club,
-price:card.price,
-image:card.image,
+    alert(
+      "❌ Diese Karte wurde bereits verkauft."
+    );
 
-buyer:username,
-seller:card.owner,
+    return;
 
-status:"pending",
+  }
 
-createdAt:new Date().toISOString()
+  const existing =
+    getRequests().some(
+      request =>
+        request.cardId === id &&
+        request.buyer === username &&
+        (
+          request.status === "pending" ||
+          request.status === "accepted"
+        )
+    );
 
-});
+  if(existing){
 
-write("purchaseRequests",requests);
+    alert(
+      "🕐 Du hast diese Karte bereits angefragt."
+    );
 
-updateRequestBadge();
-loadAll();
+    return;
 
-alert("📩 Kaufanfrage wurde gesendet!");
+  }
 
-}
+  const confirmed =
+    confirm(
+      `Möchtest du diese Karte kaufen?
 
-/* =========================================================
-   ANFRAGEN
-========================================================= */
+${card.player} – ${card.club}
 
-function loadPurchaseRequests(){
+Preis: ${card.price} €`
+    );
 
-const username=getUsername();
-const box=document.getElementById("purchaseRequests");
+  if(!confirmed){
 
-box.innerHTML="";
+    return;
 
-const requests=getRequests()
-.filter(request=>request.buyer===username);
+  }
 
-document.getElementById("requestTitle").textContent=
-"📩 Meine Kaufanfragen ("+requests.length+")";
+  const requests =
+    getRequests();
 
-if(!requests.length){
+  requests.push({
 
-box.innerHTML=
-"<div class='empty'>📩 Du hast noch keine Kaufanfragen.</div>";
+    id:uid(),
 
-return;
-}
+    cardId:id,
 
-requests.forEach(request=>{
+    player:card.player,
 
-const item=document.createElement("div");
-item.className="request";
+    club:card.club,
 
-let status="";
+    price:card.price,
 
-if(request.status==="accepted"){
-status="<span class='status accepted'>✅ Angenommen</span>";
-}else if(request.status==="rejected"){
-status="<span class='status rejected'>❌ Abgelehnt</span>";
-}else{
-status="<span class='status open'>🕐 Offen</span>";
-}
+    image:card.image,
 
-let rating="";
+    buyer:username,
 
-if(request.status==="accepted"){
+    seller:card.owner,
 
-const ratings=getRatings();
+    status:"pending",
 
-const alreadyRated=
-Array.isArray(ratings[request.seller]) &&
-ratings[request.seller].some(
-r=>r.requestId===request.id
-);
+    createdAt:
+      new Date().toISOString()
 
-rating=alreadyRated
-? "<button class='gray' disabled>⭐ Bereits bewertet</button>"
-: `<button class="rate-btn" data-rate>⭐ Verkäufer bewerten</button>`;
+  });
+
+  write(
+    KEY.requests,
+    requests
+  );
+
+
+  /*
+   * Automatische Chat-Nachricht
+   */
+
+  sendChatMessage(
+    card.owner,
+    `🛒 Kaufanfrage für "${card.player}" – ${card.price} €`,
+    true
+  );
+
+  loadAll();
+
+  alert(
+    "📩 Kaufanfrage wurde gesendet!"
+  );
 
 }
 
-item.innerHTML=`
-
-<div class="request-top">
-
-<img class="request-image"
-src="${request.image}"
-alt="${escapeHTML(request.player)}">
-
-<div class="request-info">
-
-<h3>${escapeHTML(request.player)}</h3>
-
-<p class="info">${escapeHTML(request.club)}</p>
-
-<p class="price">${escapeHTML(request.price)} €</p>
-
-<p class="info">
-Verkäufer:
-<strong>${escapeHTML(request.seller)}</strong>
-</p>
-
-${status}
-
-</div>
-</div>
-
-${rating}
-`;
-
-const rate=item.querySelector("[data-rate]");
-
-if(rate){
-rate.onclick=()=>openRating(request.id);
-}
-
-box.appendChild(item);
-
-});
-
-}
-
-function loadSellerRequests(){
-
-const username=getUsername();
-const box=document.getElementById("sellerRequests");
-
-box.innerHTML="";
-
-const requests=getRequests()
-.filter(request=>request.seller===username);
-
-document.getElementById("sellerRequestTitle").textContent=
-"📥 Anfragen für meine Karten ("+requests.length+")";
-
-if(!requests.length){
-
-box.innerHTML=
-"<div class='empty'>📥 Noch keine Anfragen für deine Karten.</div>";
-
-return;
-}
-
-requests.forEach(request=>{
-
-const item=document.createElement("div");
-item.className="request";
-
-let status="";
-
-if(request.status==="accepted"){
-status="<span class='status accepted'>✅ Angenommen</span>";
-}else if(request.status==="rejected"){
-status="<span class='status rejected'>❌ Abgelehnt</span>";
-}else{
-status="<span class='status open'>🕐 Offen</span>";
-}
-
-item.innerHTML=`
-
-<div class="request-top">
-
-<img class="request-image"
-src="${request.image}"
-alt="${escapeHTML(request.player)}">
-
-<div class="request-info">
-
-<h3>
-${escapeHTML(request.buyer)}
-möchte deine Karte kaufen
-</h3>
-
-<p class="info">
-Karte:
-<strong>${escapeHTML(request.player)}</strong>
-</p>
-
-<p class="info">
-Verein: ${escapeHTML(request.club)}
-</p>
-
-<p class="price">
-${escapeHTML(request.price)} €
-</p>
-
-${status}
-
-</div>
-</div>
-`;
-
-if(request.status==="pending"){
-
-const actions=document.createElement("div");
-actions.className="request-actions";
-
-const accept=document.createElement("button");
-accept.className="accept-btn";
-accept.textContent="🟢 Annehmen";
-accept.onclick=()=>acceptRequest(request.id);
-
-const reject=document.createElement("button");
-reject.className="reject-btn";
-reject.textContent="🔴 Ablehnen";
-reject.onclick=()=>rejectRequest(request.id);
-
-actions.appendChild(accept);
-actions.appendChild(reject);
-
-item.appendChild(actions);
-
-}
-
-box.appendChild(item);
-
-});
-
-updateRequestBadge();
-
-}
-
-/* =========================================================
-   ANNEHMEN
-========================================================= */
-
-function acceptRequest(requestId){
-
-const username=getUsername();
-const requests=getRequests();
-
-const request=requests.find(r=>r.id===requestId);
-
-if(!request) return;
-
-if(request.seller!==username){
-alert("🚫 Nur der Besitzer kann diese Anfrage annehmen.");
-return;
-}
-
-if(request.status!=="pending"){
-alert("Diese Anfrage wurde bereits bearbeitet.");
-return;
-}
-
-const cards=getCards();
-const card=cards.find(c=>c.id===request.cardId);
-
-if(!card){
-alert("❌ Die Karte wurde nicht gefunden.");
-return;
-}
-
-if(card.sold){
-alert("❌ Die Karte wurde bereits verkauft.");
-return;
-}
-
-if(!confirm(
-"Anfrage von "+request.buyer+" annehmen?"
-)){
-return;
-}
-
-request.status="accepted";
-
-card.sold=true;
-card.soldTo=request.buyer;
-
-requests.forEach(other=>{
-
-if(
-other.cardId===request.cardId &&
-other.id!==request.id &&
-other.status==="pending"
-){
-other.status="rejected";
-}
-
-});
-
-write("footballCards",cards);
-write("purchaseRequests",requests);
-
-loadAll();
-
-alert("🟢 Anfrage angenommen!");
-
-}
-
-/* =========================================================
-   ABLEHNEN
-========================================================= */
-
-function rejectRequest(requestId){
-
-const username=getUsername();
-const requests=getRequests();
-
-const request=requests.find(r=>r.id===requestId);
-
-if(!request) return;
-
-if(request.seller!==username){
-alert("🚫 Nur der Besitzer kann diese Anfrage ablehnen.");
-return;
-}
-
-if(request.status!=="pending"){
-alert("Diese Anfrage wurde bereits bearbeitet.");
-return;
-}
-
-if(!confirm(
-"Anfrage von "+request.buyer+" ablehnen?"
-)){
-return;
-}
-
-request.status="rejected";
-
-write("purchaseRequests",requests);
-
-loadAll();
-
-alert("🔴 Anfrage abgelehnt.");
-
-}
 
 /* =========================================================
    MEINE KARTEN
@@ -1885,768 +2404,1817 @@ alert("🔴 Anfrage abgelehnt.");
 
 function loadMyCards(){
 
-const box=document.getElementById("myCards");
-box.innerHTML="";
+  const box =
+    $("myCards");
 
-const username=getUsername();
+  box.innerHTML = "";
 
-if(!username){
+  const username =
+    getUsername();
 
-box.innerHTML=
-"<div class='empty'>👤 Bitte zuerst einen Benutzernamen festlegen.</div>";
+  if(!username){
 
-return;
+    box.innerHTML =
+      `
+        <div class="empty">
+          👤 Bitte zuerst einen Benutzernamen festlegen.
+        </div>
+      `;
+
+    return;
+
+  }
+
+  const cards =
+    getCards().filter(
+      card =>
+        card.owner === username
+    );
+
+  if(!cards.length){
+
+    box.innerHTML =
+      `
+        <div class="empty">
+          🃏 Du hast noch keine Karten eingestellt.
+        </div>
+      `;
+
+    return;
+
+  }
+
+  cards.forEach(
+    card => {
+
+      const element =
+        document.createElement(
+          "div"
+        );
+
+      element.className =
+        "card";
+
+      element.innerHTML = `
+
+        <div class="card-image">
+
+          <img
+            src="${safe(card.image)}"
+            alt="${safe(card.player)}">
+
+        </div>
+
+        <h3>
+          ${safe(card.player)}
+        </h3>
+
+        <p class="info">
+          ${safe(card.club)}
+        </p>
+
+        <p class="price">
+          ${safe(card.price)} €
+        </p>
+
+        ${
+          card.sold
+            ? `
+              <p class="status accepted">
+                ✅ Verkauft an
+                ${safe(card.soldTo || "")}
+              </p>
+            `
+            : ""
+        }
+
+        <button
+          data-action="detail"
+          data-id="${safe(card.id)}">
+          👀 Karte ansehen
+        </button>
+
+        <button
+          class="gray"
+          data-action="delete"
+          data-id="${safe(card.id)}">
+          🗑️ Löschen
+        </button>
+
+      `;
+
+      box.appendChild(
+        element
+      );
+
+    }
+  );
+
 }
 
-const cards=getCards()
-.filter(card=>card.owner===username);
-
-if(!cards.length){
-
-box.innerHTML=
-"<div class='empty'>🃏 Du hast noch keine Karten eingestellt.</div>";
-
-return;
-}
-
-cards.forEach(card=>{
-
-const item=document.createElement("div");
-item.className="card";
-
-item.innerHTML=`
-
-<div class="card-image">
-<img src="${card.image}" alt="${escapeHTML(card.player)}">
-</div>
-
-<h3>${escapeHTML(card.player)}</h3>
-
-<p class="info">${escapeHTML(card.club)}</p>
-
-<p class="price">${escapeHTML(card.price)} €</p>
-
-${
-card.sold
-? `<p class="status accepted">
-✅ Verkauft an ${escapeHTML(card.soldTo||"")}
-</p>`
-:""
-}
-
-<button data-view>👀 Karte ansehen</button>
-
-<button class="gray" data-delete>
-🗑️ Löschen
-</button>
-`;
-
-item.querySelector("[data-view]").onclick=()=>{
-showCard(card.id);
-};
-
-item.querySelector("[data-delete]").onclick=()=>{
-deleteCard(card.id);
-};
-
-box.appendChild(item);
-
-});
-
-}
 
 /* =========================================================
-   LÖSCHEN
+   KARTE LÖSCHEN
 ========================================================= */
 
-function deleteCard(cardId){
+function deleteCard(id){
 
-const username=getUsername();
+  const username =
+    getUsername();
 
-let cards=getCards();
+  const card =
+    getCards().find(
+      item =>
+        item.id === id
+    );
 
-const card=cards.find(c=>c.id===cardId);
+  if(!card){
 
-if(!card) return;
+    return;
 
-if(card.owner!==username){
-alert("🚫 Du kannst diese Karte nicht löschen.");
-return;
+  }
+
+  if(card.owner !== username){
+
+    alert(
+      "🚫 Du kannst diese Karte nicht löschen."
+    );
+
+    return;
+
+  }
+
+  if(
+    !confirm(
+      "Möchtest du diese Karte wirklich löschen?"
+    )
+  ){
+
+    return;
+
+  }
+
+  write(
+    KEY.cards,
+    getCards().filter(
+      item =>
+        item.id !== id
+    )
+  );
+
+  write(
+    KEY.favorites,
+    getFavorites().filter(
+      item =>
+        item.id !== id
+    )
+  );
+
+  const users =
+    getFavoriteUsers();
+
+  delete users[id];
+
+  write(
+    KEY.favoriteUsers,
+    users
+  );
+
+  loadAll();
+
 }
 
-if(!confirm("Möchtest du diese Karte wirklich löschen?")){
-return;
+
+/* =========================================================
+   KAUFANFRAGEN
+========================================================= */
+
+function loadPurchaseRequests(){
+
+  const username =
+    getUsername();
+
+  const box =
+    $("purchaseRequests");
+
+  box.innerHTML = "";
+
+  const requests =
+    getRequests().filter(
+      request =>
+        request.buyer === username
+    );
+
+  $("requestTitle")
+    .textContent =
+      `📩 Meine Kaufanfragen (${requests.length})`;
+
+  if(!requests.length){
+
+    box.innerHTML =
+      `
+        <div class="empty">
+          📩 Du hast noch keine Kaufanfragen.
+        </div>
+      `;
+
+    return;
+
+  }
+
+  requests.forEach(
+    request => {
+
+      const element =
+        document.createElement(
+          "div"
+        );
+
+      element.className =
+        "request";
+
+      const status =
+        request.status === "accepted"
+
+          ? `
+            <span class="status accepted">
+              ✅ Angenommen
+            </span>
+          `
+
+          : request.status === "rejected"
+
+          ? `
+            <span class="status rejected">
+              ❌ Abgelehnt
+            </span>
+          `
+
+          : `
+            <span class="status open">
+              🕐 Offen
+            </span>
+          `;
+
+
+      let rating =
+        "";
+
+      if(
+        request.status ===
+        "accepted"
+      ){
+
+        const ratings =
+          getRatings();
+
+        const alreadyRated =
+          Array.isArray(
+            ratings[
+              request.seller
+            ]
+          )
+          &&
+          ratings[
+            request.seller
+          ].some(
+            item =>
+              item.requestId ===
+              request.id
+          );
+
+        rating =
+          alreadyRated
+
+            ? `
+              <button
+                class="gray"
+                disabled>
+                ⭐ Bereits bewertet
+              </button>
+            `
+
+            : `
+              <button
+                class="rate-btn"
+                data-action="rate"
+                data-id="${safe(request.id)}">
+                ⭐ Verkäufer bewerten
+              </button>
+            `;
+
+      }
+
+      element.innerHTML = `
+
+        <div class="request-top">
+
+          <img
+            class="request-image"
+            src="${safe(request.image)}"
+            alt="${safe(request.player)}">
+
+          <div class="request-info">
+
+            <h3>
+              ${safe(request.player)}
+            </h3>
+
+            <p class="info">
+              ${safe(request.club)}
+            </p>
+
+            <p class="price">
+              ${safe(request.price)} €
+            </p>
+
+            <p class="info">
+              Verkäufer:
+              <strong>
+                ${safe(request.seller)}
+              </strong>
+            </p>
+
+            ${status}
+
+          </div>
+
+        </div>
+
+        ${rating}
+
+      `;
+
+      box.appendChild(
+        element
+      );
+
+    }
+  );
+
 }
 
-cards=cards.filter(c=>c.id!==cardId);
 
-write("footballCards",cards);
+/* =========================================================
+   VERKÄUFER-ANFRAGEN
+========================================================= */
 
-write(
-"favoriteCards",
-getFavorites().filter(item=>item.id!==cardId)
-);
+function loadSellerRequests(){
 
-const users=getFavoriteUsers();
-delete users[cardId];
-write("favoriteUsers",users);
+  const username =
+    getUsername();
 
-loadAll();
+  const box =
+    $("sellerRequests");
+
+  box.innerHTML = "";
+
+  const requests =
+    getRequests().filter(
+      request =>
+        request.seller === username
+    );
+
+  $("sellerRequestTitle")
+    .textContent =
+      `📥 Anfragen für meine Karten (${requests.length})`;
+
+  if(!requests.length){
+
+    box.innerHTML =
+      `
+        <div class="empty">
+          📥 Noch keine Anfragen für deine Karten.
+        </div>
+      `;
+
+    return;
+
+  }
+
+  requests.forEach(
+    request => {
+
+      const element =
+        document.createElement(
+          "div"
+        );
+
+      element.className =
+        "request";
+
+      const status =
+        request.status === "accepted"
+
+          ? `
+            <span class="status accepted">
+              ✅ Angenommen
+            </span>
+          `
+
+          : request.status === "rejected"
+
+          ? `
+            <span class="status rejected">
+              ❌ Abgelehnt
+            </span>
+          `
+
+          : `
+            <span class="status open">
+              🕐 Offen
+            </span>
+          `;
+
+
+      const buttons =
+        request.status ===
+        "pending"
+
+        ? `
+          <div class="request-actions">
+
+            <button
+              class="accept-btn"
+              data-action="accept"
+              data-id="${safe(request.id)}">
+              🟢 Annehmen
+            </button>
+
+            <button
+              class="reject-btn"
+              data-action="reject"
+              data-id="${safe(request.id)}">
+              🔴 Ablehnen
+            </button>
+
+          </div>
+        `
+
+        : "";
+
+
+      element.innerHTML = `
+
+        <div class="request-top">
+
+          <img
+            class="request-image"
+            src="${safe(request.image)}"
+            alt="${safe(request.player)}">
+
+          <div class="request-info">
+
+            <h3>
+              ${safe(request.buyer)}
+              möchte deine Karte kaufen
+            </h3>
+
+            <p class="info">
+              Karte:
+              <strong>
+                ${safe(request.player)}
+              </strong>
+            </p>
+
+            <p class="info">
+              Verein:
+              ${safe(request.club)}
+            </p>
+
+            <p class="price">
+              ${safe(request.price)} €
+            </p>
+
+            ${status}
+
+          </div>
+
+        </div>
+
+        ${buttons}
+
+      `;
+
+      box.appendChild(
+        element
+      );
+
+    }
+  );
 
 }
+
+
+/* =========================================================
+   ANNEHMEN
+========================================================= */
+
+function acceptRequest(id){
+
+  const username =
+    getUsername();
+
+  const requests =
+    getRequests();
+
+  const request =
+    requests.find(
+      item =>
+        item.id === id
+    );
+
+  if(!request){
+
+    return;
+
+  }
+
+  if(
+    request.seller !==
+    username
+  ){
+
+    alert(
+      "🚫 Nur der Besitzer kann diese Anfrage annehmen."
+    );
+
+    return;
+
+  }
+
+  if(
+    request.status !==
+    "pending"
+  ){
+
+    alert(
+      "Diese Anfrage wurde bereits bearbeitet."
+    );
+
+    return;
+
+  }
+
+  const cards =
+    getCards();
+
+  const card =
+    cards.find(
+      item =>
+        item.id ===
+        request.cardId
+    );
+
+  if(
+    !card ||
+    card.sold
+  ){
+
+    alert(
+      "❌ Die Karte wurde bereits verkauft oder nicht gefunden."
+    );
+
+    return;
+
+  }
+
+  if(
+    !confirm(
+      `Möchtest du die Anfrage von ${request.buyer} annehmen?`
+    )
+  ){
+
+    return;
+
+  }
+
+  request.status =
+    "accepted";
+
+  card.sold =
+    true;
+
+  card.soldTo =
+    request.buyer;
+
+
+  requests.forEach(
+    other => {
+
+      if(
+        other.cardId ===
+        request.cardId &&
+        other.id !==
+        request.id &&
+        other.status ===
+        "pending"
+      ){
+
+        other.status =
+          "rejected";
+
+      }
+
+    }
+  );
+
+
+  write(
+    KEY.cards,
+    cards
+  );
+
+  write(
+    KEY.requests,
+    requests
+  );
+
+
+  sendChatMessage(
+    request.buyer,
+    `✅ Deine Kaufanfrage für "${request.player}" wurde angenommen.`,
+    true
+  );
+
+  loadAll();
+
+  alert(
+    "🟢 Anfrage angenommen!"
+  );
+
+}
+
+
+/* =========================================================
+   ABLEHNEN
+========================================================= */
+
+function rejectRequest(id){
+
+  const username =
+    getUsername();
+
+  const requests =
+    getRequests();
+
+  const request =
+    requests.find(
+      item =>
+        item.id === id
+    );
+
+  if(!request){
+
+    return;
+
+  }
+
+  if(
+    request.seller !==
+    username
+  ){
+
+    alert(
+      "🚫 Nur der Besitzer kann diese Anfrage ablehnen."
+    );
+
+    return;
+
+  }
+
+  if(
+    request.status !==
+    "pending"
+  ){
+
+    return;
+
+  }
+
+  if(
+    !confirm(
+      `Möchtest du die Anfrage von ${request.buyer} wirklich ablehnen?`
+    )
+  ){
+
+    return;
+
+  }
+
+  request.status =
+    "rejected";
+
+  write(
+    KEY.requests,
+    requests
+  );
+
+  sendChatMessage(
+    request.buyer,
+    `❌ Deine Kaufanfrage für "${request.player}" wurde abgelehnt.`,
+    true
+  );
+
+  loadAll();
+
+  alert(
+    "🔴 Anfrage abgelehnt."
+  );
+
+}
+
 
 /* =========================================================
    VERKÄUFERPROFIL
 ========================================================= */
 
-function openSellerProfile(seller){
+function openSellerProfile(
+  seller
+){
 
-if(!seller) return;
+  if(!seller){
 
-showPage("profilePage","navProfile");
-loadSellerProfile(seller);
+    return;
+
+  }
+
+  showPage(
+    "profilePage",
+    "navProfile"
+  );
+
+  loadSellerProfile(
+    seller
+  );
+
+}
+
+function loadSellerProfile(
+  seller
+){
+
+  const box =
+    $("profileBox");
+
+  if(!seller){
+
+    box.innerHTML =
+      `
+        <div class="empty">
+          👤 Bitte zuerst einen Benutzernamen festlegen.
+        </div>
+      `;
+
+    return;
+
+  }
+
+  const cards =
+    getCards().filter(
+      card =>
+        card.owner === seller
+    );
+
+  const sold =
+    cards.filter(
+      card =>
+        card.sold
+    ).length;
+
+  const ratings =
+    getRatings();
+
+  const sellerRatings =
+    Array.isArray(
+      ratings[seller]
+    )
+      ? ratings[seller]
+      : [];
+
+  const average =
+    sellerRatings.length
+
+      ? sellerRatings.reduce(
+          (sum,item) =>
+            sum +
+            Number(
+              item.stars || 0
+            ),
+          0
+        )
+        /
+        sellerRatings.length
+
+      : 0;
+
+
+  box.innerHTML = `
+
+    <div class="seller-header">
+
+      <div class="big-avatar">
+        ${safe(
+          seller
+            .charAt(0)
+            .toUpperCase()
+        )}
+      </div>
+
+      <div>
+
+        <h2>
+          ${safe(seller)}
+        </h2>
+
+        <div class="rating">
+
+          ${
+            average
+              ? "⭐".repeat(
+                  Math.round(
+                    average
+                  )
+                )
+              : "Noch keine Bewertungen"
+          }
+
+        </div>
+
+        <p class="info">
+
+          ${sellerRatings.length}
+          Bewertung${sellerRatings.length === 1 ? "" : "en"}
+
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="seller-stats">
+
+      <div class="seller-stat">
+
+        <strong>
+          ${sold}
+        </strong>
+
+        <span>
+          Verkauft
+        </span>
+
+      </div>
+
+      <div class="seller-stat">
+
+        <strong>
+          ${cards.length}
+        </strong>
+
+        <span>
+          Angebote
+        </span>
+
+      </div>
+
+      <div class="seller-stat">
+
+        <strong>
+          ${
+            average
+              ? average.toFixed(1)
+              : "-"
+          }
+        </strong>
+
+        <span>
+          Bewertung
+        </span>
+
+      </div>
+
+    </div>
+
+    <br>
+
+    <h2>
+      🏆 Angebote
+    </h2>
+
+    <div
+      id="sellerOffers"
+      class="cards">
+    </div>
+
+  `;
+
+
+  const offers =
+    $("sellerOffers");
+
+  if(!cards.length){
+
+    offers.innerHTML =
+      `
+        <div class="empty">
+          Keine Angebote vorhanden.
+        </div>
+      `;
+
+    return;
+
+  }
+
+  cards.forEach(
+    card =>
+      createCard(
+        card,
+        offers
+      )
+  );
 
 }
 
-function loadSellerProfile(seller){
-
-const box=document.getElementById("profileBox");
-
-const cards=getCards()
-.filter(card=>card.owner===seller);
-
-const sold=cards.filter(card=>card.sold);
-
-const ratings=getRatings();
-
-const sellerRatings=
-Array.isArray(ratings[seller])
-? ratings[seller]
-:[];
-
-const average=sellerRatings.length
-?sellerRatings.reduce((sum,r)=>sum+Number(r.stars||0),0)/sellerRatings.length
-:0;
-
-const rounded=Math.round(average);
-
-box.innerHTML=`
-
-<div class="seller-header">
-
-<div class="big-avatar">
-${escapeHTML(seller.charAt(0).toUpperCase())}
-</div>
-
-<div>
-
-<h2>${escapeHTML(seller)}</h2>
-
-<div class="rating">
-${rounded?"⭐".repeat(rounded):"Noch keine Bewertungen"}
-</div>
-
-<p class="info">
-${sellerRatings.length}
-Bewertung${sellerRatings.length===1?"":"en"}
-</p>
-
-</div>
-</div>
-
-<div class="seller-stats">
-
-<div class="seller-stat">
-<strong>${sold.length}</strong>
-<span>Verkauft</span>
-</div>
-
-<div class="seller-stat">
-<strong>${cards.length}</strong>
-<span>Angebote</span>
-</div>
-
-<div class="seller-stat">
-<strong>${average?average.toFixed(1):"-"}</strong>
-<span>Bewertung</span>
-</div>
-
-</div>
-
-<br>
-
-<h2>🏆 Angebote</h2>
-
-<div id="sellerOffers" class="cards"></div>
-`;
-
-const offers=document.getElementById("sellerOffers");
-
-if(!cards.length){
-
-offers.innerHTML=
-"<div class='empty'>Keine Angebote vorhanden.</div>";
-
-return;
-}
-
-cards.forEach(card=>createCard(card,offers));
-
-}
 
 /* =========================================================
    DETAILFENSTER
 ========================================================= */
 
-function closeAllModals(){
-document.querySelectorAll(".modal").forEach(modal=>modal.remove());
-}
+function closeModal(){
 
-function showCard(cardId){
-
-const card=getCards().find(c=>c.id===cardId);
-
-if(!card) return;
-
-closeAllModals();
-
-const overlay=document.createElement("div");
-overlay.className="modal";
-
-const box=document.createElement("div");
-box.className="modal-box";
-
-box.innerHTML=`
-
-<img class="detail-image"
-src="${card.image}"
-alt="${escapeHTML(card.player)}">
-
-<h2>${escapeHTML(card.player)}</h2>
-
-<p class="info">
-⚽ ${escapeHTML(card.club)}
-</p>
-
-${
-card.condition
-? `<p class="info">
-📦 Zustand:
-<strong>${escapeHTML(card.condition)}</strong>
-</p>`
-:""
-}
-
-<p class="price">
-${escapeHTML(card.price)} €
-</p>
-
-${
-card.description
-? `<div style="
-background:#191919;
-border-radius:12px;
-padding:14px;
-margin:12px 0;
-color:#ccc;
-">
-${escapeHTML(card.description)}
-</div>`
-:""
-}
-
-<p class="info">
-👤 ${escapeHTML(card.owner)}
-</p>
-
-<div class="detail-actions">
-
-<button id="questionBtn">
-❓ Frage stellen
-</button>
-
-<button id="offerBtn">
-💰 Angebot machen
-</button>
-
-<button id="chatBtn">
-💬 Chat
-</button>
-
-<button id="favoriteBtn">
-❤️ Favorit
-</button>
-
-</div>
-
-<button class="close-modal" id="closeModalBtn">
-Schließen
-</button>
-`;
-
-overlay.appendChild(box);
-document.body.appendChild(overlay);
-
-box.querySelector("#questionBtn").onclick=()=>{
-askQuestion(card.id);
-};
-
-box.querySelector("#offerBtn").onclick=()=>{
-makeOffer(card.id);
-};
-
-box.querySelector("#chatBtn").onclick=()=>{
-openChatFromModal(card.owner,overlay);
-};
-
-box.querySelector("#favoriteBtn").onclick=()=>{
-toggleFavorite(card.id);
-};
-
-box.querySelector("#closeModalBtn").onclick=()=>{
-overlay.remove();
-};
-
-overlay.addEventListener("click",event=>{
-if(event.target===overlay){
-overlay.remove();
-}
-});
+  document
+    .querySelectorAll(
+      ".modal"
+    )
+    .forEach(
+      modal =>
+        modal.remove()
+    );
 
 }
 
-function openChatFromModal(user,modal){
+function showCard(id){
 
-/*
-WICHTIG:
-Das Detailfenster wird VOR dem Öffnen des Chats geschlossen.
-Dadurch liegt kein Modal mehr über der Nachrichten-Seite.
-*/
+  const card =
+    getCards().find(
+      item =>
+        item.id === id
+    );
 
-if(modal) modal.remove();
+  if(!card){
 
-openChatWith(user);
+    return;
+
+  }
+
+  closeModal();
+
+  const username =
+    getUsername();
+
+  const modal =
+    document.createElement(
+      "div"
+    );
+
+  modal.className =
+    "modal";
+
+  modal.addEventListener(
+    "click",
+    event => {
+
+      if(
+        event.target ===
+        modal
+      ){
+
+        modal.remove();
+
+      }
+
+    }
+  );
+
+
+  modal.innerHTML = `
+
+    <div class="modal-box">
+
+      <img
+        class="detail-image"
+        src="${safe(card.image)}"
+        alt="${safe(card.player)}">
+
+      <h2>
+        ${safe(card.player)}
+      </h2>
+
+      <p class="info">
+        ⚽ ${safe(card.club)}
+      </p>
+
+      ${
+        card.condition
+          ? `
+            <p class="info">
+              📦 Zustand:
+              <strong>
+                ${safe(card.condition)}
+              </strong>
+            </p>
+          `
+          : ""
+      }
+
+      <p class="price">
+        ${safe(card.price)} €
+      </p>
+
+      ${
+        card.description
+          ? `
+            <div
+              style="
+                background:#191919;
+                border-radius:12px;
+                padding:14px;
+                margin:12px 0;
+                color:#ccc;
+                white-space:pre-wrap
+              ">
+              ${safe(card.description)}
+            </div>
+          `
+          : ""
+      }
+
+      <p class="info">
+        👤 ${safe(card.owner)}
+      </p>
+
+      <div class="detail-actions">
+
+        <button
+          data-action="question"
+          data-id="${safe(card.id)}">
+          ❓ Frage stellen
+        </button>
+
+        <button
+          data-action="offer"
+          data-id="${safe(card.id)}">
+          💰 Angebot machen
+        </button>
+
+        <button
+          data-action="chat"
+          data-user="${safe(card.owner)}">
+          💬 Chat
+        </button>
+
+        <button
+          data-action="favorite"
+          data-id="${safe(card.id)}">
+          ❤️ ${
+            isFavorite(card.id)
+              ? "Favorisiert"
+              : "Favorit"
+          }
+        </button>
+
+        ${
+          card.owner !== username
+            ? `
+              <button
+                data-action="buy"
+                data-id="${safe(card.id)}">
+                🛒 Kaufen
+              </button>
+            `
+            : ""
+        }
+
+      </div>
+
+      <button
+        class="close-modal"
+        data-action="close-modal">
+        Schließen
+      </button>
+
+    </div>
+
+  `;
+
+  document.body.appendChild(
+    modal
+  );
 
 }
+
 
 /* =========================================================
    FRAGE
 ========================================================= */
 
-function askQuestion(cardId){
+function askQuestion(id){
 
-const username=getUsername();
+  const username =
+    getUsername();
 
-if(!username){
-needUsername();
-return;
+  if(!username){
+
+    needUsername();
+
+    return;
+
+  }
+
+  const card =
+    getCards().find(
+      item =>
+        item.id === id
+    );
+
+  if(!card){
+
+    return;
+
+  }
+
+  if(
+    card.owner ===
+    username
+  ){
+
+    alert(
+      "🚫 Du kannst dir selbst keine Frage schicken."
+    );
+
+    return;
+
+  }
+
+  const question =
+    prompt(
+      "❓ Welche Frage möchtest du dem Verkäufer stellen?"
+    );
+
+  if(
+    !question ||
+    !question.trim()
+  ){
+
+    return;
+
+  }
+
+  sendChatMessage(
+    card.owner,
+    `❓ Frage zu "${card.player}": ${question.trim()}`
+  );
+
+  alert(
+    "💬 Deine Frage wurde gesendet!"
+  );
+
 }
 
-const card=getCards().find(c=>c.id===cardId);
-
-if(!card) return;
-
-if(card.owner===username){
-alert("🚫 Du kannst dir selbst keine Frage schicken.");
-return;
-}
-
-const question=prompt(
-"❓ Welche Frage möchtest du dem Verkäufer stellen?"
-);
-
-if(!question || !question.trim()) return;
-
-const success=sendChatMessage(
-card.owner,
-"❓ Frage zu \""+
-card.player+
-"\": "+
-question.trim()
-);
-
-if(success){
-alert("💬 Deine Frage wurde gesendet!");
-}
-
-}
 
 /* =========================================================
    ANGEBOT
 ========================================================= */
 
-function makeOffer(cardId){
+function makeOffer(id){
 
-const username=getUsername();
+  const username =
+    getUsername();
 
-if(!username){
-needUsername();
-return;
+  if(!username){
+
+    needUsername();
+
+    return;
+
+  }
+
+  const card =
+    getCards().find(
+      item =>
+        item.id === id
+    );
+
+  if(!card){
+
+    return;
+
+  }
+
+  if(
+    card.owner ===
+    username
+  ){
+
+    alert(
+      "🚫 Du kannst dir selbst kein Angebot machen."
+    );
+
+    return;
+
+  }
+
+  const value =
+    prompt(
+      `💰 Dein Angebot in €:
+
+Originalpreis: ${card.price} €`
+    );
+
+  if(value === null){
+
+    return;
+
+  }
+
+  const amount =
+    Number(value);
+
+  if(
+    !Number.isFinite(amount) ||
+    amount <= 0
+  ){
+
+    alert(
+      "Bitte gib einen gültigen Preis ein."
+    );
+
+    return;
+
+  }
+
+  sendChatMessage(
+    card.owner,
+    `💰 Angebot für "${card.player}": ${amount.toFixed(2)} €`
+  );
+
+  alert(
+    "💰 Dein Angebot wurde gesendet!"
+  );
+
 }
 
-const card=getCards().find(c=>c.id===cardId);
-
-if(!card) return;
-
-if(card.owner===username){
-alert("🚫 Du kannst dir selbst kein Angebot machen.");
-return;
-}
-
-const value=prompt(
-"💰 Dein Angebot in €:\n\nOriginalpreis: "+
-card.price+" €"
-);
-
-if(value===null) return;
-
-const amount=Number(value);
-
-if(!Number.isFinite(amount)||amount<=0){
-alert("Bitte einen gültigen Preis eingeben.");
-return;
-}
-
-const success=sendChatMessage(
-card.owner,
-"💰 Angebot für \""+
-card.player+
-"\": "+
-amount.toFixed(2)+
-" €"
-);
-
-if(success){
-alert("💰 Dein Angebot wurde gesendet!");
-}
-
-}
 
 /* =========================================================
    CHAT
 ========================================================= */
 
-function chatKey(a,b){
-return [a,b].sort().join("|||");
-}
-
-function makeId(){
-
-return Date.now()+"-"+
-Math.random().toString(36).substring(2,10);
-
-}
-
-function sendChatMessage(receiver,text){
-
-const sender=getUsername();
-
-if(!sender){
-needUsername();
-return false;
-}
-
-if(!receiver||receiver===sender){
-return false;
-}
-
-if(!text||!String(text).trim()){
-return false;
-}
-
-const messages=getMessages();
-
-messages.push({
-
-id:makeId(),
-
-chat:chatKey(sender,receiver),
-
-sender:sender,
-receiver:receiver,
-
-text:String(text).trim(),
-
-createdAt:new Date().toISOString(),
-
-read:false
-
-});
-
-write("pixelMessages",messages);
-
-updateMessageBadge();
-
-return true;
-
-}
-
-/*
-Der Chat wird jetzt IMMER korrekt geöffnet,
-egal ob er aus dem Kartenfenster,
-aus einem Chat oder aus einer anderen Stelle kommt.
-*/
-
-function openChatWith(otherUser){
-
-const username=getUsername();
-
-if(!username){
-needUsername();
-return;
-}
-
-if(!otherUser||otherUser===username){
-return;
-}
-
-closeAllModals();
-
-selectedChatUser=otherUser;
-
-showPage("messagesPage","navMessages");
-
-renderChatList();
-renderMessages(otherUser);
-
-markChatRead(otherUser);
-
-renderChatList();
-updateMessageBadge();
-
-}
-
-function markChatRead(otherUser){
-
-const username=getUsername();
-
-const messages=getMessages();
-
-let changed=false;
-
-messages.forEach(message=>{
-
-if(
-message.sender===otherUser &&
-message.receiver===username &&
-message.read!==true
+function sendChatMessage(
+  receiver,
+  text,
+  silent = false
 ){
 
-message.read=true;
-changed=true;
+  const sender =
+    getUsername();
+
+  if(!sender){
+
+    needUsername();
+
+    return false;
+
+  }
+
+  if(
+    !receiver ||
+    receiver === sender
+  ){
+
+    return false;
+
+  }
+
+  const messages =
+    getMessages();
+
+  messages.push({
+
+    id:uid(),
+
+    chat:
+      chatKey(
+        sender,
+        receiver
+      ),
+
+    sender:sender,
+
+    receiver:receiver,
+
+    text:String(text),
+
+    createdAt:
+      new Date().toISOString(),
+
+    read:false
+
+  });
+
+  try{
+
+    write(
+      KEY.messages,
+      messages
+    );
+
+  }catch(error){
+
+    alert(
+      "❌ Nachricht konnte nicht gespeichert werden."
+    );
+
+    return false;
+
+  }
+
+  updateBadges();
+
+  renderChatList();
+
+  if(!silent){
+
+    openChatWith(
+      receiver
+    );
+
+  }
+
+  return true;
 
 }
 
-});
 
-if(changed){
-write("pixelMessages",messages);
+/* =========================================================
+   CHAT-BENUTZER
+========================================================= */
+
+function getChatUsers(){
+
+  const username =
+    getUsername();
+
+  if(!username){
+
+    return [];
+
+  }
+
+  const users =
+    new Set();
+
+  getMessages().forEach(
+    message => {
+
+      if(
+        message.sender ===
+        username &&
+        message.receiver
+      ){
+
+        users.add(
+          message.receiver
+        );
+
+      }
+
+      if(
+        message.receiver ===
+        username &&
+        message.sender
+      ){
+
+        users.add(
+          message.sender
+        );
+
+      }
+
+    }
+  );
+
+  return [
+    ...users
+  ];
+
 }
 
-}
 
 /* =========================================================
    CHAT-LISTE
 ========================================================= */
 
-let selectedChatUser="";
-
-function getChatUsers(){
-
-const username=getUsername();
-
-if(!username) return [];
-
-const users=[];
-const messages=getMessages();
-
-messages.forEach(message=>{
-
-if(message.sender===username){
-
-if(message.receiver&&!users.includes(message.receiver)){
-users.push(message.receiver);
-}
-
-}
-
-if(message.receiver===username){
-
-if(message.sender&&!users.includes(message.sender)){
-users.push(message.sender);
-}
-
-}
-
-});
-
-return users;
-
-}
-
 function renderChatList(){
 
-const box=document.getElementById("chatList");
+  const box =
+    $("chatList");
 
-if(!box) return;
+  if(!box){
 
-box.innerHTML="";
+    return;
 
-const users=getChatUsers();
+  }
 
-if(!users.length){
+  box.innerHTML = "";
 
-box.innerHTML=`
-<div style="padding:16px;color:#777">
-Noch keine Chats.
-</div>
-`;
+  const username =
+    getUsername();
 
-return;
+  const messages =
+    getMessages();
+
+  const users =
+    getChatUsers();
+
+  if(!users.length){
+
+    box.innerHTML =
+      `
+        <div
+          style="
+            padding:16px;
+            color:#777
+          ">
+          Noch keine Chats.
+        </div>
+      `;
+
+    return;
+
+  }
+
+
+  users.sort(
+    (a,b) => {
+
+      const lastA =
+        [...messages]
+          .reverse()
+          .find(
+            message =>
+              message.chat ===
+              chatKey(
+                username,
+                a
+              )
+          );
+
+      const lastB =
+        [...messages]
+          .reverse()
+          .find(
+            message =>
+              message.chat ===
+              chatKey(
+                username,
+                b
+              )
+          );
+
+      return String(
+        lastB?.createdAt || ""
+      ).localeCompare(
+        String(
+          lastA?.createdAt || ""
+        )
+      );
+
+    }
+  );
+
+
+  users.forEach(
+    user => {
+
+      const unread =
+        messages.filter(
+          message =>
+            message.sender === user &&
+            message.receiver === username &&
+            !message.read
+        ).length;
+
+      const element =
+        document.createElement(
+          "div"
+        );
+
+      element.className =
+        "chat-item" +
+        (
+          selectedChatUser === user
+            ? " selected"
+            : ""
+        );
+
+
+      element.innerHTML = `
+
+        <strong>
+
+          ${safe(user)}
+
+          ${
+            unread
+              ? `
+                <span
+                  style="
+                    float:right;
+                    background:#ef233c;
+                    color:#fff;
+                    border-radius:20px;
+                    padding:2px 7px;
+                    font-size:11px
+                  ">
+                  ${unread}
+                </span>
+              `
+              : ""
+          }
+
+        </strong>
+
+        <span>
+          Chat öffnen
+        </span>
+
+      `;
+
+
+      element.addEventListener(
+        "click",
+        () => {
+
+          openChatWith(
+            user
+          );
+
+        }
+      );
+
+
+      box.appendChild(
+        element
+      );
+
+    }
+  );
+
 }
 
-const username=getUsername();
-const messages=getMessages();
 
-users.sort((a,b)=>{
+/* =========================================================
+   CHAT ÖFFNEN
+========================================================= */
 
-const lastA=[...messages]
-.reverse()
-.find(m=>m.chat===chatKey(username,a));
+function openChatWith(
+  otherUser
+){
 
-const lastB=[...messages]
-.reverse()
-.find(m=>m.chat===chatKey(username,b));
+  const username =
+    getUsername();
 
-return String(lastB?.createdAt||"")
-.localeCompare(String(lastA?.createdAt||""));
+  if(!username){
 
-});
+    needUsername();
 
-users.forEach(user=>{
+    return;
 
-const unread=messages.filter(message=>
-message.sender===user &&
-message.receiver===username &&
-message.read!==true
-).length;
+  }
 
-const item=document.createElement("div");
+  if(
+    !otherUser ||
+    otherUser === username
+  ){
 
-item.className=
-"chat-item"+
-(selectedChatUser===user?" selected":"");
+    return;
 
-item.innerHTML=`
+  }
 
-<strong>
 
-${escapeHTML(user)}
+  /*
+   * Wichtig:
+   * Detailfenster schließen.
+   */
 
-${
-unread
-? `<span style="
-float:right;
-background:#ef233c;
-color:#fff;
-border-radius:20px;
-padding:2px 7px;
-font-size:11px;
-">${unread}</span>`
-:""
+  closeModal();
+
+
+  /*
+   * Chat auswählen.
+   */
+
+  selectedChatUser =
+    otherUser;
+
+
+  /*
+   * Nachrichten-Seite öffnen.
+   */
+
+  showPage(
+    "messagesPage",
+    "navMessages"
+  );
+
+
+  /*
+   * Nachrichten als gelesen markieren.
+   */
+
+  const messages =
+    getMessages();
+
+  messages.forEach(
+    message => {
+
+      if(
+        message.sender ===
+        otherUser &&
+        message.receiver ===
+        username
+      ){
+
+        message.read =
+          true;
+
+      }
+
+    }
+  );
+
+  write(
+    KEY.messages,
+    messages
+  );
+
+
+  /*
+   * Linke Chatliste und
+   * rechtes Chatfenster aktualisieren.
+   */
+
+  renderChatList();
+
+  renderMessages(
+    otherUser
+  );
+
+  updateBadges();
+
+
+  setTimeout(
+    () => {
+
+      $("messageInput").focus();
+
+    },
+    50
+  );
+
 }
 
-</strong>
-
-<span>
-Chat öffnen
-</span>
-`;
-
-item.onclick=()=>{
-openChatWith(user);
-};
-
-box.appendChild(item);
-
-});
-
-}
 
 /* =========================================================
    NACHRICHTEN RENDERN
 ========================================================= */
 
-function renderMessages(otherUser){
+function renderMessages(
+  otherUser
+){
 
-const username=getUsername();
+  const username =
+    getUsername();
 
-const box=document.getElementById("messages");
-const header=document.getElementById("chatHeader");
-const input=document.getElementById("messageInput");
-const send=document.getElementById("sendMessageBtn");
+  const box =
+    $("messages");
 
-if(!box||!header||!input||!send) return;
+  const header =
+    $("chatHeader");
 
-if(!otherUser){
+  const input =
+    $("messageInput");
 
-header.textContent="💬 Chat auswählen";
-input.disabled=true;
-send.disabled=true;
-return;
+  const send =
+    $("sendMessageBtn");
+
+  if(
+    !username ||
+    !otherUser
+  ){
+
+    input.disabled =
+      true;
+
+    send.disabled =
+      true;
+
+    return;
+
+  }
+
+  header.textContent =
+    "💬 Chat mit " +
+    otherUser;
+
+
+  const messages =
+    getMessages()
+      .filter(
+        message =>
+          message.chat ===
+          chatKey(
+            username,
+            otherUser
+          )
+      )
+      .sort(
+        (a,b) =>
+          new Date(
+            a.createdAt
+          ) -
+          new Date(
+            b.createdAt
+          )
+      );
+
+
+  box.innerHTML = "";
+
+
+  if(!messages.length){
+
+    box.innerHTML =
+      `
+        <div class="empty">
+          Noch keine Nachrichten.
+        </div>
+      `;
+
+  }else{
+
+    messages.forEach(
+      message => {
+
+        const element =
+          document.createElement(
+            "div"
+          );
+
+        element.className =
+          "message" +
+          (
+            message.sender ===
+            username
+              ? " mine"
+              : ""
+          );
+
+
+        element.innerHTML = `
+
+          ${safe(message.text)}
+
+          <small>
+            ${formatTime(
+              message.createdAt
+            )}
+          </small>
+
+        `;
+
+        box.appendChild(
+          element
+        );
+
+      }
+    );
+
+    box.scrollTop =
+      box.scrollHeight;
+
+  }
+
+
+  input.disabled =
+    false;
+
+  send.disabled =
+    false;
 
 }
 
-header.textContent=
-"💬 Chat mit "+otherUser;
-
-const messages=getMessages()
-.filter(message=>
-message.chat===chatKey(username,otherUser)
-)
-.sort((a,b)=>
-new Date(a.createdAt)-new Date(b.createdAt)
-);
-
-box.innerHTML="";
-
-if(!messages.length){
-
-box.innerHTML=`
-<div class="empty">
-Noch keine Nachrichten.
-</div>
-`;
-
-}else{
-
-messages.forEach(message=>{
-
-const div=document.createElement("div");
-
-div.className=
-"message"+
-(message.sender===username?" mine":"");
-
-div.innerHTML=`
-${escapeHTML(message.text)}
-<small>
-${formatTime(message.createdAt)}
-</small>
-`;
-
-box.appendChild(div);
-
-});
-
-box.scrollTop=box.scrollHeight;
-
-}
-
-input.disabled=false;
-send.disabled=false;
-
-}
 
 /* =========================================================
    NACHRICHT SENDEN
@@ -2654,389 +4222,825 @@ send.disabled=false;
 
 function sendMessage(){
 
-const username=getUsername();
+  const username =
+    getUsername();
 
-if(!username){
-needUsername();
-return;
+  if(!username){
+
+    needUsername();
+
+    return;
+
+  }
+
+  if(!selectedChatUser){
+
+    alert(
+      "💬 Wähle zuerst einen Chat aus."
+    );
+
+    return;
+
+  }
+
+  const input =
+    $("messageInput");
+
+  const text =
+    input.value.trim();
+
+  if(!text){
+
+    return;
+
+  }
+
+  const sent =
+    sendChatMessage(
+      selectedChatUser,
+      text,
+      true
+    );
+
+  if(sent){
+
+    input.value =
+      "";
+
+    renderMessages(
+      selectedChatUser
+    );
+
+    updateBadges();
+
+  }
+
 }
 
-if(!selectedChatUser){
-alert("💬 Bitte zuerst einen Chat auswählen.");
-return;
-}
-
-const input=document.getElementById("messageInput");
-
-const text=input.value.trim();
-
-if(!text) return;
-
-const receiver=selectedChatUser;
-
-const success=sendChatMessage(
-receiver,
-text
-);
-
-if(!success) return;
-
-input.value="";
-
-renderMessages(receiver);
-renderChatList();
-
-}
 
 /* =========================================================
-   BEWERTUNG
+   BEWERTUNGEN
 ========================================================= */
 
-function openRating(requestId){
+function openRating(id){
 
-const username=getUsername();
+  const request =
+    getRequests().find(
+      item =>
+        item.id === id
+    );
 
-const request=getRequests()
-.find(r=>r.id===requestId);
+  const username =
+    getUsername();
 
-if(!request) return;
+  if(!request){
 
-if(request.buyer!==username){
-alert("🚫 Nur der Käufer kann bewerten.");
-return;
-}
+    return;
 
-if(request.status!=="accepted"){
-alert("⭐ Erst nach einer angenommenen Anfrage möglich.");
-return;
-}
+  }
 
-const ratings=getRatings();
+  if(
+    request.buyer !==
+    username ||
+    request.status !==
+    "accepted"
+  ){
 
-if(!Array.isArray(ratings[request.seller])){
-ratings[request.seller]=[];
-}
+    alert(
+      "⭐ Eine Bewertung ist erst nach einer angenommenen Anfrage möglich."
+    );
 
-if(
-ratings[request.seller]
-.some(r=>r.requestId===requestId)
-){
+    return;
 
-alert("⭐ Bereits bewertet.");
-return;
+  }
 
-}
+  const ratings =
+    getRatings();
 
-const stars=prompt(
-"⭐ Bewertung von 1 bis 5:\n\n1 = schlecht\n5 = sehr gut"
-);
+  ratings[request.seller] =
+    Array.isArray(
+      ratings[request.seller]
+    )
+      ? ratings[request.seller]
+      : [];
 
-if(stars===null) return;
 
-const value=Number(stars);
+  if(
+    ratings[
+      request.seller
+    ].some(
+      item =>
+        item.requestId === id
+    )
+  ){
 
-if(
-!Number.isInteger(value)||
-value<1||
-value>5
-){
+    alert(
+      "⭐ Bereits bewertet."
+    );
 
-alert("Bitte eine Zahl von 1 bis 5 eingeben.");
-return;
+    return;
 
-}
+  }
 
-ratings[request.seller].push({
 
-requestId:request.id,
-buyer:username,
-stars:value,
-createdAt:new Date().toISOString()
+  const stars =
+    prompt(
+      "⭐ Bewertung von 1 bis 5:"
+    );
 
-});
+  if(stars === null){
 
-write("sellerRatings",ratings);
+    return;
 
-loadAll();
+  }
 
-alert("⭐ Bewertung gespeichert!");
+  const number =
+    Number(stars);
 
-}
+  if(
+    !Number.isInteger(
+      number
+    ) ||
+    number < 1 ||
+    number > 5
+  ){
 
-/* =========================================================
-   KARTE EINSTELLEN
-========================================================= */
+    alert(
+      "Bitte eine Zahl von 1 bis 5 eingeben."
+    );
 
-document.getElementById("sellForm")
-.addEventListener("submit",function(event){
+    return;
 
-event.preventDefault();
+  }
 
-const username=getUsername();
 
-if(!username){
+  ratings[
+    request.seller
+  ].push({
 
-alert(
-"👤 Bitte zuerst einen Benutzernamen festlegen."
-);
+    requestId:id,
 
-return;
+    buyer:username,
 
-}
+    stars:number,
 
-const player=document.getElementById("player").value.trim();
-const club=document.getElementById("club").value.trim();
-const price=document.getElementById("price").value;
-const condition=document.getElementById("condition").value;
-const description=document.getElementById("description").value.trim();
-const file=document.getElementById("image").files[0];
+    createdAt:
+      new Date().toISOString()
 
-if(!player||!club||!price){
+  });
 
-alert("Bitte Spieler, Verein und Preis ausfüllen.");
-return;
 
-}
+  write(
+    KEY.ratings,
+    ratings
+  );
 
-if(!file){
+  loadAll();
 
-alert("Bitte wähle ein Foto aus.");
-return;
-
-}
-
-const reader=new FileReader();
-
-reader.onload=function(){
-
-const image=new Image();
-
-image.onload=function(){
-
-const canvas=document.createElement("canvas");
-
-const max=700;
-
-let width=image.width;
-let height=image.height;
-
-if(width>height&&width>max){
-
-height=height*max/width;
-width=max;
-
-}else if(height>max){
-
-width=width*max/height;
-height=max;
+  alert(
+    "⭐ Bewertung gespeichert!"
+  );
 
 }
 
-canvas.width=width;
-canvas.height=height;
-
-const context=canvas.getContext("2d");
-
-context.drawImage(
-image,
-0,
-0,
-width,
-height
-);
-
-const imageData=
-canvas.toDataURL("image/jpeg",.6);
-
-const cards=getCards();
-
-cards.unshift({
-
-id:makeId(),
-
-player:player,
-club:club,
-price:price,
-
-condition:condition,
-description:description,
-
-image:imageData,
-
-owner:username,
-
-sold:false,
-soldTo:null
-
-});
-
-try{
-
-write("footballCards",cards);
-
-}catch(error){
-
-alert(
-"Der Speicher ist voll. Bitte lösche zuerst einige Karten."
-);
-
-return;
-
-}
-
-document.getElementById("sellForm").reset();
-document.getElementById("sellPanel").classList.remove("open");
-
-loadAll();
-
-alert("🎉 Deine Karte wurde eingestellt!");
-
-};
-
-image.src=reader.result;
-
-};
-
-reader.readAsDataURL(file);
-
-});
-
-/* =========================================================
-   SUCHE
-========================================================= */
-
-document.getElementById("searchInput")
-.addEventListener("input",loadCards);
-
-/* =========================================================
-   ENTER CHAT
-========================================================= */
-
-document.getElementById("messageInput")
-.addEventListener("keydown",function(event){
-
-if(event.key==="Enter"){
-event.preventDefault();
-sendMessage();
-}
-
-});
 
 /* =========================================================
    ZEIT
 ========================================================= */
 
-function formatTime(date){
+function formatTime(
+  date
+){
 
-try{
+  try{
 
-return new Date(date).toLocaleString(
-"de-DE",
-{
-day:"2-digit",
-month:"2-digit",
-hour:"2-digit",
-minute:"2-digit"
+    return new Date(
+      date
+    ).toLocaleString(
+      "de-DE",
+      {
+        day:"2-digit",
+        month:"2-digit",
+        hour:"2-digit",
+        minute:"2-digit"
+      }
+    );
+
+  }catch(error){
+
+    return "";
+
+  }
+
 }
-);
 
-}catch(error){
-
-return "";
-
-}
-
-}
 
 /* =========================================================
-   ALLES LADEN
+   BILD VERKLEINERN
+========================================================= */
+
+function compressImage(
+  file
+){
+
+  return new Promise(
+    (resolve,reject) => {
+
+      const reader =
+        new FileReader();
+
+      reader.onerror =
+        reject;
+
+      reader.onload =
+        () => {
+
+          const image =
+            new Image();
+
+          image.onerror =
+            reject;
+
+          image.onload =
+            () => {
+
+              const max =
+                700;
+
+              let width =
+                image.width;
+
+              let height =
+                image.height;
+
+
+              if(
+                width > height &&
+                width > max
+              ){
+
+                height =
+                  height *
+                  max /
+                  width;
+
+                width =
+                  max;
+
+              }else if(
+                height > max
+              ){
+
+                width =
+                  width *
+                  max /
+                  height;
+
+                height =
+                  max;
+
+              }
+
+
+              const canvas =
+                document.createElement(
+                  "canvas"
+                );
+
+              canvas.width =
+                width;
+
+              canvas.height =
+                height;
+
+
+              canvas
+                .getContext("2d")
+                .drawImage(
+                  image,
+                  0,
+                  0,
+                  width,
+                  height
+                );
+
+
+              resolve(
+                canvas.toDataURL(
+                  "image/jpeg",
+                  .6
+                )
+              );
+
+            };
+
+
+          image.src =
+            reader.result;
+
+        };
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   KARTE EINSTELLEN
+========================================================= */
+
+async function submitSell(
+  event
+){
+
+  event.preventDefault();
+
+  const username =
+    getUsername();
+
+  if(!username){
+
+    needUsername();
+
+    return;
+
+  }
+
+  const file =
+    $("image")
+      .files[0];
+
+  if(!file){
+
+    alert(
+      "Bitte wähle ein Foto aus."
+    );
+
+    return;
+
+  }
+
+
+  const player =
+    $("player")
+      .value
+      .trim();
+
+  const club =
+    $("club")
+      .value
+      .trim();
+
+  const priceValue =
+    Number(
+      $("price").value
+    );
+
+  if(
+    !player ||
+    !club ||
+    !Number.isFinite(
+      priceValue
+    ) ||
+    priceValue < 0
+  ){
+
+    alert(
+      "Bitte fülle Spieler, Verein und Preis korrekt aus."
+    );
+
+    return;
+
+  }
+
+
+  const card = {
+
+    id:uid(),
+
+    player:player,
+
+    club:club,
+
+    price:
+      priceValue.toFixed(2),
+
+    condition:
+      $("condition").value,
+
+    description:
+      $("description")
+        .value
+        .trim(),
+
+    image:"",
+
+    owner:username,
+
+    sold:false,
+
+    soldTo:null
+
+  };
+
+
+  try{
+
+    card.image =
+      await compressImage(
+        file
+      );
+
+    const cards =
+      getCards();
+
+    cards.unshift(
+      card
+    );
+
+    write(
+      KEY.cards,
+      cards
+    );
+
+
+    $("sellForm")
+      .reset();
+
+    $("sellPanel")
+      .classList.remove(
+        "open"
+      );
+
+    loadAll();
+
+    alert(
+      "🎉 Deine Karte wurde eingestellt!"
+    );
+
+  }catch(error){
+
+    alert(
+      "❌ Das Foto konnte nicht verarbeitet oder gespeichert werden. Bitte probiere ein kleineres Bild."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   ALLE BUTTONS
+========================================================= */
+
+function handleAction(
+  event
+){
+
+  const target =
+    event.target.closest(
+      "[data-action]"
+    );
+
+  if(!target){
+
+    return;
+
+  }
+
+  const action =
+    target.dataset.action;
+
+  const id =
+    target.dataset.id;
+
+
+  if(
+    action ===
+    "detail"
+  ){
+
+    showCard(id);
+
+  }
+
+  else if(
+    action ===
+    "buy"
+  ){
+
+    buyCard(id);
+
+  }
+
+  else if(
+    action ===
+    "favorite"
+  ){
+
+    toggleFavorite(id);
+
+  }
+
+  else if(
+    action ===
+    "seller"
+  ){
+
+    openSellerProfile(
+      target.dataset.seller
+    );
+
+  }
+
+  else if(
+    action ===
+    "delete"
+  ){
+
+    deleteCard(id);
+
+  }
+
+  else if(
+    action ===
+    "need-user"
+  ){
+
+    needUsername();
+
+  }
+
+  else if(
+    action ===
+    "own"
+  ){
+
+    alert(
+      "🚫 Du kannst deine eigene Karte nicht kaufen."
+    );
+
+  }
+
+  else if(
+    action ===
+    "question"
+  ){
+
+    askQuestion(id);
+
+  }
+
+  else if(
+    action ===
+    "offer"
+  ){
+
+    makeOffer(id);
+
+  }
+
+  else if(
+    action ===
+    "chat"
+  ){
+
+    openChatWith(
+      target.dataset.user
+    );
+
+  }
+
+  else if(
+    action ===
+    "close-modal"
+  ){
+
+    closeModal();
+
+  }
+
+  else if(
+    action ===
+    "accept"
+  ){
+
+    acceptRequest(id);
+
+  }
+
+  else if(
+    action ===
+    "reject"
+  ){
+
+    rejectRequest(id);
+
+  }
+
+  else if(
+    action ===
+    "rate"
+  ){
+
+    openRating(id);
+
+  }
+
+}
+
+
+/* =========================================================
+   ALLES AKTUALISIEREN
 ========================================================= */
 
 function loadAll(){
 
-updateProfile();
+  updateProfile();
 
-loadCards();
+  loadCards();
 
-loadFavorites();
+  loadFavorites();
 
-loadMyCards();
+  loadMyCards();
 
-loadPurchaseRequests();
+  loadPurchaseRequests();
 
-loadSellerRequests();
+  loadSellerRequests();
 
-updateRequestBadge();
+  updateBadges();
 
-updateMessageBadge();
+  renderChatList();
 
-renderChatList();
 
-if(selectedChatUser){
-renderMessages(selectedChatUser);
+  if(
+    selectedChatUser &&
+    $("messagesPage")
+      .classList
+      .contains("active")
+  ){
+
+    renderMessages(
+      selectedChatUser
+    );
+
+  }
+
+
+  if(
+    getUsername()
+  ){
+
+    loadSellerProfile(
+      getUsername()
+    );
+
+  }
+
 }
 
-}
 
 /* =========================================================
-   BUTTONS
+   EVENTS
 ========================================================= */
 
-document.getElementById("saveUsernameBtn")
-.addEventListener("click",saveUsername);
+$("saveUsernameBtn")
+  .addEventListener(
+    "click",
+    saveUsername
+  );
 
-document.getElementById("sellMainBtn")
-.addEventListener("click",toggleSellPanel);
 
-document.getElementById("closeSellBtn")
-.addEventListener("click",toggleSellPanel);
+$("sellMainBtn")
+  .addEventListener(
+    "click",
+    toggleSellPanel
+  );
 
-document.getElementById("navCards")
-.addEventListener("click",()=>{
-showPage("cardsPage","navCards");
-});
 
-document.getElementById("navFavorites")
-.addEventListener("click",()=>{
-showPage("favoritesPage","navFavorites");
-});
+$("closeSellBtn")
+  .addEventListener(
+    "click",
+    toggleSellPanel
+  );
 
-document.getElementById("navMine")
-.addEventListener("click",()=>{
-showPage("minePage","navMine");
-});
 
-document.getElementById("navRequests")
-.addEventListener("click",()=>{
-showPage("requestsPage","navRequests");
-});
+$("sellForm")
+  .addEventListener(
+    "submit",
+    submitSell
+  );
 
-document.getElementById("navMessages")
-.addEventListener("click",()=>{
-showPage("messagesPage","navMessages");
-});
 
-document.getElementById("navProfile")
-.addEventListener("click",()=>{
+$("searchInput")
+  .addEventListener(
+    "input",
+    loadCards
+  );
 
-showPage("profilePage","navProfile");
 
-const username=getUsername();
+$("sendMessageBtn")
+  .addEventListener(
+    "click",
+    sendMessage
+  );
 
-if(username){
-loadSellerProfile(username);
-}
 
-});
+$("messageInput")
+  .addEventListener(
+    "keydown",
+    event => {
 
-document.getElementById("sendMessageBtn")
-.addEventListener("click",sendMessage);
+      if(
+        event.key ===
+        "Enter"
+      ){
+
+        event.preventDefault();
+
+        sendMessage();
+
+      }
+
+    }
+  );
+
+
+/*
+ * Navigation
+ */
+
+document
+  .querySelector(
+    ".navigation"
+  )
+  .addEventListener(
+    "click",
+    event => {
+
+      const button =
+        event.target.closest(
+          "button[data-page]"
+        );
+
+      if(!button){
+
+        return;
+
+      }
+
+      showPage(
+        button.dataset.page,
+        button.id
+      );
+
+    }
+  );
+
+
+/*
+ * Alle dynamischen Buttons
+ */
+
+document.addEventListener(
+  "click",
+  handleAction
+);
+
+
+/*
+ * ESC schließt Detailfenster
+ */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key ===
+      "Escape"
+    ){
+
+      closeModal();
+
+    }
+
+  }
+);
+
 
 /* =========================================================
    START
 ========================================================= */
 
 updateProfile();
+
 loadAll();
 
 </script>
