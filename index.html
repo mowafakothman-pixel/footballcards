@@ -13,63 +13,29 @@
   --line:#26262e;
   --text:#f7f7fa;
   --muted:#8b8b96;
-  --accent:#fff;
   --green:#36e58a;
   --red:#ff5570;
   --yellow:#ffd45c;
-  --blue:#79a8ff;
   --shadow:0 20px 60px rgba(0,0,0,.38);
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
   background:
-    radial-gradient(
-      circle at 50% -20%,
-      #202026 0,
-      #09090b 34%,
-      #050506 70%
-    );
+    radial-gradient(circle at 50% -20%,#202026 0,#09090b 34%,#050506 70%);
   background-attachment:fixed;
   color:var(--text);
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Arial,
-    sans-serif;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
+    "Segoe UI",Arial,sans-serif;
 }
 
-button,
-input,
-textarea,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-button:disabled{
-  opacity:.4;
-  cursor:not-allowed;
-}
-
-/* =========================
-   TOP BAR
-========================= */
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.4;cursor:not-allowed}
 
 .top{
   position:sticky;
@@ -110,14 +76,7 @@ button:disabled{
   box-shadow:0 8px 28px rgba(255,255,255,.13);
 }
 
-/* =========================
-   SEARCH
-========================= */
-
-.search{
-  flex:1;
-  position:relative;
-}
+.search{flex:1;position:relative}
 
 .search input{
   width:100%;
@@ -130,9 +89,7 @@ button:disabled{
   outline:0;
 }
 
-.search input:focus{
-  border-color:#666;
-}
+.search input:focus{border-color:#666}
 
 .search:before{
   content:"⌕";
@@ -143,10 +100,6 @@ button:disabled{
   color:#777;
   z-index:2;
 }
-
-/* =========================
-   PROFILE BUTTON
-========================= */
 
 .profile-btn{
   border:1px solid #303039;
@@ -172,27 +125,14 @@ button:disabled{
   font-weight:950;
 }
 
-/* =========================
-   MAIN
-========================= */
-
 .container{
   width:min(1280px,94%);
   margin:auto;
   padding:25px 0 120px;
 }
 
-.page{
-  display:none;
-}
-
-.page.active{
-  display:block;
-}
-
-/* =========================
-   HERO
-========================= */
+.page{display:none}
+.page.active{display:block}
 
 .hero{
   display:flex;
@@ -209,10 +149,7 @@ button:disabled{
   letter-spacing:-2px;
 }
 
-.hero p{
-  color:var(--muted);
-  margin:9px 0 0;
-}
+.hero p{color:var(--muted);margin:9px 0 0}
 
 .hero-chip{
   border:1px solid #303039;
@@ -223,13 +160,7 @@ button:disabled{
   font-size:12px;
 }
 
-/* =========================
-   SELL
-========================= */
-
-.sell-wrap{
-  margin-bottom:22px;
-}
+.sell-wrap{margin-bottom:22px}
 
 .sell-main{
   width:100%;
@@ -243,9 +174,7 @@ button:disabled{
   box-shadow:0 14px 45px rgba(255,255,255,.08);
 }
 
-.sell-main:hover{
-  transform:translateY(-1px);
-}
+.sell-main:hover{transform:translateY(-1px)}
 
 .sell-panel{
   display:none;
@@ -257,13 +186,8 @@ button:disabled{
   box-shadow:var(--shadow);
 }
 
-.sell-panel.open{
-  display:block;
-}
-
-.sell-panel h2{
-  margin:0 0 15px;
-}
+.sell-panel.open{display:block}
+.sell-panel h2{margin:0 0 15px}
 
 .form{
   display:grid;
@@ -281,13 +205,8 @@ button:disabled{
   width:100%;
 }
 
-.field:focus{
-  border-color:#777;
-}
-
-.full{
-  grid-column:1/-1;
-}
+.field:focus{border-color:#777}
+.full{grid-column:1/-1}
 
 .photo{
   border:1px dashed #45454f;
@@ -299,9 +218,7 @@ button:disabled{
   font-weight:800;
 }
 
-.photo input{
-  display:none;
-}
+.photo input{display:none}
 
 .form-actions{
   display:grid;
@@ -309,40 +226,17 @@ button:disabled{
   gap:10px;
 }
 
-.primary,
-.secondary,
-.danger,
-.success{
+.primary,.secondary,.danger,.success{
   border:0;
   border-radius:12px;
   padding:12px;
   font-weight:900;
 }
 
-.primary{
-  background:#fff;
-  color:#000;
-}
-
-.secondary{
-  background:#1c1c22;
-  color:#fff;
-  border:1px solid #303039;
-}
-
-.danger{
-  background:#39121a;
-  color:#ff9aaa;
-}
-
-.success{
-  background:#0c3a25;
-  color:#76f2ad;
-}
-
-/* =========================
-   SECTION HEAD
-========================= */
+.primary{background:#fff;color:#000}
+.secondary{background:#1c1c22;color:#fff;border:1px solid #303039}
+.danger{background:#39121a;color:#ff9aaa}
+.success{background:#0c3a25;color:#76f2ad}
 
 .section-head{
   display:flex;
@@ -358,55 +252,35 @@ button:disabled{
   letter-spacing:-.6px;
 }
 
-.count{
-  color:#777;
-  font-size:12px;
-}
-
-/* =========================
-   CARDS
-========================= */
+.count{color:#777;font-size:12px}
 
 .cards{
   display:grid;
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
+  grid-template-columns:repeat(4,minmax(0,1fr));
   gap:14px;
 }
 
 .card{
   position:relative;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(25,25,31,.96),
-      rgba(11,11,14,.96)
-    );
+  background:linear-gradient(145deg,rgba(25,25,31,.96),rgba(11,11,14,.96));
   border:1px solid #25252d;
   border-radius:20px;
   padding:10px;
   overflow:hidden;
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.16);
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
   transition:.18s;
 }
 
 .card:hover{
   transform:translateY(-3px);
   border-color:#42424d;
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.3);
+  box-shadow:0 18px 45px rgba(0,0,0,.3);
 }
 
 .card-image{
   height:205px;
   border-radius:15px;
-  background:
-    radial-gradient(
-      circle,
-      #24242b,
-      #101014
-    );
+  background:radial-gradient(circle,#24242b,#101014);
   display:grid;
   place-items:center;
   overflow:hidden;
@@ -430,14 +304,8 @@ button:disabled{
   font-weight:900;
 }
 
-.card h3{
-  font-size:16px;
-  margin:11px 2px 3px;
-}
-
-.muted{
-  color:var(--muted);
-}
+.card h3{font-size:16px;margin:11px 2px 3px}
+.muted{color:var(--muted)}
 
 .price{
   font-size:21px;
@@ -447,8 +315,7 @@ button:disabled{
 
 .stats{
   display:grid;
-  grid-template-columns:
-    1fr 1fr 1fr;
+  grid-template-columns:1fr 1fr 1fr;
   gap:5px;
   color:#7f7f8a;
   font-size:11px;
@@ -468,17 +335,8 @@ button:disabled{
   margin-top:7px;
 }
 
-.card-actions.two{
-  grid-template-columns:1fr 1fr;
-}
-
-.card-actions button{
-  width:100%;
-}
-
-/* =========================
-   EMPTY
-========================= */
+.card-actions.two{grid-template-columns:1fr 1fr}
+.card-actions button{width:100%}
 
 .empty{
   grid-column:1/-1;
@@ -490,20 +348,13 @@ button:disabled{
   text-align:center;
 }
 
-/* =========================
-   BOTTOM NAV
-========================= */
-
 .bottom{
   position:fixed;
   z-index:60;
   left:0;
   right:0;
   bottom:0;
-  padding:
-    9px
-    10px
-    calc(9px + env(safe-area-inset-bottom));
+  padding:9px 10px calc(9px + env(safe-area-inset-bottom));
   background:rgba(5,5,6,.88);
   backdrop-filter:blur(22px);
   border-top:1px solid rgba(255,255,255,.08);
@@ -513,8 +364,7 @@ button:disabled{
   width:min(920px,100%);
   margin:auto;
   display:grid;
-  grid-template-columns:
-    repeat(5,1fr);
+  grid-template-columns:repeat(5,1fr);
   gap:7px;
 }
 
@@ -536,12 +386,7 @@ button:disabled{
 }
 
 .nav .sell{
-  background:
-    linear-gradient(
-      145deg,
-      #fff,
-      #cfcfcf
-    );
+  background:linear-gradient(145deg,#fff,#cfcfcf);
   color:#000;
   border-color:#fff;
   font-size:13px;
@@ -562,10 +407,6 @@ button:disabled{
   place-items:center;
 }
 
-/* =========================
-   TRANSACTIONS
-========================= */
-
 .tabs{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -582,15 +423,11 @@ button:disabled{
   font-weight:900;
 }
 
-.tabs button.active{
-  background:#fff;
-  color:#000;
-}
+.tabs button.active{background:#fff;color:#000}
 
 .transactions{
   display:grid;
-  grid-template-columns:
-    repeat(2,minmax(0,1fr));
+  grid-template-columns:repeat(2,minmax(0,1fr));
   gap:11px;
 }
 
@@ -601,10 +438,7 @@ button:disabled{
   padding:12px;
 }
 
-.tx-top{
-  display:flex;
-  gap:11px;
-}
+.tx-top{display:flex;gap:11px}
 
 .tx img{
   width:68px;
@@ -614,15 +448,8 @@ button:disabled{
   background:#19191f;
 }
 
-.tx-info{
-  min-width:0;
-  flex:1;
-}
-
-.tx-info h3{
-  font-size:15px;
-  margin:0 0 3px;
-}
+.tx-info{min-width:0;flex:1}
+.tx-info h3{font-size:15px;margin:0 0 3px}
 
 .status{
   display:inline-flex;
@@ -633,25 +460,13 @@ button:disabled{
   margin-top:5px;
 }
 
-.pending{
-  background:#3b2f0c;
-  color:#ffe071;
-}
-
-.accepted{
-  background:#0b3822;
-  color:#73efaa;
-}
-
-.rejected{
-  background:#42131c;
-  color:#ff91a0;
-}
+.pending{background:#3b2f0c;color:#ffe071}
+.accepted{background:#0b3822;color:#73efaa}
+.rejected{background:#42131c;color:#ff91a0}
 
 .tx-actions{
   display:grid;
-  grid-template-columns:
-    1fr 1fr 1fr;
+  grid-template-columns:1fr 1fr 1fr;
   gap:6px;
   margin-top:10px;
 }
@@ -664,10 +479,6 @@ button:disabled{
   font-weight:900;
 }
 
-/* =========================
-   CHAT
-========================= */
-
 .chat-layout{
   display:grid;
   grid-template-columns:280px 1fr;
@@ -675,19 +486,14 @@ button:disabled{
   min-height:560px;
 }
 
-.chat-list,
-.chat-window,
-.profile-box{
+.chat-list,.chat-window,.profile-box{
   background:#101014;
   border:1px solid #292930;
   border-radius:18px;
   overflow:hidden;
 }
 
-.chat-list{
-  height:560px;
-  overflow:auto;
-}
+.chat-list{height:560px;overflow:auto}
 
 .chat-title{
   padding:15px;
@@ -701,18 +507,9 @@ button:disabled{
   cursor:pointer;
 }
 
-.chat-item:hover,
-.chat-item.selected{
-  background:#19191f;
-}
-
-.chat-item strong{
-  display:block;
-}
-
-.chat-item small{
-  color:#777;
-}
+.chat-item:hover,.chat-item.selected{background:#19191f}
+.chat-item strong{display:block}
+.chat-item small{color:#777}
 
 .chat-window{
   display:flex;
@@ -787,13 +584,7 @@ button:disabled{
   font-weight:900;
 }
 
-/* =========================
-   PROFILE
-========================= */
-
-.profile-box{
-  padding:22px;
-}
+.profile-box{padding:22px}
 
 .profile-head{
   display:flex;
@@ -813,14 +604,11 @@ button:disabled{
   font-weight:950;
 }
 
-.profile-head h2{
-  margin:0;
-}
+.profile-head h2{margin:0}
 
 .profile-stats{
   display:grid;
-  grid-template-columns:
-    repeat(3,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:9px;
   margin:20px 0;
 }
@@ -843,10 +631,6 @@ button:disabled{
   color:#777;
 }
 
-/* =========================
-   MODAL
-========================= */
-
 .modal{
   position:fixed;
   inset:0;
@@ -866,8 +650,7 @@ button:disabled{
   border:1px solid #3a3a44;
   border-radius:22px;
   padding:20px;
-  box-shadow:
-    0 30px 100px rgba(0,0,0,.6);
+  box-shadow:0 30px 100px rgba(0,0,0,.6);
 }
 
 .detail-image{
@@ -890,10 +673,6 @@ button:disabled{
   margin-top:9px;
 }
 
-/* =========================
-   ACCOUNT
-========================= */
-
 .account-list{
   display:grid;
   gap:8px;
@@ -910,10 +689,7 @@ button:disabled{
   font-weight:850;
 }
 
-.new-account{
-  display:flex;
-  gap:8px;
-}
+.new-account{display:flex;gap:8px}
 
 .new-account input{
   flex:1;
@@ -934,17 +710,12 @@ button:disabled{
   font-weight:900;
 }
 
-/* =========================
-   TOAST
-========================= */
-
 .toast{
   position:fixed;
   z-index:2000;
   left:50%;
   bottom:92px;
-  transform:
-    translate(-50%,10px);
+  transform:translate(-50%,10px);
   opacity:0;
   pointer-events:none;
   background:#fff;
@@ -952,43 +723,25 @@ button:disabled{
   padding:11px 15px;
   border-radius:12px;
   font-weight:850;
-  box-shadow:
-    0 15px 50px rgba(0,0,0,.4);
+  box-shadow:0 15px 50px rgba(0,0,0,.4);
   transition:.2s;
 }
 
 .toast.show{
   opacity:1;
-  transform:
-    translate(-50%,0);
+  transform:translate(-50%,0);
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
 @media(max-width:1000px){
-
-  .cards{
-    grid-template-columns:
-      repeat(3,minmax(0,1fr));
-  }
-
-  .transactions{
-    grid-template-columns:1fr;
-  }
-
+  .cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .transactions{grid-template-columns:1fr}
 }
 
 @media(max-width:720px){
 
-  .brand-text{
-    display:none;
-  }
+  .brand-text{display:none}
 
-  .top-inner{
-    min-height:64px;
-  }
+  .top-inner{min-height:64px}
 
   .container{
     width:94%;
@@ -1001,62 +754,38 @@ button:disabled{
   }
 
   .cards{
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
+    grid-template-columns:repeat(2,minmax(0,1fr));
     gap:9px;
   }
 
-  .card-image{
-    height:150px;
-  }
+  .card-image{height:150px}
 
-  .form{
-    grid-template-columns:1fr;
-  }
-
-  .full{
-    grid-column:auto;
-  }
-
-  .form-actions{
-    grid-template-columns:1fr;
-  }
+  .form{grid-template-columns:1fr}
+  .full{grid-column:auto}
+  .form-actions{grid-template-columns:1fr}
 
   .chat-layout{
     grid-template-columns:1fr;
     min-height:0;
   }
 
-  .chat-list{
-    height:180px;
-  }
+  .chat-list{height:180px}
 
   .messages{
     min-height:300px;
     max-height:380px;
   }
 
-  .profile-stats{
-    grid-template-columns:1fr;
-  }
-
-  .detail-grid{
-    grid-template-columns:1fr;
-  }
+  .profile-stats{grid-template-columns:1fr}
+  .detail-grid{grid-template-columns:1fr}
 
   .nav button{
     font-size:9px;
     padding:9px 2px;
   }
 
-  .nav{
-    gap:4px;
-  }
-
-  .profile-btn{
-    padding:0 9px;
-  }
-
+  .nav{gap:4px}
+  .profile-btn{padding:0 9px}
 }
 
 @media(max-width:430px){
@@ -1071,26 +800,11 @@ button:disabled{
     border-radius:16px;
   }
 
-  .card-image{
-    height:125px;
-  }
-
-  .card h3{
-    font-size:14px;
-  }
-
-  .price{
-    font-size:18px;
-  }
-
-  .stats{
-    font-size:9px;
-  }
-
-  .nav button{
-    font-size:8px;
-  }
-
+  .card-image{height:125px}
+  .card h3{font-size:14px}
+  .price{font-size:18px}
+  .stats{font-size:9px}
+  .nav button{font-size:8px}
 }
 </style>
 </head>
@@ -1098,65 +812,38 @@ button:disabled{
 <body>
 
 <header class="top">
-
   <div class="top-inner">
 
     <div class="brand">
-
-      <div class="brand-mark">
-        ⚡
-      </div>
-
-      <span class="brand-text">
-        CARDLY
-      </span>
-
+      <div class="brand-mark">⚡</div>
+      <span class="brand-text">CARDLY</span>
     </div>
 
     <div class="search">
-
       <input
         id="searchInput"
         placeholder="Spieler, Verein oder Verkäufer suchen …">
-
     </div>
 
     <button
       class="profile-btn"
       onclick="openAccountManager()">
 
-      <span
-        id="miniAvatar"
-        class="mini-avatar">
-        ?
-      </span>
-
-      <span id="currentUser">
-        Kein Account
-      </span>
+      <span id="miniAvatar" class="mini-avatar">?</span>
+      <span id="currentUser">Kein Account</span>
 
     </button>
 
   </div>
-
 </header>
-
 
 <main class="container">
 
-
-<!-- =========================
-     CARDS
-========================= -->
-
-<section
-  id="cardsPage"
-  class="page active">
+<section id="cardsPage" class="page active">
 
   <div class="hero">
 
     <div>
-
       <h1>
         Football Cards.<br>
         Dein Markt.
@@ -1166,7 +853,6 @@ button:disabled{
         Kaufen, verkaufen, chatten —
         alles an einem Ort.
       </p>
-
     </div>
 
     <div class="hero-chip">
@@ -1175,29 +861,19 @@ button:disabled{
 
   </div>
 
-
   <div class="sell-wrap">
 
     <button
       class="sell-main"
       onclick="toggleSell()">
-
       ＋ Karte verkaufen
-
     </button>
 
+    <div id="sellPanel" class="sell-panel">
 
-    <div
-      id="sellPanel"
-      class="sell-panel">
+      <h2>Neue Karte einstellen</h2>
 
-      <h2>
-        Neue Karte einstellen
-      </h2>
-
-      <form
-        id="sellForm"
-        class="form">
+      <form id="sellForm" class="form">
 
         <input
           id="player"
@@ -1220,29 +896,16 @@ button:disabled{
           step=".01"
           placeholder="Preis in € *">
 
-        <select
-          id="condition"
-          class="field">
+        <select id="condition" class="field">
 
           <option value="">
             Zustand auswählen
           </option>
 
-          <option>
-            Neu
-          </option>
-
-          <option>
-            Sehr gut
-          </option>
-
-          <option>
-            Gut
-          </option>
-
-          <option>
-            Akzeptabel
-          </option>
+          <option>Neu</option>
+          <option>Sehr gut</option>
+          <option>Gut</option>
+          <option>Akzeptabel</option>
 
         </select>
 
@@ -1268,18 +931,14 @@ button:disabled{
           <button
             class="primary"
             type="submit">
-
             Karte einstellen
-
           </button>
 
           <button
             class="secondary"
             type="button"
             onclick="toggleSell()">
-
             Abbrechen
-
           </button>
 
         </div>
@@ -1290,93 +949,43 @@ button:disabled{
 
   </div>
 
-
   <div class="section-head">
 
-    <h2>
-      🔥 Aktuelle Karten
-    </h2>
+    <h2>🔥 Aktuelle Karten</h2>
 
-    <span
-      id="cardCount"
-      class="count">
-    </span>
+    <span id="cardCount" class="count"></span>
 
   </div>
 
-
-  <div
-    id="cards"
-    class="cards">
-  </div>
+  <div id="cards" class="cards"></div>
 
 </section>
 
-
-<!-- =========================
-     FAVORITES
-========================= -->
-
-<section
-  id="favoritesPage"
-  class="page">
+<section id="favoritesPage" class="page">
 
   <div class="section-head">
-
-    <h2>
-      ❤️ Favoriten
-    </h2>
-
+    <h2>❤️ Favoriten</h2>
   </div>
 
-  <div
-    id="favorites"
-    class="cards">
-  </div>
+  <div id="favorites" class="cards"></div>
 
 </section>
 
-
-<!-- =========================
-     MINE
-========================= -->
-
-<section
-  id="minePage"
-  class="page">
+<section id="minePage" class="page">
 
   <div class="section-head">
-
-    <h2>
-      🃏 Meine Karten
-    </h2>
-
+    <h2>🃏 Meine Karten</h2>
   </div>
 
-  <div
-    id="mine"
-    class="cards">
-  </div>
+  <div id="mine" class="cards"></div>
 
 </section>
 
-
-<!-- =========================
-     TRANSACTIONS
-========================= -->
-
-<section
-  id="transactionsPage"
-  class="page">
+<section id="transactionsPage" class="page">
 
   <div class="section-head">
-
-    <h2>
-      🔄 Transaktionen
-    </h2>
-
+    <h2>🔄 Transaktionen</h2>
   </div>
-
 
   <div class="tabs">
 
@@ -1384,50 +993,28 @@ button:disabled{
       id="receivedTab"
       class="active"
       onclick="showTransactions('received')">
-
       📥 Erhalten
-
     </button>
-
 
     <button
       id="sentTab"
       onclick="showTransactions('sent')">
-
       📤 Meine Angebote
-
     </button>
 
   </div>
 
-
-  <div
-    id="transactions"
-    class="transactions">
-  </div>
+  <div id="transactions" class="transactions"></div>
 
 </section>
 
-
-<!-- =========================
-     CHAT
-========================= -->
-
-<section
-  id="messagesPage"
-  class="page">
+<section id="messagesPage" class="page">
 
   <div class="section-head">
-
-    <h2>
-      💬 Nachrichten
-    </h2>
-
+    <h2>💬 Nachrichten</h2>
   </div>
 
-
   <div class="chat-layout">
-
 
     <div class="chat-list">
 
@@ -1435,22 +1022,17 @@ button:disabled{
         Deine Chats
       </div>
 
-      <div id="chatList">
-      </div>
+      <div id="chatList"></div>
 
     </div>
-
 
     <div class="chat-window">
 
       <div
         id="chatHeader"
         class="chat-header">
-
         💬 Chat auswählen
-
       </div>
-
 
       <div
         id="messages"
@@ -1462,7 +1044,6 @@ button:disabled{
 
       </div>
 
-
       <div class="chat-input">
 
         <input
@@ -1470,14 +1051,11 @@ button:disabled{
           disabled
           placeholder="Nachricht schreiben …">
 
-
         <button
           id="sendMessage"
           disabled
           onclick="sendMessage()">
-
           Senden
-
         </button>
 
       </div>
@@ -1488,37 +1066,17 @@ button:disabled{
 
 </section>
 
-
-<!-- =========================
-     PROFILE
-========================= -->
-
-<section
-  id="profilePage"
-  class="page">
+<section id="profilePage" class="page">
 
   <div class="section-head">
-
-    <h2>
-      👤 Profil
-    </h2>
-
+    <h2>👤 Profil</h2>
   </div>
 
-
-  <div
-    id="profileBox"
-    class="profile-box">
-  </div>
+  <div id="profileBox" class="profile-box"></div>
 
 </section>
 
 </main>
-
-
-<!-- =========================
-     BOTTOM NAV
-========================= -->
 
 <div class="bottom">
 
@@ -1528,113 +1086,71 @@ button:disabled{
       id="navCards"
       class="active"
       onclick="showPage('cardsPage','navCards')">
-
-      ⌂
-      <br>
+      ⌂<br>
       Karten
-
     </button>
-
 
     <button
       id="navFavorites"
       onclick="showPage('favoritesPage','navFavorites')">
-
-      ♡
-      <br>
+      ♡<br>
       Favoriten
-
-      <span
-        id="favoriteBadge"
-        class="badge">
-      </span>
-
+      <span id="favoriteBadge" class="badge"></span>
     </button>
-
 
     <button
       class="sell"
       onclick="toggleSell()">
-
-      ＋
-      <br>
+      ＋<br>
       Verkaufen
-
     </button>
-
 
     <button
       id="navTransactions"
       onclick="showPage('transactionsPage','navTransactions')">
-
-      ↔
-      <br>
+      ↔<br>
       Transaktionen
-
-      <span
-        id="transactionBadge"
-        class="badge">
-      </span>
-
+      <span id="transactionBadge" class="badge"></span>
     </button>
-
 
     <button
       id="navMessages"
       onclick="showPage('messagesPage','navMessages')">
-
-      ◌
-      <br>
+      ◌<br>
       Chats
-
-      <span
-        id="messageBadge"
-        class="badge">
-      </span>
-
+      <span id="messageBadge" class="badge"></span>
     </button>
 
   </nav>
 
 </div>
 
-
-<div
-  id="toast"
-  class="toast">
-</div>
-
+<div id="toast" class="toast"></div>
 
 <script>
 
 /* =========================================================
-   STORAGE
+   STORAGE KEYS
 ========================================================= */
 
-const ACCOUNT_KEY =
-  "cardlyAccounts";
+const ACCOUNT_KEY = "cardlyAccounts";
+const CURRENT_KEY = "cardlyCurrentAccount";
+const CARD_KEY = "cardlyCards";
+const TX_KEY = "cardlyTransactions";
+const MSG_KEY = "cardlyMessages";
 
-const CURRENT_KEY =
-  "cardlyCurrentAccount";
-
-const CARD_KEY =
-  "cardlyCards";
-
-const TX_KEY =
-  "cardlyTransactions";
-
-const MSG_KEY =
-  "cardlyMessages";
+/* UI STATE */
+const PAGE_KEY = "cardlyCurrentPage";
+const CHAT_KEY = "cardlySelectedChat";
+const TX_MODE_KEY = "cardlyTransactionMode";
 
 
 let selectedChatUser = "";
-
-let transactionMode =
-  "received";
+let transactionMode = "received";
 
 
-const $ =
-  id => document.getElementById(id);
+const $ = id =>
+  document.getElementById(id);
 
 
 /* =========================================================
@@ -1645,11 +1161,25 @@ function read(key,fallback=[]){
 
   try{
 
-    return JSON.parse(
-      localStorage.getItem(key)
-    ) ?? fallback;
+    const raw =
+      localStorage.getItem(key);
 
-  }catch{
+    if(raw === null){
+      return fallback;
+    }
+
+    const parsed =
+      JSON.parse(raw);
+
+    return parsed ?? fallback;
+
+  }catch(error){
+
+    console.warn(
+      "Cardly Storage Read Error:",
+      key,
+      error
+    );
 
     return fallback;
 
@@ -1660,75 +1190,68 @@ function read(key,fallback=[]){
 
 function write(key,value){
 
-  localStorage.setItem(
-    key,
-    JSON.stringify(value)
-  );
+  try{
+
+    localStorage.setItem(
+      key,
+      JSON.stringify(value)
+    );
+
+    return true;
+
+  }catch(error){
+
+    console.warn(
+      "Cardly Storage Write Error:",
+      key,
+      error
+    );
+
+    if(typeof toast === "function"){
+
+      toast(
+        "⚠️ Speicherfehler — Daten konnten nicht gespeichert werden."
+      );
+
+    }
+
+    return false;
+
+  }
 
 }
 
 
 function getAccounts(){
-  return read(
-    ACCOUNT_KEY,
-    []
-  );
+  return read(ACCOUNT_KEY,[]);
 }
-
 
 function saveAccounts(value){
-  write(
-    ACCOUNT_KEY,
-    value
-  );
+  return write(ACCOUNT_KEY,value);
 }
-
 
 function getCards(){
-  return read(
-    CARD_KEY,
-    []
-  );
+  return read(CARD_KEY,[]);
 }
-
 
 function saveCards(value){
-  write(
-    CARD_KEY,
-    value
-  );
+  return write(CARD_KEY,value);
 }
-
 
 function getTransactions(){
-  return read(
-    TX_KEY,
-    []
-  );
+  return read(TX_KEY,[]);
 }
-
 
 function saveTransactions(value){
-  write(
-    TX_KEY,
-    value
-  );
+  return write(TX_KEY,value);
 }
-
 
 function getMessages(){
-  return read(
-    MSG_KEY,
-    []
-  );
+  return read(MSG_KEY,[]);
 }
 
-
 function saveMessages(value){
-  write(
-    MSG_KEY,
-    value
-  );
+  return write(MSG_KEY,value);
 }
 
 
@@ -1738,26 +1261,20 @@ function saveMessages(value){
 
 function id(prefix){
 
-  return (
-    prefix +
-    "-" +
-    Date.now() +
-    "-" +
+  return prefix + "-" +
+    Date.now() + "-" +
     Math.random()
       .toString(36)
-      .slice(2,9)
-  );
+      .slice(2,9);
 
 }
 
 
 function currentId(){
 
-  return (
-    localStorage.getItem(
-      CURRENT_KEY
-    ) || ""
-  );
+  return localStorage.getItem(
+    CURRENT_KEY
+  ) || "";
 
 }
 
@@ -1774,51 +1291,45 @@ function current(){
 
 function esc(value){
 
-  return String(
-    value ?? ""
-  )
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
 
 function toast(text){
 
-  const box =
-    $("toast");
+  const box = $("toast");
 
-  box.textContent =
-    text;
+  if(!box){
+    return;
+  }
 
-  box.classList.add(
-    "show"
-  );
+  box.textContent = text;
 
-  clearTimeout(
-    toast.timer
-  );
+  box.classList.add("show");
+
+  clearTimeout(toast.timer);
 
   toast.timer =
     setTimeout(
       () =>
-        box.classList.remove(
-          "show"
-        ),
+        box.classList.remove("show"),
       2200
     );
 
 }
 
 
-function accountName(id){
+function accountName(accountId){
 
   const account =
     getAccounts().find(
-      a => a.id === id
+      a => a.id === accountId
     );
 
   return account
@@ -1828,10 +1339,10 @@ function accountName(id){
 }
 
 
-function cardById(id){
+function cardById(cardId){
 
   return getCards().find(
-    card => card.id === id
+    card => card.id === cardId
   ) || null;
 
 }
@@ -1870,9 +1381,7 @@ function ensureAccount(){
 function createAccount(name){
 
   name =
-    String(
-      name || ""
-    ).trim();
+    String(name || "").trim();
 
   if(!name){
 
@@ -1884,7 +1393,6 @@ function createAccount(name){
 
   }
 
-
   if(name.length > 20){
 
     toast(
@@ -1895,10 +1403,8 @@ function createAccount(name){
 
   }
 
-
   const accounts =
     getAccounts();
-
 
   if(
     accounts.some(
@@ -1916,36 +1422,40 @@ function createAccount(name){
 
   }
 
-
   const account = {
 
     id:id("acc"),
-
     name:name,
-
     createdAt:
       new Date().toISOString()
 
   };
 
+  accounts.push(account);
 
-  accounts.push(
-    account
-  );
-
-
-  saveAccounts(
-    accounts
-  );
-
+  if(
+    !saveAccounts(accounts)
+  ){
+    return;
+  }
 
   localStorage.setItem(
     CURRENT_KEY,
     account.id
   );
 
+  selectedChatUser = "";
+
+  localStorage.removeItem(
+    CHAT_KEY
+  );
 
   closeModals();
+
+  showPage(
+    "cardsPage",
+    "navCards"
+  );
 
   renderAll();
 
@@ -1977,7 +1487,6 @@ function renameCurrentAccount(){
   const account =
     current();
 
-
   if(!account){
 
     openAccountManager();
@@ -1986,22 +1495,18 @@ function renameCurrentAccount(){
 
   }
 
-
   const name =
     prompt(
       "Neuer Benutzername:",
       account.name
     );
 
-
   if(name === null){
     return;
   }
 
-
   const newName =
     name.trim();
-
 
   if(!newName){
 
@@ -2013,10 +1518,18 @@ function renameCurrentAccount(){
 
   }
 
+  if(newName.length > 20){
+
+    toast(
+      "Maximal 20 Zeichen."
+    );
+
+    return;
+
+  }
 
   const accounts =
     getAccounts();
-
 
   if(
     accounts.some(
@@ -2035,15 +1548,10 @@ function renameCurrentAccount(){
 
   }
 
-
   account.name =
     newName;
 
-
-  saveAccounts(
-    accounts
-  );
-
+  saveAccounts(accounts);
 
   renderAll();
 
@@ -2061,30 +1569,27 @@ function switchAccount(accountId){
       a => a.id === accountId
     );
 
-
   if(!account){
     return;
   }
-
 
   localStorage.setItem(
     CURRENT_KEY,
     account.id
   );
 
+  selectedChatUser = "";
 
-  selectedChatUser =
-    "";
-
+  localStorage.removeItem(
+    CHAT_KEY
+  );
 
   closeModals();
-
 
   showPage(
     "cardsPage",
     "navCards"
   );
-
 
   renderAll();
 
@@ -2098,33 +1603,23 @@ function switchAccount(accountId){
 function openAccountManager(){
 
   const modal =
-    document.createElement(
-      "div"
-    );
+    document.createElement("div");
 
-
-  modal.className =
-    "modal";
-
+  modal.className = "modal";
 
   const accounts =
     getAccounts();
-
 
   modal.innerHTML = `
 
     <div class="modal-box">
 
-      <h2>
-        👤 Accounts
-      </h2>
+      <h2>👤 Accounts</h2>
 
       <p class="muted">
         Mehrere Accounts funktionieren
         auf demselben Gerät.
-        Wechsle hier zwischen A und B.
       </p>
-
 
       <div class="account-list">
 
@@ -2134,11 +1629,7 @@ function openAccountManager(){
 
               <button
                 class="account-option"
-                onclick="
-                  switchAccount(
-                    '${esc(account.id)}'
-                  )
-                ">
+                data-account-id="${esc(account.id)}">
 
                 ${
                   account.id === currentId()
@@ -2162,7 +1653,6 @@ function openAccountManager(){
 
       </div>
 
-
       <div class="new-account">
 
         <input
@@ -2171,35 +1661,58 @@ function openAccountManager(){
           placeholder="Neuer Benutzername">
 
         <button
-          onclick="
-            createAccountFromModal()
-          ">
-
+          id="createAccountButton">
           Erstellen
-
         </button>
 
       </div>
 
-
       <button
-        class="secondary close"
-        onclick="
-          this.closest('.modal').remove()
-        ">
-
+        class="secondary close">
         Schließen
-
       </button>
 
     </div>
-
   `;
 
+  document.body.appendChild(modal);
 
-  document.body.appendChild(
-    modal
-  );
+  modal
+    .querySelectorAll(
+      "[data-account-id]"
+    )
+    .forEach(button => {
+
+      button.onclick = () =>
+        switchAccount(
+          button.dataset.accountId
+        );
+
+    });
+
+  const createButton =
+    modal.querySelector(
+      "#createAccountButton"
+    );
+
+  if(createButton){
+
+    createButton.onclick =
+      createAccountFromModal;
+
+  }
+
+  const closeButton =
+    modal.querySelector(
+      ".close"
+    );
+
+  if(closeButton){
+
+    closeButton.onclick =
+      () => modal.remove();
+
+  }
 
 }
 
@@ -2211,12 +1724,9 @@ function openAccountManager(){
 function closeModals(){
 
   document
-    .querySelectorAll(
-      ".modal"
-    )
+    .querySelectorAll(".modal")
     .forEach(
-      modal =>
-        modal.remove()
+      modal => modal.remove()
     );
 
 }
@@ -2231,55 +1741,42 @@ function showPage(
   navId
 ){
 
+  if(!pageId){
+    return;
+  }
+
+  localStorage.setItem(
+    PAGE_KEY,
+    pageId
+  );
+
   document
-    .querySelectorAll(
-      ".page"
-    )
+    .querySelectorAll(".page")
     .forEach(
       page =>
-        page.classList.remove(
-          "active"
-        )
+        page.classList.remove("active")
     );
-
 
   const page =
     $(pageId);
 
-
   if(page){
-
-    page.classList.add(
-      "active"
-    );
-
+    page.classList.add("active");
   }
 
-
   document
-    .querySelectorAll(
-      ".nav button"
-    )
+    .querySelectorAll(".nav button")
     .forEach(
       button =>
-        button.classList.remove(
-          "active"
-        )
+        button.classList.remove("active")
     );
-
 
   const nav =
     $(navId);
 
-
   if(nav){
-
-    nav.classList.add(
-      "active"
-    );
-
+    nav.classList.add("active");
   }
-
 
   if(
     pageId ===
@@ -2290,7 +1787,6 @@ function showPage(
 
   }
 
-
   if(
     pageId ===
     "messagesPage"
@@ -2298,10 +1794,7 @@ function showPage(
 
     renderChatList();
 
-
-    if(
-      selectedChatUser
-    ){
+    if(selectedChatUser){
 
       renderMessages(
         selectedChatUser
@@ -2310,7 +1803,6 @@ function showPage(
     }
 
   }
-
 
   if(
     pageId ===
@@ -2330,28 +1822,17 @@ function showPage(
 
 function toggleSell(){
 
-  if(
-    !ensureAccount()
-  ){
-
+  if(!ensureAccount()){
     return;
-
   }
-
 
   const panel =
     $("sellPanel");
 
-
-  panel.classList.toggle(
-    "open"
-  );
-
+  panel.classList.toggle("open");
 
   if(
-    panel.classList.contains(
-      "open"
-    )
+    panel.classList.contains("open")
   ){
 
     setTimeout(
@@ -2369,14 +1850,12 @@ function toggleSell(){
 
 
 /* =========================================================
-   CARD COUNTERS
+   VIEWS
 ========================================================= */
 
 function viewCount(card){
 
-  return Array.isArray(
-    card.views
-  )
+  return Array.isArray(card.views)
     ? card.views.length
     : 0;
 
@@ -2385,9 +1864,7 @@ function viewCount(card){
 
 function favoriteCount(card){
 
-  return Array.isArray(
-    card.favorites
-  )
+  return Array.isArray(card.favorites)
     ? card.favorites.length
     : 0;
 
@@ -2399,53 +1876,38 @@ function isFavorite(card){
   const account =
     current();
 
-
   if(!account){
     return false;
   }
 
-
   return (
-    Array.isArray(
-      card.favorites
-    ) &&
-    card.favorites.includes(
-      account.id
-    )
+    Array.isArray(card.favorites) &&
+    card.favorites.includes(account.id)
   );
 
 }
 
-
-/* =========================================================
-   VIEWS
-========================================================= */
 
 function addView(cardId){
 
   const account =
     current();
 
-
   if(!account){
     return;
   }
 
-
   const cards =
     getCards();
-
 
   const card =
     cards.find(
       c => c.id === cardId
     );
 
-
   if(!card){
     return;
   }
-
 
   if(
     card.ownerId ===
@@ -2456,44 +1918,33 @@ function addView(cardId){
 
   }
 
-
   if(
-    !Array.isArray(
-      card.views
-    )
+    !Array.isArray(card.views)
   ){
 
     card.views = [];
 
   }
 
-
   if(
-    card.views.includes(
-      account.id
-    )
+    card.views.includes(account.id)
   ){
 
     return;
 
   }
 
-
   card.views.push(
     account.id
   );
 
-
   /*
     WICHTIG:
-    Hier wird jetzt wirklich
-    DASSELBE Cards-Array
-    gespeichert.
+    Das bereits veränderte
+    Cards-Array wird gespeichert.
   */
 
-  saveCards(
-    cards
-  );
+  saveCards(cards);
 
 }
 
@@ -2502,37 +1953,26 @@ function addView(cardId){
    FAVORITES
 ========================================================= */
 
-function toggleFavorite(
-  cardId
-){
+function toggleFavorite(cardId){
 
-  if(
-    !ensureAccount()
-  ){
-
+  if(!ensureAccount()){
     return;
-
   }
-
 
   const account =
     current();
 
-
   const cards =
     getCards();
-
 
   const card =
     cards.find(
       c => c.id === cardId
     );
 
-
   if(!card){
     return;
   }
-
 
   if(
     card.ownerId ===
@@ -2543,23 +1983,18 @@ function toggleFavorite(
 
   }
 
-
   if(
-    !Array.isArray(
-      card.favorites
-    )
+    !Array.isArray(card.favorites)
   ){
 
     card.favorites = [];
 
   }
 
-
   const index =
     card.favorites.indexOf(
       account.id
     );
-
 
   if(index >= 0){
 
@@ -2576,11 +2011,7 @@ function toggleFavorite(
 
   }
 
-
-  saveCards(
-    cards
-  );
-
+  saveCards(cards);
 
   renderAll();
 
@@ -2596,31 +2027,16 @@ function cardElement(card){
   const account =
     current();
 
-
   const own =
     !!account &&
-    card.ownerId ===
-    account.id;
-
+    card.ownerId === account.id;
 
   const element =
-    document.createElement(
-      "article"
-    );
+    document.createElement("article");
 
-
-  element.className =
-    "card";
-
+  element.className = "card";
 
   let actions = "";
-
-
-  /*
-    EIGENE KARTE:
-    Kaufen und Favorit
-    werden komplett entfernt.
-  */
 
   if(own){
 
@@ -2628,13 +2044,9 @@ function cardElement(card){
 
       <button
         class="secondary"
-        onclick="
-          showCard(
-            '${esc(card.id)}'
-          )
-        ">
+        onclick="showCard('${esc(card.id)}')">
 
-        Karte ansehen
+        👀 Karte ansehen
 
       </button>
 
@@ -2648,24 +2060,15 @@ function cardElement(card){
 
         <button
           class="primary"
-          onclick="
-            buyCard(
-              '${esc(card.id)}'
-            )
-          ">
+          onclick="buyCard('${esc(card.id)}')">
 
           🛒 Kaufen
 
         </button>
 
-
         <button
           class="secondary"
-          onclick="
-            toggleFavorite(
-              '${esc(card.id)}'
-            )
-          ">
+          onclick="toggleFavorite('${esc(card.id)}')">
 
           ${
             isFavorite(card)
@@ -2677,16 +2080,11 @@ function cardElement(card){
 
       </div>
 
-
       <button
         class="secondary"
-        onclick="
-          showCard(
-            '${esc(card.id)}'
-          )
-        ">
+        onclick="showCard('${esc(card.id)}')">
 
-        Karte ansehen
+        👀 Karte ansehen
 
       </button>
 
@@ -2694,43 +2092,31 @@ function cardElement(card){
 
   }
 
-
   element.innerHTML = `
 
     <div class="card-image">
 
       <img
-        src="${card.image}"
+        src="${esc(card.image)}"
         alt="${esc(card.player)}">
 
     </div>
 
-
     ${
       card.sold
-      ? `
-        <span class="tag">
-          VERKAUFT
-        </span>
-      `
+      ? `<span class="tag">VERKAUFT</span>`
       : ""
     }
 
-
-    <h3>
-      ${esc(card.player)}
-    </h3>
-
+    <h3>${esc(card.player)}</h3>
 
     <div class="muted">
       ${esc(card.club)}
     </div>
 
-
     <div class="price">
       ${Number(card.price).toFixed(2)} €
     </div>
-
 
     <div class="stats">
 
@@ -2743,22 +2129,16 @@ function cardElement(card){
       </span>
 
       <span>
-        ${esc(
-          card.condition || "—"
-        )}
+        ${esc(card.condition || "—")}
       </span>
 
     </div>
 
-
     <div class="card-actions">
-
       ${actions}
-
     </div>
 
   `;
-
 
   return element;
 
@@ -2766,7 +2146,7 @@ function cardElement(card){
 
 
 /* =========================================================
-   RENDER MARKET
+   MARKET
 ========================================================= */
 
 function renderCards(){
@@ -2774,81 +2154,62 @@ function renderCards(){
   const box =
     $("cards");
 
+  if(!box){
+    return;
+  }
+
+  const input =
+    $("searchInput");
 
   const query =
-    $("searchInput")
-      .value
-      .toLowerCase()
-      .trim();
-
+    input
+    ? input.value.toLowerCase().trim()
+    : "";
 
   box.innerHTML = "";
 
-
   const cards =
     getCards()
-      .filter(
-        card =>
-          !card.sold
-      );
-
+      .filter(card => !card.sold);
 
   const filtered =
-    cards.filter(
-      card => {
+    cards.filter(card => {
 
-        const player =
-          String(
-            card.player
-          )
+      const player =
+        String(card.player || "")
           .toLowerCase();
 
-
-        const club =
-          String(
-            card.club
-          )
+      const club =
+        String(card.club || "")
           .toLowerCase();
 
+      const seller =
+        ownerName(card)
+          .toLowerCase();
 
-        const seller =
-          ownerName(card)
-            .toLowerCase();
+      return (
+        !query ||
+        player.includes(query) ||
+        club.includes(query) ||
+        seller.includes(query)
+      );
 
-
-        return (
-          !query ||
-          player.includes(query) ||
-          club.includes(query) ||
-          seller.includes(query)
-        );
-
-      }
-    );
-
+    });
 
   $("cardCount").textContent =
-    filtered.length +
-    " Karten";
-
+    filtered.length + " Karten";
 
   if(!filtered.length){
 
     box.innerHTML = `
-
       <div class="empty">
-
-        Keine passenden Karten
-        gefunden.
-
+        Keine passenden Karten gefunden.
       </div>
-
     `;
 
     return;
 
   }
-
 
   filtered.forEach(
     card =>
@@ -2866,60 +2227,39 @@ function renderCards(){
 
 function showCard(cardId){
 
-  if(
-    !ensureAccount()
-  ){
-
+  if(!ensureAccount()){
     return;
-
   }
-
 
   let card =
     cardById(cardId);
-
 
   if(!card){
     return;
   }
 
-
-  /*
-    Ansicht wird beim Öffnen
-    genau einmal pro Account
-    gespeichert.
-  */
-
-  addView(
-    cardId
-  );
-
+  addView(cardId);
 
   card =
     cardById(cardId);
 
+  if(!card){
+    return;
+  }
 
   const account =
     current();
-
 
   const own =
     card.ownerId ===
     account.id;
 
-
   const modal =
-    document.createElement(
-      "div"
-    );
+    document.createElement("div");
 
-
-  modal.className =
-    "modal";
-
+  modal.className = "modal";
 
   let actions = "";
-
 
   if(!own){
 
@@ -2927,50 +2267,25 @@ function showCard(cardId){
 
       <button
         class="primary"
-        onclick="
-          buyCard(
-            '${esc(card.id)}'
-          )
-        ">
-
+        onclick="buyCard('${esc(card.id)}')">
         🛒 Kaufen
-
       </button>
-
 
       <button
         class="secondary"
-        onclick="
-          makeOffer(
-            '${esc(card.id)}'
-          )
-        ">
-
+        onclick="makeOffer('${esc(card.id)}')">
         💰 Angebot
-
       </button>
-
 
       <button
         class="secondary"
-        onclick="
-          askQuestion(
-            '${esc(card.id)}'
-          )
-        ">
-
+        onclick="askQuestion('${esc(card.id)}')">
         ❓ Frage
-
       </button>
-
 
       <button
         class="secondary"
-        onclick="
-          toggleFavorite(
-            '${esc(card.id)}'
-          )
-        ">
+        onclick="toggleFavorite('${esc(card.id)}')">
 
         ${
           isFavorite(card)
@@ -2980,23 +2295,15 @@ function showCard(cardId){
 
       </button>
 
-
       <button
         class="secondary"
-        onclick="
-          openChatWith(
-            '${esc(card.ownerId)}'
-          )
-        ">
-
+        onclick="openChatWith('${esc(card.ownerId)}')">
         💬 Chat öffnen
-
       </button>
 
     `;
 
   }
-
 
   modal.innerHTML = `
 
@@ -3004,42 +2311,30 @@ function showCard(cardId){
 
       <img
         class="detail-image"
-        src="${card.image}"
+        src="${esc(card.image)}"
         alt="${esc(card.player)}">
-
 
       <h2>
         ${esc(card.player)}
       </h2>
 
-
       <p class="muted">
 
         ⚽ ${esc(card.club)}
         ·
-        ${esc(
-          card.condition ||
-          "Kein Zustand"
-        )}
+        ${esc(card.condition || "Kein Zustand")}
 
       </p>
 
-
       <div class="price">
-
-        ${Number(card.price).toFixed(2)}
-        €
-
+        ${Number(card.price).toFixed(2)} €
       </div>
-
 
       <p class="muted">
 
         Verkäufer:
         <strong>
-          ${esc(
-            ownerName(card)
-          )}
+          ${esc(ownerName(card))}
         </strong>
 
         <br>
@@ -3054,7 +2349,6 @@ function showCard(cardId){
 
       </p>
 
-
       ${
         card.description
         ? `
@@ -3065,55 +2359,35 @@ function showCard(cardId){
               padding:13px;
               color:#ccc;
             ">
-
-            ${esc(
-              card.description
-            )}
-
+            ${esc(card.description)}
           </div>
         `
         : ""
       }
 
-
       <div class="detail-grid">
 
         ${actions}
 
-
         <button
           class="secondary"
-          onclick="
-            openSellerProfile(
-              '${esc(card.ownerId)}'
-            )
-          ">
-
+          onclick="openSellerProfile('${esc(card.ownerId)}')">
           👤 Verkäuferprofil
-
         </button>
 
       </div>
 
-
       <button
         class="secondary close"
-        onclick="
-          this.closest('.modal').remove()
-        ">
-
+        onclick="this.closest('.modal').remove()">
         Schließen
-
       </button>
 
     </div>
 
   `;
 
-
-  document.body.appendChild(
-    modal
-  );
+  document.body.appendChild(modal);
 
 }
 
@@ -3124,37 +2398,26 @@ function showCard(cardId){
 
 function buyCard(cardId){
 
-  if(
-    !ensureAccount()
-  ){
-
+  if(!ensureAccount()){
     return;
-
   }
-
 
   const account =
     current();
 
-
   const card =
     cardById(cardId);
-
 
   if(!card){
     return;
   }
 
-
   if(
     card.ownerId ===
     account.id
   ){
-
     return;
-
   }
-
 
   if(card.sold){
 
@@ -3166,10 +2429,8 @@ function buyCard(cardId){
 
   }
 
-
   const transactions =
     getTransactions();
-
 
   const already =
     transactions.some(
@@ -3178,13 +2439,10 @@ function buyCard(cardId){
         t.buyerId === account.id &&
         t.type === "purchase" &&
         (
-          t.status ===
-          "pending" ||
-          t.status ===
-          "accepted"
+          t.status === "pending" ||
+          t.status === "accepted"
         )
     );
-
 
   if(already){
 
@@ -3196,7 +2454,6 @@ function buyCard(cardId){
 
   }
 
-
   if(
     !confirm(
       "Karte kaufen/anfragen?\n\n" +
@@ -3206,52 +2463,29 @@ function buyCard(cardId){
       " €"
     )
   ){
-
     return;
-
   }
-
 
   transactions.push({
 
     id:id("tx"),
-
     type:"purchase",
-
-    cardId:
-      card.id,
-
-    buyerId:
-      account.id,
-
-    sellerId:
-      card.ownerId,
-
-    amount:
-      Number(card.price),
-
-    status:
-      "pending",
-
-    createdAt:
-      new Date().toISOString()
+    cardId:card.id,
+    buyerId:account.id,
+    sellerId:card.ownerId,
+    amount:Number(card.price),
+    status:"pending",
+    createdAt:new Date().toISOString()
 
   });
 
-
-  saveTransactions(
-    transactions
-  );
-
+  saveTransactions(transactions);
 
   updateBadges();
 
-
   closeModals();
 
-
   renderAll();
-
 
   toast(
     "Kaufanfrage gesendet."
@@ -3266,33 +2500,22 @@ function buyCard(cardId){
 
 function makeOffer(cardId){
 
-  if(
-    !ensureAccount()
-  ){
-
+  if(!ensureAccount()){
     return;
-
   }
-
 
   const account =
     current();
 
-
   const card =
     cardById(cardId);
 
-
   if(
     !card ||
-    card.ownerId ===
-    account.id
+    card.ownerId === account.id
   ){
-
     return;
-
   }
-
 
   const already =
     getTransactions().some(
@@ -3302,7 +2525,6 @@ function makeOffer(cardId){
         t.type === "offer" &&
         t.status === "pending"
     );
-
 
   if(already){
 
@@ -3314,24 +2536,19 @@ function makeOffer(cardId){
 
   }
 
-
   const raw =
     prompt(
-      "Dein Angebot in €\n" +
-      "Originalpreis: " +
+      "Dein Angebot in €\nOriginalpreis: " +
       card.price +
       " €"
     );
-
 
   if(raw === null){
     return;
   }
 
-
   const amount =
     Number(raw);
-
 
   if(
     !Number.isFinite(amount) ||
@@ -3346,61 +2563,36 @@ function makeOffer(cardId){
 
   }
 
-
   const transactions =
     getTransactions();
-
 
   transactions.push({
 
     id:id("offer"),
-
     type:"offer",
-
-    cardId:
-      card.id,
-
-    buyerId:
-      account.id,
-
-    sellerId:
-      card.ownerId,
-
-    amount:
-      amount,
-
-    status:
-      "pending",
-
-    createdAt:
-      new Date().toISOString()
+    cardId:card.id,
+    buyerId:account.id,
+    sellerId:card.ownerId,
+    amount:amount,
+    status:"pending",
+    createdAt:new Date().toISOString()
 
   });
 
-
-  saveTransactions(
-    transactions
-  );
-
+  saveTransactions(transactions);
 
   sendChatMessageByIds(
-
     card.ownerId,
-
     "💰 Angebot für „" +
     card.player +
     "“: " +
     amount.toFixed(2) +
     " €"
-
   );
-
 
   closeModals();
 
-
   renderAll();
-
 
   toast(
     "Angebot gesendet."
@@ -3415,64 +2607,44 @@ function makeOffer(cardId){
 
 function askQuestion(cardId){
 
-  if(
-    !ensureAccount()
-  ){
-
+  if(!ensureAccount()){
     return;
-
   }
-
 
   const account =
     current();
 
-
   const card =
     cardById(cardId);
 
-
   if(
     !card ||
-    card.ownerId ===
-    account.id
+    card.ownerId === account.id
   ){
-
     return;
-
   }
-
 
   const question =
     prompt(
       "Deine Frage an den Verkäufer:"
     );
 
-
   if(
     !question ||
     !question.trim()
   ){
-
     return;
-
   }
 
-
   sendChatMessageByIds(
-
     card.ownerId,
-
     "❓ Frage zu „" +
     card.player +
     "“: " +
     question.trim()
-
   );
 
-
   closeModals();
-
 
   toast(
     "Frage gesendet."
@@ -3485,17 +2657,11 @@ function askQuestion(cardId){
    CHAT
 ========================================================= */
 
-function chatKey(
-  a,
-  b
-){
+function chatKey(a,b){
 
-  return [
-    a,
-    b
-  ]
-  .sort()
-  .join("|||");
+  return [a,b]
+    .sort()
+    .join("|||");
 
 }
 
@@ -3508,31 +2674,22 @@ function sendChatMessageByIds(
   const account =
     current();
 
-
   if(
     !account ||
     !receiverId ||
-    receiverId ===
-    account.id
+    receiverId === account.id
   ){
-
     return;
-
   }
-
 
   if(
     !String(text).trim()
   ){
-
     return;
-
   }
-
 
   const messages =
     getMessages();
-
 
   messages.push({
 
@@ -3560,17 +2717,11 @@ function sendChatMessageByIds(
 
   });
 
-
-  saveMessages(
-    messages
-  );
-
+  saveMessages(messages);
 
   updateBadges();
 
-
   renderChatList();
-
 
   if(
     selectedChatUser ===
@@ -3586,62 +2737,51 @@ function sendChatMessageByIds(
 }
 
 
-function openChatWith(
-  otherId
-){
+function openChatWith(otherId){
 
-  if(
-    !ensureAccount()
-  ){
-
+  if(!ensureAccount()){
     return;
-
   }
-
 
   const account =
     current();
 
-
   if(
     !otherId ||
-    otherId ===
-    account.id
+    otherId === account.id
   ){
-
     return;
-
   }
 
+  const other =
+    getAccounts().find(
+      a => a.id === otherId
+    );
 
-  /*
-    Wichtig:
-    Wenn der Chat aus einem
-    Karten-Modal geöffnet wird,
-    wird das Modal jetzt geschlossen.
-    Dadurch ist der Chat wirklich sichtbar.
-  */
+  if(!other){
+    return;
+  }
 
   closeModals();
-
 
   selectedChatUser =
     otherId;
 
+  localStorage.setItem(
+    CHAT_KEY,
+    otherId
+  );
 
   showPage(
     "messagesPage",
     "navMessages"
   );
 
-
   renderChatList();
-
 
   renderMessages(
     otherId
   );
-
 
   markRead(
     otherId
@@ -3650,58 +2790,40 @@ function openChatWith(
 }
 
 
-function markRead(
-  otherId
-){
+function markRead(otherId){
 
   const account =
     current();
-
 
   if(!account){
     return;
   }
 
-
   const messages =
     getMessages();
 
-
-  let changed =
-    false;
-
+  let changed = false;
 
   messages.forEach(
     message => {
 
       if(
-        message.senderId ===
-        otherId &&
-        message.receiverId ===
-        account.id &&
+        message.senderId === otherId &&
+        message.receiverId === account.id &&
         !message.read
       ){
 
-        message.read =
-          true;
-
-        changed =
-          true;
+        message.read = true;
+        changed = true;
 
       }
 
     }
   );
 
-
   if(changed){
-
-    saveMessages(
-      messages
-    );
-
+    saveMessages(messages);
   }
-
 
   updateBadges();
 
@@ -3713,55 +2835,44 @@ function chatUsers(){
   const account =
     current();
 
-
   if(!account){
     return [];
   }
 
-
   const users =
     new Set();
-
 
   getMessages().forEach(
     message => {
 
       if(
-        message.senderId ===
-        account.id
+        message.senderId === account.id
       ){
-
         users.add(
           message.receiverId
         );
-
       }
 
-
       if(
-        message.receiverId ===
-        account.id
+        message.receiverId === account.id
       ){
-
         users.add(
           message.senderId
         );
-
       }
 
     }
   );
 
+  const accounts =
+    getAccounts();
 
-  return [
-    ...users
-  ].filter(
-    id =>
-      getAccounts()
-        .some(
-          account =>
-            account.id === id
-        )
+  return [...users].filter(
+    userId =>
+      accounts.some(
+        account =>
+          account.id === userId
+      )
   );
 
 }
@@ -3772,33 +2883,23 @@ function renderChatList(){
   const box =
     $("chatList");
 
-
   if(!box){
     return;
   }
 
-
-  box.innerHTML =
-    "";
-
+  box.innerHTML = "";
 
   const account =
     current();
 
-
   const users =
     chatUsers();
-
 
   if(!users.length){
 
     box.innerHTML = `
 
-      <div
-        style="
-          padding:16px;
-          color:#777;
-        ">
+      <div style="padding:16px;color:#777">
 
         Noch keine Chats.
 
@@ -3816,45 +2917,34 @@ function renderChatList(){
 
   }
 
-
   users.forEach(
     userId => {
 
       const unread =
         getMessages().filter(
           message =>
-            message.senderId ===
-            userId &&
-            message.receiverId ===
-            account.id &&
+            message.senderId === userId &&
+            message.receiverId === account.id &&
             !message.read
         ).length;
 
-
       const item =
-        document.createElement(
-          "div"
-        );
-
+        document.createElement("div");
 
       item.className =
         "chat-item" +
         (
-          userId ===
-          selectedChatUser
+          userId === selectedChatUser
           ? " selected"
           : ""
         );
-
 
       item.innerHTML = `
 
         <strong>
 
           ${esc(
-            accountName(
-              userId
-            )
+            accountName(userId)
           )}
 
           ${
@@ -3868,9 +2958,7 @@ function renderChatList(){
                   padding:2px 7px;
                   font-size:10px;
                 ">
-
                 ${unread}
-
               </span>
             `
             : ""
@@ -3878,24 +2966,17 @@ function renderChatList(){
 
         </strong>
 
-
         <small>
           Chat öffnen
         </small>
 
       `;
 
-
       item.onclick =
         () =>
-          openChatWith(
-            userId
-          );
+          openChatWith(userId);
 
-
-      box.appendChild(
-        item
-      );
+      box.appendChild(item);
 
     }
   );
@@ -3903,38 +2984,34 @@ function renderChatList(){
 }
 
 
-function renderMessages(
-  otherId
-){
+function renderMessages(otherId){
 
   const account =
     current();
-
 
   if(!account){
     return;
   }
 
-
   const box =
     $("messages");
-
 
   const input =
     $("messageInput");
 
-
   const send =
     $("sendMessage");
 
+  const header =
+    $("chatHeader");
 
-  $("chatHeader")
-    .textContent =
-      "💬 Chat mit " +
-      accountName(
-        otherId
-      );
+  if(!box || !input || !send || !header){
+    return;
+  }
 
+  header.textContent =
+    "💬 Chat mit " +
+    accountName(otherId);
 
   const messages =
     getMessages()
@@ -3948,18 +3025,11 @@ function renderMessages(
       )
       .sort(
         (a,b) =>
-          new Date(
-            a.createdAt
-          ) -
-          new Date(
-            b.createdAt
-          )
+          new Date(a.createdAt) -
+          new Date(b.createdAt)
       );
 
-
-  box.innerHTML =
-    "";
-
+  box.innerHTML = "";
 
   if(!messages.length){
 
@@ -3979,15 +3049,11 @@ function renderMessages(
 
   }
 
-
   messages.forEach(
     message => {
 
       const element =
-        document.createElement(
-          "div"
-        );
-
+        document.createElement("div");
 
       element.className =
         "message" +
@@ -3998,84 +3064,54 @@ function renderMessages(
           : ""
         );
 
-
       element.innerHTML = `
 
-        ${esc(
-          message.text
-        )}
+        ${esc(message.text)}
 
         <small>
-          ${formatTime(
-            message.createdAt
-          )}
+          ${formatTime(message.createdAt)}
         </small>
 
       `;
 
-
-      box.appendChild(
-        element
-      );
+      box.appendChild(element);
 
     }
   );
 
-
-  input.disabled =
-    false;
-
-  send.disabled =
-    false;
-
+  input.disabled = false;
+  send.disabled = false;
 
   box.scrollTop =
     box.scrollHeight;
 
-
-  markRead(
-    otherId
-  );
+  markRead(otherId);
 
 }
 
 
 function sendMessage(){
 
-  if(
-    !selectedChatUser
-  ){
-
+  if(!selectedChatUser){
     return;
-
   }
-
 
   const input =
     $("messageInput");
 
-
   const text =
     input.value.trim();
-
 
   if(!text){
     return;
   }
 
-
   sendChatMessageByIds(
-
     selectedChatUser,
-
     text
-
   );
 
-
-  input.value =
-    "";
-
+  input.value = "";
 
   renderMessages(
     selectedChatUser
@@ -4088,29 +3124,34 @@ function sendMessage(){
    TRANSACTIONS
 ========================================================= */
 
-function showTransactions(
-  mode
-){
+function showTransactions(mode){
+
+  if(
+    mode !== "received" &&
+    mode !== "sent"
+  ){
+    mode = "received";
+  }
 
   transactionMode =
     mode;
 
+  localStorage.setItem(
+    TX_MODE_KEY,
+    mode
+  );
 
   $("receivedTab")
     .classList.toggle(
       "active",
-      mode ===
-      "received"
+      mode === "received"
     );
-
 
   $("sentTab")
     .classList.toggle(
       "active",
-      mode ===
-      "sent"
+      mode === "sent"
     );
-
 
   renderTransactions();
 
@@ -4122,31 +3163,26 @@ function renderTransactions(){
   const box =
     $("transactions");
 
+  if(!box){
+    return;
+  }
 
-  box.innerHTML =
-    "";
-
+  box.innerHTML = "";
 
   const account =
     current();
 
-
   if(!account){
 
     box.innerHTML = `
-
       <div class="empty">
-
         Account auswählen.
-
       </div>
-
     `;
 
     return;
 
   }
-
 
   const list =
     getTransactions()
@@ -4165,7 +3201,6 @@ function renderTransactions(){
 
           }
 
-
           return (
             transaction.buyerId ===
             account.id
@@ -4176,7 +3211,6 @@ function renderTransactions(){
       .slice()
       .reverse();
 
-
   if(!list.length){
 
     box.innerHTML = `
@@ -4184,8 +3218,7 @@ function renderTransactions(){
       <div class="empty">
 
         ${
-          transactionMode ===
-          "received"
+          transactionMode === "received"
           ? "Noch keine erhaltenen Angebote."
           : "Du hast noch keine Angebote gemacht."
         }
@@ -4198,47 +3231,34 @@ function renderTransactions(){
 
   }
 
-
   list.forEach(
     transaction =>
       box.appendChild(
-        transactionElement(
-          transaction
-        )
+        transactionElement(transaction)
       )
   );
 
 }
 
 
-function transactionElement(
-  transaction
-){
+function transactionElement(transaction){
 
   const card =
     cardById(
       transaction.cardId
     );
 
-
   const account =
     current();
-
 
   const received =
     transaction.sellerId ===
     account.id;
 
-
   const element =
-    document.createElement(
-      "div"
-    );
+    document.createElement("div");
 
-
-  element.className =
-    "tx";
-
+  element.className = "tx";
 
   if(!card){
 
@@ -4249,57 +3269,44 @@ function transactionElement(
 
   }
 
-
   let statusClass =
     "pending";
 
-
   let statusText =
     "🕐 Offen";
-
 
   if(
     transaction.status ===
     "accepted"
   ){
 
-    statusClass =
-      "accepted";
-
-    statusText =
-      "✅ Angenommen";
+    statusClass = "accepted";
+    statusText = "✅ Angenommen";
 
   }
-
 
   if(
     transaction.status ===
     "rejected"
   ){
 
-    statusClass =
-      "rejected";
-
-    statusText =
-      "❌ Abgelehnt";
+    statusClass = "rejected";
+    statusText = "❌ Abgelehnt";
 
   }
-
 
   const other =
     received
     ? transaction.buyerId
     : transaction.sellerId;
 
-
   element.innerHTML = `
 
     <div class="tx-top">
 
       <img
-        src="${card.image}"
+        src="${esc(card.image)}"
         alt="">
-
 
       <div class="tx-info">
 
@@ -4312,28 +3319,18 @@ function transactionElement(
         </div>
 
         <strong>
-          ${Number(
-            transaction.amount
-          ).toFixed(2)}
-          €
+          ${Number(transaction.amount).toFixed(2)} €
         </strong>
 
         <br>
 
-        <span
-          class="
-            status
-            ${statusClass}
-          ">
-
+        <span class="status ${statusClass}">
           ${statusText}
-
         </span>
 
       </div>
 
     </div>
-
 
     <div
       class="muted"
@@ -4345,73 +3342,42 @@ function transactionElement(
         : "An: "
       }
 
-      ${esc(
-        accountName(
-          other
-        )
-      )}
+      ${esc(accountName(other))}
 
     </div>
-
 
     <div class="tx-actions">
 
       ${
         received &&
-        transaction.status ===
-        "pending"
+        transaction.status === "pending"
         ? `
 
           <button
             class="success"
-            onclick="
-              acceptTransaction(
-                '${esc(
-                  transaction.id
-                )}'
-              )
-            ">
-
+            onclick="acceptTransaction('${esc(transaction.id)}')">
             Annehmen
-
           </button>
-
 
           <button
             class="danger"
-            onclick="
-              rejectTransaction(
-                '${esc(
-                  transaction.id
-                )}'
-              )
-            ">
-
+            onclick="rejectTransaction('${esc(transaction.id)}')">
             Ablehnen
-
           </button>
 
         `
         : ""
       }
 
-
       <button
         class="primary"
-        onclick="
-          openChatWith(
-            '${esc(other)}'
-          )
-        ">
-
+        onclick="openChatWith('${esc(other)}')">
         💬 Chat
-
       </button>
 
     </div>
 
   `;
-
 
   return element;
 
@@ -4422,65 +3388,45 @@ function transactionElement(
    ACCEPT
 ========================================================= */
 
-function acceptTransaction(
-  transactionId
-){
+function acceptTransaction(transactionId){
 
-  if(
-    !ensureAccount()
-  ){
-
+  if(!ensureAccount()){
     return;
-
   }
-
 
   const account =
     current();
 
-
   const transactions =
     getTransactions();
 
-
   const transaction =
     transactions.find(
-      t =>
-        t.id ===
-        transactionId
+      t => t.id === transactionId
     );
-
 
   if(!transaction){
     return;
   }
 
-
   if(
     transaction.sellerId !==
     account.id
   ){
-
     return;
-
   }
-
 
   if(
     transaction.status !==
     "pending"
   ){
-
     return;
-
   }
-
 
   const card =
     cardById(
       transaction.cardId
     );
-
 
   if(
     !card ||
@@ -4495,44 +3441,33 @@ function acceptTransaction(
 
   }
 
-
   if(
     !confirm(
       "Transaktion annehmen?"
     )
   ){
-
     return;
-
   }
-
 
   transaction.status =
     "accepted";
 
-
   const cards =
     getCards();
 
-
   const storedCard =
     cards.find(
-      c =>
-        c.id ===
-        card.id
+      c => c.id === card.id
     );
-
 
   if(storedCard){
 
-    storedCard.sold =
-      true;
+    storedCard.sold = true;
 
     storedCard.soldTo =
       transaction.buyerId;
 
   }
-
 
   transactions.forEach(
     other => {
@@ -4554,30 +3489,17 @@ function acceptTransaction(
     }
   );
 
-
-  saveCards(
-    cards
-  );
-
-
-  saveTransactions(
-    transactions
-  );
-
+  saveCards(cards);
+  saveTransactions(transactions);
 
   sendChatMessageByIds(
-
     transaction.buyerId,
-
     "✅ Dein Angebot für „" +
     card.player +
     "“ wurde angenommen."
-
   );
 
-
   renderAll();
-
 
   toast(
     "Transaktion angenommen."
@@ -4590,91 +3512,64 @@ function acceptTransaction(
    REJECT
 ========================================================= */
 
-function rejectTransaction(
-  transactionId
-){
+function rejectTransaction(transactionId){
 
-  if(
-    !ensureAccount()
-  ){
-
+  if(!ensureAccount()){
     return;
-
   }
-
 
   const account =
     current();
 
-
   const transactions =
     getTransactions();
 
-
   const transaction =
     transactions.find(
-      t =>
-        t.id ===
-        transactionId
+      t => t.id === transactionId
     );
-
 
   if(!transaction){
     return;
   }
 
-
   if(
     transaction.sellerId !==
     account.id
   ){
-
     return;
-
   }
-
 
   if(
     transaction.status !==
     "pending"
   ){
-
     return;
-
   }
-
 
   transaction.status =
     "rejected";
 
-
   saveTransactions(
     transactions
   );
-
 
   const card =
     cardById(
       transaction.cardId
     );
 
-
   sendChatMessageByIds(
-
     transaction.buyerId,
-
     "❌ Dein Angebot für „" +
     (
       card?.player ||
       "die Karte"
     ) +
     "“ wurde abgelehnt."
-
   );
 
-
   renderAll();
-
 
   toast(
     "Transaktion abgelehnt."
@@ -4684,7 +3579,7 @@ function rejectTransaction(
 
 
 /* =========================================================
-   FAVORITES PAGE
+   FAVORITES
 ========================================================= */
 
 function renderFavorites(){
@@ -4692,61 +3587,46 @@ function renderFavorites(){
   const box =
     $("favorites");
 
+  if(!box){
+    return;
+  }
 
-  box.innerHTML =
-    "";
-
+  box.innerHTML = "";
 
   const account =
     current();
 
-
   if(!account){
 
     box.innerHTML = `
-
       <div class="empty">
-
         Account auswählen.
-
       </div>
-
     `;
 
     return;
 
   }
-
 
   const cards =
     getCards().filter(
       card =>
         !card.sold &&
-        Array.isArray(
-          card.favorites
-        ) &&
-        card.favorites.includes(
-          account.id
-        )
+        Array.isArray(card.favorites) &&
+        card.favorites.includes(account.id)
     );
-
 
   if(!cards.length){
 
     box.innerHTML = `
-
       <div class="empty">
-
         Noch keine Favoriten.
-
       </div>
-
     `;
 
     return;
 
   }
-
 
   cards.forEach(
     card =>
@@ -4767,31 +3647,26 @@ function renderMine(){
   const box =
     $("mine");
 
+  if(!box){
+    return;
+  }
 
-  box.innerHTML =
-    "";
-
+  box.innerHTML = "";
 
   const account =
     current();
 
-
   if(!account){
 
     box.innerHTML = `
-
       <div class="empty">
-
         Account auswählen.
-
       </div>
-
     `;
 
     return;
 
   }
-
 
   const cards =
     getCards().filter(
@@ -4800,23 +3675,17 @@ function renderMine(){
         account.id
     );
 
-
   if(!cards.length){
 
     box.innerHTML = `
-
       <div class="empty">
-
         Du hast noch keine Karten.
-
       </div>
-
     `;
 
     return;
 
   }
-
 
   cards.forEach(
     card => {
@@ -4824,27 +3693,18 @@ function renderMine(){
       const element =
         cardElement(card);
 
-
       const deleteButton =
-        document.createElement(
-          "button"
-        );
-
+        document.createElement("button");
 
       deleteButton.className =
         "danger";
 
-
       deleteButton.textContent =
         "🗑️ Löschen";
 
-
       deleteButton.onclick =
         () =>
-          deleteCard(
-            card.id
-          );
-
+          deleteCard(card.id);
 
       element
         .querySelector(
@@ -4854,10 +3714,7 @@ function renderMine(){
           deleteButton
         );
 
-
-      box.appendChild(
-        element
-      );
+      box.appendChild(element);
 
     }
   );
@@ -4869,47 +3726,32 @@ function renderMine(){
    SELLER PROFILE
 ========================================================= */
 
-function openSellerProfile(
-  userId
-){
+function openSellerProfile(userId){
 
   const account =
     getAccounts().find(
-      a =>
-        a.id ===
-        userId
+      a => a.id === userId
     );
-
 
   if(!account){
     return;
   }
 
-
   const cards =
     getCards().filter(
       card =>
-        card.ownerId ===
-        userId
+        card.ownerId === userId
     );
-
 
   const sold =
     cards.filter(
-      card =>
-        card.sold
+      card => card.sold
     ).length;
 
-
   const modal =
-    document.createElement(
-      "div"
-    );
+    document.createElement("div");
 
-
-  modal.className =
-    "modal";
-
+  modal.className = "modal";
 
   modal.innerHTML = `
 
@@ -4927,13 +3769,10 @@ function openSellerProfile(
 
         </div>
 
-
         <div>
 
           <h2>
-            ${esc(
-              account.name
-            )}
+            ${esc(account.name)}
           </h2>
 
           <div class="muted">
@@ -4944,97 +3783,55 @@ function openSellerProfile(
 
       </div>
 
-
       <div class="profile-stats">
 
         <div class="profile-stat">
-
-          <strong>
-            ${cards.length}
-          </strong>
-
-          <span>
-            Karten
-          </span>
-
+          <strong>${cards.length}</strong>
+          <span>Karten</span>
         </div>
 
-
         <div class="profile-stat">
-
-          <strong>
-            ${sold}
-          </strong>
-
-          <span>
-            Verkauft
-          </span>
-
+          <strong>${sold}</strong>
+          <span>Verkauft</span>
         </div>
 
-
         <div class="profile-stat">
-
-          <strong>
-            ⭐
-          </strong>
-
-          <span>
-            Seller
-          </span>
-
+          <strong>⭐</strong>
+          <span>Seller</span>
         </div>
 
       </div>
 
-
       ${
-        current()?.id !==
-        userId
+        current()?.id !== userId
         ? `
-
           <button
             class="primary"
             style="width:100%"
-            onclick="
-              openChatWith(
-                '${esc(userId)}'
-              )
-            ">
-
+            onclick="openChatWith('${esc(userId)}')">
             💬 Chat öffnen
-
           </button>
-
         `
         : ""
       }
 
-
       <button
         class="secondary close"
-        onclick="
-          this.closest('.modal').remove()
-        ">
-
+        onclick="this.closest('.modal').remove()">
         Schließen
-
       </button>
 
     </div>
 
   `;
 
-
-  document.body.appendChild(
-    modal
-  );
+  document.body.appendChild(modal);
 
 }
 
 
 /* =========================================================
-   OWN PROFILE
+   PROFILE
 ========================================================= */
 
 function renderProfile(){
@@ -5042,25 +3839,24 @@ function renderProfile(){
   const box =
     $("profileBox");
 
+  if(!box){
+    return;
+  }
 
   const account =
     current();
 
-
   if(!account){
 
     box.innerHTML = `
-
       <div class="empty">
         Kein Account.
       </div>
-
     `;
 
     return;
 
   }
-
 
   const cards =
     getCards().filter(
@@ -5069,23 +3865,17 @@ function renderProfile(){
         account.id
     );
 
-
   const sold =
     cards.filter(
-      card =>
-        card.sold
+      card => card.sold
     ).length;
-
 
   const messages =
     getMessages().filter(
       message =>
-        message.senderId ===
-        account.id ||
-        message.receiverId ===
-        account.id
+        message.senderId === account.id ||
+        message.receiverId === account.id
     ).length;
-
 
   box.innerHTML = `
 
@@ -5101,13 +3891,10 @@ function renderProfile(){
 
       </div>
 
-
       <div>
 
         <h2>
-          ${esc(
-            account.name
-          )}
+          ${esc(account.name)}
         </h2>
 
         <div class="muted">
@@ -5118,56 +3905,29 @@ function renderProfile(){
 
     </div>
 
-
     <div class="profile-stats">
 
       <div class="profile-stat">
-
-        <strong>
-          ${cards.length}
-        </strong>
-
-        <span>
-          Karten
-        </span>
-
+        <strong>${cards.length}</strong>
+        <span>Karten</span>
       </div>
 
-
       <div class="profile-stat">
-
-        <strong>
-          ${sold}
-        </strong>
-
-        <span>
-          Verkauft
-        </span>
-
+        <strong>${sold}</strong>
+        <span>Verkauft</span>
       </div>
 
-
       <div class="profile-stat">
-
-        <strong>
-          ${messages}
-        </strong>
-
-        <span>
-          Nachrichten
-        </span>
-
+        <strong>${messages}</strong>
+        <span>Nachrichten</span>
       </div>
 
     </div>
 
-
     <button
       class="primary"
       style="width:100%"
-      onclick="
-        renameCurrentAccount()
-      ">
+      onclick="renameCurrentAccount()">
 
       ✏️ Benutzername ändern
 
@@ -5179,80 +3939,55 @@ function renderProfile(){
 
 
 /* =========================================================
-   DELETE CARD
+   DELETE
 ========================================================= */
 
-function deleteCard(
-  cardId
-){
+function deleteCard(cardId){
 
-  if(
-    !ensureAccount()
-  ){
-
+  if(!ensureAccount()){
     return;
-
   }
-
 
   const account =
     current();
 
-
   const cards =
     getCards();
 
-
   const card =
     cards.find(
-      c =>
-        c.id ===
-        cardId
+      c => c.id === cardId
     );
-
 
   if(
     !card ||
     card.ownerId !==
     account.id
   ){
-
     return;
-
   }
-
 
   if(
     !confirm(
       "Karte wirklich löschen?"
     )
   ){
-
     return;
-
   }
-
 
   saveCards(
     cards.filter(
-      c =>
-        c.id !==
-        cardId
+      c => c.id !== cardId
     )
   );
-
 
   saveTransactions(
     getTransactions().filter(
-      t =>
-        t.cardId !==
-        cardId
+      t => t.cardId !== cardId
     )
   );
 
-
   renderAll();
-
 
   toast(
     "Karte gelöscht."
@@ -5270,54 +4005,40 @@ function updateBadges(){
   const account =
     current();
 
-
   if(!account){
     return;
   }
 
-
   const unread =
     getMessages().filter(
       message =>
-        message.receiverId ===
-        account.id &&
+        message.receiverId === account.id &&
         !message.read
     ).length;
-
 
   const pending =
     getTransactions().filter(
       transaction =>
-        transaction.sellerId ===
-        account.id &&
-        transaction.status ===
-        "pending"
+        transaction.sellerId === account.id &&
+        transaction.status === "pending"
     ).length;
-
 
   const favorites =
     getCards().filter(
       card =>
-        Array.isArray(
-          card.favorites
-        ) &&
-        card.favorites.includes(
-          account.id
-        )
+        Array.isArray(card.favorites) &&
+        card.favorites.includes(account.id)
     ).length;
-
 
   setBadge(
     "messageBadge",
     unread
   );
 
-
   setBadge(
     "transactionBadge",
     pending
   );
-
 
   setBadge(
     "favoriteBadge",
@@ -5327,25 +4048,19 @@ function updateBadges(){
 }
 
 
-function setBadge(
-  id,
-  count
-){
+function setBadge(id,count){
 
   const badge =
     $(id);
-
 
   if(!badge){
     return;
   }
 
-
   badge.style.display =
     count
     ? "grid"
     : "none";
-
 
   badge.textContent =
     count || "";
@@ -5364,43 +4079,26 @@ $("sellForm")
 
       event.preventDefault();
 
-
-      if(
-        !ensureAccount()
-      ){
-
+      if(!ensureAccount()){
         return;
-
       }
-
 
       const account =
         current();
 
-
       const file =
-        $("image")
-          .files[0];
-
+        $("image").files[0];
 
       const player =
-        $("player")
-          .value
-          .trim();
-
+        $("player").value.trim();
 
       const club =
-        $("club")
-          .value
-          .trim();
-
+        $("club").value.trim();
 
       const price =
         Number(
-          $("price")
-            .value
+          $("price").value
         );
-
 
       if(
         !file ||
@@ -5418,10 +4116,8 @@ $("sellForm")
 
       }
 
-
       const reader =
         new FileReader();
-
 
       reader.onload =
         () => {
@@ -5429,13 +4125,10 @@ $("sellForm")
           const image =
             new Image();
 
-
           image.onload =
             () => {
 
-              const max =
-                900;
-
+              const max = 900;
 
               const scale =
                 Math.min(
@@ -5447,45 +4140,30 @@ $("sellForm")
                   )
                 );
 
-
               const width =
                 Math.max(
                   1,
                   Math.round(
-                    image.width *
-                    scale
+                    image.width * scale
                   )
                 );
-
 
               const height =
                 Math.max(
                   1,
                   Math.round(
-                    image.height *
-                    scale
+                    image.height * scale
                   )
                 );
 
-
               const canvas =
-                document.createElement(
-                  "canvas"
-                );
+                document.createElement("canvas");
 
-
-              canvas.width =
-                width;
-
-              canvas.height =
-                height;
-
+              canvas.width = width;
+              canvas.height = height;
 
               const context =
-                canvas.getContext(
-                  "2d"
-                );
-
+                canvas.getContext("2d");
 
               context.drawImage(
                 image,
@@ -5495,57 +4173,45 @@ $("sellForm")
                 height
               );
 
-
               const imageData =
                 canvas.toDataURL(
                   "image/jpeg",
                   .68
                 );
 
-
               const cards =
                 getCards();
-
 
               cards.unshift({
 
                 id:id("card"),
 
-                player:
-                  player,
+                player:player,
 
-                club:
-                  club,
+                club:club,
 
-                price:
-                  price,
+                price:price,
 
                 condition:
-                  $("condition")
-                    .value,
+                  $("condition").value,
 
                 description:
                   $("description")
                     .value
                     .trim(),
 
-                image:
-                  imageData,
+                image:imageData,
 
                 ownerId:
                   account.id,
 
-                sold:
-                  false,
+                sold:false,
 
-                soldTo:
-                  null,
+                soldTo:null,
 
-                views:
-                  [],
+                views:[],
 
-                favorites:
-                  [],
+                favorites:[],
 
                 createdAt:
                   new Date()
@@ -5553,36 +4219,18 @@ $("sellForm")
 
               });
 
-
-              try{
-
-                saveCards(
-                  cards
-                );
-
-              }catch{
-
-                toast(
-                  "Speicher voll — bitte alte Karten löschen."
-                );
-
+              if(
+                !saveCards(cards)
+              ){
                 return;
-
               }
 
-
-              $("sellForm")
-                .reset();
-
+              $("sellForm").reset();
 
               $("sellPanel")
-                .classList.remove(
-                  "open"
-                );
-
+                .classList.remove("open");
 
               renderAll();
-
 
               toast(
                 "🎉 Karte erfolgreich eingestellt."
@@ -5590,16 +4238,12 @@ $("sellForm")
 
             };
 
-
           image.src =
             reader.result;
 
         };
 
-
-      reader.readAsDataURL(
-        file
-      );
+      reader.readAsDataURL(file);
 
     }
   );
@@ -5617,7 +4261,7 @@ $("searchInput")
 
 
 /* =========================================================
-   ENTER IN CHAT
+   ENTER CHAT
 ========================================================= */
 
 $("messageInput")
@@ -5626,8 +4270,8 @@ $("messageInput")
     event => {
 
       if(
-        event.key ===
-        "Enter"
+        event.key === "Enter" &&
+        !event.shiftKey
       ){
 
         event.preventDefault();
@@ -5649,46 +4293,51 @@ function renderAll(){
   const account =
     current();
 
+  $("currentUser").textContent =
+    account
+    ? account.name
+    : "Kein Account";
 
-  $("currentUser")
-    .textContent =
-      account
-      ? account.name
-      : "Kein Account";
-
-
-  $("miniAvatar")
-    .textContent =
-      account
-      ? account.name
-          .charAt(0)
-          .toUpperCase()
-      : "?";
-
+  $("miniAvatar").textContent =
+    account
+    ? account.name
+        .charAt(0)
+        .toUpperCase()
+    : "?";
 
   renderCards();
-
   renderFavorites();
-
   renderMine();
-
   renderTransactions();
-
   renderChatList();
-
   renderProfile();
-
   updateBadges();
-
 
   if(
     selectedChatUser &&
     account
   ){
 
-    renderMessages(
-      selectedChatUser
-    );
+    const other =
+      getAccounts().find(
+        a => a.id === selectedChatUser
+      );
+
+    if(other){
+
+      renderMessages(
+        selectedChatUser
+      );
+
+    }else{
+
+      selectedChatUser = "";
+
+      localStorage.removeItem(
+        CHAT_KEY
+      );
+
+    }
 
   }
 
@@ -5699,23 +4348,20 @@ function renderAll(){
    TIME
 ========================================================= */
 
-function formatTime(
-  value
-){
+function formatTime(value){
 
   try{
 
-    return new Date(
-      value
-    ).toLocaleString(
-      "de-DE",
-      {
-        day:"2-digit",
-        month:"2-digit",
-        hour:"2-digit",
-        minute:"2-digit"
-      }
-    );
+    return new Date(value)
+      .toLocaleString(
+        "de-DE",
+        {
+          day:"2-digit",
+          month:"2-digit",
+          hour:"2-digit",
+          minute:"2-digit"
+        }
+      );
 
   }catch{
 
@@ -5727,25 +4373,25 @@ function formatTime(
 
 
 /* =========================================================
-   START
+   START — STABIL
 ========================================================= */
 
 function start(){
 
-  const accounts =
+  let accounts =
     getAccounts();
 
+  if(!Array.isArray(accounts)){
+    accounts = [];
+  }
 
-  if(
-    !accounts.length
-  ){
+  if(!accounts.length){
 
     const account = {
 
       id:id("acc"),
 
-      name:
-        "DemoUser",
+      name:"DemoUser",
 
       createdAt:
         new Date()
@@ -5753,11 +4399,13 @@ function start(){
 
     };
 
+    accounts = [
+      account
+    ];
 
     saveAccounts(
-      [account]
+      accounts
     );
-
 
     localStorage.setItem(
       CURRENT_KEY,
@@ -5766,9 +4414,19 @@ function start(){
 
   }else{
 
-    if(
-      !current()
-    ){
+    const savedCurrent =
+      localStorage.getItem(
+        CURRENT_KEY
+      );
+
+    const validCurrent =
+      accounts.some(
+        account =>
+          account.id ===
+          savedCurrent
+      );
+
+    if(!validCurrent){
 
       localStorage.setItem(
         CURRENT_KEY,
@@ -5780,7 +4438,150 @@ function start(){
   }
 
 
+  /* =========================================
+     TRANSAKTIONS-TAB WIEDERHERSTELLEN
+  ========================================= */
+
+  const savedTxMode =
+    localStorage.getItem(
+      TX_MODE_KEY
+    );
+
+  if(
+    savedTxMode === "received" ||
+    savedTxMode === "sent"
+  ){
+
+    transactionMode =
+      savedTxMode;
+
+  }else{
+
+    transactionMode =
+      "received";
+
+  }
+
+
+  /* =========================================
+     CHAT WIEDERHERSTELLEN
+  ========================================= */
+
+  const savedChat =
+    localStorage.getItem(
+      CHAT_KEY
+    );
+
+  selectedChatUser = "";
+
+  if(savedChat){
+
+    const chatAccount =
+      getAccounts().find(
+        account =>
+          account.id === savedChat
+      );
+
+    if(
+      chatAccount &&
+      chatAccount.id !==
+      current()?.id
+    ){
+
+      selectedChatUser =
+        savedChat;
+
+    }else{
+
+      localStorage.removeItem(
+        CHAT_KEY
+      );
+
+    }
+
+  }
+
+
+  /* =========================================
+     ALLES RENDERN
+  ========================================= */
+
   renderAll();
+
+
+  /* =========================================
+     SEITE WIEDERHERSTELLEN
+  ========================================= */
+
+  const savedPage =
+    localStorage.getItem(
+      PAGE_KEY
+    );
+
+  const validPages = [
+
+    "cardsPage",
+    "favoritesPage",
+    "minePage",
+    "transactionsPage",
+    "messagesPage",
+    "profilePage"
+
+  ];
+
+  const navMap = {
+
+    cardsPage:"navCards",
+
+    favoritesPage:"navFavorites",
+
+    transactionsPage:
+      "navTransactions",
+
+    messagesPage:
+      "navMessages"
+
+  };
+
+
+  if(
+    savedPage &&
+    validPages.includes(savedPage) &&
+    $(savedPage)
+  ){
+
+    showPage(
+      savedPage,
+      navMap[savedPage] || null
+    );
+
+  }else{
+
+    showPage(
+      "cardsPage",
+      "navCards"
+    );
+
+  }
+
+
+  /* =========================================
+     CHAT NACH RELOAD WIEDER ÖFFNEN
+  ========================================= */
+
+  if(
+    selectedChatUser &&
+    savedPage ===
+    "messagesPage"
+  ){
+
+    renderChatList();
+
+    renderMessages(
+      selectedChatUser
+    );
+
+  }
 
 }
 
