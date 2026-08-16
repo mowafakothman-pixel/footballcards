@@ -6,30 +6,26 @@
 <title>Pixel Cards</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
-:root{
-  --bg:#090909;
-  --panel:#111;
-  --panel2:#171717;
-  --panel3:#202020;
-  --text:#fff;
-  --muted:#999;
-  --border:#292929;
-  --accent:#fff;
-  --danger:#ef4444;
-  --green:#22c55e;
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+  background:#090909;
+  color:#f5f5f5;
 }
 
-button,input,textarea,select{
-  font:inherit;
+button,
+input,
+textarea,
+select{
+  font-family:inherit;
 }
 
 button{
@@ -38,14 +34,14 @@ button{
 
 header{
   background:#050505;
-  padding:25px 18px;
-  text-align:center;
   border-bottom:1px solid #222;
+  padding:22px 16px;
+  text-align:center;
 }
 
 header h1{
   margin:0;
-  font-size:31px;
+  font-size:30px;
 }
 
 header p{
@@ -53,18 +49,22 @@ header p{
   color:#888;
 }
 
+/* =========================
+   PROFILBAR
+========================= */
+
 .profile-bar{
   background:#0d0d0d;
   border-bottom:1px solid #222;
-  padding:12px 18px;
   position:sticky;
   top:0;
-  z-index:1000;
+  z-index:3000;
 }
 
 .profile-inner{
-  max-width:1250px;
+  width:min(1250px,96%);
   margin:auto;
+  min-height:68px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -78,7 +78,8 @@ header p{
   font-weight:bold;
 }
 
-.avatar,.big-avatar{
+.avatar,
+.big-avatar{
   border-radius:50%;
   background:#fff;
   color:#000;
@@ -90,13 +91,13 @@ header p{
 }
 
 .avatar{
-  width:42px;
-  height:42px;
+  width:40px;
+  height:40px;
 }
 
 .big-avatar{
-  width:76px;
-  height:76px;
+  width:75px;
+  height:75px;
   font-size:28px;
 }
 
@@ -105,108 +106,125 @@ header p{
   gap:8px;
 }
 
-.profile-controls input,
-.search input,
-.sell-form input,
-.sell-form textarea,
-.sell-form select,
-.modal input,
-.modal textarea{
-  background:#191919;
+.profile-controls input{
+  width:170px;
+  padding:10px 12px;
+  background:#161616;
   color:#fff;
   border:1px solid #333;
   border-radius:10px;
-  padding:11px 13px;
   outline:none;
 }
 
-.profile-controls input:focus,
-.search input:focus,
-.sell-form input:focus,
-.sell-form textarea:focus,
-.sell-form select:focus,
-.modal input:focus,
-.modal textarea:focus{
-  border-color:#777;
-}
-
-.primary-btn,
-.black-btn{
+.primary-btn{
   border:none;
   background:#fff;
   color:#000;
-  padding:11px 15px;
+  padding:10px 15px;
   border-radius:10px;
   font-weight:bold;
 }
 
-.search{
-  padding:18px;
-  background:#0d0d0d;
+/* =========================
+   NAVIGATION
+========================= */
+
+.navigation-wrap{
+  position:sticky;
+  top:68px;
+  z-index:2900;
+  background:#090909;
   border-bottom:1px solid #222;
 }
 
-.search input{
-  display:block;
-  width:100%;
-  max-width:850px;
-  margin:auto;
-  padding:14px;
-}
-
-.container{
-  max-width:1250px;
-  margin:auto;
-  padding:20px;
-}
-
-/* NAVIGATION */
-
 .navigation{
+  width:min(1250px,96%);
+  margin:auto;
+  padding:9px 0;
   display:grid;
   grid-template-columns:repeat(6,1fr);
-  gap:8px;
-  margin-bottom:25px;
+  gap:7px;
 }
 
 .navigation button{
   position:relative;
+  min-width:0;
   border:1px solid #292929;
-  background:#151515;
-  color:#fff;
-  padding:13px 8px;
-  border-radius:12px;
+  background:#121212;
+  color:#ddd;
+  padding:12px 7px;
+  border-radius:10px;
+  font-size:13px;
   font-weight:bold;
   white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  transition:.15s;
 }
 
 .navigation button:hover{
-  background:#222;
+  background:#1d1d1d;
 }
 
 .navigation button.active{
   background:#fff;
   color:#000;
+  border-color:#fff;
 }
 
 .badge{
   position:absolute;
-  top:-7px;
-  right:-5px;
-  min-width:21px;
-  height:21px;
-  padding:2px 6px;
+  top:-5px;
+  right:-3px;
+  min-width:19px;
+  height:19px;
+  padding:2px 5px;
   border-radius:20px;
-  background:#ef4444;
+  background:#ef233c;
   color:#fff;
-  font-size:12px;
+  font-size:11px;
   display:flex;
   align-items:center;
   justify-content:center;
   border:2px solid #090909;
 }
 
-/* PAGES */
+/* =========================
+   SEARCH
+========================= */
+
+.search{
+  background:#0d0d0d;
+  padding:14px 12px;
+  border-bottom:1px solid #222;
+}
+
+.search input{
+  display:block;
+  width:min(850px,94%);
+  margin:auto;
+  padding:13px 16px;
+  background:#171717;
+  color:#fff;
+  border:1px solid #333;
+  border-radius:12px;
+  font-size:15px;
+  outline:none;
+}
+
+.search input:focus{
+  border-color:#777;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+  width:min(1250px,96%);
+  margin:auto;
+  padding:22px 0 40px;
+}
 
 .page{
   display:none;
@@ -216,185 +234,134 @@ header p{
   display:block;
 }
 
-.page-title{
+.page h2{
+  margin-top:0;
+}
+
+/* =========================
+   SELL BUTTON / SELL PANEL
+========================= */
+
+.sell-launch{
+  margin-bottom:22px;
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:15px;
+  justify-content:center;
 }
 
-.page-title h2{
-  margin:0;
-}
-
-/* SELL */
-
-.sell-start{
-  background:linear-gradient(135deg,#181818,#0b0b0b);
-  border:1px solid #303030;
-  border-radius:20px;
-  padding:30px;
-  text-align:center;
-  margin-bottom:25px;
-}
-
-.sell-start h2{
-  margin:0 0 8px;
-  font-size:25px;
-}
-
-.sell-start p{
-  color:#999;
-}
-
-.sell-start button{
-  margin-top:10px;
+.sell-main-btn{
+  width:min(650px,100%);
   border:none;
   background:#fff;
   color:#000;
-  padding:13px 25px;
-  border-radius:11px;
-  font-weight:bold;
+  padding:18px 20px;
+  border-radius:15px;
+  font-size:19px;
+  font-weight:800;
+  box-shadow:0 8px 30px rgba(255,255,255,.06);
 }
 
-/* FILTER */
-
-.filter-box{
-  background:#111;
-  border:1px solid #292929;
-  border-radius:17px;
-  padding:16px;
-  margin-bottom:20px;
-}
-
-.filter-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1.3fr;
-  gap:10px;
-}
-
-.filter-grid input,
-.filter-grid select{
-  width:100%;
-  background:#1a1a1a;
-  color:#fff;
-  border:1px solid #333;
-  padding:11px;
-  border-radius:10px;
-}
-
-.filter-buttons{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
-}
-
-.filter-buttons button{
-  border:1px solid #333;
-  background:#1a1a1a;
-  color:#fff;
-  padding:10px 14px;
-  border-radius:9px;
-}
-
-.filter-buttons button:hover{
-  background:#292929;
-}
-
-/* SELL FORM */
-
-.sell-form-box{
+.sell-panel{
   display:none;
   background:#111;
   border:1px solid #292929;
-  border-radius:20px;
+  border-radius:18px;
   padding:22px;
-  margin-bottom:25px;
+  margin-bottom:22px;
 }
 
-.sell-form-box.open{
+.sell-panel.open{
   display:block;
 }
 
-.sell-form-box h2{
-  margin-top:0;
+.sell-panel h2{
+  text-align:center;
 }
 
 .sell-form{
   display:grid;
+  grid-template-columns:repeat(2,1fr);
   gap:12px;
 }
 
-.form-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+.sell-form input,
+.sell-form textarea,
+.sell-form select{
+  width:100%;
+  padding:13px;
+  background:#191919;
+  color:#fff;
+  border:1px solid #333;
+  border-radius:10px;
+  outline:none;
 }
 
 .sell-form textarea{
-  min-height:110px;
+  min-height:100px;
   resize:vertical;
 }
 
-.sell-form select{
-  width:100%;
+.sell-form .full{
+  grid-column:1/-1;
 }
 
-.photo-label{
-  display:block;
-  border:1px dashed #555;
-  background:#171717;
-  border-radius:13px;
-  padding:20px;
+.photo-button{
+  background:#fff;
+  color:#000;
+  border:none;
+  padding:13px;
+  border-radius:10px;
+  font-weight:bold;
   text-align:center;
   cursor:pointer;
-  color:#ddd;
 }
 
-.photo-label input{
-  display:none;
+.sell-submit{
+  border:none;
+  background:#fff;
+  color:#000;
+  padding:14px;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:15px;
 }
 
-.photo-preview{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.photo-preview img{
-  width:90px;
-  height:90px;
-  object-fit:cover;
+.close-sell{
+  background:#222;
+  color:#fff;
+  border:1px solid #333;
+  padding:12px;
   border-radius:10px;
 }
 
-/* CARDS */
+/* =========================
+   CARDS
+========================= */
 
 .cards{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
-  gap:16px;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:15px;
 }
 
 .card{
   background:#111;
   border:1px solid #252525;
-  border-radius:17px;
+  border-radius:16px;
   padding:13px;
-  transition:.2s;
+  overflow:hidden;
+  transition:.18s;
 }
 
 .card:hover{
-  transform:translateY(-3px);
+  transform:translateY(-2px);
   border-color:#444;
 }
 
 .card-image{
   width:100%;
-  height:210px;
-  background:#1b1b1b;
-  border-radius:13px;
+  height:205px;
+  background:#181818;
+  border-radius:12px;
   overflow:hidden;
   display:flex;
   align-items:center;
@@ -408,7 +375,8 @@ header p{
 }
 
 .card h3{
-  margin:12px 0 4px;
+  margin:11px 0 5px;
+  font-size:17px;
 }
 
 .info{
@@ -418,7 +386,7 @@ header p{
 
 .price{
   font-size:22px;
-  font-weight:bold;
+  font-weight:800;
   margin:9px 0;
 }
 
@@ -426,7 +394,7 @@ header p{
   width:100%;
   margin-top:7px;
   padding:10px;
-  border:1px solid #333;
+  border:none;
   border-radius:9px;
   background:#fff;
   color:#000;
@@ -434,53 +402,53 @@ header p{
 }
 
 .card button.gray{
-  background:#1b1b1b;
-  color:#fff;
+  background:#202020;
+  color:#eee;
+  border:1px solid #333;
+}
+
+.card button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
 }
 
 .favorite-row{
   display:flex;
   justify-content:space-between;
+  align-items:center;
+  margin-top:7px;
   color:#999;
-  font-size:14px;
-  margin-top:8px;
-}
-
-.status{
-  display:inline-block;
-  padding:7px 10px;
-  border-radius:8px;
   font-size:13px;
-  font-weight:bold;
 }
 
-.status.open{
-  background:#332b16;
-  color:#ffd56a;
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+  background:#111;
+  border:1px solid #252525;
+  padding:28px;
+  border-radius:15px;
+  color:#888;
+  text-align:center;
+  grid-column:1/-1;
 }
 
-.status.accepted{
-  background:#12351e;
-  color:#67e38a;
-}
-
-.status.rejected{
-  background:#3b1515;
-  color:#ff8585;
-}
-
-/* REQUESTS */
+/* =========================
+   REQUESTS
+========================= */
 
 .request-list{
   display:grid;
-  gap:14px;
+  gap:13px;
 }
 
 .request{
   background:#111;
   border:1px solid #292929;
-  padding:17px;
-  border-radius:17px;
+  padding:16px;
+  border-radius:16px;
 }
 
 .request-top{
@@ -493,8 +461,9 @@ header p{
   width:90px;
   height:90px;
   object-fit:contain;
-  background:#1b1b1b;
-  border-radius:12px;
+  background:#191919;
+  border-radius:10px;
+  flex-shrink:0;
 }
 
 .request-info{
@@ -507,8 +476,8 @@ header p{
 
 .request-actions{
   display:flex;
-  gap:10px;
-  margin-top:15px;
+  gap:9px;
+  margin-top:14px;
 }
 
 .accept-btn,
@@ -517,17 +486,17 @@ header p{
   border:none;
   color:#fff;
   padding:11px 15px;
-  border-radius:10px;
+  border-radius:9px;
   font-weight:bold;
   flex:1;
 }
 
 .accept-btn{
-  background:#16a34a;
+  background:#159447;
 }
 
 .reject-btn{
-  background:#dc2626;
+  background:#d62839;
 }
 
 .rate-btn{
@@ -535,13 +504,38 @@ header p{
   color:#000;
 }
 
-/* PROFILE */
+.status{
+  display:inline-block;
+  padding:6px 9px;
+  border-radius:7px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.status.open{
+  background:#3b2d08;
+  color:#ffd166;
+}
+
+.status.accepted{
+  background:#0d3821;
+  color:#63e6a2;
+}
+
+.status.rejected{
+  background:#40151a;
+  color:#ff8c96;
+}
+
+/* =========================
+   PROFILE
+========================= */
 
 .seller-profile{
   background:#111;
   border:1px solid #292929;
-  border-radius:20px;
-  padding:24px;
+  border-radius:18px;
+  padding:23px;
 }
 
 .seller-header{
@@ -567,15 +561,15 @@ header p{
 }
 
 .seller-stat{
-  background:#1a1a1a;
+  background:#191919;
   padding:15px;
-  border-radius:12px;
+  border-radius:11px;
   text-align:center;
 }
 
 .seller-stat strong{
   display:block;
-  font-size:23px;
+  font-size:22px;
 }
 
 .seller-stat span{
@@ -583,160 +577,89 @@ header p{
   font-size:13px;
 }
 
-/* EMPTY */
+/* =========================
+   CHAT
+========================= */
 
-.empty{
+.chat-layout{
+  display:grid;
+  grid-template-columns:310px 1fr;
+  gap:15px;
+  min-height:500px;
+}
+
+.chat-list{
   background:#111;
   border:1px solid #292929;
-  padding:25px;
-  border-radius:15px;
-  color:#888;
-  text-align:center;
+  border-radius:16px;
+  overflow:hidden;
 }
 
-/* MODAL */
-
-.modal-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.82);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  padding:15px;
-}
-
-.modal{
-  width:100%;
-  max-width:720px;
-  max-height:94vh;
-  overflow:auto;
-  background:#111;
-  border:1px solid #333;
-  border-radius:22px;
-  padding:20px;
-  position:relative;
-}
-
-.close-modal{
-  position:absolute;
-  right:15px;
-  top:15px;
-  width:38px;
-  height:38px;
-  border:none;
-  border-radius:50%;
-  background:#252525;
-  color:#fff;
-  font-size:20px;
-}
-
-.detail-image{
-  width:100%;
-  height:340px;
-  background:#191919;
-  border-radius:17px;
-  object-fit:contain;
-  margin-bottom:15px;
-}
-
-.detail-price{
-  font-size:29px;
+.chat-list-title{
+  padding:16px;
   font-weight:bold;
-  margin:10px 0;
+  border-bottom:1px solid #292929;
 }
 
-.detail-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
-  margin-top:18px;
-}
-
-.detail-actions button{
-  border:none;
-  padding:13px;
-  border-radius:10px;
-  font-weight:bold;
-}
-
-.detail-buy{
-  background:#fff;
-  color:#000;
-}
-
-.detail-dark{
-  background:#242424;
-  color:#fff;
-}
-
-.detail-description{
-  background:#191919;
+.chat-item{
   padding:14px;
-  border-radius:12px;
-  color:#ccc;
-  line-height:1.5;
-  margin-top:15px;
-}
-
-.detail-seller{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  background:#191919;
-  padding:13px;
-  border-radius:12px;
-  margin-top:15px;
+  border-bottom:1px solid #242424;
   cursor:pointer;
 }
 
-.detail-seller-avatar{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:#fff;
-  color:#000;
+.chat-item:hover,
+.chat-item.selected{
+  background:#1b1b1b;
+}
+
+.chat-item strong{
+  display:block;
+}
+
+.chat-item span{
+  color:#888;
+  font-size:13px;
+}
+
+.chat-window{
+  background:#111;
+  border:1px solid #292929;
+  border-radius:16px;
   display:flex;
-  align-items:center;
-  justify-content:center;
+  flex-direction:column;
+  min-height:500px;
+}
+
+.chat-header{
+  padding:15px;
+  border-bottom:1px solid #292929;
   font-weight:bold;
 }
 
-/* CHAT */
-
-.chat-box{
-  background:#0c0c0c;
-  border:1px solid #292929;
-  border-radius:15px;
-  padding:12px;
-}
-
-.chat-messages{
-  height:330px;
-  overflow:auto;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  padding:8px;
+.messages{
+  flex:1;
+  padding:15px;
+  overflow-y:auto;
+  min-height:350px;
 }
 
 .message{
-  max-width:78%;
-  padding:10px 12px;
-  border-radius:13px;
-  background:#222;
+  max-width:75%;
+  padding:10px 13px;
+  border-radius:14px;
+  margin-bottom:9px;
+  background:#202020;
 }
 
 .message.mine{
-  align-self:flex-end;
+  margin-left:auto;
   background:#fff;
   color:#000;
 }
 
 .message small{
   display:block;
-  opacity:.6;
+  opacity:.55;
   font-size:10px;
   margin-top:4px;
 }
@@ -744,11 +667,18 @@ header p{
 .chat-input{
   display:flex;
   gap:8px;
-  margin-top:10px;
+  padding:12px;
+  border-top:1px solid #292929;
 }
 
 .chat-input input{
   flex:1;
+  min-width:0;
+  padding:12px;
+  background:#191919;
+  color:#fff;
+  border:1px solid #333;
+  border-radius:10px;
 }
 
 .chat-input button{
@@ -756,130 +686,140 @@ header p{
   background:#fff;
   color:#000;
   border-radius:10px;
-  padding:10px 14px;
+  padding:0 17px;
   font-weight:bold;
 }
 
-/* OFFER */
+/* =========================
+   DETAIL MODAL
+========================= */
 
-.offer-box{
-  background:#191919;
-  border-radius:14px;
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.78);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10000;
   padding:15px;
-  margin-top:12px;
 }
 
-.offer-box input{
-  width:100%;
-  margin-bottom:8px;
+.modal-box{
+  width:min(700px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:#111;
+  border:1px solid #3a3a3a;
+  border-radius:20px;
+  padding:20px;
 }
 
-.offer-box button{
+.detail-image{
   width:100%;
+  height:320px;
+  background:#191919;
+  border-radius:15px;
+  object-fit:contain;
+}
+
+.detail-actions{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-top:14px;
+}
+
+.detail-actions button{
   border:none;
   background:#fff;
   color:#000;
-  padding:11px;
-  border-radius:9px;
+  padding:12px;
+  border-radius:10px;
   font-weight:bold;
 }
 
-/* RATING */
-
-.rating-stars{
-  display:flex;
-  gap:5px;
-  margin:15px 0;
+.detail-actions button.dark{
+  background:#222;
+  color:#fff;
+  border:1px solid #333;
 }
 
-.rating-stars button{
+.close-modal{
+  width:100%;
+  margin-top:10px;
   border:none;
   background:#222;
   color:#fff;
-  border-radius:8px;
-  padding:9px;
-  font-size:20px;
+  padding:12px;
+  border-radius:10px;
 }
 
-.rating-stars button.selected{
-  background:#ffe49a;
-  color:#000;
-}
-
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
   text-align:center;
   padding:35px;
   color:#666;
+  border-top:1px solid #222;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
-@media(max-width:800px){
+@media(max-width:950px){
 
-  .navigation{
-    grid-template-columns:repeat(3,1fr);
+  .cards{
+    grid-template-columns:repeat(3,minmax(0,1fr));
   }
 
-  .filter-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .form-row{
-    grid-template-columns:1fr;
-  }
-
-  .profile-inner{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .profile-user{
-    justify-content:center;
-  }
-
-  .profile-controls{
-    width:100%;
-  }
-
-  .profile-controls input{
-    flex:1;
-    min-width:0;
+  .chat-layout{
+    grid-template-columns:240px 1fr;
   }
 }
 
-@media(max-width:500px){
+@media(max-width:700px){
 
   header h1{
     font-size:25px;
   }
 
-  .container{
-    padding:13px;
+  .profile-inner{
+    min-height:62px;
+  }
+
+  .profile-controls input{
+    width:130px;
+  }
+
+  .navigation-wrap{
+    top:62px;
   }
 
   .navigation{
-    grid-template-columns:repeat(3,1fr);
-    gap:5px;
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    gap:4px;
   }
 
   .navigation button{
-    padding:11px 4px;
-    font-size:12px;
+    padding:10px 3px;
+    font-size:10px;
   }
 
   .cards{
     grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:9px;
+    gap:10px;
   }
 
   .card{
-    padding:9px;
+    padding:10px;
   }
 
   .card-image{
-    height:155px;
+    height:150px;
   }
 
   .card h3{
@@ -887,23 +827,31 @@ footer{
   }
 
   .price{
-    font-size:18px;
+    font-size:19px;
   }
 
-  .card button{
-    font-size:12px;
-    padding:9px 5px;
-  }
-
-  .filter-grid{
+  .sell-form{
     grid-template-columns:1fr;
   }
 
-  .detail-image{
-    height:250px;
+  .sell-form .full{
+    grid-column:auto;
   }
 
-  .detail-actions{
+  .chat-layout{
+    grid-template-columns:1fr;
+  }
+
+  .chat-list{
+    max-height:220px;
+    overflow-y:auto;
+  }
+
+  .chat-window{
+    min-height:450px;
+  }
+
+  .seller-stats{
     grid-template-columns:1fr;
   }
 
@@ -913,6 +861,40 @@ footer{
 
   .request-actions{
     flex-direction:column;
+  }
+
+  .detail-image{
+    height:250px;
+  }
+
+  .detail-actions{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:420px){
+
+  .profile-user span{
+    max-width:90px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  .profile-controls input{
+    width:105px;
+  }
+
+  .primary-btn{
+    padding:9px;
+    font-size:12px;
+  }
+
+  .navigation button{
+    font-size:9px;
+  }
+
+  .card-image{
+    height:135px;
   }
 }
 </style>
@@ -925,6 +907,7 @@ footer{
   <p>Der Marktplatz für Fußballkarten</p>
 </header>
 
+<!-- PROFIL -->
 <div class="profile-bar">
   <div class="profile-inner">
 
@@ -934,160 +917,261 @@ footer{
     </div>
 
     <div class="profile-controls">
-      <input id="usernameInput" maxlength="20" placeholder="Benutzername">
-      <button class="primary-btn" onclick="saveUsername()">Profil speichern</button>
+      <input
+        id="usernameInput"
+        type="text"
+        maxlength="20"
+        placeholder="Benutzername"
+      >
+      <button class="primary-btn" onclick="saveUsername()">
+        Profil speichern
+      </button>
     </div>
 
   </div>
 </div>
 
+<!-- NAVIGATION -->
+<div class="navigation-wrap">
+
+  <nav class="navigation">
+
+    <button id="navCards"
+      class="active"
+      onclick="showPage('cardsPage','navCards')">
+      🔥 Karten
+    </button>
+
+    <button id="navFavorites"
+      onclick="showPage('favoritesPage','navFavorites')">
+      ❤️ Favoriten
+      <span id="favoriteBadge" class="badge" style="display:none">0</span>
+    </button>
+
+    <button id="navMine"
+      onclick="showPage('minePage','navMine')">
+      🃏 Meine Karten
+    </button>
+
+    <button id="navRequests"
+      onclick="showPage('requestsPage','navRequests')">
+      📩 Anfragen
+      <span id="requestBadge" class="badge" style="display:none">0</span>
+    </button>
+
+    <button id="navMessages"
+      onclick="showPage('messagesPage','navMessages')">
+      💬 Nachrichten
+      <span id="messageBadge" class="badge" style="display:none">0</span>
+    </button>
+
+    <button id="navProfile"
+      onclick="showPage('profilePage','navProfile')">
+      👤 Profil
+    </button>
+
+  </nav>
+
+</div>
+
 <div class="search">
-  <input id="searchInput" placeholder="🔎 Spieler, Verein oder Verkäufer suchen...">
+  <input
+    id="searchInput"
+    type="text"
+    placeholder="🔎 Spieler, Verein oder Verkäufer suchen..."
+  >
 </div>
 
 <div class="container">
 
-<div class="sell-start">
-  <h2>🎟️ Karte verkaufen</h2>
-  <p>Erstelle dein Angebot mit Bildern, Zustand, Beschreibung und Preis.</p>
-  <button onclick="toggleSellForm()">Karte verkaufen</button>
+<!-- VERKAUFEN -->
+<div class="sell-launch">
+
+  <button class="sell-main-btn" onclick="toggleSellPanel()">
+    ➕ Karte verkaufen
+  </button>
+
 </div>
 
-<div id="sellFormBox" class="sell-form-box">
+<div id="sellPanel" class="sell-panel">
 
-  <h2>🎟️ Neue Karte einstellen</h2>
+  <h2>🎟️ Karte verkaufen</h2>
+
+  <p style="text-align:center;color:#888">
+    Füge deine Karte wie bei einem echten Marktplatz hinzu.
+  </p>
 
   <form id="sellForm" class="sell-form">
 
-    <div class="form-row">
-      <input id="player" required placeholder="Spieler">
-      <input id="club" required placeholder="Verein">
-    </div>
+    <input
+      id="player"
+      type="text"
+      placeholder="Spieler *"
+      required
+    >
 
-    <div class="form-row">
-      <input id="price" type="number" min="0" step="0.01" required placeholder="Preis in €">
+    <input
+      id="club"
+      type="text"
+      placeholder="Verein *"
+      required
+    >
 
-      <select id="condition" required>
-        <option value="">Zustand auswählen</option>
-        <option value="Neu">Neu</option>
-        <option value="Sehr gut">Sehr gut</option>
-        <option value="Gut">Gut</option>
-        <option value="Akzeptabel">Akzeptabel</option>
-      </select>
-    </div>
+    <input
+      id="price"
+      type="number"
+      min="0"
+      step="0.01"
+      placeholder="Preis in € *"
+      required
+    >
 
-    <textarea id="description" placeholder="Beschreibung der Karte..."></textarea>
+    <select id="condition">
+      <option value="">Zustand auswählen</option>
+      <option>Neu</option>
+      <option>Sehr gut</option>
+      <option>Gut</option>
+      <option>Akzeptabel</option>
+    </select>
 
-    <label class="photo-label">
-      📸 Foto hinzufügen
-      <input id="image" type="file" accept="image/*" required>
+    <textarea
+      id="description"
+      class="full"
+      placeholder="Beschreibung der Karte..."
+    ></textarea>
+
+    <label class="photo-button full">
+      📷 Foto auswählen
+      <input
+        id="image"
+        type="file"
+        accept="image/*"
+        required
+        style="display:none"
+      >
     </label>
 
-    <div id="photoPreview" class="photo-preview"></div>
+    <button type="submit" class="sell-submit">
+      Karte einstellen
+    </button>
 
-    <button class="primary-btn" type="submit">
-      🚀 Karte einstellen
+    <button
+      type="button"
+      class="close-sell"
+      onclick="toggleSellPanel()">
+      Abbrechen
     </button>
 
   </form>
 
 </div>
 
-<div class="navigation">
-
-  <button id="navCards" class="active" onclick="showPage('cardsPage','navCards')">
-    🔥 Karten
-  </button>
-
-  <button id="navFavorites" onclick="showPage('favoritesPage','navFavorites')">
-    ❤️ Favoriten
-    <span id="favoriteBadge" class="badge" style="display:none">0</span>
-  </button>
-
-  <button id="navSell" onclick="toggleSellForm()">
-    ➕ Verkaufen
-  </button>
-
-  <button id="navMine" onclick="showPage('minePage','navMine')">
-    🃏 Meine Karten
-  </button>
-
-  <button id="navRequests" onclick="showPage('requestsPage','navRequests')">
-    📩 Anfragen
-    <span id="requestBadge" class="badge" style="display:none">0</span>
-  </button>
-
-  <button id="navProfile" onclick="showPage('profilePage','navProfile')">
-    👤 Profil
-  </button>
-
-</div>
-
+<!-- KARTEN -->
 <section id="cardsPage" class="page active">
 
-  <div class="page-title">
-    <h2>🔥 Aktuelle Karten</h2>
-  </div>
-
-  <div class="filter-box">
-
-    <div class="filter-grid">
-
-      <input id="filterText" placeholder="Spieler oder Verein">
-
-      <input id="minPrice" type="number" min="0" placeholder="Preis ab €">
-
-      <input id="maxPrice" type="number" min="0" placeholder="Preis bis €">
-
-      <select id="sortSelect">
-        <option value="newest">Neueste zuerst</option>
-        <option value="cheap">Preis: niedrig → hoch</option>
-        <option value="expensive">Preis: hoch → niedrig</option>
-      </select>
-
-    </div>
-
-    <div class="filter-buttons">
-      <button onclick="applyFilters()">🔎 Filtern</button>
-      <button onclick="resetFilters()">↺ Zurücksetzen</button>
-    </div>
-
-  </div>
+  <h2>🔥 Aktuelle Karten</h2>
 
   <div id="cards" class="cards"></div>
 
 </section>
 
+<!-- FAVORITEN -->
 <section id="favoritesPage" class="page">
-  <h2 id="favoriteTitle">❤️ Favoriten (0)</h2>
+
+  <h2 id="favoriteTitle">
+    ❤️ Favoriten (0)
+  </h2>
+
   <div id="favoriteCards" class="cards"></div>
+
 </section>
 
+<!-- MEINE KARTEN -->
 <section id="minePage" class="page">
+
   <h2>🃏 Meine Karten</h2>
+
   <div id="myCards" class="cards"></div>
+
 </section>
 
+<!-- ANFRAGEN -->
 <section id="requestsPage" class="page">
 
-  <h2 id="requestTitle">📩 Meine Kaufanfragen (0)</h2>
+  <h2 id="requestTitle">
+    📩 Meine Kaufanfragen (0)
+  </h2>
+
   <div id="purchaseRequests" class="request-list"></div>
 
   <br>
 
-  <h2 id="sellerRequestTitle">📥 Anfragen für meine Karten (0)</h2>
+  <h2 id="sellerRequestTitle">
+    📥 Anfragen für meine Karten (0)
+  </h2>
+
   <div id="sellerRequests" class="request-list"></div>
-
-  <br>
-
-  <h2>💶 Meine Angebote</h2>
-  <div id="myOffers" class="request-list"></div>
 
 </section>
 
+<!-- NACHRICHTEN -->
+<section id="messagesPage" class="page">
+
+  <h2>💬 Nachrichten</h2>
+
+  <div class="chat-layout">
+
+    <div class="chat-list">
+
+      <div class="chat-list-title">
+        Deine Chats
+      </div>
+
+      <div id="chatList"></div>
+
+    </div>
+
+    <div class="chat-window">
+
+      <div id="chatHeader" class="chat-header">
+        💬 Chat auswählen
+      </div>
+
+      <div id="messages" class="messages">
+        <div class="empty">
+          Wähle links einen Chat aus.
+        </div>
+      </div>
+
+      <div class="chat-input">
+
+        <input
+          id="messageInput"
+          type="text"
+          placeholder="Nachricht schreiben..."
+          disabled
+        >
+
+        <button
+          id="sendMessageBtn"
+          onclick="sendMessage()"
+          disabled>
+          Senden
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROFIL -->
 <section id="profilePage" class="page">
 
   <h2>👤 Verkäuferprofil</h2>
+
   <div id="profileBox" class="seller-profile"></div>
 
 </section>
@@ -1098,11 +1182,10 @@ footer{
   © 2026 Pixel Cards
 </footer>
 
-
 <script>
 
 /* =========================================================
-   SPEICHER
+   DATEN
 ========================================================= */
 
 function getUsername(){
@@ -1157,14 +1240,6 @@ function getMessages(){
   }
 }
 
-function getOffers(){
-  try{
-    return JSON.parse(localStorage.getItem("pixelOffers")) || [];
-  }catch(e){
-    return [];
-  }
-}
-
 function saveData(key,data){
   localStorage.setItem(key,JSON.stringify(data));
 }
@@ -1188,14 +1263,64 @@ function saveUsername(){
 
   localStorage.setItem("pixelUsername",name);
 
+  /*
+   * Bei einer Umbenennung werden vorhandene eigene
+   * Karten/Anfragen/Chats ebenfalls angepasst.
+   */
+
+  if(oldName && oldName!==name){
+
+    const cards=getCards();
+
+    cards.forEach(card=>{
+      if(card.owner===oldName){
+        card.owner=name;
+      }
+
+      if(card.soldTo===oldName){
+        card.soldTo=name;
+      }
+    });
+
+    saveData("footballCards",cards);
+
+    const requests=getRequests();
+
+    requests.forEach(request=>{
+
+      if(request.buyer===oldName){
+        request.buyer=name;
+      }
+
+      if(request.seller===oldName){
+        request.seller=name;
+      }
+
+    });
+
+    saveData("purchaseRequests",requests);
+
+    const messages=getMessages();
+
+    messages.forEach(message=>{
+
+      if(message.sender===oldName){
+        message.sender=name;
+      }
+
+      if(message.receiver===oldName){
+        message.receiver=name;
+      }
+
+    });
+
+    saveData("pixelMessages",messages);
+  }
+
   updateProfile();
   loadAll();
 
-  alert(
-    oldName && oldName!==name
-      ? "👤 Benutzername geändert zu: "+name
-      : "👤 Profil gespeichert!"
-  );
+  alert("👤 Profil gespeichert!");
 }
 
 function updateProfile(){
@@ -1224,7 +1349,9 @@ function showPage(pageId,buttonId){
 
   const page=document.getElementById(pageId);
 
-  if(page) page.classList.add("active");
+  if(page){
+    page.classList.add("active");
+  }
 
   document.querySelectorAll(".navigation button").forEach(button=>{
     button.classList.remove("active");
@@ -1232,69 +1359,142 @@ function showPage(pageId,buttonId){
 
   const button=document.getElementById(buttonId);
 
-  if(button) button.classList.add("active");
+  if(button){
+    button.classList.add("active");
+  }
 
-  if(pageId==="requestsPage"){
-    loadAll();
+  if(pageId==="messagesPage"){
+    renderChatList();
+  }
+
+  if(pageId==="profilePage" && getUsername()){
+    loadSellerProfile(getUsername());
   }
 }
 
 
 /* =========================================================
-   VERKAUFSFORMULAR
+   VERKAUFEN ÖFFNEN
 ========================================================= */
 
-function toggleSellForm(){
+function toggleSellPanel(){
 
-  const box=document.getElementById("sellFormBox");
+  const panel=document.getElementById("sellPanel");
 
-  box.classList.toggle("open");
+  panel.classList.toggle("open");
 
-  if(box.classList.contains("open")){
-    box.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
+  if(panel.classList.contains("open")){
+    setTimeout(()=>{
+      panel.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+    },50);
   }
 }
-
-document.getElementById("image").addEventListener("change",function(){
-
-  const preview=document.getElementById("photoPreview");
-
-  preview.innerHTML="";
-
-  const file=this.files[0];
-
-  if(file){
-
-    const url=URL.createObjectURL(file);
-
-    const img=document.createElement("img");
-
-    img.src=url;
-
-    preview.appendChild(img);
-  }
-});
 
 
 /* =========================================================
-   FILTER
+   BADGES
 ========================================================= */
 
-function applyFilters(){
-  loadCards();
+function updateRequestBadge(){
+
+  const username=getUsername();
+
+  if(!username) return;
+
+  const requests=getRequests();
+
+  const count=requests.filter(request=>
+    request.seller===username &&
+    request.status==="pending"
+  ).length;
+
+  const badge=document.getElementById("requestBadge");
+
+  if(count>0){
+    badge.style.display="flex";
+    badge.textContent=count;
+  }else{
+    badge.style.display="none";
+  }
 }
 
-function resetFilters(){
+function updateMessageBadge(){
 
-  document.getElementById("filterText").value="";
-  document.getElementById("minPrice").value="";
-  document.getElementById("maxPrice").value="";
-  document.getElementById("sortSelect").value="newest";
+  const username=getUsername();
 
-  loadCards();
+  if(!username) return;
+
+  const messages=getMessages();
+
+  const count=messages.filter(message=>
+    message.receiver===username &&
+    message.read!==true
+  ).length;
+
+  const badge=document.getElementById("messageBadge");
+
+  if(count>0){
+    badge.style.display="flex";
+    badge.textContent=count;
+  }else{
+    badge.style.display="none";
+  }
+}
+
+
+/* =========================================================
+   KARTEN
+========================================================= */
+
+function loadCards(){
+
+  const box=document.getElementById("cards");
+
+  box.innerHTML="";
+
+  const search=
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
+
+  const cards=getCards();
+
+  const filtered=cards.filter(card=>{
+
+    if(card.sold===true) return false;
+
+    return String(card.player||"")
+      .toLowerCase()
+      .includes(search)
+
+      ||
+
+      String(card.club||"")
+      .toLowerCase()
+      .includes(search)
+
+      ||
+
+      String(card.owner||"")
+      .toLowerCase()
+      .includes(search);
+  });
+
+  if(!filtered.length){
+
+    box.innerHTML=
+      "<div class='empty'>Keine Karten gefunden.</div>";
+
+    return;
+  }
+
+  filtered.forEach(card=>{
+    createCard(card,box);
+  });
 }
 
 
@@ -1318,9 +1518,11 @@ function getFavoriteCount(cardId){
 
   const users=getFavoriteUsers();
 
-  return Array.isArray(users[cardId])
-    ? users[cardId].length
-    : 0;
+  if(!Array.isArray(users[cardId])){
+    return 0;
+  }
+
+  return users[cardId].length;
 }
 
 function toggleFavorite(cardId){
@@ -1332,7 +1534,9 @@ function toggleFavorite(cardId){
     return;
   }
 
-  const card=getCards().find(c=>c.id===cardId);
+  const cards=getCards();
+
+  const card=cards.find(c=>c.id===cardId);
 
   if(!card) return;
 
@@ -1342,23 +1546,24 @@ function toggleFavorite(cardId){
   }
 
   let favorites=getFavorites();
+
+  const existingIndex=favorites.findIndex(item=>
+    item.id===cardId &&
+    item.favoriteBy===username
+  );
+
   let users=getFavoriteUsers();
 
   if(!Array.isArray(users[cardId])){
     users[cardId]=[];
   }
 
-  const index=favorites.findIndex(item=>
-    item.id===cardId &&
-    item.favoriteBy===username
-  );
+  if(existingIndex!==-1){
 
-  if(index>=0){
-
-    favorites.splice(index,1);
+    favorites.splice(existingIndex,1);
 
     users[cardId]=users[cardId].filter(
-      u=>u!==username
+      user=>user!==username
     );
 
   }else{
@@ -1385,19 +1590,19 @@ function loadFavorites(){
 
   box.innerHTML="";
 
+  const favorites=getFavorites();
   const username=getUsername();
-
   const cards=getCards();
 
-  const favoriteCards=getFavorites()
-    .filter(x=>x.favoriteBy===username)
-    .map(x=>cards.find(c=>c.id===x.id))
+  const myFavorites=favorites
+    .filter(item=>item.favoriteBy===username)
+    .map(item=>cards.find(card=>card.id===item.id))
     .filter(Boolean);
 
   document.getElementById("favoriteTitle").textContent=
-    "❤️ Favoriten ("+favoriteCards.length+")";
+    "❤️ Favoriten ("+myFavorites.length+")";
 
-  if(!favoriteCards.length){
+  if(!myFavorites.length){
 
     box.innerHTML=
       "<div class='empty'>❤️ Noch keine Favoriten.</div>";
@@ -1405,192 +1610,148 @@ function loadFavorites(){
     return;
   }
 
-  favoriteCards.forEach(card=>{
+  myFavorites.forEach(card=>{
     createCard(card,box);
   });
 }
 
 
 /* =========================================================
-   KARTEN
-========================================================= */
-
-function loadCards(){
-
-  const box=document.getElementById("cards");
-
-  box.innerHTML="";
-
-  const search=
-    document.getElementById("searchInput").value
-    .toLowerCase()
-    .trim();
-
-  const filter=
-    document.getElementById("filterText").value
-    .toLowerCase()
-    .trim();
-
-  const min=
-    parseFloat(document.getElementById("minPrice").value);
-
-  const max=
-    parseFloat(document.getElementById("maxPrice").value);
-
-  const sort=
-    document.getElementById("sortSelect").value;
-
-  let cards=getCards();
-
-  cards=cards.filter(card=>{
-
-    if(card.sold===true) return false;
-
-    const general=
-      String(card.player||"").toLowerCase().includes(search) ||
-      String(card.club||"").toLowerCase().includes(search) ||
-      String(card.owner||"").toLowerCase().includes(search);
-
-    if(search && !general) return false;
-
-    const filterMatch=
-      String(card.player||"").toLowerCase().includes(filter) ||
-      String(card.club||"").toLowerCase().includes(filter);
-
-    if(filter && !filterMatch) return false;
-
-    const price=Number(card.price)||0;
-
-    if(!isNaN(min) && price<min) return false;
-
-    if(!isNaN(max) && price>max) return false;
-
-    return true;
-  });
-
-  if(sort==="cheap"){
-    cards.sort((a,b)=>
-      Number(a.price)-Number(b.price)
-    );
-  }
-
-  if(sort==="expensive"){
-    cards.sort((a,b)=>
-      Number(b.price)-Number(a.price)
-    );
-  }
-
-  if(sort==="newest"){
-    cards.sort((a,b)=>
-      Number(b.createdAt||0)-Number(a.createdAt||0)
-    );
-  }
-
-  if(!cards.length){
-
-    box.innerHTML=
-      "<div class='empty'>Keine passenden Karten gefunden.</div>";
-
-    return;
-  }
-
-  cards.forEach(card=>{
-    createCard(card,box);
-  });
-}
-
-
-/* =========================================================
-   KARTEN-CARD
+   KARTE ERSTELLEN
 ========================================================= */
 
 function createCard(card,box){
 
   const username=getUsername();
-
   const favorite=isFavorite(card.id);
-
+  const favoriteCount=getFavoriteCount(card.id);
   const requests=getRequests();
 
-  const myRequest=requests.find(r=>
-    r.cardId===card.id &&
-    r.buyer===username &&
-    (r.status==="pending" || r.status==="accepted")
+  const myRequest=requests.find(request=>
+    request.cardId===card.id &&
+    request.buyer===username &&
+    (
+      request.status==="pending" ||
+      request.status==="accepted"
+    )
   );
-
-  let buyButton="";
-
-  if(card.owner===username){
-
-    buyButton=
-      `<button class="gray">🚫 Deine Karte</button>`;
-
-  }else if(!username){
-
-    buyButton=
-      `<button onclick="needUsername()">🛒 Kaufen</button>`;
-
-  }else if(card.sold){
-
-    buyButton=
-      `<button class="gray" disabled>❌ Verkauft</button>`;
-
-  }else if(myRequest){
-
-    buyButton=
-      `<button class="gray" disabled>
-        ${myRequest.status==="accepted"
-          ? "✅ Angenommen"
-          : "🕐 Anfrage offen"}
-      </button>`;
-
-  }else{
-
-    buyButton=
-      `<button onclick="buyCard('${card.id}')">
-        🛒 Kaufen
-      </button>`;
-  }
 
   const item=document.createElement("div");
 
   item.className="card";
 
+  let buyButton="";
+
+  if(card.owner===username){
+
+    buyButton=`
+      <button class="gray" onclick="ownCardMessage()">
+        🚫 Deine Karte
+      </button>
+    `;
+
+  }else if(!username){
+
+    buyButton=`
+      <button onclick="needUsername()">
+        🛒 Kaufen
+      </button>
+    `;
+
+  }else if(myRequest){
+
+    if(myRequest.status==="accepted"){
+
+      buyButton=`
+        <button class="gray" disabled>
+          ✅ Angenommen
+        </button>
+      `;
+
+    }else{
+
+      buyButton=`
+        <button class="gray" disabled>
+          🕐 Anfrage offen
+        </button>
+      `;
+
+    }
+
+  }else{
+
+    buyButton=`
+      <button onclick="buyCard('${escapeAttribute(card.id)}')">
+        🛒 Kaufen
+      </button>
+    `;
+  }
+
+  let favoriteButton="";
+
+  if(card.owner===username){
+
+    favoriteButton=`
+      <button class="gray" disabled>
+        🚫 Eigene Karte
+      </button>
+    `;
+
+  }else{
+
+    favoriteButton=`
+      <button
+        class="gray"
+        onclick="toggleFavorite('${escapeAttribute(card.id)}')">
+        ${favorite ? "❤️ Favorisiert" : "♡ Favorit"}
+      </button>
+    `;
+  }
+
   item.innerHTML=`
 
     <div class="card-image">
-      <img src="${card.image}" alt="${escapeHTML(card.player)}">
+      <img
+        src="${card.image}"
+        alt="${escapeHTML(card.player)}">
     </div>
 
     <h3>${escapeHTML(card.player)}</h3>
 
-    <p class="info">${escapeHTML(card.club)}</p>
-
-    <p class="price">${escapeHTML(String(card.price))} €</p>
-
     <p class="info">
-      ${escapeHTML(card.condition||"Zustand nicht angegeben")}
+      ${escapeHTML(card.club)}
+    </p>
+
+    <p class="price">
+      ${escapeHTML(String(card.price))} €
     </p>
 
     <div class="favorite-row">
       <span>
-        ❤️ ${getFavoriteCount(card.id)}
+        ❤️ ${favoriteCount}
+        Favorit${favoriteCount===1?"":"en"}
       </span>
+
+      ${
+        card.condition
+        ? `<span>${escapeHTML(card.condition)}</span>`
+        : ""
+      }
     </div>
 
-    <button onclick="showCard('${card.id}')">
+    <button onclick="showCard('${escapeAttribute(card.id)}')">
       👀 Karte ansehen
     </button>
 
     ${buyButton}
 
+    ${favoriteButton}
+
     <button
       class="gray"
-      onclick="toggleFavorite('${card.id}')"
-    >
-      ${favorite ? "❤️ Favorisiert" : "♡ Favorit"}
+      onclick="openSellerProfile('${escapeAttribute(card.owner||"")}')">
+      👤 Verkäuferprofil
     </button>
-
   `;
 
   box.appendChild(item);
@@ -1598,205 +1759,14 @@ function createCard(card,box){
 
 
 /* =========================================================
-   DETAILFENSTER
+   KAUFEN
 ========================================================= */
 
-function showCard(cardId){
-
-  const card=getCards().find(c=>c.id===cardId);
-
-  if(!card) return;
-
-  const username=getUsername();
-
-  const overlay=document.createElement("div");
-
-  overlay.className="modal-overlay";
-
-  overlay.innerHTML=`
-
-    <div class="modal">
-
-      <button class="close-modal" id="closeDetail">×</button>
-
-      <img
-        class="detail-image"
-        src="${card.image}"
-        alt="${escapeHTML(card.player)}"
-      >
-
-      <h1>${escapeHTML(card.player)}</h1>
-
-      <p class="info">
-        ⚽ ${escapeHTML(card.club)}
-      </p>
-
-      <div class="detail-price">
-        ${escapeHTML(String(card.price))} €
-      </div>
-
-      <p class="info">
-        📦 Zustand:
-        <strong>${escapeHTML(card.condition||"Nicht angegeben")}</strong>
-      </p>
-
-      ${
-        card.description
-        ? `<div class="detail-description">
-            <strong>📝 Beschreibung</strong><br><br>
-            ${escapeHTML(card.description)}
-          </div>`
-        : ""
-      }
-
-      <div
-        class="detail-seller"
-        id="detailSeller"
-      >
-
-        <div class="detail-seller-avatar">
-          ${escapeHTML((card.owner||"?").charAt(0).toUpperCase())}
-        </div>
-
-        <div>
-          <strong>${escapeHTML(card.owner||"Unbekannt")}</strong>
-          <div class="info">Verkäuferprofil ansehen</div>
-        </div>
-
-      </div>
-
-      <div class="detail-actions">
-
-        <button
-          class="detail-buy"
-          id="detailBuy"
-        >
-          🛒 Kaufen
-        </button>
-
-        <button
-          class="detail-dark"
-          id="detailFavorite"
-        >
-          ${isFavorite(card.id) ? "❤️ Favorisiert" : "♡ Favorit"}
-        </button>
-
-        <button
-          class="detail-dark"
-          id="detailQuestion"
-        >
-          ❓ Frage stellen
-        </button>
-
-        <button
-          class="detail-dark"
-          id="detailOffer"
-        >
-          💶 Angebot machen
-        </button>
-
-        <button
-          class="detail-dark"
-          id="detailChat"
-        >
-          💬 Chat öffnen
-        </button>
-
-      </div>
-
-    </div>
-  `;
-
-  document.body.appendChild(overlay);
-
-  overlay.querySelector("#closeDetail").onclick=()=>{
-    overlay.remove();
-  };
-
-  overlay.addEventListener("click",e=>{
-    if(e.target===overlay){
-      overlay.remove();
-    }
-  });
-
-  overlay.querySelector("#detailFavorite").onclick=()=>{
-
-    toggleFavorite(card.id);
-
-    overlay.remove();
-
-    setTimeout(()=>{
-      showCard(card.id);
-    },50);
-  };
-
-  overlay.querySelector("#detailBuy").onclick=()=>{
-
-    overlay.remove();
-
-    buyCard(card.id);
-  };
-
-  overlay.querySelector("#detailQuestion").onclick=()=>{
-
-    if(!username){
-      needUsername();
-      return;
-    }
-
-    if(card.owner===username){
-      alert("🚫 Du kannst dir selbst keine Frage stellen.");
-      return;
-    }
-
-    openChat(card.owner,card.id,"question");
-  };
-
-  overlay.querySelector("#detailOffer").onclick=()=>{
-
-    if(!username){
-      needUsername();
-      return;
-    }
-
-    if(card.owner===username){
-      alert("🚫 Du kannst dir selbst kein Angebot machen.");
-      return;
-    }
-
-    openOffer(card);
-  };
-
-  overlay.querySelector("#detailChat").onclick=()=>{
-
-    if(!username){
-      needUsername();
-      return;
-    }
-
-    if(card.owner===username){
-      alert("🚫 Du kannst dir selbst keinen Chat senden.");
-      return;
-    }
-
-    openChat(card.owner,card.id);
-  };
-
-  overlay.querySelector("#detailSeller").onclick=()=>{
-
-    overlay.remove();
-
-    openSellerProfile(card.owner);
-  };
+function ownCardMessage(){
+  alert("🚫 Du kannst deine eigene Karte nicht kaufen.");
 }
 
-
-/* =========================================================
-   KAUFANFRAGE
-========================================================= */
-
 function needUsername(){
-
   alert("👤 Bitte zuerst einen Benutzernamen festlegen.");
 }
 
@@ -1816,56 +1786,67 @@ function buyCard(cardId){
   if(!card) return;
 
   if(card.owner===username){
-
-    alert("🚫 Du kannst deine eigene Karte nicht kaufen.");
+    ownCardMessage();
     return;
   }
 
-  if(card.sold){
-
+  if(card.sold===true){
     alert("❌ Diese Karte wurde bereits verkauft.");
     return;
   }
 
   const requests=getRequests();
 
-  const existing=requests.find(r=>
-    r.cardId===cardId &&
-    r.buyer===username &&
-    (r.status==="pending" || r.status==="accepted")
+  const existing=requests.find(request=>
+    request.cardId===cardId &&
+    request.buyer===username &&
+    (
+      request.status==="pending" ||
+      request.status==="accepted"
+    )
   );
 
   if(existing){
-
     alert("🕐 Du hast diese Karte bereits angefragt.");
     return;
   }
 
-  if(!confirm(
+  const confirmed=confirm(
     "Möchtest du diese Karte kaufen?\n\n"+
     card.player+
-    "\nPreis: "+
+    " – "+
+    card.club+
+    "\n\nPreis: "+
     card.price+
     " €"
-  )) return;
+  );
+
+  if(!confirmed) return;
 
   requests.push({
 
-    id:createId(),
+    id:
+      Date.now()+"-"+
+      Math.random().toString(36).substring(2),
+
     cardId:card.id,
     player:card.player,
     club:card.club,
     price:card.price,
     image:card.image,
+
     buyer:username,
     seller:card.owner,
+
     status:"pending",
-    createdAt:Date.now()
+
+    createdAt:new Date().toISOString()
 
   });
 
   saveData("purchaseRequests",requests);
 
+  updateRequestBadge();
   loadAll();
 
   alert("📩 Kaufanfrage wurde gesendet!");
@@ -1873,485 +1854,18 @@ function buyCard(cardId){
 
 
 /* =========================================================
-   CHAT
-========================================================= */
-
-function openChat(otherUser,cardId,mode){
-
-  const username=getUsername();
-
-  if(!username){
-    needUsername();
-    return;
-  }
-
-  const overlay=document.createElement("div");
-
-  overlay.className="modal-overlay";
-
-  overlay.innerHTML=`
-
-    <div class="modal">
-
-      <button class="close-modal" id="closeChat">×</button>
-
-      <h2>💬 Chat mit ${escapeHTML(otherUser)}</h2>
-
-      <div id="chatMessages" class="chat-box">
-        <div class="chat-messages"></div>
-      </div>
-
-      <div class="chat-input">
-
-        <input
-          id="chatText"
-          placeholder="${
-            mode==="question"
-              ? "Deine Frage..."
-              : "Nachricht schreiben..."
-          }"
-        >
-
-        <button id="sendChat">
-          Senden
-        </button>
-
-      </div>
-
-    </div>
-  `;
-
-  document.body.appendChild(overlay);
-
-  function renderMessages(){
-
-    const box=overlay.querySelector(".chat-messages");
-
-    box.innerHTML="";
-
-    const messages=getMessages().filter(m=>
-      m.cardId===cardId &&
-      (
-        (m.from===username && m.to===otherUser) ||
-        (m.from===otherUser && m.to===username)
-      )
-    );
-
-    if(!messages.length){
-
-      box.innerHTML=
-        "<div class='empty'>Noch keine Nachrichten.</div>";
-
-      return;
-    }
-
-    messages.forEach(message=>{
-
-      const div=document.createElement("div");
-
-      div.className=
-        "message "+
-        (message.from===username ? "mine" : "");
-
-      div.innerHTML=`
-        ${escapeHTML(message.text)}
-        <small>${escapeHTML(message.from)}</small>
-      `;
-
-      box.appendChild(div);
-    });
-
-    box.scrollTop=box.scrollHeight;
-  }
-
-  renderMessages();
-
-  overlay.querySelector("#closeChat").onclick=()=>{
-    overlay.remove();
-  };
-
-  function send(){
-
-    const input=overlay.querySelector("#chatText");
-
-    const text=input.value.trim();
-
-    if(!text) return;
-
-    const messages=getMessages();
-
-    messages.push({
-
-      id:createId(),
-      cardId:cardId,
-      from:username,
-      to:otherUser,
-      text:text,
-      createdAt:Date.now()
-
-    });
-
-    saveData("pixelMessages",messages);
-
-    input.value="";
-
-    renderMessages();
-  }
-
-  overlay.querySelector("#sendChat").onclick=send;
-
-  overlay.querySelector("#chatText").addEventListener(
-    "keydown",
-    e=>{
-      if(e.key==="Enter"){
-        send();
-      }
-    }
-  );
-}
-
-
-/* =========================================================
-   ANGEBOT MACHEN
-========================================================= */
-
-function openOffer(card){
-
-  const username=getUsername();
-
-  if(!username){
-    needUsername();
-    return;
-  }
-
-  const overlay=document.createElement("div");
-
-  overlay.className="modal-overlay";
-
-  overlay.innerHTML=`
-
-    <div class="modal">
-
-      <button class="close-modal" id="closeOffer">×</button>
-
-      <h2>💶 Angebot machen</h2>
-
-      <p>
-        Dein Angebot für
-        <strong>${escapeHTML(card.player)}</strong>
-      </p>
-
-      <p class="info">
-        Aktueller Preis: ${escapeHTML(String(card.price))} €
-      </p>
-
-      <div class="offer-box">
-
-        <input
-          id="offerPrice"
-          type="number"
-          min="0"
-          step="0.01"
-          placeholder="Dein Angebot in €"
-        >
-
-        <button id="sendOffer">
-          📩 Angebot senden
-        </button>
-
-      </div>
-
-    </div>
-  `;
-
-  document.body.appendChild(overlay);
-
-  overlay.querySelector("#closeOffer").onclick=()=>{
-    overlay.remove();
-  };
-
-  overlay.querySelector("#sendOffer").onclick=()=>{
-
-    const price=Number(
-      overlay.querySelector("#offerPrice").value
-    );
-
-    if(!price || price<=0){
-
-      alert("Bitte gib einen gültigen Preis ein.");
-      return;
-    }
-
-    const offers=getOffers();
-
-    offers.push({
-
-      id:createId(),
-      cardId:card.id,
-      player:card.player,
-      image:card.image,
-      originalPrice:card.price,
-      offerPrice:price,
-      buyer:username,
-      seller:card.owner,
-      status:"pending",
-      createdAt:Date.now()
-
-    });
-
-    saveData("pixelOffers",offers);
-
-    overlay.remove();
-
-    alert(
-      "💶 Angebot über "+
-      price.toFixed(2)+
-      " € wurde gesendet!"
-    );
-
-    loadAll();
-  };
-}
-
-
-/* =========================================================
-   ANGEBOTE ANZEIGEN
-========================================================= */
-
-function loadOffers(){
-
-  const box=document.getElementById("myOffers");
-
-  box.innerHTML="";
-
-  const username=getUsername();
-
-  const offers=getOffers().filter(o=>
-    o.buyer===username ||
-    o.seller===username
-  );
-
-  if(!offers.length){
-
-    box.innerHTML=
-      "<div class='empty'>💶 Noch keine Angebote.</div>";
-
-    return;
-  }
-
-  offers.forEach(offer=>{
-
-    const isSeller=offer.seller===username;
-
-    const item=document.createElement("div");
-
-    item.className="request";
-
-    let status="";
-
-    if(offer.status==="accepted"){
-
-      status=
-        "<span class='status accepted'>✅ Angenommen</span>";
-
-    }else if(offer.status==="rejected"){
-
-      status=
-        "<span class='status rejected'>❌ Abgelehnt</span>";
-
-    }else{
-
-      status=
-        "<span class='status open'>🕐 Offen</span>";
-    }
-
-    let actions="";
-
-    if(isSeller && offer.status==="pending"){
-
-      actions=`
-
-        <div class="request-actions">
-
-          <button
-            class="accept-btn"
-            onclick="acceptOffer('${offer.id}')"
-          >
-            🟢 Annehmen
-          </button>
-
-          <button
-            class="reject-btn"
-            onclick="rejectOffer('${offer.id}')"
-          >
-            🔴 Ablehnen
-          </button>
-
-        </div>
-      `;
-    }
-
-    item.innerHTML=`
-
-      <div class="request-top">
-
-        <img
-          class="request-image"
-          src="${offer.image}"
-        >
-
-        <div class="request-info">
-
-          <h3>${escapeHTML(offer.player)}</h3>
-
-          <p class="info">
-            ${
-              isSeller
-                ? "Angebot von "+escapeHTML(offer.buyer)
-                : "Angebot an "+escapeHTML(offer.seller)
-            }
-          </p>
-
-          <p class="info">
-            Ursprünglicher Preis:
-            ${escapeHTML(String(offer.originalPrice))} €
-          </p>
-
-          <p class="price">
-            Angebot:
-            ${escapeHTML(String(offer.offerPrice))} €
-          </p>
-
-          ${status}
-
-        </div>
-
-      </div>
-
-      ${actions}
-
-    `;
-
-    box.appendChild(item);
-  });
-}
-
-
-/* =========================================================
-   ANGEBOT ANNEHMEN
-========================================================= */
-
-function acceptOffer(id){
-
-  const username=getUsername();
-
-  const offers=getOffers();
-
-  const offer=offers.find(o=>o.id===id);
-
-  if(!offer) return;
-
-  if(offer.seller!==username){
-
-    alert("🚫 Nur der Verkäufer kann das Angebot annehmen.");
-    return;
-  }
-
-  if(offer.status!=="pending") return;
-
-  const cards=getCards();
-
-  const card=cards.find(c=>c.id===offer.cardId);
-
-  if(!card) return;
-
-  if(card.sold){
-
-    alert("❌ Die Karte wurde bereits verkauft.");
-    return;
-  }
-
-  if(!confirm(
-    "Angebot von "+
-    offer.buyer+
-    " über "+
-    offer.offerPrice+
-    " € annehmen?"
-  )) return;
-
-  offer.status="accepted";
-
-  card.sold=true;
-  card.soldTo=offer.buyer;
-  card.soldPrice=offer.offerPrice;
-
-  offers.forEach(other=>{
-
-    if(
-      other.cardId===offer.cardId &&
-      other.id!==offer.id &&
-      other.status==="pending"
-    ){
-      other.status="rejected";
-    }
-
-  });
-
-  saveData("pixelOffers",offers);
-  saveData("footballCards",cards);
-
-  loadAll();
-
-  alert("🟢 Angebot angenommen!");
-}
-
-
-/* =========================================================
-   ANGEBOT ABLEHNEN
-========================================================= */
-
-function rejectOffer(id){
-
-  const username=getUsername();
-
-  const offers=getOffers();
-
-  const offer=offers.find(o=>o.id===id);
-
-  if(!offer) return;
-
-  if(offer.seller!==username){
-
-    alert("🚫 Nur der Verkäufer kann das Angebot ablehnen.");
-    return;
-  }
-
-  if(!confirm("Angebot wirklich ablehnen?")) return;
-
-  offer.status="rejected";
-
-  saveData("pixelOffers",offers);
-
-  loadAll();
-
-  alert("🔴 Angebot abgelehnt.");
-}
-
-
-/* =========================================================
-   KAUFANFRAGEN
+   KÄUFER-ANFRAGEN
 ========================================================= */
 
 function loadPurchaseRequests(){
 
   const username=getUsername();
-
   const box=document.getElementById("purchaseRequests");
 
   box.innerHTML="";
 
-  const requests=getRequests().filter(r=>
-    r.buyer===username
+  const requests=getRequests().filter(request=>
+    request.buyer===username
   );
 
   document.getElementById("requestTitle").textContent=
@@ -2360,7 +1874,7 @@ function loadPurchaseRequests(){
   if(!requests.length){
 
     box.innerHTML=
-      "<div class='empty'>📩 Keine Kaufanfragen.</div>";
+      "<div class='empty'>📩 Du hast noch keine Kaufanfragen.</div>";
 
     return;
   }
@@ -2371,18 +1885,41 @@ function loadPurchaseRequests(){
 
     item.className="request";
 
-    const status=
-      request.status==="accepted"
-      ? "<span class='status accepted'>✅ Angenommen</span>"
-      : request.status==="rejected"
-      ? "<span class='status rejected'>❌ Abgelehnt</span>"
-      : "<span class='status open'>🕐 Offen</span>";
+    let status="";
+
+    if(request.status==="accepted"){
+      status=`<span class="status accepted">✅ Angenommen</span>`;
+    }else if(request.status==="rejected"){
+      status=`<span class="status rejected">❌ Abgelehnt</span>`;
+    }else{
+      status=`<span class="status open">🕐 Offen</span>`;
+    }
+
+    let ratingButton="";
+
+    if(request.status==="accepted"){
+
+      const ratings=getRatings();
+
+      const alreadyRated=
+        Array.isArray(ratings[request.seller]) &&
+        ratings[request.seller].some(
+          rating=>rating.requestId===request.id
+        );
+
+      ratingButton=alreadyRated
+        ? `<button class="gray" disabled>⭐ Bereits bewertet</button>`
+        : `<button class="rate-btn" onclick="openRating('${escapeAttribute(request.id)}')">⭐ Verkäufer bewerten</button>`;
+    }
 
     item.innerHTML=`
 
       <div class="request-top">
 
-        <img class="request-image" src="${request.image}">
+        <img
+          class="request-image"
+          src="${request.image}"
+          alt="${escapeHTML(request.player)}">
 
         <div class="request-info">
 
@@ -2398,7 +1935,7 @@ function loadPurchaseRequests(){
 
           <p class="info">
             Verkäufer:
-            ${escapeHTML(request.seller)}
+            <strong>${escapeHTML(request.seller)}</strong>
           </p>
 
           ${status}
@@ -2407,6 +1944,8 @@ function loadPurchaseRequests(){
 
       </div>
 
+      ${ratingButton}
+
     `;
 
     box.appendChild(item);
@@ -2414,16 +1953,19 @@ function loadPurchaseRequests(){
 }
 
 
+/* =========================================================
+   VERKÄUFER-ANFRAGEN
+========================================================= */
+
 function loadSellerRequests(){
 
   const username=getUsername();
-
   const box=document.getElementById("sellerRequests");
 
   box.innerHTML="";
 
-  const requests=getRequests().filter(r=>
-    r.seller===username
+  const requests=getRequests().filter(request=>
+    request.seller===username
   );
 
   document.getElementById("sellerRequestTitle").textContent=
@@ -2432,8 +1974,9 @@ function loadSellerRequests(){
   if(!requests.length){
 
     box.innerHTML=
-      "<div class='empty'>📥 Keine Anfragen.</div>";
+      "<div class='empty'>📥 Noch keine Anfragen für deine Karten.</div>";
 
+    updateRequestBadge();
     return;
   }
 
@@ -2443,40 +1986,48 @@ function loadSellerRequests(){
 
     item.className="request";
 
-    const status=
-      request.status==="accepted"
-      ? "<span class='status accepted'>✅ Angenommen</span>"
-      : request.status==="rejected"
-      ? "<span class='status rejected'>❌ Abgelehnt</span>"
-      : "<span class='status open'>🕐 Offen</span>";
+    let status="";
 
-    const actions=request.status==="pending"
-      ? `
+    if(request.status==="accepted"){
+      status=`<span class="status accepted">✅ Angenommen</span>`;
+    }else if(request.status==="rejected"){
+      status=`<span class="status rejected">❌ Abgelehnt</span>`;
+    }else{
+      status=`<span class="status open">🕐 Offen</span>`;
+    }
+
+    let buttons="";
+
+    if(request.status==="pending"){
+
+      buttons=`
+
         <div class="request-actions">
 
           <button
             class="accept-btn"
-            onclick="acceptRequest('${request.id}')"
-          >
+            onclick="acceptRequest('${escapeAttribute(request.id)}')">
             🟢 Annehmen
           </button>
 
           <button
             class="reject-btn"
-            onclick="rejectRequest('${request.id}')"
-          >
+            onclick="rejectRequest('${escapeAttribute(request.id)}')">
             🔴 Ablehnen
           </button>
 
         </div>
-      `
-      : "";
+      `;
+    }
 
     item.innerHTML=`
 
       <div class="request-top">
 
-        <img class="request-image" src="${request.image}">
+        <img
+          class="request-image"
+          src="${request.image}"
+          alt="${escapeHTML(request.player)}">
 
         <div class="request-info">
 
@@ -2486,7 +2037,13 @@ function loadSellerRequests(){
           </h3>
 
           <p class="info">
-            ${escapeHTML(request.player)}
+            Karte:
+            <strong>${escapeHTML(request.player)}</strong>
+          </p>
+
+          <p class="info">
+            Verein:
+            ${escapeHTML(request.club)}
           </p>
 
           <p class="price">
@@ -2499,45 +2056,61 @@ function loadSellerRequests(){
 
       </div>
 
-      ${actions}
+      ${buttons}
+
     `;
 
     box.appendChild(item);
   });
+
+  updateRequestBadge();
 }
 
 
-function acceptRequest(id){
+/* =========================================================
+   ANNEHMEN
+========================================================= */
+
+function acceptRequest(requestId){
 
   const username=getUsername();
-
   const requests=getRequests();
 
-  const request=requests.find(r=>r.id===id);
+  const request=requests.find(r=>r.id===requestId);
 
   if(!request) return;
 
-  if(request.seller!==username) return;
+  if(request.seller!==username){
+    alert("🚫 Nur der Besitzer kann diese Anfrage annehmen.");
+    return;
+  }
 
-  if(request.status!=="pending") return;
+  if(request.status!=="pending"){
+    alert("Diese Anfrage wurde bereits bearbeitet.");
+    return;
+  }
 
   const cards=getCards();
 
   const card=cards.find(c=>c.id===request.cardId);
 
-  if(!card) return;
+  if(!card){
+    alert("❌ Die Karte wurde nicht gefunden.");
+    return;
+  }
 
-  if(card.sold){
-
-    alert("❌ Karte bereits verkauft.");
+  if(card.sold===true){
+    alert("❌ Diese Karte wurde bereits verkauft.");
     return;
   }
 
   if(!confirm(
-    "Anfrage von "+
+    "Möchtest du die Anfrage von "+
     request.buyer+
     " annehmen?"
-  )) return;
+  )){
+    return;
+  }
 
   request.status="accepted";
 
@@ -2556,8 +2129,8 @@ function acceptRequest(id){
 
   });
 
-  saveData("purchaseRequests",requests);
   saveData("footballCards",cards);
+  saveData("purchaseRequests",requests);
 
   loadAll();
 
@@ -2565,19 +2138,36 @@ function acceptRequest(id){
 }
 
 
-function rejectRequest(id){
+/* =========================================================
+   ABLEHNEN
+========================================================= */
+
+function rejectRequest(requestId){
 
   const username=getUsername();
-
   const requests=getRequests();
 
-  const request=requests.find(r=>r.id===id);
+  const request=requests.find(r=>r.id===requestId);
 
   if(!request) return;
 
-  if(request.seller!==username) return;
+  if(request.seller!==username){
+    alert("🚫 Nur der Besitzer kann diese Anfrage ablehnen.");
+    return;
+  }
 
-  if(!confirm("Anfrage wirklich ablehnen?")) return;
+  if(request.status!=="pending"){
+    alert("Diese Anfrage wurde bereits bearbeitet.");
+    return;
+  }
+
+  if(!confirm(
+    "Möchtest du die Anfrage von "+
+    request.buyer+
+    " wirklich ablehnen?"
+  )){
+    return;
+  }
 
   request.status="rejected";
 
@@ -2604,19 +2194,19 @@ function loadMyCards(){
   if(!username){
 
     box.innerHTML=
-      "<div class='empty'>👤 Bitte Benutzername festlegen.</div>";
+      "<div class='empty'>👤 Bitte zuerst einen Benutzernamen festlegen.</div>";
 
     return;
   }
 
-  const cards=getCards().filter(c=>
-    c.owner===username
+  const cards=getCards().filter(card=>
+    card.owner===username
   );
 
   if(!cards.length){
 
     box.innerHTML=
-      "<div class='empty'>🃏 Noch keine Karten.</div>";
+      "<div class='empty'>🃏 Du hast noch keine Karten eingestellt.</div>";
 
     return;
   }
@@ -2627,10 +2217,20 @@ function loadMyCards(){
 
     item.className="card";
 
+    const soldText=card.sold
+      ? `
+        <p class="status accepted">
+          ✅ Verkauft an ${escapeHTML(card.soldTo||"")}
+        </p>
+      `
+      : "";
+
     item.innerHTML=`
 
       <div class="card-image">
-        <img src="${card.image}">
+        <img
+          src="${card.image}"
+          alt="${escapeHTML(card.player)}">
       </div>
 
       <h3>${escapeHTML(card.player)}</h3>
@@ -2643,26 +2243,15 @@ function loadMyCards(){
         ${escapeHTML(String(card.price))} €
       </p>
 
-      <p class="info">
-        ${escapeHTML(card.condition||"Zustand nicht angegeben")}
-      </p>
+      ${soldText}
 
-      ${
-        card.sold
-        ? `<span class="status accepted">
-             ✅ Verkauft
-           </span>`
-        : ""
-      }
-
-      <button onclick="showCard('${card.id}')">
+      <button onclick="showCard('${escapeAttribute(card.id)}')">
         👀 Karte ansehen
       </button>
 
       <button
         class="gray"
-        onclick="deleteCard('${card.id}')"
-      >
+        onclick="deleteCard('${escapeAttribute(card.id)}')">
         🗑️ Löschen
       </button>
 
@@ -2673,30 +2262,40 @@ function loadMyCards(){
 }
 
 
-function deleteCard(id){
+/* =========================================================
+   LÖSCHEN
+========================================================= */
+
+function deleteCard(cardId){
 
   const username=getUsername();
-
   let cards=getCards();
 
-  const card=cards.find(c=>c.id===id);
+  const card=cards.find(c=>c.id===cardId);
 
-  if(!card || card.owner!==username) return;
+  if(!card) return;
 
-  if(!confirm("Karte wirklich löschen?")) return;
+  if(card.owner!==username){
+    alert("🚫 Du kannst diese Karte nicht löschen.");
+    return;
+  }
 
-  cards=cards.filter(c=>c.id!==id);
+  if(!confirm("Möchtest du diese Karte wirklich löschen?")){
+    return;
+  }
+
+  cards=cards.filter(c=>c.id!==cardId);
 
   saveData("footballCards",cards);
 
-  saveData(
-    "favoriteCards",
-    getFavorites().filter(f=>f.id!==id)
-  );
+  const favorites=
+    getFavorites().filter(item=>item.id!==cardId);
+
+  saveData("favoriteCards",favorites);
 
   const users=getFavoriteUsers();
 
-  delete users[id];
+  delete users[cardId];
 
   saveData("favoriteUsers",users);
 
@@ -2721,24 +2320,39 @@ function loadSellerProfile(seller){
 
   const box=document.getElementById("profileBox");
 
-  const cards=getCards().filter(c=>
-    c.owner===seller
+  const cards=getCards().filter(card=>
+    card.owner===seller
   );
 
-  const sold=cards.filter(c=>c.sold);
+  const soldCards=cards.filter(card=>
+    card.sold===true
+  );
 
   const ratings=getRatings();
 
   const sellerRatings=
     Array.isArray(ratings[seller])
-      ? ratings[seller]
-      : [];
+    ? ratings[seller]
+    : [];
 
-  const average=sellerRatings.length
-    ? sellerRatings.reduce(
-        (sum,r)=>sum+Number(r.stars||0),0
-      )/sellerRatings.length
-    : 0;
+  let average=0;
+
+  if(sellerRatings.length){
+
+    average=
+      sellerRatings.reduce(
+        (sum,item)=>sum+Number(item.stars||0),
+        0
+      ) /
+      sellerRatings.length;
+  }
+
+  const rounded=Math.round(average);
+
+  const stars=
+    rounded>0
+    ? "⭐".repeat(rounded)
+    : "Noch keine Bewertungen";
 
   box.innerHTML=`
 
@@ -2753,15 +2367,12 @@ function loadSellerProfile(seller){
         <h2>${escapeHTML(seller)}</h2>
 
         <div class="rating">
-          ${
-            average
-              ? "⭐".repeat(Math.round(average))
-              : "Noch keine Bewertungen"
-          }
+          ${stars}
         </div>
 
         <p class="info">
-          ${sellerRatings.length} Bewertungen
+          ${sellerRatings.length}
+          Bewertung${sellerRatings.length===1?"":"en"}
         </p>
 
       </div>
@@ -2771,7 +2382,7 @@ function loadSellerProfile(seller){
     <div class="seller-stats">
 
       <div class="seller-stat">
-        <strong>${sold.length}</strong>
+        <strong>${soldCards.length}</strong>
         <span>Verkauft</span>
       </div>
 
@@ -2792,6 +2403,7 @@ function loadSellerProfile(seller){
     <h2>🏆 Angebote</h2>
 
     <div id="sellerOffers" class="cards"></div>
+
   `;
 
   const offers=document.getElementById("sellerOffers");
@@ -2811,13 +2423,517 @@ function loadSellerProfile(seller){
 
 
 /* =========================================================
-   BEWERTUNG
+   KARTE DETAILFENSTER
+========================================================= */
+
+function showCard(cardId){
+
+  const card=getCards().find(c=>c.id===cardId);
+
+  if(!card) return;
+
+  const username=getUsername();
+
+  const overlay=document.createElement("div");
+
+  overlay.className="modal";
+
+  overlay.innerHTML=`
+
+    <div class="modal-box">
+
+      <img
+        class="detail-image"
+        src="${card.image}"
+        alt="${escapeHTML(card.player)}">
+
+      <h2>${escapeHTML(card.player)}</h2>
+
+      <p class="info">
+        ⚽ ${escapeHTML(card.club)}
+      </p>
+
+      ${
+        card.condition
+        ? `<p class="info">📦 Zustand: <strong>${escapeHTML(card.condition)}</strong></p>`
+        : ""
+      }
+
+      <p class="price">
+        ${escapeHTML(String(card.price))} €
+      </p>
+
+      ${
+        card.description
+        ? `
+          <div style="
+            background:#191919;
+            border-radius:12px;
+            padding:14px;
+            margin:12px 0;
+            color:#ccc;
+          ">
+            ${escapeHTML(card.description)}
+          </div>
+        `
+        : ""
+      }
+
+      <p class="info">
+        👤 ${escapeHTML(card.owner)}
+      </p>
+
+      <div class="detail-actions">
+
+        <button
+          onclick="askQuestion('${escapeAttribute(card.id)}')">
+          ❓ Frage stellen
+        </button>
+
+        <button
+          onclick="makeOffer('${escapeAttribute(card.id)}')">
+          💰 Angebot machen
+        </button>
+
+        <button
+          onclick="openChatWith('${escapeAttribute(card.owner)}')">
+          💬 Chat
+        </button>
+
+        <button
+          onclick="toggleFavorite('${escapeAttribute(card.id)}')">
+          ❤️ Favorit
+        </button>
+
+      </div>
+
+      <button
+        class="close-modal"
+        onclick="this.closest('.modal').remove()">
+        Schließen
+      </button>
+
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+}
+
+
+/* =========================================================
+   FRAGE STELLEN
+========================================================= */
+
+function askQuestion(cardId){
+
+  const username=getUsername();
+
+  if(!username){
+    needUsername();
+    return;
+  }
+
+  const card=getCards().find(c=>c.id===cardId);
+
+  if(!card) return;
+
+  if(card.owner===username){
+    alert("🚫 Du kannst dir selbst keine Frage schicken.");
+    return;
+  }
+
+  const question=prompt(
+    "❓ Welche Frage möchtest du dem Verkäufer stellen?"
+  );
+
+  if(!question || !question.trim()) return;
+
+  sendChatMessage(
+    card.owner,
+    "❓ Frage zu \""+
+    card.player+
+    "\": "+
+    question.trim()
+  );
+
+  alert("💬 Deine Frage wurde gesendet!");
+}
+
+
+/* =========================================================
+   ANGEBOT MACHEN
+========================================================= */
+
+function makeOffer(cardId){
+
+  const username=getUsername();
+
+  if(!username){
+    needUsername();
+    return;
+  }
+
+  const card=getCards().find(c=>c.id===cardId);
+
+  if(!card) return;
+
+  if(card.owner===username){
+    alert("🚫 Du kannst dir selbst kein Angebot machen.");
+    return;
+  }
+
+  const value=prompt(
+    "💰 Dein Angebot in €:\n\nOriginalpreis: "+
+    card.price+" €"
+  );
+
+  if(value===null) return;
+
+  const amount=Number(value);
+
+  if(!Number.isFinite(amount) || amount<=0){
+    alert("Bitte gib einen gültigen Preis ein.");
+    return;
+  }
+
+  sendChatMessage(
+    card.owner,
+    "💰 Angebot für \""+
+    card.player+
+    "\": "+
+    amount.toFixed(2)+
+    " €"
+  );
+
+  alert("💰 Dein Angebot wurde gesendet!");
+}
+
+
+/* =========================================================
+   CHAT-DATEN
+========================================================= */
+
+function chatKey(a,b){
+
+  return [a,b].sort().join("|||");
+}
+
+function sendChatMessage(receiver,text){
+
+  const sender=getUsername();
+
+  if(!sender){
+    needUsername();
+    return;
+  }
+
+  if(!receiver || receiver===sender) return;
+
+  const messages=getMessages();
+
+  messages.push({
+
+    id:
+      Date.now()+"-"+
+      Math.random().toString(36).substring(2),
+
+    chat:chatKey(sender,receiver),
+
+    sender:sender,
+    receiver:receiver,
+
+    text:text,
+
+    createdAt:new Date().toISOString(),
+
+    read:false
+
+  });
+
+  saveData("pixelMessages",messages);
+
+  updateMessageBadge();
+
+  renderChatList();
+
+  openChatWith(receiver);
+}
+
+function openChatWith(otherUser){
+
+  const username=getUsername();
+
+  if(!username){
+    needUsername();
+    return;
+  }
+
+  if(!otherUser || otherUser===username){
+    return;
+  }
+
+  showPage("messagesPage","navMessages");
+
+  selectedChatUser=otherUser;
+
+  renderChatList();
+  renderMessages(otherUser);
+
+  /*
+   * Nachrichten von diesem Benutzer werden als gelesen markiert.
+   */
+
+  const messages=getMessages();
+
+  messages.forEach(message=>{
+
+    if(
+      message.sender===otherUser &&
+      message.receiver===username
+    ){
+      message.read=true;
+    }
+
+  });
+
+  saveData("pixelMessages",messages);
+
+  updateMessageBadge();
+}
+
+
+/* =========================================================
+   CHAT UI
+========================================================= */
+
+let selectedChatUser="";
+
+function getChatUsers(){
+
+  const username=getUsername();
+
+  if(!username) return [];
+
+  const messages=getMessages();
+
+  const users=[];
+
+  messages.forEach(message=>{
+
+    if(message.sender===username){
+
+      if(
+        message.receiver &&
+        !users.includes(message.receiver)
+      ){
+        users.push(message.receiver);
+      }
+
+    }else if(message.receiver===username){
+
+      if(
+        message.sender &&
+        !users.includes(message.sender)
+      ){
+        users.push(message.sender);
+      }
+
+    }
+
+  });
+
+  return users;
+}
+
+function renderChatList(){
+
+  const box=document.getElementById("chatList");
+
+  if(!box) return;
+
+  box.innerHTML="";
+
+  const users=getChatUsers();
+
+  if(!users.length){
+
+    box.innerHTML=`
+      <div style="padding:16px;color:#777">
+        Noch keine Chats.
+      </div>
+    `;
+
+    return;
+  }
+
+  const username=getUsername();
+  const messages=getMessages();
+
+  users.sort((a,b)=>{
+
+    const lastA=
+      [...messages]
+      .reverse()
+      .find(m=>
+        m.chat===chatKey(username,a)
+      );
+
+    const lastB=
+      [...messages]
+      .reverse()
+      .find(m=>
+        m.chat===chatKey(username,b)
+      );
+
+    return String(lastB?.createdAt||"")
+      .localeCompare(
+        String(lastA?.createdAt||"")
+      );
+  });
+
+  users.forEach(user=>{
+
+    const unread=messages.filter(message=>
+      message.sender===user &&
+      message.receiver===username &&
+      message.read!==true
+    ).length;
+
+    const item=document.createElement("div");
+
+    item.className=
+      "chat-item"+
+      (selectedChatUser===user ? " selected" : "");
+
+    item.innerHTML=`
+
+      <strong>
+        ${escapeHTML(user)}
+        ${
+          unread
+          ? `<span style="
+              float:right;
+              background:#ef233c;
+              color:#fff;
+              border-radius:20px;
+              padding:2px 7px;
+              font-size:11px;
+            ">${unread}</span>`
+          : ""
+        }
+      </strong>
+
+      <span>
+        Chat öffnen
+      </span>
+    `;
+
+    item.onclick=()=>{
+      openChatWith(user);
+    };
+
+    box.appendChild(item);
+  });
+}
+
+function renderMessages(otherUser){
+
+  const username=getUsername();
+
+  const box=document.getElementById("messages");
+  const header=document.getElementById("chatHeader");
+
+  if(!box || !header) return;
+
+  header.textContent=
+    "💬 Chat mit "+otherUser;
+
+  const messages=getMessages()
+    .filter(message=>
+      message.chat===chatKey(username,otherUser)
+    )
+    .sort((a,b)=>
+      new Date(a.createdAt)-
+      new Date(b.createdAt)
+    );
+
+  box.innerHTML="";
+
+  if(!messages.length){
+
+    box.innerHTML=`
+      <div class="empty">
+        Noch keine Nachrichten.
+      </div>
+    `;
+
+  }else{
+
+    messages.forEach(message=>{
+
+      const div=document.createElement("div");
+
+      div.className=
+        "message"+
+        (message.sender===username ? " mine" : "");
+
+      div.innerHTML=`
+        ${escapeHTML(message.text)}
+        <small>
+          ${formatTime(message.createdAt)}
+        </small>
+      `;
+
+      box.appendChild(div);
+    });
+
+    box.scrollTop=box.scrollHeight;
+  }
+
+  const input=document.getElementById("messageInput");
+  const send=document.getElementById("sendMessageBtn");
+
+  input.disabled=false;
+  send.disabled=false;
+}
+
+function sendMessage(){
+
+  const username=getUsername();
+
+  if(!username){
+    needUsername();
+    return;
+  }
+
+  if(!selectedChatUser){
+    return;
+  }
+
+  const input=document.getElementById("messageInput");
+
+  const text=input.value.trim();
+
+  if(!text) return;
+
+  sendChatMessage(selectedChatUser,text);
+
+  input.value="";
+
+  renderMessages(selectedChatUser);
+}
+
+
+/* =========================================================
+   BEWERTUNGEN
 ========================================================= */
 
 function openRating(requestId){
 
-  const request=getRequests().find(r=>
-    r.id===requestId
+  const requests=getRequests();
+
+  const request=requests.find(
+    r=>r.id===requestId
   );
 
   if(!request) return;
@@ -2830,7 +2946,7 @@ function openRating(requestId){
   }
 
   if(request.status!=="accepted"){
-    alert("⭐ Erst nach einer angenommenen Anfrage.");
+    alert("⭐ Erst nach einer angenommenen Anfrage möglich.");
     return;
   }
 
@@ -2840,109 +2956,46 @@ function openRating(requestId){
     ratings[request.seller]=[];
   }
 
-  if(ratings[request.seller].some(
-    r=>r.requestId===requestId
-  )){
+  if(
+    ratings[request.seller].some(
+      rating=>rating.requestId===requestId
+    )
+  ){
     alert("⭐ Bereits bewertet.");
     return;
   }
 
-  const overlay=document.createElement("div");
+  const stars=prompt(
+    "⭐ Bewertung von 1 bis 5:\n\n1 = schlecht\n5 = sehr gut"
+  );
 
-  overlay.className="modal-overlay";
+  if(stars===null) return;
 
-  overlay.innerHTML=`
+  const value=Number(stars);
 
-    <div class="modal">
+  if(
+    !Number.isInteger(value) ||
+    value<1 ||
+    value>5
+  ){
+    alert("Bitte eine Zahl von 1 bis 5 eingeben.");
+    return;
+  }
 
-      <h2>⭐ Verkäufer bewerten</h2>
+  ratings[request.seller].push({
 
-      <p>
-        Bewertung für
-        <strong>${escapeHTML(request.seller)}</strong>
-      </p>
+    requestId:request.id,
+    buyer:username,
+    stars:value,
+    createdAt:new Date().toISOString()
 
-      <div id="ratingStars" class="rating-stars">
-
-        <button data-stars="1">⭐</button>
-        <button data-stars="2">⭐⭐</button>
-        <button data-stars="3">⭐⭐⭐</button>
-        <button data-stars="4">⭐⭐⭐⭐</button>
-        <button data-stars="5">⭐⭐⭐⭐⭐</button>
-
-      </div>
-
-      <button
-        id="saveRating"
-        class="primary-btn"
-        disabled
-      >
-        Bewertung speichern
-      </button>
-
-      <button
-        id="cancelRating"
-        class="detail-dark"
-        style="margin-left:7px;padding:11px;border:0;border-radius:9px"
-      >
-        Abbrechen
-      </button>
-
-    </div>
-  `;
-
-  document.body.appendChild(overlay);
-
-  let selected=0;
-
-  overlay.querySelectorAll("[data-stars]").forEach(button=>{
-
-    button.onclick=()=>{
-
-      selected=Number(button.dataset.stars);
-
-      overlay.querySelectorAll("[data-stars]").forEach(b=>{
-        b.classList.toggle(
-          "selected",
-          Number(b.dataset.stars)===selected
-        );
-      });
-
-      overlay.querySelector("#saveRating").disabled=false;
-    };
   });
 
-  overlay.querySelector("#cancelRating").onclick=()=>{
-    overlay.remove();
-  };
+  saveData("sellerRatings",ratings);
 
-  overlay.querySelector("#saveRating").onclick=()=>{
+  loadAll();
 
-    if(!selected) return;
-
-    const current=getRatings();
-
-    if(!Array.isArray(current[request.seller])){
-      current[request.seller]=[];
-    }
-
-    current[request.seller].push({
-
-      requestId:request.id,
-      buyer:username,
-      stars:selected,
-      createdAt:Date.now()
-
-    });
-
-    saveData("sellerRatings",current);
-
-    overlay.remove();
-
-    loadAll();
-
-    alert("⭐ Bewertung gespeichert!");
-  };
+  alert("⭐ Bewertung gespeichert!");
 }
 
 
@@ -2950,30 +3003,50 @@ function openRating(requestId){
    VERKAUFEN
 ========================================================= */
 
-document.getElementById("sellForm").addEventListener(
-"submit",
-function(e){
+document
+.getElementById("sellForm")
+.addEventListener("submit",function(event){
 
-  e.preventDefault();
+  event.preventDefault();
 
   const username=getUsername();
 
   if(!username){
 
-    alert("👤 Bitte zuerst einen Benutzernamen festlegen.");
+    alert(
+      "👤 Bitte zuerst einen Benutzernamen festlegen."
+    );
+
     return;
   }
 
-  const player=document.getElementById("player").value.trim();
-  const club=document.getElementById("club").value.trim();
-  const price=document.getElementById("price").value;
-  const condition=document.getElementById("condition").value;
-  const description=document.getElementById("description").value.trim();
-  const file=document.getElementById("image").files[0];
+  const player=
+    document.getElementById("player")
+    .value.trim();
+
+  const club=
+    document.getElementById("club")
+    .value.trim();
+
+  const price=
+    document.getElementById("price")
+    .value;
+
+  const condition=
+    document.getElementById("condition")
+    .value;
+
+  const description=
+    document.getElementById("description")
+    .value.trim();
+
+  const file=
+    document.getElementById("image")
+    .files[0];
 
   if(!file){
 
-    alert("📸 Bitte füge ein Foto hinzu.");
+    alert("Bitte wähle ein Foto aus.");
     return;
   }
 
@@ -2987,7 +3060,7 @@ function(e){
 
       const canvas=document.createElement("canvas");
 
-      const max=800;
+      const max=700;
 
       let width=image.width;
       let height=image.height;
@@ -3001,23 +3074,34 @@ function(e){
 
         width=width*max/height;
         height=max;
+
       }
 
       canvas.width=width;
       canvas.height=height;
 
-      canvas
-        .getContext("2d")
-        .drawImage(image,0,0,width,height);
+      const context=canvas.getContext("2d");
+
+      context.drawImage(
+        image,
+        0,
+        0,
+        width,
+        height
+      );
 
       const imageData=
-        canvas.toDataURL("image/jpeg",.65);
+        canvas.toDataURL("image/jpeg",.6);
 
       const cards=getCards();
 
       cards.unshift({
 
-        id:createId(),
+        id:
+          Date.now()+"-"+
+          Math.random()
+          .toString(36)
+          .substring(2),
 
         player:player,
         club:club,
@@ -3031,9 +3115,7 @@ function(e){
         owner:username,
 
         sold:false,
-        soldTo:null,
-
-        createdAt:Date.now()
+        soldTo:null
 
       });
 
@@ -3044,21 +3126,23 @@ function(e){
       }catch(error){
 
         alert(
-          "Der Speicher ist voll. Bitte lösche zuerst alte Karten."
+          "Der Speicher ist voll. Bitte lösche zuerst einige Karten."
         );
 
         return;
       }
 
-      document.getElementById("sellForm").reset();
-      document.getElementById("photoPreview").innerHTML="";
-      document.getElementById("sellFormBox").classList.remove("open");
+      document
+        .getElementById("sellForm")
+        .reset();
+
+      document
+        .getElementById("sellPanel")
+        .classList.remove("open");
 
       loadAll();
 
       alert("🎉 Deine Karte wurde eingestellt!");
-
-      showPage("cardsPage","navCards");
 
     };
 
@@ -3074,28 +3158,36 @@ function(e){
    SUCHE
 ========================================================= */
 
-document.getElementById("searchInput").addEventListener(
-"input",
-loadCards
-);
+document
+.getElementById("searchInput")
+.addEventListener("input",function(){
+  loadCards();
+});
+
+
+/* =========================================================
+   ENTER IM CHAT
+========================================================= */
+
+document
+.getElementById("messageInput")
+.addEventListener("keydown",function(event){
+
+  if(event.key==="Enter"){
+    event.preventDefault();
+    sendMessage();
+  }
+
+});
 
 
 /* =========================================================
    HILFSFUNKTIONEN
 ========================================================= */
 
-function createId(){
-
-  return Date.now()+
-    "-"+
-    Math.random()
-      .toString(36)
-      .substring(2,10);
-}
-
 function escapeHTML(value){
 
-  return String(value??"")
+  return String(value)
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
@@ -3103,36 +3195,37 @@ function escapeHTML(value){
     .replace(/'/g,"&#039;");
 }
 
+function escapeAttribute(value){
 
-/* =========================================================
-   BADGE
-========================================================= */
+  return String(value)
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
+}
 
-function updateRequestBadge(){
+function formatTime(date){
 
-  const username=getUsername();
+  try{
 
-  const count=getRequests().filter(r=>
-    r.seller===username &&
-    r.status==="pending"
-  ).length;
+    return new Date(date)
+      .toLocaleString(
+        "de-DE",
+        {
+          day:"2-digit",
+          month:"2-digit",
+          hour:"2-digit",
+          minute:"2-digit"
+        }
+      );
 
-  const badge=document.getElementById("requestBadge");
+  }catch(e){
 
-  if(count){
-
-    badge.style.display="flex";
-    badge.textContent=count;
-
-  }else{
-
-    badge.style.display="none";
+    return "";
   }
 }
 
 
 /* =========================================================
-   ALLES LADEN
+   ALLES AKTUALISIEREN
 ========================================================= */
 
 function loadAll(){
@@ -3149,14 +3242,22 @@ function loadAll(){
 
   loadSellerRequests();
 
-  loadOffers();
-
   updateRequestBadge();
+
+  updateMessageBadge();
+
+  renderChatList();
+
+  if(selectedChatUser){
+    renderMessages(selectedChatUser);
+  }
 
   const username=getUsername();
 
   if(username){
+
     loadSellerProfile(username);
+
   }
 }
 
