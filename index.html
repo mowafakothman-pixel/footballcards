@@ -7,20 +7,29 @@
 
 <style>
 :root{
-  --bg:#070910;
-  --panel:#101522;
-  --panel2:#171d2c;
-  --panel3:#1c2435;
-  --border:#29334a;
-  --text:#f7f8ff;
-  --muted:#8e99ad;
-  --accent:#765cff;
-  --accent2:#a78bfa;
-  --green:#36d399;
-  --red:#ff5f6d;
+  --bg:#080b12;
+  --bg2:#0d111b;
+  --panel:#111722;
+  --panel2:#171e2b;
+  --panel3:#1c2534;
+  --border:#273143;
+  --border2:#344058;
+
+  --text:#f7f9ff;
+  --muted:#8f9aae;
+
+  --accent:#7357ff;
+  --accent2:#9b7cff;
+  --green:#39d69b;
+  --red:#ff6070;
   --yellow:#ffc857;
-  --blue:#4da3ff;
-  --shadow:0 20px 60px rgba(0,0,0,.32);
+  --blue:#4ca3ff;
+
+  --radius:18px;
+  --radius2:24px;
+
+  --shadow:0 18px 55px rgba(0,0,0,.28);
+  --shadow2:0 10px 30px rgba(0,0,0,.2);
 }
 
 *{
@@ -36,11 +45,26 @@ html{
 body{
   min-height:100vh;
   color:var(--text);
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
   background:
-    radial-gradient(circle at 10% -10%,rgba(118,92,255,.22),transparent 28%),
-    radial-gradient(circle at 100% 5%,rgba(54,211,153,.09),transparent 24%),
-    var(--bg);
+    radial-gradient(
+      circle at 15% -10%,
+      rgba(115,87,255,.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(57,214,155,.07),
+      transparent 24%
+    ),
+    linear-gradient(180deg,#080b12 0%,#090c13 100%);
 }
 
 button,
@@ -55,7 +79,7 @@ button{
 }
 
 button:active{
-  transform:scale(.97);
+  transform:scale(.98);
 }
 
 a{
@@ -64,141 +88,240 @@ a{
 }
 
 /* =========================================================
-   NAVIGATION
+   TOP NAVIGATION
 ========================================================= */
 
 .topbar{
   position:sticky;
   top:0;
   z-index:1000;
-  background:rgba(7,9,16,.91);
-  backdrop-filter:blur(22px);
+
+  background:rgba(8,11,18,.88);
+  backdrop-filter:blur(24px);
+
   border-bottom:1px solid rgba(255,255,255,.07);
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.18);
 }
 
 .nav{
-  width:min(1250px,calc(100% - 24px));
-  min-height:96px;
+  width:min(1400px,calc(100% - 28px));
   margin:auto;
-  padding:12px 0;
-  display:flex;
+
+  padding:13px 0 14px;
+
+  display:grid;
+  grid-template-columns:190px 1fr;
+  gap:18px;
   align-items:center;
-  gap:20px;
 }
+
+/* LOGO */
 
 .logo{
   border:0;
-  background:transparent;
+  background:none;
   color:white;
+
   display:flex;
   align-items:center;
-  gap:11px;
-  font-weight:900;
+  gap:12px;
+
+  font-weight:950;
   font-size:20px;
+
   white-space:nowrap;
 }
 
 .logo-icon{
-  width:46px;
-  height:46px;
+  width:48px;
+  height:48px;
+
   display:grid;
   place-items:center;
-  border-radius:15px;
-  background:linear-gradient(135deg,var(--accent),#a855f7);
-  box-shadow:0 8px 30px rgba(118,92,255,.35);
-  font-size:20px;
+
+  border-radius:16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      #9a63ff
+    );
+
+  box-shadow:
+    0 10px 35px rgba(115,87,255,.35);
+
+  font-size:22px;
 }
 
+/* =========================================================
+   7 NAV ITEMS
+   3 LINKS | VERKAUFEN | 3 LINKS
+========================================================= */
+
 .nav-links{
-  flex:1;
-  max-width:780px;
-  margin-left:auto;
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    1fr
+    1fr
+    1fr
+    1.35fr
+    1fr
+    1fr
+    1fr;
+
   gap:8px;
+
+  align-items:stretch;
 }
 
 .nav-btn{
-  width:100%;
-  min-height:48px;
+  min-height:52px;
+
   border:1px solid transparent;
-  background:transparent;
-  color:var(--muted);
-  padding:12px 10px;
-  border-radius:13px;
-  white-space:nowrap;
+  border-radius:15px;
+
+  background:rgba(255,255,255,.025);
+
+  color:#aeb7c8;
+
+  font-weight:800;
   font-size:14px;
-  font-weight:750;
-  transition:.22s ease;
+
+  padding:10px 8px;
+
+  transition:
+    background .2s ease,
+    border .2s ease,
+    color .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease;
 }
 
 .nav-btn:hover{
   color:white;
-  background:rgba(255,255,255,.055);
-  transform:translateY(-1px);
+
+  background:
+    rgba(255,255,255,.06);
+
+  border-color:
+    rgba(255,255,255,.08);
+
+  transform:translateY(-2px);
 }
 
 .nav-btn.active{
   color:white;
-  background:linear-gradient(
-    135deg,
-    rgba(118,92,255,.24),
-    rgba(167,139,250,.09)
-  );
-  border-color:rgba(118,92,255,.28);
-  box-shadow:0 6px 22px rgba(118,92,255,.10);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(115,87,255,.25),
+      rgba(115,87,255,.08)
+    );
+
+  border-color:
+    rgba(115,87,255,.35);
+
+  box-shadow:
+    0 8px 25px rgba(115,87,255,.12);
 }
 
-.nav-actions{
-  display:flex;
-  gap:10px;
-}
+/* VERKAUFEN IMMER IN DER MITTE */
 
-.icon-btn{
-  position:relative;
-  width:50px;
-  height:50px;
-  border:1px solid var(--border);
-  border-radius:14px;
-  background:var(--panel);
+.nav-btn.sell-main{
   color:white;
-  font-size:19px;
-  transition:.2s;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7357ff,
+      #9a68ff
+    );
+
+  border-color:
+    rgba(255,255,255,.12);
+
+  box-shadow:
+    0 10px 30px rgba(115,87,255,.30);
+
+  font-size:15px;
+  font-weight:950;
 }
 
-.icon-btn:hover{
-  border-color:var(--accent);
-  transform:translateY(-2px);
+.nav-btn.sell-main:hover{
+  transform:
+    translateY(-3px)
+    scale(1.015);
+
+  box-shadow:
+    0 15px 40px rgba(115,87,255,.38);
+}
+
+.nav-btn.sell-main.active{
+  background:
+    linear-gradient(
+      135deg,
+      #805fff,
+      #a06bff
+    );
+}
+
+/* notification number */
+
+.nav-notification{
+  position:relative;
 }
 
 .badge{
   position:absolute;
-  right:-5px;
-  top:-5px;
+
+  right:8px;
+  top:6px;
+
   min-width:19px;
   height:19px;
+
   padding:0 5px;
+
   border-radius:20px;
+
   background:var(--red);
+
   display:grid;
   place-items:center;
+
+  color:white;
+
   font-size:10px;
-  font-weight:900;
+  font-weight:950;
+
+  box-shadow:
+    0 5px 15px rgba(255,96,112,.35);
 }
 
 /* =========================================================
-   GENERAL
+   MAIN
 ========================================================= */
 
 .container{
-  width:min(1250px,calc(100% - 26px));
+  width:min(1400px,calc(100% - 28px));
   margin:auto;
 }
 
 .page{
   display:none;
-  padding:32px 0 80px;
-  animation:pageIn .35s ease;
+
+  padding:
+    34px
+    0
+    90px;
+
+  animation:
+    pageIn .3s ease;
 }
 
 .page.active{
@@ -210,78 +333,160 @@ a{
     opacity:0;
     transform:translateY(10px);
   }
+
   to{
     opacity:1;
     transform:none;
   }
 }
 
+/* =========================================================
+   HERO
+========================================================= */
+
 .hero{
   position:relative;
   overflow:hidden;
-  padding:42px;
-  border:1px solid var(--border);
-  border-radius:28px;
+
+  min-height:350px;
+
+  padding:50px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:30px;
+
   background:
-    linear-gradient(135deg,rgba(118,92,255,.22),rgba(16,21,34,.94)),
-    var(--panel);
+    linear-gradient(
+      120deg,
+      rgba(115,87,255,.22),
+      rgba(17,23,34,.96) 60%
+    );
+
   box-shadow:var(--shadow);
 }
 
 .hero:before{
   content:"";
+
   position:absolute;
-  width:320px;
-  height:320px;
+
+  width:420px;
+  height:420px;
+
+  right:-180px;
+  top:-210px;
+
   border-radius:50%;
-  right:-130px;
-  top:-170px;
-  background:rgba(118,92,255,.17);
-  filter:blur(2px);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(115,87,255,.22),
+      transparent 68%
+    );
+}
+
+.hero:after{
+  content:"⚽";
+
+  position:absolute;
+
+  right:70px;
+  bottom:35px;
+
+  font-size:120px;
+
+  opacity:.055;
+
+  transform:
+    rotate(-12deg);
 }
 
 .hero h1{
   position:relative;
-  max-width:720px;
-  font-size:clamp(34px,6vw,62px);
+  z-index:1;
+
+  max-width:780px;
+
+  font-size:
+    clamp(38px,6vw,70px);
+
   line-height:.98;
-  letter-spacing:-2.5px;
+
+  letter-spacing:-3px;
 }
 
 .hero p{
   position:relative;
+  z-index:1;
+
   max-width:650px;
-  margin:18px 0 25px;
+
+  margin:
+    22px
+    0
+    28px;
+
   color:var(--muted);
-  line-height:1.65;
+
+  line-height:1.7;
+
+  font-size:15px;
 }
 
 .hero-buttons{
   position:relative;
+  z-index:2;
+
   display:flex;
-  gap:10px;
+  gap:11px;
+
   flex-wrap:wrap;
 }
 
+/* =========================================================
+   BUTTONS
+========================================================= */
+
 .btn{
   border:0;
-  border-radius:12px;
-  padding:12px 17px;
+
+  border-radius:13px;
+
+  padding:
+    12px
+    18px;
+
   color:white;
-  background:linear-gradient(135deg,var(--accent),#8b5cf6);
-  font-weight:850;
-  transition:.2s ease;
-  box-shadow:0 8px 25px rgba(118,92,255,.17);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      #9565ff
+    );
+
+  font-weight:900;
+
+  box-shadow:
+    0 8px 25px rgba(115,87,255,.17);
+
+  transition:.2s;
 }
 
 .btn:hover{
   transform:translateY(-2px);
-  filter:brightness(1.08);
+  filter:brightness(1.07);
 }
 
 .btn.secondary{
   background:var(--panel2);
-  border:1px solid var(--border);
+
+  border:
+    1px solid var(--border);
+
   box-shadow:none;
 }
 
@@ -295,20 +500,34 @@ a{
 }
 
 .btn.small{
-  padding:8px 11px;
+  padding:
+    9px
+    12px;
+
   font-size:12px;
 }
 
+/* =========================================================
+   SECTION HEAD
+========================================================= */
+
 .section-head{
   display:flex;
+
   align-items:center;
   justify-content:space-between;
+
   gap:15px;
-  margin:30px 0 16px;
+
+  margin:
+    32px
+    0
+    17px;
 }
 
 .section-head h2{
-  font-size:23px;
+  font-size:24px;
+  letter-spacing:-.5px;
 }
 
 .muted{
@@ -321,89 +540,144 @@ a{
 
 .stats{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:13px;
-  margin-top:20px;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:14px;
+
+  margin-top:18px;
 }
 
 .stat{
-  padding:20px;
-  border:1px solid var(--border);
-  border-radius:18px;
-  background:rgba(16,21,34,.88);
+  position:relative;
+
+  padding:22px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:19px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(23,30,43,.96),
+      rgba(14,19,29,.96)
+    );
+
   transition:.2s;
 }
 
 .stat:hover{
   transform:translateY(-3px);
-  border-color:#3b4762;
+
+  border-color:
+    var(--border2);
 }
 
 .stat-number{
-  font-size:27px;
+  font-size:29px;
   font-weight:950;
 }
 
 .stat-label{
-  margin-top:4px;
+  margin-top:5px;
+
   color:var(--muted);
+
   font-size:13px;
 }
 
 /* =========================================================
-   MARKET
+   MARKET FILTERS
 ========================================================= */
 
 .market-tools{
-  padding:16px;
-  border:1px solid var(--border);
-  border-radius:20px;
-  background:rgba(16,21,34,.88);
-  box-shadow:0 12px 35px rgba(0,0,0,.15);
+  padding:18px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:21px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(17,23,34,.98),
+      rgba(13,17,26,.98)
+    );
+
+  box-shadow:var(--shadow2);
 }
 
 .search-row{
   display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:9px;
+
+  grid-template-columns:
+    2fr
+    1fr
+    1fr;
+
+  gap:10px;
 }
 
 .filter-row{
   display:grid;
-  grid-template-columns:1fr 1fr 1fr 1fr;
-  gap:9px;
-  margin-top:9px;
+
+  grid-template-columns:
+    1.1fr
+    1fr
+    1fr
+    auto;
+
+  gap:10px;
+
+  margin-top:10px;
 }
 
 .input,
 .select,
 .textarea{
   width:100%;
-  border:1px solid var(--border);
-  border-radius:12px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:13px;
+
   outline:none;
-  background:var(--panel2);
+
+  background:
+    var(--panel2);
+
   color:white;
-  padding:12px 14px;
+
+  padding:
+    13px
+    14px;
+
   transition:.2s;
+}
+
+.input::placeholder{
+  color:#707b90;
 }
 
 .input:focus,
 .select:focus,
 .textarea:focus{
-  border-color:var(--accent);
-  box-shadow:0 0 0 3px rgba(118,92,255,.1);
+  border-color:
+    var(--accent);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(115,87,255,.10);
 }
 
 .textarea{
-  min-height:120px;
+  min-height:130px;
   resize:vertical;
-}
-
-.price-range{
-  display:flex;
-  align-items:center;
-  gap:7px;
 }
 
 /* =========================================================
@@ -412,32 +686,57 @@ a{
 
 .cards-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:17px;
 }
 
 .card{
   position:relative;
   overflow:hidden;
-  border:1px solid var(--border);
-  border-radius:20px;
-  background:var(--panel);
-  box-shadow:0 10px 35px rgba(0,0,0,.17);
-  transition:.25s ease;
-  animation:cardIn .35s ease both;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:21px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #121925,
+      #0e141e
+    );
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.17);
+
+  transition:
+    transform .25s,
+    border .25s,
+    box-shadow .25s;
+
+  animation:
+    cardIn .35s ease both;
 }
 
 .card:hover{
-  transform:translateY(-5px);
-  border-color:#3b4762;
-  box-shadow:0 20px 45px rgba(0,0,0,.27);
+  transform:translateY(-6px);
+
+  border-color:
+    #3a465e;
+
+  box-shadow:
+    0 22px 50px rgba(0,0,0,.28);
 }
 
 @keyframes cardIn{
   from{
     opacity:0;
-    transform:translateY(12px) scale(.98);
+    transform:translateY(12px);
   }
+
   to{
     opacity:1;
     transform:none;
@@ -446,40 +745,68 @@ a{
 
 .card-image{
   position:relative;
-  height:205px;
+
+  height:220px;
+
   display:grid;
   place-items:center;
+
   overflow:hidden;
+
   background:
-    radial-gradient(circle at 50% 40%,rgba(255,255,255,.13),transparent 28%),
-    linear-gradient(135deg,#20283b,#0d111b);
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(255,255,255,.12),
+      transparent 27%
+    ),
+    linear-gradient(
+      135deg,
+      #202a3d,
+      #0b1019
+    );
 }
 
 .card-image img{
   width:100%;
   height:100%;
+
   object-fit:cover;
 }
 
 .ball{
-  font-size:68px;
-  filter:drop-shadow(0 12px 18px rgba(0,0,0,.45));
+  font-size:75px;
+
+  filter:
+    drop-shadow(
+      0 15px 20px rgba(0,0,0,.45)
+    );
+
   transition:.3s;
 }
 
 .card:hover .ball{
-  transform:scale(1.08) rotate(2deg);
+  transform:
+    scale(1.08)
+    rotate(2deg);
 }
 
 .card-tag{
   position:absolute;
   z-index:2;
-  left:10px;
-  top:10px;
-  padding:5px 8px;
-  border-radius:7px;
+
+  left:11px;
+  top:11px;
+
+  padding:
+    6px
+    9px;
+
+  border-radius:8px;
+
   background:var(--green);
+
   color:#04130e;
+
   font-size:10px;
   font-weight:950;
 }
@@ -487,72 +814,107 @@ a{
 .popular-tag{
   position:absolute;
   z-index:2;
-  right:10px;
-  top:10px;
-  padding:5px 8px;
-  border-radius:7px;
-  background:rgba(0,0,0,.6);
+
+  right:11px;
+  top:11px;
+
+  padding:
+    6px
+    9px;
+
+  border-radius:8px;
+
+  background:
+    rgba(0,0,0,.62);
+
   color:var(--yellow);
+
   font-size:10px;
   font-weight:900;
-  backdrop-filter:blur(8px);
+
+  backdrop-filter:blur(10px);
 }
 
 .favorite{
   position:absolute;
   z-index:3;
-  right:10px;
-  bottom:10px;
-  width:38px;
-  height:38px;
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:11px;
-  background:rgba(0,0,0,.48);
+
+  right:11px;
+  bottom:11px;
+
+  width:41px;
+  height:41px;
+
+  border:
+    1px solid rgba(255,255,255,.14);
+
+  border-radius:12px;
+
+  background:
+    rgba(0,0,0,.48);
+
   color:white;
-  font-size:20px;
+
+  font-size:21px;
+
   transition:.2s;
 }
 
 .favorite:hover{
-  transform:scale(1.08);
+  transform:
+    scale(1.08);
 }
 
 .favorite.active{
   color:#ff4d6d;
-  background:rgba(255,77,109,.13);
+
+  background:
+    rgba(255,77,109,.14);
+
+  border-color:
+    rgba(255,77,109,.28);
 }
 
 .card-body{
-  padding:15px;
+  padding:17px;
 }
 
 .card-title{
-  font-size:16px;
-  font-weight:900;
+  font-size:17px;
+  font-weight:950;
 }
 
 .card-sub{
-  margin-top:5px;
+  margin-top:6px;
+
   color:var(--muted);
+
   font-size:12px;
+
+  line-height:1.4;
 }
 
 .card-bottom{
   display:flex;
+
   justify-content:space-between;
   align-items:end;
+
   gap:8px;
-  margin-top:16px;
+
+  margin-top:18px;
 }
 
 .price{
-  font-size:20px;
+  font-size:21px;
   font-weight:950;
 }
 
 .seller{
-  margin-top:3px;
+  margin-top:4px;
+
   color:var(--muted);
+
   font-size:11px;
 }
 
@@ -561,10 +923,22 @@ a{
 ========================================================= */
 
 .panel{
-  padding:20px;
-  border:1px solid var(--border);
-  border-radius:20px;
-  background:var(--panel);
+  padding:21px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:21px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(17,23,34,.98),
+      rgba(13,18,27,.98)
+    );
+
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.14);
 }
 
 .list{
@@ -574,12 +948,19 @@ a{
 
 .list-item{
   display:flex;
+
   justify-content:space-between;
   align-items:center;
+
   gap:14px;
-  padding:14px;
-  border:1px solid var(--border);
+
+  padding:15px;
+
+  border:
+    1px solid var(--border);
+
   border-radius:14px;
+
   background:var(--panel2);
 }
 
@@ -590,20 +971,32 @@ a{
 }
 
 .avatar{
-  width:44px;
-  height:44px;
+  width:45px;
+  height:45px;
+
   display:grid;
   place-items:center;
+
   flex:none;
+
   border-radius:14px;
-  background:linear-gradient(135deg,var(--accent),#a855f7);
-  font-weight:900;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      #a855f7
+    );
+
+  font-weight:950;
 }
 
 .user-info{
   min-width:0;
+
   display:flex;
   align-items:center;
+
   gap:11px;
 }
 
@@ -612,8 +1005,10 @@ a{
 }
 
 .user-small{
-  margin-top:2px;
+  margin-top:3px;
+
   color:var(--muted);
+
   font-size:12px;
 }
 
@@ -623,29 +1018,53 @@ a{
 
 .profile-head{
   display:flex;
+
   align-items:center;
+
   gap:20px;
-  padding:25px;
-  border:1px solid var(--border);
-  border-radius:22px;
-  background:linear-gradient(135deg,rgba(118,92,255,.13),var(--panel));
+
+  padding:27px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:23px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(115,87,255,.13),
+      rgba(17,23,34,.98)
+    );
 }
 
 .big-avatar{
-  width:82px;
-  height:82px;
+  width:86px;
+  height:86px;
+
   display:grid;
   place-items:center;
+
   flex:none;
-  border-radius:25px;
-  background:linear-gradient(135deg,var(--accent),#a855f7);
-  font-size:30px;
+
+  border-radius:26px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      #a855f7
+    );
+
+  font-size:31px;
   font-weight:950;
-  box-shadow:0 10px 35px rgba(118,92,255,.22);
+
+  box-shadow:
+    0 12px 35px rgba(115,87,255,.22);
 }
 
 .rating{
-  margin-top:4px;
+  margin-top:5px;
   color:var(--yellow);
 }
 
@@ -655,16 +1074,25 @@ a{
 
 .empty{
   grid-column:1/-1;
-  padding:45px 20px;
+
+  padding:50px 20px;
+
   text-align:center;
-  border:1px dashed var(--border);
-  border-radius:18px;
+
+  border:
+    1px dashed var(--border);
+
+  border-radius:19px;
+
   color:var(--muted);
+
+  background:
+    rgba(17,23,34,.4);
 }
 
 .empty-icon{
-  margin-bottom:10px;
-  font-size:42px;
+  margin-bottom:11px;
+  font-size:43px;
 }
 
 /* =========================================================
@@ -674,18 +1102,28 @@ a{
 .modal-backdrop{
   position:fixed;
   inset:0;
+
   z-index:2000;
+
   display:none;
+
   place-items:center;
+
   padding:20px;
+
   overflow:auto;
-  background:rgba(0,0,0,.72);
-  backdrop-filter:blur(10px);
+
+  background:
+    rgba(0,0,0,.76);
+
+  backdrop-filter:blur(12px);
 }
 
 .modal-backdrop.show{
   display:grid;
-  animation:fadeIn .2s ease;
+
+  animation:
+    fadeIn .2s ease;
 }
 
 @keyframes fadeIn{
@@ -694,13 +1132,26 @@ a{
 }
 
 .modal{
-  width:min(570px,100%);
-  padding:24px;
-  border:1px solid var(--border);
-  border-radius:22px;
-  background:var(--panel);
+  width:min(600px,100%);
+
+  padding:25px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:23px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #151c29,
+      #0e141e
+    );
+
   box-shadow:var(--shadow);
-  animation:modalIn .25s ease;
+
+  animation:
+    modalIn .25s ease;
 }
 
 @keyframes modalIn{
@@ -708,6 +1159,7 @@ a{
     opacity:0;
     transform:translateY(15px) scale(.97);
   }
+
   to{
     opacity:1;
     transform:none;
@@ -716,39 +1168,57 @@ a{
 
 .modal-head{
   display:flex;
+
   justify-content:space-between;
+
   gap:15px;
-  margin-bottom:18px;
+
+  margin-bottom:19px;
 }
 
 .close{
-  width:36px;
-  height:36px;
+  width:38px;
+  height:38px;
+
   border:0;
-  border-radius:10px;
+
+  border-radius:11px;
+
   background:var(--panel2);
+
   color:white;
+
+  font-size:17px;
 }
 
 .form-group{
-  margin-bottom:14px;
+  margin-bottom:15px;
 }
 
 .form-group label{
   display:block;
+
   margin-bottom:7px;
+
   color:var(--muted);
+
   font-size:13px;
 }
 
 .photo-preview{
   display:none;
+
   width:100%;
-  max-height:220px;
+  max-height:230px;
+
   object-fit:cover;
+
   margin-top:10px;
-  border-radius:14px;
-  border:1px solid var(--border);
+
+  border-radius:15px;
+
+  border:
+    1px solid var(--border);
 }
 
 /* =========================================================
@@ -757,18 +1227,34 @@ a{
 
 .toast{
   position:fixed;
+
   z-index:5000;
+
   right:18px;
   bottom:18px;
-  max-width:calc(100% - 36px);
-  padding:13px 16px;
-  border:1px solid var(--border);
+
+  max-width:
+    calc(100% - 36px);
+
+  padding:
+    14px
+    17px;
+
+  border:
+    1px solid var(--border);
+
   border-radius:14px;
+
   background:#202a3b;
+
   box-shadow:var(--shadow);
+
   opacity:0;
+
   transform:translateY(80px);
+
   pointer-events:none;
+
   transition:.25s;
 }
 
@@ -781,26 +1267,25 @@ a{
    TABLET
 ========================================================= */
 
-@media(max-width:900px){
+@media(max-width:1100px){
+
+  .nav{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .logo{
+    justify-content:center;
+  }
 
   .cards-grid{
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+      repeat(3,1fr);
   }
 
   .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .search-row{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .search-row .search-main{
-    grid-column:1/-1;
-  }
-
-  .filter-row{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+      repeat(2,1fr);
   }
 }
 
@@ -808,61 +1293,104 @@ a{
    MOBILE
 ========================================================= */
 
-@media(max-width:650px){
+@media(max-width:700px){
+
+  .container{
+    width:
+      calc(100% - 18px);
+  }
 
   .nav{
-    width:calc(100% - 12px);
-    min-height:auto;
-    padding:10px 0;
-    flex-wrap:wrap;
-    gap:9px;
+    width:
+      calc(100% - 12px);
+
+    padding:
+      9px 0
+      10px;
   }
 
   .logo{
-    flex:1;
-  }
-
-  .logo span:last-child{
-    display:none;
+    font-size:18px;
   }
 
   .logo-icon{
-    width:42px;
-    height:42px;
+    width:43px;
+    height:43px;
   }
 
-  .nav-actions{
-    margin-left:auto;
-  }
+  /*
+     3 links
+     VERKAUFEN
+     3 links
 
-  .icon-btn{
-    width:46px;
-    height:46px;
-  }
+     bleibt ohne horizontales Scrollen
+  */
 
   .nav-links{
-    order:5;
-    flex:none;
-    width:100%;
-    max-width:none;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+      repeat(3,1fr);
+
     gap:6px;
   }
 
   .nav-btn{
-    min-height:47px;
-    padding:10px 4px;
+    min-height:48px;
+
+    padding:
+      8px 4px;
+
+    font-size:11px;
+  }
+
+  /*
+     Verkauf nimmt die komplette
+     mittlere Position ein
+  */
+
+  .nav-btn.sell-main{
+    grid-column:
+      2;
+
+    grid-row:
+      1;
+
     font-size:12px;
-    border-radius:12px;
   }
 
   .hero{
-    padding:27px;
-    border-radius:21px;
+    padding:29px;
+
+    min-height:auto;
+
+    border-radius:23px;
+  }
+
+  .hero h1{
+    font-size:40px;
+    letter-spacing:-2px;
+  }
+
+  .hero:after{
+    right:-15px;
+    bottom:15px;
+    font-size:90px;
+  }
+
+  .stats{
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:9px;
+  }
+
+  .stat{
+    padding:17px;
   }
 
   .cards-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
+
     gap:10px;
   }
 
@@ -871,16 +1399,25 @@ a{
   }
 
   .ball{
-    font-size:48px;
+    font-size:50px;
+  }
+
+  .card-body{
+    padding:13px;
+  }
+
+  .card-title{
+    font-size:15px;
+  }
+
+  .price{
+    font-size:18px;
   }
 
   .search-row,
   .filter-row{
-    grid-template-columns:1fr;
-  }
-
-  .search-row .search-main{
-    grid-column:auto;
+    grid-template-columns:
+      1fr;
   }
 
   .profile-head{
@@ -889,25 +1426,30 @@ a{
 }
 
 /* =========================================================
-   VERY SMALL MOBILE
+   VERY SMALL
 ========================================================= */
 
-@media(max-width:400px){
+@media(max-width:430px){
+
+  .nav-btn{
+    min-height:46px;
+    font-size:10px;
+  }
+
+  .nav-btn.sell-main{
+    font-size:11px;
+  }
 
   .cards-grid{
     grid-template-columns:1fr;
   }
 
-  .nav-btn{
-    font-size:11px;
+  .hero h1{
+    font-size:34px;
   }
 
-  .nav{
-    gap:7px;
-  }
-
-  .nav-links{
-    gap:4px;
+  .section-head{
+    align-items:flex-start;
   }
 }
 </style>
@@ -926,66 +1468,67 @@ a{
 
 <div class="nav-links">
 
-  <button
-    class="nav-btn active"
-    data-page="home"
-    onclick="showPage('home')">
-    🏠 Start
-  </button>
+<!-- 1 -->
+<button
+  class="nav-btn active"
+  data-page="home"
+  onclick="showPage('home')">
+  🏠 Start
+</button>
 
-  <button
-    class="nav-btn"
-    data-page="market"
-    onclick="showPage('market')">
-    🛒 Markt
-  </button>
+<!-- 2 -->
+<button
+  class="nav-btn"
+  data-page="market"
+  onclick="showPage('market')">
+  🛒 Markt
+</button>
 
-  <button
-    class="nav-btn"
-    data-page="sell"
-    onclick="showPage('sell')">
-    ➕ Verkaufen
-  </button>
+<!-- 3 -->
+<button
+  class="nav-btn"
+  data-page="favorites"
+  onclick="showPage('favorites')">
+  ❤️ Favoriten
+</button>
 
-  <button
-    class="nav-btn"
-    data-page="favorites"
-    onclick="showPage('favorites')">
-    ❤️ Favoriten
-  </button>
+<!-- 4 = MITTE -->
+<button
+  class="nav-btn sell-main"
+  data-page="sell"
+  onclick="showPage('sell')">
+  ➕ VERKAUFEN
+</button>
 
-  <button
-    class="nav-btn"
-    data-page="messages"
-    onclick="showPage('messages')">
-    💬 Nachrichten
-  </button>
+<!-- 5 -->
+<button
+  class="nav-btn"
+  data-page="messages"
+  onclick="showPage('messages')">
+  💬 Nachrichten
+</button>
 
-  <button
-    class="nav-btn"
-    data-page="profile"
-    onclick="showPage('profile')">
-    👤 Profil
-  </button>
+<!-- 6 -->
+<button
+  class="nav-btn"
+  data-page="notifications"
+  onclick="showPage('notifications')">
+  🔔 Benachrichtigungen
+  <span
+    id="notificationBadge"
+    class="badge"
+    style="display:none">
+    0
+  </span>
+</button>
 
-</div>
-
-<div class="nav-actions">
-
-  <button
-    class="icon-btn"
-    onclick="showPage('notifications')"
-    title="Benachrichtigungen">
-
-    🔔
-
-    <span
-      id="notificationBadge"
-      class="badge">
-      0
-    </span>
-
-  </button>
+<!-- 7 -->
+<button
+  class="nav-btn"
+  data-page="profile"
+  onclick="showPage('profile')">
+  👤 Profil
+</button>
 
 </div>
 
@@ -993,108 +1536,111 @@ a{
 
 </header>
 
+
 <main class="container">
 
-<!-- ======================================================
+<!-- =====================================================
      HOME
-====================================================== -->
+===================================================== -->
 
-<section id="home" class="page active">
+<section
+  id="home"
+  class="page active">
 
 <div class="hero">
 
-  <h1>
-    Deine Fußballkarten.<br>
-    Dein Marktplatz.
-  </h1>
+<h1>
+Deine Fußballkarten.
+<br>
+Dein Marktplatz.
+</h1>
 
-  <p>
-    Kaufen, verkaufen, sammeln und deine Lieblingskarten
-    in einer modernen Fußball-Community entdecken.
-  </p>
+<p>
+Kaufen, verkaufen, sammeln und deine
+Lieblingskarten in einer modernen
+Fußball-Community entdecken.
+</p>
 
-  <div class="hero-buttons">
+<div class="hero-buttons">
 
-    <button
-      class="btn"
-      onclick="showPage('market')">
-      Karten entdecken →
-    </button>
+<button
+  class="btn"
+  onclick="showPage('market')">
+  Karten entdecken →
+</button>
 
-    <button
-      class="btn secondary"
-      onclick="showPage('sell')">
-      Karte einstellen
-    </button>
-
-  </div>
+<button
+  class="btn secondary"
+  onclick="showPage('sell')">
+  Karte einstellen
+</button>
 
 </div>
+
+</div>
+
 
 <div class="stats">
 
-  <div class="stat">
-    <div
-      class="stat-number"
-      id="statCards">
-      0
-    </div>
+<div class="stat">
+<div
+  class="stat-number"
+  id="statCards">
+0
+</div>
+<div class="stat-label">
+Karten online
+</div>
+</div>
 
-    <div class="stat-label">
-      Karten online
-    </div>
-  </div>
+<div class="stat">
+<div
+  class="stat-number"
+  id="statFavorites">
+0
+</div>
+<div class="stat-label">
+Favoriten
+</div>
+</div>
 
-  <div class="stat">
-    <div
-      class="stat-number"
-      id="statFavorites">
-      0
-    </div>
+<div class="stat">
+<div
+  class="stat-number"
+  id="statRequests">
+0
+</div>
+<div class="stat-label">
+Kaufanfragen
+</div>
+</div>
 
-    <div class="stat-label">
-      Favoriten
-    </div>
-  </div>
-
-  <div class="stat">
-    <div
-      class="stat-number"
-      id="statRequests">
-      0
-    </div>
-
-    <div class="stat-label">
-      Kaufanfragen
-    </div>
-  </div>
-
-  <div class="stat">
-    <div class="stat-number">
-      4.9★
-    </div>
-
-    <div class="stat-label">
-      Community Rating
-    </div>
-  </div>
+<div class="stat">
+<div class="stat-number">
+4.9★
+</div>
+<div class="stat-label">
+Community Rating
+</div>
+</div>
 
 </div>
 
+
 <div class="section-head">
 
-  <div>
-    <h2>🔥 Aktuelle Karten</h2>
-    <span class="muted">
-      Die neuesten Angebote
-    </span>
-  </div>
+<div>
+<h2>🔥 Aktuelle Karten</h2>
+<span class="muted">
+Die neuesten Angebote
+</span>
+</div>
 
-  <button
-    class="btn small secondary"
-    onclick="showPage('market')">
-    Alle anzeigen
-  </button>
+<button
+  class="btn small secondary"
+  onclick="showPage('market')">
+  Alle anzeigen
+</button>
 
 </div>
 
@@ -1103,15 +1649,15 @@ a{
   class="cards-grid">
 </div>
 
+
 <div class="section-head">
 
-  <div>
-    <h2>🔥 Beliebte Karten</h2>
-
-    <span class="muted">
-      Viele Aufrufe und Favoriten
-    </span>
-  </div>
+<div>
+<h2>🔥 Beliebte Karten</h2>
+<span class="muted">
+Viele Aufrufe und Favoriten
+</span>
+</div>
 
 </div>
 
@@ -1122,161 +1668,174 @@ a{
 
 </section>
 
-<!-- ======================================================
-     MARKET
-====================================================== -->
 
-<section id="market" class="page">
+<!-- =====================================================
+     MARKET
+===================================================== -->
+
+<section
+  id="market"
+  class="page">
 
 <div class="section-head">
 
-  <div>
-    <h2>🛒 Marktplatz</h2>
-
-    <span class="muted">
-      Finde genau die Karte, die du suchst
-    </span>
-  </div>
+<div>
+<h2>🛒 Marktplatz</h2>
+<span class="muted">
+Finde genau die Karte, die du suchst
+</span>
+</div>
 
 </div>
+
 
 <div class="market-tools">
 
-  <div class="search-row">
+<div class="search-row">
 
-    <input
-      id="searchInput"
-      class="input search-main"
-      placeholder="🔎 Spieler, Verein oder Karte..."
-      oninput="renderMarket()">
+<input
+  id="searchInput"
+  class="input search-main"
+  placeholder="🔎 Spieler, Verein oder Karte..."
+  oninput="renderMarket()"
+>
 
-    <input
-      id="minPrice"
-      class="input"
-      type="number"
-      min="0"
-      step="0.01"
-      placeholder="Min. €"
-      oninput="renderMarket()">
+<input
+  id="minPrice"
+  class="input"
+  type="number"
+  min="0"
+  step="0.01"
+  placeholder="Min. €"
+  oninput="renderMarket()"
+>
 
-    <input
-      id="maxPrice"
-      class="input"
-      type="number"
-      min="0"
-      step="0.01"
-      placeholder="Max. €"
-      oninput="renderMarket()">
-
-  </div>
-
-  <div class="filter-row">
-
-    <input
-      id="clubFilter"
-      class="input"
-      list="clubSuggestions"
-      placeholder="🏟️ Verein"
-      oninput="renderMarket()">
-
-    <select
-      id="conditionFilter"
-      class="select"
-      onchange="renderMarket()">
-
-      <option value="">
-        ⭐ Alle Zustände
-      </option>
-
-      <option>Neu</option>
-      <option>Sehr gut</option>
-      <option>Gut</option>
-      <option>Schlecht</option>
-
-    </select>
-
-    <select
-      id="sortFilter"
-      class="select"
-      onchange="renderMarket()">
-
-      <option value="new">
-        🆕 Neueste
-      </option>
-
-      <option value="cheap">
-        💶 Preis niedrig → hoch
-      </option>
-
-      <option value="expensive">
-        💶 Preis hoch → niedrig
-      </option>
-
-      <option value="popular">
-        🔥 Beliebteste
-      </option>
-
-      <option value="views">
-        👁️ Meiste Aufrufe
-      </option>
-
-    </select>
-
-    <button
-      class="btn secondary"
-      onclick="resetFilters()">
-      ↻ Filter zurücksetzen
-    </button>
-
-  </div>
+<input
+  id="maxPrice"
+  class="input"
+  type="number"
+  min="0"
+  step="0.01"
+  placeholder="Max. €"
+  oninput="renderMarket()"
+>
 
 </div>
+
+
+<div class="filter-row">
+
+<input
+  id="clubFilter"
+  class="input"
+  list="clubSuggestions"
+  placeholder="🏟️ Verein"
+  oninput="renderMarket()"
+>
+
+<select
+  id="conditionFilter"
+  class="select"
+  onchange="renderMarket()">
+
+<option value="">
+⭐ Alle Zustände
+</option>
+
+<option>Neu</option>
+<option>Sehr gut</option>
+<option>Gut</option>
+<option>Schlecht</option>
+
+</select>
+
+
+<select
+  id="sortFilter"
+  class="select"
+  onchange="renderMarket()">
+
+<option value="new">
+🆕 Neueste
+</option>
+
+<option value="cheap">
+💶 Preis niedrig → hoch
+</option>
+
+<option value="expensive">
+💶 Preis hoch → niedrig
+</option>
+
+<option value="popular">
+🔥 Beliebteste
+</option>
+
+<option value="views">
+👁️ Meiste Aufrufe
+</option>
+
+</select>
+
+
+<button
+  class="btn secondary"
+  onclick="resetFilters()">
+↻ Zurücksetzen
+</button>
+
+</div>
+
+</div>
+
 
 <datalist id="clubSuggestions">
 
-  <option value="Real Madrid">
-  <option value="FC Barcelona">
-  <option value="PSG">
-  <option value="Bayern München">
-  <option value="Manchester City">
-  <option value="Liverpool">
-  <option value="Arsenal">
-  <option value="Chelsea">
-  <option value="Borussia Dortmund">
-  <option value="Bayer Leverkusen">
-  <option value="Inter Mailand">
-  <option value="AC Milan">
-  <option value="Juventus">
-  <option value="Atlético Madrid">
-  <option value="Tottenham">
+<option value="Real Madrid">
+<option value="FC Barcelona">
+<option value="PSG">
+<option value="Bayern München">
+<option value="Manchester City">
+<option value="Liverpool">
+<option value="Arsenal">
+<option value="Chelsea">
+<option value="Borussia Dortmund">
+<option value="Bayer Leverkusen">
+<option value="Inter Mailand">
+<option value="AC Milan">
+<option value="Juventus">
+<option value="Atlético Madrid">
+<option value="Tottenham">
 
 </datalist>
 
+
 <div class="section-head">
 
-  <div>
-    <span
-      id="marketCount"
-      class="muted">
-    </span>
-  </div>
+<div>
+<span
+  id="marketCount"
+  class="muted">
+</span>
+</div>
 
 </div>
+
 
 <div
   id="marketCards"
   class="cards-grid">
 </div>
 
+
 <div class="section-head">
 
-  <div>
-    <h2>👁️ Zuletzt angesehen</h2>
-
-    <span class="muted">
-      Deine zuletzt geöffneten Karten
-    </span>
-  </div>
+<div>
+<h2>👁️ Zuletzt angesehen</h2>
+<span class="muted">
+Deine zuletzt geöffneten Karten
+</span>
+</div>
 
 </div>
 
@@ -1287,23 +1846,26 @@ a{
 
 </section>
 
-<!-- ======================================================
-     SELL
-====================================================== -->
 
-<section id="sell" class="page">
+<!-- =====================================================
+     SELL
+===================================================== -->
+
+<section
+  id="sell"
+  class="page">
 
 <div class="section-head">
 
-  <div>
-    <h2>➕ Karte einstellen</h2>
-
-    <span class="muted">
-      Erstelle dein eigenes Angebot
-    </span>
-  </div>
+<div>
+<h2>➕ Karte verkaufen</h2>
+<span class="muted">
+Erstelle dein eigenes Angebot
+</span>
+</div>
 
 </div>
+
 
 <div class="panel">
 
@@ -1311,9 +1873,7 @@ a{
 
 <div class="form-group">
 
-<label>
-  Spieler
-</label>
+<label>Spieler</label>
 
 <input
   id="sellPlayer"
@@ -1323,32 +1883,30 @@ a{
 
 </div>
 
+
 <div class="form-group">
 
-<label>
-  Verein
-</label>
+<label>Verein</label>
 
 <input
   id="sellClub"
   class="input"
   list="clubSuggestions"
-  placeholder="Verein selbst eingeben"
+  placeholder="Verein eingeben"
   required>
 
 <div
   id="clubError"
   class="muted"
-  style="margin-top:6px;font-size:12px;">
+  style="margin-top:6px;font-size:12px">
 </div>
 
 </div>
+
 
 <div class="form-group">
 
-<label>
-  Kartenname
-</label>
+<label>Kartenname</label>
 
 <input
   id="sellName"
@@ -1358,46 +1916,33 @@ a{
 
 </div>
 
+
 <div class="form-group">
 
-<label>
-  Zustand
-</label>
+<label>Zustand</label>
 
 <select
   id="sellCondition"
   class="select"
   required>
 
-  <option value="">
-    Zustand auswählen
-  </option>
+<option value="">
+Zustand auswählen
+</option>
 
-  <option>
-    Neu
-  </option>
-
-  <option>
-    Sehr gut
-  </option>
-
-  <option>
-    Gut
-  </option>
-
-  <option>
-    Schlecht
-  </option>
+<option>Neu</option>
+<option>Sehr gut</option>
+<option>Gut</option>
+<option>Schlecht</option>
 
 </select>
 
 </div>
 
+
 <div class="form-group">
 
-<label>
-  Preis in €
-</label>
+<label>Preis in €</label>
 
 <input
   id="sellPrice"
@@ -1410,25 +1955,22 @@ a{
 
 </div>
 
+
 <div class="form-group">
 
-<label>
-  Beschreibung
-</label>
+<label>Beschreibung</label>
 
 <textarea
   id="sellDescription"
   class="textarea"
-  placeholder="Beschreibe deine Karte...">
-</textarea>
+  placeholder="Beschreibe deine Karte..."></textarea>
 
 </div>
 
+
 <div class="form-group">
 
-<label>
-  Foto der Karte
-</label>
+<label>Foto der Karte</label>
 
 <input
   id="sellPhoto"
@@ -1443,10 +1985,11 @@ a{
 
 </div>
 
+
 <button
   class="btn"
   type="submit">
-  🚀 Karte einstellen
+🚀 Karte einstellen
 </button>
 
 </form>
@@ -1455,19 +1998,21 @@ a{
 
 </section>
 
-<!-- ======================================================
-     FAVORITES
-====================================================== -->
 
-<section id="favorites" class="page">
+<!-- =====================================================
+     FAVORITES
+===================================================== -->
+
+<section
+  id="favorites"
+  class="page">
 
 <div class="section-head">
 
 <div>
 <h2>❤️ Meine Favoriten</h2>
-
 <span class="muted">
-  Gespeicherte Karten
+Gespeicherte Karten
 </span>
 </div>
 
@@ -1480,19 +2025,21 @@ a{
 
 </section>
 
-<!-- ======================================================
-     MESSAGES
-====================================================== -->
 
-<section id="messages" class="page">
+<!-- =====================================================
+     MESSAGES
+===================================================== -->
+
+<section
+  id="messages"
+  class="page">
 
 <div class="section-head">
 
 <div>
 <h2>💬 Nachrichten</h2>
-
 <span class="muted">
-  Deine Unterhaltungen
+Deine Unterhaltungen
 </span>
 </div>
 
@@ -1509,26 +2056,28 @@ a{
 
 </section>
 
-<!-- ======================================================
-     NOTIFICATIONS
-====================================================== -->
 
-<section id="notifications" class="page">
+<!-- =====================================================
+     NOTIFICATIONS
+===================================================== -->
+
+<section
+  id="notifications"
+  class="page">
 
 <div class="section-head">
 
 <div>
 <h2>🔔 Benachrichtigungen</h2>
-
 <span class="muted">
-  Was gerade passiert
+Was gerade passiert
 </span>
 </div>
 
 <button
   class="btn small secondary"
   onclick="markNotificationsRead()">
-  Alle gelesen
+Alle gelesen
 </button>
 
 </div>
@@ -1544,38 +2093,42 @@ a{
 
 </section>
 
-<!-- ======================================================
-     PROFILE
-====================================================== -->
 
-<section id="profile" class="page">
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
+<section
+  id="profile"
+  class="page">
 
 <div class="profile-head">
 
 <div class="big-avatar">
-  M
+M
 </div>
 
 <div>
 
 <h2>
-  Mein Pixel-Cards-Profil
+Mein Pixel-Cards-Profil
 </h2>
 
 <div class="rating">
-  ★★★★★
-  <span class="muted">
-    4.9
-  </span>
+★★★★★
+<span class="muted">
+4.9
+</span>
 </div>
 
 <div class="user-small">
-  Sammler • Verkäufer
+Sammler • Verkäufer
 </div>
 
 </div>
 
 </div>
+
 
 <div class="section-head">
 
@@ -1586,31 +2139,29 @@ a{
 <button
   class="btn small"
   onclick="showPage('sell')">
-  + Karte
++ Karte
 </button>
 
 </div>
+
 
 <div
   id="myCards"
   class="cards-grid">
 </div>
 
+
 <div class="section-head">
 
 <div>
-
-<h2>
-  🛍️ Kaufanfragen
-</h2>
-
+<h2>🛍️ Kaufanfragen</h2>
 <span class="muted">
-  Anfragen von anderen Nutzern
+Anfragen von anderen Nutzern
 </span>
-
 </div>
 
 </div>
+
 
 <div class="panel">
 
@@ -1625,9 +2176,10 @@ a{
 
 </main>
 
-<!-- ======================================================
+
+<!-- =====================================================
      MODAL
-====================================================== -->
+===================================================== -->
 
 <div
   id="cardModal"
@@ -1640,7 +2192,7 @@ a{
 <div>
 
 <h2 id="modalTitle">
-  Karte
+Karte
 </h2>
 
 <div
@@ -1653,10 +2205,11 @@ a{
 <button
   class="close"
   onclick="closeModal()">
-  ✕
+✕
 </button>
 
 </div>
+
 
 <div id="modalContent">
 </div>
@@ -1665,21 +2218,24 @@ a{
 
 </div>
 
+
 <div
   id="toast"
   class="toast">
 </div>
 
+
 <script>
 "use strict";
 
 /* =========================================================
-   DATA
+   STORAGE
 ========================================================= */
 
 const STORAGE_KEY="pixelCardsData_v4";
 const VIEW_KEY="pixelCardsViewed_v4";
 const RECENT_KEY="pixelCardsRecent_v4";
+
 
 const knownClubs=[
 "Real Madrid",
@@ -1698,6 +2254,7 @@ const knownClubs=[
 "Atlético Madrid",
 "Tottenham"
 ];
+
 
 const defaultCards=[
 {
@@ -1782,13 +2339,12 @@ photo:""
 }
 ];
 
+
 function initialData(){
 
 return{
 cards:JSON.parse(JSON.stringify(defaultCards)),
-
 favorites:[],
-
 notifications:[
 {
 id:1,
@@ -1797,7 +2353,6 @@ time:Date.now(),
 read:false
 }
 ],
-
 messages:[
 {
 id:1,
@@ -1814,17 +2369,22 @@ time:Date.now()-5400000,
 unread:false
 }
 ],
-
 requests:[]
 };
 
 }
 
+
+/* =========================================================
+   LOAD
+========================================================= */
+
 function loadData(){
 
 try{
 
-const saved=localStorage.getItem(STORAGE_KEY);
+const saved=
+localStorage.getItem(STORAGE_KEY);
 
 if(!saved){
 
@@ -1836,33 +2396,36 @@ JSON.stringify(d)
 );
 
 return d;
-
 }
 
 const p=JSON.parse(saved);
 
 return{
 
-cards:Array.isArray(p.cards)
+cards:
+Array.isArray(p.cards)
 ?p.cards
-:JSON.parse(JSON.stringify(defaultCards)),
+:defaultCards,
 
-favorites:Array.isArray(p.favorites)
+favorites:
+Array.isArray(p.favorites)
 ?p.favorites
 :[],
 
-notifications:Array.isArray(p.notifications)
+notifications:
+Array.isArray(p.notifications)
 ?p.notifications
 :[],
 
-messages:Array.isArray(p.messages)
+messages:
+Array.isArray(p.messages)
 ?p.messages
 :[],
 
-requests:Array.isArray(p.requests)
+requests:
+Array.isArray(p.requests)
 ?p.requests
 :[]
-
 };
 
 }catch(e){
@@ -1875,7 +2438,9 @@ return initialData();
 
 }
 
+
 let data=loadData();
+
 
 function saveData(){
 
@@ -1890,11 +2455,18 @@ JSON.stringify(data)
 
 console.error(e);
 
-showToast("Speichern nicht möglich.");
+showToast(
+"Speichern nicht möglich."
+);
 
 }
 
 }
+
+
+/* =========================================================
+   VIEW DATA
+========================================================= */
 
 function getViewed(){
 
@@ -1904,7 +2476,9 @@ const a=JSON.parse(
 localStorage.getItem(VIEW_KEY)
 );
 
-return Array.isArray(a)?a:[];
+return Array.isArray(a)
+?a
+:[];
 
 }catch(e){
 
@@ -1913,6 +2487,7 @@ return[];
 }
 
 }
+
 
 function getRecent(){
 
@@ -1922,7 +2497,9 @@ const a=JSON.parse(
 localStorage.getItem(RECENT_KEY)
 );
 
-return Array.isArray(a)?a:[];
+return Array.isArray(a)
+?a
+:[];
 
 }catch(e){
 
@@ -1931,6 +2508,7 @@ return[];
 }
 
 }
+
 
 function saveRecent(a){
 
@@ -1944,6 +2522,7 @@ JSON.stringify(a.slice(0,8))
 }catch(e){}
 
 }
+
 
 /* =========================================================
    HELPERS
@@ -1960,6 +2539,7 @@ return String(v??"")
 
 }
 
+
 function price(v){
 
 return Number(v)
@@ -1968,12 +2548,14 @@ return Number(v)
 
 }
 
+
 function date(v){
 
 return new Date(v)
 .toLocaleDateString("de-DE");
 
 }
+
 
 function initials(v){
 
@@ -1985,6 +2567,7 @@ return String(v)
 .toUpperCase();
 
 }
+
 
 function emoji(club){
 
@@ -2005,6 +2588,7 @@ return e[club]||"⚽";
 
 }
 
+
 function empty(icon,text){
 
 return`
@@ -2023,8 +2607,9 @@ ${escapeHTML(text)}
 
 }
 
+
 /* =========================================================
-   NAVIGATION
+   NAV
 ========================================================= */
 
 function showPage(id){
@@ -2040,6 +2625,7 @@ p.id===id
 
 });
 
+
 document
 .querySelectorAll(".nav-btn")
 .forEach(b=>{
@@ -2051,9 +2637,9 @@ b.dataset.page===id
 
 });
 
-if(id==="home"){
+
+if(id==="home")
 renderHome();
-}
 
 if(id==="market"){
 
@@ -2062,21 +2648,18 @@ renderRecent();
 
 }
 
-if(id==="favorites"){
+if(id==="favorites")
 renderFavorites();
-}
 
-if(id==="messages"){
+if(id==="messages")
 renderMessages();
-}
 
-if(id==="notifications"){
+if(id==="notifications")
 renderNotifications();
-}
 
-if(id==="profile"){
+if(id==="profile")
 renderProfile();
-}
+
 
 window.scrollTo({
 top:0,
@@ -2085,17 +2668,20 @@ behavior:"smooth"
 
 }
 
+
 /* =========================================================
-   CARD HTML
+   CARD
 ========================================================= */
 
 function cardHTML(card){
 
-const fav=data.favorites.includes(card.id);
+const fav=
+data.favorites.includes(card.id);
 
 const popular=
-Number(card.favorites||0)>=7||
+Number(card.favorites||0)>=7 ||
 Number(card.views||0)>=40;
+
 
 return`
 
@@ -2115,19 +2701,15 @@ ${
 card.photo
 
 ?`
-
 <img
 src="${card.photo}"
 alt="${escapeHTML(card.player)}">
-
 `
 
 :`
-
 <div class="ball">
 ${emoji(card.club)}
 </div>
-
 `
 }
 
@@ -2141,6 +2723,7 @@ ${fav?"♥":"♡"}
 </button>
 
 </div>
+
 
 <div class="card-body">
 
@@ -2160,8 +2743,11 @@ ${escapeHTML(card.condition)}
 </div>
 
 <div class="card-sub">
-👁️ ${Number(card.views||0)} Aufrufe
+👁️
+${Number(card.views||0)}
+Aufrufe
 </div>
+
 
 <div class="card-bottom">
 
@@ -2172,19 +2758,19 @@ ${price(card.price)}
 </div>
 
 <div class="seller">
-⭐ ${Number(card.sellerRating||5).toFixed(1)}
+⭐
+${Number(card.sellerRating||5).toFixed(1)}
 •
 ${escapeHTML(card.seller)}
 </div>
 
 </div>
 
+
 <button
 class="btn small"
 onclick="openCard(${Number(card.id)})">
-
 Ansehen
-
 </button>
 
 </div>
@@ -2197,26 +2783,37 @@ Ansehen
 
 }
 
+
 /* =========================================================
    HOME
 ========================================================= */
 
 function renderHome(){
 
-const latest=[...data.cards]
+const latest=
+[...data.cards]
 .sort(
-(a,b)=>Number(b.created)-Number(a.created)
+(a,b)=>
+Number(b.created)-Number(a.created)
 )
 .slice(0,4);
 
-document.getElementById("homeCards").innerHTML=
+
+document.getElementById(
+"homeCards"
+).innerHTML=
+
 latest.length
 ?latest.map(cardHTML).join("")
-:empty("📦","Noch keine Karten.");
+:empty(
+"📦",
+"Noch keine Karten."
+);
 
-const popular=[...data.cards]
+
+const popular=
+[...data.cards]
 .sort(
-
 (a,b)=>
 (
 Number(b.favorites||0)+
@@ -2227,18 +2824,26 @@ Number(b.views||0)
 Number(a.favorites||0)+
 Number(a.views||0)
 )
-
 )
 .slice(0,4);
 
-document.getElementById("popularCards").innerHTML=
+
+document.getElementById(
+"popularCards"
+).innerHTML=
+
 popular.length
 ?popular.map(cardHTML).join("")
-:empty("🔥","Noch keine beliebten Karten.");
+:empty(
+"🔥",
+"Noch keine beliebten Karten."
+);
+
 
 updateStats();
 
 }
+
 
 /* =========================================================
    MARKET
@@ -2248,85 +2853,110 @@ function renderMarket(){
 
 const search=
 (
-document.getElementById("searchInput")?.value||""
+document.getElementById(
+"searchInput"
+)?.value||""
 )
 .trim()
 .toLowerCase();
 
+
 const club=
 (
-document.getElementById("clubFilter")?.value||""
+document.getElementById(
+"clubFilter"
+)?.value||""
 )
 .trim()
 .toLowerCase();
+
 
 const condition=
 document.getElementById(
 "conditionFilter"
 )?.value||"";
 
+
 const sort=
 document.getElementById(
 "sortFilter"
 )?.value||"new";
+
 
 const minRaw=
 document.getElementById(
 "minPrice"
 )?.value;
 
+
 const maxRaw=
 document.getElementById(
 "maxPrice"
 )?.value;
 
+
 const min=
-minRaw===""?0:Number(minRaw);
+minRaw===""
+?0
+:Number(minRaw);
+
 
 const max=
-maxRaw===""?Infinity:Number(maxRaw);
+maxRaw===""
+?Infinity
+:Number(maxRaw);
 
-let cards=data.cards.filter(c=>{
+
+let cards=
+data.cards.filter(c=>{
 
 const text=
 `${c.player} ${c.club} ${c.name}`
 .toLowerCase();
+
 
 return(
 
 (!search||text.includes(search))&&
 
 (!club||
-String(c.club||"")
-.toLowerCase()
-.includes(club))&&
+c.club.toLowerCase().includes(club))&&
 
 (!condition||
 c.condition===condition)&&
 
 Number(c.price)>=min&&
+
 Number(c.price)<=max
 
 );
 
 });
 
+
 if(sort==="cheap"){
 
 cards.sort(
-(a,b)=>Number(a.price)-Number(b.price)
+(a,b)=>
+Number(a.price)-
+Number(b.price)
 );
 
-}else if(sort==="expensive"){
+}
+
+else if(sort==="expensive"){
 
 cards.sort(
-(a,b)=>Number(b.price)-Number(a.price)
+(a,b)=>
+Number(b.price)-
+Number(a.price)
 );
 
-}else if(sort==="popular"){
+}
+
+else if(sort==="popular"){
 
 cards.sort(
-
 (a,b)=>
 (
 Number(b.favorites||0)+
@@ -2337,10 +2967,11 @@ Number(b.views||0)
 Number(a.favorites||0)+
 Number(a.views||0)
 )
-
 );
 
-}else if(sort==="views"){
+}
+
+else if(sort==="views"){
 
 cards.sort(
 (a,b)=>
@@ -2348,7 +2979,9 @@ Number(b.views||0)-
 Number(a.views||0)
 );
 
-}else{
+}
+
+else{
 
 cards.sort(
 (a,b)=>
@@ -2358,15 +2991,16 @@ Number(a.created)
 
 }
 
+
 document.getElementById(
 "marketCount"
 ).textContent=
-
 `${cards.length} ${
 cards.length===1
 ?"Karte"
 :"Karten"
 } gefunden`;
+
 
 document.getElementById(
 "marketCards"
@@ -2374,9 +3008,13 @@ document.getElementById(
 
 cards.length
 ?cards.map(cardHTML).join("")
-:empty("🔎","Keine Karten gefunden.");
+:empty(
+"🔎",
+"Keine Karten gefunden."
+);
 
 }
+
 
 function resetFilters(){
 
@@ -2385,25 +3023,26 @@ function resetFilters(){
 "minPrice",
 "maxPrice",
 "clubFilter"
-]
-.forEach(id=>{
+].forEach(id=>{
 
 const el=
 document.getElementById(id);
 
-if(el){
+if(el)
 el.value="";
-}
 
 });
+
 
 document.getElementById(
 "conditionFilter"
 ).value="";
 
+
 document.getElementById(
 "sortFilter"
 ).value="new";
+
 
 renderMarket();
 
@@ -2412,6 +3051,7 @@ showToast(
 );
 
 }
+
 
 /* =========================================================
    FAVORITES
@@ -2426,8 +3066,12 @@ c=>Number(c.id)===Number(id)
 
 if(!card)return;
 
+
 const i=
-data.favorites.indexOf(card.id);
+data.favorites.indexOf(
+card.id
+);
+
 
 if(i===-1){
 
@@ -2456,6 +3100,7 @@ showToast(
 
 }
 
+
 saveData();
 
 renderHome();
@@ -2465,12 +3110,14 @@ updateStats();
 
 }
 
+
 function renderFavorites(){
 
 const cards=
 data.cards.filter(
 c=>data.favorites.includes(c.id)
 );
+
 
 document.getElementById(
 "favoriteCards"
@@ -2485,8 +3132,9 @@ cards.length
 
 }
 
+
 /* =========================================================
-   VIEWS / RECENT
+   VIEWS
 ========================================================= */
 
 function registerView(id){
@@ -2498,7 +3146,16 @@ c=>Number(c.id)===Number(id)
 
 if(!card)return;
 
-const viewed=getViewed();
+
+const viewed=
+getViewed();
+
+
+/*
+  EIN View pro Person.
+  Öffnen derselben Karte
+  erhöht die Zahl nicht.
+*/
 
 if(!viewed.includes(card.id)){
 
@@ -2513,8 +3170,10 @@ JSON.stringify(viewed)
 
 }catch(e){}
 
+
 card.views=
 Number(card.views||0)+1;
+
 
 const recent=
 getRecent()
@@ -2522,20 +3181,26 @@ getRecent()
 x=>Number(x)!==Number(card.id)
 );
 
+
 recent.unshift(card.id);
 
 saveRecent(recent);
+
 saveData();
 
 }
 
 }
 
+
 function renderRecent(){
 
-const ids=getRecent();
+const ids=
+getRecent();
 
-const cards=ids
+
+const cards=
+ids
 .map(
 id=>
 data.cards.find(
@@ -2543,6 +3208,7 @@ c=>Number(c.id)===Number(id)
 )
 )
 .filter(Boolean);
+
 
 document.getElementById(
 "recentCards"
@@ -2557,8 +3223,9 @@ cards.length
 
 }
 
+
 /* =========================================================
-   MODAL
+   CARD MODAL
 ========================================================= */
 
 function openCard(id){
@@ -2567,6 +3234,7 @@ const card=
 data.cards.find(
 c=>Number(c.id)===Number(id)
 );
+
 
 if(!card){
 
@@ -2578,16 +3246,21 @@ return;
 
 }
 
+
 registerView(card.id);
+
 
 document.getElementById(
 "modalTitle"
-).textContent=card.player;
+).textContent=
+card.player;
+
 
 document.getElementById(
 "modalSubtitle"
 ).textContent=
 `${card.club} • ${card.name}`;
+
 
 document.getElementById(
 "modalContent"
@@ -2595,91 +3268,81 @@ document.getElementById(
 
 <div
 class="card-image"
-style="border-radius:16px;margin-bottom:17px;">
+style="
+border-radius:16px;
+margin-bottom:17px;
+">
 
 ${
 card.photo
 
 ?`
-
 <img
 src="${card.photo}"
 alt="${escapeHTML(card.player)}">
-
 `
 
 :`
-
 <div class="ball">
 ${emoji(card.club)}
 </div>
-
 `
 }
 
 </div>
 
+
 <div class="list">
 
 <div class="list-item">
-
 <span class="muted">
 Preis
 </span>
-
 <strong>
 ${price(card.price)}
 </strong>
-
 </div>
 
-<div class="list-item">
 
+<div class="list-item">
 <span class="muted">
 Verein
 </span>
-
 <strong>
 ${escapeHTML(card.club)}
 </strong>
-
 </div>
 
-<div class="list-item">
 
+<div class="list-item">
 <span class="muted">
 Zustand
 </span>
-
 <strong>
 ${escapeHTML(card.condition)}
 </strong>
-
 </div>
 
-<div class="list-item">
 
+<div class="list-item">
 <span class="muted">
 Aufrufe
 </span>
-
 <strong>
 👁️ ${Number(card.views||0)}
 </strong>
-
 </div>
 
-<div class="list-item">
 
+<div class="list-item">
 <span class="muted">
 Verkäufer
 </span>
-
 <strong>
 ${escapeHTML(card.seller)}
 </strong>
-
 </div>
+
 
 <div class="panel">
 
@@ -2689,7 +3352,10 @@ Beschreibung
 
 <p
 class="muted"
-style="margin-top:8px;line-height:1.5;">
+style="
+margin-top:8px;
+line-height:1.5;
+">
 
 ${escapeHTML(
 card.description||
@@ -2700,6 +3366,7 @@ card.description||
 
 </div>
 
+
 <button
 class="btn green"
 onclick="requestPurchase(${Number(card.id)})">
@@ -2707,6 +3374,7 @@ onclick="requestPurchase(${Number(card.id)})">
 🛒 Kaufanfrage senden
 
 </button>
+
 
 <button
 class="btn secondary"
@@ -2720,26 +3388,17 @@ onclick="messageSeller('${escapeHTML(card.seller)}')">
 
 `;
 
-document
-.getElementById("cardModal")
-.classList.add("show");
+
+document.getElementById(
+"cardModal"
+).classList.add("show");
+
 
 renderRecent();
 renderMarket();
 
 }
 
-/* =========================================================
-   CLOSE MODAL
-========================================================= */
-
-function closeModal(){
-
-document
-.getElementById("cardModal")
-.classList.remove("show");
-
-}
 
 /* =========================================================
    PURCHASE
@@ -2754,12 +3413,14 @@ c=>Number(c.id)===Number(id)
 
 if(!card)return;
 
+
 const exists=
 data.requests.some(
 r=>
 Number(r.cardId)===Number(id)&&
 r.status==="pending"
 );
+
 
 if(exists){
 
@@ -2770,6 +3431,7 @@ showToast(
 return;
 
 }
+
 
 data.requests.push({
 
@@ -2789,6 +3451,7 @@ created:Date.now()
 
 });
 
+
 data.notifications.unshift({
 
 id:Date.now()+1,
@@ -2802,6 +3465,7 @@ read:false
 
 });
 
+
 saveData();
 
 closeModal();
@@ -2813,6 +3477,7 @@ showToast(
 );
 
 }
+
 
 /* =========================================================
    MESSAGES
@@ -2826,13 +3491,15 @@ id:Date.now(),
 
 user:seller,
 
-text:"Neue Unterhaltung gestartet.",
+text:
+"Neue Unterhaltung gestartet.",
 
 time:Date.now(),
 
 unread:true
 
 });
+
 
 saveData();
 
@@ -2846,12 +3513,14 @@ showToast(
 
 }
 
+
 function renderMessages(){
 
 const box=
 document.getElementById(
 "messagesList"
 );
+
 
 if(!data.messages.length){
 
@@ -2865,8 +3534,10 @@ return;
 
 }
 
+
 box.innerHTML=
-data.messages.map(m=>`
+data.messages.map(
+m=>`
 
 <div class="list-item">
 
@@ -2902,23 +3573,27 @@ ${date(m.time)}
 
 </div>
 
-`).join("");
+`
+).join("");
 
 }
 
+
 /* =========================================================
-   SELL PHOTO
+   SELL
 ========================================================= */
 
 let selectedPhoto="";
 
-document
-.getElementById("sellPhoto")
-.addEventListener(
+
+document.getElementById(
+"sellPhoto"
+).addEventListener(
 "change",
 function(){
 
 const file=this.files[0];
+
 
 if(!file){
 
@@ -2932,6 +3607,7 @@ return;
 
 }
 
+
 if(!file.type.startsWith("image/")){
 
 showToast(
@@ -2943,6 +3619,7 @@ this.value="";
 return;
 
 }
+
 
 if(file.size>1500000){
 
@@ -2956,47 +3633,52 @@ return;
 
 }
 
+
 const reader=
 new FileReader();
+
 
 reader.onload=function(){
 
 selectedPhoto=
 reader.result;
 
+
 const preview=
 document.getElementById(
 "photoPreview"
 );
 
-preview.src=selectedPhoto;
+preview.src=
+selectedPhoto;
 
-preview.style.display="block";
+preview.style.display=
+"block";
 
 };
+
 
 reader.readAsDataURL(file);
 
 }
 );
 
-/* =========================================================
-   CLUB CHECK
-========================================================= */
 
-document
-.getElementById("sellClub")
-.addEventListener(
+document.getElementById(
+"sellClub"
+).addEventListener(
 "input",
 function(){
 
 const value=
 this.value.trim();
 
+
 const error=
 document.getElementById(
 "clubError"
 );
+
 
 if(!value){
 
@@ -3006,6 +3688,7 @@ return;
 
 }
 
+
 const found=
 knownClubs.some(
 c=>
@@ -3013,10 +3696,12 @@ c.toLowerCase()===
 value.toLowerCase()
 );
 
+
 error.textContent=
 found
 ?"✓ Verein erkannt"
-:"Dieser Verein wurde nicht erkannt. Bitte einen echten Verein eingeben.";
+:"Dieser Verein wurde nicht erkannt. Er wird nicht als gültiger Verein übernommen.";
+
 
 error.style.color=
 found
@@ -3026,37 +3711,39 @@ found
 }
 );
 
-/* =========================================================
-   SELL FORM
-========================================================= */
 
-document
-.getElementById("sellForm")
-.addEventListener(
+document.getElementById(
+"sellForm"
+).addEventListener(
 "submit",
 function(e){
 
 e.preventDefault();
+
 
 const player=
 document.getElementById(
 "sellPlayer"
 ).value.trim();
 
+
 const club=
 document.getElementById(
 "sellClub"
 ).value.trim();
+
 
 const name=
 document.getElementById(
 "sellName"
 ).value.trim();
 
+
 const condition=
 document.getElementById(
 "sellCondition"
 ).value;
+
 
 const priceValue=
 Number(
@@ -3065,10 +3752,12 @@ document.getElementById(
 ).value
 );
 
+
 const description=
 document.getElementById(
 "sellDescription"
 ).value.trim();
+
 
 const validClub=
 knownClubs.some(
@@ -3076,6 +3765,7 @@ c=>
 c.toLowerCase()===
 club.toLowerCase()
 );
+
 
 if(
 !player||
@@ -3094,22 +3784,21 @@ return;
 
 }
 
-if(!validClub){
 
-showToast(
-"Bitte gib einen erkannten Fußballverein ein."
-);
-
-return;
-
-}
+/*
+  Unbekannte Vereine werden NICHT
+  als echter Verein gespeichert.
+*/
 
 const officialClub=
-knownClubs.find(
+validClub
+?knownClubs.find(
 c=>
 c.toLowerCase()===
 club.toLowerCase()
-);
+)
+:"Kein Verein";
+
 
 const newCard={
 
@@ -3143,9 +3832,11 @@ photo:selectedPhoto||""
 
 };
 
+
 data.cards.unshift(
 newCard
 );
+
 
 data.notifications.unshift({
 
@@ -3160,28 +3851,34 @@ read:false
 
 });
 
+
 saveData();
 
 this.reset();
 
 selectedPhoto="";
 
+
 document.getElementById(
 "photoPreview"
 ).style.display="none";
+
 
 document.getElementById(
 "clubError"
 ).textContent="";
 
+
 showToast(
 "🚀 Karte wurde erfolgreich eingestellt!"
 );
+
 
 showPage("market");
 
 }
 );
+
 
 /* =========================================================
    PROFILE
@@ -3194,6 +3891,7 @@ data.cards.filter(
 c=>c.seller==="Mein Profil"
 );
 
+
 document.getElementById(
 "myCards"
 ).innerHTML=
@@ -3205,9 +3903,11 @@ cards.length
 "Du hast noch keine Karten eingestellt."
 );
 
+
 renderRequests();
 
 }
+
 
 function renderRequests(){
 
@@ -3215,6 +3915,7 @@ const box=
 document.getElementById(
 "requestsList"
 );
+
 
 if(!data.requests.length){
 
@@ -3228,29 +3929,28 @@ return;
 
 }
 
+
 box.innerHTML=
-data.requests.map(r=>`
+data.requests.map(
+r=>`
 
 <div class="list-item">
 
 <div>
 
 <div class="user-name">
-
 ${escapeHTML(r.cardName)}
-
 </div>
 
 <div class="user-small">
-
 Käufer:
 ${escapeHTML(r.buyer)}
 •
 ${date(r.created)}
-
 </div>
 
 </div>
+
 
 <div class="actions">
 
@@ -3267,6 +3967,7 @@ onclick="acceptRequest(${Number(r.id)})">
 
 </button>
 
+
 <button
 class="btn small red"
 onclick="rejectRequest(${Number(r.id)})">
@@ -3277,7 +3978,9 @@ onclick="rejectRequest(${Number(r.id)})">
 
 `
 
-:`
+:
+
+`
 
 <span class="muted">
 
@@ -3296,9 +3999,11 @@ r.status==="accepted"
 
 </div>
 
-`).join("");
+`
+).join("");
 
 }
+
 
 function acceptRequest(id){
 
@@ -3309,7 +4014,9 @@ x=>Number(x.id)===Number(id)
 
 if(!r)return;
 
+
 r.status="accepted";
+
 
 data.notifications.unshift({
 
@@ -3324,6 +4031,7 @@ read:false
 
 });
 
+
 saveData();
 
 renderProfile();
@@ -3336,6 +4044,7 @@ showToast(
 
 }
 
+
 function rejectRequest(id){
 
 const r=
@@ -3345,7 +4054,9 @@ x=>Number(x.id)===Number(id)
 
 if(!r)return;
 
+
 r.status="rejected";
+
 
 data.notifications.unshift({
 
@@ -3360,6 +4071,7 @@ read:false
 
 });
 
+
 saveData();
 
 renderProfile();
@@ -3372,6 +4084,7 @@ showToast(
 
 }
 
+
 /* =========================================================
    NOTIFICATIONS
 ========================================================= */
@@ -3383,10 +4096,12 @@ data.notifications.filter(
 n=>!n.read
 ).length;
 
+
 const badge=
 document.getElementById(
 "notificationBadge"
 );
+
 
 badge.textContent=count;
 
@@ -3397,12 +4112,14 @@ count
 
 }
 
+
 function renderNotifications(){
 
 const box=
 document.getElementById(
 "notificationsList"
 );
+
 
 if(!data.notifications.length){
 
@@ -3416,12 +4133,18 @@ return;
 
 }
 
+
 box.innerHTML=
-data.notifications.map(n=>`
+data.notifications.map(
+n=>`
 
 <div
 class="list-item"
-style="${n.read?"opacity:.55":""}">
+style="${
+n.read
+?"opacity:.55"
+:""
+}">
 
 <div class="user-info">
 
@@ -3445,15 +4168,18 @@ ${date(n.time)}
 
 </div>
 
-`).join("");
+`
+).join("");
 
 }
+
 
 function markNotificationsRead(){
 
 data.notifications.forEach(
 n=>n.read=true
 );
+
 
 saveData();
 
@@ -3467,6 +4193,7 @@ showToast(
 
 }
 
+
 /* =========================================================
    STATS
 ========================================================= */
@@ -3478,10 +4205,12 @@ document.getElementById(
 ).textContent=
 data.cards.length;
 
+
 document.getElementById(
 "statFavorites"
 ).textContent=
 data.favorites.length;
+
 
 document.getElementById(
 "statRequests"
@@ -3490,43 +4219,57 @@ data.requests.filter(
 r=>r.status==="pending"
 ).length;
 
+
 updateNotificationBadge();
 
 }
 
+
 /* =========================================================
-   MODAL EVENTS
+   MODAL
 ========================================================= */
 
-document
-.getElementById("cardModal")
-.addEventListener(
+function closeModal(){
+
+document.getElementById(
+"cardModal"
+).classList.remove(
+"show"
+);
+
+}
+
+
+document.getElementById(
+"cardModal"
+).addEventListener(
 "click",
 function(e){
 
-if(e.target===this){
+if(e.target===this)
 closeModal();
-}
 
 }
 );
+
 
 document.addEventListener(
 "keydown",
 function(e){
 
-if(e.key==="Escape"){
+if(e.key==="Escape")
 closeModal();
-}
 
 }
 );
+
 
 /* =========================================================
    TOAST
 ========================================================= */
 
 let toastTimer=null;
+
 
 function showToast(message){
 
@@ -3535,24 +4278,29 @@ document.getElementById(
 "toast"
 );
 
+
 t.textContent=message;
 
-t.classList.add("show");
+t.classList.add(
+"show"
+);
+
 
 clearTimeout(
 toastTimer
 );
 
-toastTimer=setTimeout(
+
+toastTimer=
+setTimeout(
 ()=>{
-
 t.classList.remove("show");
-
 },
 2600
 );
 
 }
+
 
 /* =========================================================
    START
