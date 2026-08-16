@@ -8,21 +8,21 @@
 <style>
 :root{
   --bg:#050507;
-  --bg2:#09090d;
-  --panel:#0d0d13;
-  --panel2:#12121a;
-  --panel3:#181820;
+  --bg2:#09090c;
+  --panel:#0d0e11;
+  --panel2:#121419;
+  --panel3:#181b20;
 
-  --border:#24212c;
-  --border2:#373044;
+  --border:#24272c;
+  --border2:#3b3f46;
 
-  --text:#f7f7fa;
-  --muted:#92909e;
+  --text:#f7f8fa;
+  --muted:#92969d;
 
-  /* CLEANES, DUNKLES LILA */
-  --accent:#553574;
-  --accent2:#704b96;
-  --accent3:#9368bd;
+  /* SHARP SILVER */
+  --accent:#9da3aa;
+  --accent2:#c7ccd2;
+  --accent3:#f1f3f5;
 
   --green:#43d69c;
   --red:#ef596b;
@@ -59,13 +59,13 @@ body{
 
   background:
     radial-gradient(
-      circle at 10% -10%,
-      rgba(85,53,116,.13),
+      circle at 12% -10%,
+      rgba(190,195,202,.08),
       transparent 30%
     ),
     radial-gradient(
-      circle at 100% 18%,
-      rgba(112,75,150,.055),
+      circle at 100% 20%,
+      rgba(255,255,255,.035),
       transparent 25%
     ),
     #050507;
@@ -100,7 +100,8 @@ a{
   top:0;
   z-index:1000;
 
-  background:rgba(5,5,7,.92);
+  background:
+    rgba(5,5,7,.91);
 
   backdrop-filter:blur(24px);
 
@@ -119,10 +120,9 @@ a{
 
   display:grid;
 
-  /* PIXEL CARDS DEUTLICH LINKS */
-  grid-template-columns:190px 1fr;
+  grid-template-columns:210px 1fr;
 
-  gap:28px;
+  gap:24px;
 
   align-items:center;
 }
@@ -141,7 +141,7 @@ a{
   align-items:center;
   justify-content:flex-start;
 
-  gap:10px;
+  gap:11px;
 
   font-weight:950;
   font-size:20px;
@@ -149,37 +149,38 @@ a{
   white-space:nowrap;
 
   padding:0;
-
-  letter-spacing:-.5px;
 }
 
 .logo-icon{
-  width:44px;
-  height:44px;
+  width:45px;
+  height:45px;
 
   display:grid;
   place-items:center;
 
-  border-radius:13px;
+  border-radius:14px;
 
   background:
     linear-gradient(
       145deg,
-      #39234f,
-      #5b3978
+      #30343a,
+      #9da3aa 55%,
+      #e5e8eb
     );
 
   border:
-    1px solid rgba(147,104,189,.25);
+    1px solid rgba(240,242,245,.30);
 
   box-shadow:
-    0 8px 25px rgba(85,53,116,.22);
+    0 8px 25px rgba(190,195,202,.15);
 
-  font-size:20px;
+  color:#050507;
+
+  font-size:21px;
 }
 
 .logo span:last-child{
-  letter-spacing:-.6px;
+  letter-spacing:-.4px;
 }
 
 /* =========================================================
@@ -214,7 +215,7 @@ a{
   background:
     rgba(255,255,255,.025);
 
-  color:#aaa8b5;
+  color:#aaaeb5;
 
   font-weight:800;
   font-size:13px;
@@ -242,34 +243,35 @@ a{
   color:#fff;
 
   background:
-    rgba(85,53,116,.20);
+    rgba(190,195,202,.10);
 
   border-color:
-    rgba(112,75,150,.34);
+    rgba(220,225,232,.24);
 
   box-shadow:
     0 8px 25px rgba(0,0,0,.15);
 }
 
 /* =========================================================
-   VERKAUFEN
+   SELL BUTTON
 ========================================================= */
 
 .nav-btn.sell-main{
-  color:#fff;
+  color:#050507;
 
   background:
     linear-gradient(
       135deg,
-      #523171,
-      #704b96
+      #70757c,
+      #c8cdd3 55%,
+      #f0f2f4
     );
 
   border:
-    1px solid rgba(147,104,189,.28);
+    1px solid rgba(255,255,255,.38);
 
   box-shadow:
-    0 10px 30px rgba(85,53,116,.24);
+    0 10px 30px rgba(190,195,202,.16);
 
   font-size:14px;
   font-weight:950;
@@ -279,8 +281,9 @@ a{
   background:
     linear-gradient(
       135deg,
-      #5d397e,
-      #7b55a2
+      #858a91,
+      #d9dde2 55%,
+      #ffffff
     );
 
   transform:
@@ -375,7 +378,7 @@ a{
   background:
     linear-gradient(
       120deg,
-      rgba(85,53,116,.17),
+      rgba(190,195,202,.10),
       rgba(13,13,19,.98) 65%
     );
 
@@ -398,7 +401,7 @@ a{
   background:
     radial-gradient(
       circle,
-      rgba(112,75,150,.15),
+      rgba(220,225,232,.12),
       transparent 68%
     );
 }
@@ -472,19 +475,20 @@ a{
   padding:
     12px 18px;
 
-  color:#fff;
+  color:#050507;
 
   background:
     linear-gradient(
       135deg,
-      #553574,
-      #704b96
+      #777d84,
+      #c9ced4 55%,
+      #eef0f2
     );
 
   font-weight:900;
 
   box-shadow:
-    0 8px 25px rgba(85,53,116,.20);
+    0 8px 25px rgba(190,195,202,.15);
 
   transition:.2s;
 }
@@ -499,10 +503,20 @@ a{
   background:
     var(--panel2);
 
+  color:#f4f5f6;
+
   border:
     1px solid var(--border);
 
   box-shadow:none;
+}
+
+.btn.secondary:hover{
+  border-color:
+    var(--border2);
+
+  background:
+    #181b20;
 }
 
 .btn.green{
@@ -512,6 +526,7 @@ a{
 
 .btn.red{
   background:var(--red);
+  color:white;
 }
 
 .btn.small{
@@ -573,8 +588,8 @@ a{
   background:
     linear-gradient(
       145deg,
-      #101016,
-      #0b0b10
+      #101216,
+      #0b0b0f
     );
 
   transition:.2s;
@@ -585,6 +600,9 @@ a{
 
   border-color:
     var(--border2);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.25);
 }
 
 .stat-number{
@@ -656,7 +674,7 @@ a{
   outline:none;
 
   background:
-    #13131a;
+    #13151a;
 
   color:white;
 
@@ -667,18 +685,18 @@ a{
 }
 
 .input::placeholder{
-  color:#6f6d78;
+  color:#6f7279;
 }
 
 .input:focus,
 .select:focus,
 .textarea:focus{
   border-color:
-    #704b96;
+    #aeb4bb;
 
   box-shadow:
     0 0 0 3px
-    rgba(112,75,150,.10);
+    rgba(190,195,202,.09);
 }
 
 .textarea{
@@ -711,7 +729,7 @@ a{
   background:
     linear-gradient(
       145deg,
-      #111117,
+      #111318,
       #0b0b10
     );
 
@@ -728,7 +746,7 @@ a{
   transform:translateY(-5px);
 
   border-color:
-    #393145;
+    #444950;
 
   box-shadow:
     0 20px 45px rgba(0,0,0,.38);
@@ -747,12 +765,12 @@ a{
   background:
     radial-gradient(
       circle at 50% 35%,
-      rgba(255,255,255,.07),
+      rgba(255,255,255,.08),
       transparent 27%
     ),
     linear-gradient(
       135deg,
-      #1a1821,
+      #1a1c21,
       #08080c
     );
 }
@@ -794,12 +812,19 @@ a{
   border-radius:8px;
 
   background:
-    #704b96;
+    linear-gradient(
+      135deg,
+      #777d84,
+      #d5d9de
+    );
 
-  color:#fff;
+  color:#050507;
 
   font-size:10px;
   font-weight:950;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.22);
 }
 
 .popular-tag{
@@ -852,6 +877,9 @@ a{
 
 .favorite:hover{
   transform:scale(1.07);
+
+  border-color:
+    rgba(255,255,255,.25);
 }
 
 .favorite.active{
@@ -947,7 +975,7 @@ a{
   border-radius:13px;
 
   background:
-    #12121a;
+    #121419;
 }
 
 .actions{
@@ -970,9 +998,11 @@ a{
   background:
     linear-gradient(
       135deg,
-      #3d2752,
-      #704b96
+      #383d43,
+      #aeb4bb
     );
+
+  color:#fff;
 
   font-weight:950;
 }
@@ -1019,7 +1049,7 @@ a{
   background:
     linear-gradient(
       135deg,
-      rgba(85,53,116,.12),
+      rgba(190,195,202,.08),
       #0d0d13
     );
 }
@@ -1038,15 +1068,17 @@ a{
   background:
     linear-gradient(
       135deg,
-      #3d2752,
-      #704b96
+      #383d43,
+      #aeb4bb
     );
+
+  color:#fff;
 
   font-size:30px;
   font-weight:950;
 
   box-shadow:
-    0 12px 35px rgba(85,53,116,.20);
+    0 12px 35px rgba(190,195,202,.12);
 }
 
 .rating{
@@ -1130,7 +1162,7 @@ a{
   background:
     linear-gradient(
       145deg,
-      #15151d,
+      #15171c,
       #0b0b10
     );
 
@@ -1169,11 +1201,15 @@ a{
 
   border-radius:11px;
 
-  background:#17171f;
+  background:#17191e;
 
   color:white;
 
   font-size:17px;
+}
+
+.close:hover{
+  background:#22252b;
 }
 
 .form-group{
@@ -1229,7 +1265,7 @@ a{
 
   border-radius:14px;
 
-  background:#191923;
+  background:#191c21;
 
   box-shadow:var(--shadow);
 
@@ -1477,13 +1513,16 @@ onclick="showPage('messages')">
 class="nav-btn"
 data-page="notifications"
 onclick="showPage('notifications')">
+
 🔔 Benachrichtigungen
+
 <span
 id="notificationBadge"
 class="badge"
 style="display:none">
 0
 </span>
+
 </button>
 
 <button
@@ -1494,13 +1533,17 @@ onclick="showPage('profile')">
 </button>
 
 </div>
+
 </nav>
+
 </header>
 
 
 <main class="container">
 
-<section id="home" class="page active">
+<section
+id="home"
+class="page active">
 
 <div class="hero">
 
@@ -1531,29 +1574,64 @@ Karte einstellen
 </button>
 
 </div>
+
 </div>
 
 
 <div class="stats">
 
 <div class="stat">
-<div class="stat-number" id="statCards">0</div>
-<div class="stat-label">Karten online</div>
+
+<div
+class="stat-number"
+id="statCards">
+0
+</div>
+
+<div class="stat-label">
+Karten online
+</div>
+
 </div>
 
 <div class="stat">
-<div class="stat-number" id="statFavorites">0</div>
-<div class="stat-label">Favoriten</div>
+
+<div
+class="stat-number"
+id="statFavorites">
+0
+</div>
+
+<div class="stat-label">
+Favoriten
+</div>
+
 </div>
 
 <div class="stat">
-<div class="stat-number" id="statRequests">0</div>
-<div class="stat-label">Kaufanfragen</div>
+
+<div
+class="stat-number"
+id="statRequests">
+0
+</div>
+
+<div class="stat-label">
+Kaufanfragen
+</div>
+
 </div>
 
 <div class="stat">
-<div class="stat-number">4.9★</div>
-<div class="stat-label">Community Rating</div>
+
+<div class="stat-number">
+4.9★
+</div>
+
+<div class="stat-label">
+Community Rating
+</div>
+
 </div>
 
 </div>
@@ -1562,8 +1640,13 @@ Karte einstellen
 <div class="section-head">
 
 <div>
+
 <h2>🔥 Aktuelle Karten</h2>
-<span class="muted">Die neuesten Angebote</span>
+
+<span class="muted">
+Die neuesten Angebote
+</span>
+
 </div>
 
 <button
@@ -1574,34 +1657,48 @@ Alle anzeigen
 
 </div>
 
-<div id="homeCards" class="cards-grid"></div>
+<div
+id="homeCards"
+class="cards-grid">
+</div>
 
 
 <div class="section-head">
 
 <div>
+
 <h2>🔥 Beliebte Karten</h2>
+
 <span class="muted">
 Viele Aufrufe und Favoriten
 </span>
-</div>
 
 </div>
 
-<div id="popularCards" class="cards-grid"></div>
+</div>
+
+<div
+id="popularCards"
+class="cards-grid">
+</div>
 
 </section>
 
 
-<section id="market" class="page">
+<section
+id="market"
+class="page">
 
 <div class="section-head">
 
 <div>
+
 <h2>🛒 Marktplatz</h2>
+
 <span class="muted">
 Finde genau die Karte, die du suchst
 </span>
+
 </div>
 
 </div>
@@ -1652,7 +1749,10 @@ id="conditionFilter"
 class="select"
 onchange="renderMarket()">
 
-<option value="">⭐ Alle Zustände</option>
+<option value="">
+⭐ Alle Zustände
+</option>
+
 <option>Neu</option>
 <option>Sehr gut</option>
 <option>Gut</option>
@@ -1666,11 +1766,25 @@ id="sortFilter"
 class="select"
 onchange="renderMarket()">
 
-<option value="new">🆕 Neueste</option>
-<option value="cheap">💶 Preis niedrig → hoch</option>
-<option value="expensive">💶 Preis hoch → niedrig</option>
-<option value="popular">🔥 Beliebteste</option>
-<option value="views">👁️ Meiste Aufrufe</option>
+<option value="new">
+🆕 Neueste
+</option>
+
+<option value="cheap">
+💶 Preis niedrig → hoch
+</option>
+
+<option value="expensive">
+💶 Preis hoch → niedrig
+</option>
+
+<option value="popular">
+🔥 Beliebteste
+</option>
+
+<option value="views">
+👁️ Meiste Aufrufe
+</option>
 
 </select>
 
@@ -1682,10 +1796,12 @@ onclick="resetFilters()">
 </button>
 
 </div>
+
 </div>
 
 
 <datalist id="clubSuggestions">
+
 <option value="Real Madrid">
 <option value="FC Barcelona">
 <option value="PSG">
@@ -1701,41 +1817,61 @@ onclick="resetFilters()">
 <option value="Juventus">
 <option value="Atlético Madrid">
 <option value="Tottenham">
+
 </datalist>
 
 
 <div class="section-head">
-<span id="marketCount" class="muted"></span>
+
+<span
+id="marketCount"
+class="muted">
+</span>
+
 </div>
 
-<div id="marketCards" class="cards-grid"></div>
+<div
+id="marketCards"
+class="cards-grid">
+</div>
 
 
 <div class="section-head">
 
 <div>
+
 <h2>👁️ Zuletzt angesehen</h2>
+
 <span class="muted">
 Deine zuletzt geöffneten Karten
 </span>
-</div>
 
 </div>
 
-<div id="recentCards" class="cards-grid"></div>
+</div>
+
+<div
+id="recentCards"
+class="cards-grid">
+</div>
 
 </section>
 
 
-<section id="sell" class="page">
+<section
+id="sell"
+class="page">
 
 <div class="section-head">
 
 <div>
+
 <h2>➕ Karte verkaufen</h2>
+
 <span class="muted">
 Erstelle dein eigenes Angebot
 </span>
+
 </div>
 
 </div>
@@ -1867,60 +2003,82 @@ type="submit">
 </button>
 
 </form>
+
 </div>
 
 </section>
 
 
-<section id="favorites" class="page">
+<section
+id="favorites"
+class="page">
 
 <div class="section-head">
 
 <div>
+
 <h2>❤️ Meine Favoriten</h2>
+
 <span class="muted">
 Gespeicherte Karten
 </span>
-</div>
 
 </div>
 
-<div id="favoriteCards" class="cards-grid"></div>
+</div>
+
+<div
+id="favoriteCards"
+class="cards-grid">
+</div>
 
 </section>
 
 
-<section id="messages" class="page">
+<section
+id="messages"
+class="page">
 
 <div class="section-head">
 
 <div>
+
 <h2>💬 Nachrichten</h2>
+
 <span class="muted">
 Deine Unterhaltungen
 </span>
+
 </div>
 
 </div>
 
 <div class="panel">
 
-<div id="messagesList" class="list"></div>
+<div
+id="messagesList"
+class="list">
+</div>
 
 </div>
 
 </section>
 
 
-<section id="notifications" class="page">
+<section
+id="notifications"
+class="page">
 
 <div class="section-head">
 
 <div>
+
 <h2>🔔 Benachrichtigungen</h2>
+
 <span class="muted">
 Was gerade passiert
 </span>
+
 </div>
 
 <button
@@ -1943,7 +2101,9 @@ class="list">
 </section>
 
 
-<section id="profile" class="page">
+<section
+id="profile"
+class="page">
 
 <div class="profile-head">
 
@@ -1953,11 +2113,15 @@ M
 
 <div>
 
-<h2>Mein Pixel-Cards-Profil</h2>
+<h2>
+Mein Pixel-Cards-Profil
+</h2>
 
 <div class="rating">
 ★★★★★
-<span class="muted">4.9</span>
+<span class="muted">
+4.9
+</span>
 </div>
 
 <div class="user-small">
@@ -1972,7 +2136,9 @@ Sammler • Verkäufer
 <div class="section-head">
 
 <div>
+
 <h2>📦 Meine Angebote</h2>
+
 </div>
 
 <button
@@ -1984,16 +2150,22 @@ onclick="showPage('sell')">
 </div>
 
 
-<div id="myCards" class="cards-grid"></div>
+<div
+id="myCards"
+class="cards-grid">
+</div>
 
 
 <div class="section-head">
 
 <div>
+
 <h2>🛍️ Kaufanfragen</h2>
+
 <span class="muted">
 Anfragen von anderen Nutzern
 </span>
+
 </div>
 
 </div>
@@ -2001,7 +2173,10 @@ Anfragen von anderen Nutzern
 
 <div class="panel">
 
-<div id="requestsList" class="list"></div>
+<div
+id="requestsList"
+class="list">
+</div>
 
 </div>
 
@@ -2010,7 +2185,9 @@ Anfragen von anderen Nutzern
 </main>
 
 
-<div id="cardModal" class="modal-backdrop">
+<div
+id="cardModal"
+class="modal-backdrop">
 
 <div class="modal">
 
@@ -2018,9 +2195,14 @@ Anfragen von anderen Nutzern
 
 <div>
 
-<h2 id="modalTitle">Karte</h2>
+<h2 id="modalTitle">
+Karte
+</h2>
 
-<div id="modalSubtitle" class="muted"></div>
+<div
+id="modalSubtitle"
+class="muted">
+</div>
 
 </div>
 
@@ -2032,13 +2214,18 @@ onclick="closeModal()">
 
 </div>
 
-<div id="modalContent"></div>
-
-</div>
+<div id="modalContent">
 </div>
 
+</div>
 
-<div id="toast" class="toast"></div>
+</div>
+
+
+<div
+id="toast"
+class="toast">
+</div>
 
 
 <script>
@@ -2150,7 +2337,6 @@ photo:""
 ];
 
 function initialData(){
-
 return{
 cards:JSON.parse(JSON.stringify(defaultCards)),
 favorites:[],
@@ -2180,7 +2366,6 @@ unread:false
 ],
 requests:[]
 };
-
 }
 
 function loadData(){
@@ -2396,25 +2581,20 @@ b.dataset.page===id
 );
 });
 
-if(id==="home")
-renderHome();
+if(id==="home")renderHome();
 
 if(id==="market"){
 renderMarket();
 renderRecent();
 }
 
-if(id==="favorites")
-renderFavorites();
+if(id==="favorites")renderFavorites();
 
-if(id==="messages")
-renderMessages();
+if(id==="messages")renderMessages();
 
-if(id==="notifications")
-renderNotifications();
+if(id==="notifications")renderNotifications();
 
-if(id==="profile")
-renderProfile();
+if(id==="profile")renderProfile();
 
 window.scrollTo({
 top:0,
@@ -2631,19 +2811,16 @@ Number(c.price)<=max
 });
 
 if(sort==="cheap")
-
 cards.sort(
 (a,b)=>Number(a.price)-Number(b.price)
 );
 
 else if(sort==="expensive")
-
 cards.sort(
 (a,b)=>Number(b.price)-Number(a.price)
 );
 
 else if(sort==="popular")
-
 cards.sort(
 (a,b)=>
 (
@@ -2657,14 +2834,12 @@ Number(a.views||0)
 );
 
 else if(sort==="views")
-
 cards.sort(
 (a,b)=>
 Number(b.views||0)-Number(a.views||0)
 );
 
 else
-
 cards.sort(
 (a,b)=>Number(b.created)-Number(a.created)
 );
@@ -2697,8 +2872,7 @@ function resetFilters(){
 
 const el=document.getElementById(id);
 
-if(el)
-el.value="";
+if(el)el.value="";
 
 });
 
@@ -2723,8 +2897,7 @@ data.cards.find(
 c=>Number(c.id)===Number(id)
 );
 
-if(!card)
-return;
+if(!card)return;
 
 const i=
 data.favorites.indexOf(card.id);
@@ -2787,8 +2960,7 @@ data.cards.find(
 c=>Number(c.id)===Number(id)
 );
 
-if(!card)
-return;
+if(!card)return;
 
 const viewed=getViewed();
 
@@ -2958,7 +3130,7 @@ onclick="requestPurchase(${Number(card.id)})">
 
 <button
 class="btn secondary"
-onclick="messageSeller(${JSON.stringify(card.seller)})">
+onclick="messageSeller('${String(card.seller).replace(/'/g,"\\'")}')">
 
 💬 Verkäufer anschreiben
 
@@ -2984,8 +3156,7 @@ data.cards.find(
 c=>Number(c.id)===Number(id)
 );
 
-if(!card)
-return;
+if(!card)return;
 
 const exists=
 data.requests.some(
@@ -3137,9 +3308,10 @@ ${date(m.time)}
 
 let selectedPhoto="";
 
-document.getElementById(
-"sellPhoto"
-).addEventListener(
+const sellPhotoElement=
+document.getElementById("sellPhoto");
+
+sellPhotoElement.addEventListener(
 "change",
 function(){
 
@@ -3459,13 +3631,17 @@ r.status==="pending"
 <button
 class="btn small green"
 onclick="acceptRequest(${Number(r.id)})">
+
 ✓ Annehmen
+
 </button>
 
 <button
 class="btn small red"
 onclick="rejectRequest(${Number(r.id)})">
+
 ✕ Ablehnen
+
 </button>
 
 `
@@ -3503,8 +3679,7 @@ data.requests.find(
 x=>Number(x.id)===Number(id)
 );
 
-if(!r)
-return;
+if(!r)return;
 
 r.status="accepted";
 
@@ -3540,8 +3715,7 @@ data.requests.find(
 x=>Number(x.id)===Number(id)
 );
 
-if(!r)
-return;
+if(!r)return;
 
 r.status="rejected";
 
@@ -3740,9 +3914,8 @@ t.classList.remove("show");
 
 }
 
-
 /* =========================================================
-   START
+   INITIAL RENDER
 ========================================================= */
 
 renderHome();
@@ -3757,4 +3930,4 @@ updateStats();
 </script>
 
 </body>
-</html> 
+</html>
