@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Pixel Cards</title>
 
 <style>
-
 * {
   box-sizing: border-box;
 }
@@ -19,53 +17,50 @@ html {
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #f4f5f7;
+  background: #f4f6f8;
   color: #111;
 }
 
-/* ================================
+/* =========================
    HEADER
-================================ */
+========================= */
 
 header {
-  background: #111;
+  background: linear-gradient(135deg, #111, #242424);
   color: white;
-  padding: 20px 16px;
+  padding: 24px 18px;
   text-align: center;
 }
 
 header h1 {
   margin: 0;
-  font-size: 30px;
+  font-size: 31px;
 }
 
 header p {
-  margin: 6px 0 0;
-  color: #aaa;
+  margin: 7px 0 0;
+  color: #bdbdbd;
 }
 
-/* ================================
+/* =========================
    PROFILBAR
-================================ */
+========================= */
 
 .profile-bar {
   background: white;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e3e3e3;
   position: sticky;
   top: 0;
-  z-index: 500;
+  z-index: 1000;
 }
 
 .profile-inner {
   max-width: 1150px;
   margin: auto;
-  min-height: 70px;
-  padding: 10px 18px;
-
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 15px;
 }
 
@@ -74,20 +69,19 @@ header p {
   align-items: center;
   gap: 10px;
   font-weight: bold;
+  min-width: 0;
 }
 
 .avatar {
   width: 42px;
   height: 42px;
+  min-width: 42px;
   border-radius: 50%;
-
   background: #111;
   color: white;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-weight: bold;
 }
 
@@ -97,70 +91,59 @@ header p {
 }
 
 .profile-controls input {
-  width: 160px;
-  padding: 10px;
-
+  width: 180px;
+  padding: 10px 12px;
   border: 1px solid #ddd;
   border-radius: 10px;
+  outline: none;
+}
+
+.profile-controls input:focus {
+  border-color: #111;
 }
 
 .primary-btn {
   border: none;
   background: #111;
   color: white;
-
-  padding: 10px 14px;
-
+  padding: 10px 15px;
   border-radius: 10px;
-
   font-weight: bold;
   cursor: pointer;
 }
 
-/* ================================
+/* =========================
    NAVIGATION
-================================ */
-
-.navigation-wrapper {
-  background: white;
-  border-bottom: 1px solid #ddd;
-
-  position: sticky;
-  top: 70px;
-
-  z-index: 490;
-}
+========================= */
 
 .navigation {
+  position: sticky;
+  top: 67px;
+  z-index: 999;
+  background: rgba(244,246,248,.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #ddd;
+}
+
+.navigation-inner {
   max-width: 1150px;
   margin: auto;
-
   padding: 10px 18px;
-
   display: flex;
   gap: 8px;
-
   overflow-x: auto;
 }
 
 .navigation button {
-  position: relative;
-
   flex: 0 0 auto;
-
   border: none;
-
-  background: #f1f2f4;
-
-  padding: 12px 16px;
-
+  background: white;
+  padding: 12px 17px;
   border-radius: 12px;
-
   font-weight: bold;
-
   cursor: pointer;
-
-  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  position: relative;
 }
 
 .navigation button.active {
@@ -168,41 +151,28 @@ header p {
   color: white;
 }
 
-.notification-badge {
-  position: absolute;
-
-  top: -6px;
-  right: -6px;
-
-  min-width: 21px;
-  height: 21px;
-
-  padding: 2px 5px;
-
-  background: #e11d48;
-  color: white;
-
-  border-radius: 50%;
-
-  font-size: 12px;
-
-  display: flex;
+.badge {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  border: 2px solid white;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  margin-left: 5px;
+  border-radius: 999px;
+  background: #dc2626;
+  color: white;
+  font-size: 11px;
 }
 
-/* ================================
-   SUCHE
-================================ */
+/* =========================
+   SEARCH
+========================= */
 
 .search {
   background: white;
-
-  padding: 14px 20px;
-
-  border-bottom: 1px solid #ddd;
+  padding: 18px;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .search-inner {
@@ -212,15 +182,10 @@ header p {
 
 .search input {
   width: 100%;
-
   padding: 14px 16px;
-
   border: 1px solid #ddd;
-
   border-radius: 13px;
-
   font-size: 16px;
-
   outline: none;
 }
 
@@ -228,113 +193,20 @@ header p {
   border-color: #111;
 }
 
-/* ================================
+/* =========================
    CONTAINER
-================================ */
+========================= */
 
 .container {
   width: 100%;
   max-width: 1150px;
-
   margin: auto;
-
-  padding: 20px;
+  padding: 22px 18px 40px;
 }
 
-/* ================================
-   SELL
-================================ */
-
-.sell {
-  background: #111;
-  color: white;
-
-  padding: 22px;
-
-  border-radius: 18px;
-
-  margin-bottom: 22px;
-
-  text-align: center;
-}
-
-.sell h2 {
-  margin-top: 0;
-}
-
-.sell p {
-  color: #bbb;
-}
-
-.sell form {
-  display: flex;
-
-  flex-wrap: wrap;
-
-  justify-content: center;
-
-  gap: 8px;
-}
-
-.sell input {
-  padding: 12px;
-
-  border: none;
-
-  border-radius: 9px;
-}
-
-.sell button {
-  padding: 12px 18px;
-
-  border: none;
-
-  border-radius: 9px;
-
-  background: white;
-
-  color: #111;
-
-  font-weight: bold;
-
-  cursor: pointer;
-}
-
-/* ================================
-   FILTER
-================================ */
-
-.filter-bar {
-  background: white;
-
-  padding: 14px;
-
-  border-radius: 15px;
-
-  margin-bottom: 20px;
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 10px;
-
-  align-items: center;
-}
-
-.filter-bar select {
-  padding: 10px;
-
-  border: 1px solid #ddd;
-
-  border-radius: 10px;
-
-  background: white;
-}
-
-/* ================================
+/* =========================
    PAGES
-================================ */
+========================= */
 
 .page {
   display: none;
@@ -344,55 +216,85 @@ header p {
   display: block;
 }
 
-/* ================================
-   CARDS
-================================ */
+.section-title {
+  margin-top: 5px;
+}
+
+/* =========================
+   SELL
+========================= */
+
+.sell {
+  background: linear-gradient(135deg, #111, #272727);
+  color: white;
+  padding: 24px;
+  border-radius: 20px;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.12);
+}
+
+.sell h2 {
+  margin-top: 0;
+}
+
+.sell p {
+  color: #c9c9c9;
+}
+
+.sell form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 150px 1.2fr auto;
+  gap: 9px;
+}
+
+.sell input {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  min-width: 0;
+}
+
+.sell button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* =========================
+   CARDS GRID
+========================= */
 
 .cards {
   display: grid;
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(245px, 1fr));
-
-  gap: 17px;
+  grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+  gap: 18px;
 }
 
 .card {
-  position: relative;
-
   background: white;
-
-  border-radius: 18px;
-
-  padding: 16px;
-
-  box-shadow:
-    0 5px 18px rgba(0,0,0,.08);
-
-  transition:
-    transform .15s,
-    box-shadow .15s;
+  border-radius: 19px;
+  padding: 15px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.08);
+  border: 1px solid #ededed;
+  transition: transform .15s ease, box-shadow .15s ease;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 9px 25px rgba(0,0,0,.12);
+  transform: translateY(-2px);
+  box-shadow: 0 9px 25px rgba(0,0,0,.11);
 }
 
 .card-image {
   width: 100%;
-  height: 205px;
-
-  background: #f0f1f2;
-
-  border-radius: 14px;
-
+  height: 210px;
+  background: #f1f2f4;
+  border-radius: 15px;
   overflow: hidden;
-
   display: flex;
-
   align-items: center;
   justify-content: center;
 }
@@ -400,106 +302,81 @@ header p {
 .card-image img {
   width: 100%;
   height: 100%;
-
   object-fit: contain;
 }
 
-.new-badge {
-  position: absolute;
-
-  top: 25px;
-  left: 25px;
-
-  background: #16a34a;
-  color: white;
-
-  padding: 6px 9px;
-
-  border-radius: 8px;
-
-  font-size: 12px;
-
-  font-weight: bold;
-
-  z-index: 5;
-}
-
-.favorite-count {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 4px;
-
-  color: #777;
-
-  font-size: 13px;
-
-  margin-top: 3px;
-}
-
 .card h3 {
-  margin-bottom: 5px;
+  margin: 13px 0 5px;
+  font-size: 19px;
 }
 
 .info {
   color: #666;
-
   margin: 6px 0;
 }
 
 .price {
   font-size: 23px;
-
   font-weight: bold;
-
   margin: 10px 0;
 }
 
 .card button {
   width: 100%;
-
   margin-top: 8px;
-
   padding: 11px;
-
   border: none;
-
-  border-radius: 9px;
-
+  border-radius: 10px;
   background: #111;
-
   color: white;
-
   font-weight: bold;
-
   cursor: pointer;
 }
 
 .card button.gray {
-  background: #eee;
+  background: #eeeeee;
   color: #111;
 }
 
 .card button:disabled {
-  opacity: .65;
   cursor: default;
+  opacity: .7;
 }
 
-/* ================================
+/* =========================
+   FAVORITE COUNT
+========================= */
+
+.favorite-count {
+  display: inline-block;
+  margin-top: 5px;
+  color: #777;
+  font-size: 13px;
+}
+
+/* =========================
+   SOLD
+========================= */
+
+.sold-box {
+  background: #e1f7e8;
+  color: #137333;
+  padding: 9px 11px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* =========================
    STATUS
-================================ */
+========================= */
 
 .status {
   display: inline-block;
-
   padding: 7px 10px;
-
-  border-radius: 8px;
-
+  border-radius: 9px;
   font-weight: bold;
-
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .status.open {
@@ -517,78 +394,61 @@ header p {
   color: #b42318;
 }
 
-/* ================================
+/* =========================
    REQUESTS
-================================ */
+========================= */
 
 .request-list {
   display: grid;
-
-  gap: 14px;
+  gap: 15px;
 }
 
 .request {
   background: white;
-
   padding: 17px;
-
-  border-radius: 17px;
-
-  box-shadow:
-    0 4px 14px rgba(0,0,0,.08);
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.07);
+  border: 1px solid #ededed;
 }
 
 .request-top {
   display: flex;
-
-  gap: 14px;
-
+  gap: 15px;
   align-items: center;
 }
 
 .request-image {
-  width: 90px;
-  height: 90px;
-
+  width: 95px;
+  height: 95px;
   object-fit: contain;
-
   background: #f1f1f1;
-
-  border-radius: 12px;
-
+  border-radius: 13px;
   flex-shrink: 0;
 }
 
 .request-info {
   flex: 1;
+  min-width: 0;
 }
 
 .request-info h3 {
-  margin: 0 0 6px;
+  margin: 0 0 7px;
 }
 
 .request-actions {
   display: flex;
-
   gap: 10px;
-
   margin-top: 15px;
 }
 
 .accept-btn,
 .reject-btn {
   border: none;
-
   color: white;
-
   padding: 12px 17px;
-
   border-radius: 10px;
-
   font-weight: bold;
-
   flex: 1;
-
   cursor: pointer;
 }
 
@@ -600,48 +460,45 @@ header p {
   background: #dc2626;
 }
 
-/* ================================
+.rate-btn {
+  border: none;
+  background: #111;
+  color: white;
+  padding: 11px 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+/* =========================
    PROFILE
-================================ */
+========================= */
 
 .seller-profile {
   background: white;
-
   border-radius: 20px;
-
   padding: 25px;
-
-  box-shadow:
-    0 5px 18px rgba(0,0,0,.08);
-
-  margin-bottom: 20px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.08);
 }
 
 .seller-header {
   display: flex;
-
   align-items: center;
-
   gap: 15px;
 }
 
 .big-avatar {
   width: 75px;
   height: 75px;
-
+  min-width: 75px;
   border-radius: 50%;
-
   background: #111;
-
   color: white;
-
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   font-size: 28px;
-
   font-weight: bold;
 }
 
@@ -649,247 +506,169 @@ header p {
   margin: 0;
 }
 
+.rating-display {
+  margin-top: 7px;
+  font-size: 20px;
+}
+
 .seller-stats {
   display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-
   margin-top: 22px;
 }
 
 .seller-stat {
   background: #f5f5f5;
-
   padding: 15px;
-
-  border-radius: 12px;
-
+  border-radius: 13px;
   text-align: center;
 }
 
 .seller-stat strong {
   display: block;
-
   font-size: 23px;
 }
 
 .seller-stat span {
   color: #777;
-
   font-size: 13px;
 }
 
-/* ================================
-   RATINGS
-================================ */
-
-.rating {
-  font-size: 22px;
-
-  margin-top: 8px;
-}
-
-.rating-input {
-  display: flex;
-
-  gap: 4px;
-
-  margin-top: 10px;
-}
-
-.rating-input button {
-  border: none;
-
-  background: transparent;
-
-  font-size: 28px;
-
-  cursor: pointer;
-
-  padding: 2px;
-}
-
-.rating-input button.selected {
-  transform: scale(1.1);
-}
-
-/* ================================
-   MESSAGES
-================================ */
-
-.message-list {
-  display: grid;
-
-  gap: 12px;
-}
-
-.message-box {
-  background: white;
-
-  border-radius: 16px;
-
-  padding: 16px;
-
-  box-shadow:
-    0 4px 14px rgba(0,0,0,.07);
-}
-
-.message-head {
-  display: flex;
-
-  justify-content: space-between;
-
-  gap: 10px;
-}
-
-.message-text {
-  margin-top: 12px;
-
-  background: #f1f2f4;
-
-  padding: 12px;
-
-  border-radius: 12px;
-}
-
-.message-form {
-  display: flex;
-
-  gap: 8px;
-
-  margin-top: 12px;
-}
-
-.message-form input {
-  flex: 1;
-
-  padding: 12px;
-
-  border: 1px solid #ddd;
-
-  border-radius: 10px;
-}
-
-.message-form button {
-  border: none;
-
-  background: #111;
-
-  color: white;
-
-  border-radius: 10px;
-
-  padding: 12px 16px;
-
-  font-weight: bold;
-}
-
-/* ================================
+/* =========================
    EMPTY
-================================ */
+========================= */
 
 .empty {
   background: white;
-
-  padding: 25px;
-
-  border-radius: 15px;
-
+  padding: 28px;
+  border-radius: 16px;
   color: #777;
-
   text-align: center;
+  border: 1px solid #eee;
 }
 
-/* ================================
+/* =========================
    MODAL
-================================ */
+========================= */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 18px;
+}
 
 .modal {
-  position: fixed;
-
-  inset: 0;
-
-  background: rgba(0,0,0,.72);
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  z-index: 9999;
-
-  padding: 20px;
-}
-
-.modal-content {
-  background: white;
-
-  padding: 22px;
-
-  border-radius: 20px;
-
   width: 100%;
-
   max-width: 430px;
-
+  background: white;
+  border-radius: 20px;
+  padding: 22px;
   max-height: 90vh;
-
   overflow-y: auto;
-
-  text-align: center;
 }
 
-.modal-content img {
+.modal h2 {
+  margin-top: 0;
+}
+
+.modal-image {
   width: 100%;
-
-  max-height: 350px;
-
+  max-height: 300px;
   object-fit: contain;
-
-  border-radius: 14px;
+  background: #f2f2f2;
+  border-radius: 15px;
 }
 
-.modal-content button {
-  width: 100%;
+.modal-actions {
+  display: flex;
+  gap: 9px;
+  margin-top: 15px;
+}
 
+.modal-actions button {
+  flex: 1;
   border: none;
-
-  padding: 13px;
-
+  padding: 12px;
   border-radius: 10px;
-
   font-weight: bold;
-
-  margin-top: 8px;
-
   cursor: pointer;
 }
 
-/* ================================
+.close-btn {
+  background: #eee;
+}
+
+.save-rating-btn {
+  background: #111;
+  color: white;
+}
+
+/* =========================
+   STAR RATING
+========================= */
+
+.star-picker {
+  display: flex;
+  gap: 5px;
+  font-size: 34px;
+  margin: 10px 0;
+}
+
+.star-picker span {
+  cursor: pointer;
+  color: #ccc;
+}
+
+.star-picker span.active {
+  color: #f5b400;
+}
+
+.rating-comment {
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+  padding: 11px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: inherit;
+}
+
+/* =========================
    FOOTER
-================================ */
+========================= */
 
 footer {
   text-align: center;
-
   padding: 35px;
-
   color: #777;
 }
 
-/* ================================
+/* =========================
    MOBILE
-================================ */
+========================= */
+
+@media(max-width:850px) {
+
+  .sell form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sell button {
+    grid-column: span 2;
+  }
+
+}
 
 @media(max-width:700px) {
 
   .profile-inner {
     flex-direction: column;
-
     align-items: stretch;
   }
 
@@ -903,20 +682,27 @@ footer {
 
   .profile-controls input {
     flex: 1;
-
-    min-width: 0;
+    width: auto;
   }
 
-  .navigation-wrapper {
-    top: 117px;
+  .navigation {
+    top: 103px;
   }
 
-  .sell input {
-    width: 100%;
+  .navigation-inner {
+    padding: 9px 12px;
+  }
+
+  .navigation button {
+    padding: 11px 13px;
+  }
+
+  .sell form {
+    grid-template-columns: 1fr;
   }
 
   .sell button {
-    width: 100%;
+    grid-column: auto;
   }
 
   .request-top {
@@ -931,12 +717,20 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .message-form {
-    flex-direction: column;
+}
+
+@media(max-width:450px) {
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .request-image {
+    width: 75px;
+    height: 75px;
   }
 
 }
-
 </style>
 </head>
 
@@ -947,9 +741,9 @@ footer {
   <p>Der Marktplatz für Fußballkarten</p>
 </header>
 
-<!-- ================================
+<!-- =========================
      PROFIL
-================================ -->
+========================= -->
 
 <div class="profile-bar">
 
@@ -957,12 +751,7 @@ footer {
 
     <div class="profile-user">
 
-      <div
-        id="avatar"
-        class="avatar"
-      >
-        ?
-      </div>
+      <div id="avatar" class="avatar">?</div>
 
       <span id="profileName">
         Kein Benutzer
@@ -992,13 +781,13 @@ footer {
 
 </div>
 
-<!-- ================================
-     NAVIGATION GANZ OBEN
-================================ -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-<div class="navigation-wrapper">
+<nav class="navigation">
 
-  <div class="navigation">
+  <div class="navigation-inner">
 
     <button
       id="navCards"
@@ -1027,31 +816,7 @@ footer {
       onclick="showPage('requestsPage','navRequests')"
     >
       📩 Anfragen
-
-      <span
-        id="requestBadge"
-        class="notification-badge"
-        style="display:none;"
-      >
-        0
-      </span>
-
-    </button>
-
-    <button
-      id="navMessages"
-      onclick="showPage('messagesPage','navMessages')"
-    >
-      💬 Nachrichten
-
-      <span
-        id="messageBadge"
-        class="notification-badge"
-        style="display:none;"
-      >
-        0
-      </span>
-
+      <span id="requestBadge" class="badge" style="display:none">0</span>
     </button>
 
     <button
@@ -1063,11 +828,11 @@ footer {
 
   </div>
 
-</div>
+</nav>
 
-<!-- ================================
+<!-- =========================
      SUCHE
-================================ -->
+========================= -->
 
 <div class="search">
 
@@ -1085,9 +850,9 @@ footer {
 
 <div class="container">
 
-<!-- ================================
+<!-- =========================
      VERKAUFEN
-================================ -->
+========================= -->
 
 <div class="sell">
 
@@ -1137,133 +902,59 @@ footer {
 
 </div>
 
-<!-- ================================
+<!-- =========================
      KARTEN
-================================ -->
+========================= -->
 
-<section
-  id="cardsPage"
-  class="page active"
->
+<section id="cardsPage" class="page active">
 
-  <div class="filter-bar">
-
-    <strong>
-      Sortieren:
-    </strong>
-
-    <select
-      id="sortSelect"
-      onchange="loadCards()"
-    >
-
-      <option value="new">
-        🆕 Neueste
-      </option>
-
-      <option value="priceLow">
-        💰 Preis niedrig → hoch
-      </option>
-
-      <option value="priceHigh">
-        💰 Preis hoch → niedrig
-      </option>
-
-      <option value="favorites">
-        ❤️ Beliebteste
-      </option>
-
-    </select>
-
-    <select
-      id="filterSelect"
-      onchange="loadCards()"
-    >
-
-      <option value="all">
-        🎯 Alle Karten
-      </option>
-
-      <option value="available">
-        🟢 Verfügbar
-      </option>
-
-      <option value="mine">
-        🃏 Meine Karten
-      </option>
-
-    </select>
-
-  </div>
-
-  <h2>
+  <h2 class="section-title">
     🔥 Aktuelle Karten
   </h2>
 
-  <div
-    id="cards"
-    class="cards"
-  ></div>
+  <div id="cards" class="cards"></div>
 
 </section>
 
-<!-- ================================
+<!-- =========================
      FAVORITEN
-================================ -->
+========================= -->
 
-<section
-  id="favoritesPage"
-  class="page"
->
+<section id="favoritesPage" class="page">
 
   <h2 id="favoriteTitle">
-    ❤️ Favoriten (0)
+    ❤️ Meine Favoriten (0)
   </h2>
 
-  <div
-    id="favoriteCards"
-    class="cards"
-  ></div>
+  <div id="favoriteCards" class="cards"></div>
 
 </section>
 
-<!-- ================================
+<!-- =========================
      MEINE KARTEN
-================================ -->
+========================= -->
 
-<section
-  id="minePage"
-  class="page"
->
+<section id="minePage" class="page">
 
-  <h2>
+  <h2 class="section-title">
     🃏 Meine Karten
   </h2>
 
-  <div
-    id="myCards"
-    class="cards"
-  ></div>
+  <div id="myCards" class="cards"></div>
 
 </section>
 
-<!-- ================================
+<!-- =========================
      ANFRAGEN
-================================ -->
+========================= -->
 
-<section
-  id="requestsPage"
-  class="page"
->
+<section id="requestsPage" class="page">
 
   <h2 id="requestTitle">
     📩 Meine Kaufanfragen (0)
   </h2>
 
-  <div
-    id="purchaseRequests"
-    class="request-list"
-  ></div>
+  <div id="purchaseRequests" class="request-list"></div>
 
   <br>
 
@@ -1271,50 +962,21 @@ footer {
     📥 Anfragen für meine Karten (0)
   </h2>
 
-  <div
-    id="sellerRequests"
-    class="request-list"
-  ></div>
+  <div id="sellerRequests" class="request-list"></div>
 
 </section>
 
-<!-- ================================
-     NACHRICHTEN
-================================ -->
-
-<section
-  id="messagesPage"
-  class="page"
->
-
-  <h2>
-    💬 Nachrichten
-  </h2>
-
-  <div
-    id="messageList"
-    class="message-list"
-  ></div>
-
-</section>
-
-<!-- ================================
+<!-- =========================
      PROFIL
-================================ -->
+========================= -->
 
-<section
-  id="profilePage"
-  class="page"
->
+<section id="profilePage" class="page">
 
-  <h2>
+  <h2 class="section-title">
     👤 Mein Profil
   </h2>
 
-  <div
-    id="profileBox"
-    class="seller-profile"
-  ></div>
+  <div id="profileBox" class="seller-profile"></div>
 
 </section>
 
@@ -1326,84 +988,170 @@ footer {
 
 <script>
 
-/* ==========================================
-   STORAGE
-========================================== */
+/* =====================================================
+   HILFSFUNKTIONEN
+===================================================== */
 
 function getUsername() {
 
-  return localStorage.getItem(
-    "pixelUsername"
-  ) || "";
+  return localStorage.getItem("pixelUsername") || "";
 
 }
 
 
 function getCards() {
 
-  return JSON.parse(
-    localStorage.getItem(
-      "footballCards"
-    )
-  ) || [];
+  try {
+
+    return JSON.parse(
+      localStorage.getItem("footballCards")
+    ) || [];
+
+  } catch {
+
+    return [];
+
+  }
+
+}
+
+
+function saveCards(cards) {
+
+  localStorage.setItem(
+    "footballCards",
+    JSON.stringify(cards)
+  );
 
 }
 
 
 function getRequests() {
 
-  return JSON.parse(
-    localStorage.getItem(
-      "purchaseRequests"
-    )
-  ) || [];
+  try {
+
+    return JSON.parse(
+      localStorage.getItem("purchaseRequests")
+    ) || [];
+
+  } catch {
+
+    return [];
+
+  }
 
 }
 
 
-function getFavorites() {
+function saveRequests(requests) {
 
-  return JSON.parse(
-    localStorage.getItem(
-      "favoriteCards"
-    )
-  ) || [];
+  localStorage.setItem(
+    "purchaseRequests",
+    JSON.stringify(requests)
+  );
 
 }
 
 
 function getRatings() {
 
-  return JSON.parse(
-    localStorage.getItem(
-      "sellerRatings"
-    )
-  ) || {};
+  try {
+
+    return JSON.parse(
+      localStorage.getItem("sellerRatings")
+    ) || [];
+
+  } catch {
+
+    return [];
+
+  }
 
 }
 
 
-function getMessages() {
+function saveRatings(ratings) {
 
-  return JSON.parse(
-    localStorage.getItem(
-      "pixelMessages"
-    )
-  ) || [];
+  localStorage.setItem(
+    "sellerRatings",
+    JSON.stringify(ratings)
+  );
 
 }
 
 
-/* ==========================================
-   USERNAME
-========================================== */
+function getFavoriteMap() {
+
+  try {
+
+    return JSON.parse(
+      localStorage.getItem("favoriteMap")
+    ) || {};
+
+  } catch {
+
+    return {};
+
+  }
+
+}
+
+
+function saveFavoriteMap(map) {
+
+  localStorage.setItem(
+    "favoriteMap",
+    JSON.stringify(map)
+  );
+
+}
+
+
+function makeId() {
+
+  return Date.now() +
+    "-" +
+    Math.random()
+      .toString(36)
+      .substring(2,10);
+
+}
+
+
+function escapeHtml(value) {
+
+  if (value === null || value === undefined) {
+    return "";
+  }
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+function getStars(number) {
+
+  const rounded = Math.round(Number(number) || 0);
+
+  return "⭐".repeat(rounded) +
+    "☆".repeat(5 - rounded);
+
+}
+
+
+/* =====================================================
+   BENUTZER
+===================================================== */
 
 function saveUsername() {
 
   const input =
-    document.getElementById(
-      "usernameInput"
-    );
+    document.getElementById("usernameInput");
 
   const name =
     input.value.trim();
@@ -1424,7 +1172,6 @@ function saveUsername() {
   );
 
   updateProfile();
-
   loadAll();
 
   alert(
@@ -1440,95 +1187,84 @@ function updateProfile() {
     getUsername();
 
   const profileName =
-    document.getElementById(
-      "profileName"
-    );
+    document.getElementById("profileName");
 
   const avatar =
-    document.getElementById(
-      "avatar"
-    );
+    document.getElementById("avatar");
 
   const input =
-    document.getElementById(
-      "usernameInput"
-    );
+    document.getElementById("usernameInput");
 
   if (name) {
 
-    profileName.textContent =
-      name;
+    profileName.textContent = name;
 
     avatar.textContent =
       name.charAt(0).toUpperCase();
 
-    input.value =
-      name;
+    input.value = name;
 
   } else {
 
     profileName.textContent =
       "Kein Benutzer";
 
-    avatar.textContent =
-      "?";
+    avatar.textContent = "?";
+
+    input.value = "";
 
   }
 
 }
 
 
-/* ==========================================
+/* =====================================================
    NAVIGATION
-========================================== */
+===================================================== */
 
-function showPage(
-  pageId,
-  buttonId
-) {
+function showPage(pageId, buttonId) {
 
   document
     .querySelectorAll(".page")
     .forEach(page => {
 
-      page.classList.remove(
-        "active"
-      );
+      page.classList.remove("active");
 
     });
 
-  document
-    .getElementById(pageId)
-    .classList.add("active");
+  const page =
+    document.getElementById(pageId);
+
+  if (page) {
+    page.classList.add("active");
+  }
 
   document
-    .querySelectorAll(
-      ".navigation button"
-    )
+    .querySelectorAll(".navigation button")
     .forEach(button => {
 
-      button.classList.remove(
-        "active"
-      );
+      button.classList.remove("active");
 
     });
 
-  document
-    .getElementById(buttonId)
-    .classList.add("active");
+  const button =
+    document.getElementById(buttonId);
 
-  if (pageId === "messagesPage") {
-
-    loadMessages();
-
+  if (button) {
+    button.classList.add("active");
   }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
 }
 
 
-/* ==========================================
-   REQUEST BADGE
-========================================== */
+/* =====================================================
+   ANFRAGEN-BADGE
+===================================================== */
 
 function updateRequestBadge() {
 
@@ -1536,158 +1272,70 @@ function updateRequestBadge() {
     getUsername();
 
   const badge =
-    document.getElementById(
-      "requestBadge"
-    );
+    document.getElementById("requestBadge");
 
   if (!username) {
 
-    badge.style.display =
-      "none";
+    badge.style.display = "none";
 
     return;
 
   }
 
-  const requests =
-    getRequests();
+  const incoming =
+    getRequests().filter(request =>
 
-  const count =
-    requests.filter(
-      request =>
-
-        request.seller ===
-        username
-
-        &&
-
-        request.status ===
-        "pending"
+      request.seller === username &&
+      request.status === "pending"
 
     ).length;
 
-  if (count > 0) {
+  if (incoming > 0) {
 
-    badge.textContent =
-      count;
-
-    badge.style.display =
-      "flex";
+    badge.textContent = incoming;
+    badge.style.display = "inline-flex";
 
   } else {
 
-    badge.style.display =
-      "none";
+    badge.style.display = "none";
 
   }
 
 }
 
 
-/* ==========================================
-   MESSAGE BADGE
-========================================== */
-
-function updateMessageBadge() {
-
-  const username =
-    getUsername();
-
-  const badge =
-    document.getElementById(
-      "messageBadge"
-    );
-
-  if (!username) {
-
-    badge.style.display =
-      "none";
-
-    return;
-
-  }
-
-  const messages =
-    getMessages();
-
-  const count =
-    messages.filter(
-      message =>
-
-        message.receiver ===
-        username
-
-        &&
-
-        message.read !==
-        true
-
-    ).length;
-
-  if (count > 0) {
-
-    badge.textContent =
-      count;
-
-    badge.style.display =
-      "flex";
-
-  } else {
-
-    badge.style.display =
-      "none";
-
-  }
-
-}
-
-
-/* ==========================================
-   LOAD CARDS
-========================================== */
+/* =====================================================
+   KARTEN LADEN
+===================================================== */
 
 function loadCards() {
 
   const box =
-    document.getElementById(
-      "cards"
-    );
+    document.getElementById("cards");
 
   box.innerHTML = "";
 
   const search =
     document
-      .getElementById(
-        "searchInput"
-      )
+      .getElementById("searchInput")
       .value
       .toLowerCase()
       .trim();
 
-  const sort =
-    document
-      .getElementById(
-        "sortSelect"
-      )
-      .value;
-
-  const filter =
-    document
-      .getElementById(
-        "filterSelect"
-      )
-      .value;
-
   const username =
     getUsername();
 
-  let cards =
+  const cards =
     getCards();
 
-  cards =
+  const filtered =
     cards.filter(card => {
 
-      const matchesSearch =
+      if (card.sold) {
+        return false;
+      }
+
+      return (
 
         String(card.player)
           .toLowerCase()
@@ -1703,97 +1351,13 @@ function loadCards() {
 
         String(card.owner)
           .toLowerCase()
-          .includes(search);
+          .includes(search)
 
-      if (!matchesSearch) {
-
-        return false;
-
-      }
-
-      if (
-        filter ===
-        "available"
-      ) {
-
-        return card.sold !== true;
-
-      }
-
-      if (
-        filter ===
-        "mine"
-      ) {
-
-        return card.owner ===
-          username;
-
-      }
-
-      return true;
+      );
 
     });
 
-  const favorites =
-    getFavorites();
-
-  if (
-    sort ===
-    "priceLow"
-  ) {
-
-    cards.sort(
-      (a,b) =>
-        Number(a.price) -
-        Number(b.price)
-    );
-
-  }
-
-  if (
-    sort ===
-    "priceHigh"
-  ) {
-
-    cards.sort(
-      (a,b) =>
-        Number(b.price) -
-        Number(a.price)
-    );
-
-  }
-
-  if (
-    sort ===
-    "favorites"
-  ) {
-
-    cards.sort(
-      (a,b) =>
-        getFavoriteCount(b.id) -
-        getFavoriteCount(a.id)
-    );
-
-  }
-
-  if (
-    sort ===
-    "new"
-  ) {
-
-    cards.sort(
-      (a,b) =>
-        Number(
-          b.createdAt || b.id
-        ) -
-        Number(
-          a.createdAt || a.id
-        )
-    );
-
-  }
-
-  if (!cards.length) {
+  if (!filtered.length) {
 
     box.innerHTML =
       "<div class='empty'>Keine Karten gefunden.</div>";
@@ -1802,130 +1366,186 @@ function loadCards() {
 
   }
 
-  cards.forEach(
-    card => {
+  filtered.forEach(card => {
 
-      createCard(
-        card,
-        box
-      );
+    createCard(card, box);
 
-    }
-  );
+  });
 
 }
 
 
-/* ==========================================
-   FAVORITE COUNT
-========================================== */
+/* =====================================================
+   FAVORITEN
+===================================================== */
 
-function getFavoriteCount(
-  cardId
-) {
-
-  const favorites =
-    getFavorites();
-
-  return favorites.filter(
-    favorite =>
-      favorite.id ===
-      cardId
-  ).length;
-
-}
-
-
-/* ==========================================
-   CREATE CARD
-========================================== */
-
-function createCard(
-  card,
-  box
-) {
+function getFavoriteIdsForUser() {
 
   const username =
     getUsername();
 
-  const favorites =
-    getFavorites();
+  if (!username) {
+    return [];
+  }
+
+  const map =
+    getFavoriteMap();
+
+  return Array.isArray(map[username])
+    ? map[username]
+    : [];
+
+}
+
+
+function isFavorite(cardId) {
+
+  return getFavoriteIdsForUser()
+    .includes(cardId);
+
+}
+
+
+function getFavoriteCount(cardId) {
+
+  const map =
+    getFavoriteMap();
+
+  let count = 0;
+
+  Object.keys(map).forEach(username => {
+
+    const ids =
+      Array.isArray(map[username])
+        ? map[username]
+        : [];
+
+    if (ids.includes(cardId)) {
+      count++;
+    }
+
+  });
+
+  return count;
+
+}
+
+
+function toggleFavorite(cardId) {
+
+  const username =
+    getUsername();
+
+  if (!username) {
+
+    needUsername();
+
+    return;
+
+  }
+
+  const card =
+    getCards().find(
+      c => c.id === cardId
+    );
+
+  if (!card) return;
+
+  if (card.owner === username) {
+
+    alert(
+      "🚫 Du kannst deine eigene Karte nicht favorisieren."
+    );
+
+    return;
+
+  }
+
+  if (card.sold) {
+
+    alert(
+      "Diese Karte wurde bereits verkauft."
+    );
+
+    return;
+
+  }
+
+  const map =
+    getFavoriteMap();
+
+  if (!Array.isArray(map[username])) {
+    map[username] = [];
+  }
+
+  const index =
+    map[username].indexOf(cardId);
+
+  if (index !== -1) {
+
+    map[username].splice(index, 1);
+
+  } else {
+
+    map[username].push(cardId);
+
+  }
+
+  saveFavoriteMap(map);
+
+  loadAll();
+
+}
+
+
+/* =====================================================
+   KARTE ERSTELLEN
+===================================================== */
+
+function createCard(card, box) {
+
+  const username =
+    getUsername();
+
+  const favorite =
+    isFavorite(card.id);
+
+  const favoriteCount =
+    getFavoriteCount(card.id);
 
   const requests =
     getRequests();
 
-  const favorite =
-    favorites.some(
-      f =>
-        f.id === card.id
-    );
-
-  const favoriteCount =
-    getFavoriteCount(
-      card.id
-    );
-
   const myRequest =
-    requests.find(
-      request =>
+    requests.find(request =>
 
-        request.cardId ===
-        card.id
-
-        &&
-
-        request.buyer ===
-        username
-
-        &&
-
-        request.status !==
-        "rejected"
+      request.cardId === card.id &&
+      request.buyer === username &&
+      (
+        request.status === "pending" ||
+        request.status === "accepted"
+      )
 
     );
 
   const item =
-    document.createElement(
-      "div"
-    );
+    document.createElement("div");
 
-  item.className =
-    "card";
+  item.className = "card";
 
-  let newBadge = "";
+  let buyButton = "";
 
-  const created =
-    Number(
-      card.createdAt ||
-      card.id
-    );
+  if (card.sold) {
 
-  const oneDay =
-    24 *
-    60 *
-    60 *
-    1000;
-
-  if (
-    Date.now() -
-    created <
-    oneDay
-  ) {
-
-    newBadge = `
-      <div class="new-badge">
-        🆕 NEU
-      </div>
+    buyButton = `
+      <button class="gray" disabled>
+        🔒 Bereits verkauft
+      </button>
     `;
 
   }
 
-  let buyButton = "";
-
-  if (
-    card.owner ===
-    username
-  ) {
+  else if (card.owner === username) {
 
     buyButton = `
       <button
@@ -1938,27 +1558,10 @@ function createCard(
 
   }
 
-  else if (
-    card.sold === true
-  ) {
-
-    buyButton = `
-      <button
-        class="gray"
-        disabled
-      >
-        🏷️ Verkauft
-      </button>
-    `;
-
-  }
-
   else if (!username) {
 
     buyButton = `
-      <button
-        onclick="needUsername()"
-      >
+      <button onclick="needUsername()">
         🛒 Kaufen
       </button>
     `;
@@ -1967,16 +1570,10 @@ function createCard(
 
   else if (myRequest) {
 
-    if (
-      myRequest.status ===
-      "accepted"
-    ) {
+    if (myRequest.status === "accepted") {
 
       buyButton = `
-        <button
-          class="gray"
-          disabled
-        >
+        <button class="gray" disabled>
           ✅ Angenommen
         </button>
       `;
@@ -1984,10 +1581,7 @@ function createCard(
     } else {
 
       buyButton = `
-        <button
-          class="gray"
-          disabled
-        >
+        <button class="gray" disabled>
           🕐 Anfrage offen
         </button>
       `;
@@ -1999,86 +1593,79 @@ function createCard(
   else {
 
     buyButton = `
-      <button
-        onclick="buyCard('${card.id}')"
-      >
+      <button onclick="buyCard(${JSON.stringify(card.id)})">
         🛒 Kaufen
       </button>
     `;
 
   }
 
-  const favoriteButton =
-    card.owner === username
+  let favoriteButton = "";
 
-    ?
+  if (card.owner === username) {
 
-    `
-      <button
-        class="gray"
-        onclick="ownFavoriteMessage()"
-      >
+    favoriteButton = `
+      <button class="gray" disabled>
         🚫 Eigene Karte
       </button>
-    `
+    `;
 
-    :
+  }
 
-    `
+  else {
+
+    favoriteButton = `
       <button
         class="gray"
-        onclick="toggleFavorite('${card.id}')"
+        onclick="toggleFavorite(${JSON.stringify(card.id)})"
       >
         ${
           favorite
-          ? "❤️ Favorisiert"
-          : "♡ Favorit"
+            ? "❤️ Favorisiert"
+            : "♡ Favorit"
         }
       </button>
     `;
 
-  item.innerHTML = `
+  }
 
-    ${newBadge}
+  item.innerHTML = `
 
     <div class="card-image">
 
       <img
         src="${card.image}"
-        alt="${escapeHTML(card.player)}"
+        alt="${escapeHtml(card.player)}"
       >
 
     </div>
 
     <h3>
-      ${escapeHTML(card.player)}
+      ${escapeHtml(card.player)}
     </h3>
 
     <p class="info">
-      ${escapeHTML(card.club)}
+      ${escapeHtml(card.club)}
     </p>
 
     <p class="price">
-      ${Number(card.price).toFixed(2)} €
+      ${escapeHtml(card.price)} €
     </p>
 
     <p class="info">
-
       👤 Verkäufer:
-
       <strong>
-        ${escapeHTML(card.owner || "Unbekannt")}
+        ${escapeHtml(card.owner)}
       </strong>
-
     </p>
 
-    <div class="favorite-count">
+    <span class="favorite-count">
       ❤️ ${favoriteCount}
-      ${favoriteCount === 1 ? "Favorit" : "Favoriten"}
-    </div>
+      ${favoriteCount === 1 ? "Favorisierung" : "Favorisierungen"}
+    </span>
 
     <button
-      onclick="showCard('${card.id}')"
+      onclick="showCard(${JSON.stringify(card.id)})"
     >
       👀 Karte ansehen
     </button>
@@ -2089,288 +1676,200 @@ function createCard(
 
     <button
       class="gray"
-      onclick="openSellerProfile('${escapeAttribute(card.owner)}')"
+      onclick="openSellerProfile(${JSON.stringify(card.owner)})"
     >
       👤 Verkäuferprofil
     </button>
 
   `;
 
-  box.appendChild(
-    item
-  );
+  box.appendChild(item);
 
 }
 
 
-/* ==========================================
-   SELL CARD
-========================================== */
+/* =====================================================
+   KARTE EINSTELLEN
+===================================================== */
 
 document
-  .getElementById(
-    "sellForm"
-  )
-  .addEventListener(
-    "submit",
-    function(event) {
+  .getElementById("sellForm")
+  .addEventListener("submit", function(event) {
 
-      event.preventDefault();
+    event.preventDefault();
 
-      const username =
-        getUsername();
+    const username =
+      getUsername();
 
-      if (!username) {
+    if (!username) {
 
-        alert(
-          "👤 Bitte zuerst einen Benutzernamen festlegen."
-        );
+      needUsername();
 
-        return;
-
-      }
-
-      const player =
-        document
-          .getElementById(
-            "player"
-          )
-          .value
-          .trim();
-
-      const club =
-        document
-          .getElementById(
-            "club"
-          )
-          .value
-          .trim();
-
-      const price =
-        document
-          .getElementById(
-            "price"
-          )
-          .value;
-
-      const file =
-        document
-          .getElementById(
-            "image"
-          )
-          .files[0];
-
-      if (!file) {
-
-        alert(
-          "Bitte wähle ein Foto aus."
-        );
-
-        return;
-
-      }
-
-      const reader =
-        new FileReader();
-
-      reader.onload =
-        function() {
-
-          const image =
-            new Image();
-
-          image.onload =
-            function() {
-
-              const canvas =
-                document.createElement(
-                  "canvas"
-                );
-
-              const max =
-                700;
-
-              let width =
-                image.width;
-
-              let height =
-                image.height;
-
-              if (
-                width > height &&
-                width > max
-              ) {
-
-                height =
-                  height *
-                  max /
-                  width;
-
-                width =
-                  max;
-
-              }
-
-              else if (
-                height > max
-              ) {
-
-                width =
-                  width *
-                  max /
-                  height;
-
-                height =
-                  max;
-
-              }
-
-              canvas.width =
-                width;
-
-              canvas.height =
-                height;
-
-              canvas
-                .getContext("2d")
-                .drawImage(
-                  image,
-                  0,
-                  0,
-                  width,
-                  height
-                );
-
-              const imageData =
-                canvas.toDataURL(
-                  "image/jpeg",
-                  0.6
-                );
-
-              const cards =
-                getCards();
-
-              cards.unshift({
-
-                id:
-                  Date.now() +
-                  "-" +
-                  Math.random()
-                    .toString(36)
-                    .substring(2),
-
-                player:
-                  player,
-
-                club:
-                  club,
-
-                price:
-                  price,
-
-                image:
-                  imageData,
-
-                owner:
-                  username,
-
-                sold:
-                  false,
-
-                soldTo:
-                  null,
-
-                createdAt:
-                  Date.now()
-
-              });
-
-              try {
-
-                localStorage.setItem(
-                  "footballCards",
-                  JSON.stringify(
-                    cards
-                  )
-                );
-
-              }
-
-              catch(error) {
-
-                alert(
-                  "Der Speicher ist voll. Bitte lösche zuerst Karten."
-                );
-
-                return;
-
-              }
-
-              document
-                .getElementById(
-                  "sellForm"
-                )
-                .reset();
-
-              loadAll();
-
-              alert(
-                "🎉 Deine Karte wurde eingestellt!"
-              );
-
-            };
-
-          image.src =
-            reader.result;
-
-        };
-
-      reader.readAsDataURL(
-        file
-      );
+      return;
 
     }
-  );
+
+    const player =
+      document
+        .getElementById("player")
+        .value
+        .trim();
+
+    const club =
+      document
+        .getElementById("club")
+        .value
+        .trim();
+
+    const price =
+      document
+        .getElementById("price")
+        .value;
+
+    const file =
+      document
+        .getElementById("image")
+        .files[0];
+
+    if (!file) {
+
+      alert(
+        "Bitte wähle ein Foto aus."
+      );
+
+      return;
+
+    }
+
+    const reader =
+      new FileReader();
+
+    reader.onload = function() {
+
+      const image =
+        new Image();
+
+      image.onload = function() {
+
+        const canvas =
+          document.createElement("canvas");
+
+        const max = 700;
+
+        let width =
+          image.width;
+
+        let height =
+          image.height;
+
+        if (
+          width > height &&
+          width > max
+        ) {
+
+          height =
+            height * max / width;
+
+          width = max;
+
+        }
+
+        else if (
+          height > max
+        ) {
+
+          width =
+            width * max / height;
+
+          height = max;
+
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        canvas
+          .getContext("2d")
+          .drawImage(
+            image,
+            0,
+            0,
+            width,
+            height
+          );
+
+        const imageData =
+          canvas.toDataURL(
+            "image/jpeg",
+            0.6
+          );
+
+        const cards =
+          getCards();
+
+        cards.unshift({
+
+          id: makeId(),
+
+          player: player,
+
+          club: club,
+
+          price: Number(price).toFixed(2),
+
+          image: imageData,
+
+          owner: username,
+
+          sold: false,
+
+          soldTo: null
+
+        });
+
+        try {
+
+          saveCards(cards);
+
+        }
+
+        catch(error) {
+
+          alert(
+            "Der Speicher ist voll. Bitte lösche zuerst einige Karten."
+          );
+
+          return;
+
+        }
+
+        document
+          .getElementById("sellForm")
+          .reset();
+
+        loadAll();
+
+        alert(
+          "🎉 Deine Karte wurde eingestellt!"
+        );
+
+      };
+
+      image.src =
+        reader.result;
+
+    };
+
+    reader.readAsDataURL(file);
+
+  });
 
 
-/* ==========================================
-   OWN CARD
-========================================== */
+/* =====================================================
+   KAUFEN
+===================================================== */
 
-function ownCardMessage() {
-
-  alert(
-    "🚫 Du kannst deine eigene Karte nicht kaufen."
-  );
-
-}
-
-
-function ownFavoriteMessage() {
-
-  alert(
-    "🚫 Du kannst deine eigene Karte nicht favorisieren."
-  );
-
-}
-
-
-function needUsername() {
-
-  alert(
-    "👤 Bitte zuerst einen Benutzernamen festlegen."
-  );
-
-}
-
-
-/* ==========================================
-   BUY
-========================================== */
-
-function buyCard(
-  cardId
-) {
+function buyCard(cardId) {
 
   const username =
     getUsername();
@@ -2388,16 +1887,12 @@ function buyCard(
 
   const card =
     cards.find(
-      c =>
-        c.id === cardId
+      c => c.id === cardId
     );
 
   if (!card) return;
 
-  if (
-    card.owner ===
-    username
-  ) {
+  if (card.owner === username) {
 
     ownCardMessage();
 
@@ -2405,13 +1900,13 @@ function buyCard(
 
   }
 
-  if (
-    card.sold === true
-  ) {
+  if (card.sold) {
 
     alert(
-      "🏷️ Diese Karte wurde bereits verkauft."
+      "🔒 Diese Karte wurde bereits verkauft."
     );
+
+    loadAll();
 
     return;
 
@@ -2420,33 +1915,19 @@ function buyCard(
   const requests =
     getRequests();
 
-  const existing =
-    requests.find(
-      request =>
+  const alreadyRequested =
+    requests.some(request =>
 
-        request.cardId ===
-        cardId
-
-        &&
-
-        request.buyer ===
-        username
-
-        &&
-
-        (
-          request.status ===
-          "pending"
-
-          ||
-
-          request.status ===
-          "accepted"
-        )
+      request.cardId === cardId &&
+      request.buyer === username &&
+      (
+        request.status === "pending" ||
+        request.status === "accepted"
+      )
 
     );
 
-  if (existing) {
+  if (alreadyRequested) {
 
     alert(
       "🕐 Du hast diese Karte bereits angefragt."
@@ -2456,98 +1937,98 @@ function buyCard(
 
   }
 
+  const anotherAccepted =
+    requests.some(request =>
+
+      request.cardId === cardId &&
+      request.status === "accepted"
+
+    );
+
+  if (anotherAccepted) {
+
+    alert(
+      "🔒 Diese Karte wurde bereits verkauft."
+    );
+
+    return;
+
+  }
+
   const confirmed =
     confirm(
-
       "Möchtest du diese Karte kaufen?\n\n" +
-
       card.player +
-
       " – " +
-
       card.club +
-
       "\n\nPreis: " +
-
       card.price +
-
       " €"
-
     );
 
   if (!confirmed) return;
 
   requests.push({
 
-    id:
-      Date.now() +
-      "-" +
-      Math.random()
-        .toString(36)
-        .substring(2),
+    id: makeId(),
 
-    cardId:
-      card.id,
+    cardId: card.id,
 
-    player:
-      card.player,
+    player: card.player,
 
-    club:
-      card.club,
+    club: card.club,
 
-    price:
-      card.price,
+    price: card.price,
 
-    image:
-      card.image,
+    image: card.image,
 
-    buyer:
-      username,
+    buyer: username,
 
-    seller:
-      card.owner,
+    seller: card.owner,
 
-    status:
-      "pending",
+    status: "pending",
 
     createdAt:
       new Date().toISOString()
 
   });
 
-  localStorage.setItem(
-    "purchaseRequests",
-    JSON.stringify(
-      requests
-    )
-  );
-
-  createMessage(
-
-    username,
-
-    card.owner,
-
-    "🛒 " +
-    username +
-    " möchte deine Karte " +
-    card.player +
-    " kaufen."
-
-  );
+  saveRequests(requests);
 
   loadAll();
 
   alert(
-    "📩 Kaufanfrage wurde gesendet!"
+    "📩 Anfrage gesendet!"
   );
 
 }
 
 
-/* ==========================================
-   PURCHASE REQUESTS
-========================================== */
+/* =====================================================
+   EIGENE KARTE
+===================================================== */
+
+function ownCardMessage() {
+
+  alert(
+    "🚫 Du kannst deine eigene Karte nicht kaufen."
+  );
+
+}
+
+
+function needUsername() {
+
+  alert(
+    "👤 Bitte zuerst einen Benutzernamen festlegen."
+  );
+
+}
+
+
+/* =====================================================
+   KÄUFER-ANFRAGEN
+===================================================== */
 
 function loadPurchaseRequests() {
 
@@ -2562,14 +2043,11 @@ function loadPurchaseRequests() {
   const requests =
     getRequests().filter(
       request =>
-        request.buyer ===
-        username
+        request.buyer === username
     );
 
   document
-    .getElementById(
-      "requestTitle"
-    )
+    .getElementById("requestTitle")
     .textContent =
       "📩 Meine Kaufanfragen (" +
       requests.length +
@@ -2586,119 +2064,117 @@ function loadPurchaseRequests() {
 
   }
 
-  requests.forEach(
-    request => {
+  requests.forEach(request => {
 
-      const item =
-        document.createElement(
-          "div"
-        );
+    const item =
+      document.createElement("div");
 
-      item.className =
-        "request";
+    item.className = "request";
 
-      let status = "";
+    let status = "";
 
-      if (
-        request.status ===
-        "accepted"
-      ) {
+    if (request.status === "accepted") {
 
-        status =
-          `<span class="status accepted">✅ Angenommen</span>`;
+      status =
+        `<span class="status accepted">✅ Angenommen</span>`;
 
-      }
+    }
 
-      else if (
-        request.status ===
-        "rejected"
-      ) {
+    else if (request.status === "rejected") {
 
-        status =
-          `<span class="status rejected">❌ Abgelehnt</span>`;
+      status =
+        `<span class="status rejected">❌ Abgelehnt</span>`;
 
-      }
+    }
 
-      else {
+    else {
 
-        status =
-          `<span class="status open">🕐 Offen</span>`;
+      status =
+        `<span class="status open">🕐 Offen</span>`;
 
-      }
+    }
 
-      let ratingButton = "";
+    let ratingButton = "";
 
-      if (
-        request.status ===
-        "accepted"
-      ) {
+    if (
+      request.status === "accepted" &&
+      !hasRatedRequest(request)
+    ) {
 
-        ratingButton = `
+      ratingButton = `
+        <button
+          class="rate-btn"
+          onclick="openRating(${JSON.stringify(request.id)})"
+        >
+          ⭐ Verkäufer bewerten
+        </button>
+      `;
 
-          <button
-            onclick="openRating('${request.id}')"
-          >
-            ⭐ Verkäufer bewerten
-          </button>
+    }
 
-        `;
+    else if (
+      request.status === "accepted"
+    ) {
 
-      }
+      ratingButton = `
+        <p class="info">
+          ⭐ Du hast diesen Verkäufer bereits bewertet.
+        </p>
+      `;
 
-      item.innerHTML = `
+    }
 
-        <div class="request-top">
+    item.innerHTML = `
 
-          <img
-            class="request-image"
-            src="${request.image}"
-            alt="${escapeHTML(request.player)}"
-          >
+      <div class="request-top">
 
-          <div class="request-info">
+        <img
+          class="request-image"
+          src="${request.image}"
+          alt="${escapeHtml(request.player)}"
+        >
 
-            <h3>
-              ${escapeHTML(request.player)}
-            </h3>
+        <div class="request-info">
 
-            <p class="info">
-              ${escapeHTML(request.club)}
-            </p>
+          <h3>
+            ${escapeHtml(request.player)}
+          </h3>
 
-            <p class="price">
-              ${Number(request.price).toFixed(2)} €
-            </p>
+          <p class="info">
+            ${escapeHtml(request.club)}
+          </p>
 
-            <p class="info">
-              Verkäufer:
-              👤 <strong>
-                ${escapeHTML(request.seller)}
-              </strong>
-            </p>
+          <p class="price">
+            ${escapeHtml(request.price)} €
+          </p>
 
-            ${status}
+          <p class="info">
+            Verkäufer:
+            👤 <strong>
+              ${escapeHtml(request.seller)}
+            </strong>
+          </p>
 
-          </div>
+          ${status}
+
+          ${ratingButton}
 
         </div>
 
-        ${ratingButton}
+      </div>
 
-      `;
+    `;
 
-      box.appendChild(
-        item
-      );
+    box.appendChild(item);
 
-    }
-  );
+  });
 
 }
 
 
-/* ==========================================
-   SELLER REQUESTS
-========================================== */
+/* =====================================================
+   VERKÄUFER-ANFRAGEN
+===================================================== */
 
 function loadSellerRequests() {
 
@@ -2713,14 +2189,17 @@ function loadSellerRequests() {
   const requests =
     getRequests().filter(
       request =>
-        request.seller ===
-        username
+        request.seller === username
     );
 
+  const pendingCount =
+    requests.filter(
+      request =>
+        request.status === "pending"
+    ).length;
+
   document
-    .getElementById(
-      "sellerRequestTitle"
-    )
+    .getElementById("sellerRequestTitle")
     .textContent =
       "📥 Anfragen für meine Karten (" +
       requests.length +
@@ -2737,154 +2216,119 @@ function loadSellerRequests() {
 
   }
 
-  requests.forEach(
-    request => {
+  requests.forEach(request => {
 
-      const item =
-        document.createElement(
-          "div"
-        );
+    const item =
+      document.createElement("div");
 
-      item.className =
-        "request";
+    item.className = "request";
 
-      let status = "";
+    let status = "";
 
-      if (
-        request.status ===
-        "accepted"
-      ) {
+    if (request.status === "accepted") {
 
-        status =
-          `<span class="status accepted">✅ Angenommen</span>`;
+      status =
+        `<span class="status accepted">✅ Angenommen</span>`;
 
-      }
+    }
 
-      else if (
-        request.status ===
-        "rejected"
-      ) {
+    else if (request.status === "rejected") {
 
-        status =
-          `<span class="status rejected">❌ Abgelehnt</span>`;
+      status =
+        `<span class="status rejected">❌ Abgelehnt</span>`;
 
-      }
+    }
 
-      else {
+    else {
 
-        status =
-          `<span class="status open">🕐 Offen</span>`;
+      status =
+        `<span class="status open">🕐 Offen</span>`;
 
-      }
+    }
 
-      let buttons = "";
+    let buttons = "";
 
-      if (
-        request.status ===
-        "pending"
-      ) {
+    if (request.status === "pending") {
 
-        buttons = `
+      buttons = `
 
-          <div class="request-actions">
-
-            <button
-              class="accept-btn"
-              onclick="acceptRequest('${request.id}')"
-            >
-              🟢 Annehmen
-            </button>
-
-            <button
-              class="reject-btn"
-              onclick="rejectRequest('${request.id}')"
-            >
-              🔴 Ablehnen
-            </button>
-
-          </div>
-
-        `;
-
-      }
-
-      if (
-        request.status ===
-        "accepted"
-      ) {
-
-        buttons += `
+        <div class="request-actions">
 
           <button
-            onclick="messageUser('${escapeAttribute(request.buyer)}')"
+            class="accept-btn"
+            onclick="acceptRequest(${JSON.stringify(request.id)})"
           >
-            💬 Käufer anschreiben
+            🟢 Annehmen
           </button>
 
-        `;
-
-      }
-
-      item.innerHTML = `
-
-        <div class="request-top">
-
-          <img
-            class="request-image"
-            src="${request.image}"
-            alt="${escapeHTML(request.player)}"
+          <button
+            class="reject-btn"
+            onclick="rejectRequest(${JSON.stringify(request.id)})"
           >
-
-          <div class="request-info">
-
-            <h3>
-              ${escapeHTML(request.buyer)}
-              möchte deine Karte kaufen
-            </h3>
-
-            <p class="info">
-              Karte:
-              <strong>
-                ${escapeHTML(request.player)}
-              </strong>
-            </p>
-
-            <p class="info">
-              Verein:
-              ${escapeHTML(request.club)}
-            </p>
-
-            <p class="price">
-              ${Number(request.price).toFixed(2)} €
-            </p>
-
-            ${status}
-
-          </div>
+            🔴 Ablehnen
+          </button>
 
         </div>
 
-        ${buttons}
-
       `;
 
-      box.appendChild(
-        item
-      );
-
     }
-  );
+
+    item.innerHTML = `
+
+      <div class="request-top">
+
+        <img
+          class="request-image"
+          src="${request.image}"
+          alt="${escapeHtml(request.player)}"
+        >
+
+        <div class="request-info">
+
+          <h3>
+            ${escapeHtml(request.buyer)}
+            möchte deine Karte kaufen
+          </h3>
+
+          <p class="info">
+            Karte:
+            <strong>
+              ${escapeHtml(request.player)}
+            </strong>
+          </p>
+
+          <p class="info">
+            Verein:
+            ${escapeHtml(request.club)}
+          </p>
+
+          <p class="price">
+            ${escapeHtml(request.price)} €
+          </p>
+
+          ${status}
+
+        </div>
+
+      </div>
+
+      ${buttons}
+
+    `;
+
+    box.appendChild(item);
+
+  });
 
 }
 
 
-/* ==========================================
-   ACCEPT
-========================================== */
+/* =====================================================
+   ANNEHMEN
+===================================================== */
 
-function acceptRequest(
-  requestId
-) {
+function acceptRequest(requestId) {
 
   const username =
     getUsername();
@@ -2894,16 +2338,12 @@ function acceptRequest(
 
   const request =
     requests.find(
-      r =>
-        r.id === requestId
+      r => r.id === requestId
     );
 
   if (!request) return;
 
-  if (
-    request.seller !==
-    username
-  ) {
+  if (request.seller !== username) {
 
     alert(
       "🚫 Nur der Besitzer der Karte kann diese Anfrage annehmen."
@@ -2913,14 +2353,44 @@ function acceptRequest(
 
   }
 
-  if (
-    request.status !==
-    "pending"
-  ) {
+  if (request.status !== "pending") {
 
     alert(
       "Diese Anfrage wurde bereits bearbeitet."
     );
+
+    return;
+
+  }
+
+  const cards =
+    getCards();
+
+  const card =
+    cards.find(
+      c => c.id === request.cardId
+    );
+
+  if (!card) {
+
+    alert(
+      "Die Karte wurde nicht gefunden."
+    );
+
+    return;
+
+  }
+
+  if (card.sold) {
+
+    alert(
+      "🔒 Diese Karte wurde bereits verkauft."
+    );
+
+    request.status = "rejected";
+
+    saveRequests(requests);
+    loadAll();
 
     return;
 
@@ -2938,68 +2408,50 @@ function acceptRequest(
   request.status =
     "accepted";
 
-  const cards =
-    getCards();
+  card.sold =
+    true;
 
-  const card =
-    cards.find(
-      c =>
-        c.id ===
-        request.cardId
-    );
+  card.soldTo =
+    request.buyer;
 
-  if (card) {
+  /*
+     Alle anderen offenen Anfragen
+     für dieselbe Karte werden abgelehnt.
+  */
 
-    card.sold =
-      true;
+  requests.forEach(other => {
 
-    card.soldTo =
-      request.buyer;
+    if (
+      other.cardId === request.cardId &&
+      other.id !== request.id &&
+      other.status === "pending"
+    ) {
 
-  }
+      other.status =
+        "rejected";
 
-  localStorage.setItem(
-    "footballCards",
-    JSON.stringify(
-      cards
-    )
-  );
+    }
 
-  localStorage.setItem(
-    "purchaseRequests",
-    JSON.stringify(
-      requests
-    )
-  );
+  });
 
-  createMessage(
-
-    username,
-
-    request.buyer,
-
-    "✅ Deine Kaufanfrage für " +
-    request.player +
-    " wurde angenommen!"
-
-  );
+  saveCards(cards);
+  saveRequests(requests);
 
   loadAll();
 
   alert(
-    "🟢 Anfrage angenommen!"
+    "🟢 Anfrage angenommen!\n\n" +
+    "Die Karte wurde als verkauft markiert."
   );
 
 }
 
 
-/* ==========================================
-   REJECT
-========================================== */
+/* =====================================================
+   ABLEHNEN
+===================================================== */
 
-function rejectRequest(
-  requestId
-) {
+function rejectRequest(requestId) {
 
   const username =
     getUsername();
@@ -3009,16 +2461,12 @@ function rejectRequest(
 
   const request =
     requests.find(
-      r =>
-        r.id === requestId
+      r => r.id === requestId
     );
 
   if (!request) return;
 
-  if (
-    request.seller !==
-    username
-  ) {
+  if (request.seller !== username) {
 
     alert(
       "🚫 Nur der Besitzer der Karte kann diese Anfrage ablehnen."
@@ -3028,10 +2476,7 @@ function rejectRequest(
 
   }
 
-  if (
-    request.status !==
-    "pending"
-  ) {
+  if (request.status !== "pending") {
 
     alert(
       "Diese Anfrage wurde bereits bearbeitet."
@@ -3053,24 +2498,7 @@ function rejectRequest(
   request.status =
     "rejected";
 
-  localStorage.setItem(
-    "purchaseRequests",
-    JSON.stringify(
-      requests
-    )
-  );
-
-  createMessage(
-
-    username,
-
-    request.buyer,
-
-    "❌ Deine Kaufanfrage für " +
-    request.player +
-    " wurde abgelehnt."
-
-  );
+  saveRequests(requests);
 
   loadAll();
 
@@ -3081,101 +2509,9 @@ function rejectRequest(
 }
 
 
-/* ==========================================
-   FAVORITES
-========================================== */
-
-function toggleFavorite(
-  cardId
-) {
-
-  const username =
-    getUsername();
-
-  if (!username) {
-
-    needUsername();
-
-    return;
-
-  }
-
-  const card =
-    getCards().find(
-      c =>
-        c.id === cardId
-    );
-
-  if (!card) return;
-
-  if (
-    card.owner ===
-    username
-  ) {
-
-    ownFavoriteMessage();
-
-    return;
-
-  }
-
-  let favorites =
-    getFavorites();
-
-  const index =
-    favorites.findIndex(
-      f =>
-        f.id === cardId
-    );
-
-  if (
-    index !== -1
-  ) {
-
-    favorites.splice(
-      index,
-      1
-    );
-
-  }
-
-  else {
-
-    favorites.push({
-
-      id:
-        cardId,
-
-      player:
-        card.player,
-
-      club:
-        card.club,
-
-      price:
-        card.price,
-
-      image:
-        card.image,
-
-      owner:
-        card.owner
-
-    });
-
-  }
-
-  localStorage.setItem(
-    "favoriteCards",
-    JSON.stringify(
-      favorites
-    )
-  );
-
-  loadAll();
-
-}
-
+/* =====================================================
+   FAVORITEN SEITE
+===================================================== */
 
 function loadFavorites() {
 
@@ -3184,21 +2520,43 @@ function loadFavorites() {
       "favoriteCards"
     );
 
-  const favorites =
-    getFavorites();
-
-  document
-    .getElementById(
-      "favoriteTitle"
-    )
-    .textContent =
-      "❤️ Favoriten (" +
-      favorites.length +
-      ")";
+  const username =
+    getUsername();
 
   box.innerHTML = "";
 
-  if (!favorites.length) {
+  if (!username) {
+
+    document
+      .getElementById("favoriteTitle")
+      .textContent =
+        "❤️ Meine Favoriten (0)";
+
+    box.innerHTML =
+      "<div class='empty'>👤 Bitte zuerst einen Benutzernamen festlegen.</div>";
+
+    return;
+
+  }
+
+  const ids =
+    getFavoriteIdsForUser();
+
+  const cards =
+    getCards().filter(
+      card =>
+        ids.includes(card.id) &&
+        !card.sold
+    );
+
+  document
+    .getElementById("favoriteTitle")
+    .textContent =
+      "❤️ Meine Favoriten (" +
+      cards.length +
+      ")";
+
+  if (!cards.length) {
 
     box.innerHTML =
       "<div class='empty'>❤️ Noch keine Favoriten.</div>";
@@ -3207,41 +2565,23 @@ function loadFavorites() {
 
   }
 
-  favorites.forEach(
-    favorite => {
+  cards.forEach(card => {
 
-      const current =
-        getCards().find(
-          card =>
-            card.id ===
-            favorite.id
-        );
+    createCard(card, box);
 
-      if (current) {
-
-        createCard(
-          current,
-          box
-        );
-
-      }
-
-    }
-  );
+  });
 
 }
 
 
-/* ==========================================
-   MY CARDS
-========================================== */
+/* =====================================================
+   MEINE KARTEN
+===================================================== */
 
 function loadMyCards() {
 
   const box =
-    document.getElementById(
-      "myCards"
-    );
+    document.getElementById("myCards");
 
   const username =
     getUsername();
@@ -3260,8 +2600,7 @@ function loadMyCards() {
   const cards =
     getCards().filter(
       card =>
-        card.owner ===
-        username
+        card.owner === username
     );
 
   if (!cards.length) {
@@ -3273,104 +2612,89 @@ function loadMyCards() {
 
   }
 
-  cards.forEach(
-    card => {
+  cards.forEach(card => {
 
-      const item =
-        document.createElement(
-          "div"
-        );
+    const item =
+      document.createElement("div");
 
-      item.className =
-        "card";
+    item.className = "card";
 
-      const soldText =
-        card.sold
+    const favoriteCount =
+      getFavoriteCount(card.id);
 
-        ?
+    let soldText = "";
 
-        `
-          <p class="status accepted">
-            ✅ Verkauft an
-            ${escapeHTML(card.soldTo)}
-          </p>
-        `
+    if (card.sold) {
 
-        :
-
-        `
-          <p class="status open">
-            🟢 Verfügbar
-          </p>
-        `;
-
-      const count =
-        getFavoriteCount(
-          card.id
-        );
-
-      item.innerHTML = `
-
-        <div class="card-image">
-
-          <img
-            src="${card.image}"
-            alt="${escapeHTML(card.player)}"
-          >
-
+      soldText = `
+        <div class="sold-box">
+          ✅ Verkauft an ${escapeHtml(card.soldTo)}
         </div>
-
-        <h3>
-          ${escapeHTML(card.player)}
-        </h3>
-
-        <p class="info">
-          ${escapeHTML(card.club)}
-        </p>
-
-        <p class="price">
-          ${Number(card.price).toFixed(2)} €
-        </p>
-
-        ${soldText}
-
-        <div class="favorite-count">
-          ❤️ ${count}
-          ${count === 1 ? "Favorit" : "Favoriten"}
-        </div>
-
-        <button
-          onclick="showCard('${card.id}')"
-        >
-          👀 Karte ansehen
-        </button>
-
-        <button
-          class="gray"
-          onclick="deleteCard('${card.id}')"
-        >
-          🗑️ Löschen
-        </button>
-
       `;
 
-      box.appendChild(
-        item
-      );
-
     }
-  );
+
+    item.innerHTML = `
+
+      <div class="card-image">
+
+        <img
+          src="${card.image}"
+          alt="${escapeHtml(card.player)}"
+        >
+
+      </div>
+
+      <h3>
+        ${escapeHtml(card.player)}
+      </h3>
+
+      <p class="info">
+        ${escapeHtml(card.club)}
+      </p>
+
+      <p class="price">
+        ${escapeHtml(card.price)} €
+      </p>
+
+      <span class="favorite-count">
+        ❤️ ${favoriteCount}
+        ${
+          favoriteCount === 1
+            ? "Favorisierung"
+            : "Favorisierungen"
+        }
+      </span>
+
+      ${soldText}
+
+      <button
+        onclick="showCard(${JSON.stringify(card.id)})"
+      >
+        👀 Karte ansehen
+      </button>
+
+      <button
+        class="gray"
+        onclick="deleteCard(${JSON.stringify(card.id)})"
+      >
+        🗑️ Löschen
+      </button>
+
+    `;
+
+    box.appendChild(item);
+
+  });
 
 }
 
 
-/* ==========================================
-   DELETE
-========================================== */
+/* =====================================================
+   KARTE LÖSCHEN
+===================================================== */
 
-function deleteCard(
-  cardId
-) {
+function deleteCard(cardId) {
 
   const username =
     getUsername();
@@ -3380,16 +2704,12 @@ function deleteCard(
 
   const card =
     cards.find(
-      c =>
-        c.id === cardId
+      c => c.id === cardId
     );
 
   if (!card) return;
 
-  if (
-    card.owner !==
-    username
-  ) {
+  if (card.owner !== username) {
 
     alert(
       "🚫 Du kannst diese Karte nicht löschen."
@@ -3411,45 +2731,43 @@ function deleteCard(
 
   cards =
     cards.filter(
-      c =>
-        c.id !== cardId
+      c => c.id !== cardId
     );
 
-  localStorage.setItem(
-    "footballCards",
-    JSON.stringify(
-      cards
-    )
-  );
+  saveCards(cards);
 
-  let favorites =
-    getFavorites();
+  /*
+     Auch Favoriten entfernen.
+  */
 
-  favorites =
-    favorites.filter(
-      f =>
-        f.id !== cardId
-    );
+  const map =
+    getFavoriteMap();
 
-  localStorage.setItem(
-    "favoriteCards",
-    JSON.stringify(
-      favorites
-    )
-  );
+  Object.keys(map).forEach(user => {
+
+    if (Array.isArray(map[user])) {
+
+      map[user] =
+        map[user].filter(
+          id => id !== cardId
+        );
+
+    }
+
+  });
+
+  saveFavoriteMap(map);
 
   loadAll();
 
 }
 
 
-/* ==========================================
-   SELLER PROFILE
-========================================== */
+/* =====================================================
+   VERKÄUFERPROFIL
+===================================================== */
 
-function openSellerProfile(
-  seller
-) {
+function openSellerProfile(seller) {
 
   if (!seller) return;
 
@@ -3458,16 +2776,12 @@ function openSellerProfile(
     "navProfile"
   );
 
-  loadSellerProfile(
-    seller
-  );
+  loadSellerProfile(seller);
 
 }
 
 
-function loadSellerProfile(
-  seller
-) {
+function loadSellerProfile(seller) {
 
   const box =
     document.getElementById(
@@ -3477,8 +2791,7 @@ function loadSellerProfile(
   const cards =
     getCards().filter(
       card =>
-        card.owner ===
-        seller
+        card.owner === seller
     );
 
   const soldCards =
@@ -3488,49 +2801,37 @@ function loadSellerProfile(
     );
 
   const ratings =
-    getRatings();
+    getRatings().filter(
+      rating =>
+        rating.seller === seller
+    );
 
-  const sellerRatings =
-    ratings[seller] || [];
+  let average = 0;
 
-  let average =
-    0;
-
-  if (
-    sellerRatings.length
-  ) {
+  if (ratings.length) {
 
     average =
-      sellerRatings.reduce(
-        (a,b) =>
-          a + b,
+      ratings.reduce(
+        (sum, rating) =>
+          sum + Number(rating.stars),
         0
-      ) /
-      sellerRatings.length;
+      ) / ratings.length;
 
   }
 
-  const stars =
-    average
-
-    ?
-
-    "⭐".repeat(
-      Math.round(
-        average
-      )
-    )
-
-    :
-
-    "Noch keine Bewertungen";
+  const ratingText =
+    ratings.length
+      ? getStars(average) +
+        " " +
+        average.toFixed(1)
+      : "Noch keine Bewertungen";
 
   box.innerHTML = `
 
     <div class="seller-header">
 
       <div class="big-avatar">
-        ${escapeHTML(
+        ${escapeHtml(
           seller.charAt(0).toUpperCase()
         )}
       </div>
@@ -3538,11 +2839,11 @@ function loadSellerProfile(
       <div>
 
         <h2>
-          ${escapeHTML(seller)}
+          ${escapeHtml(seller)}
         </h2>
 
-        <div class="rating">
-          ${stars}
+        <div class="rating-display">
+          ${ratingText}
         </div>
 
       </div>
@@ -3578,20 +2879,18 @@ function loadSellerProfile(
       <div class="seller-stat">
 
         <strong>
-          ${
-            average
-            ? average.toFixed(1)
-            : "-"
-          }
+          ${ratings.length}
         </strong>
 
         <span>
-          Bewertung
+          Bewertungen
         </span>
 
       </div>
 
     </div>
+
+    <br>
 
     <h2>
       🏆 Eigene Angebote
@@ -3614,662 +2913,373 @@ function loadSellerProfile(
     offers.innerHTML =
       "<div class='empty'>Keine Angebote vorhanden.</div>";
 
-  }
-
-  else {
-
-    cards.forEach(
-      card => {
-
-        createCard(
-          card,
-          offers
-        );
-
-      }
-    );
+    return;
 
   }
+
+  cards.forEach(card => {
+
+    if (!card.sold) {
+
+      createCard(card, offers);
+
+    }
+
+  });
 
 }
 
 
-/* ==========================================
-   RATINGS
-========================================== */
+/* =====================================================
+   BEWERTUNGEN
+===================================================== */
 
-function openRating(
-  requestId
-) {
+function hasRatedRequest(request) {
 
   const username =
     getUsername();
 
-  const requests =
-    getRequests();
+  return getRatings().some(rating =>
+
+    rating.requestId === request.id &&
+    rating.buyer === username
+
+  );
+
+}
+
+
+function openRating(requestId) {
+
+  const username =
+    getUsername();
 
   const request =
-    requests.find(
-      r =>
-        r.id === requestId
+    getRequests().find(
+      r => r.id === requestId
     );
 
   if (!request) return;
 
-  if (
-    request.buyer !==
-    username
-  ) {
+  if (request.buyer !== username) {
 
     alert(
-      "🚫 Diese Bewertung gehört nicht zu dir."
+      "🚫 Diese Anfrage gehört nicht zu dir."
     );
 
     return;
 
   }
 
-  if (
-    request.status !==
-    "accepted"
-  ) {
+  if (request.status !== "accepted") {
 
     alert(
-      "⭐ Du kannst erst nach einer angenommenen Anfrage bewerten."
+      "Du kannst erst nach einer angenommenen Anfrage bewerten."
     );
 
     return;
 
   }
 
-  const ratings =
-    getRatings();
-
-  const existing =
-    ratings[request.seller] || [];
-
-  const alreadyRated =
-    existing.some(
-      rating =>
-        rating.requestId ===
-        requestId
-    );
-
-  if (alreadyRated) {
+  if (hasRatedRequest(request)) {
 
     alert(
-      "⭐ Du hast diesen Verkäufer bereits bewertet."
+      "Du hast diesen Verkäufer bereits bewertet."
     );
 
     return;
 
   }
 
-  const modal =
-    document.createElement(
-      "div"
-    );
+  let selectedStars = 0;
 
-  modal.className =
-    "modal";
+  const overlay =
+    document.createElement("div");
 
-  modal.innerHTML = `
+  overlay.className =
+    "modal-backdrop";
 
-    <div class="modal-content">
+  overlay.innerHTML = `
+
+    <div class="modal">
 
       <h2>
         ⭐ Verkäufer bewerten
       </h2>
 
       <p>
-        Wie war deine Erfahrung mit
+        Wie war dein Kauf bei
         <strong>
-          ${escapeHTML(request.seller)}
+          ${escapeHtml(request.seller)}
         </strong>?
       </p>
 
-      <div
-        class="rating-input"
-        id="ratingButtons"
-      >
+      <div class="star-picker">
 
-        <button onclick="selectRating(1)">
-          ⭐
-        </button>
-
-        <button onclick="selectRating(2)">
-          ⭐
-        </button>
-
-        <button onclick="selectRating(3)">
-          ⭐
-        </button>
-
-        <button onclick="selectRating(4)">
-          ⭐
-        </button>
-
-        <button onclick="selectRating(5)">
-          ⭐
-        </button>
+        <span data-star="1">★</span>
+        <span data-star="2">★</span>
+        <span data-star="3">★</span>
+        <span data-star="4">★</span>
+        <span data-star="5">★</span>
 
       </div>
 
-      <button
-        onclick="saveRating('${requestId}')"
-      >
-        ⭐ Bewertung speichern
-      </button>
+      <textarea
+        id="ratingComment"
+        class="rating-comment"
+        maxlength="250"
+        placeholder="Optionaler Kommentar..."
+      ></textarea>
 
-      <button
-        style="background:#eee;"
-        onclick="this.closest('.modal').remove()"
-      >
-        Abbrechen
-      </button>
+      <div class="modal-actions">
+
+        <button
+          class="close-btn"
+          id="cancelRating"
+        >
+          Abbrechen
+        </button>
+
+        <button
+          class="save-rating-btn"
+          id="saveRating"
+        >
+          Bewertung speichern
+        </button>
+
+      </div>
 
     </div>
 
   `;
 
-  document.body.appendChild(
-    modal
-  );
+  document.body.appendChild(overlay);
 
-  window.currentRating =
-    0;
-
-}
-
-
-function selectRating(
-  number
-) {
-
-  window.currentRating =
-    number;
-
-  const buttons =
-    document
-      .getElementById(
-        "ratingButtons"
-      )
-      .querySelectorAll(
-        "button"
-      );
-
-  buttons.forEach(
-    (button,index) => {
-
-      if (
-        index <
-        number
-      ) {
-
-        button.classList.add(
-          "selected"
-        );
-
-      }
-
-      else {
-
-        button.classList.remove(
-          "selected"
-        );
-
-      }
-
-    }
-  );
-
-}
-
-
-function saveRating(
-  requestId
-) {
-
-  const rating =
-    window.currentRating || 0;
-
-  if (
-    rating < 1 ||
-    rating > 5
-  ) {
-
-    alert(
-      "Bitte wähle zuerst eine Bewertung."
+  const stars =
+    overlay.querySelectorAll(
+      ".star-picker span"
     );
 
-    return;
-
-  }
-
-  const username =
-    getUsername();
-
-  const requests =
-    getRequests();
-
-  const request =
-    requests.find(
-      r =>
-        r.id === requestId
-    );
-
-  if (!request) return;
-
-  const ratings =
-    getRatings();
-
-  if (
-    !ratings[request.seller]
-  ) {
-
-    ratings[request.seller] =
-      [];
-
-  }
-
-  const already =
-    ratings[request.seller]
-      .some(
-        r =>
-          r.requestId ===
-          requestId
-      );
-
-  if (already) {
-
-    alert(
-      "⭐ Du hast bereits bewertet."
-    );
-
-    return;
-
-  }
-
-  ratings[request.seller].push({
-
-    requestId:
-      requestId,
-
-    buyer:
-      username,
-
-    rating:
-      rating,
-
-    createdAt:
-      Date.now()
-
-  });
-
-  localStorage.setItem(
-    "sellerRatings",
-    JSON.stringify(
-      ratings
-    )
-  );
-
-  document
-    .querySelectorAll(
-      ".modal"
-    )
-    .forEach(
-      modal =>
-        modal.remove()
-    );
-
-  loadAll();
-
-  alert(
-    "⭐ Bewertung gespeichert!"
-  );
-
-}
-
-
-/* ==========================================
-   MESSAGES
-========================================== */
-
-function createMessage(
-  sender,
-  receiver,
-  text
-) {
-
-  if (
-    !sender ||
-    !receiver
-  ) return;
-
-  const messages =
-    getMessages();
-
-  messages.push({
-
-    id:
-      Date.now() +
-      "-" +
-      Math.random()
-        .toString(36)
-        .substring(2),
-
-    sender:
-      sender,
-
-    receiver:
-      receiver,
-
-    text:
-      text,
-
-    createdAt:
-      Date.now(),
-
-    read:
-      false
-
-  });
-
-  localStorage.setItem(
-    "pixelMessages",
-    JSON.stringify(
-      messages
-    )
-  );
-
-}
-
-
-function messageUser(
-  user
-) {
-
-  showPage(
-    "messagesPage",
-    "navMessages"
-  );
-
-  setTimeout(
-    function() {
-
-      const text =
-        prompt(
-          "Nachricht an " +
-          user +
-          ":"
-        );
-
-      if (
-        !text ||
-        !text.trim()
-      ) return;
-
-      createMessage(
-        getUsername(),
-        user,
-        text.trim()
-      );
-
-      loadMessages();
-
-      updateMessageBadge();
-
-    },
-    50
-  );
-
-}
-
-
-function loadMessages() {
-
-  const username =
-    getUsername();
-
-  const box =
-    document.getElementById(
-      "messageList"
-    );
-
-  box.innerHTML = "";
-
-  if (!username) {
-
-    box.innerHTML =
-      "<div class='empty'>👤 Bitte zuerst einen Benutzernamen festlegen.</div>";
-
-    return;
-
-  }
-
-  const messages =
-    getMessages();
-
-  const relevant =
-    messages.filter(
-      message =>
-
-        message.sender ===
-        username
-
-        ||
-
-        message.receiver ===
-        username
-
-    );
-
-  relevant.forEach(
-    message => {
-
-      if (
-        message.receiver ===
-        username
-      ) {
-
-        message.read =
-          true;
-
-      }
-
-    }
-  );
-
-  localStorage.setItem(
-    "pixelMessages",
-    JSON.stringify(
-      messages
-    )
-  );
-
-  if (!relevant.length) {
-
-    box.innerHTML =
-      "<div class='empty'>💬 Noch keine Nachrichten.</div>";
-
-    updateMessageBadge();
-
-    return;
-
-  }
-
-  relevant
-    .sort(
-      (a,b) =>
-        b.createdAt -
-        a.createdAt
-    )
-    .forEach(
-      message => {
-
-        const item =
-          document.createElement(
-            "div"
+  stars.forEach(star => {
+
+    star.addEventListener(
+      "click",
+      function() {
+
+        selectedStars =
+          Number(
+            this.dataset.star
           );
 
-        item.className =
-          "message-box";
+        stars.forEach(s => {
 
-        const direction =
-          message.sender ===
-          username
+          s.classList.toggle(
+            "active",
+            Number(s.dataset.star) <=
+              selectedStars
+          );
 
-          ?
-
-          "📤 An"
-
-          :
-
-          "📥 Von";
-
-        const person =
-          message.sender ===
-          username
-
-          ?
-
-          message.receiver
-
-          :
-
-          message.sender;
-
-        item.innerHTML = `
-
-          <div class="message-head">
-
-            <strong>
-              ${direction}
-              ${escapeHTML(person)}
-            </strong>
-
-            <span class="info">
-              ${new Date(
-                message.createdAt
-              ).toLocaleString("de-DE")}
-            </span>
-
-          </div>
-
-          <div class="message-text">
-            ${escapeHTML(message.text)}
-          </div>
-
-        `;
-
-        box.appendChild(
-          item
-        );
+        });
 
       }
     );
 
-  updateMessageBadge();
+  });
+
+  overlay
+    .querySelector("#cancelRating")
+    .onclick = function() {
+
+      overlay.remove();
+
+    };
+
+  overlay
+    .querySelector("#saveRating")
+    .onclick = function() {
+
+      if (selectedStars < 1) {
+
+        alert(
+          "Bitte wähle zuerst eine Sternebewertung."
+        );
+
+        return;
+
+      }
+
+      const ratings =
+        getRatings();
+
+      if (ratings.some(r =>
+
+        r.requestId === request.id
+
+      )) {
+
+        alert(
+          "Diese Anfrage wurde bereits bewertet."
+        );
+
+        overlay.remove();
+
+        return;
+
+      }
+
+      ratings.push({
+
+        id: makeId(),
+
+        requestId:
+          request.id,
+
+        cardId:
+          request.cardId,
+
+        buyer:
+          username,
+
+        seller:
+          request.seller,
+
+        stars:
+          selectedStars,
+
+        comment:
+          document
+            .getElementById("ratingComment")
+            .value
+            .trim(),
+
+        createdAt:
+          new Date().toISOString()
+
+      });
+
+      saveRatings(ratings);
+
+      overlay.remove();
+
+      loadAll();
+
+      alert(
+        "⭐ Bewertung gespeichert!"
+      );
+
+    };
 
 }
 
 
-/* ==========================================
-   CARD MODAL
-========================================== */
+/* =====================================================
+   KARTE ANSEHEN
+===================================================== */
 
-function showCard(
-  cardId
-) {
+function showCard(cardId) {
 
   const card =
     getCards().find(
-      c =>
-        c.id === cardId
+      c => c.id === cardId
     );
 
   if (!card) return;
 
+  const favoriteCount =
+    getFavoriteCount(card.id);
+
   const overlay =
-    document.createElement(
-      "div"
-    );
+    document.createElement("div");
 
   overlay.className =
-    "modal";
-
-  const count =
-    getFavoriteCount(
-      card.id
-    );
+    "modal-backdrop";
 
   overlay.innerHTML = `
 
-    <div class="modal-content">
+    <div class="modal">
 
       <img
+        class="modal-image"
         src="${card.image}"
-        alt="${escapeHTML(card.player)}"
+        alt="${escapeHtml(card.player)}"
       >
 
       <h2>
-        ${escapeHTML(card.player)}
+        ${escapeHtml(card.player)}
       </h2>
 
       <p>
-        ${escapeHTML(card.club)}
+        ${escapeHtml(card.club)}
       </p>
 
-      <p
-        style="
-          font-size:25px;
-          font-weight:bold;
-        "
-      >
-        ${Number(card.price).toFixed(2)} €
+      <p style="
+        font-size:25px;
+        font-weight:bold;
+      ">
+        ${escapeHtml(card.price)} €
       </p>
 
       <p>
         👤 Verkäufer:
         <strong>
-          ${escapeHTML(card.owner)}
+          ${escapeHtml(card.owner)}
         </strong>
       </p>
 
       <p>
-        ❤️ ${count}
-        ${count === 1 ? "Favorit" : "Favoriten"}
+        ❤️ ${favoriteCount}
+        ${
+          favoriteCount === 1
+            ? "Favorisierung"
+            : "Favorisierungen"
+        }
       </p>
 
-      <button
-        onclick="this.closest('.modal').remove()"
-        style="
-          background:#111;
-          color:white;
-        "
-      >
-        Schließen
-      </button>
+      ${
+        card.sold
+          ? `
+            <div class="sold-box">
+              🔒 Verkauft an
+              ${escapeHtml(card.soldTo)}
+            </div>
+          `
+          : ""
+      }
+
+      <div class="modal-actions">
+
+        <button
+          class="close-btn"
+          id="closeCard"
+        >
+          Schließen
+        </button>
+
+      </div>
 
     </div>
 
   `;
 
-  document.body.appendChild(
-    overlay
-  );
+  document.body.appendChild(overlay);
+
+  overlay
+    .querySelector("#closeCard")
+    .onclick = function() {
+
+      overlay.remove();
+
+    };
 
 }
 
 
-/* ==========================================
-   SEARCH
-========================================== */
+/* =====================================================
+   SUCHE
+===================================================== */
 
 document
-  .getElementById(
-    "searchInput"
-  )
+  .getElementById("searchInput")
   .addEventListener(
     "input",
     function() {
@@ -4280,59 +3290,9 @@ document
   );
 
 
-/* ==========================================
-   ESCAPE HTML
-========================================== */
-
-function escapeHTML(
-  value
-) {
-
-  return String(
-    value ?? ""
-  )
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-    .replace(
-      /</g,
-      "&lt;"
-    )
-    .replace(
-      />/g,
-      "&gt;"
-    )
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-    .replace(
-      /'/g,
-      "&#039;"
-    );
-
-}
-
-
-function escapeAttribute(
-  value
-) {
-
-  return String(
-    value ?? ""
-  )
-    .replace(
-      /'/g,
-      "\\'"
-    );
-
-}
-
-
-/* ==========================================
-   LOAD ALL
-========================================== */
+/* =====================================================
+   ALLES AKTUALISIEREN
+===================================================== */
 
 function loadAll() {
 
@@ -4350,25 +3310,21 @@ function loadAll() {
 
   updateRequestBadge();
 
-  updateMessageBadge();
-
   const username =
     getUsername();
 
   if (username) {
 
-    loadSellerProfile(
-      username
-    );
+    loadSellerProfile(username);
 
   }
 
 }
 
 
-/* ==========================================
+/* =====================================================
    START
-========================================== */
+===================================================== */
 
 updateProfile();
 
