@@ -7,34 +7,29 @@
 
 <style>
 :root{
-  --bg:#071014;
-  --bg2:#0b171a;
-  --panel:#101d21;
-  --panel2:#14252a;
-  --panel3:#193038;
+  --bg:#070b10;
+  --bg2:#0b1118;
+  --panel:#101923;
+  --panel2:#16222d;
+  --panel3:#1c2b38;
+  --border:#263744;
+  --border2:#36515f;
 
-  --border:#22383d;
-  --border2:#315058;
+  --text:#f7fbff;
+  --muted:#91a3af;
 
-  --text:#f4fbfa;
-  --muted:#8fa6a8;
-
-  --accent:#16c79a;
-  --accent2:#35e0b2;
-  --accent-dark:#0b8d70;
-
-  --blue:#3b9cff;
-  --yellow:#ffd166;
-  --red:#ff6474;
+  --accent:#12b8d4;
+  --accent2:#35d8ee;
+  --green:#39d69b;
+  --red:#ff6070;
+  --yellow:#ffc857;
+  --blue:#4ca3ff;
 
   --radius:18px;
-  --radius2:25px;
+  --radius2:24px;
 
-  --shadow:
-    0 22px 65px rgba(0,0,0,.32);
-
-  --shadow2:
-    0 10px 30px rgba(0,0,0,.22);
+  --shadow:0 18px 55px rgba(0,0,0,.30);
+  --shadow2:0 10px 30px rgba(0,0,0,.22);
 }
 
 *{
@@ -49,40 +44,16 @@ html{
 
 body{
   min-height:100vh;
-
   color:var(--text);
-
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
   background:
-    radial-gradient(
-      circle at 0% 0%,
-      rgba(22,199,154,.12),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 100% 10%,
-      rgba(59,156,255,.08),
-      transparent 25%
-    ),
-    linear-gradient(
-      180deg,
-      #071014 0%,
-      #081215 45%,
-      #061013 100%
-    );
+    radial-gradient(circle at 5% -10%,rgba(18,184,212,.15),transparent 28%),
+    radial-gradient(circle at 100% 0%,rgba(76,163,255,.09),transparent 25%),
+    linear-gradient(180deg,#070b10 0%,#091017 100%);
 }
 
-button,
-input,
-select,
-textarea{
+button,input,select,textarea{
   font:inherit;
 }
 
@@ -99,91 +70,67 @@ a{
   text-decoration:none;
 }
 
-/* =========================================================
+/* =========================
    NAVIGATION
-========================================================= */
+========================= */
 
 .topbar{
   position:sticky;
   top:0;
   z-index:1000;
 
-  background:
-    rgba(7,16,20,.91);
-
+  background:rgba(7,11,16,.90);
   backdrop-filter:blur(24px);
 
-  border-bottom:
-    1px solid rgba(255,255,255,.07);
+  border-bottom:1px solid rgba(255,255,255,.07);
 
-  box-shadow:
-    0 10px 35px rgba(0,0,0,.22);
+  box-shadow:0 8px 30px rgba(0,0,0,.20);
 }
 
 .nav{
-  width:min(1450px,calc(100% - 28px));
-
+  width:min(1450px,calc(100% - 32px));
   margin:auto;
 
-  min-height:82px;
+  padding:14px 0;
 
   display:grid;
-
-  grid-template-columns:
-    190px
-    1fr;
-
-  gap:20px;
-
+  grid-template-columns:170px 1fr;
+  gap:22px;
   align-items:center;
 }
-
-/* LOGO */
 
 .logo{
   border:0;
   background:none;
-
   color:white;
 
   display:flex;
   align-items:center;
+  justify-content:flex-start;
+  gap:11px;
 
-  gap:12px;
-
-  font-size:21px;
   font-weight:950;
+  font-size:21px;
 
   white-space:nowrap;
+  padding:0;
 }
 
 .logo-icon{
-  width:50px;
-  height:50px;
+  width:49px;
+  height:49px;
 
   display:grid;
   place-items:center;
 
-  border-radius:16px;
+  border-radius:15px;
 
-  background:
-    linear-gradient(
-      135deg,
-      var(--accent),
-      var(--accent-dark)
-    );
+  background:linear-gradient(135deg,#0da9c4,#247cff);
 
-  box-shadow:
-    0 10px 30px
-    rgba(22,199,154,.25);
+  box-shadow:0 10px 32px rgba(18,184,212,.28);
 
-  font-size:23px;
+  font-size:22px;
 }
-
-/* =========================================================
-   7 NAVIGATION BUTTONS
-   3 LINKS | VERKAUFEN | 3 LINKS
-========================================================= */
 
 .nav-links{
   display:grid;
@@ -192,153 +139,139 @@ a{
     1fr
     1fr
     1fr
-    1.3fr
+    1.35fr
     1fr
     1fr
     1fr;
 
-  gap:9px;
-
-  align-items:center;
+  gap:10px;
+  align-items:stretch;
 }
 
 .nav-btn{
-  position:relative;
+  min-height:58px;
 
-  min-height:56px;
-
-  padding:
-    10px 8px;
-
-  border:
-    1px solid transparent;
-
+  border:1px solid rgba(255,255,255,.055);
   border-radius:16px;
 
-  background:
-    rgba(255,255,255,.025);
+  background:rgba(255,255,255,.035);
 
-  color:#9db0b3;
+  color:#aebdca;
 
-  font-size:14px;
   font-weight:850;
+  font-size:15px;
+
+  padding:11px 10px;
 
   transition:
-    .2s ease;
+    background .2s ease,
+    border .2s ease,
+    color .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease;
 }
 
 .nav-btn:hover{
   color:white;
-
-  background:
-    rgba(255,255,255,.06);
-
-  border-color:
-    rgba(255,255,255,.09);
-
-  transform:
-    translateY(-2px);
+  background:rgba(255,255,255,.065);
+  border-color:rgba(255,255,255,.10);
+  transform:translateY(-2px);
 }
 
 .nav-btn.active{
   color:white;
 
   background:
-    rgba(22,199,154,.11);
+    linear-gradient(
+      135deg,
+      rgba(18,184,212,.20),
+      rgba(76,163,255,.09)
+    );
 
-  border-color:
-    rgba(22,199,154,.3);
+  border-color:rgba(18,184,212,.35);
 
-  box-shadow:
-    0 8px 25px
-    rgba(22,199,154,.08);
+  box-shadow:0 8px 25px rgba(18,184,212,.10);
 }
 
-/* VERKAUFEN */
-
 .nav-btn.sell-main{
-  color:#03130e;
+  color:white;
 
   background:
     linear-gradient(
       135deg,
-      var(--accent),
-      var(--accent2)
+      #0caac4,
+      #247cff
     );
 
-  border-color:
-    rgba(255,255,255,.18);
+  border-color:rgba(255,255,255,.15);
 
-  font-size:15px;
-  font-weight:1000;
+  box-shadow:0 10px 32px rgba(18,184,212,.25);
 
-  box-shadow:
-    0 12px 35px
-    rgba(22,199,154,.25);
+  font-size:16px;
+  font-weight:950;
 }
 
 .nav-btn.sell-main:hover{
-  color:#03130e;
-
-  transform:
-    translateY(-3px)
-    scale(1.015);
+  transform:translateY(-3px) scale(1.015);
 
   box-shadow:
-    0 17px 42px
-    rgba(22,199,154,.35);
+    0 15px 40px rgba(18,184,212,.32);
 }
 
-/* BADGE */
+.nav-btn.sell-main.active{
+  background:
+    linear-gradient(
+      135deg,
+      #10bdd7,
+      #2b83ff
+    );
+}
+
+.nav-notification{
+  position:relative;
+}
 
 .badge{
   position:absolute;
 
-  right:7px;
+  right:8px;
   top:6px;
 
-  min-width:20px;
-  height:20px;
+  min-width:19px;
+  height:19px;
 
   padding:0 5px;
 
-  display:grid;
-  place-items:center;
-
-  border-radius:50px;
+  border-radius:20px;
 
   background:var(--red);
+
+  display:grid;
+  place-items:center;
 
   color:white;
 
   font-size:10px;
   font-weight:950;
 
-  box-shadow:
-    0 5px 15px
-    rgba(255,100,116,.3);
+  box-shadow:0 5px 15px rgba(255,96,112,.35);
 }
 
-/* =========================================================
+/* =========================
    MAIN
-========================================================= */
+========================= */
 
 .container{
-  width:min(1450px,calc(100% - 28px));
-
+  width:min(1400px,calc(100% - 28px));
   margin:auto;
 }
 
 .page{
   display:none;
 
-  padding:
-    35px
-    0
-    90px;
+  padding:34px 0 90px;
 
-  animation:
-    pageIn .28s ease;
+  animation:pageIn .3s ease;
 }
 
 .page.active{
@@ -350,40 +283,33 @@ a{
     opacity:0;
     transform:translateY(10px);
   }
-
   to{
     opacity:1;
     transform:none;
   }
 }
 
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
   position:relative;
   overflow:hidden;
 
-  min-height:390px;
+  min-height:350px;
 
-  padding:55px;
+  padding:50px;
 
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-
-  border:
-    1px solid var(--border);
+  border:1px solid var(--border);
 
   border-radius:30px;
 
   background:
     linear-gradient(
-      125deg,
-      rgba(22,199,154,.16),
-      rgba(16,29,33,.98) 55%,
-      rgba(10,20,24,.98)
+      120deg,
+      rgba(18,184,212,.18),
+      rgba(16,25,35,.98) 60%
     );
 
   box-shadow:var(--shadow);
@@ -394,18 +320,18 @@ a{
 
   position:absolute;
 
-  width:550px;
-  height:550px;
+  width:420px;
+  height:420px;
 
-  right:-240px;
-  top:-260px;
+  right:-180px;
+  top:-210px;
 
   border-radius:50%;
 
   background:
     radial-gradient(
       circle,
-      rgba(22,199,154,.17),
+      rgba(18,184,212,.18),
       transparent 68%
     );
 }
@@ -415,12 +341,12 @@ a{
 
   position:absolute;
 
-  right:65px;
-  bottom:20px;
+  right:70px;
+  bottom:35px;
 
-  font-size:145px;
+  font-size:120px;
 
-  opacity:.045;
+  opacity:.055;
 
   transform:rotate(-12deg);
 }
@@ -429,10 +355,9 @@ a{
   position:relative;
   z-index:1;
 
-  max-width:850px;
+  max-width:780px;
 
-  font-size:
-    clamp(40px,6vw,72px);
+  font-size:clamp(38px,6vw,70px);
 
   line-height:.98;
 
@@ -445,14 +370,13 @@ a{
 
   max-width:650px;
 
-  margin:
-    22px 0 30px;
+  margin:22px 0 28px;
 
   color:var(--muted);
 
-  font-size:16px;
-
   line-height:1.7;
+
+  font-size:15px;
 }
 
 .hero-buttons{
@@ -460,84 +384,69 @@ a{
   z-index:2;
 
   display:flex;
-
   gap:11px;
 
   flex-wrap:wrap;
 }
 
-/* =========================================================
+/* =========================
    BUTTONS
-========================================================= */
+========================= */
 
 .btn{
   border:0;
 
-  border-radius:13px;
+  border-radius:14px;
 
-  padding:
-    13px 19px;
+  padding:13px 20px;
 
-  color:#03130e;
+  color:white;
 
   background:
     linear-gradient(
       135deg,
-      var(--accent),
-      var(--accent2)
+      #0caac4,
+      #247cff
     );
 
-  font-weight:950;
+  font-weight:900;
 
   box-shadow:
-    0 9px 25px
-    rgba(22,199,154,.17);
+    0 8px 25px rgba(18,184,212,.16);
 
   transition:.2s;
 }
 
 .btn:hover{
   transform:translateY(-2px);
-
-  filter:brightness(1.06);
+  filter:brightness(1.08);
 }
 
 .btn.secondary{
-  color:white;
+  background:var(--panel2);
 
-  background:
-    var(--panel2);
-
-  border:
-    1px solid var(--border);
+  border:1px solid var(--border);
 
   box-shadow:none;
 }
 
 .btn.green{
-  color:#03130e;
-
-  background:
-    var(--accent);
+  background:var(--green);
+  color:#04130e;
 }
 
 .btn.red{
-  color:white;
-
-  background:
-    var(--red);
+  background:var(--red);
 }
 
 .btn.small{
-  padding:
-    10px 13px;
-
+  padding:10px 14px;
   font-size:12px;
 }
 
-/* =========================================================
-   SECTION HEAD
-========================================================= */
+/* =========================
+   SECTION
+========================= */
 
 .section-head{
   display:flex;
@@ -547,13 +456,11 @@ a{
 
   gap:15px;
 
-  margin:
-    34px 0 17px;
+  margin:32px 0 17px;
 }
 
 .section-head h2{
-  font-size:25px;
-
+  font-size:24px;
   letter-spacing:-.5px;
 }
 
@@ -561,121 +468,81 @@ a{
   color:var(--muted);
 }
 
-/* =========================================================
+/* =========================
    STATS
-========================================================= */
+========================= */
 
 .stats{
   display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
+  grid-template-columns:repeat(4,1fr);
   gap:14px;
-
   margin-top:18px;
 }
 
 .stat{
   position:relative;
 
-  padding:23px;
+  padding:22px;
 
-  overflow:hidden;
-
-  border:
-    1px solid var(--border);
-
-  border-radius:20px;
+  border:1px solid var(--border);
+  border-radius:19px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(20,37,42,.98),
-      rgba(12,24,28,.98)
+      rgba(22,34,45,.96),
+      rgba(14,21,29,.96)
     );
 
   transition:.2s;
 }
 
-.stat:after{
-  content:"";
-
-  position:absolute;
-
-  right:-30px;
-  bottom:-40px;
-
-  width:100px;
-  height:100px;
-
-  border-radius:50%;
-
-  background:
-    rgba(22,199,154,.06);
-}
-
 .stat:hover{
   transform:translateY(-3px);
-
-  border-color:
-    var(--border2);
+  border-color:var(--border2);
 }
 
 .stat-number{
-  position:relative;
-  z-index:1;
-
-  font-size:30px;
-  font-weight:1000;
+  font-size:29px;
+  font-weight:950;
 }
 
 .stat-label{
-  position:relative;
-  z-index:1;
-
   margin-top:5px;
-
   color:var(--muted);
-
   font-size:13px;
 }
 
-/* =========================================================
+/* =========================
    MARKET
-========================================================= */
+========================= */
 
 .market-tools{
-  padding:19px;
+  padding:18px;
 
-  border:
-    1px solid var(--border);
-
+  border:1px solid var(--border);
   border-radius:21px;
 
   background:
-    rgba(15,29,33,.92);
+    linear-gradient(
+      145deg,
+      rgba(16,25,35,.98),
+      rgba(11,17,24,.98)
+    );
 
   box-shadow:var(--shadow2);
 }
 
 .search-row{
   display:grid;
-
-  grid-template-columns:
-    2fr 1fr 1fr;
-
+  grid-template-columns:2fr 1fr 1fr;
   gap:10px;
 }
 
 .filter-row{
   display:grid;
-
-  grid-template-columns:
-    1.2fr 1fr auto;
-
+  grid-template-columns:1.1fr 1fr 1fr auto;
   gap:10px;
-
   margin-top:10px;
 }
 
@@ -684,55 +551,45 @@ a{
 .textarea{
   width:100%;
 
-  border:
-    1px solid var(--border);
-
+  border:1px solid var(--border);
   border-radius:13px;
 
   outline:none;
 
-  background:
-    var(--panel2);
-
+  background:var(--panel2);
   color:white;
 
-  padding:
-    13px 14px;
+  padding:13px 14px;
 
   transition:.2s;
 }
 
 .input::placeholder{
-  color:#71888b;
+  color:#71818d;
 }
 
 .input:focus,
 .select:focus,
 .textarea:focus{
-  border-color:
-    var(--accent);
+  border-color:var(--accent);
 
   box-shadow:
     0 0 0 3px
-    rgba(22,199,154,.09);
+    rgba(18,184,212,.10);
 }
 
 .textarea{
   min-height:130px;
-
   resize:vertical;
 }
 
-/* =========================================================
+/* =========================
    CARDS
-========================================================= */
+========================= */
 
 .cards-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
+  grid-template-columns:repeat(4,1fr);
   gap:17px;
 }
 
@@ -740,39 +597,34 @@ a{
   position:relative;
   overflow:hidden;
 
-  border:
-    1px solid var(--border);
-
+  border:1px solid var(--border);
   border-radius:21px;
 
   background:
     linear-gradient(
       145deg,
-      #122126,
-      #0c171b
+      #121d27,
+      #0e151d
     );
 
   box-shadow:
-    0 12px 38px
-    rgba(0,0,0,.2);
+    0 10px 35px rgba(0,0,0,.17);
 
   transition:
-    .25s ease;
+    transform .25s,
+    border .25s,
+    box-shadow .25s;
 
-  animation:
-    cardIn .35s ease both;
+  animation:cardIn .35s ease both;
 }
 
 .card:hover{
-  transform:
-    translateY(-6px);
+  transform:translateY(-6px);
 
-  border-color:
-    #38545a;
+  border-color:#3b5664;
 
   box-shadow:
-    0 25px 55px
-    rgba(0,0,0,.3);
+    0 22px 50px rgba(0,0,0,.28);
 }
 
 @keyframes cardIn{
@@ -790,7 +642,7 @@ a{
 .card-image{
   position:relative;
 
-  height:225px;
+  height:220px;
 
   display:grid;
   place-items:center;
@@ -800,39 +652,35 @@ a{
   background:
     radial-gradient(
       circle at 50% 35%,
-      rgba(255,255,255,.11),
+      rgba(255,255,255,.12),
       transparent 27%
     ),
     linear-gradient(
       135deg,
-      #1c353b,
-      #091317
+      #203442,
+      #0b1118
     );
 }
 
 .card-image img{
   width:100%;
   height:100%;
-
   object-fit:cover;
 }
 
 .ball{
-  font-size:76px;
+  font-size:75px;
 
   filter:
     drop-shadow(
-      0 15px 20px
-      rgba(0,0,0,.45)
+      0 15px 20px rgba(0,0,0,.45)
     );
 
   transition:.3s;
 }
 
 .card:hover .ball{
-  transform:
-    scale(1.08)
-    rotate(2deg);
+  transform:scale(1.08) rotate(2deg);
 }
 
 .card-tag{
@@ -842,17 +690,16 @@ a{
   left:11px;
   top:11px;
 
-  padding:
-    6px 9px;
+  padding:6px 9px;
 
   border-radius:8px;
 
-  background:var(--accent);
+  background:var(--green);
 
-  color:#03130e;
+  color:#04130e;
 
   font-size:10px;
-  font-weight:1000;
+  font-weight:950;
 }
 
 .popular-tag{
@@ -862,13 +709,11 @@ a{
   right:11px;
   top:11px;
 
-  padding:
-    6px 9px;
+  padding:6px 9px;
 
   border-radius:8px;
 
-  background:
-    rgba(0,0,0,.62);
+  background:rgba(0,0,0,.62);
 
   color:var(--yellow);
 
@@ -885,16 +730,14 @@ a{
   right:11px;
   bottom:11px;
 
-  width:42px;
-  height:42px;
+  width:41px;
+  height:41px;
 
-  border:
-    1px solid rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.14);
 
   border-radius:12px;
 
-  background:
-    rgba(0,0,0,.5);
+  background:rgba(0,0,0,.48);
 
   color:white;
 
@@ -908,17 +751,15 @@ a{
 }
 
 .favorite.active{
-  color:#ff5871;
+  color:#ff4d6d;
 
-  background:
-    rgba(255,88,113,.14);
+  background:rgba(255,77,109,.14);
 
-  border-color:
-    rgba(255,88,113,.3);
+  border-color:rgba(255,77,109,.28);
 }
 
 .card-body{
-  padding:18px;
+  padding:17px;
 }
 
 .card-title{
@@ -928,12 +769,9 @@ a{
 
 .card-sub{
   margin-top:6px;
-
   color:var(--muted);
-
   font-size:12px;
-
-  line-height:1.45;
+  line-height:1.4;
 }
 
 .card-bottom{
@@ -949,44 +787,38 @@ a{
 
 .price{
   font-size:21px;
-  font-weight:1000;
+  font-weight:950;
 }
 
 .seller{
   margin-top:4px;
-
   color:var(--muted);
-
   font-size:11px;
 }
 
-/* =========================================================
+/* =========================
    PANELS
-========================================================= */
+========================= */
 
 .panel{
-  padding:22px;
+  padding:21px;
 
-  border:
-    1px solid var(--border);
-
+  border:1px solid var(--border);
   border-radius:21px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(16,29,33,.98),
-      rgba(10,21,25,.98)
+      rgba(16,25,35,.98),
+      rgba(13,20,28,.98)
     );
 
   box-shadow:
-    0 12px 35px
-    rgba(0,0,0,.14);
+    0 12px 35px rgba(0,0,0,.14);
 }
 
 .list{
   display:grid;
-
   gap:10px;
 }
 
@@ -1000,20 +832,15 @@ a{
 
   padding:15px;
 
-  border:
-    1px solid var(--border);
-
+  border:1px solid var(--border);
   border-radius:14px;
 
-  background:
-    var(--panel2);
+  background:var(--panel2);
 }
 
 .actions{
   display:flex;
-
   gap:7px;
-
   flex-wrap:wrap;
 }
 
@@ -1032,12 +859,10 @@ a{
     linear-gradient(
       135deg,
       var(--accent),
-      #1d8fd0
+      #247cff
     );
 
-  color:#03130e;
-
-  font-weight:1000;
+  font-weight:950;
 }
 
 .user-info{
@@ -1055,15 +880,13 @@ a{
 
 .user-small{
   margin-top:3px;
-
   color:var(--muted);
-
   font-size:12px;
 }
 
-/* =========================================================
+/* =========================
    PROFILE
-========================================================= */
+========================= */
 
 .profile-head{
   display:flex;
@@ -1072,24 +895,22 @@ a{
 
   gap:20px;
 
-  padding:28px;
+  padding:27px;
 
-  border:
-    1px solid var(--border);
-
+  border:1px solid var(--border);
   border-radius:23px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(22,199,154,.11),
-      rgba(16,29,33,.98)
+      rgba(18,184,212,.12),
+      rgba(16,25,35,.98)
     );
 }
 
 .big-avatar{
-  width:88px;
-  height:88px;
+  width:86px;
+  height:86px;
 
   display:grid;
   place-items:center;
@@ -1102,28 +923,24 @@ a{
     linear-gradient(
       135deg,
       var(--accent),
-      #1d8fd0
+      #247cff
     );
 
-  color:#03130e;
-
   font-size:31px;
-  font-weight:1000;
+  font-weight:950;
 
   box-shadow:
-    0 12px 35px
-    rgba(22,199,154,.18);
+    0 12px 35px rgba(18,184,212,.20);
 }
 
 .rating{
   margin-top:5px;
-
   color:var(--yellow);
 }
 
-/* =========================================================
+/* =========================
    EMPTY
-========================================================= */
+========================= */
 
 .empty{
   grid-column:1/-1;
@@ -1132,26 +949,22 @@ a{
 
   text-align:center;
 
-  border:
-    1px dashed var(--border);
-
+  border:1px dashed var(--border);
   border-radius:19px;
 
   color:var(--muted);
 
-  background:
-    rgba(16,29,33,.45);
+  background:rgba(16,25,35,.4);
 }
 
 .empty-icon{
   margin-bottom:11px;
-
   font-size:43px;
 }
 
-/* =========================================================
+/* =========================
    MODAL
-========================================================= */
+========================= */
 
 .modal-backdrop{
   position:fixed;
@@ -1167,17 +980,14 @@ a{
 
   overflow:auto;
 
-  background:
-    rgba(0,0,0,.78);
+  background:rgba(0,0,0,.76);
 
   backdrop-filter:blur(12px);
 }
 
 .modal-backdrop.show{
   display:grid;
-
-  animation:
-    fadeIn .2s ease;
+  animation:fadeIn .2s ease;
 }
 
 @keyframes fadeIn{
@@ -1190,30 +1000,25 @@ a{
 
   padding:25px;
 
-  border:
-    1px solid var(--border);
-
+  border:1px solid var(--border);
   border-radius:23px;
 
   background:
     linear-gradient(
       145deg,
-      #14262b,
-      #0b171b
+      #151f29,
+      #0e151d
     );
 
   box-shadow:var(--shadow);
 
-  animation:
-    modalIn .25s ease;
+  animation:modalIn .25s ease;
 }
 
 @keyframes modalIn{
   from{
     opacity:0;
-    transform:
-      translateY(15px)
-      scale(.97);
+    transform:translateY(15px) scale(.97);
   }
 
   to{
@@ -1237,12 +1042,9 @@ a{
   height:38px;
 
   border:0;
-
   border-radius:11px;
 
-  background:
-    var(--panel2);
-
+  background:var(--panel2);
   color:white;
 
   font-size:17px;
@@ -1274,13 +1076,12 @@ a{
 
   border-radius:15px;
 
-  border:
-    1px solid var(--border);
+  border:1px solid var(--border);
 }
 
-/* =========================================================
+/* =========================
    TOAST
-========================================================= */
+========================= */
 
 .toast{
   position:fixed;
@@ -1290,19 +1091,15 @@ a{
   right:18px;
   bottom:18px;
 
-  max-width:
-    calc(100% - 36px);
+  max-width:calc(100% - 36px);
 
-  padding:
-    14px 17px;
+  padding:14px 17px;
 
-  border:
-    1px solid var(--border);
+  border:1px solid var(--border);
 
   border-radius:14px;
 
-  background:
-    #193238;
+  background:#202f3b;
 
   box-shadow:var(--shadow);
 
@@ -1317,83 +1114,76 @@ a{
 
 .toast.show{
   opacity:1;
-
   transform:none;
 }
 
-/* =========================================================
+/* =========================
    TABLET
-========================================================= */
+========================= */
 
 @media(max-width:1100px){
 
   .nav{
     grid-template-columns:1fr;
-
     gap:10px;
-
-    padding:
-      10px 0 12px;
   }
 
   .logo{
-    justify-content:center;
+    justify-content:flex-start;
   }
 
   .cards-grid{
-    grid-template-columns:
-      repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
   }
 
   .stats{
-    grid-template-columns:
-      repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
   }
 }
 
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media(max-width:700px){
 
   .container{
-    width:
-      calc(100% - 18px);
+    width:calc(100% - 18px);
   }
 
   .nav{
-    width:
-      calc(100% - 10px);
+    width:calc(100% - 12px);
+
+    padding:9px 0 10px;
+
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .logo{
+    justify-content:flex-start;
+    font-size:19px;
+    padding-left:3px;
+  }
+
+  .logo-icon{
+    width:45px;
+    height:45px;
   }
 
   .nav-links{
-    display:grid;
-
-    grid-template-columns:
-      repeat(3,1fr);
-
-    gap:6px;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
   }
 
   .nav-btn{
-    min-height:51px;
+    min-height:53px;
 
-    padding:
-      8px 4px;
+    padding:9px 4px;
 
     font-size:11px;
+    border-radius:14px;
   }
-
-  /*
-    Die Reihenfolge bleibt:
-    1 2 3
-    4 5 6
-    7
-
-    VERKAUFEN bleibt also
-    exakt der mittlere Button.
-  */
 
   .nav-btn.sell-main{
     grid-column:2;
@@ -1403,30 +1193,24 @@ a{
   }
 
   .hero{
-    padding:30px;
-
+    padding:29px;
     min-height:auto;
-
     border-radius:23px;
   }
 
   .hero h1{
     font-size:40px;
-
     letter-spacing:-2px;
   }
 
   .hero:after{
     right:-15px;
     bottom:15px;
-
     font-size:90px;
   }
 
   .stats{
-    grid-template-columns:
-      repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:9px;
   }
 
@@ -1435,9 +1219,7 @@ a{
   }
 
   .cards-grid{
-    grid-template-columns:
-      repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:10px;
   }
 
@@ -1463,8 +1245,7 @@ a{
 
   .search-row,
   .filter-row{
-    grid-template-columns:
-      1fr;
+    grid-template-columns:1fr;
   }
 
   .profile-head{
@@ -1472,15 +1253,10 @@ a{
   }
 }
 
-/* =========================================================
-   VERY SMALL
-========================================================= */
-
 @media(max-width:430px){
 
   .nav-btn{
     min-height:48px;
-
     font-size:10px;
   }
 
@@ -1495,6 +1271,10 @@ a{
   .hero h1{
     font-size:34px;
   }
+
+  .section-head{
+    align-items:flex-start;
+  }
 }
 </style>
 </head>
@@ -1505,111 +1285,49 @@ a{
 
 <nav class="nav">
 
-<button
-  class="logo"
-  onclick="showPage('home')">
-
+<button class="logo" onclick="showPage('home')">
   <span class="logo-icon">⚽</span>
-
   <span>Pixel Cards</span>
-
 </button>
-
 
 <div class="nav-links">
 
-<button
-  class="nav-btn active"
-  data-page="home"
-  onclick="showPage('home')">
-
+<button class="nav-btn active" data-page="home" onclick="showPage('home')">
   🏠 Start
-
 </button>
 
-
-<button
-  class="nav-btn"
-  data-page="market"
-  onclick="showPage('market')">
-
+<button class="nav-btn" data-page="market" onclick="showPage('market')">
   🛒 Markt
-
 </button>
 
-
-<button
-  class="nav-btn"
-  data-page="favorites"
-  onclick="showPage('favorites')">
-
+<button class="nav-btn" data-page="favorites" onclick="showPage('favorites')">
   ❤️ Favoriten
-
 </button>
 
-
-<button
-  class="nav-btn sell-main"
-  data-page="sell"
-  onclick="showPage('sell')">
-
+<button class="nav-btn sell-main" data-page="sell" onclick="showPage('sell')">
   ➕ VERKAUFEN
-
 </button>
 
-
-<button
-  class="nav-btn"
-  data-page="messages"
-  onclick="showPage('messages')">
-
+<button class="nav-btn" data-page="messages" onclick="showPage('messages')">
   💬 Nachrichten
-
 </button>
 
-
-<button
-  class="nav-btn"
-  data-page="notifications"
-  onclick="showPage('notifications')">
-
+<button class="nav-btn" data-page="notifications" onclick="showPage('notifications')">
   🔔 Benachrichtigungen
-
-  <span
-    id="notificationBadge"
-    class="badge"
-    style="display:none">
-
-    0
-
-  </span>
-
+  <span id="notificationBadge" class="badge" style="display:none">0</span>
 </button>
 
-
-<button
-  class="nav-btn"
-  data-page="profile"
-  onclick="showPage('profile')">
-
+<button class="nav-btn" data-page="profile" onclick="showPage('profile')">
   👤 Profil
-
 </button>
 
 </div>
-
 </nav>
-
 </header>
-
 
 <main class="container">
 
-<!-- HOME -->
-
-<section
-  id="home"
-  class="page active">
+<section id="home" class="page active">
 
 <div class="hero">
 
@@ -1627,249 +1345,114 @@ Fußball-Community entdecken.
 
 <div class="hero-buttons">
 
-<button
-  class="btn"
-  onclick="showPage('market')">
-
-  Karten entdecken →
-
+<button class="btn" onclick="showPage('market')">
+Karten entdecken →
 </button>
 
-<button
-  class="btn secondary"
-  onclick="showPage('sell')">
-
-  Karte einstellen
-
+<button class="btn secondary" onclick="showPage('sell')">
+Karte einstellen
 </button>
 
 </div>
-
 </div>
-
 
 <div class="stats">
 
 <div class="stat">
-
-<div
-  class="stat-number"
-  id="statCards">
-
-  0
-
+<div class="stat-number" id="statCards">0</div>
+<div class="stat-label">Karten online</div>
 </div>
-
-<div class="stat-label">
-Karten online
-</div>
-
-</div>
-
 
 <div class="stat">
-
-<div
-  class="stat-number"
-  id="statFavorites">
-
-  0
-
+<div class="stat-number" id="statFavorites">0</div>
+<div class="stat-label">Favoriten</div>
 </div>
-
-<div class="stat-label">
-Favoriten
-</div>
-
-</div>
-
 
 <div class="stat">
-
-<div
-  class="stat-number"
-  id="statRequests">
-
-  0
-
+<div class="stat-number" id="statRequests">0</div>
+<div class="stat-label">Kaufanfragen</div>
 </div>
-
-<div class="stat-label">
-Kaufanfragen
-</div>
-
-</div>
-
 
 <div class="stat">
-
-<div class="stat-number">
-4.9★
-</div>
-
-<div class="stat-label">
-Community Rating
+<div class="stat-number">4.9★</div>
+<div class="stat-label">Community Rating</div>
 </div>
 
 </div>
-
-</div>
-
 
 <div class="section-head">
-
 <div>
-
-<h2>
-🔥 Aktuelle Karten
-</h2>
-
-<span class="muted">
-Die neuesten Angebote
-</span>
-
+<h2>🔥 Aktuelle Karten</h2>
+<span class="muted">Die neuesten Angebote</span>
 </div>
 
-<button
-  class="btn small secondary"
-  onclick="showPage('market')">
-
-  Alle anzeigen
-
+<button class="btn small secondary" onclick="showPage('market')">
+Alle anzeigen
 </button>
-
 </div>
 
-
-<div
-  id="homeCards"
-  class="cards-grid">
-</div>
-
+<div id="homeCards" class="cards-grid"></div>
 
 <div class="section-head">
-
 <div>
-
-<h2>
-🔥 Beliebte Karten
-</h2>
-
-<span class="muted">
-Viele Aufrufe und Favoriten
-</span>
-
+<h2>🔥 Beliebte Karten</h2>
+<span class="muted">Viele Aufrufe und Favoriten</span>
+</div>
 </div>
 
-</div>
-
-
-<div
-  id="popularCards"
-  class="cards-grid">
-</div>
+<div id="popularCards" class="cards-grid"></div>
 
 </section>
 
-
-<!-- MARKET -->
-
-<section
-  id="market"
-  class="page">
+<section id="market" class="page">
 
 <div class="section-head">
-
 <div>
-
-<h2>
-🛒 Marktplatz
-</h2>
-
-<span class="muted">
-Finde deine nächste Karte
-</span>
-
+<h2>🛒 Marktplatz</h2>
+<span class="muted">Finde genau die Karte, die du suchst</span>
 </div>
-
 </div>
-
 
 <div class="market-tools">
 
 <div class="search-row">
 
-<input
-  id="searchInput"
-  class="input"
-  placeholder="🔎 Spieler, Verein oder Karte..."
-  oninput="renderMarket()">
+<input id="searchInput" class="input" placeholder="🔎 Spieler, Verein oder Karte..." oninput="renderMarket()">
 
+<input id="minPrice" class="input" type="number" min="0" step="0.01" placeholder="Min. €" oninput="renderMarket()">
 
-<input
-  id="minPrice"
-  class="input"
-  type="number"
-  min="0"
-  step="0.01"
-  placeholder="Min. €"
-  oninput="renderMarket()">
-
-
-<input
-  id="maxPrice"
-  class="input"
-  type="number"
-  min="0"
-  step="0.01"
-  placeholder="Max. €"
-  oninput="renderMarket()">
+<input id="maxPrice" class="input" type="number" min="0" step="0.01" placeholder="Max. €" oninput="renderMarket()">
 
 </div>
 
-
 <div class="filter-row">
 
-<input
-  id="clubFilter"
-  class="input"
-  list="clubSuggestions"
-  placeholder="🏟️ Verein"
-  oninput="renderMarket()">
+<input id="clubFilter" class="input" list="clubSuggestions" placeholder="🏟️ Verein" oninput="renderMarket()">
 
-
-<select
-  id="conditionFilter"
-  class="select"
-  onchange="renderMarket()">
-
-<option value="">
-⭐ Alle Zustände
-</option>
-
+<select id="conditionFilter" class="select" onchange="renderMarket()">
+<option value="">⭐ Alle Zustände</option>
 <option>Neu</option>
 <option>Sehr gut</option>
 <option>Gut</option>
 <option>Schlecht</option>
-
 </select>
 
+<select id="sortFilter" class="select" onchange="renderMarket()">
+<option value="new">🆕 Neueste</option>
+<option value="cheap">💶 Preis niedrig → hoch</option>
+<option value="expensive">💶 Preis hoch → niedrig</option>
+<option value="popular">🔥 Beliebteste</option>
+<option value="views">👁️ Meiste Aufrufe</option>
+</select>
 
-<button
-  class="btn secondary"
-  onclick="resetFilters()">
-
-  ↻ Zurücksetzen
-
+<button class="btn secondary" onclick="resetFilters()">
+↻ Zurücksetzen
 </button>
 
 </div>
-
 </div>
 
-
 <datalist id="clubSuggestions">
-
 <option value="Real Madrid">
 <option value="FC Barcelona">
 <option value="PSG">
@@ -1885,355 +1468,152 @@ Finde deine nächste Karte
 <option value="Juventus">
 <option value="Atlético Madrid">
 <option value="Tottenham">
-
 </datalist>
 
-
 <div class="section-head">
-
-<span
-  id="marketCount"
-  class="muted">
-</span>
-
-</div>
-
-
-<div
-  id="marketCards"
-  class="cards-grid">
-</div>
-
-
-<div class="section-head">
-
 <div>
-
-<h2>
-👁️ Zuletzt angesehen
-</h2>
-
-<span class="muted">
-Deine zuletzt geöffneten Karten
-</span>
-
+<span id="marketCount" class="muted"></span>
+</div>
 </div>
 
+<div id="marketCards" class="cards-grid"></div>
+
+<div class="section-head">
+<div>
+<h2>👁️ Zuletzt angesehen</h2>
+<span class="muted">Deine zuletzt geöffneten Karten</span>
+</div>
 </div>
 
-
-<div
-  id="recentCards"
-  class="cards-grid">
-</div>
+<div id="recentCards" class="cards-grid"></div>
 
 </section>
 
-
-<!-- SELL -->
-
-<section
-  id="sell"
-  class="page">
+<section id="sell" class="page">
 
 <div class="section-head">
-
 <div>
-
-<h2>
-➕ Karte verkaufen
-</h2>
-
-<span class="muted">
-Erstelle dein eigenes Angebot
-</span>
-
+<h2>➕ Karte verkaufen</h2>
+<span class="muted">Erstelle dein eigenes Angebot</span>
 </div>
-
 </div>
-
 
 <div class="panel">
 
 <form id="sellForm">
 
 <div class="form-group">
-
-<label>
-Spieler
-</label>
-
-<input
-  id="sellPlayer"
-  class="input"
-  placeholder="z. B. Lamine Yamal"
-  required>
-
+<label>Spieler</label>
+<input id="sellPlayer" class="input" placeholder="z. B. Lamine Yamal" required>
 </div>
-
 
 <div class="form-group">
-
-<label>
-Verein
-</label>
-
-<input
-  id="sellClub"
-  class="input"
-  list="clubSuggestions"
-  placeholder="Verein eingeben"
-  required>
-
-<div
-  id="clubError"
-  class="muted"
-  style="margin-top:6px;font-size:12px">
+<label>Verein</label>
+<input id="sellClub" class="input" list="clubSuggestions" placeholder="Verein eingeben" required>
+<div id="clubError" class="muted" style="margin-top:6px;font-size:12px"></div>
 </div>
-
-</div>
-
 
 <div class="form-group">
-
-<label>
-Kartenname
-</label>
-
-<input
-  id="sellName"
-  class="input"
-  placeholder="z. B. Chrome Rookie Card"
-  required>
-
+<label>Kartenname</label>
+<input id="sellName" class="input" placeholder="z. B. Chrome Rookie Card" required>
 </div>
 
-
 <div class="form-group">
-
-<label>
-Zustand
-</label>
-
-<select
-  id="sellCondition"
-  class="select"
-  required>
-
-<option value="">
-Zustand auswählen
-</option>
-
+<label>Zustand</label>
+<select id="sellCondition" class="select" required>
+<option value="">Zustand auswählen</option>
 <option>Neu</option>
 <option>Sehr gut</option>
 <option>Gut</option>
 <option>Schlecht</option>
-
 </select>
-
 </div>
-
 
 <div class="form-group">
-
-<label>
-Preis in €
-</label>
-
-<input
-  id="sellPrice"
-  class="input"
-  type="number"
-  min="0.50"
-  step="0.01"
-  placeholder="10.00"
-  required>
-
+<label>Preis in €</label>
+<input id="sellPrice" class="input" type="number" min="0.50" step="0.01" placeholder="10.00" required>
 </div>
-
 
 <div class="form-group">
-
-<label>
-Beschreibung
-</label>
-
-<textarea
-  id="sellDescription"
-  class="textarea"
-  placeholder="Beschreibe deine Karte..."></textarea>
-
+<label>Beschreibung</label>
+<textarea id="sellDescription" class="textarea" placeholder="Beschreibe deine Karte..."></textarea>
 </div>
-
 
 <div class="form-group">
+<label>Foto der Karte</label>
+<input id="sellPhoto" class="input" type="file" accept="image/*">
 
-<label>
-Foto der Karte
-</label>
-
-<input
-  id="sellPhoto"
-  class="input"
-  type="file"
-  accept="image/*">
-
-<img
-  id="photoPreview"
-  class="photo-preview"
-  alt="Vorschau">
-
+<img id="photoPreview" class="photo-preview" alt="Vorschau">
 </div>
 
-
-<button
-  class="btn"
-  type="submit">
-
-  🚀 Karte einstellen
-
+<button class="btn" type="submit">
+🚀 Karte einstellen
 </button>
 
 </form>
-
 </div>
+</section>
+
+<section id="favorites" class="page">
+
+<div class="section-head">
+<div>
+<h2>❤️ Meine Favoriten</h2>
+<span class="muted">Gespeicherte Karten</span>
+</div>
+</div>
+
+<div id="favoriteCards" class="cards-grid"></div>
 
 </section>
 
-
-<!-- FAVORITES -->
-
-<section
-  id="favorites"
-  class="page">
+<section id="messages" class="page">
 
 <div class="section-head">
-
 <div>
-
-<h2>
-❤️ Meine Favoriten
-</h2>
-
-<span class="muted">
-Gespeicherte Karten
-</span>
-
+<h2>💬 Nachrichten</h2>
+<span class="muted">Deine Unterhaltungen</span>
 </div>
-
 </div>
-
-
-<div
-  id="favoriteCards"
-  class="cards-grid">
-</div>
-
-</section>
-
-
-<!-- MESSAGES -->
-
-<section
-  id="messages"
-  class="page">
-
-<div class="section-head">
-
-<div>
-
-<h2>
-💬 Nachrichten
-</h2>
-
-<span class="muted">
-Deine Unterhaltungen
-</span>
-
-</div>
-
-</div>
-
 
 <div class="panel">
-
-<div
-  id="messagesList"
-  class="list">
-</div>
-
+<div id="messagesList" class="list"></div>
 </div>
 
 </section>
 
-
-<!-- NOTIFICATIONS -->
-
-<section
-  id="notifications"
-  class="page">
+<section id="notifications" class="page">
 
 <div class="section-head">
-
 <div>
-
-<h2>
-🔔 Benachrichtigungen
-</h2>
-
-<span class="muted">
-Was gerade passiert
-</span>
-
+<h2>🔔 Benachrichtigungen</h2>
+<span class="muted">Was gerade passiert</span>
 </div>
 
-
-<button
-  class="btn small secondary"
-  onclick="markNotificationsRead()">
-
-  Alle gelesen
-
+<button class="btn small secondary" onclick="markNotificationsRead()">
+Alle gelesen
 </button>
-
 </div>
-
 
 <div class="panel">
-
-<div
-  id="notificationsList"
-  class="list">
-</div>
-
+<div id="notificationsList" class="list"></div>
 </div>
 
 </section>
 
-
-<!-- PROFILE -->
-
-<section
-  id="profile"
-  class="page">
+<section id="profile" class="page">
 
 <div class="profile-head">
 
-<div class="big-avatar">
-M
-</div>
+<div class="big-avatar">M</div>
 
 <div>
 
-<h2>
-Mein Pixel-Cards-Profil
-</h2>
+<h2>Mein Pixel-Cards-Profil</h2>
 
 <div class="rating">
 ★★★★★
-<span class="muted">
-4.9
-</span>
+<span class="muted">4.9</span>
 </div>
 
 <div class="user-small">
@@ -2241,128 +1621,67 @@ Sammler • Verkäufer
 </div>
 
 </div>
-
 </div>
-
 
 <div class="section-head">
 
 <div>
-
-<h2>
-📦 Meine Angebote
-</h2>
-
+<h2>📦 Meine Angebote</h2>
 </div>
 
-<button
-  class="btn small"
-  onclick="showPage('sell')">
-
-  + Karte
-
+<button class="btn small" onclick="showPage('sell')">
++ Karte
 </button>
 
 </div>
 
-
-<div
-  id="myCards"
-  class="cards-grid">
-</div>
-
+<div id="myCards" class="cards-grid"></div>
 
 <div class="section-head">
 
 <div>
-
-<h2>
-🛍️ Kaufanfragen
-</h2>
-
-<span class="muted">
-Anfragen von anderen Nutzern
-</span>
-
+<h2>🛍️ Kaufanfragen</h2>
+<span class="muted">Anfragen von anderen Nutzern</span>
 </div>
 
 </div>
-
 
 <div class="panel">
-
-<div
-  id="requestsList"
-  class="list">
-</div>
-
+<div id="requestsList" class="list"></div>
 </div>
 
 </section>
 
 </main>
 
-
-<!-- MODAL -->
-
-<div
-  id="cardModal"
-  class="modal-backdrop">
+<div id="cardModal" class="modal-backdrop">
 
 <div class="modal">
 
 <div class="modal-head">
 
 <div>
-
-<h2 id="modalTitle">
-Karte
-</h2>
-
-<div
-  id="modalSubtitle"
-  class="muted">
+<h2 id="modalTitle">Karte</h2>
+<div id="modalSubtitle" class="muted"></div>
 </div>
+
+<button class="close" onclick="closeModal()">✕</button>
 
 </div>
 
-<button
-  class="close"
-  onclick="closeModal()">
-
-  ✕
-
-</button>
+<div id="modalContent"></div>
 
 </div>
-
-
-<div id="modalContent">
 </div>
 
-</div>
-
-</div>
-
-
-<div
-  id="toast"
-  class="toast">
-</div>
-
+<div id="toast" class="toast"></div>
 
 <script>
 "use strict";
 
-
-/* =========================================================
-   STORAGE
-========================================================= */
-
 const STORAGE_KEY="pixelCardsData_v5";
 const VIEW_KEY="pixelCardsViewed_v5";
 const RECENT_KEY="pixelCardsRecent_v5";
-
 
 const knownClubs=[
 "Real Madrid",
@@ -2381,7 +1700,6 @@ const knownClubs=[
 "Atlético Madrid",
 "Tottenham"
 ];
-
 
 const defaultCards=[
 {
@@ -2466,9 +1784,7 @@ photo:""
 }
 ];
 
-
 function initialData(){
-
 return{
 cards:JSON.parse(JSON.stringify(defaultCards)),
 favorites:[],
@@ -2498,199 +1814,97 @@ unread:false
 ],
 requests:[]
 };
-
 }
 
-
 function loadData(){
-
 try{
-
-const saved=
-localStorage.getItem(STORAGE_KEY);
+const saved=localStorage.getItem(STORAGE_KEY);
 
 if(!saved){
-
 const d=initialData();
-
-localStorage.setItem(
-STORAGE_KEY,
-JSON.stringify(d)
-);
-
+localStorage.setItem(STORAGE_KEY,JSON.stringify(d));
 return d;
 }
 
 const p=JSON.parse(saved);
 
 return{
-
-cards:Array.isArray(p.cards)
-?p.cards
-:defaultCards,
-
-favorites:Array.isArray(p.favorites)
-?p.favorites
-:[],
-
-notifications:Array.isArray(p.notifications)
-?p.notifications
-:[],
-
-messages:Array.isArray(p.messages)
-?p.messages
-:[],
-
-requests:Array.isArray(p.requests)
-?p.requests
-:[]
+cards:Array.isArray(p.cards)?p.cards:defaultCards,
+favorites:Array.isArray(p.favorites)?p.favorites:[],
+notifications:Array.isArray(p.notifications)?p.notifications:[],
+messages:Array.isArray(p.messages)?p.messages:[],
+requests:Array.isArray(p.requests)?p.requests:[]
 };
 
 }catch(e){
-
 console.error(e);
-
 return initialData();
-
 }
-
 }
-
 
 let data=loadData();
 
-
 function saveData(){
-
 try{
-
-localStorage.setItem(
-STORAGE_KEY,
-JSON.stringify(data)
-);
-
+localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
 }catch(e){
-
 console.error(e);
-
-showToast(
-"Speichern nicht möglich."
-);
-
+showToast("Speichern nicht möglich.");
 }
-
 }
-
-
-/* =========================================================
-   RECENT
-========================================================= */
 
 function getViewed(){
-
 try{
-
-const a=JSON.parse(
-localStorage.getItem(VIEW_KEY)
-);
-
-return Array.isArray(a)
-?a
-:[];
-
+const a=JSON.parse(localStorage.getItem(VIEW_KEY));
+return Array.isArray(a)?a:[];
 }catch(e){
-
 return[];
-
 }
-
 }
-
 
 function getRecent(){
-
 try{
-
-const a=JSON.parse(
-localStorage.getItem(RECENT_KEY)
-);
-
-return Array.isArray(a)
-?a
-:[];
-
+const a=JSON.parse(localStorage.getItem(RECENT_KEY));
+return Array.isArray(a)?a:[];
 }catch(e){
-
 return[];
-
 }
-
 }
-
 
 function saveRecent(a){
-
 try{
-
-localStorage.setItem(
-RECENT_KEY,
-JSON.stringify(a.slice(0,8))
-);
-
+localStorage.setItem(RECENT_KEY,JSON.stringify(a.slice(0,8)));
 }catch(e){}
-
 }
 
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
 function escapeHTML(v){
-
 return String(v??"")
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
 .replace(/"/g,"&quot;")
 .replace(/'/g,"&#039;");
-
 }
-
 
 function price(v){
-
-return Number(v)
-.toFixed(2)
-.replace(".",",")+" €";
-
+return Number(v).toFixed(2).replace(".",",")+" €";
 }
-
 
 function date(v){
-
-return new Date(v)
-.toLocaleDateString("de-DE");
-
+return new Date(v).toLocaleDateString("de-DE");
 }
 
-
 function initials(v){
-
 return String(v)
 .split(" ")
 .map(x=>x[0]||"")
 .join("")
 .slice(0,2)
 .toUpperCase();
-
 }
 
-
 function emoji(club){
-
 const e={
-
 "Real Madrid":"⚪",
 "FC Barcelona":"🔵",
 "PSG":"🔴",
@@ -2699,150 +1913,85 @@ const e={
 "Liverpool":"🔴",
 "Arsenal":"🔴",
 "Chelsea":"🔵"
-
 };
-
 return e[club]||"⚽";
-
 }
-
 
 function empty(icon,text){
-
 return`
 <div class="empty">
-
-<div class="empty-icon">
-${icon}
-</div>
-
-<div>
-${escapeHTML(text)}
-</div>
-
-</div>
-`;
-
+<div class="empty-icon">${icon}</div>
+<div>${escapeHTML(text)}</div>
+</div>`;
 }
 
-
-/* =========================================================
-   NAV
-========================================================= */
+/* NAV */
 
 function showPage(id){
 
-document
-.querySelectorAll(".page")
-.forEach(p=>{
-p.classList.toggle(
-"active",
-p.id===id
-);
+document.querySelectorAll(".page").forEach(p=>{
+p.classList.toggle("active",p.id===id);
 });
 
-
-document
-.querySelectorAll(".nav-btn")
-.forEach(b=>{
-b.classList.toggle(
-"active",
-b.dataset.page===id
-);
+document.querySelectorAll(".nav-btn").forEach(b=>{
+b.classList.toggle("active",b.dataset.page===id);
 });
 
-
-if(id==="home")
-renderHome();
+if(id==="home")renderHome();
 
 if(id==="market"){
-
 renderMarket();
 renderRecent();
-
 }
 
-if(id==="favorites")
-renderFavorites();
-
-if(id==="messages")
-renderMessages();
-
-if(id==="notifications")
-renderNotifications();
-
-if(id==="profile")
-renderProfile();
-
+if(id==="favorites")renderFavorites();
+if(id==="messages")renderMessages();
+if(id==="notifications")renderNotifications();
+if(id==="profile")renderProfile();
 
 window.scrollTo({
 top:0,
 behavior:"smooth"
 });
-
 }
 
-
-/* =========================================================
-   CARD HTML
-========================================================= */
+/* CARD */
 
 function cardHTML(card){
 
-const fav=
-data.favorites.includes(card.id);
+const fav=data.favorites.includes(card.id);
 
 const popular=
-Number(card.favorites||0)>=7 ||
+Number(card.favorites||0)>=7||
 Number(card.views||0)>=40;
 
-
 return`
-
 <article class="card">
 
 <div class="card-image">
 
-${
-card.isNew
-?`<span class="card-tag">NEU</span>`
-:""
-}
+${card.isNew?`<span class="card-tag">NEU</span>`:""}
 
-${
-popular
-?`<span class="popular-tag">🔥 BELIEBT</span>`
-:""
-}
-
+${popular?`<span class="popular-tag">🔥 BELIEBT</span>`:""}
 
 ${
 card.photo
-
 ?`
-<img
-src="${card.photo}"
-alt="${escapeHTML(card.player)}">
+<img src="${card.photo}" alt="${escapeHTML(card.player)}">
 `
-
 :`
-<div class="ball">
-${emoji(card.club)}
-</div>
+<div class="ball">${emoji(card.club)}</div>
 `
 }
 
-
 <button
 class="favorite ${fav?"active":""}"
-onclick="toggleFavorite(${Number(card.id)})">
-
+onclick="toggleFavorite(${Number(card.id)})"
+title="Favorit">
 ${fav?"♥":"♡"}
-
 </button>
 
 </div>
-
 
 <div class="card-body">
 
@@ -2857,16 +2006,12 @@ ${escapeHTML(card.name)}
 </div>
 
 <div class="card-sub">
-Zustand:
-${escapeHTML(card.condition)}
+Zustand: ${escapeHTML(card.condition)}
 </div>
 
 <div class="card-sub">
-👁️
-${Number(card.views||0)}
-Aufrufe
+👁️ ${Number(card.views||0)} Aufrufe
 </div>
-
 
 <div class="card-bottom">
 
@@ -2877,208 +2022,125 @@ ${price(card.price)}
 </div>
 
 <div class="seller">
-⭐
-${Number(card.sellerRating||5).toFixed(1)}
-•
-${escapeHTML(card.seller)}
+⭐ ${Number(card.sellerRating||5).toFixed(1)}
+• ${escapeHTML(card.seller)}
 </div>
 
 </div>
-
 
 <button
 class="btn small"
 onclick="openCard(${Number(card.id)})">
-
 Ansehen
-
 </button>
 
 </div>
 
 </div>
-
-</article>
-
-`;
-
+</article>`;
 }
 
-
-/* =========================================================
-   HOME
-========================================================= */
+/* HOME */
 
 function renderHome(){
 
-const latest=
-[...data.cards]
-.sort(
-(a,b)=>
-Number(b.created)-
-Number(a.created)
-)
+const latest=[...data.cards]
+.sort((a,b)=>Number(b.created)-Number(a.created))
 .slice(0,4);
 
-
-document.getElementById(
-"homeCards"
-).innerHTML=
-
+document.getElementById("homeCards").innerHTML=
 latest.length
 ?latest.map(cardHTML).join("")
-:empty(
-"📦",
-"Noch keine Karten."
-);
+:empty("📦","Noch keine Karten.");
 
-
-const popular=
-[...data.cards]
-.sort(
-(a,b)=>
+const popular=[...data.cards]
+.sort((a,b)=>
 (
-Number(b.favorites||0)+
-Number(b.views||0)
+Number(b.favorites||0)+Number(b.views||0)
 )-
 (
-Number(a.favorites||0)+
-Number(a.views||0)
-)
-)
+Number(a.favorites||0)+Number(a.views||0)
+))
 .slice(0,4);
 
-
-document.getElementById(
-"popularCards"
-).innerHTML=
-
+document.getElementById("popularCards").innerHTML=
 popular.length
 ?popular.map(cardHTML).join("")
-:empty(
-"🔥",
-"Noch keine beliebten Karten."
-);
-
+:empty("🔥","Noch keine beliebten Karten.");
 
 updateStats();
-
 }
 
-
-/* =========================================================
-   MARKET
-========================================================= */
+/* MARKET */
 
 function renderMarket(){
 
-const search=
-(
-document.getElementById(
-"searchInput"
-)?.value||""
-)
-.trim()
-.toLowerCase();
+const search=(
+document.getElementById("searchInput")?.value||""
+).trim().toLowerCase();
 
-
-const club=
-(
-document.getElementById(
-"clubFilter"
-)?.value||""
-)
-.trim()
-.toLowerCase();
-
+const club=(
+document.getElementById("clubFilter")?.value||""
+).trim().toLowerCase();
 
 const condition=
-document.getElementById(
-"conditionFilter"
-)?.value||"";
+document.getElementById("conditionFilter")?.value||"";
 
+const sort=
+document.getElementById("sortFilter")?.value||"new";
 
-const minRaw=
-document.getElementById(
-"minPrice"
-)?.value;
+const minRaw=document.getElementById("minPrice")?.value;
+const maxRaw=document.getElementById("maxPrice")?.value;
 
+const min=minRaw===""?0:Number(minRaw);
+const max=maxRaw===""?Infinity:Number(maxRaw);
 
-const maxRaw=
-document.getElementById(
-"maxPrice"
-)?.value;
-
-
-const min=
-minRaw===""
-?0
-:Number(minRaw);
-
-
-const max=
-maxRaw===""
-?Infinity
-:Number(maxRaw);
-
-
-let cards=
-data.cards.filter(c=>{
+let cards=data.cards.filter(c=>{
 
 const text=
-`${c.player} ${c.club} ${c.name}`
-.toLowerCase();
-
+`${c.player} ${c.club} ${c.name}`.toLowerCase();
 
 return(
-
 (!search||text.includes(search))&&
-
-(!club||
-c.club.toLowerCase().includes(club))&&
-
-(!condition||
-c.condition===condition)&&
-
+(!club||c.club.toLowerCase().includes(club))&&
+(!condition||c.condition===condition)&&
 Number(c.price)>=min&&
-
 Number(c.price)<=max
-
 );
-
 });
 
-
-cards.sort(
-(a,b)=>
-Number(b.created)-
-Number(a.created)
+if(sort==="cheap"){
+cards.sort((a,b)=>Number(a.price)-Number(b.price));
+}
+else if(sort==="expensive"){
+cards.sort((a,b)=>Number(b.price)-Number(a.price));
+}
+else if(sort==="popular"){
+cards.sort((a,b)=>
+(
+Number(b.favorites||0)+Number(b.views||0)
+)-
+(
+Number(a.favorites||0)+Number(a.views||0)
+));
+}
+else if(sort==="views"){
+cards.sort((a,b)=>
+Number(b.views||0)-Number(a.views||0)
 );
-
-
-document.getElementById(
-"marketCount"
-).textContent=
-`${cards.length} ${
-cards.length===1
-?"Karte"
-:"Karten"
-} gefunden`;
-
-
-document.getElementById(
-"marketCards"
-).innerHTML=
-
-cards.length
-?cards.map(cardHTML).join("")
-:empty(
-"🔎",
-"Keine Karten gefunden."
-);
-
+}
+else{
+cards.sort((a,b)=>Number(b.created)-Number(a.created));
 }
 
+document.getElementById("marketCount").textContent=
+`${cards.length} ${cards.length===1?"Karte":"Karten"} gefunden`;
+
+document.getElementById("marketCards").innerHTML=
+cards.length
+?cards.map(cardHTML).join("")
+:empty("🔎","Keine Karten gefunden.");
+}
 
 function resetFilters(){
 
@@ -3088,75 +2150,49 @@ function resetFilters(){
 "maxPrice",
 "clubFilter"
 ].forEach(id=>{
-
-const el=
-document.getElementById(id);
-
-if(el)
-el.value="";
-
+const el=document.getElementById(id);
+if(el)el.value="";
 });
 
-
-document.getElementById(
-"conditionFilter"
-).value="";
-
+document.getElementById("conditionFilter").value="";
+document.getElementById("sortFilter").value="new";
 
 renderMarket();
 
-showToast(
-"↻ Filter zurückgesetzt"
-);
-
+showToast("↻ Filter zurückgesetzt");
 }
 
-
-/* =========================================================
-   FAVORITES
-========================================================= */
+/* FAVORITES */
 
 function toggleFavorite(id){
 
-const card=
-data.cards.find(
+const card=data.cards.find(
 c=>Number(c.id)===Number(id)
 );
 
 if(!card)return;
 
-
-const i=
-data.favorites.indexOf(card.id);
-
+const i=data.favorites.indexOf(card.id);
 
 if(i===-1){
 
 data.favorites.push(card.id);
 
-card.favorites=
-Number(card.favorites||0)+1;
+card.favorites=Number(card.favorites||0)+1;
 
-showToast(
-"❤️ Zu Favoriten hinzugefügt"
-);
+showToast("❤️ Zu Favoriten hinzugefügt");
 
 }else{
 
 data.favorites.splice(i,1);
 
-card.favorites=
-Math.max(
+card.favorites=Math.max(
 0,
 Number(card.favorites||0)-1
 );
 
-showToast(
-"Favorit entfernt"
-);
-
+showToast("Favorit entfernt");
 }
-
 
 saveData();
 
@@ -3164,175 +2200,105 @@ renderHome();
 renderMarket();
 renderFavorites();
 updateStats();
-
 }
-
 
 function renderFavorites(){
 
-const cards=
-data.cards.filter(
+const cards=data.cards.filter(
 c=>data.favorites.includes(c.id)
 );
 
-
-document.getElementById(
-"favoriteCards"
-).innerHTML=
-
+document.getElementById("favoriteCards").innerHTML=
 cards.length
 ?cards.map(cardHTML).join("")
-:empty(
-"❤️",
-"Du hast noch keine Favoriten."
-);
-
+:empty("❤️","Du hast noch keine Favoriten.");
 }
 
-
-/* =========================================================
-   VIEWS
-========================================================= */
+/* VIEWS */
 
 function registerView(id){
 
-const card=
-data.cards.find(
+const card=data.cards.find(
 c=>Number(c.id)===Number(id)
 );
 
 if(!card)return;
 
-
-const viewed=
-getViewed();
-
+const viewed=getViewed();
 
 if(!viewed.includes(card.id)){
 
 viewed.push(card.id);
 
 try{
-
 localStorage.setItem(
 VIEW_KEY,
 JSON.stringify(viewed)
 );
-
 }catch(e){}
 
+card.views=Number(card.views||0)+1;
 
-card.views=
-Number(card.views||0)+1;
-
-
-const recent=
-getRecent()
-.filter(
+const recent=getRecent().filter(
 x=>Number(x)!==Number(card.id)
 );
-
 
 recent.unshift(card.id);
 
 saveRecent(recent);
-
 saveData();
-
 }
-
 }
-
 
 function renderRecent(){
 
-const ids=
-getRecent();
+const ids=getRecent();
 
-
-const cards=
-ids
-.map(
-id=>
-data.cards.find(
+const cards=ids
+.map(id=>data.cards.find(
 c=>Number(c.id)===Number(id)
-)
-)
+))
 .filter(Boolean);
 
-
-document.getElementById(
-"recentCards"
-).innerHTML=
-
+document.getElementById("recentCards").innerHTML=
 cards.length
 ?cards.map(cardHTML).join("")
-:empty(
-"👁️",
-"Du hast noch keine Karten angesehen."
-);
-
+:empty("👁️","Du hast noch keine Karten angesehen.");
 }
 
-
-/* =========================================================
-   MODAL
-========================================================= */
+/* MODAL */
 
 function openCard(id){
 
-const card=
-data.cards.find(
+const card=data.cards.find(
 c=>Number(c.id)===Number(id)
 );
 
-
 if(!card){
-
-showToast(
-"Karte wurde nicht gefunden."
-);
-
+showToast("Karte wurde nicht gefunden.");
 return;
-
 }
-
 
 registerView(card.id);
 
+document.getElementById("modalTitle").textContent=card.player;
 
-document.getElementById(
-"modalTitle"
-).textContent=
-card.player;
-
-
-document.getElementById(
-"modalSubtitle"
-).textContent=
+document.getElementById("modalSubtitle").textContent=
 `${card.club} • ${card.name}`;
 
-
-document.getElementById(
-"modalContent"
-).innerHTML=`
+document.getElementById("modalContent").innerHTML=`
 
 <div
 class="card-image"
-style="
-border-radius:16px;
-margin-bottom:17px;
-">
+style="border-radius:16px;margin-bottom:17px;">
 
 ${
 card.photo
-
 ?`
 <img
 src="${card.photo}"
 alt="${escapeHTML(card.player)}">
 `
-
 :`
 <div class="ball">
 ${emoji(card.club)}
@@ -3342,267 +2308,138 @@ ${emoji(card.club)}
 
 </div>
 
-
 <div class="list">
 
 <div class="list-item">
-
-<span class="muted">
-Preis
-</span>
-
-<strong>
-${price(card.price)}
-</strong>
-
+<span class="muted">Preis</span>
+<strong>${price(card.price)}</strong>
 </div>
-
 
 <div class="list-item">
-
-<span class="muted">
-Verein
-</span>
-
-<strong>
-${escapeHTML(card.club)}
-</strong>
-
+<span class="muted">Verein</span>
+<strong>${escapeHTML(card.club)}</strong>
 </div>
-
 
 <div class="list-item">
-
-<span class="muted">
-Zustand
-</span>
-
-<strong>
-${escapeHTML(card.condition)}
-</strong>
-
+<span class="muted">Zustand</span>
+<strong>${escapeHTML(card.condition)}</strong>
 </div>
-
 
 <div class="list-item">
-
-<span class="muted">
-Aufrufe
-</span>
-
-<strong>
-👁️ ${Number(card.views||0)}
-</strong>
-
+<span class="muted">Aufrufe</span>
+<strong>👁️ ${Number(card.views||0)}</strong>
 </div>
-
 
 <div class="list-item">
-
-<span class="muted">
-Verkäufer
-</span>
-
-<strong>
-${escapeHTML(card.seller)}
-</strong>
-
+<span class="muted">Verkäufer</span>
+<strong>${escapeHTML(card.seller)}</strong>
 </div>
-
 
 <div class="panel">
 
-<strong>
-Beschreibung
-</strong>
+<strong>Beschreibung</strong>
 
 <p
 class="muted"
-style="
-margin-top:8px;
-line-height:1.5;
-">
-
-${escapeHTML(
-card.description||
-"Keine Beschreibung vorhanden."
-)}
-
+style="margin-top:8px;line-height:1.5;">
+${escapeHTML(card.description||"Keine Beschreibung vorhanden.")}
 </p>
 
 </div>
 
-
 <button
 class="btn green"
 onclick="requestPurchase(${Number(card.id)})">
-
 🛒 Kaufanfrage senden
-
 </button>
-
 
 <button
 class="btn secondary"
 onclick="messageSeller('${escapeHTML(card.seller)}')">
-
 💬 Verkäufer anschreiben
-
 </button>
 
 </div>
-
 `;
 
-
-document.getElementById(
-"cardModal"
-).classList.add("show");
-
+document.getElementById("cardModal").classList.add("show");
 
 renderRecent();
 renderMarket();
-
 }
 
-
-/* =========================================================
-   PURCHASE
-========================================================= */
+/* PURCHASE */
 
 function requestPurchase(id){
 
-const card=
-data.cards.find(
+const card=data.cards.find(
 c=>Number(c.id)===Number(id)
 );
 
 if(!card)return;
 
-
-const exists=
-data.requests.some(
-r=>
-Number(r.cardId)===Number(id)&&
-r.status==="pending"
+const exists=data.requests.some(
+r=>Number(r.cardId)===Number(id)&&r.status==="pending"
 );
-
 
 if(exists){
-
-showToast(
-"Du hast bereits eine Anfrage gesendet."
-);
-
+showToast("Du hast bereits eine Anfrage gesendet.");
 return;
-
 }
-
 
 data.requests.push({
-
 id:Date.now(),
-
 cardId:card.id,
-
 cardName:card.player,
-
 buyer:"Mein Profil",
-
 seller:card.seller,
-
 status:"pending",
-
 created:Date.now()
-
 });
-
 
 data.notifications.unshift({
-
 id:Date.now()+1,
-
-text:
-`Kaufanfrage für ${card.player} erstellt.`,
-
+text:`Kaufanfrage für ${card.player} erstellt.`,
 time:Date.now(),
-
 read:false
-
 });
 
-
 saveData();
-
 closeModal();
-
 updateStats();
 
-showToast(
-"🛒 Kaufanfrage wurde gesendet!"
-);
-
+showToast("🛒 Kaufanfrage wurde gesendet!");
 }
 
-
-/* =========================================================
-   MESSAGES
-========================================================= */
+/* MESSAGES */
 
 function messageSeller(seller){
 
 data.messages.unshift({
-
 id:Date.now(),
-
 user:seller,
-
-text:
-"Neue Unterhaltung gestartet.",
-
+text:"Neue Unterhaltung gestartet.",
 time:Date.now(),
-
 unread:true
-
 });
 
-
 saveData();
-
 closeModal();
-
 showPage("messages");
 
-showToast(
-"💬 Nachricht erstellt"
-);
-
+showToast("💬 Nachricht erstellt");
 }
-
 
 function renderMessages(){
 
-const box=
-document.getElementById(
-"messagesList"
-);
-
+const box=document.getElementById("messagesList");
 
 if(!data.messages.length){
-
-box.innerHTML=
-empty(
-"💬",
-"Noch keine Nachrichten."
-);
-
+box.innerHTML=empty("💬","Noch keine Nachrichten.");
 return;
-
 }
 
-
-box.innerHTML=
-data.messages.map(
+box.innerHTML=data.messages.map(
 m=>`
 
 <div class="list-item">
@@ -3616,21 +2453,15 @@ ${initials(m.user)}
 <div>
 
 <div class="user-name">
-
 ${escapeHTML(m.user)}
-
 ${m.unread?"🔵":""}
-
 </div>
 
 <div class="user-small">
-
 ${escapeHTML(m.text)}
-
 </div>
 
 </div>
-
 </div>
 
 <div class="user-small">
@@ -3638,200 +2469,112 @@ ${date(m.time)}
 </div>
 
 </div>
-
 `
 ).join("");
-
 }
 
-
-/* =========================================================
-   SELL
-========================================================= */
+/* SELL */
 
 let selectedPhoto="";
 
-
-document.getElementById(
-"sellPhoto"
-).addEventListener(
+document.getElementById("sellPhoto").addEventListener(
 "change",
 function(){
 
 const file=this.files[0];
 
-
 if(!file){
 
 selectedPhoto="";
 
-document.getElementById(
-"photoPreview"
-).style.display="none";
+document.getElementById("photoPreview").style.display="none";
 
 return;
-
 }
-
 
 if(!file.type.startsWith("image/")){
 
-showToast(
-"Bitte nur ein Bild auswählen."
-);
+showToast("Bitte nur ein Bild auswählen.");
 
 this.value="";
 
 return;
-
 }
-
 
 if(file.size>1500000){
 
-showToast(
-"Das Foto ist zu groß. Maximal 1,5 MB."
-);
+showToast("Das Foto ist zu groß. Maximal 1,5 MB.");
 
 this.value="";
 
 return;
-
 }
 
-
-const reader=
-new FileReader();
-
+const reader=new FileReader();
 
 reader.onload=function(){
 
-selectedPhoto=
-reader.result;
+selectedPhoto=reader.result;
 
+const preview=document.getElementById("photoPreview");
 
-const preview=
-document.getElementById(
-"photoPreview"
-);
-
-preview.src=
-selectedPhoto;
-
-preview.style.display=
-"block";
-
+preview.src=selectedPhoto;
+preview.style.display="block";
 };
 
-
 reader.readAsDataURL(file);
-
 }
 );
 
-
-document.getElementById(
-"sellClub"
-).addEventListener(
+document.getElementById("sellClub").addEventListener(
 "input",
 function(){
 
-const value=
-this.value.trim();
+const value=this.value.trim();
 
-
-const error=
-document.getElementById(
-"clubError"
-);
-
+const error=document.getElementById("clubError");
 
 if(!value){
-
 error.textContent="";
-
 return;
-
 }
 
-
-const found=
-knownClubs.some(
-c=>
-c.toLowerCase()===
-value.toLowerCase()
+const found=knownClubs.some(
+c=>c.toLowerCase()===value.toLowerCase()
 );
-
 
 error.textContent=
 found
 ?"✓ Verein erkannt"
-:"Dieser Verein wurde nicht erkannt.";
-
+:"Dieser Verein wurde nicht erkannt. Er wird nicht als gültiger Verein übernommen.";
 
 error.style.color=
 found
-?"var(--accent)"
+?"var(--green)"
 :"var(--red)";
-
 }
 );
 
-
-document.getElementById(
-"sellForm"
-).addEventListener(
+document.getElementById("sellForm").addEventListener(
 "submit",
 function(e){
 
 e.preventDefault();
 
+const player=document.getElementById("sellPlayer").value.trim();
+const club=document.getElementById("sellClub").value.trim();
+const name=document.getElementById("sellName").value.trim();
+const condition=document.getElementById("sellCondition").value;
 
-const player=
-document.getElementById(
-"sellPlayer"
-).value.trim();
-
-
-const club=
-document.getElementById(
-"sellClub"
-).value.trim();
-
-
-const name=
-document.getElementById(
-"sellName"
-).value.trim();
-
-
-const condition=
-document.getElementById(
-"sellCondition"
-).value;
-
-
-const priceValue=
-Number(
-document.getElementById(
-"sellPrice"
-).value
+const priceValue=Number(
+document.getElementById("sellPrice").value
 );
 
+const description=document.getElementById("sellDescription").value.trim();
 
-const description=
-document.getElementById(
-"sellDescription"
-).value.trim();
-
-
-const validClub=
-knownClubs.some(
-c=>
-c.toLowerCase()===
-club.toLowerCase()
+const validClub=knownClubs.some(
+c=>c.toLowerCase()===club.toLowerCase()
 );
-
 
 if(
 !player||
@@ -3842,76 +2585,44 @@ if(
 priceValue<=0
 ){
 
-showToast(
-"Bitte fülle alle Pflichtfelder richtig aus."
-);
+showToast("Bitte fülle alle Pflichtfelder richtig aus.");
 
 return;
-
 }
 
-
-const officialClub=
-validClub
+const officialClub=validClub
 ?knownClubs.find(
-c=>
-c.toLowerCase()===
-club.toLowerCase()
+c=>c.toLowerCase()===club.toLowerCase()
 )
 :"Kein Verein";
-
 
 const newCard={
 
 id:Date.now(),
-
 player,
-
 club:officialClub,
-
 name,
-
 condition,
-
 price:priceValue,
-
 description,
-
 seller:"Mein Profil",
-
 sellerRating:5,
-
 created:Date.now(),
-
 isNew:true,
-
 views:0,
-
 favorites:0,
-
 photo:selectedPhoto||""
 
 };
 
-
-data.cards.unshift(
-newCard
-);
-
+data.cards.unshift(newCard);
 
 data.notifications.unshift({
-
 id:Date.now()+1,
-
-text:
-`Deine Karte "${player}" wurde eingestellt. 🎉`,
-
+text:`Deine Karte "${player}" wurde eingestellt. 🎉`,
 time:Date.now(),
-
 read:false
-
 });
-
 
 saveData();
 
@@ -3919,80 +2630,45 @@ this.reset();
 
 selectedPhoto="";
 
+document.getElementById("photoPreview").style.display="none";
 
-document.getElementById(
-"photoPreview"
-).style.display="none";
+document.getElementById("clubError").textContent="";
 
-
-document.getElementById(
-"clubError"
-).textContent="";
-
-
-showToast(
-"🚀 Karte wurde erfolgreich eingestellt!"
-);
-
+showToast("🚀 Karte wurde erfolgreich eingestellt!");
 
 showPage("market");
-
 }
 );
 
-
-/* =========================================================
-   PROFILE
-========================================================= */
+/* PROFILE */
 
 function renderProfile(){
 
-const cards=
-data.cards.filter(
+const cards=data.cards.filter(
 c=>c.seller==="Mein Profil"
 );
 
-
-document.getElementById(
-"myCards"
-).innerHTML=
-
+document.getElementById("myCards").innerHTML=
 cards.length
 ?cards.map(cardHTML).join("")
-:empty(
-"📦",
-"Du hast noch keine Karten eingestellt."
-);
-
+:empty("📦","Du hast noch keine Karten eingestellt.");
 
 renderRequests();
-
 }
-
 
 function renderRequests(){
 
-const box=
-document.getElementById(
-"requestsList"
-);
-
+const box=document.getElementById("requestsList");
 
 if(!data.requests.length){
 
 box.innerHTML=
-empty(
-"🛒",
-"Noch keine Kaufanfragen."
-);
+empty("🛒","Noch keine Kaufanfragen.");
 
 return;
-
 }
 
-
-box.innerHTML=
-data.requests.map(
+box.innerHTML=data.requests.map(
 r=>`
 
 <div class="list-item">
@@ -4012,200 +2688,121 @@ ${date(r.created)}
 
 </div>
 
-
 <div class="actions">
 
 ${
 r.status==="pending"
-
 ?`
 
 <button
 class="btn small green"
 onclick="acceptRequest(${Number(r.id)})">
-
 ✓ Annehmen
-
 </button>
-
 
 <button
 class="btn small red"
 onclick="rejectRequest(${Number(r.id)})">
-
 ✕ Ablehnen
-
 </button>
-
 `
-
-:
-
-`
-
+:`
 <span class="muted">
-
-${
-r.status==="accepted"
-?"✓ Angenommen"
-:"✕ Abgelehnt"
-}
-
+${r.status==="accepted"?"✓ Angenommen":"✕ Abgelehnt"}
 </span>
-
 `
 }
 
 </div>
 
 </div>
-
 `
 ).join("");
-
 }
-
 
 function acceptRequest(id){
 
-const r=
-data.requests.find(
+const r=data.requests.find(
 x=>Number(x.id)===Number(id)
 );
 
 if(!r)return;
-
 
 r.status="accepted";
 
-
 data.notifications.unshift({
-
 id:Date.now(),
-
-text:
-`Kaufanfrage für ${r.cardName} angenommen. ✅`,
-
+text:`Kaufanfrage für ${r.cardName} angenommen. ✅`,
 time:Date.now(),
-
 read:false
-
 });
-
 
 saveData();
 
 renderProfile();
-
 updateStats();
 
-showToast(
-"✅ Anfrage angenommen"
-);
-
+showToast("✅ Anfrage angenommen");
 }
-
 
 function rejectRequest(id){
 
-const r=
-data.requests.find(
+const r=data.requests.find(
 x=>Number(x.id)===Number(id)
 );
 
 if(!r)return;
 
-
 r.status="rejected";
 
-
 data.notifications.unshift({
-
 id:Date.now(),
-
-text:
-`Kaufanfrage für ${r.cardName} abgelehnt.`,
-
+text:`Kaufanfrage für ${r.cardName} abgelehnt.`,
 time:Date.now(),
-
 read:false
-
 });
-
 
 saveData();
 
 renderProfile();
-
 updateStats();
 
-showToast(
-"Anfrage abgelehnt"
-);
-
+showToast("Anfrage abgelehnt");
 }
 
-
-/* =========================================================
-   NOTIFICATIONS
-========================================================= */
+/* NOTIFICATIONS */
 
 function updateNotificationBadge(){
 
-const count=
-data.notifications.filter(
+const count=data.notifications.filter(
 n=>!n.read
 ).length;
 
-
-const badge=
-document.getElementById(
-"notificationBadge"
-);
-
+const badge=document.getElementById("notificationBadge");
 
 badge.textContent=count;
 
-badge.style.display=
-count
-?"grid"
-:"none";
-
+badge.style.display=count?"grid":"none";
 }
-
 
 function renderNotifications(){
 
-const box=
-document.getElementById(
-"notificationsList"
-);
-
+const box=document.getElementById("notificationsList");
 
 if(!data.notifications.length){
 
 box.innerHTML=
-empty(
-"🔔",
-"Keine Benachrichtigungen."
-);
+empty("🔔","Keine Benachrichtigungen.");
 
 return;
-
 }
 
-
-box.innerHTML=
-data.notifications.map(
+box.innerHTML=data.notifications.map(
 n=>`
 
 <div
 class="list-item"
-style="${
-n.read
-?"opacity:.55"
-:""
-}">
+style="${n.read?"opacity:.55":""}">
 
 <div class="user-info">
 
@@ -4228,12 +2825,9 @@ ${date(n.time)}
 </div>
 
 </div>
-
 `
 ).join("");
-
 }
-
 
 function markNotificationsRead(){
 
@@ -4241,78 +2835,48 @@ data.notifications.forEach(
 n=>n.read=true
 );
 
-
 saveData();
 
 updateNotificationBadge();
-
 renderNotifications();
 
-showToast(
-"✓ Alle Benachrichtigungen gelesen"
-);
-
+showToast("✓ Alle Benachrichtigungen gelesen");
 }
 
-
-/* =========================================================
-   STATS
-========================================================= */
+/* STATS */
 
 function updateStats(){
 
-document.getElementById(
-"statCards"
-).textContent=
+document.getElementById("statCards").textContent=
 data.cards.length;
 
-
-document.getElementById(
-"statFavorites"
-).textContent=
+document.getElementById("statFavorites").textContent=
 data.favorites.length;
 
-
-document.getElementById(
-"statRequests"
-).textContent=
+document.getElementById("statRequests").textContent=
 data.requests.filter(
 r=>r.status==="pending"
 ).length;
 
-
 updateNotificationBadge();
-
 }
 
-
-/* =========================================================
-   MODAL
-========================================================= */
+/* MODAL */
 
 function closeModal(){
 
-document.getElementById(
-"cardModal"
-).classList.remove(
-"show"
-);
-
+document.getElementById("cardModal")
+.classList.remove("show");
 }
 
-
-document.getElementById(
-"cardModal"
-).addEventListener(
+document.getElementById("cardModal").addEventListener(
 "click",
 function(e){
 
 if(e.target===this)
 closeModal();
-
 }
 );
-
 
 document.addEventListener(
 "keydown",
@@ -4320,67 +2884,40 @@ function(e){
 
 if(e.key==="Escape")
 closeModal();
-
 }
 );
 
-
-/* =========================================================
-   TOAST
-========================================================= */
+/* TOAST */
 
 let toastTimer=null;
 
-
 function showToast(message){
 
-const t=
-document.getElementById(
-"toast"
-);
-
+const t=document.getElementById("toast");
 
 t.textContent=message;
 
-t.classList.add(
-"show"
-);
+t.classList.add("show");
 
+clearTimeout(toastTimer);
 
-clearTimeout(
-toastTimer
-);
-
-
-toastTimer=
-setTimeout(
+toastTimer=setTimeout(
 ()=>{
 t.classList.remove("show");
 },
 2600
 );
-
 }
 
-
-/* =========================================================
-   START
-========================================================= */
+/* START */
 
 renderHome();
-
 renderMarket();
-
 renderFavorites();
-
 renderRecent();
-
 renderMessages();
-
 renderNotifications();
-
 renderProfile();
-
 updateStats();
 
 </script>
