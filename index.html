@@ -1,28 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Pixel Cards</title>
 
 <style>
 :root{
-  --bg:#f6f6f4;
-  --white:#ffffff;
-  --black:#151515;
-  --text:#202020;
-  --muted:#777;
-  --line:#e7e7e4;
-  --soft:#f1f1ef;
-  --silver:#c7c9cc;
-  --silver-dark:#92959a;
-  --green:#087f5b;
-  --red:#d9364f;
-  --gold:#a47c20;
-
-  --radius:14px;
-  --shadow:0 5px 20px rgba(0,0,0,.07);
-  --shadow-hover:0 12px 30px rgba(0,0,0,.12);
+  --bg:#f6f6f7;
+  --card:#fff;
+  --text:#18181b;
+  --muted:#71717a;
+  --line:#e4e4e7;
+  --dark:#202124;
+  --red:#e5485d;
+  --green:#168a58;
+  --shadow:0 3px 16px #0000000d;
 }
 
 *{
@@ -31,22 +24,10 @@
   padding:0;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
-  min-height:100vh;
+  font-family:Inter,system-ui,sans-serif;
   background:var(--bg);
   color:var(--text);
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Arial,
-    sans-serif;
 }
 
 button,
@@ -60,311 +41,157 @@ button{
   cursor:pointer;
 }
 
-button:active{
-  transform:scale(.98);
-}
+/* TOP */
 
-img{
-  max-width:100%;
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-.header{
+.top{
   position:sticky;
   top:0;
-  z-index:1000;
-
-  background:rgba(255,255,255,.94);
+  z-index:100;
+  background:#fffffff5;
   backdrop-filter:blur(18px);
-
   border-bottom:1px solid var(--line);
 }
 
-.header-inner{
-  width:min(1450px,calc(100% - 28px));
+nav{
+  max-width:1200px;
   margin:auto;
-
-  min-height:72px;
-
-  display:grid;
-  grid-template-columns:auto minmax(250px,650px) auto;
+  min-height:64px;
+  padding:8px 14px;
+  display:flex;
   align-items:center;
-  gap:24px;
+  gap:22px;
 }
-
-/* LOGO */
 
 .logo{
   border:0;
   background:none;
-
+  font-weight:950;
+  font-size:20px;
   display:flex;
   align-items:center;
-  gap:10px;
-
-  color:var(--black);
-  font-size:20px;
-  font-weight:950;
+  gap:9px;
   white-space:nowrap;
 }
 
-.logo-icon{
-  width:42px;
-  height:42px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:12px;
-
-  background:linear-gradient(
-    145deg,
-    #eeeeee,
-    #bfc2c6
-  );
-
-  border:1px solid #d0d2d5;
-
-  box-shadow:
-    inset 0 1px 0 white,
-    0 4px 12px rgba(0,0,0,.10);
-
-  font-size:20px;
-}
-
-/* SEARCH */
-
-.header-search{
-  position:relative;
-}
-
-.header-search input{
-  width:100%;
-  height:46px;
-
-  border:1px solid #dcdcd9;
-  border-radius:12px;
-
-  background:#f5f5f3;
-
-  padding:
-    0 46px
-    0 16px;
-
-  outline:none;
-
-  color:var(--text);
-
-  transition:.2s;
-}
-
-.header-search input:focus{
-  background:white;
-  border-color:#aeb1b5;
-
-  box-shadow:
-    0 0 0 3px rgba(180,183,187,.15);
-}
-
-.search-icon{
-  position:absolute;
-
-  left:15px;
-  top:50%;
-
-  transform:translateY(-50%);
-
-  color:#777;
-  pointer-events:none;
-}
-
-/* HEADER ACTIONS */
-
-.header-actions{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:7px;
-}
-
-.header-btn{
-  min-height:42px;
-
-  border:1px solid transparent;
+.logo i{
+  font-style:normal;
+  background:#202124;
+  color:white;
   border-radius:11px;
-
-  background:transparent;
-
-  color:#555;
-
-  padding:8px 11px;
-
-  font-weight:750;
-  font-size:13px;
-
-  transition:.2s;
+  padding:9px;
 }
 
-.header-btn:hover{
-  background:#f0f0ee;
+.links{
+  display:flex;
+  gap:4px;
+  flex:1;
+  justify-content:center;
+}
+
+.nav{
+  border:0;
+  background:transparent;
+  color:#666;
+  padding:10px 12px;
+  border-radius:9px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.nav:hover,
+.nav.active{
+  background:#eeeef0;
   color:#111;
 }
 
-.header-btn.sell{
-  background:#191919;
+.nav.sell{
+  background:#202124;
   color:white;
-
-  padding:
-    9px 15px;
 }
 
-.header-btn.sell:hover{
-  background:#333;
-}
+/* MAIN */
 
-.notification-wrap{
-  position:relative;
-}
-
-.notification-badge{
-  position:absolute;
-
-  right:2px;
-  top:-2px;
-
-  min-width:17px;
-  height:17px;
-
-  display:grid;
-  place-items:center;
-
-  padding:0 4px;
-
-  border-radius:20px;
-
-  background:var(--red);
-  color:white;
-
-  font-size:9px;
-  font-weight:950;
-}
-
-/* =====================================================
-   MAIN
-===================================================== */
-
-.container{
-  width:min(1450px,calc(100% - 28px));
+main{
+  max-width:1200px;
   margin:auto;
+  padding:26px 14px 70px;
 }
 
 .page{
   display:none;
-  padding:28px 0 80px;
-
-  animation:pageIn .22s ease;
 }
 
 .page.active{
   display:block;
 }
 
-@keyframes pageIn{
-  from{
-    opacity:0;
-    transform:translateY(5px);
-  }
+/* HERO */
 
-  to{
-    opacity:1;
-    transform:none;
-  }
+.hero,
+.panel,
+.tools,
+.stat,
+.profile,
+.form{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:17px;
+  box-shadow:var(--shadow);
 }
 
-/* =====================================================
-   HOME
-===================================================== */
-
-.home-intro{
-  padding:
-    38px 0
-    24px;
+.hero{
+  padding:38px;
 }
 
-.home-intro h1{
-  max-width:750px;
-
-  font-size:
-    clamp(35px,5vw,58px);
-
-  line-height:1;
-
+.hero h1{
+  font-size:clamp(35px,5vw,58px);
+  line-height:.98;
   letter-spacing:-2.5px;
 }
 
-.home-intro p{
-  max-width:650px;
-
-  margin-top:14px;
-
+.hero p{
   color:var(--muted);
-
+  max-width:650px;
   line-height:1.6;
+  margin:17px 0 23px;
 }
 
-.quick-actions{
+.row{
   display:flex;
+  gap:8px;
   flex-wrap:wrap;
-  gap:9px;
-
-  margin-top:22px;
 }
 
-.primary-btn{
-  border:0;
-  border-radius:11px;
+/* BUTTONS */
 
-  padding:
-    12px 17px;
-
-  background:#181818;
-  color:white;
-
+.btn{
+  border:1px solid var(--dark);
+  background:var(--dark);
+  color:#fff;
+  border-radius:9px;
+  padding:11px 15px;
   font-weight:850;
-
-  transition:.2s;
 }
 
-.primary-btn:hover{
-  transform:translateY(-1px);
-  background:#333;
+.btn.secondary{
+  background:#fff;
+  color:#202124;
+  border-color:var(--line);
 }
 
-.secondary-btn{
-  border:1px solid var(--line);
-  border-radius:11px;
-
-  padding:
-    12px 17px;
-
-  background:white;
-  color:#333;
-
-  font-weight:800;
-
-  transition:.2s;
+.btn.green{
+  background:var(--green);
+  border-color:var(--green);
 }
 
-.secondary-btn:hover{
-  border-color:#c5c5c5;
-  background:#fafafa;
+.btn.red{
+  background:var(--red);
+  border-color:var(--red);
+}
+
+.small{
+  padding:8px 11px;
+  font-size:11px;
 }
 
 /* STATS */
@@ -372,1264 +199,434 @@ img{
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:10px;
-
-  margin:
-    8px 0
-    30px;
+  gap:11px;
+  margin-top:13px;
 }
 
 .stat{
-  background:white;
-
-  border:1px solid var(--line);
-  border-radius:13px;
-
   padding:18px;
-
-  box-shadow:var(--shadow);
 }
 
-.stat-number{
+.num{
   font-size:25px;
   font-weight:950;
 }
 
-.stat-label{
+.muted{
   color:var(--muted);
   font-size:12px;
-  margin-top:4px;
 }
 
-/* =====================================================
-   SECTION HEADER
-===================================================== */
+/* HEAD */
 
-.section-head{
+.head{
   display:flex;
   justify-content:space-between;
-  align-items:end;
-
-  gap:12px;
-
-  margin:
-    30px 0
-    14px;
+  align-items:center;
+  gap:10px;
+  margin:28px 0 13px;
 }
 
-.section-title{
-  font-size:22px;
-  font-weight:950;
-  letter-spacing:-.5px;
+.head h2{
+  font-size:21px;
 }
 
-.section-sub{
-  display:block;
+/* MARKET SEARCH */
 
-  margin-top:4px;
-
-  color:var(--muted);
-  font-size:13px;
+.tools{
+  padding:14px;
 }
 
-/* =====================================================
-   MARKET TOOLBAR
-===================================================== */
-
-.market-top{
-  margin-bottom:20px;
-}
-
-.market-title{
-  font-size:34px;
-  font-weight:950;
-  letter-spacing:-1.4px;
-}
-
-.market-sub{
-  margin-top:5px;
-  color:var(--muted);
-}
-
-/*
-  EXTRA GROSSE SUCHLEISTE
-*/
-
-.big-search{
-  position:relative;
-
-  margin-top:20px;
-}
-
-.big-search input{
-  width:100%;
-  height:58px;
-
-  background:white;
-
-  border:
-    1px solid #d7d7d4;
-
-  border-radius:15px;
-
-  padding:
-    0 55px
-    0 48px;
-
-  outline:none;
-
-  font-size:15px;
-
-  box-shadow:
-    0 4px 15px rgba(0,0,0,.045);
-
-  transition:.2s;
-}
-
-.big-search input:focus{
-  border-color:#999;
-
-  box-shadow:
-    0 0 0 4px rgba(180,180,180,.15),
-    0 6px 20px rgba(0,0,0,.07);
-}
-
-.big-search .search-symbol{
-  position:absolute;
-
-  left:17px;
-  top:50%;
-
-  transform:translateY(-50%);
-
-  font-size:20px;
-  color:#555;
-}
-
-.clear-search{
-  position:absolute;
-
-  right:10px;
-  top:50%;
-
-  transform:translateY(-50%);
-
-  width:36px;
-  height:36px;
-
-  border:0;
-  border-radius:10px;
-
-  background:#eeeeec;
-
-  color:#555;
-
-  display:none;
-}
-
-.filter-bar{
-  display:grid;
-
-  grid-template-columns:
-    1.1fr
-    .75fr
-    .75fr
-    1fr
-    1fr
-    auto;
-
+.search{
+  display:flex;
   gap:8px;
+}
 
+.searchbox{
+  position:relative;
+  flex:1;
+}
+
+.searchbox b{
+  position:absolute;
+  left:14px;
+  top:13px;
+  font-size:20px;
+  color:#666;
+}
+
+.search input{
+  height:50px;
+  font-size:15px;
+  padding-left:42px;
+}
+
+.input,
+.select,
+.textarea{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:11px;
+  background:#fff;
+  color:var(--text);
+}
+
+.filters{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
   margin-top:9px;
 }
 
-.filter{
-  height:43px;
+/* CARDS */
 
-  border:1px solid var(--line);
-  border-radius:10px;
-
-  background:white;
-
-  color:#333;
-
-  padding:
-    0 11px;
-
-  outline:none;
-
-  min-width:0;
-}
-
-.filter:focus{
-  border-color:#a7a7a7;
-}
-
-/* =====================================================
-   CARDS
-===================================================== */
-
-.cards-grid{
+.grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
-
+  grid-template-columns:repeat(4,1fr);
   gap:14px;
 }
 
 .card{
-  position:relative;
-  overflow:hidden;
-
-  background:white;
-
-  border:
-    1px solid var(--line);
-
+  background:#fff;
+  border:1px solid var(--line);
   border-radius:15px;
-
-  box-shadow:
-    0 3px 12px rgba(0,0,0,.045);
-
-  transition:
-    transform .22s ease,
-    box-shadow .22s ease,
-    border-color .22s ease;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:.2s;
 }
 
 .card:hover{
   transform:translateY(-4px);
-
-  border-color:#c9c9c9;
-
-  box-shadow:var(--shadow-hover);
-}
-
-/* CARD IMAGE */
-
-.card-image{
-  position:relative;
-
-  height:250px;
-
-  overflow:hidden;
-
-  display:grid;
-  place-items:center;
-
-  background:
-    linear-gradient(
-      145deg,
-      #f4f4f3,
-      #dedfdf
-    );
-}
-
-.card-image img{
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  transition:
-    transform .35s ease;
-}
-
-.card:hover .card-image img{
-  transform:scale(1.035);
-}
-
-.card-placeholder{
-  width:100%;
-  height:100%;
-
-  display:grid;
-  place-items:center;
-
-  font-size:72px;
-
-  background:
-    radial-gradient(
-      circle at 50% 30%,
-      white,
-      #dedfde
-    );
-}
-
-/* BADGES */
-
-.card-badges{
-  position:absolute;
-
-  left:10px;
-  top:10px;
-
-  display:flex;
-  gap:6px;
-
-  z-index:4;
-}
-
-.badge-new,
-.badge-popular{
-  padding:
-    6px 8px;
-
-  border-radius:7px;
-
-  font-size:9px;
-
-  font-weight:950;
-
-  letter-spacing:.3px;
-
-  box-shadow:
-    0 2px 7px rgba(0,0,0,.12);
-}
-
-.badge-new{
-  background:#191919;
-  color:white;
-}
-
-.badge-popular{
-  background:white;
-  color:#333;
-
-  border:
-    1px solid #dedede;
-}
-
-/* FAVORITE */
-
-.favorite-btn{
-  position:absolute;
-
-  right:10px;
-  top:10px;
-
-  z-index:5;
-
-  width:39px;
-  height:39px;
-
-  border:
-    1px solid rgba(0,0,0,.09);
-
-  border-radius:50%;
-
-  background:
-    rgba(255,255,255,.94);
-
-  color:#555;
-
-  font-size:19px;
-
-  display:grid;
-  place-items:center;
-
-  box-shadow:
-    0 3px 12px rgba(0,0,0,.08);
-
-  transition:.2s;
-}
-
-.favorite-btn:hover{
-  transform:scale(1.06);
-}
-
-.favorite-btn.active{
-  color:var(--red);
-
-  border-color:#f0c8cf;
-
-  background:#fff6f7;
-}
-
-/* CARD CONTENT */
-
-.card-content{
-  padding:14px;
-}
-
-.card-player{
-  font-size:17px;
-  font-weight:900;
-
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-.card-name{
-  margin-top:4px;
-
-  color:#777;
-
-  font-size:12px;
-
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-.card-meta{
-  display:flex;
-  align-items:center;
-  gap:6px;
-
-  margin-top:9px;
-
-  color:#666;
-
-  font-size:11px;
-}
-
-.dot{
-  color:#aaa;
-}
-
-/* PRICE */
-
-.card-price-row{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-
-  gap:10px;
-
-  margin-top:14px;
-}
-
-.card-price{
-  font-size:21px;
-  font-weight:950;
-
-  letter-spacing:-.4px;
-}
-
-.card-view{
-  color:#888;
-  font-size:11px;
-}
-
-/* SELLER */
-
-.seller-row{
-  display:flex;
-  align-items:center;
-
-  gap:8px;
-
-  margin-top:12px;
-
-  padding-top:11px;
-
-  border-top:1px solid #f0f0ee;
-}
-
-.seller-avatar{
-  width:29px;
-  height:29px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:50%;
-
-  background:#ececeb;
-
-  color:#444;
-
-  font-size:10px;
-  font-weight:950;
-}
-
-.seller-info{
-  min-width:0;
-  flex:1;
-}
-
-.seller-name{
-  font-size:11px;
-  font-weight:850;
-
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-.seller-rating{
-  color:var(--gold);
-  font-size:10px;
-}
-
-.view-btn{
-  border:1px solid #dededb;
-  border-radius:9px;
-
-  background:white;
-
-  color:#333;
-
-  padding:
-    7px 9px;
-
-  font-size:11px;
-  font-weight:800;
-
-  transition:.2s;
-}
-
-.view-btn:hover{
-  background:#f4f4f2;
-}
-
-/* =====================================================
-   PANELS / LISTS
-===================================================== */
-
-.panel{
-  background:white;
-
-  border:1px solid var(--line);
-
-  border-radius:15px;
-
-  padding:20px;
-
-  box-shadow:var(--shadow);
-}
-
-.list{
-  display:grid;
-  gap:9px;
-}
-
-.list-item{
-  display:flex;
-
-  justify-content:space-between;
-  align-items:center;
-
-  gap:14px;
-
-  padding:13px;
-
-  border:1px solid var(--line);
-
-  border-radius:11px;
-
-  background:#fafaf9;
-}
-
-.user-info{
-  min-width:0;
-
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.avatar{
-  width:40px;
-  height:40px;
-
-  display:grid;
-  place-items:center;
-
-  flex:none;
-
-  border-radius:11px;
-
-  background:#e8e8e6;
-
-  font-size:12px;
-  font-weight:950;
-}
-
-.user-name{
-  font-size:13px;
-  font-weight:850;
-}
-
-.user-small{
-  margin-top:3px;
-
-  color:var(--muted);
-
-  font-size:11px;
-}
-
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-}
-
-.small-btn{
-  border:1px solid #ddd;
-
-  border-radius:9px;
-
-  background:white;
-
-  padding:
-    8px 10px;
-
-  font-size:11px;
-  font-weight:800;
-}
-
-.small-btn.dark{
-  background:#181818;
-  color:white;
-  border-color:#181818;
-}
-
-.small-btn.green{
-  background:#e9f8f3;
-  color:var(--green);
-  border-color:#c9eee1;
-}
-
-.small-btn.red{
-  background:#fff0f2;
-  color:var(--red);
-  border-color:#f5ccd2;
-}
-
-/* =====================================================
-   SELL
-===================================================== */
-
-.sell-layout{
-  display:grid;
-
-  grid-template-columns:
-    minmax(0,800px)
-    minmax(250px,1fr);
-
-  gap:18px;
-}
-
-.form-title{
-  font-size:25px;
-  font-weight:950;
-}
-
-.form-group{
-  margin-bottom:15px;
-}
-
-.form-group label{
-  display:block;
-
-  margin-bottom:6px;
-
-  font-size:12px;
-  font-weight:800;
-
-  color:#555;
-}
-
-.input,
-.textarea,
-.select{
-  width:100%;
-
-  border:1px solid #dededb;
-
-  border-radius:10px;
-
-  background:#fafaf9;
-
-  color:#222;
-
-  padding:
-    12px 13px;
-
-  outline:none;
-
-  transition:.2s;
-}
-
-.input:focus,
-.textarea:focus,
-.select:focus{
-  background:white;
-
   border-color:#aaa;
-
-  box-shadow:
-    0 0 0 3px rgba(180,180,180,.13);
+  box-shadow:0 11px 28px #00000014;
 }
 
-.textarea{
-  min-height:125px;
-  resize:vertical;
-}
-
-.photo-preview{
-  display:none;
-
-  width:100%;
-  max-height:300px;
-
-  object-fit:cover;
-
-  margin-top:10px;
-
-  border-radius:12px;
-
-  border:1px solid var(--line);
-}
-
-.sell-info{
-  background:#191919;
-  color:white;
-
-  border-radius:15px;
-
-  padding:22px;
-
-  align-self:start;
-}
-
-.sell-info h3{
-  font-size:20px;
-  margin-bottom:12px;
-}
-
-.sell-info p{
-  color:#c5c5c5;
-  line-height:1.6;
-  font-size:13px;
-}
-
-.sell-info ul{
-  list-style:none;
-  margin-top:17px;
-}
-
-.sell-info li{
-  padding:8px 0;
-  color:#ddd;
-  font-size:12px;
-}
-
-/* =====================================================
-   PROFILE
-===================================================== */
-
-.profile-head{
-  display:flex;
-  align-items:center;
-
-  gap:16px;
-
-  padding:22px;
-
-  background:white;
-
-  border:1px solid var(--line);
-  border-radius:15px;
-
-  box-shadow:var(--shadow);
-}
-
-.big-avatar{
-  width:70px;
-  height:70px;
-
+.pic{
+  height:225px;
+  background:#eeeef0;
   display:grid;
   place-items:center;
+  position:relative;
+  overflow:hidden;
+}
 
-  border-radius:18px;
+.pic img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.25s;
+}
 
-  background:
-    linear-gradient(
-      145deg,
-      #eeeeed,
-      #c7c8ca
-    );
+.card:hover .pic img{
+  transform:scale(1.025);
+}
 
-  font-size:25px;
+.ball{
+  font-size:70px;
+  filter:grayscale(.7);
+}
+
+.tag{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:#202124;
+  color:white;
+  border-radius:7px;
+  padding:5px 8px;
+  font-size:9px;
+  font-weight:900;
+  z-index:2;
+}
+
+.popular{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:#fffffff0;
+  border:1px solid #ddd;
+  border-radius:7px;
+  padding:5px 8px;
+  font-size:9px;
+  font-weight:900;
+  z-index:2;
+}
+
+.heart{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  width:38px;
+  height:38px;
+  border:1px solid #ddd;
+  border-radius:50%;
+  background:#fffffff2;
+  font-size:20px;
+  z-index:3;
+}
+
+.heart.active{
+  color:var(--red);
+}
+
+.body{
+  padding:13px;
+}
+
+.title{
+  font-weight:900;
+}
+
+.sub{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:5px;
+}
+
+.bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-top:15px;
+}
+
+.price{
+  font-size:19px;
   font-weight:950;
 }
 
-.rating{
-  margin-top:5px;
-  color:var(--gold);
-  font-size:13px;
+.seller{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:4px;
 }
 
-.rating span{
-  color:#777;
-}
-
-/* =====================================================
-   EMPTY
-===================================================== */
+/* EMPTY */
 
 .empty{
   grid-column:1/-1;
-
+  padding:45px;
   text-align:center;
-
-  padding:55px 20px;
-
-  border:
-    1px dashed #d8d8d5;
-
+  color:var(--muted);
+  border:1px dashed #d5d5da;
   border-radius:14px;
-
-  color:#888;
-
-  background:white;
+  background:#fff;
 }
 
-.empty-icon{
-  font-size:40px;
-  margin-bottom:10px;
+/* PROFILE */
+
+.profile{
+  padding:22px;
+  display:flex;
+  gap:15px;
+  align-items:center;
 }
 
-/* =====================================================
-   MODAL
-===================================================== */
+.avatar{
+  width:70px;
+  height:70px;
+  border-radius:18px;
+  background:#202124;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:27px;
+  font-weight:900;
+}
 
-.modal-backdrop{
+/* LIST */
+
+.list{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:15px;
+  display:grid;
+  gap:8px;
+}
+
+.item{
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+}
+
+/* FORM */
+
+.form{
+  padding:20px;
+}
+
+.group{
+  margin-bottom:14px;
+}
+
+.group label{
+  display:block;
+  font-size:12px;
+  font-weight:800;
+  color:#666;
+  margin-bottom:6px;
+}
+
+.textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+/* MODAL */
+
+.modalbg{
   position:fixed;
   inset:0;
-
-  z-index:3000;
-
+  background:#0008;
+  backdrop-filter:blur(7px);
+  z-index:200;
   display:none;
   place-items:center;
-
   padding:18px;
-
-  background:rgba(0,0,0,.45);
-
-  backdrop-filter:blur(8px);
 }
 
-.modal-backdrop.show{
+.modalbg.show{
   display:grid;
 }
 
 .modal{
-  width:min(620px,100%);
-  max-height:92vh;
-
+  background:#fff;
+  border-radius:17px;
+  width:min(580px,100%);
+  max-height:90vh;
   overflow:auto;
-
-  background:white;
-
-  border-radius:18px;
-
   padding:20px;
-
-  box-shadow:
-    0 25px 80px rgba(0,0,0,.25);
-
-  animation:modalIn .2s ease;
 }
 
-@keyframes modalIn{
-  from{
-    opacity:0;
-    transform:translateY(12px) scale(.98);
-  }
-
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-.modal-head{
+.modalhead{
   display:flex;
   justify-content:space-between;
-
-  gap:12px;
-
-  margin-bottom:16px;
-}
-
-.modal-head h2{
-  font-size:23px;
+  margin-bottom:15px;
 }
 
 .close{
-  width:37px;
-  height:37px;
-
   border:0;
-  border-radius:10px;
-
-  background:#f0f0ee;
-
-  color:#444;
+  background:#eee;
+  border-radius:8px;
+  width:36px;
+  height:36px;
 }
 
-.modal-image{
-  width:100%;
-  height:300px;
-
-  border-radius:13px;
-
-  object-fit:cover;
-
-  background:#eeeeec;
-}
-
-.modal-placeholder{
-  width:100%;
-  height:300px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:13px;
-
-  background:#eeeeec;
-
-  font-size:75px;
-}
-
-.detail-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:8px;
-
-  margin-top:14px;
-}
-
-.detail{
-  padding:12px;
-
-  border:1px solid var(--line);
-
-  border-radius:10px;
-
-  background:#fafaf9;
-}
-
-.detail-label{
-  color:#888;
-  font-size:10px;
-}
-
-.detail-value{
-  margin-top:3px;
-
-  font-size:13px;
-  font-weight:850;
-}
-
-.modal-description{
-  margin-top:12px;
-
-  padding:14px;
-
-  border-radius:11px;
-
-  background:#f5f5f3;
-
-  color:#666;
-
-  font-size:13px;
-
-  line-height:1.6;
-}
-
-.modal-actions{
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:8px;
-
-  margin-top:13px;
-}
-
-/* =====================================================
-   TOAST
-===================================================== */
+/* TOAST */
 
 .toast{
   position:fixed;
-
-  z-index:5000;
-
-  left:50%;
-  bottom:20px;
-
-  transform:
-    translate(-50%,80px);
-
+  right:15px;
+  bottom:15px;
+  background:#202124;
+  color:#fff;
+  padding:12px 15px;
+  border-radius:10px;
   opacity:0;
-
-  pointer-events:none;
-
-  padding:
-    12px 16px;
-
-  border-radius:11px;
-
-  background:#181818;
-  color:white;
-
-  font-size:12px;
-  font-weight:750;
-
-  box-shadow:
-    0 10px 35px rgba(0,0,0,.25);
-
-  transition:.25s;
+  transform:translateY(40px);
+  transition:.2s;
+  z-index:500;
 }
 
 .toast.show{
   opacity:1;
-
-  transform:
-    translate(-50%,0);
+  transform:none;
 }
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+/* TABLET */
 
-@media(max-width:1150px){
+@media(max-width:1050px){
 
-  .header-inner{
-    grid-template-columns:auto 1fr;
-  }
-
-  .header-search{
-    grid-column:2;
-    grid-row:1;
-  }
-
-  .header-actions{
-    grid-column:1/-1;
-    grid-row:2;
-
-    justify-content:flex-start;
-
-    padding-bottom:8px;
-  }
-
-  .filter-bar{
-    grid-template-columns:
-      1fr 1fr 1fr;
-  }
-
-  .cards-grid{
-    grid-template-columns:
-      repeat(3,minmax(0,1fr));
-  }
-
-  .sell-layout{
-    grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:800px){
-
-  .header-inner{
-    width:calc(100% - 18px);
-
-    display:grid;
-
-    grid-template-columns:1fr;
-    gap:8px;
-
-    padding:9px 0;
-  }
-
-  .logo{
-    justify-content:center;
-  }
-
-  .header-search{
-    grid-column:auto;
-    grid-row:auto;
-  }
-
-  .header-actions{
-    grid-column:auto;
-    grid-row:auto;
-
-    display:grid;
-
-    grid-template-columns:
-      repeat(4,1fr);
-
-    width:100%;
-
-    padding:0;
-  }
-
-  .header-btn{
-    padding:8px 4px;
-    font-size:10px;
-  }
-
-  .header-btn.sell{
-    padding:8px 4px;
-  }
-
-  .container{
-    width:calc(100% - 18px);
+  .grid{
+    grid-template-columns:repeat(3,1fr);
   }
 
   .stats{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .cards-grid{
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
+  .filters{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .filter-bar{
-    grid-template-columns:
-      repeat(2,1fr);
+  nav{
+    flex-wrap:wrap;
   }
 
-  .card-image{
-    height:200px;
-  }
-
-  .sell-layout{
-    display:block;
-  }
-
-  .sell-info{
-    margin-top:14px;
+  .links{
+    order:2;
+    width:100%;
+    overflow:auto;
+    justify-content:flex-start;
   }
 }
 
-@media(max-width:520px){
+/* MOBILE */
 
-  .page{
-    padding-top:18px;
+@media(max-width:650px){
+
+  main{
+    padding-inline:9px;
   }
 
-  .home-intro{
-    padding-top:22px;
+  .hero{
+    padding:27px;
   }
 
-  .home-intro h1{
-    font-size:37px;
-    letter-spacing:-1.8px;
+  .hero h1{
+    font-size:36px;
   }
 
-  .market-title{
-    font-size:29px;
-  }
-
-  .cards-grid{
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
-
+  .grid{
+    grid-template-columns:repeat(2,1fr);
     gap:9px;
   }
 
-  .card-image{
-    height:155px;
+  .pic{
+    height:165px;
   }
 
-  .card-placeholder{
-    font-size:48px;
+  .ball{
+    font-size:50px;
   }
 
-  .card-content{
-    padding:11px;
+  .price{
+    font-size:17px;
   }
 
-  .card-player{
-    font-size:14px;
+  .filters{
+    grid-template-columns:1fr;
   }
 
-  .card-name{
+  .search{
+    display:block;
+  }
+
+  .search .btn{
+    width:100%;
+    margin-top:8px;
+  }
+
+  .nav{
+    padding-inline:7px;
     font-size:10px;
-  }
-
-  .card-meta{
-    font-size:9px;
-  }
-
-  .card-price{
-    font-size:17px;
-  }
-
-  .seller-row{
-    gap:5px;
-  }
-
-  .seller-avatar{
-    width:25px;
-    height:25px;
-  }
-
-  .seller-name{
-    font-size:9px;
-  }
-
-  .seller-rating{
-    font-size:8px;
-  }
-
-  .view-btn{
-    padding:6px 7px;
-    font-size:9px;
-  }
-
-  .favorite-btn{
-    width:34px;
-    height:34px;
-    font-size:17px;
-  }
-
-  .card-badges{
-    left:7px;
-    top:7px;
-  }
-
-  .badge-new,
-  .badge-popular{
-    padding:5px 6px;
-    font-size:7px;
-  }
-
-  .filter-bar{
-    grid-template-columns:1fr;
-  }
-
-  .detail-grid{
-    grid-template-columns:1fr;
-  }
-
-  .modal-actions{
-    grid-template-columns:1fr;
-  }
-
-  .profile-head{
-    padding:16px;
   }
 }
 
-@media(max-width:370px){
+@media(max-width:420px){
 
-  .cards-grid{
+  .grid{
     grid-template-columns:1fr;
   }
 
-  .card-image{
+  .pic{
     height:210px;
   }
 }
@@ -1638,302 +635,254 @@ img{
 
 <body>
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+<header class="top">
 
-<header class="header">
-
-<div class="header-inner">
-
-<button class="logo" onclick="showPage('home')">
-  <span class="logo-icon">⚽</span>
-  <span>Pixel Cards</span>
-</button>
-
-<div class="header-search">
-  <span class="search-icon">⌕</span>
-
-  <input
-    id="headerSearch"
-    type="search"
-    placeholder="Spieler, Verein oder Karte suchen..."
-    oninput="headerSearch()">
-</div>
-
-<div class="header-actions">
+<nav>
 
 <button
-  class="header-btn"
-  onclick="showPage('home')">
-  🏠 Start
+class="logo"
+onclick="page('home')">
+
+<i>⚽</i>
+
+Pixel Cards
+
+</button>
+
+<div class="links">
+
+<button
+class="nav active"
+data-p="home"
+onclick="page('home')">
+🏠 Start
 </button>
 
 <button
-  class="header-btn"
-  onclick="showPage('market')">
-  🛍️ Markt
+class="nav"
+data-p="market"
+onclick="page('market')">
+🛒 Markt
 </button>
 
 <button
-  class="header-btn"
-  onclick="showPage('favorites')">
-  ❤️ Favoriten
+class="nav"
+data-p="favorites"
+onclick="page('favorites')">
+❤️ Favoriten
 </button>
 
 <button
-  class="header-btn sell"
-  onclick="showPage('sell')">
-  + Verkaufen
+class="nav sell"
+data-p="sell"
+onclick="page('sell')">
+＋ Verkaufen
 </button>
 
 <button
-  class="header-btn"
-  onclick="showPage('messages')">
-  💬 Nachrichten
+class="nav"
+data-p="messages"
+onclick="page('messages')">
+💬 Nachrichten
 </button>
 
-<div class="notification-wrap">
-
 <button
-  class="header-btn"
-  onclick="showPage('notifications')">
-  🔔
+class="nav"
+data-p="notifications"
+onclick="page('notifications')">
+🔔 Benachrichtigungen
+<span id="badge"></span>
 </button>
 
-<span
-  id="notificationBadge"
-  class="notification-badge"
-  style="display:none">
-  0
-</span>
-
-</div>
-
 <button
-  class="header-btn"
-  onclick="showPage('profile')">
-  👤 Profil
+class="nav"
+data-p="profile"
+onclick="page('profile')">
+👤 Profil
 </button>
 
 </div>
 
-</div>
+</nav>
 
 </header>
 
+<main>
 
-<main class="container">
-
-<!-- =====================================================
-     HOME
-===================================================== -->
+<!-- HOME -->
 
 <section
-  id="home"
-  class="page active">
+id="home"
+class="page active">
 
-<div class="home-intro">
+<div class="hero">
 
 <h1>
-Fußballkarten kaufen,
-verkaufen & sammeln.
+Deine Fußballkarten.
+<br>
+Einfach handeln.
 </h1>
 
 <p>
-Entdecke neue Karten, finde gute Angebote und
-verkaufe deine eigenen Fußballkarten auf Pixel Cards.
+Entdecke Karten, speichere Favoriten und
+verkaufe deine eigenen Fußballkarten –
+übersichtlich und clean wie ein moderner Marktplatz.
 </p>
 
-<div class="quick-actions">
+<div class="row">
 
 <button
-  class="primary-btn"
-  onclick="showPage('market')">
-  🛍️ Karten entdecken
+class="btn"
+onclick="page('market')">
+Karten entdecken →
 </button>
 
 <button
-  class="secondary-btn"
-  onclick="showPage('sell')">
-  + Karte verkaufen
+class="btn secondary"
+onclick="page('sell')">
+Karte einstellen
 </button>
 
 </div>
 
 </div>
-
 
 <div class="stats">
 
 <div class="stat">
-  <div
-    id="statCards"
-    class="stat-number">
-    0
-  </div>
-  <div class="stat-label">
-    Karten online
-  </div>
+<div id="s1" class="num">0</div>
+<div class="muted">Karten online</div>
 </div>
 
 <div class="stat">
-  <div
-    id="statFavorites"
-    class="stat-number">
-    0
-  </div>
-  <div class="stat-label">
-    Meine Favoriten
-  </div>
+<div id="s2" class="num">0</div>
+<div class="muted">Favoriten</div>
 </div>
 
 <div class="stat">
-  <div
-    id="statRequests"
-    class="stat-number">
-    0
-  </div>
-  <div class="stat-label">
-    Offene Anfragen
-  </div>
+<div id="s3" class="num">0</div>
+<div class="muted">Offene Anfragen</div>
 </div>
 
 <div class="stat">
-  <div class="stat-number">
-    4.9★
-  </div>
-  <div class="stat-label">
-    Community Rating
-  </div>
+<div class="num">4.9★</div>
+<div class="muted">Community Rating</div>
 </div>
 
 </div>
 
-
-<div class="section-head">
+<div class="head">
 
 <div>
-  <div class="section-title">
-    🆕 Neu eingestellt
-  </div>
-
-  <span class="section-sub">
-    Die neuesten Karten auf Pixel Cards
-  </span>
+<h2>🔥 Aktuelle Karten</h2>
+<span class="muted">
+Die neuesten Angebote
+</span>
 </div>
 
 <button
-  class="secondary-btn"
-  onclick="showPage('market')">
-  Alle ansehen →
+class="btn secondary small"
+onclick="page('market')">
+Alle anzeigen
 </button>
 
 </div>
 
 <div
-  id="homeCards"
-  class="cards-grid">
+id="homeGrid"
+class="grid">
 </div>
 
-
-<div class="section-head">
+<div class="head">
 
 <div>
-  <div class="section-title">
-    🔥 Beliebt
-  </div>
-
-  <span class="section-sub">
-    Karten mit besonders vielen Aufrufen und Favoriten
-  </span>
+<h2>🔥 Beliebte Karten</h2>
+<span class="muted">
+Viele Aufrufe und Favoriten
+</span>
 </div>
 
 </div>
 
 <div
-  id="popularCards"
-  class="cards-grid">
+id="popGrid"
+class="grid">
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     MARKET
-===================================================== -->
+<!-- MARKET -->
 
 <section
-  id="market"
-  class="page">
+id="market"
+class="page">
 
-<div class="market-top">
+<div class="head">
 
-<div class="market-title">
-  🛍️ Marktplatz
-</div>
-
-<div class="market-sub">
-  Finde deine nächste Fußballkarte.
-</div>
-
-
-<div class="big-search">
-
-<span class="search-symbol">
-  🔎
+<div>
+<h2>🛒 Marktplatz</h2>
+<span class="muted">
+Suche und Filter sind direkt hier.
 </span>
+</div>
+
+</div>
+
+<div class="tools">
+
+<div class="search">
+
+<div class="searchbox">
+
+<b>⌕</b>
 
 <input
-  id="searchInput"
-  type="search"
-  placeholder="Nach Spieler, Verein oder Karte suchen..."
-  oninput="renderMarket()">
+id="q"
+class="input"
+placeholder="Spieler, Verein oder Karte suchen..."
+oninput="renderMarket">
+
+</div>
 
 <button
-  id="clearSearch"
-  class="clear-search"
-  onclick="clearSearch()">
-  ✕
+class="btn"
+onclick="document.getElementById('q').focus()">
+🔎 Suchen
 </button>
 
 </div>
 
-
-<div class="filter-bar">
-
-<input
-  id="clubFilter"
-  class="filter"
-  list="clubs"
-  placeholder="🏟️ Verein"
-  oninput="renderMarket()">
+<div class="filters">
 
 <input
-  id="minPrice"
-  class="filter"
-  type="number"
-  min="0"
-  step=".01"
-  placeholder="Min. €"
-  oninput="renderMarket()">
+id="min"
+class="input"
+type="number"
+placeholder="Min. €"
+oninput="renderMarket()">
 
 <input
-  id="maxPrice"
-  class="filter"
-  type="number"
-  min="0"
-  step=".01"
-  placeholder="Max. €"
-  oninput="renderMarket()">
+id="max"
+class="input"
+type="number"
+placeholder="Max. €"
+oninput="renderMarket()">
+
+<input
+id="club"
+class="input"
+list="clubs"
+placeholder="🏟️ Verein"
+oninput="renderMarket()">
 
 <select
-  id="conditionFilter"
-  class="filter"
-  onchange="renderMarket()">
+id="cond"
+class="select"
+onchange="renderMarket()">
 
 <option value="">
-⭐ Zustand
+⭐ Alle Zustände
 </option>
 
 <option>Neu</option>
@@ -1943,37 +892,44 @@ verkaufe deine eigenen Fußballkarten auf Pixel Cards.
 
 </select>
 
+</div>
+
+<div
+class="row"
+style="margin-top:9px">
+
 <select
-  id="sortFilter"
-  class="filter"
-  onchange="renderMarket()">
+id="sort"
+class="select"
+style="max-width:260px"
+onchange="renderMarket">
 
 <option value="new">
 🆕 Neueste
 </option>
 
 <option value="cheap">
-💶 Günstig
+💶 Preis niedrig → hoch
 </option>
 
 <option value="expensive">
-💶 Teuerste
+💶 Preis hoch → niedrig
 </option>
 
 <option value="popular">
-🔥 Beliebt
+🔥 Beliebteste
 </option>
 
 <option value="views">
-👁️ Aufrufe
+👁️ Meiste Aufrufe
 </option>
 
 </select>
 
 <button
-  class="secondary-btn"
-  onclick="resetFilters()">
-  ↻ Reset
+class="btn secondary small"
+onclick="reset()">
+↻ Zurücksetzen
 </button>
 
 </div>
@@ -1982,152 +938,137 @@ verkaufe deine eigenen Fußballkarten auf Pixel Cards.
 
 
 <datalist id="clubs">
-<option value="Real Madrid">
-<option value="FC Barcelona">
-<option value="PSG">
-<option value="Bayern München">
-<option value="Manchester City">
-<option value="Liverpool">
-<option value="Arsenal">
-<option value="Chelsea">
-<option value="Borussia Dortmund">
-<option value="Bayer Leverkusen">
-<option value="Inter Mailand">
-<option value="AC Milan">
-<option value="Juventus">
-<option value="Atlético Madrid">
-<option value="Tottenham">
+
+<option>Real Madrid</option>
+<option>FC Barcelona</option>
+<option>PSG</option>
+<option>Bayern München</option>
+<option>Manchester City</option>
+<option>Liverpool</option>
+<option>Arsenal</option>
+<option>Chelsea</option>
+<option>Borussia Dortmund</option>
+<option>Bayer Leverkusen</option>
+<option>Inter Mailand</option>
+<option>AC Milan</option>
+<option>Juventus</option>
+<option>Atlético Madrid</option>
+<option>Tottenham</option>
+
 </datalist>
 
 
-<div class="section-head">
+<div class="head">
+
+<span
+id="count"
+class="muted">
+</span>
+
+</div>
+
+<div
+id="marketGrid"
+class="grid">
+</div>
+
+
+<div class="head">
 
 <div>
-  <span
-    id="marketCount"
-    class="section-sub">
-    0 Karten
-  </span>
+<h2>👁️ Zuletzt angesehen</h2>
+
+<span class="muted">
+Deine zuletzt geöffneten Karten
+</span>
 </div>
 
 </div>
 
 <div
-  id="marketCards"
-  class="cards-grid">
-</div>
-
-
-<div class="section-head">
-
-<div>
-  <div class="section-title">
-    👁️ Zuletzt angesehen
-  </div>
-
-  <span class="section-sub">
-    Deine zuletzt geöffneten Karten
-  </span>
-</div>
-
-</div>
-
-<div
-  id="recentCards"
-  class="cards-grid">
+id="recent"
+class="grid">
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     SELL
-===================================================== -->
+<!-- SELL -->
 
 <section
-  id="sell"
-  class="page">
+id="sell"
+class="page">
 
-<div class="section-head">
+<div class="head">
 
 <div>
-  <div class="section-title">
-    + Karte verkaufen
-  </div>
+<h2>➕ Karte verkaufen</h2>
 
-  <span class="section-sub">
-    Stelle deine Karte in wenigen Schritten ein.
-  </span>
-</div>
+<span class="muted">
+Erstelle dein eigenes Angebot
+</span>
 
 </div>
 
-
-<div class="sell-layout">
-
-<div class="panel">
-
-<div class="form-title">
-  Deine Karte
 </div>
 
-<br>
+<form
+id="form"
+class="form">
 
-<form id="sellForm">
+<div class="group">
 
-<div class="form-group">
-
-<label>Spieler</label>
+<label>
+Spieler
+</label>
 
 <input
-  id="sellPlayer"
-  class="input"
-  placeholder="z. B. Lamine Yamal"
-  required>
+id="player"
+class="input"
+placeholder="z. B. Lamine Yamal"
+required>
 
 </div>
 
+<div class="group">
 
-<div class="form-group">
-
-<label>Verein</label>
+<label>
+Verein
+</label>
 
 <input
-  id="sellClub"
-  class="input"
-  list="clubs"
-  placeholder="z. B. FC Barcelona"
-  required>
-
-<div
-  id="clubError"
-  style="margin-top:5px;font-size:11px">
-</div>
+id="sellClub"
+class="input"
+list="clubs"
+placeholder="Verein"
+required>
 
 </div>
 
+<div class="group">
 
-<div class="form-group">
-
-<label>Kartenname</label>
+<label>
+Kartenname
+</label>
 
 <input
-  id="sellName"
-  class="input"
-  placeholder="z. B. Chrome Rookie Card"
-  required>
+id="name"
+class="input"
+placeholder="z. B. Chrome Rookie Card"
+required>
 
 </div>
 
+<div class="group">
 
-<div class="form-group">
-
-<label>Zustand</label>
+<label>
+Zustand
+</label>
 
 <select
-  id="sellCondition"
-  class="select"
-  required>
+id="condition"
+class="select"
+required>
 
 <option value="">
 Zustand auswählen
@@ -2142,209 +1083,161 @@ Zustand auswählen
 
 </div>
 
+<div class="group">
 
-<div class="form-group">
-
-<label>Preis (€)</label>
+<label>
+Preis
+</label>
 
 <input
-  id="sellPrice"
-  class="input"
-  type="number"
-  min=".50"
-  step=".01"
-  placeholder="10.00"
-  required>
+id="priceInput"
+class="input"
+type="number"
+min="0.5"
+step="0.01"
+placeholder="10.00"
+required>
 
 </div>
 
+<div class="group">
 
-<div class="form-group">
-
-<label>Beschreibung</label>
+<label>
+Beschreibung
+</label>
 
 <textarea
-  id="sellDescription"
-  class="textarea"
-  placeholder="Beschreibe deine Karte..."></textarea>
+id="desc"
+class="textarea"
+placeholder="Beschreibe deine Karte...">
+</textarea>
 
 </div>
 
+<div class="group">
 
-<div class="form-group">
-
-<label>Foto</label>
+<label>
+Foto
+</label>
 
 <input
-  id="sellPhoto"
-  class="input"
-  type="file"
-  accept="image/*">
+id="photo"
+class="input"
+type="file"
+accept="image/*">
 
 <img
-  id="photoPreview"
-  class="photo-preview"
-  alt="Vorschau">
+id="preview"
+style="display:none;width:100%;max-height:260px;object-fit:cover;border-radius:12px;margin-top:10px">
 
 </div>
 
-
 <button
-  type="submit"
-  class="primary-btn">
-  🚀 Karte einstellen
+class="btn"
+type="submit">
+🚀 Karte einstellen
 </button>
 
 </form>
 
-</div>
-
-
-<div class="sell-info">
-
-<h3>
-So funktioniert's
-</h3>
-
-<p>
-Erstelle ein Angebot für deine Karte.
-Andere Nutzer können sie entdecken,
-favorisieren und eine Kaufanfrage senden.
-</p>
-
-<ul>
-
-<li>✓ Spieler und Verein auswählen</li>
-<li>✓ Zustand angeben</li>
-<li>✓ Preis festlegen</li>
-<li>✓ Foto hinzufügen</li>
-<li>✓ Angebot veröffentlichen</li>
-
-</ul>
-
-</div>
-
-</div>
-
 </section>
 
 
-<!-- =====================================================
-     FAVORITES
-===================================================== -->
+<!-- FAVORITES -->
 
 <section
-  id="favorites"
-  class="page">
+id="favorites"
+class="page">
 
-<div class="section-head">
+<div class="head">
 
 <div>
-  <div class="section-title">
-    ❤️ Favoriten
-  </div>
+<h2>❤️ Meine Favoriten</h2>
 
-  <span class="section-sub">
-    Deine gespeicherten Karten
-  </span>
+<span class="muted">
+Gespeicherte Karten
+</span>
 </div>
 
 </div>
 
 <div
-  id="favoriteCards"
-  class="cards-grid">
+id="favGrid"
+class="grid">
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     MESSAGES
-===================================================== -->
+<!-- MESSAGES -->
 
 <section
-  id="messages"
-  class="page">
+id="messages"
+class="page">
 
-<div class="section-head">
+<div class="head">
 
 <div>
-  <div class="section-title">
-    💬 Nachrichten
-  </div>
+<h2>💬 Nachrichten</h2>
 
-  <span class="section-sub">
-    Deine Unterhaltungen
-  </span>
+<span class="muted">
+Deine Unterhaltungen
+</span>
 </div>
 
 </div>
-
-<div class="panel">
 
 <div
-  id="messagesList"
-  class="list">
-</div>
-
+id="msgList"
+class="list">
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     NOTIFICATIONS
-===================================================== -->
+<!-- NOTIFICATIONS -->
 
 <section
-  id="notifications"
-  class="page">
+id="notifications"
+class="page">
 
-<div class="section-head">
+<div class="head">
 
 <div>
-  <div class="section-title">
-    🔔 Benachrichtigungen
-  </div>
+<h2>🔔 Benachrichtigungen</h2>
 
-  <span class="section-sub">
-    Was bei deinen Karten passiert
-  </span>
+<span class="muted">
+Was gerade passiert
+</span>
+
 </div>
 
 <button
-  class="secondary-btn"
-  onclick="markNotificationsRead()">
-  Alle gelesen
+class="btn secondary small"
+onclick="readAll()">
+Alle gelesen
 </button>
 
 </div>
 
-<div class="panel">
-
 <div
-  id="notificationsList"
-  class="list">
-</div>
-
+id="noteList"
+class="list">
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     PROFILE
-===================================================== -->
+<!-- PROFILE -->
 
 <section
-  id="profile"
-  class="page">
+id="profile"
+class="page">
 
-<div class="profile-head">
+<div class="profile">
 
-<div class="big-avatar">
-  M
+<div class="avatar">
+M
 </div>
 
 <div>
@@ -2353,12 +1246,11 @@ favorisieren und eine Kaufanfrage senden.
 Mein Pixel-Cards-Profil
 </h2>
 
-<div class="rating">
-★★★★★
-<span>4.9</span>
+<div style="color:#b58b17;margin-top:4px">
+★★★★★ 4.9
 </div>
 
-<div class="user-small">
+<div class="muted">
 Sammler • Verkäufer
 </div>
 
@@ -2367,49 +1259,42 @@ Sammler • Verkäufer
 </div>
 
 
-<div class="section-head">
+<div class="head">
 
 <div>
-  <div class="section-title">
-    📦 Meine Angebote
-  </div>
+<h2>📦 Meine Angebote</h2>
 </div>
 
 <button
-  class="primary-btn"
-  onclick="showPage('sell')">
-  + Karte
+class="btn small"
+onclick="page('sell')">
++ Karte
 </button>
 
 </div>
 
 <div
-  id="myCards"
-  class="cards-grid">
+id="mine"
+class="grid">
 </div>
 
 
-<div class="section-head">
+<div class="head">
 
 <div>
-  <div class="section-title">
-    🛒 Kaufanfragen
-  </div>
+<h2>🛍️ Kaufanfragen</h2>
 
-  <span class="section-sub">
-    Anfragen zu deinen Karten
-  </span>
-</div>
+<span class="muted">
+Anfragen von anderen Nutzern
+</span>
 
 </div>
 
-<div class="panel">
+</div>
 
 <div
-  id="requestsList"
-  class="list">
-</div>
-
+id="requests"
+class="list">
 </div>
 
 </section>
@@ -2417,40 +1302,39 @@ Sammler • Verkäufer
 </main>
 
 
-<!-- =====================================================
-     MODAL
-===================================================== -->
+<!-- MODAL -->
 
 <div
-  id="cardModal"
-  class="modal-backdrop">
+id="modalbg"
+class="modalbg">
 
 <div class="modal">
 
-<div class="modal-head">
+<div class="modalhead">
 
 <div>
 
-<h2 id="modalTitle">
+<h2 id="mt">
 Karte
 </h2>
 
 <div
-  id="modalSubtitle"
-  class="section-sub">
+id="ms"
+class="muted">
 </div>
 
 </div>
 
 <button
-  class="close"
-  onclick="closeModal()">
+class="close"
+onclick="closeModal()">
 ✕
 </button>
 
 </div>
 
-<div id="modalContent">
+<div
+id="mc">
 </div>
 
 </div>
@@ -2459,23 +1343,19 @@ Karte
 
 
 <div
-  id="toast"
-  class="toast">
+id="toast"
+class="toast">
 </div>
 
 
 <script>
 "use strict";
 
-/* =====================================================
-   DATA
-===================================================== */
+const KEY="pixel_cards_v5";
+const VIEW="pixel_cards_views_v5";
+const REC="pixel_cards_recent_v5";
 
-const STORAGE_KEY="pixelCardsData_v5";
-const VIEW_KEY="pixelCardsViewed_v5";
-const RECENT_KEY="pixelCardsRecent_v5";
-
-const knownClubs=[
+const clubs=[
 "Real Madrid",
 "FC Barcelona",
 "PSG",
@@ -2493,22 +1373,22 @@ const knownClubs=[
 "Tottenham"
 ];
 
-const defaultCards=[
+const seed=[
 {
 id:1,
 player:"Lamine Yamal",
 club:"FC Barcelona",
 name:"Chrome Rookie Card",
 condition:"Neu",
-price:18.50,
-description:"Sehr schöne Rookie-Karte.",
+price:18.5,
 seller:"CardKing",
-sellerRating:4.9,
-created:Date.now()-1200000,
-isNew:true,
+rating:4.9,
 views:32,
-favorites:7,
-photo:""
+favs:7,
+created:Date.now()-1000000,
+isNew:true,
+photo:"",
+desc:"Sehr schöne Rookie-Karte."
 },
 {
 id:2,
@@ -2517,14 +1397,14 @@ club:"Real Madrid",
 name:"Stars Edition",
 condition:"Sehr gut",
 price:24.99,
-description:"Saubere Karte ohne sichtbare Schäden.",
 seller:"FootballFan",
-sellerRating:4.8,
-created:Date.now()-3600000,
-isNew:true,
+rating:4.8,
 views:47,
-favorites:10,
-photo:""
+favs:10,
+created:Date.now()-2000000,
+isNew:true,
+photo:"",
+desc:"Saubere Karte ohne sichtbare Schäden."
 },
 {
 id:3,
@@ -2533,14 +1413,14 @@ club:"Bayern München",
 name:"Future Stars",
 condition:"Neu",
 price:15,
-description:"Top Zustand.",
 seller:"MunichCards",
-sellerRating:5,
-created:Date.now()-7200000,
-isNew:false,
+rating:5,
 views:28,
-favorites:5,
-photo:""
+favs:5,
+created:Date.now()-3000000,
+isNew:false,
+photo:"",
+desc:"Top Zustand."
 },
 {
 id:4,
@@ -2548,15 +1428,15 @@ player:"Erling Haaland",
 club:"Manchester City",
 name:"Elite Card",
 condition:"Gut",
-price:9.90,
-description:"Gute Karte für Sammler.",
+price:9.9,
 seller:"BlueMoon",
-sellerRating:4.7,
-created:Date.now()-10800000,
-isNew:false,
+rating:4.7,
 views:61,
-favorites:12,
-photo:""
+favs:12,
+created:Date.now()-4000000,
+isNew:false,
+photo:"",
+desc:"Gute Karte für Sammler."
 },
 {
 id:5,
@@ -2564,1901 +1444,1275 @@ player:"Vitinha",
 club:"PSG",
 name:"Paris Stars",
 condition:"Sehr gut",
-price:12.50,
-description:"Schöne PSG-Karte.",
+price:12.5,
 seller:"ParisCollector",
-sellerRating:4.9,
-created:Date.now()-14400000,
-isNew:false,
+rating:4.9,
 views:22,
-favorites:4,
-photo:""
+favs:4,
+created:Date.now()-5000000,
+isNew:false,
+photo:"",
+desc:"Schöne PSG-Karte."
 }
 ];
 
-function initialData(){
-return{
-cards:JSON.parse(JSON.stringify(defaultCards)),
-favorites:[],
-notifications:[
-{
-id:1,
-text:"Willkommen bei Pixel Cards! 🎉",
-time:Date.now(),
-read:false
-}
-],
-messages:[
-{
-id:1,
-user:"CardKing",
-text:"Hey! Ist die Yamal-Karte noch verfügbar?",
-time:Date.now()-1500000,
-unread:true
-},
-{
-id:2,
-user:"FootballFan",
-text:"Danke für den schnellen Kontakt!",
-time:Date.now()-5400000,
-unread:false
-}
-],
-requests:[]
-};
-}
+let d=(()=>{
+  try{
+    const x=JSON.parse(
+      localStorage.getItem(KEY)
+    );
+
+    if(x)return x;
+
+  }catch(e){}
+
+  return{
+    cards:JSON.parse(
+      JSON.stringify(seed)
+    ),
+
+    fav:[],
+
+    notes:[
+      {
+        id:1,
+        text:"Willkommen bei Pixel Cards! 🎉",
+        time:Date.now(),
+        read:false
+      }
+    ],
+
+    messages:[
+      {
+        user:"CardKing",
+        text:"Hey! Ist die Yamal-Karte noch verfügbar?",
+        time:Date.now()-1500000,
+        unread:true
+      },
+      {
+        user:"FootballFan",
+        text:"Danke für den schnellen Kontakt!",
+        time:Date.now()-5400000,
+        unread:false
+      }
+    ],
+
+    requests:[]
+  };
+})();
 
 
-/* =====================================================
-   STORAGE
-===================================================== */
+function save(){
 
-function loadData(){
-
-try{
-
-const saved=localStorage.getItem(STORAGE_KEY);
-
-if(!saved){
-
-const d=initialData();
-
-localStorage.setItem(
-STORAGE_KEY,
-JSON.stringify(d)
-);
-
-return d;
-}
-
-const p=JSON.parse(saved);
-
-return{
-cards:Array.isArray(p.cards)
-?p.cards
-:JSON.parse(JSON.stringify(defaultCards)),
-
-favorites:Array.isArray(p.favorites)
-?p.favorites
-:[],
-
-notifications:Array.isArray(p.notifications)
-?p.notifications
-:[],
-
-messages:Array.isArray(p.messages)
-?p.messages
-:[],
-
-requests:Array.isArray(p.requests)
-?p.requests
-:[]
-};
-
-}catch(error){
-
-console.error(error);
-
-return initialData();
-
-}
-}
-
-let data=loadData();
-
-
-function saveData(){
-
-try{
-
-localStorage.setItem(
-STORAGE_KEY,
-JSON.stringify(data)
-);
-
-}catch(error){
-
-console.error(error);
-
-showToast(
-"Speichern nicht möglich."
-);
-
-}
-}
-
-
-/* =====================================================
-   HELPERS
-===================================================== */
-
-function escapeHTML(value){
-
-return String(value??"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-function price(value){
-
-return Number(value)
-.toFixed(2)
-.replace(".",",")+" €";
-
-}
-
-function date(value){
-
-return new Date(value)
-.toLocaleDateString("de-DE");
-
-}
-
-function initials(value){
-
-return String(value||"")
-.split(" ")
-.map(x=>x[0]||"")
-.join("")
-.slice(0,2)
-.toUpperCase();
-
-}
-
-function emoji(club){
-
-const emojis={
-"Real Madrid":"⚪",
-"FC Barcelona":"🔵",
-"PSG":"🔴",
-"Bayern München":"🔴",
-"Manchester City":"🔵",
-"Liverpool":"🔴",
-"Arsenal":"🔴",
-"Chelsea":"🔵"
-};
-
-return emojis[club]||"⚽";
-
-}
-
-function empty(icon,text){
-
-return`
-<div class="empty">
-  <div class="empty-icon">${icon}</div>
-  <div>${escapeHTML(text)}</div>
-</div>
-`;
+  localStorage.setItem(
+    KEY,
+    JSON.stringify(d)
+  );
 
 }
 
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+function esc(x){
 
-function showPage(id){
-
-document
-.querySelectorAll(".page")
-.forEach(page=>{
-page.classList.toggle(
-"active",
-page.id===id
-);
-});
-
-if(id==="home"){
-renderHome();
-}
-
-if(id==="market"){
-renderMarket();
-renderRecent();
-}
-
-if(id==="favorites"){
-renderFavorites();
-}
-
-if(id==="messages"){
-renderMessages();
-}
-
-if(id==="notifications"){
-renderNotifications();
-}
-
-if(id==="profile"){
-renderProfile();
-}
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+  return String(x??"")
+  .replace(/[&<>"']/g,m=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  }[m]));
 
 }
 
 
-/* =====================================================
-   SEARCH
-===================================================== */
+function money(x){
 
-function headerSearch(){
-
-const value=
-document.getElementById(
-"headerSearch"
-).value.trim();
-
-showPage("market");
-
-document.getElementById(
-"searchInput"
-).value=value;
-
-renderMarket();
-
-}
-
-function clearSearch(){
-
-document.getElementById(
-"searchInput"
-).value="";
-
-document.getElementById(
-"headerSearch"
-).value="";
-
-renderMarket();
+  return Number(x)
+  .toFixed(2)
+  .replace(".",",")+" €";
 
 }
 
 
-/* =====================================================
-   CARD HTML
-===================================================== */
+function empty(t){
 
-function cardHTML(card){
-
-const favorite=
-data.favorites.includes(
-Number(card.id)
-);
-
-const popular=
-Number(card.favorites||0)>=7 ||
-Number(card.views||0)>=40;
-
-let imageHTML="";
-
-if(card.photo){
-
-imageHTML=`
-<img
-  src="${escapeHTML(card.photo)}"
-  alt="${escapeHTML(card.player)}">
-`;
-
-}else{
-
-imageHTML=`
-<div class="card-placeholder">
-  ${emoji(card.club)}
-</div>
-`;
-
-}
-
-return`
-<article class="card">
-
-<div class="card-image">
-
-<div class="card-badges">
-
-${
-card.isNew
-?`<span class="badge-new">NEU</span>`
-:""
-}
-
-${
-popular
-?`<span class="badge-popular">🔥 BELIEBT</span>`
-:""
-}
-
-</div>
-
-${imageHTML}
-
-<button
-  class="favorite-btn ${favorite?"active":""}"
-  onclick="toggleFavorite(${Number(card.id)})"
-  aria-label="Favorit">
-
-${favorite?"♥":"♡"}
-
-</button>
-
-</div>
-
-
-<div class="card-content">
-
-<div class="card-player">
-${escapeHTML(card.player)}
-</div>
-
-<div class="card-name">
-${escapeHTML(card.name)}
-</div>
-
-<div class="card-meta">
-
-<span>
-${escapeHTML(card.club)}
-</span>
-
-<span class="dot">•</span>
-
-<span>
-${escapeHTML(card.condition)}
-</span>
-
-</div>
-
-
-<div class="card-price-row">
-
-<div class="card-price">
-${price(card.price)}
-</div>
-
-<div class="card-view">
-👁️ ${Number(card.views||0)}
-</div>
-
-</div>
-
-
-<div class="seller-row">
-
-<div class="seller-avatar">
-${initials(card.seller)}
-</div>
-
-<div class="seller-info">
-
-<div class="seller-name">
-${escapeHTML(card.seller)}
-</div>
-
-<div class="seller-rating">
-★ ${Number(card.sellerRating||5).toFixed(1)}
-</div>
-
-</div>
-
-<button
-  class="view-btn"
-  onclick="openCard(${Number(card.id)})">
-  Ansehen
-</button>
-
-</div>
-
-</div>
-
-</article>
-`;
+  return`
+    <div class="empty">
+      ${t}
+    </div>
+  `;
 
 }
 
 
-/* =====================================================
-   HOME
-===================================================== */
+function page(id){
 
-function renderHome(){
+  document
+  .querySelectorAll(".page")
+  .forEach(x=>{
+    x.classList.toggle(
+      "active",
+      x.id===id
+    );
+  });
 
-const latest=
-[...data.cards]
-.sort(
-(a,b)=>Number(b.created)-Number(a.created)
-)
-.slice(0,4);
+  document
+  .querySelectorAll(".nav")
+  .forEach(x=>{
+    x.classList.toggle(
+      "active",
+      x.dataset.p===id
+    );
+  });
 
-document.getElementById(
-"homeCards"
-).innerHTML=
+  if(id==="home")
+    home();
 
-latest.length
-?latest.map(cardHTML).join("")
-:empty("📦","Noch keine Karten.");
+  if(id==="market"){
+    renderMarket();
+    recent();
+  }
 
+  if(id==="favorites")
+    favorites();
 
-const popular=
-[...data.cards]
-.sort(
-(a,b)=>
-(
-Number(b.favorites||0)+
-Number(b.views||0)
-)-
-(
-Number(a.favorites||0)+
-Number(a.views||0)
-)
-)
-.slice(0,4);
+  if(id==="messages")
+    messages();
 
-document.getElementById(
-"popularCards"
-).innerHTML=
+  if(id==="notifications")
+    notes();
 
-popular.length
-?popular.map(cardHTML).join("")
-:empty("🔥","Noch keine beliebten Karten.");
+  if(id==="profile")
+    profile();
 
-updateStats();
+  scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
 
-/* =====================================================
-   MARKET
-===================================================== */
+function card(c){
+
+  const f=
+    d.fav.includes(c.id);
+
+  const pop=
+    c.favs>=7 ||
+    c.views>=40;
+
+  return`
+
+  <article class="card">
+
+    <div class="pic">
+
+      ${
+        c.isNew
+        ?
+        `<span class="tag">
+          NEU
+        </span>`
+        :
+        ""
+      }
+
+      ${
+        pop
+        ?
+        `<span class="popular">
+          🔥 BELIEBT
+        </span>`
+        :
+        ""
+      }
+
+      ${
+        c.photo
+        ?
+        `<img
+          src="${c.photo}"
+          alt="${esc(c.player)}">`
+        :
+        `<div class="ball">
+          ⚽
+        </div>`
+      }
+
+      <button
+        class="heart ${f?"active":""}"
+        onclick="fav(${c.id})">
+
+        ${f?"♥":"♡"}
+
+      </button>
+
+    </div>
+
+    <div class="body">
+
+      <div class="title">
+        ${esc(c.player)}
+      </div>
+
+      <div class="sub">
+        ${esc(c.club)}
+        •
+        ${esc(c.name)}
+      </div>
+
+      <div class="sub">
+        Zustand:
+        ${esc(c.condition)}
+        •
+        👁️ ${c.views||0}
+      </div>
+
+      <div class="bottom">
+
+        <div>
+
+          <div class="price">
+            ${money(c.price)}
+          </div>
+
+          <div class="seller">
+            ⭐ ${(c.rating||5).toFixed(1)}
+            •
+            ${esc(c.seller)}
+          </div>
+
+        </div>
+
+        <button
+          class="btn small"
+          onclick="openCard(${c.id})">
+
+          Ansehen
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </article>
+
+  `;
+
+}
+
+
+function home(){
+
+  const a=[
+    ...d.cards
+  ]
+  .sort(
+    (x,y)=>y.created-x.created
+  )
+  .slice(0,4);
+
+  const p=[
+    ...d.cards
+  ]
+  .sort(
+    (x,y)=>
+      (y.favs+y.views)-
+      (x.favs+x.views)
+  )
+  .slice(0,4);
+
+  homeGrid.innerHTML=
+    a.length
+    ?
+    a.map(card).join("")
+    :
+    empty("📦 Keine Karten.");
+
+  popGrid.innerHTML=
+    p.length
+    ?
+    p.map(card).join("")
+    :
+    empty("🔥 Keine Karten.");
+
+  s1.textContent=
+    d.cards.length;
+
+  s2.textContent=
+    d.fav.length;
+
+  s3.textContent=
+    d.requests.filter(
+      x=>x.status==="pending"
+    ).length;
+
+  badge.textContent=
+    d.notes.filter(
+      x=>!x.read
+    ).length;
+
+  badge.style.display=
+    d.notes.some(
+      x=>!x.read
+    )
+    ?
+    "inline"
+    :
+    "none";
+
+}
+
 
 function renderMarket(){
 
-const search=
-(
-document.getElementById(
-"searchInput"
-)?.value||""
-)
-.trim()
-.toLowerCase();
+  const qv=
+    q.value
+    .toLowerCase()
+    .trim();
 
-const club=
-(
-document.getElementById(
-"clubFilter"
-)?.value||""
-)
-.trim()
-.toLowerCase();
+  const cv=
+    club.value
+    .toLowerCase()
+    .trim();
 
-const condition=
-document.getElementById(
-"conditionFilter"
-)?.value||"";
+  const mn=
+    min.value===""
+    ?
+    0
+    :
+    +min.value;
 
-const sort=
-document.getElementById(
-"sortFilter"
-)?.value||"new";
+  const mx=
+    max.value===""
+    ?
+    Infinity
+    :
+    +max.value;
 
-const minValue=
-document.getElementById(
-"minPrice"
-)?.value;
+  let a=
+    d.cards.filter(c=>
+      (
+        !qv ||
+        `${c.player} ${c.club} ${c.name}`
+        .toLowerCase()
+        .includes(qv)
+      )
+      &&
+      (
+        !cv ||
+        c.club
+        .toLowerCase()
+        .includes(cv)
+      )
+      &&
+      (
+        !cond.value ||
+        c.condition===cond.value
+      )
+      &&
+      c.price>=mn &&
+      c.price<=mx
+    );
 
-const maxValue=
-document.getElementById(
-"maxPrice"
-)?.value;
+  if(sort.value==="cheap")
+    a.sort(
+      (x,y)=>x.price-y.price
+    );
 
-const min=
-minValue===""?0:Number(minValue);
+  else if(sort.value==="expensive")
+    a.sort(
+      (x,y)=>y.price-x.price
+    );
 
-const max=
-maxValue===""?Infinity:Number(maxValue);
+  else if(sort.value==="popular")
+    a.sort(
+      (x,y)=>
+        (y.favs+y.views)-
+        (x.favs+x.views)
+    );
 
+  else if(sort.value==="views")
+    a.sort(
+      (x,y)=>y.views-x.views
+    );
 
-const clear=
-document.getElementById(
-"clearSearch"
-);
+  else
+    a.sort(
+      (x,y)=>y.created-x.created
+    );
 
-if(clear){
+  count.textContent=
+    `${a.length} ${
+      a.length===1
+      ?"Karte"
+      :
+      "Karten"
+    } gefunden`;
 
-clear.style.display=
-search?"grid":"none";
-
-}
-
-
-let cards=
-data.cards.filter(card=>{
-
-const text=
-`${card.player} ${card.club} ${card.name}`
-.toLowerCase();
-
-return(
-(!search||text.includes(search))&&
-(!club||
-card.club.toLowerCase().includes(club))&&
-(!condition||
-card.condition===condition)&&
-Number(card.price)>=min&&
-Number(card.price)<=max
-);
-
-});
-
-
-if(sort==="cheap"){
-
-cards.sort(
-(a,b)=>Number(a.price)-Number(b.price)
-);
-
-}else if(sort==="expensive"){
-
-cards.sort(
-(a,b)=>Number(b.price)-Number(a.price)
-);
-
-}else if(sort==="popular"){
-
-cards.sort(
-(a,b)=>
-(
-Number(b.favorites||0)+
-Number(b.views||0)
-)-
-(
-Number(a.favorites||0)+
-Number(a.views||0)
-)
-);
-
-}else if(sort==="views"){
-
-cards.sort(
-(a,b)=>
-Number(b.views||0)-
-Number(a.views||0)
-);
-
-}else{
-
-cards.sort(
-(a,b)=>Number(b.created)-Number(a.created)
-);
+  marketGrid.innerHTML=
+    a.length
+    ?
+    a.map(card).join("")
+    :
+    empty("🔎 Keine Karten gefunden.");
 
 }
 
 
-document.getElementById(
-"marketCount"
-).textContent=
-`${cards.length} ${
-cards.length===1
-?"Karte"
-:"Karten"
-} gefunden`;
+function reset(){
 
+  q.value="";
+  min.value="";
+  max.value="";
+  club.value="";
+  cond.value="";
+  sort.value="new";
 
-document.getElementById(
-"marketCards"
-).innerHTML=
-
-cards.length
-?cards.map(cardHTML).join("")
-:empty(
-"🔎",
-"Keine Karten gefunden."
-);
+  renderMarket();
 
 }
 
 
-/* =====================================================
-   RESET
-===================================================== */
+function fav(id){
 
-function resetFilters(){
+  const c=
+    d.cards.find(
+      x=>x.id===id
+    );
 
-document.getElementById(
-"searchInput"
-).value="";
+  if(!c)return;
 
-document.getElementById(
-"headerSearch"
-).value="";
+  const i=
+    d.fav.indexOf(id);
 
-document.getElementById(
-"clubFilter"
-).value="";
+  if(i<0){
 
-document.getElementById(
-"minPrice"
-).value="";
+    d.fav.push(id);
 
-document.getElementById(
-"maxPrice"
-).value="";
+    c.favs=
+      (c.favs||0)+1;
 
-document.getElementById(
-"conditionFilter"
-).value="";
+    toast(
+      "❤️ Zu Favoriten hinzugefügt"
+    );
 
-document.getElementById(
-"sortFilter"
-).value="new";
+  }else{
 
-renderMarket();
+    d.fav.splice(i,1);
 
-showToast(
-"Filter zurückgesetzt"
-);
+    c.favs=
+      Math.max(
+        0,
+        (c.favs||0)-1
+      );
 
-}
+    toast(
+      "Favorit entfernt"
+    );
 
+  }
 
-/* =====================================================
-   FAVORITES
-===================================================== */
+  save();
 
-function toggleFavorite(id){
-
-const card=
-data.cards.find(
-c=>Number(c.id)===Number(id)
-);
-
-if(!card)return;
-
-const index=
-data.favorites.indexOf(
-Number(card.id)
-);
-
-if(index===-1){
-
-data.favorites.push(
-Number(card.id)
-);
-
-card.favorites=
-Number(card.favorites||0)+1;
-
-showToast(
-"❤️ Zu Favoriten hinzugefügt"
-);
-
-}else{
-
-data.favorites.splice(index,1);
-
-card.favorites=
-Math.max(
-0,
-Number(card.favorites||0)-1
-);
-
-showToast(
-"Favorit entfernt"
-);
-
-}
-
-saveData();
-
-renderHome();
-renderMarket();
-renderFavorites();
-updateStats();
+  home();
+  renderMarket();
+  favorites();
 
 }
 
 
-/* =====================================================
-   FAVORITES PAGE
-===================================================== */
+function favorites(){
 
-function renderFavorites(){
+  const a=
+    d.cards.filter(
+      c=>d.fav.includes(c.id)
+    );
 
-const cards=
-data.cards.filter(
-card=>
-data.favorites.includes(
-Number(card.id)
-)
-);
-
-document.getElementById(
-"favoriteCards"
-).innerHTML=
-
-cards.length
-?cards.map(cardHTML).join("")
-:empty(
-"❤️",
-"Du hast noch keine Favoriten."
-);
+  favGrid.innerHTML=
+    a.length
+    ?
+    a.map(card).join("")
+    :
+    empty(
+      "❤️ Noch keine Favoriten."
+    );
 
 }
 
 
-/* =====================================================
-   VIEWS + RECENT
-===================================================== */
+function recent(){
 
-function getViewed(){
+  const ids=
+    JSON.parse(
+      localStorage.getItem(REC)||"[]"
+    );
 
-try{
+  const a=
+    ids
+    .map(
+      id=>
+        d.cards.find(
+          c=>c.id===id
+        )
+    )
+    .filter(Boolean);
 
-const result=
-JSON.parse(
-localStorage.getItem(VIEW_KEY)
-);
-
-return Array.isArray(result)
-?result
-:[];
-
-}catch(error){
-
-return[];
-
-}
-}
-
-function getRecent(){
-
-try{
-
-const result=
-JSON.parse(
-localStorage.getItem(RECENT_KEY)
-);
-
-return Array.isArray(result)
-?result
-:[];
-
-}catch(error){
-
-return[];
-
-}
-}
-
-function saveRecent(list){
-
-try{
-
-localStorage.setItem(
-RECENT_KEY,
-JSON.stringify(list.slice(0,8))
-);
-
-}catch(error){}
-
-}
-
-function registerView(id){
-
-const card=
-data.cards.find(
-c=>Number(c.id)===Number(id)
-);
-
-if(!card)return;
-
-const viewed=getViewed();
-
-if(!viewed.includes(Number(card.id))){
-
-viewed.push(
-Number(card.id)
-);
-
-try{
-
-localStorage.setItem(
-VIEW_KEY,
-JSON.stringify(viewed)
-);
-
-}catch(error){}
-
-card.views=
-Number(card.views||0)+1;
-
-const recent=
-getRecent()
-.filter(
-x=>Number(x)!==Number(card.id)
-);
-
-recent.unshift(
-Number(card.id)
-);
-
-saveRecent(recent);
-
-saveData();
-
-}
-
-}
-
-function renderRecent(){
-
-const ids=getRecent();
-
-const cards=
-ids
-.map(
-id=>
-data.cards.find(
-card=>Number(card.id)===Number(id)
-)
-)
-.filter(Boolean);
-
-document.getElementById(
-"recentCards"
-).innerHTML=
-
-cards.length
-?cards.map(cardHTML).join("")
-:empty(
-"👁️",
-"Du hast noch keine Karten angesehen."
-);
+  recent.innerHTML=
+    a.length
+    ?
+    a.map(card).join("")
+    :
+    empty(
+      "👁️ Noch keine angesehenen Karten."
+    );
 
 }
 
 
-/* =====================================================
-   OPEN CARD
-===================================================== */
+function view(id){
+
+  const ids=
+    JSON.parse(
+      localStorage.getItem(VIEW)||"[]"
+    );
+
+  if(!ids.includes(id)){
+
+    ids.push(id);
+
+    localStorage.setItem(
+      VIEW,
+      JSON.stringify(ids)
+    );
+
+    const c=
+      d.cards.find(
+        x=>x.id===id
+      );
+
+    if(c)
+      c.views=
+        (c.views||0)+1;
+
+    let r=
+      JSON.parse(
+        localStorage.getItem(REC)||"[]"
+      )
+      .filter(
+        x=>x!==id
+      );
+
+    r.unshift(id);
+
+    localStorage.setItem(
+      REC,
+      JSON.stringify(
+        r.slice(0,8)
+      )
+    );
+
+    save();
+
+  }
+
+}
+
 
 function openCard(id){
 
-const card=
-data.cards.find(
-c=>Number(c.id)===Number(id)
-);
+  const c=
+    d.cards.find(
+      x=>x.id===id
+    );
 
-if(!card){
+  if(!c)return;
 
-showToast(
-"Karte nicht gefunden."
-);
+  view(id);
 
-return;
+  mt.textContent=
+    c.player;
 
-}
+  ms.textContent=
+    `${c.club} • ${c.name}`;
 
-registerView(card.id);
+  mc.innerHTML=`
 
+    <div
+      class="pic"
+      style="
+        border-radius:12px;
+        margin-bottom:13px
+      ">
 
-let image="";
+      ${
+        c.photo
+        ?
+        `<img src="${c.photo}">`
+        :
+        `<div class="ball">
+          ⚽
+        </div>`
+      }
 
-if(card.photo){
+    </div>
 
-image=`
-<img
-  class="modal-image"
-  src="${escapeHTML(card.photo)}"
-  alt="${escapeHTML(card.player)}">
-`;
+    <div class="list">
 
-}else{
+      <div class="item">
+        <span class="muted">
+          Preis
+        </span>
+        <b>
+          ${money(c.price)}
+        </b>
+      </div>
 
-image=`
-<div class="modal-placeholder">
-${emoji(card.club)}
-</div>
-`;
+      <div class="item">
+        <span class="muted">
+          Verein
+        </span>
+        <b>
+          ${esc(c.club)}
+        </b>
+      </div>
 
-}
+      <div class="item">
+        <span class="muted">
+          Zustand
+        </span>
+        <b>
+          ${esc(c.condition)}
+        </b>
+      </div>
 
+      <div class="item">
+        <span class="muted">
+          Verkäufer
+        </span>
+        <b>
+          ${esc(c.seller)}
+        </b>
+      </div>
 
-document.getElementById(
-"modalTitle"
-).textContent=
-card.player;
+      <div class="item">
+        <span class="muted">
+          Aufrufe
+        </span>
+        <b>
+          👁️ ${c.views}
+        </b>
+      </div>
 
+      <div class="panel">
 
-document.getElementById(
-"modalSubtitle"
-).textContent=
-`${card.club} • ${card.name}`;
+        <b>
+          Beschreibung
+        </b>
 
+        <p
+          class="muted"
+          style="margin-top:7px">
 
-document.getElementById(
-"modalContent"
-).innerHTML=`
+          ${esc(
+            c.desc ||
+            "Keine Beschreibung."
+          )}
 
-${image}
+        </p>
 
-<div class="detail-grid">
+      </div>
 
-<div class="detail">
-<div class="detail-label">Preis</div>
-<div class="detail-value">${price(card.price)}</div>
-</div>
+      <div class="row">
 
-<div class="detail">
-<div class="detail-label">Zustand</div>
-<div class="detail-value">${escapeHTML(card.condition)}</div>
-</div>
+        <button
+          class="btn green"
+          onclick="requestBuy(${id})">
 
-<div class="detail">
-<div class="detail-label">Verein</div>
-<div class="detail-value">${escapeHTML(card.club)}</div>
-</div>
+          🛒 Kaufanfrage senden
 
-<div class="detail">
-<div class="detail-label">Aufrufe</div>
-<div class="detail-value">👁️ ${Number(card.views||0)}</div>
-</div>
+        </button>
 
-<div class="detail">
-<div class="detail-label">Verkäufer</div>
-<div class="detail-value">${escapeHTML(card.seller)}</div>
-</div>
+        <button
+          class="btn secondary"
+          onclick="message('${esc(c.seller)}')">
 
-<div class="detail">
-<div class="detail-label">Bewertung</div>
-<div class="detail-value">★ ${Number(card.sellerRating||5).toFixed(1)}</div>
-</div>
+          💬 Verkäufer anschreiben
 
-</div>
+        </button>
 
-<div class="modal-description">
+      </div>
 
-<strong>Beschreibung</strong>
+    </div>
 
-<br><br>
+  `;
 
-${escapeHTML(
-card.description||
-"Keine Beschreibung vorhanden."
-)}
+  modalbg.classList.add("show");
 
-</div>
-
-<div class="modal-actions">
-
-<button
-class="primary-btn"
-onclick="requestPurchase(${Number(card.id)})">
-🛒 Kaufanfrage
-</button>
-
-<button
-class="secondary-btn"
-onclick="messageSeller('${escapeHTML(card.seller)}')">
-💬 Nachricht
-</button>
-
-</div>
-`;
-
-
-document.getElementById(
-"cardModal"
-).classList.add("show");
-
-
-renderRecent();
-
-}
-
-
-/* =====================================================
-   PURCHASE REQUEST
-===================================================== */
-
-function requestPurchase(id){
-
-const card=
-data.cards.find(
-c=>Number(c.id)===Number(id)
-);
-
-if(!card)return;
-
-
-const existing=
-data.requests.find(
-request=>
-Number(request.cardId)===Number(id)&&
-request.status==="pending"
-);
-
-if(existing){
-
-showToast(
-"Du hast bereits eine offene Anfrage."
-);
-
-return;
+  renderMarket();
+  recent();
 
 }
 
-
-data.requests.push({
-
-id:Date.now(),
-
-cardId:Number(card.id),
-
-cardName:card.player,
-
-buyer:"Mein Profil",
-
-seller:card.seller,
-
-status:"pending",
-
-created:Date.now()
-
-});
-
-
-data.notifications.unshift({
-
-id:Date.now()+1,
-
-text:
-`Kaufanfrage für ${card.player} erstellt.`,
-
-time:Date.now(),
-
-read:false
-
-});
-
-
-saveData();
-
-closeModal();
-
-updateStats();
-
-showToast(
-"🛒 Kaufanfrage gesendet!"
-);
-
-}
-
-
-/* =====================================================
-   MESSAGES
-===================================================== */
-
-function messageSeller(seller){
-
-data.messages.unshift({
-
-id:Date.now(),
-
-user:seller,
-
-text:"Neue Unterhaltung gestartet.",
-
-time:Date.now(),
-
-unread:true
-
-});
-
-saveData();
-
-closeModal();
-
-showPage("messages");
-
-showToast(
-"💬 Unterhaltung erstellt"
-);
-
-}
-
-function renderMessages(){
-
-const box=
-document.getElementById(
-"messagesList"
-);
-
-if(!data.messages.length){
-
-box.innerHTML=
-empty(
-"💬",
-"Noch keine Nachrichten."
-);
-
-return;
-
-}
-
-
-box.innerHTML=
-data.messages.map(
-message=>`
-
-<div class="list-item">
-
-<div class="user-info">
-
-<div class="avatar">
-${initials(message.user)}
-</div>
-
-<div>
-
-<div class="user-name">
-${escapeHTML(message.user)}
-${message.unread?" 🔵":""}
-</div>
-
-<div class="user-small">
-${escapeHTML(message.text)}
-</div>
-
-</div>
-
-</div>
-
-<div class="user-small">
-${date(message.time)}
-</div>
-
-</div>
-
-`
-).join("");
-
-}
-
-
-/* =====================================================
-   SELL PHOTO
-===================================================== */
-
-let selectedPhoto="";
-
-document
-.getElementById("sellPhoto")
-.addEventListener(
-"change",
-function(){
-
-const file=this.files[0];
-
-if(!file){
-
-selectedPhoto="";
-
-document.getElementById(
-"photoPreview"
-).style.display="none";
-
-return;
-
-}
-
-
-if(!file.type.startsWith("image/")){
-
-showToast(
-"Bitte ein Bild auswählen."
-);
-
-this.value="";
-
-return;
-
-}
-
-
-if(file.size>1500000){
-
-showToast(
-"Das Bild darf maximal 1,5 MB groß sein."
-);
-
-this.value="";
-
-return;
-
-}
-
-
-const reader=new FileReader();
-
-reader.onload=function(){
-
-selectedPhoto=reader.result;
-
-const preview=
-document.getElementById(
-"photoPreview"
-);
-
-preview.src=selectedPhoto;
-
-preview.style.display="block";
-
-};
-
-reader.readAsDataURL(file);
-
-}
-);
-
-
-/* =====================================================
-   CLUB CHECK
-===================================================== */
-
-document
-.getElementById("sellClub")
-.addEventListener(
-"input",
-function(){
-
-const value=
-this.value.trim();
-
-const error=
-document.getElementById(
-"clubError"
-);
-
-if(!value){
-
-error.textContent="";
-
-return;
-
-}
-
-const found=
-knownClubs.some(
-club=>
-club.toLowerCase()===
-value.toLowerCase()
-);
-
-if(found){
-
-error.textContent=
-"✓ Verein erkannt";
-
-error.style.color=
-"var(--green)";
-
-}else{
-
-error.textContent=
-"Unbekannter Verein → wird als „Kein Verein“ gespeichert.";
-
-error.style.color=
-"var(--red)";
-
-}
-
-}
-);
-
-
-/* =====================================================
-   SELL FORM
-===================================================== */
-
-document
-.getElementById("sellForm")
-.addEventListener(
-"submit",
-function(event){
-
-event.preventDefault();
-
-
-const player=
-document.getElementById(
-"sellPlayer"
-).value.trim();
-
-const club=
-document.getElementById(
-"sellClub"
-).value.trim();
-
-const name=
-document.getElementById(
-"sellName"
-).value.trim();
-
-const condition=
-document.getElementById(
-"sellCondition"
-).value;
-
-const priceValue=
-Number(
-document.getElementById(
-"sellPrice"
-).value
-);
-
-const description=
-document.getElementById(
-"sellDescription"
-).value.trim();
-
-
-if(
-!player||
-!club||
-!name||
-!condition||
-!Number.isFinite(priceValue)||
-priceValue<=0
-){
-
-showToast(
-"Bitte fülle alle Pflichtfelder aus."
-);
-
-return;
-
-}
-
-
-const known=
-knownClubs.find(
-item=>
-item.toLowerCase()===
-club.toLowerCase()
-);
-
-const officialClub=
-known||"Kein Verein";
-
-
-const newCard={
-
-id:Date.now(),
-
-player:player,
-
-club:officialClub,
-
-name:name,
-
-condition:condition,
-
-price:priceValue,
-
-description:description,
-
-seller:"Mein Profil",
-
-sellerRating:5,
-
-created:Date.now(),
-
-isNew:true,
-
-views:0,
-
-favorites:0,
-
-photo:selectedPhoto||""
-
-};
-
-
-data.cards.unshift(
-newCard
-);
-
-
-data.notifications.unshift({
-
-id:Date.now()+1,
-
-text:
-`Deine Karte "${player}" wurde eingestellt. 🎉`,
-
-time:Date.now(),
-
-read:false
-
-});
-
-
-saveData();
-
-
-this.reset();
-
-selectedPhoto="";
-
-document.getElementById(
-"photoPreview"
-).style.display="none";
-
-document.getElementById(
-"clubError"
-).textContent="";
-
-
-showToast(
-"🚀 Karte erfolgreich eingestellt!"
-);
-
-
-showPage("market");
-
-}
-);
-
-
-/* =====================================================
-   PROFILE
-===================================================== */
-
-function renderProfile(){
-
-const cards=
-data.cards.filter(
-card=>
-card.seller==="Mein Profil"
-);
-
-document.getElementById(
-"myCards"
-).innerHTML=
-
-cards.length
-?cards.map(cardHTML).join("")
-:empty(
-"📦",
-"Du hast noch keine Karten eingestellt."
-);
-
-renderRequests();
-
-}
-
-
-/* =====================================================
-   REQUESTS
-===================================================== */
-
-function renderRequests(){
-
-const box=
-document.getElementById(
-"requestsList"
-);
-
-if(!data.requests.length){
-
-box.innerHTML=
-empty(
-"🛒",
-"Noch keine Kaufanfragen."
-);
-
-return;
-
-}
-
-
-box.innerHTML=
-data.requests.map(
-request=>`
-
-<div class="list-item">
-
-<div>
-
-<div class="user-name">
-${escapeHTML(request.cardName)}
-</div>
-
-<div class="user-small">
-Käufer:
-${escapeHTML(request.buyer)}
-•
-${date(request.created)}
-</div>
-
-</div>
-
-<div class="actions">
-
-${
-request.status==="pending"
-?
-
-`
-<button
-class="small-btn green"
-onclick="acceptRequest(${Number(request.id)})">
-✓ Annehmen
-</button>
-
-<button
-class="small-btn red"
-onclick="rejectRequest(${Number(request.id)})">
-✕ Ablehnen
-</button>
-`
-
-:
-
-`
-<span class="user-small">
-${
-request.status==="accepted"
-?"✓ Angenommen"
-:"✕ Abgelehnt"
-}
-</span>
-`
-
-}
-
-</div>
-
-</div>
-
-`
-).join("");
-
-}
-
-
-function acceptRequest(id){
-
-const request=
-data.requests.find(
-item=>
-Number(item.id)===Number(id)
-);
-
-if(!request)return;
-
-request.status="accepted";
-
-
-data.notifications.unshift({
-
-id:Date.now(),
-
-text:
-`Kaufanfrage für ${request.cardName} angenommen. ✅`,
-
-time:Date.now(),
-
-read:false
-
-});
-
-
-saveData();
-
-renderProfile();
-
-updateStats();
-
-showToast(
-"✓ Anfrage angenommen"
-);
-
-}
-
-
-function rejectRequest(id){
-
-const request=
-data.requests.find(
-item=>
-Number(item.id)===Number(id)
-);
-
-if(!request)return;
-
-request.status="rejected";
-
-
-data.notifications.unshift({
-
-id:Date.now(),
-
-text:
-`Kaufanfrage für ${request.cardName} abgelehnt.`,
-
-time:Date.now(),
-
-read:false
-
-});
-
-
-saveData();
-
-renderProfile();
-
-updateStats();
-
-showToast(
-"Anfrage abgelehnt"
-);
-
-}
-
-
-/* =====================================================
-   NOTIFICATIONS
-===================================================== */
-
-function updateNotificationBadge(){
-
-const count=
-data.notifications.filter(
-notification=>!notification.read
-).length;
-
-const badge=
-document.getElementById(
-"notificationBadge"
-);
-
-badge.textContent=count;
-
-badge.style.display=
-count?"grid":"none";
-
-}
-
-
-function renderNotifications(){
-
-const box=
-document.getElementById(
-"notificationsList"
-);
-
-if(!data.notifications.length){
-
-box.innerHTML=
-empty(
-"🔔",
-"Keine Benachrichtigungen."
-);
-
-return;
-
-}
-
-
-box.innerHTML=
-data.notifications.map(
-notification=>`
-
-<div
-class="list-item"
-style="${
-notification.read
-?"opacity:.5"
-:""
-}">
-
-<div class="user-info">
-
-<div class="avatar">
-🔔
-</div>
-
-<div>
-
-<div class="user-name">
-${escapeHTML(notification.text)}
-</div>
-
-<div class="user-small">
-${date(notification.time)}
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-`
-).join("");
-
-}
-
-
-function markNotificationsRead(){
-
-data.notifications.forEach(
-notification=>
-notification.read=true
-);
-
-saveData();
-
-updateNotificationBadge();
-
-renderNotifications();
-
-showToast(
-"✓ Alle Benachrichtigungen gelesen"
-);
-
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
-
-function updateStats(){
-
-document.getElementById(
-"statCards"
-).textContent=
-data.cards.length;
-
-document.getElementById(
-"statFavorites"
-).textContent=
-data.favorites.length;
-
-document.getElementById(
-"statRequests"
-).textContent=
-data.requests.filter(
-request=>
-request.status==="pending"
-).length;
-
-updateNotificationBadge();
-
-}
-
-
-/* =====================================================
-   MODAL
-===================================================== */
 
 function closeModal(){
 
-document
-.getElementById("cardModal")
-.classList.remove("show");
+  modalbg.classList.remove(
+    "show"
+  );
 
 }
 
 
-document
-.getElementById("cardModal")
-.addEventListener(
-"click",
-function(event){
+function requestBuy(id){
 
-if(event.target===this){
+  const c=
+    d.cards.find(
+      x=>x.id===id
+    );
 
-closeModal();
+  if(!c)return;
+
+  if(
+    d.requests.some(
+      r=>
+        r.cardId===id &&
+        r.status==="pending"
+    )
+  ){
+
+    toast(
+      "Anfrage bereits gesendet."
+    );
+
+    return;
+
+  }
+
+  d.requests.push({
+
+    id:Date.now(),
+
+    cardId:id,
+
+    cardName:c.player,
+
+    buyer:"Mein Profil",
+
+    seller:c.seller,
+
+    status:"pending",
+
+    created:Date.now()
+
+  });
+
+  d.notes.unshift({
+
+    id:Date.now(),
+
+    text:
+      `Kaufanfrage für ${c.player} erstellt.`,
+
+    time:Date.now(),
+
+    read:false
+
+  });
+
+  save();
+
+  closeModal();
+
+  home();
+
+  toast(
+    "🛒 Kaufanfrage gesendet!"
+  );
 
 }
 
-}
-);
 
+function message(s){
 
-document.addEventListener(
-"keydown",
-function(event){
+  d.messages.unshift({
 
-if(event.key==="Escape"){
+    user:s,
 
-closeModal();
+    text:
+      "Neue Unterhaltung gestartet.",
 
-}
+    time:Date.now(),
 
-}
-);
+    unread:true
 
+  });
 
-/* =====================================================
-   TOAST
-===================================================== */
+  save();
 
-let toastTimer=null;
+  closeModal();
 
-function showToast(message){
+  page("messages");
 
-const toast=
-document.getElementById(
-"toast"
-);
-
-toast.textContent=message;
-
-toast.classList.add("show");
-
-clearTimeout(toastTimer);
-
-toastTimer=setTimeout(
-()=>{
-toast.classList.remove("show");
-},
-2500
-);
+  toast(
+    "💬 Nachricht erstellt"
+  );
 
 }
 
 
-/* =====================================================
-   INITIALIZE
-===================================================== */
+function messages(){
 
-renderHome();
+  msgList.innerHTML=
+    d.messages.length
+    ?
+    d.messages.map(
+      m=>`
 
+      <div class="item">
+
+        <div>
+
+          <b>
+            ${esc(m.user)}
+            ${m.unread?"🔵":""}
+          </b>
+
+          <div class="muted">
+            ${esc(m.text)}
+          </div>
+
+        </div>
+
+        <span class="muted">
+          ${new Date(
+            m.time
+          ).toLocaleDateString("de-DE")}
+        </span>
+
+      </div>
+
+      `
+    ).join("")
+    :
+    empty(
+      "💬 Keine Nachrichten."
+    );
+
+}
+
+
+function notes(){
+
+  noteList.innerHTML=
+    d.notes.length
+    ?
+    d.notes.map(
+      n=>`
+
+      <div
+        class="item"
+        style="${
+          n.read
+          ?
+          "opacity:.5"
+          :
+          ""
+        }">
+
+        <b>
+          🔔 ${esc(n.text)}
+        </b>
+
+        <span class="muted">
+          ${new Date(
+            n.time
+          ).toLocaleDateString("de-DE")}
+        </span>
+
+      </div>
+
+      `
+    ).join("")
+    :
+    empty(
+      "🔔 Keine Benachrichtigungen."
+    );
+
+}
+
+
+function readAll(){
+
+  d.notes.forEach(
+    n=>n.read=true
+  );
+
+  save();
+
+  notes();
+  home();
+
+  toast(
+    "✓ Alle gelesen"
+  );
+
+}
+
+
+function profile(){
+
+  const a=
+    d.cards.filter(
+      c=>c.seller==="Mein Profil"
+    );
+
+  mine.innerHTML=
+    a.length
+    ?
+    a.map(card).join("")
+    :
+    empty(
+      "📦 Keine eigenen Karten."
+    );
+
+  requests.innerHTML=
+    d.requests.length
+    ?
+    d.requests.map(
+      r=>`
+
+      <div class="item">
+
+        <div>
+
+          <b>
+            ${esc(r.cardName)}
+          </b>
+
+          <div class="muted">
+            Käufer:
+            ${esc(r.buyer)}
+          </div>
+
+        </div>
+
+        ${
+          r.status==="pending"
+          ?
+          `
+          <div class="row">
+
+            <button
+              class="btn green small"
+              onclick="accept(${r.id})">
+
+              ✓ Annehmen
+
+            </button>
+
+            <button
+              class="btn red small"
+              onclick="reject(${r.id})">
+
+              ✕ Ablehnen
+
+            </button>
+
+          </div>
+          `
+          :
+          `
+          <span class="muted">
+
+            ${
+              r.status==="accepted"
+              ?
+              "✓ Angenommen"
+              :
+              "✕ Abgelehnt"
+            }
+
+          </span>
+          `
+        }
+
+      </div>
+
+      `
+    ).join("")
+    :
+    empty(
+      "🛒 Keine Kaufanfragen."
+    );
+
+}
+
+
+function accept(id){
+
+  const r=
+    d.requests.find(
+      x=>x.id===id
+    );
+
+  if(!r)return;
+
+  r.status="accepted";
+
+  d.notes.unshift({
+
+    id:Date.now(),
+
+    text:
+      `Kaufanfrage für ${r.cardName} angenommen.`,
+
+    time:Date.now(),
+
+    read:false
+
+  });
+
+  save();
+
+  profile();
+  home();
+
+  toast(
+    "✅ Angenommen"
+  );
+
+}
+
+
+function reject(id){
+
+  const r=
+    d.requests.find(
+      x=>x.id===id
+    );
+
+  if(!r)return;
+
+  r.status="rejected";
+
+  d.notes.unshift({
+
+    id:Date.now(),
+
+    text:
+      `Kaufanfrage für ${r.cardName} abgelehnt.`,
+
+    time:Date.now(),
+
+    read:false
+
+  });
+
+  save();
+
+  profile();
+  home();
+
+  toast(
+    "Anfrage abgelehnt"
+  );
+
+}
+
+
+/* FOTO */
+
+let selected="";
+
+photo.onchange=()=>{
+
+  const f=
+    photo.files[0];
+
+  if(!f)return;
+
+  if(
+    !f.type.startsWith("image/") ||
+    f.size>1500000
+  ){
+
+    toast(
+      "Bild ungültig oder über 1,5 MB."
+    );
+
+    photo.value="";
+
+    return;
+
+  }
+
+  const r=
+    new FileReader();
+
+  r.onload=()=>{
+
+    selected=
+      r.result;
+
+    preview.src=
+      selected;
+
+    preview.style.display=
+      "block";
+
+  };
+
+  r.readAsDataURL(f);
+
+};
+
+
+/* SELL */
+
+form.onsubmit=e=>{
+
+  e.preventDefault();
+
+  const p=
+    player.value.trim();
+
+  const c=
+    sellClub.value.trim();
+
+  const n=
+    name.value.trim();
+
+  const co=
+    condition.value;
+
+  const pr=
+    +priceInput.value;
+
+  if(
+    !p ||
+    !c ||
+    !n ||
+    !co ||
+    !Number.isFinite(pr) ||
+    pr<=0
+  ){
+
+    toast(
+      "Bitte alle Pflichtfelder ausfüllen."
+    );
+
+    return;
+
+  }
+
+  const known=
+    clubs.find(
+      x=>
+        x.toLowerCase()===
+        c.toLowerCase()
+    )
+    ||
+    "Kein Verein";
+
+  d.cards.unshift({
+
+    id:Date.now(),
+
+    player:p,
+
+    club:known,
+
+    name:n,
+
+    condition:co,
+
+    price:pr,
+
+    seller:"Mein Profil",
+
+    rating:5,
+
+    views:0,
+
+    favs:0,
+
+    created:Date.now(),
+
+    isNew:true,
+
+    photo:selected,
+
+    desc:
+      desc.value.trim()
+
+  });
+
+  d.notes.unshift({
+
+    id:Date.now(),
+
+    text:
+      `Deine Karte "${p}" wurde eingestellt. 🎉`,
+
+    time:Date.now(),
+
+    read:false
+
+  });
+
+  save();
+
+  form.reset();
+
+  selected="";
+
+  preview.style.display=
+    "none";
+
+  page("market");
+
+  toast(
+    "🚀 Karte eingestellt!"
+  );
+
+};
+
+
+/* MODAL */
+
+modalbg.onclick=e=>{
+
+  if(
+    e.target===modalbg
+  )
+    closeModal();
+
+};
+
+
+document.onkeydown=e=>{
+
+  if(
+    e.key==="Escape"
+  )
+    closeModal();
+
+};
+
+
+/* START */
+
+home();
 renderMarket();
-
-renderFavorites();
-
-renderRecent();
-
-renderMessages();
-
-renderNotifications();
-
-renderProfile();
-
-updateStats();
+favorites();
+recent();
+messages();
+notes();
+profile();
 
 </script>
 
