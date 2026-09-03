@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -8,14 +8,14 @@
 <style>
 :root{
   --bg:#070707;
-  --panel:#111;
-  --panel2:#171717;
+  --p:#111;
+  --p2:#171717;
   --line:#292929;
-  --accent:#18d4c5;
-  --text:#fff;
+  --a:#18d4c5;
+  --txt:#fff;
   --muted:#8d8d8d;
-  --green:#39d98a;
-  --red:#ff5555;
+  --g:#39d98a;
+  --r:#ff5555;
 }
 
 *{
@@ -25,12 +25,13 @@
 
 html,body{
   overflow-x:hidden;
+  touch-action:pan-y;
 }
 
 body{
-  font-family:Arial,sans-serif;
+  font:14px Arial,sans-serif;
   background:var(--bg);
-  color:var(--text);
+  color:var(--txt);
 }
 
 button,input,select,textarea{
@@ -46,12 +47,10 @@ button:disabled{
   cursor:not-allowed;
 }
 
-/* HEADER */
-
 .header{
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:10;
   background:#080808f5;
   border-bottom:1px solid var(--line);
   backdrop-filter:blur(15px);
@@ -72,7 +71,7 @@ button:disabled{
 }
 
 .logo b{
-  color:var(--accent);
+  color:var(--a);
 }
 
 .actions{
@@ -80,43 +79,46 @@ button:disabled{
   gap:7px;
 }
 
-.icon{
-  position:relative;
-  min-width:44px;
-  height:42px;
-  padding:0 12px;
+.icon,
+.nav button,
+.btn{
   border:1px solid var(--line);
-  background:var(--panel);
+  background:var(--p);
   color:#fff;
   border-radius:10px;
+  padding:10px 13px;
 }
 
-.icon:hover{
-  border-color:var(--accent);
+.icon{
+  width:42px;
+  height:42px;
+  padding:0;
+  position:relative;
+}
+
+.icon:hover,
+.nav button:hover,
+.nav .on{
+  border-color:var(--a);
 }
 
 .badge{
   position:absolute;
   right:-5px;
   top:-5px;
-  background:var(--accent);
+  background:var(--a);
   color:#000;
   border-radius:20px;
   font-size:10px;
-  font-weight:900;
-  padding:3px 6px;
+  padding:2px 6px;
   display:none;
 }
-
-/* LAYOUT */
 
 .wrap{
   max-width:1400px;
   margin:auto;
   padding:0 18px 70px;
 }
-
-/* NAVIGATION */
 
 .nav{
   display:grid;
@@ -126,25 +128,15 @@ button:disabled{
 }
 
 .nav button{
-  border:1px solid var(--line);
-  background:var(--panel);
+  padding:10px 5px;
   color:#aaa;
-  border-radius:10px;
-  padding:11px 5px;
-  font-weight:700;
 }
 
-.nav button:hover{
-  border-color:var(--accent);
-}
-
-.nav button.on{
-  background:var(--accent);
+.nav .on{
+  background:var(--a);
   color:#000;
-  border-color:var(--accent);
+  font-weight:900;
 }
-
-/* PAGES */
 
 .page{
   display:none;
@@ -155,30 +147,37 @@ button:disabled{
   display:block;
 }
 
-/* HERO */
+.hero,
+.panel,
+.card{
+  background:var(--p);
+  border:1px solid var(--line);
+  border-radius:16px;
+}
 
 .hero{
+  padding:35px;
+  margin-bottom:16px;
   background:
     radial-gradient(circle at 80% 10%,#18d4c522,transparent 35%),
     linear-gradient(135deg,#181818,#090909);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:35px;
-  margin-bottom:15px;
+}
+
+h1{
+  font-size:30px;
 }
 
 .hero h1{
   font-size:clamp(36px,6vw,60px);
-  line-height:1.05;
 }
 
 .hero h1 span{
-  color:var(--accent);
+  color:var(--a);
 }
 
-.hero p{
-  max-width:650px;
-  margin-top:12px;
+p{
+  color:var(--muted);
+  line-height:1.5;
 }
 
 .actions2{
@@ -188,65 +187,11 @@ button:disabled{
   flex-wrap:wrap;
 }
 
-/* TEXT */
-
-h1{
-  font-size:30px;
-}
-
-h2{
-  font-size:20px;
-}
-
-h3{
-  font-size:17px;
-}
-
-p{
-  color:var(--muted);
-  line-height:1.5;
-}
-
-/* BUTTONS */
-
-.btn{
-  border:1px solid var(--line);
-  background:var(--panel);
-  color:#fff;
-  border-radius:10px;
-  padding:10px 13px;
-}
-
-.btn:hover{
-  border-color:var(--accent);
-}
-
-.btn.primary{
-  background:var(--accent);
+.primary{
+  background:var(--a);
   color:#000;
-  border-color:var(--accent);
-  font-weight:900;
+  border-color:var(--a);
 }
-
-/* PANELS */
-
-.panel{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:18px;
-  margin-bottom:12px;
-}
-
-.headrow{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:12px;
-}
-
-/* GRID */
 
 .grid{
   display:grid;
@@ -254,7 +199,11 @@ p{
   gap:12px;
 }
 
-/* STATS */
+.test-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
 
 .stats{
   display:grid;
@@ -264,7 +213,7 @@ p{
 }
 
 .stat{
-  background:var(--panel);
+  background:var(--p);
   border:1px solid var(--line);
   padding:15px;
   border-radius:12px;
@@ -281,28 +230,61 @@ p{
 }
 
 .accent{
-  color:var(--accent);
+  color:var(--a);
 }
 
-/* CARDS */
+.panel{
+  padding:18px;
+  margin-bottom:12px;
+}
+
+.headrow{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.search{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr 1fr;
+  gap:8px;
+  margin-bottom:15px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  background:#0b0b0b;
+  color:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:11px;
+  outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:var(--a);
+}
 
 .card{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:16px;
   overflow:hidden;
-  transition:.15s;
+  transition:.18s;
 }
 
 .card:hover{
   transform:translateY(-2px);
-  border-color:var(--accent);
+  border-color:#3b3b3b;
 }
 
 .pic{
-  aspect-ratio:4/5;
-  background:#191919;
+  height:250px;
   position:relative;
+  background:#0b0b0b;
+  overflow:hidden;
 }
 
 .pic img{
@@ -315,456 +297,336 @@ p{
 
 .top{
   position:absolute;
-  top:8px;
-  left:8px;
-  right:8px;
+  left:10px;
+  right:10px;
+  top:10px;
   display:flex;
   justify-content:space-between;
-}
-
-.tags{
-  display:flex;
-  gap:5px;
-  flex-wrap:wrap;
+  align-items:flex-start;
 }
 
 .tag{
-  background:#000d;
-  padding:6px 8px;
+  display:inline-block;
+  background:#252525;
+  color:#fff;
   border-radius:7px;
+  padding:5px 7px;
   font-size:10px;
-  font-weight:900;
+  font-weight:800;
+  margin-right:4px;
 }
 
 .tag.a{
-  background:var(--accent);
+  background:var(--a);
   color:#000;
 }
 
 .heart{
-  background:#000c;
-  color:#fff;
-  border:1px solid #444;
+  width:36px;
+  height:36px;
+  border:1px solid var(--line);
   border-radius:50%;
-  width:38px;
-  height:38px;
-  font-size:18px;
+  background:#111d;
+  color:#fff;
+  font-size:19px;
 }
 
 .heart.active{
-  color:var(--accent);
+  color:var(--a);
+  border-color:var(--a);
 }
 
 .body{
-  padding:12px;
+  padding:15px;
 }
 
 .player{
+  font-size:19px;
   font-weight:900;
-  font-size:17px;
+  margin-bottom:5px;
 }
 
 .sub{
-  font-size:12px;
   color:var(--muted);
-  margin:4px 0 10px;
+  font-size:12px;
 }
 
 .price{
-  color:var(--accent);
+  color:var(--a);
   font-size:21px;
   font-weight:900;
+  margin:10px 0;
 }
 
 .seller{
   display:flex;
-  gap:8px;
   align-items:center;
-  border-top:1px solid var(--line);
-  padding-top:9px;
-  margin-top:9px;
+  gap:8px;
+  margin:10px 0 13px;
   cursor:pointer;
 }
 
 .avatar{
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  background:var(--accent);
-  color:#000;
+  width:32px;
+  height:32px;
   display:grid;
   place-items:center;
+  background:#202020;
+  border:1px solid var(--line);
+  border-radius:50%;
   font-weight:900;
-  flex-shrink:0;
+  color:var(--a);
 }
 
 .cardbuttons{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:6px;
-  margin-top:10px;
+  gap:7px;
 }
 
-/* SEARCH */
-
-.search{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:8px;
-  margin:10px 0;
-}
-
-.search input,
-.filters input,
-.filters select,
-.form input,
-.form select,
-.form textarea{
-  width:100%;
-  background:#090909;
-  color:#fff;
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:12px;
-  outline:0;
-}
-
-.search input:focus,
-.filters input:focus,
-.filters select:focus,
-.form input:focus,
-.form select:focus,
-.form textarea:focus{
-  border-color:var(--accent);
-}
-
-.filters{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:8px;
-  margin-bottom:14px;
-}
-
-/* FORMS */
-
-.formgrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.form{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.full{
-  grid-column:1/-1;
-}
-
-.upload{
-  min-height:250px;
-  border:1px dashed #444;
-  border-radius:12px;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  overflow:hidden;
-  cursor:pointer;
-}
-
-.upload:hover{
-  border-color:var(--accent);
-}
-
-.upload img{
-  max-width:100%;
-  max-height:320px;
-  object-fit:contain;
-}
-
-/* LISTS */
-
-.list{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-
-.item{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  background:#0b0b0b;
-  border:1px solid var(--line);
-  padding:11px;
-  border-radius:11px;
-}
-
-.left{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  min-width:0;
-}
-
-.thumb{
-  width:45px;
-  height:55px;
-  object-fit:cover;
-  border-radius:7px;
-  background:#222;
+.btn{
+  min-height:40px;
 }
 
 .empty{
-  text-align:center;
-  color:#777;
-  border:1px dashed #333;
   padding:35px;
-  border-radius:11px;
+  text-align:center;
+  color:var(--muted);
+  border:1px dashed var(--line);
+  border-radius:14px;
 }
 
-/* MENU */
-
-.menu{
+.list{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:7px;
-  margin-bottom:12px;
+  gap:9px;
 }
 
-.menu button{
-  background:#0b0b0b;
-  color:#fff;
+.row{
+  padding:14px;
   border:1px solid var(--line);
-  border-radius:10px;
-  padding:12px 5px;
-  font-weight:800;
+  border-radius:12px;
+  background:#0d0d0d;
 }
 
-.menu button:hover{
-  border-color:var(--accent);
+.rowhead{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
 }
-
-/* REQUEST STATUS */
-
-.status{
-  display:inline-block;
-  font-size:10px;
-  font-weight:900;
-  padding:5px 7px;
-  border-radius:7px;
-}
-
-.pending{
-  background:#332b15;
-  color:#ffd34d;
-}
-
-.accepted{
-  background:#123625;
-  color:var(--green);
-}
-
-.declined{
-  background:#381919;
-  color:var(--red);
-}
-
-/* MODAL */
 
 .modal{
-  display:none;
   position:fixed;
   inset:0;
-  z-index:50;
-  background:#000d;
-  backdrop-filter:blur(8px);
-  align-items:center;
-  justify-content:center;
-  padding:14px;
+  z-index:100;
+  display:none;
+  place-items:center;
+  padding:18px;
+  background:#000b;
 }
 
 .modal.show{
-  display:flex;
+  display:grid;
 }
 
-.box{
-  width:min(700px,100%);
-  max-height:92vh;
+.modalbox{
+  width:min(650px,100%);
+  max-height:90vh;
   overflow:auto;
   background:#111;
-  border:1px solid #333;
-  border-radius:16px;
-  padding:18px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:20px;
 }
 
-.mhead{
+.modalhead{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:12px;
+  margin-bottom:15px;
 }
 
 .close{
-  background:#191919;
+  border:1px solid var(--line);
+  background:#181818;
   color:#fff;
-  border:1px solid #333;
-  border-radius:8px;
-  padding:8px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
 }
 
-/* TOAST */
+.form{
+  display:grid;
+  gap:10px;
+}
 
-.toastbox{
-  position:fixed;
-  right:12px;
-  bottom:12px;
-  z-index:100;
+.form label{
+  color:#aaa;
+  font-size:12px;
+  font-weight:700;
+}
+
+.preview{
+  width:100%;
+  height:220px;
+  border:1px dashed var(--line);
+  border-radius:12px;
+  object-fit:cover;
+  display:none;
+}
+
+.chatbox{
+  display:grid;
+  gap:10px;
+}
+
+.messages{
+  min-height:300px;
+  max-height:430px;
+  overflow:auto;
+  padding:10px;
+  background:#090909;
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.msg{
+  max-width:80%;
+  padding:10px;
+  border-radius:12px;
+  background:#1a1a1a;
+  margin-bottom:8px;
+}
+
+.msg.me{
+  margin-left:auto;
+  background:#18d4c522;
+  border:1px solid #18d4c555;
+}
+
+.profilebox{
   display:flex;
-  flex-direction:column;
-  gap:6px;
+  align-items:center;
+  gap:14px;
+}
+
+.bigavatar{
+  width:70px;
+  height:70px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#181818;
+  border:1px solid var(--a);
+  color:var(--a);
+  font-size:28px;
+  font-weight:900;
+}
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+}
+
+.menu-btn{
+  text-align:left;
+  min-height:58px;
 }
 
 .toast{
-  background:#171717;
-  border:1px solid #333;
-  border-left:4px solid var(--accent);
-  padding:11px;
-  border-radius:9px;
-  min-width:220px;
-}
-
-/* CHAT */
-
-.chat-message{
-  max-width:80%;
-  padding:10px;
-  border-radius:10px;
-}
-
-.chat-own{
-  align-self:flex-end;
-  background:var(--accent);
-  color:#000;
-}
-
-.chat-other{
-  align-self:flex-start;
-  background:#1b1b1b;
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translateX(-50%);
+  background:#181818;
+  border:1px solid var(--a);
   color:#fff;
-}
-
-/* ACCOUNTS */
-
-.account{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  padding:10px;
-  border:1px solid var(--line);
+  padding:12px 16px;
   border-radius:10px;
-  margin:7px 0;
+  z-index:200;
+  display:none;
 }
 
-.account .grow{
-  flex:1;
+.toast.show{
+  display:block;
 }
 
-/* RESPONSIVE */
-
-@media(max-width:1050px){
-
-  .grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .filters{
-    grid-template-columns:repeat(3,1fr);
-  }
-}
-
-@media(max-width:700px){
-
-  .wrap{
-    padding:0 9px 60px;
-  }
-
+@media(max-width:900px){
   .grid{
     grid-template-columns:repeat(2,1fr);
-    gap:7px;
   }
 
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .formgrid{
-    grid-template-columns:1fr;
-  }
-
-  .filters{
-    grid-template-columns:1fr 1fr;
+  .test-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 
   .search{
-    grid-template-columns:1fr;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:520px){
+  .head{
+    padding:9px 10px;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  .actions{
+    gap:4px;
+  }
+
+  .icon{
+    width:38px;
+    height:38px;
+    font-size:11px;
+  }
+
+  .wrap{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .hero{
+    padding:24px 18px;
+  }
+
+  .hero h1{
+    font-size:36px;
+  }
+
+  .test-grid{
+    gap:10px;
+  }
+
+  .test-grid .card .body{
+    padding:12px;
+  }
+
+  .test-grid .card .pic{
+    height:190px;
+  }
+
+  .player{
+    font-size:15px;
+  }
+
+  .price{
+    font-size:17px;
   }
 
   .cardbuttons{
     grid-template-columns:1fr;
   }
 
-  .item{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .menu{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .hero{
-    padding:23px;
-  }
-}
-
-@media(max-width:430px){
-
-  .head{
-    padding:8px 9px;
-  }
-
-  .logo{
-    font-size:19px;
-  }
-
-  .icon{
-    min-width:38px;
-    height:38px;
-    padding:0 8px;
-    font-size:12px;
-  }
-
-  .grid{
-    gap:6px;
-  }
-
-  .body{
-    padding:9px;
-  }
-
-  .player{
-    font-size:14px;
-  }
-
-  .price{
-    font-size:18px;
-  }
-
-  .filters{
+  .search{
     grid-template-columns:1fr;
   }
 }
@@ -772,8 +634,6 @@ p{
 </head>
 
 <body>
-
-<!-- ================= HEADER ================= -->
 
 <header class="header">
   <div class="head">
@@ -784,549 +644,449 @@ p{
 
     <div class="actions">
 
-      <button
-        class="icon"
+      <button class="icon"
         onclick="notifications()"
         aria-label="Benachrichtigungen">
         Bell
         <i id="nb" class="badge"></i>
       </button>
 
-      <button
-        class="icon"
+      <button class="icon"
         onclick="go('messages')"
         aria-label="Chats">
         Chats
         <i id="mb" class="badge"></i>
       </button>
 
-      <button
-        class="icon"
+      <button class="icon"
         onclick="go('profile')"
         aria-label="Profil">
         Profil
       </button>
 
     </div>
-
   </div>
 </header>
 
 
-<main class="wrap">
+<div class="wrap">
 
-<!-- ================= NAVIGATION ================= -->
+  <nav id="nav" class="nav">
 
-<nav id="nav" class="nav">
-
-  <button
-    class="on"
-    onclick="go('home',this)">
-    Startseite
-  </button>
-
-  <button
-    onclick="go('market',this)">
-    Suchen
-  </button>
-
-  <button
-    onclick="go('favorites',this)">
-    Favoriten
-  </button>
-
-  <button
-    onclick="go('profile',this)">
-    Profil
-  </button>
-
-</nav>
-
-
-<!-- ================= STARTSEITE ================= -->
-
-<section id="home" class="page onpage">
-
-  <div class="hero">
-
-    <h1>
-      Dein Marktplatz für<br>
-      <span>Fußballkarten.</span>
-    </h1>
-
-    <p>
-      Fußballkarten entdecken, kaufen, verkaufen und
-      mit anderen Sammlern schreiben.
-    </p>
-
-    <div class="actions2">
-
-      <button
-        class="btn primary"
-        onclick="go('market')">
-        Karten kaufen
-      </button>
-
-      <button
-        class="btn"
-        onclick="go('sell')">
-        Karte verkaufen
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div id="stats" class="stats"></div>
-
-
-  <!-- EIN EINZIGER ANGEBOTE-BEREICH -->
-
-  <div class="panel">
-
-    <div class="headrow">
-
-      <div>
-        <h2>Angebote</h2>
-        <p>So sehen die Karten auf der Startseite aus.</p>
-      </div>
-
-      <button
-        class="btn"
-        onclick="go('market')">
-        Alle Angebote
-      </button>
-
-    </div>
-
-    <div id="popular" class="grid"></div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= SUCHEN ================= -->
-
-<section id="market" class="page">
-
-  <div class="headrow">
-
-    <div>
-      <h1>Suchen</h1>
-      <p>Alle aktiven Karten</p>
-    </div>
-
-  </div>
-
-  <div class="search">
-
-    <input
-      id="q"
-      placeholder="Spieler, Verein oder Verkäufer suchen..."
-      oninput="render()">
-
-    <button
-      class="btn primary"
-      onclick="resetFilters()">
-      Reset
+    <button class="on"
+      onclick="go('home',this)">
+      Startseite
     </button>
 
-  </div>
+    <button onclick="go('market',this)">
+      Suchen
+    </button>
+
+    <button onclick="go('favorites',this)">
+      Favoriten
+    </button>
+
+    <button onclick="go('profile',this)">
+      Profil
+    </button>
+
+  </nav>
 
 
-  <div class="filters">
+  <!-- STARTSEITE -->
+  <section id="home" class="page onpage">
 
-    <select id="club" onchange="render()">
-      <option value="">Alle Vereine</option>
-    </select>
+    <div class="hero">
 
-    <input
-      id="min"
-      type="number"
-      placeholder="Preis ab €"
-      oninput="render()">
+      <p class="accent">PIXEL CARDS MARKETPLACE</p>
 
-    <input
-      id="max"
-      type="number"
-      placeholder="Preis bis €"
-      oninput="render()">
+      <h1>
+        Deine Karten.<br>
+        Dein <span>Marktplatz.</span>
+      </h1>
 
-    <select id="cond" onchange="render()">
-      <option value="">Alle Zustände</option>
-      <option>Neu</option>
-      <option>Sehr gut</option>
-      <option>Gut</option>
-      <option>Schlecht</option>
-    </select>
-
-    <select id="sort" onchange="render()">
-      <option value="new">Neueste</option>
-      <option value="low">Preis aufsteigend</option>
-      <option value="high">Preis absteigend</option>
-      <option value="views">Beliebt</option>
-    </select>
-
-  </div>
-
-  <div id="cards" class="grid"></div>
-
-</section>
-
-
-<!-- ================= FAVORITEN ================= -->
-
-<section id="favorites" class="page">
-
-  <h1>Favoriten</h1>
-  <p>Deine gespeicherten Karten</p>
-
-  <br>
-
-  <div id="favs" class="grid"></div>
-
-</section>
-
-
-<!-- ================= VERKAUFEN ================= -->
-
-<section id="sell" class="page">
-
-  <h1>Karte verkaufen</h1>
-  <p>Neues Angebot erstellen</p>
-
-  <br>
-
-  <div class="formgrid">
-
-    <div class="panel">
-
-      <div class="formgrid">
-
-        <div class="form">
-          <label>Spieler *</label>
-          <input id="sp" placeholder="Lamine Yamal">
-        </div>
-
-        <div class="form">
-          <label>Verein *</label>
-          <input id="sc" placeholder="FC Barcelona">
-        </div>
-
-        <div class="form">
-          <label>Preis *</label>
-          <input
-            id="sx"
-            type="number"
-            min=".01"
-            step=".01"
-            placeholder="25">
-        </div>
-
-        <div class="form">
-
-          <label>Zustand</label>
-
-          <select id="sco">
-            <option>Neu</option>
-            <option>Sehr gut</option>
-            <option>Gut</option>
-            <option>Schlecht</option>
-          </select>
-
-        </div>
-
-        <div class="form full">
-
-          <label>Beschreibung</label>
-
-          <textarea
-            id="sd"
-            rows="5"
-            placeholder="Beschreibung der Karte..."></textarea>
-
-        </div>
-
-        <div class="form full">
-
-          <button
-            class="btn primary"
-            onclick="createCard()">
-            Karte einstellen
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="panel">
-
-      <h2>Kartenbild *</h2>
-
-      <p style="margin:6px 0 10px">
-        Ein Bild ist Pflicht.
+      <p style="margin-top:12px">
+        Fußballkarten kaufen, verkaufen und sicher handeln.
       </p>
 
-      <label class="upload" for="file">
-
-        <span id="ut">
-          Bild auswählen
-        </span>
-
-        <img
-          id="prev"
-          style="display:none">
-
-      </label>
-
-      <input
-        id="file"
-        type="file"
-        accept="image/*"
-        hidden
-        onchange="previewImage(event)">
-
     </div>
 
-  </div>
 
-</section>
+    <div class="stats">
 
-
-<!-- ================= KÄUFE ================= -->
-
-<section id="purchases" class="page">
-
-  <h1>Meine Käufe</h1>
-  <p>Kaufanfragen und angenommene Käufe</p>
-
-  <br>
-
-  <div class="panel">
-    <div id="buylist" class="list"></div>
-  </div>
-
-</section>
-
-
-<!-- ================= VERKÄUFE ================= -->
-
-<section id="sales" class="page">
-
-  <h1>Meine Verkäufe</h1>
-  <p>Verkaufte Karten und Einnahmen</p>
-
-  <br>
-
-  <div class="panel">
-    <div id="saleslist" class="list"></div>
-  </div>
-
-</section>
-
-
-<!-- ================= ANFRAGEN ================= -->
-
-<section id="requests" class="page">
-
-  <h1>Anfragen</h1>
-  <p>Eingehende und gesendete Kaufanfragen</p>
-
-  <br>
-
-  <div class="panel">
-
-    <h2>Eingehend</h2>
-
-    <br>
-
-    <div id="inc" class="list"></div>
-
-  </div>
-
-
-  <div class="panel">
-
-    <h2>Gesendet</h2>
-
-    <br>
-
-    <div id="out" class="list"></div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= CHATS ================= -->
-
-<section id="messages" class="page">
-
-  <h1>Chats</h1>
-  <p>Deine Unterhaltungen</p>
-
-  <br>
-
-  <div class="panel">
-
-    <div id="msgs" class="list"></div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= PROFIL ================= -->
-
-<section id="profile" class="page">
-
-  <div class="panel">
-
-    <div class="left">
-
-      <div
-        id="big"
-        class="avatar"
-        style="width:72px;height:72px;font-size:25px">
-        P
+      <div class="stat">
+        <small>Karten</small>
+        <strong id="statCards">0</strong>
       </div>
 
-      <div>
+      <div class="stat">
+        <small>Verkäufe</small>
+        <strong id="statSales">0</strong>
+      </div>
 
-        <h1 id="pn"></h1>
+      <div class="stat">
+        <small>Favoriten</small>
+        <strong id="statFav">0</strong>
+      </div>
 
-        <p id="pb"></p>
-
-        <p id="pr"></p>
-
+      <div class="stat">
+        <small>Wallet</small>
+        <strong id="statWallet">0,00 €</strong>
       </div>
 
     </div>
 
 
-    <br>
+    <div class="panel">
 
+      <div class="headrow">
+        <h2>Angebote</h2>
+        <span class="sub">Vorschau</span>
+      </div>
 
-    <!-- ALLES ÜBER PROFIL ERREICHBAR -->
-
-    <div class="menu">
-
-      <button onclick="go('purchases')">
-        Käufe
-      </button>
-
-      <button onclick="go('sales')">
-        Verkäufe
-      </button>
-
-      <button onclick="go('requests')">
-        Anfragen
-      </button>
-
-      <button onclick="go('messages')">
-        Chats
-      </button>
-
-      <button onclick="wallet()">
-        Geldbeutel
-      </button>
-
-      <button onclick="accountsUI()">
-        Accounts
-      </button>
-
-      <button onclick="go('sell')">
-        Karte verkaufen
-      </button>
+      <div id="testOffers" class="test-grid"></div>
 
     </div>
 
 
-    <div id="pstats" class="stats"></div>
+    <div class="panel">
 
-  </div>
+      <div class="headrow">
+        <h2>Aktuelle Angebote</h2>
 
-
-  <div class="panel">
-
-    <h2>Profil bearbeiten</h2>
-
-    <br>
-
-    <div class="formgrid">
-
-      <div class="form">
-
-        <label>Benutzername</label>
-
-        <input id="un">
+        <button class="btn"
+          onclick="go('market')">
+          Alle Angebote
+        </button>
 
       </div>
 
+      <div id="popular" class="grid"></div>
 
-      <div class="form">
+    </div>
 
-        <label>Über mich</label>
+  </section>
 
-        <input id="bio">
+
+  <!-- SUCHEN -->
+  <section id="market" class="page">
+
+    <div class="panel">
+
+      <div class="headrow">
+        <h2>Fußballkarten suchen</h2>
+      </div>
+
+      <div class="search">
+
+        <input
+          id="q"
+          placeholder="Spieler, Verein oder Verkäufer">
+
+        <input
+          id="min"
+          type="number"
+          min="0"
+          placeholder="Preis von">
+
+        <input
+          id="max"
+          type="number"
+          min="0"
+          placeholder="Preis bis">
+
+        <select id="club">
+          <option value="">Alle Vereine</option>
+        </select>
+
+        <select id="cond">
+          <option value="">Alle Zustände</option>
+          <option>Neu</option>
+          <option>Sehr gut</option>
+          <option>Gut</option>
+          <option>Schlecht</option>
+        </select>
 
       </div>
 
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
 
-      <div class="form full">
+        <select id="sort" style="max-width:220px">
+          <option value="new">Neueste zuerst</option>
+          <option value="low">Preis aufsteigend</option>
+          <option value="high">Preis absteigend</option>
+          <option value="views">Beliebteste</option>
+        </select>
 
-        <button
-          class="btn primary"
-          onclick="saveProfile()">
-          Profil speichern
+        <button class="btn" onclick="reset()">
+          Filter zurücksetzen
         </button>
 
       </div>
 
     </div>
 
-  </div>
+    <div id="marketCards" class="grid"></div>
+
+  </section>
 
 
-  <div class="panel">
+  <!-- FAVORITEN -->
+  <section id="favorites" class="page">
 
-    <h2>Meine Karten</h2>
+    <div class="panel">
+      <div class="headrow">
+        <h2>Meine Favoriten</h2>
+      </div>
 
-    <br>
+      <div id="favCards" class="grid"></div>
+    </div>
 
-    <div id="mine" class="grid"></div>
-
-  </div>
-
-</section>
-
-</main>
+  </section>
 
 
-<!-- ================= MODAL ================= -->
+  <!-- PROFIL -->
+  <section id="profile" class="page">
 
-<div
-  id="modal"
-  class="modal"
-  onclick="closeModal(event)">
+    <div class="panel">
 
-  <div
-    class="box"
-    onclick="event.stopPropagation()">
+      <div class="profilebox">
 
-    <div class="mhead">
+        <div id="big" class="bigavatar">
+          P
+        </div>
 
-      <h2 id="mt"></h2>
+        <div>
+          <h2 id="pn">Pixel User</h2>
+          <p id="bio">Dein Pixel-Cards-Profil</p>
+        </div>
 
-      <button
-        class="close"
-        onclick="closeModal()">
-        X
+      </div>
+
+      <div id="pstats" style="margin-top:18px"></div>
+
+    </div>
+
+
+    <div class="panel">
+
+      <div class="menu-grid">
+
+        <button class="btn menu-btn"
+          onclick="go('buys')">
+          🛒 Käufe
+        </button>
+
+        <button class="btn menu-btn"
+          onclick="go('sales')">
+          📦 Verkäufe
+        </button>
+
+        <button class="btn menu-btn"
+          onclick="go('requests')">
+          📩 Anfragen
+        </button>
+
+        <button class="btn menu-btn"
+          onclick="go('messages')">
+          💬 Nachrichten
+        </button>
+
+        <button class="btn menu-btn"
+          onclick="wallet()">
+          💰 Geldbeutel
+        </button>
+
+        <button class="btn menu-btn"
+          onclick="accountsUI()">
+          👤 Accounts
+        </button>
+
+        <button class="btn menu-btn"
+          onclick="go('sell')">
+          ➕ Karte verkaufen
+        </button>
+
+        <button class="btn menu-btn"
+          onclick="editProfile()">
+          ⚙️ Profil bearbeiten
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="panel">
+
+      <div class="headrow">
+        <h2>Meine Karten</h2>
+      </div>
+
+      <div id="mine" class="grid"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VERKAUFEN -->
+  <section id="sell" class="page">
+
+    <div class="panel">
+
+      <div class="headrow">
+        <h2>Karte verkaufen</h2>
+      </div>
+
+      <p style="margin-bottom:15px">
+        Lade ein Bild deiner Karte hoch. Das Bild ist erforderlich.
+      </p>
+
+      <div class="form">
+
+        <label>Spieler</label>
+        <input id="sp" placeholder="z.B. Lamine Yamal">
+
+        <label>Verein</label>
+        <input id="sc" placeholder="z.B. FC Barcelona">
+
+        <label>Zustand</label>
+
+        <select id="sx">
+          <option>Neu</option>
+          <option>Sehr gut</option>
+          <option>Gut</option>
+          <option>Schlecht</option>
+        </select>
+
+        <label>Preis in €</label>
+        <input id="sd" type="number" min="0.01" step="0.01" placeholder="29.99">
+
+        <label>Kartenbild</label>
+
+        <input
+          id="sco"
+          type="file"
+          accept="image/*"
+          onchange="preview()">
+
+        <img id="prev" class="preview">
+
+        <button class="btn primary"
+          onclick="create()">
+          Karte einstellen
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- KÄUFE -->
+  <section id="buys" class="page">
+
+    <div class="panel">
+
+      <h2 style="margin-bottom:12px">
+        Meine Käufe
+      </h2>
+
+      <div id="buylist" class="list"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VERKÄUFE -->
+  <section id="sales" class="page">
+
+    <div class="panel">
+
+      <h2 style="margin-bottom:12px">
+        Meine Verkäufe
+      </h2>
+
+      <div id="saleslist" class="list"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ANFRAGEN -->
+  <section id="requests" class="page">
+
+    <div class="panel">
+
+      <h2 style="margin-bottom:12px">
+        Kaufanfragen
+      </h2>
+
+      <div id="inc" class="list"></div>
+
+    </div>
+
+    <div class="panel">
+
+      <h2 style="margin-bottom:12px">
+        Meine Anfragen
+      </h2>
+
+      <div id="out" class="list"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NACHRICHTEN -->
+  <section id="messages" class="page">
+
+    <div class="panel">
+
+      <div class="headrow">
+        <h2>Chats</h2>
+      </div>
+
+      <div id="msgs" class="list"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MEINE KARTEN -->
+  <section id="minePage" class="page">
+
+    <div class="panel">
+
+      <h2>Meine Karten</h2>
+
+      <div id="mineCards" class="grid"></div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="closeM(event)">
+
+  <div class="modalbox">
+
+    <div class="modalhead">
+
+      <h2 id="mt">Pixel Cards</h2>
+
+      <button class="close"
+        onclick="closeM()">
+        ×
       </button>
 
     </div>
@@ -1338,21 +1098,13 @@ p{
 </div>
 
 
-<div id="toasts" class="toastbox"></div>
+<div id="toast" class="toast"></div>
 
 
 <script>
-
-/* =========================================================
-   PIXEL CARDS
-   ========================================================= */
-
 "use strict";
 
-
-/* ================= STORAGE ================= */
-
-const K = {
+const K={
   cards:"pc_cards",
   user:"pc_user",
   profile:"pc_profile",
@@ -1367,3168 +1119,1809 @@ const K = {
 };
 
 
-function getData(key, fallback){
-
+function G(k,d){
   try{
-
-    const data = JSON.parse(
-      localStorage.getItem(key)
-    );
-
-    return data ?? fallback;
-
+    const x=localStorage.getItem(k);
+    return x===null?d:JSON.parse(x);
   }catch{
-
-    return fallback;
-
+    return d;
   }
-
 }
 
 
-function saveData(key,data){
-  localStorage.setItem(
-    key,
-    JSON.stringify(data)
-  );
+function S(k,v){
+  localStorage.setItem(k,JSON.stringify(v));
 }
 
 
-/* ================= USER ================= */
+let user=G(K.user,"PixelUser");
 
-let user =
-  localStorage.getItem(K.user) ||
-  "Pixel User";
+let cards=G(K.cards,[]);
 
-let profile =
-  getData(
-    K.profile,
-    {
-      username:user,
-      bio:"Fußballkarten-Sammler"
-    }
-  );
+let fav=G(K.fav,[]);
 
-user =
-  profile.username ||
-  user;
+let req=G(K.req,[]);
 
+let messages=G(K.msg,[]);
 
-let cards = getData(K.cards,[]);
-let fav = getData(K.fav,[]);
-let req = getData(K.req,[]);
-let msg = getData(K.msg,[]);
-let not = getData(K.not,[]);
-let ratings = getData(K.rating,[]);
-let views = getData(K.views,{});
-let accounts = getData(K.accounts,[]);
-let wallets = getData(K.wallet,{});
+let notificationsData=G(K.not,[]);
+
+let ratings=G(K.rating,{});
+
+let views=G(K.views,{});
+
+let walletData=G(K.wallet,{});
+
+let accounts=G(K.accounts,[]);
 
 
-/* ================= DEMO ANGEBOTE ================= */
-
-if(!cards.length){
-
-  cards = [
-
-    {
-      id:"demo1",
-      player:"Lamine Yamal",
-      club:"FC Barcelona",
-      price:29.99,
-      condition:"Sehr gut",
-      seller:"Max",
-      description:"Testangebot für die Startseite.",
-      image:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80",
-      createdAt:Date.now()-10000,
-      views:53,
-      sold:false
-    },
-
-    {
-      id:"demo2",
-      player:"Jude Bellingham",
-      club:"Real Madrid",
-      price:34.50,
-      condition:"Neu",
-      seller:"Leo",
-      description:"Testangebot für die Startseite.",
-      image:"https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=800&q=80",
-      createdAt:Date.now()-20000,
-      views:47,
-      sold:false
-    },
-
-    {
-      id:"demo3",
-      player:"Kylian Mbappé",
-      club:"Real Madrid",
-      price:39.99,
-      condition:"Gut",
-      seller:"FootballFan",
-      description:"Testangebot für die Startseite.",
-      image:"https://images.unsplash.com/photo-1553778263-73a83bab9b0c?auto=format&fit=crop&w=800&q=80",
-      createdAt:Date.now()-30000,
-      views:42,
-      sold:false
-    },
-
-    {
-      id:"demo4",
-      player:"Jamal Musiala",
-      club:"FC Bayern",
-      price:24.90,
-      condition:"Sehr gut",
-      seller:"CardKing",
-      description:"Testangebot für die Startseite.",
-      image:"https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=800&q=80",
-      createdAt:Date.now()-40000,
-      views:38,
-      sold:false
-    }
-
-  ];
-
-  saveData(K.cards,cards);
-
+if(!walletData[user]){
+  walletData[user]=0;
+  S(K.wallet,walletData);
 }
 
-
-/* ================= ACCOUNT ================= */
 
 if(!accounts.length){
-
-  accounts = [
+  accounts=[
     {
       username:user,
-      bio:profile.bio ||
-      "Fußballkarten-Sammler"
+      createdAt:Date.now()
     }
   ];
 
-  saveData(K.accounts,accounts);
-
+  S(K.accounts,accounts);
 }
 
 
-if(wallets[user] == null){
-
-  wallets[user] = 0;
-
-  saveData(K.wallet,wallets);
-
-}
-
-
-/* ================= HELPERS ================= */
-
-function esc(value){
-
-  return String(value ?? "")
-    .replace(/[&<>"']/g,function(char){
-
-      return {
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#039;"
-
-      }[char];
-
-    });
-
+function esc(v){
+  return String(v??"")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
 
 function toast(text){
+  const t=document.getElementById("toast");
 
-  const box =
-    document.getElementById("toasts");
+  t.textContent=text;
+  t.classList.add("show");
 
-  const element =
-    document.createElement("div");
+  clearTimeout(window.__toast);
 
-  element.className = "toast";
-
-  element.textContent = text;
-
-  box.appendChild(element);
-
-  setTimeout(
-    () => element.remove(),
-    2300
-  );
-
+  window.__toast=setTimeout(()=>{
+    t.classList.remove("show");
+  },2200);
 }
 
 
-/* ================= NAVIGATION ================= */
+function go(page,btn){
 
-function go(id,button){
+  document.querySelectorAll(".page")
+    .forEach(x=>x.classList.remove("onpage"));
 
-  document
-    .querySelectorAll(".page")
-    .forEach(page =>
-      page.classList.remove("onpage")
-    );
+  const el=document.getElementById(page);
 
-  const target =
-    document.getElementById(id);
-
-  if(!target) return;
-
-  target.classList.add("onpage");
-
-  document
-    .querySelectorAll("#nav button")
-    .forEach(btn =>
-      btn.classList.remove("on")
-    );
-
-  if(button){
-    button.classList.add("on");
-  }else{
-
-    const navButtons =
-      document.querySelectorAll("#nav button");
-
-    const names = [
-      "home",
-      "market",
-      "favorites",
-      "profile"
-    ];
-
-    const index =
-      names.indexOf(id);
-
-    if(index >= 0 &&
-       navButtons[index]){
-
-      navButtons[index].classList.add("on");
-
-    }
-
+  if(el){
+    el.classList.add("onpage");
   }
 
-  renderAll();
+  if(btn){
+    document.querySelectorAll(".nav button")
+      .forEach(x=>x.classList.remove("on"));
+
+    btn.classList.add("on");
+  }
+
+  if(page==="home"){
+    renderAll();
+  }
+
+  if(page==="market"){
+    render();
+  }
+
+  if(page==="favorites"){
+    renderFavorites();
+  }
+
+  if(page==="profile"){
+    renderProfile();
+  }
+
+  if(page==="minePage"){
+    renderMine();
+  }
+
+  if(page==="buys"){
+    renderBuys();
+  }
+
+  if(page==="sales"){
+    renderSales();
+  }
+
+  if(page==="requests"){
+    renderRequests();
+  }
+
+  if(page==="messages"){
+    renderMessages();
+  }
 
   window.scrollTo(0,0);
-
 }
 
 
-/* ================= MODAL ================= */
+function modal(title,html){
 
-const modalElement =
-  document.getElementById("modal");
+  document.getElementById("mt").textContent=title;
 
-const modalTitle =
-  document.getElementById("mt");
+  document.getElementById("mc").innerHTML=html;
 
-const modalContent =
-  document.getElementById("mc");
-
-
-function openModal(title,html){
-
-  modalTitle.textContent = title;
-
-  modalContent.innerHTML = html;
-
-  modalElement.classList.add("show");
-
+  document.getElementById("modal")
+    .classList.add("show");
 }
 
 
-function closeModal(event){
+function closeM(e){
 
-  if(
-    event &&
-    event.target !== event.currentTarget
-  ){
+  if(e && e.target!==e.currentTarget){
     return;
   }
 
-  modalElement.classList.remove("show");
-
+  document.getElementById("modal")
+    .classList.remove("show");
 }
 
 
-/* ================= RATINGS ================= */
+function rt(name){
 
-function sellerRating(name){
+  const a=ratings[name]||[];
 
-  const list =
-    ratings.filter(
-      rating => rating.seller === name
-    );
-
-  if(!list.length){
+  if(!a.length){
     return "Noch keine Bewertung";
   }
 
-  const average =
-    list.reduce(
-      (sum,item) =>
-        sum + Number(item.rating),
-      0
-    ) / list.length;
+  const avg=a.reduce((x,y)=>x+y,0)/a.length;
 
-  return "★ " +
-    average.toFixed(1) +
-    " · " +
-    list.length;
-
+  return "★".repeat(Math.round(avg))
+    +"☆".repeat(5-Math.round(avg))
+    +" "+avg.toFixed(1);
 }
 
 
-/* ================= CARD ================= */
+function card(c){
 
-function cardHTML(card){
+  const own=c.seller===user;
 
-  const own =
-    card.seller === user;
-
-  const pending =
-    req.some(
-      request =>
-        request.cardId === card.id &&
-        request.buyer === user &&
-        request.status === "pending"
-    );
-
-  const isNew =
-    Date.now() - card.createdAt <
-    86400000;
-
-  const popular =
-    (card.views || 0) >= 40;
-
+  const pending=req.some(r=>
+    r.cardId===c.id &&
+    r.buyer===user &&
+    r.status==="pending"
+  );
 
   return `
+  <article class="card">
 
-    <article class="card">
+    <div class="pic">
 
-      <div class="pic">
+      <img
+        src="${esc(c.image)}"
+        onclick="details('${esc(c.id)}')">
 
-        <img
-          src="${esc(card.image)}"
-          alt="${esc(card.player)}"
-          onclick="details('${esc(card.id)}')">
+      <div class="top">
 
-        <div class="top">
-
-          <div class="tags">
-
-            ${
-              isNew
-              ? `<span class="tag a">NEU</span>`
-              : ""
-            }
-
-            ${
-              popular
-              ? `<span class="tag">BELIEBT</span>`
-              : ""
-            }
-
-          </div>
-
+        <div>
           ${
-            !own
-            ? `
-              <button
-                class="heart ${
-                  fav.includes(card.id)
-                  ? "active"
-                  : ""
-                }"
-                onclick="toggleFavorite('${esc(card.id)}')">
-                ${
-                  fav.includes(card.id)
-                  ? "♥"
-                  : "♡"
-                }
-              </button>
-            `
-            : ""
+            Date.now()-c.createdAt<86400000
+            ?'<span class="tag a">NEU</span>'
+            :''
           }
 
+          ${
+            (c.views||0)>=40
+            ?'<span class="tag">BELIEBT</span>'
+            :''
+          }
+        </div>
+
+        ${
+          !own
+          ?
+          `<button
+            class="heart ${fav.includes(c.id)?"active":""}"
+            onclick="toggleFav('${esc(c.id)}')">
+            ${fav.includes(c.id)?"♥":"♡"}
+          </button>`
+          :""
+        }
+
+      </div>
+
+    </div>
+
+
+    <div class="body">
+
+      <div class="player">
+        ${esc(c.player)}
+      </div>
+
+      <div class="sub">
+        ${esc(c.club||"Kein Verein")}
+        ·
+        ${esc(c.condition||"Gut")}
+      </div>
+
+      <div class="price">
+        ${(+c.price).toFixed(2)} €
+      </div>
+
+
+      <div
+        class="seller"
+        onclick="seller('${esc(c.seller)}')">
+
+        <div class="avatar">
+          ${esc(c.seller?.[0]?.toUpperCase()||"P")}
+        </div>
+
+        <div>
+          <b>${esc(c.seller)}</b>
+          <div class="sub">
+            ${rt(c.seller)}
+          </div>
         </div>
 
       </div>
 
 
-      <div class="body">
+      <div class="cardbuttons">
 
-        <div class="player">
-          ${esc(card.player)}
-        </div>
+        <button
+          class="btn"
+          onclick="details('${esc(c.id)}')">
+          Details
+        </button>
 
-        <div class="sub">
-          ${esc(card.club || "Kein Verein")}
-          ·
-          ${esc(card.condition || "Gut")}
-        </div>
-
-        <div class="price">
-          ${Number(card.price).toFixed(2).replace(".",",")} €
-        </div>
-
-
-        <div
-          class="seller"
-          onclick="sellerProfile('${esc(card.seller)}')">
-
-          <div class="avatar">
-            ${esc(
-              card.seller
-              ? card.seller[0].toUpperCase()
-              : "P"
-            )}
-          </div>
-
-          <div>
-
-            <b>${esc(card.seller)}</b>
-
-            <div class="sub">
-              ${sellerRating(card.seller)}
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="cardbuttons">
-
-          <button
+        ${
+          own
+          ?
+          `<button
             class="btn"
-            onclick="details('${esc(card.id)}')">
-            Details
-          </button>
+            onclick="del('${esc(c.id)}')">
+            Löschen
+          </button>`
 
+          :
 
-          ${
-            own
+          c.sold
+          ?
+          `<button class="btn" disabled>
+            Verkauft
+          </button>`
 
-            ? `
-              <button
-                class="btn"
-                onclick="deleteCard('${esc(card.id)}')">
-                Löschen
-              </button>
-            `
+          :
 
-            : card.sold
+          pending
+          ?
+          `<button class="btn" disabled>
+            Anfrage läuft
+          </button>`
 
-            ? `
-              <button
-                class="btn"
-                disabled>
-                Verkauft
-              </button>
-            `
+          :
 
-            : pending
-
-            ? `
-              <button
-                class="btn"
-                disabled>
-                Anfrage läuft
-              </button>
-            `
-
-            : `
-              <button
-                class="btn primary"
-                onclick="buyCard('${esc(card.id)}')">
-                Kaufen
-              </button>
-            `
-          }
-
-        </div>
+          `<button
+            class="btn primary"
+            onclick="buy('${esc(c.id)}')">
+            Kaufen
+          </button>`
+        }
 
       </div>
 
-    </article>
+    </div>
 
-  `;
-
+  </article>`;
 }
 
-
-/* ================= SEARCH ================= */
 
 function render(){
 
-  let list =
-    cards.filter(card => !card.sold);
+  let a=cards.filter(c=>!c.sold);
 
+  const q=(document.getElementById("q")?.value||"")
+    .toLowerCase();
 
-  const query =
-    (
-      document.getElementById("q")?.value ||
-      ""
-    ).toLowerCase();
+  const cl=document.getElementById("club")?.value||"";
 
+  const co=document.getElementById("cond")?.value||"";
 
-  const selectedClub =
-    document.getElementById("club")?.value ||
-    "";
+  const mi=document.getElementById("min")?.value;
 
+  const ma=document.getElementById("max")?.value;
 
-  const selectedCondition =
-    document.getElementById("cond")?.value ||
-    "";
+  const so=document.getElementById("sort")?.value||"new";
 
 
-  const min =
-    document.getElementById("min")?.value ||
-    "";
-
-
-  const max =
-    document.getElementById("max")?.value ||
-    "";
-
-
-  const sorting =
-    document.getElementById("sort")?.value ||
-    "new";
-
-
-  list =
-    list.filter(card => {
-
-      const searchText =
-        `${card.player} ${card.club} ${card.seller}`
-        .toLowerCase();
-
-      return (
-
-        (!query ||
-          searchText.includes(query))
-
-        &&
-
-        (!selectedClub ||
-          card.club === selectedClub)
-
-        &&
-
-        (!selectedCondition ||
-          card.condition === selectedCondition)
-
-        &&
-
-        (!min ||
-          Number(card.price) >= Number(min))
-
-        &&
-
-        (!max ||
-          Number(card.price) <= Number(max))
-
-      );
-
-    });
-
-
-  if(sorting === "low"){
-
-    list.sort(
-      (a,b) =>
-        Number(a.price) -
-        Number(b.price)
-    );
-
-  }
-
-  if(sorting === "high"){
-
-    list.sort(
-      (a,b) =>
-        Number(b.price) -
-        Number(a.price)
-    );
-
-  }
-
-  if(sorting === "views"){
-
-    list.sort(
-      (a,b) =>
-        (b.views || 0) -
-        (a.views || 0)
-    );
-
-  }
-
-  if(sorting === "new"){
-
-    list.sort(
-      (a,b) =>
-        b.createdAt -
-        a.createdAt
-    );
-
-  }
-
-
-  const cardsElement =
-    document.getElementById("cards");
-
-  if(!cardsElement) return;
-
-
-  cardsElement.innerHTML =
-    list.length
-
-    ? list.map(cardHTML).join("")
-
-    : `
-      <div class="empty">
-        <b>Keine Karten gefunden</b>
-        <br>
-        Ändere deine Suche oder Filter.
-      </div>
-    `;
-
-
-  updateClubFilter();
-
-}
-
-
-/* ================= CLUB FILTER ================= */
-
-function updateClubFilter(){
-
-  const select =
-    document.getElementById("club");
-
-  if(!select) return;
-
-
-  const oldValue =
-    select.value;
-
-
-  const clubs =
-    [
-      ...new Set(
-        cards
-          .map(card => card.club)
-          .filter(Boolean)
-      )
-    ].sort();
-
-
-  select.innerHTML =
-    `<option value="">Alle Vereine</option>` +
-
-    clubs.map(
-      club =>
-        `<option value="${esc(club)}">
-          ${esc(club)}
-        </option>`
-    ).join("");
-
-
-  select.value = oldValue;
-
-}
-
-
-/* ================= FILTER RESET ================= */
-
-function resetFilters(){
-
-  document.getElementById("q").value = "";
-  document.getElementById("min").value = "";
-  document.getElementById("max").value = "";
-  document.getElementById("club").value = "";
-  document.getElementById("cond").value = "";
-  document.getElementById("sort").value = "new";
-
-  render();
-
-}
-
-
-/* ================= FAVORITES ================= */
-
-function toggleFavorite(id){
-
-  const card =
-    cards.find(item => item.id === id);
-
-  if(!card) return;
-
-
-  if(card.seller === user){
-
-    toast(
-      "Eigene Karten können nicht favorisiert werden."
-    );
-
-    return;
-  }
-
-
-  if(fav.includes(id)){
-
-    fav =
-      fav.filter(
-        item => item !== id
-      );
-
-  }else{
-
-    fav.push(id);
-
-  }
-
-
-  saveData(K.fav,fav);
-
-  renderAll();
-
-}
-
-
-/* ================= VIEWS ================= */
-
-function addView(id){
-
-  if(!views[id]){
-    views[id] = [];
-  }
-
-
-  if(views[id].includes(user)){
-    return;
-  }
-
-
-  views[id].push(user);
-
-
-  const card =
-    cards.find(item => item.id === id);
-
-
-  if(card){
-
-    card.views =
-      (card.views || 0) + 1;
-
-  }
-
-
-  saveData(K.views,views);
-  saveData(K.cards,cards);
-
-}
-
-
-/* ================= DETAILS ================= */
-
-function details(id){
-
-  const card =
-    cards.find(item => item.id === id);
-
-  if(!card) return;
-
-
-  addView(id);
-
-
-  openModal(
-
-    card.player,
-
-    `
-
-      <img
-        src="${esc(card.image)}"
-        style="
-          width:100%;
-          max-height:55vh;
-          object-fit:contain;
-          border-radius:12px;
-        ">
-
-
-      <br><br>
-
-
-      <h2>${esc(card.player)}</h2>
-
-      <p>
-        ${esc(card.club || "Kein Verein")}
-        ·
-        ${esc(card.condition || "Gut")}
-      </p>
-
-
-      <br>
-
-
-      <div class="stats">
-
-        <div class="stat">
-          <small>Preis</small>
-          <strong class="accent">
-            ${Number(card.price).toFixed(2)} €
-          </strong>
-        </div>
-
-        <div class="stat">
-          <small>Aufrufe</small>
-          <strong>
-            ${card.views || 0}
-          </strong>
-        </div>
-
-      </div>
-
-
-      <div class="panel">
-
-        <b>Beschreibung</b>
-
-        <p>
-          ${esc(
-            card.description ||
-            "Keine Beschreibung."
-          )}
-        </p>
-
-        <br>
-
-        <b>Verkäufer</b>
-
-        <p>
-          ${esc(card.seller)}
-          ·
-          ${sellerRating(card.seller)}
-        </p>
-
-        <br>
-
-        <button
-          class="btn"
-          onclick="sellerProfile('${esc(card.seller)}')">
-          Verkäuferprofil
-        </button>
-
-      </div>
-
-
-      ${
-        card.seller !== user &&
-        !card.sold
-
-        ? `
-          <button
-            class="btn primary"
-            style="width:100%"
-            onclick="
-              closeModal();
-              buyCard('${esc(card.id)}')
-            ">
-            Kaufen
-          </button>
-        `
-        : ""
-      }
-
-
-      ${
-        card.seller !== user
-
-        ? `
-          <button
-            class="btn"
-            style="
-              width:100%;
-              margin-top:7px;
-            "
-            onclick="sendMessage('${esc(card.seller)}')">
-            Verkäufer kontaktieren
-          </button>
-        `
-        : ""
-      }
-
-    `
-
-  );
-
-}
-
-
-/* ================= BUY ================= */
-
-function buyCard(id){
-
-  const card =
-    cards.find(item => item.id === id);
-
-  if(!card) return;
-
-
-  if(card.seller === user){
-
-    toast(
-      "Du kannst deine eigene Karte nicht kaufen."
-    );
-
-    return;
-  }
-
-
-  if(card.sold){
-
-    toast("Diese Karte wurde bereits verkauft.");
-
-    return;
-  }
-
-
-  if(
-    req.some(
-      request =>
-        request.cardId === id &&
-        request.buyer === user &&
-        request.status === "pending"
+  a=a.filter(c=>
+    (!q ||
+      `${c.player} ${c.club} ${c.seller}`
+      .toLowerCase()
+      .includes(q)
     )
-  ){
-
-    toast("Deine Anfrage läuft bereits.");
-
-    return;
-  }
-
-
-  openModal(
-
-    "Kaufanfrage",
-
-    `
-
-      <div class="panel">
-
-        <h2>${esc(card.player)}</h2>
-
-        <p>
-          ${esc(card.club)}
-        </p>
-
-        <br>
-
-        <div class="price">
-          ${Number(card.price).toFixed(2)} €
-        </div>
-
-        <br>
-
-        <p>
-          Verkäufer: ${esc(card.seller)}
-        </p>
-
-      </div>
-
-
-      <button
-        class="btn primary"
-        style="width:100%"
-        onclick="sendPurchaseRequest('${esc(card.id)}')">
-        Kaufanfrage senden
-      </button>
-
-    `
-
+    &&
+    (!cl||c.club===cl)
+    &&
+    (!co||c.condition===co)
+    &&
+    (!mi||c.price>=+mi)
+    &&
+    (!ma||c.price<=+ma)
   );
 
-}
 
+  if(so==="low"){
+    a.sort((x,y)=>x.price-y.price);
+  }
 
-/* ================= REQUEST ================= */
+  if(so==="high"){
+    a.sort((x,y)=>y.price-x.price);
+  }
 
-function sendPurchaseRequest(id){
+  if(so==="views"){
+    a.sort((x,y)=>(y.views||0)-(x.views||0));
+  }
 
-  const card =
-    cards.find(item => item.id === id);
-
-  if(!card) return;
-
-
-  const request = {
-
-    id:
-      "r" +
-      Date.now(),
-
-    cardId:id,
-
-    player:card.player,
-
-    price:Number(card.price),
-
-    buyer:user,
-
-    seller:card.seller,
-
-    status:"pending",
-
-    createdAt:Date.now()
-
-  };
-
-
-  req.push(request);
-
-
-  not.push({
-
-    id:
-      "n" +
-      Date.now(),
-
-    user:card.seller,
-
-    text:
-      `${user} möchte ${card.player} kaufen.`,
-
-    read:false,
-
-    createdAt:Date.now()
-
-  });
-
-
-  saveData(K.req,req);
-  saveData(K.not,not);
-
-
-  closeModal();
-
-  toast("Kaufanfrage gesendet.");
-
-  renderAll();
-
-}
-
-
-/* ================= REQUEST ITEM ================= */
-
-function requestItem(request,incoming){
-
-  const card =
-    cards.find(
-      item =>
-        item.id === request.cardId
-    );
-
-
-  return `
-
-    <div class="item">
-
-      <div class="left">
-
-        ${
-          card?.image
-
-          ? `
-            <img
-              class="thumb"
-              src="${esc(card.image)}">
-          `
-
-          : ""
-        }
-
-
-        <div>
-
-          <b>
-            ${esc(request.player)}
-          </b>
-
-          <p>
-            ${
-              incoming
-              ? esc(request.buyer)
-              : esc(request.seller)
-            }
-            ·
-            ${Number(request.price).toFixed(2)} €
-          </p>
-
-
-          <span
-            class="status ${request.status}">
-
-            ${
-              request.status === "pending"
-              ? "Ausstehend"
-              : request.status === "accepted"
-              ? "Angenommen"
-              : "Abgelehnt"
-            }
-
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <div>
-
-        ${
-          incoming &&
-          request.status === "pending"
-
-          ? `
-
-            <button
-              class="btn"
-              onclick="acceptRequest('${esc(request.id)}')">
-              Annehmen
-            </button>
-
-            <button
-              class="btn"
-              onclick="declineRequest('${esc(request.id)}')">
-              Ablehnen
-            </button>
-
-          `
-
-          : ""
-        }
-
-
-        ${
-          !incoming &&
-          request.status === "accepted"
-
-          ? `
-
-            <button
-              class="btn primary"
-              onclick="rateSeller('${esc(request.id)}')">
-              Bewerten
-            </button>
-
-          `
-
-          : ""
-        }
-
-
-        <button
-          class="btn"
-          onclick="
-            sendMessage(
-              '${esc(
-                incoming
-                ? request.buyer
-                : request.seller
-              )}'
-            )
-          ">
-          Nachricht
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-/* ================= ACCEPT ================= */
-
-function acceptRequest(id){
-
-  const request =
-    req.find(
-      item => item.id === id
-    );
-
-  if(!request ||
-     request.seller !== user){
-    return;
+  if(so==="new"){
+    a.sort((x,y)=>y.createdAt-x.createdAt);
   }
 
 
-  request.status = "accepted";
-
-
-  const card =
-    cards.find(
-      item =>
-        item.id === request.cardId
-    );
-
-
-  if(card){
-
-    card.sold = true;
-
-    card.soldTo =
-      request.buyer;
-
-  }
-
-
-  req.forEach(item => {
-
-    if(
-      item.cardId === request.cardId &&
-      item.id !== id &&
-      item.status === "pending"
-    ){
-
-      item.status = "declined";
-
-    }
-
-  });
-
-
-  wallets[user] =
-    (wallets[user] || 0) +
-    Number(request.price);
-
-
-  not.push({
-
-    id:
-      "n" +
-      Date.now(),
-
-    user:request.buyer,
-
-    text:
-      `Deine Kaufanfrage für ${request.player} wurde angenommen.`,
-
-    read:false,
-
-    createdAt:Date.now()
-
-  });
-
-
-  saveData(K.req,req);
-  saveData(K.cards,cards);
-  saveData(K.wallet,wallets);
-  saveData(K.not,not);
-
-
-  toast("Verkauf angenommen.");
-
-  renderAll();
-
-}
-
-
-/* ================= DECLINE ================= */
-
-function declineRequest(id){
-
-  const request =
-    req.find(
-      item => item.id === id
-    );
-
-
-  if(
-    !request ||
-    request.seller !== user
-  ){
-    return;
-  }
-
-
-  request.status = "declined";
-
-
-  saveData(K.req,req);
-
-
-  toast("Anfrage abgelehnt.");
-
-  renderAll();
-
-}
-
-
-/* ================= MESSAGES ================= */
-
-function sendMessage(to){
-
-  openModal(
-
-    "Nachricht senden",
-
-    `
-
-      <p>
-        An ${esc(to)}
-      </p>
-
-      <textarea
-        id="messageText"
-        rows="5"
-        style="
-          width:100%;
-          margin:10px 0;
-          background:#090909;
-          color:#fff;
-          border:1px solid #292929;
-          border-radius:10px;
-          padding:12px;
-        "
-        placeholder="Nachricht schreiben...">
-      </textarea>
-
-      <button
-        class="btn primary"
-        style="width:100%"
-        onclick="sendNow('${esc(to)}')">
-        Senden
-      </button>
-
-    `
-
-  );
-
-}
-
-
-function sendNow(to){
-
-  const field =
-    document.getElementById(
-      "messageText"
-    );
-
-
-  const text =
-    field?.value.trim() || "";
-
-
-  if(!text){
-
-    toast("Bitte Nachricht eingeben.");
-
-    return;
-  }
-
-
-  msg.push({
-
-    id:
-      "m" +
-      Date.now(),
-
-    from:user,
-
-    to:to,
-
-    text:text,
-
-    createdAt:Date.now(),
-
-    read:false
-
-  });
-
-
-  not.push({
-
-    id:
-      "n" +
-      Date.now(),
-
-    user:to,
-
-    text:
-      `Neue Nachricht von ${user}.`,
-
-    read:false,
-
-    createdAt:Date.now()
-
-  });
-
-
-  saveData(K.msg,msg);
-  saveData(K.not,not);
-
-
-  closeModal();
-
-  toast("Nachricht gesendet.");
-
-  renderAll();
-
-}
-
-
-/* ================= CHAT ================= */
-
-function openChat(person){
-
-  let messages =
-    msg.filter(
-      message =>
-        (
-          message.from === user &&
-          message.to === person
-        )
-        ||
-        (
-          message.from === person &&
-          message.to === user
-        )
+  const el=document.getElementById("marketCards");
+
+  el.innerHTML=a.length
+    ?a.map(card).join("")
+    :
+    `<div class="empty">
+      <b>Keine Karten gefunden</b><br>
+      Ändere Suche oder Filter.
+    </div>`;
+
+
+  const clubs=[
+    ...new Set(
+      cards.map(c=>c.club).filter(Boolean)
     )
-    .sort(
-      (a,b) =>
-        a.createdAt -
-        b.createdAt
-    );
+  ].sort();
 
 
-  messages.forEach(message => {
+  const clubEl=document.getElementById("club");
 
-    if(message.to === user){
-      message.read = true;
-    }
+  if(clubEl){
 
-  });
+    const old=clubEl.value;
 
+    clubEl.innerHTML=
+      `<option value="">Alle Vereine</option>`
+      +
+      clubs.map(c=>
+        `<option value="${esc(c)}">${esc(c)}</option>`
+      ).join("");
 
-  saveData(K.msg,msg);
-
-
-  const html = `
-
-    <div
-      style="
-        display:flex;
-        flex-direction:column;
-        gap:7px;
-        max-height:430px;
-        overflow:auto;
-      ">
-
-      ${
-        messages.length
-
-        ? messages.map(message => `
-
-          <div
-            class="
-              chat-message
-              ${
-                message.from === user
-                ? "chat-own"
-                : "chat-other"
-              }
-            ">
-
-            ${esc(message.text)}
-
-          </div>
-
-        `).join("")
-
-        : `
-          <div class="empty">
-            Noch keine Nachrichten.
-          </div>
-        `
-      }
-
-    </div>
-
-
-    <textarea
-      id="chatText"
-      rows="3"
-      style="
-        width:100%;
-        margin-top:10px;
-        background:#090909;
-        color:#fff;
-        border:1px solid #292929;
-        padding:10px;
-        border-radius:10px;
-      "
-      placeholder="Nachricht schreiben...">
-    </textarea>
-
-
-    <button
-      class="btn primary"
-      style="
-        width:100%;
-        margin-top:6px;
-      "
-      onclick="sendChat('${esc(person)}')">
-      Senden
-    </button>
-
-  `;
-
-
-  openModal(
-    "Chat mit " + person,
-    html
-  );
-
-}
-
-
-function sendChat(person){
-
-  const field =
-    document.getElementById(
-      "chatText"
-    );
-
-
-  const text =
-    field?.value.trim() || "";
-
-
-  if(!text){
-
-    toast("Bitte Nachricht eingeben.");
-
-    return;
+    clubEl.value=old;
   }
 
 
-  msg.push({
-
-    id:
-      "m" +
-      Date.now(),
-
-    from:user,
-
-    to:person,
-
-    text:text,
-
-    createdAt:Date.now(),
-
-    read:false
-
-  });
-
-
-  saveData(K.msg,msg);
-
-
-  openChat(person);
-
-  renderAll();
-
+  updateStats();
 }
 
-
-/* ================= SELLER PROFILE ================= */
-
-function sellerProfile(name){
-
-  const activeCards =
-    cards.filter(
-      card =>
-        card.seller === name &&
-        !card.sold
-    );
-
-
-  const sales =
-    req.filter(
-      request =>
-        request.seller === name &&
-        request.status === "accepted"
-    ).length;
-
-
-  openModal(
-
-    "Verkäuferprofil",
-
-    `
-
-      <div class="left">
-
-        <div
-          class="avatar"
-          style="
-            width:60px;
-            height:60px;
-            font-size:22px;
-          ">
-
-          ${esc(
-            name[0]?.toUpperCase() ||
-            "P"
-          )}
-
-        </div>
-
-
-        <div>
-
-          <h2>${esc(name)}</h2>
-
-          <p>
-            ${sellerRating(name)}
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <br>
-
-
-      <div class="stats">
-
-        <div class="stat">
-
-          <small>Angebote</small>
-
-          <strong>
-            ${activeCards.length}
-          </strong>
-
-        </div>
-
-
-        <div class="stat">
-
-          <small>Verkäufe</small>
-
-          <strong>
-            ${sales}
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <div class="grid">
-
-        ${
-          activeCards.length
-
-          ? activeCards
-              .map(cardHTML)
-              .join("")
-
-          : `
-            <div class="empty">
-              Keine aktiven Karten.
-            </div>
-          `
-        }
-
-      </div>
-
-
-      ${
-        name !== user
-
-        ? `
-
-          <br>
-
-          <button
-            class="btn primary"
-            style="width:100%"
-            onclick="sendMessage('${esc(name)}')">
-            Nachricht
-          </button>
-
-        `
-
-        : ""
-      }
-
-    `
-
-  );
-
-}
-
-
-/* ================= NOTIFICATIONS ================= */
-
-function notifications(){
-
-  const list =
-    not
-      .filter(
-        item =>
-          item.user === user
-      )
-      .sort(
-        (a,b) =>
-          b.createdAt -
-          a.createdAt
-      );
-
-
-  openModal(
-
-    "Benachrichtigungen",
-
-    list.length
-
-    ? `
-
-      <div class="list">
-
-        ${
-          list.map(item => `
-
-            <div class="item">
-
-              <div>
-
-                <b>
-                  ${esc(item.text)}
-                </b>
-
-                <p>
-                  ${new Date(
-                    item.createdAt
-                  ).toLocaleString("de-DE")}
-                </p>
-
-              </div>
-
-            </div>
-
-          `).join("")
-        }
-
-      </div>
-
-    `
-
-    : `
-      <div class="empty">
-        Keine Benachrichtigungen.
-      </div>
-    `
-
-  );
-
-
-  not.forEach(item => {
-
-    if(item.user === user){
-      item.read = true;
-    }
-
-  });
-
-
-  saveData(K.not,not);
-
-  updateBadges();
-
-}
-
-
-/* ================= WALLET ================= */
-
-function wallet(){
-
-  openModal(
-
-    "Geldbeutel",
-
-    `
-
-      <div class="stat">
-
-        <small>
-          Verfügbares Guthaben
-        </small>
-
-        <strong class="accent">
-          ${Number(
-            wallets[user] || 0
-          ).toFixed(2)} €
-        </strong>
-
-      </div>
-
-
-      <br>
-
-
-      <p>
-        Das Guthaben wird lokal aus
-        angenommenen Verkäufen berechnet.
-      </p>
-
-    `
-
-  );
-
-}
-
-
-/* ================= ACCOUNTS ================= */
-
-function accountsUI(){
-
-  openModal(
-
-    "Accounts",
-
-    `
-
-      <div>
-
-        ${
-          accounts.map(account => `
-
-            <div class="account">
-
-              <div class="avatar">
-
-                ${esc(
-                  account.username[0]
-                  ?.toUpperCase() ||
-                  "P"
-                )}
-
-              </div>
-
-
-              <div class="grow">
-
-                <b>
-                  ${esc(account.username)}
-                </b>
-
-                <p>
-                  ${esc(
-                    account.bio ||
-                    ""
-                  )}
-                </p>
-
-              </div>
-
-
-              ${
-                account.username === user
-
-                ? `
-                  <span class="status accepted">
-                    Aktiv
-                  </span>
-                `
-
-                : `
-
-                  <button
-                    class="btn primary"
-                    onclick="
-                      switchAccount(
-                        '${esc(account.username)}'
-                      )
-                    ">
-                    Wechseln
-                  </button>
-
-                `
-              }
-
-            </div>
-
-          `).join("")
-        }
-
-      </div>
-
-
-      <button
-        class="btn"
-        style="width:100%"
-        onclick="newAccount()">
-        Neuen Account erstellen
-      </button>
-
-    `
-
-  );
-
-}
-
-
-function newAccount(){
-
-  openModal(
-
-    "Neuer Account",
-
-    `
-
-      <input
-        id="newUsername"
-        style="
-          width:100%;
-          background:#090909;
-          color:#fff;
-          border:1px solid #292929;
-          padding:12px;
-          border-radius:10px;
-        "
-        placeholder="Benutzername">
-
-
-      <button
-        class="btn primary"
-        style="
-          width:100%;
-          margin-top:8px;
-        "
-        onclick="createAccount()">
-        Erstellen
-      </button>
-
-    `
-
-  );
-
-}
-
-
-function createAccount(){
-
-  const field =
-    document.getElementById(
-      "newUsername"
-    );
-
-
-  const name =
-    field?.value.trim() || "";
-
-
-  if(!name){
-
-    toast(
-      "Bitte einen Benutzernamen eingeben."
-    );
-
-    return;
-  }
-
-
-  if(
-    accounts.some(
-      account =>
-        account.username.toLowerCase() ===
-        name.toLowerCase()
-    )
-  ){
-
-    toast(
-      "Dieser Benutzername ist bereits vergeben."
-    );
-
-    return;
-  }
-
-
-  accounts.push({
-
-    username:name,
-
-    bio:"Fußballkarten-Sammler"
-
-  });
-
-
-  wallets[name] = 0;
-
-
-  saveData(K.accounts,accounts);
-  saveData(K.wallet,wallets);
-
-
-  switchAccount(name);
-
-}
-
-
-function switchAccount(name){
-
-  user = name;
-
-
-  profile =
-    accounts.find(
-      account =>
-        account.username === name
-    )
-    ||
-    {
-      username:name,
-      bio:""
-    };
-
-
-  localStorage.setItem(
-    K.user,
-    user
-  );
-
-
-  saveData(
-    K.profile,
-    profile
-  );
-
-
-  closeModal();
-
-  toast(
-    "Account gewechselt."
-  );
-
-
-  renderAll();
-
-}
-
-
-/* ================= IMAGE UPLOAD ================= */
-
-function previewImage(event){
-
-  const file =
-    event.target.files?.[0];
-
-
-  if(!file) return;
-
-
-  const reader =
-    new FileReader();
-
-
-  reader.onload =
-    function(result){
-
-      const image =
-        document.getElementById("prev");
-
-      const text =
-        document.getElementById("ut");
-
-
-      image.src =
-        result.target.result;
-
-      image.style.display =
-        "block";
-
-      text.style.display =
-        "none";
-
-    };
-
-
-  reader.readAsDataURL(file);
-
-}
-
-
-/* ================= CREATE CARD ================= */
-
-function createCard(){
-
-  const player =
-    document.getElementById("sp")
-      .value.trim();
-
-
-  const club =
-    document.getElementById("sc")
-      .value.trim();
-
-
-  const price =
-    Number(
-      document.getElementById("sx")
-        .value
-    );
-
-
-  const condition =
-    document.getElementById("sco")
-      .value;
-
-
-  const description =
-    document.getElementById("sd")
-      .value.trim();
-
-
-  const image =
-    document.getElementById("prev");
-
-
-  if(!player ||
-     !club ||
-     !price){
-
-    toast(
-      "Spieler, Verein und Preis ausfüllen."
-    );
-
-    return;
-  }
-
-
-  if(
-    !image.src ||
-    image.style.display === "none"
-  ){
-
-    toast(
-      "Bitte zuerst ein Kartenbild auswählen."
-    );
-
-    return;
-  }
-
-
-  cards.unshift({
-
-    id:
-      "c" +
-      Date.now(),
-
-    player:player,
-
-    club:club,
-
-    price:price,
-
-    condition:condition,
-
-    description:description,
-
-    image:image.src,
-
-    seller:user,
-
-    createdAt:Date.now(),
-
-    views:0,
-
-    sold:false
-
-  });
-
-
-  saveData(K.cards,cards);
-
-
-  document.getElementById("sp").value = "";
-  document.getElementById("sc").value = "";
-  document.getElementById("sx").value = "";
-  document.getElementById("sd").value = "";
-
-
-  image.src = "";
-  image.style.display = "none";
-
-
-  document.getElementById("ut")
-    .style.display = "block";
-
-
-  document.getElementById("file")
-    .value = "";
-
-
-  toast(
-    "Karte erfolgreich eingestellt."
-  );
-
-
-  renderAll();
-
-}
-
-
-/* ================= DELETE CARD ================= */
-
-function deleteCard(id){
-
-  const card =
-    cards.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(
-    !card ||
-    card.seller !== user
-  ){
-    return;
-  }
-
-
-  if(
-    !confirm(
-      "Karte wirklich löschen?"
-    )
-  ){
-    return;
-  }
-
-
-  cards =
-    cards.filter(
-      item =>
-        item.id !== id
-    );
-
-
-  fav =
-    fav.filter(
-      item =>
-        item !== id
-    );
-
-
-  saveData(K.cards,cards);
-  saveData(K.fav,fav);
-
-
-  toast(
-    "Karte gelöscht."
-  );
-
-
-  renderAll();
-
-}
-
-
-/* ================= RATE ================= */
-
-function rateSeller(id){
-
-  const request =
-    req.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(
-    !request ||
-    request.buyer !== user
-  ){
-    return;
-  }
-
-
-  openModal(
-
-    "Verkäufer bewerten",
-
-    `
-
-      <select
-        id="ratingValue"
-        style="
-          width:100%;
-          background:#090909;
-          color:#fff;
-          padding:12px;
-          border:1px solid #292929;
-          border-radius:10px;
-        ">
-
-        <option value="5">
-          5 — Sehr gut
-        </option>
-
-        <option value="4">
-          4 — Gut
-        </option>
-
-        <option value="3">
-          3 — Okay
-        </option>
-
-        <option value="2">
-          2 — Nicht so gut
-        </option>
-
-        <option value="1">
-          1 — Schlecht
-        </option>
-
-      </select>
-
-
-      <textarea
-        id="ratingComment"
-        rows="3"
-        style="
-          width:100%;
-          margin-top:8px;
-          background:#090909;
-          color:#fff;
-          padding:10px;
-          border:1px solid #292929;
-          border-radius:10px;
-        "
-        placeholder="Kommentar optional">
-      </textarea>
-
-
-      <button
-        class="btn primary"
-        style="
-          width:100%;
-          margin-top:8px;
-        "
-        onclick="saveRating('${esc(id)}')">
-        Bewertung abgeben
-      </button>
-
-    `
-
-  );
-
-}
-
-
-function saveRating(id){
-
-  const request =
-    req.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(!request) return;
-
-
-  if(
-    ratings.some(
-      rating =>
-        rating.requestId === id &&
-        rating.buyer === user
-    )
-  ){
-
-    toast(
-      "Du hast bereits bewertet."
-    );
-
-    return;
-  }
-
-
-  const value =
-    Number(
-      document.getElementById(
-        "ratingValue"
-      ).value
-    );
-
-
-  const comment =
-    document.getElementById(
-      "ratingComment"
-    ).value.trim();
-
-
-  ratings.push({
-
-    requestId:id,
-
-    seller:request.seller,
-
-    buyer:user,
-
-    rating:value,
-
-    comment:comment
-
-  });
-
-
-  saveData(
-    K.rating,
-    ratings
-  );
-
-
-  closeModal();
-
-  toast(
-    "Bewertung gespeichert."
-  );
-
-
-  renderAll();
-
-}
-
-
-/* ================= PROFILE ================= */
-
-function saveProfile(){
-
-  const newName =
-    document.getElementById("un")
-      .value.trim();
-
-
-  const newBio =
-    document.getElementById("bio")
-      .value.trim();
-
-
-  if(!newName){
-
-    toast(
-      "Benutzername darf nicht leer sein."
-    );
-
-    return;
-  }
-
-
-  const oldName =
-    user;
-
-
-  if(
-    newName !== oldName &&
-    accounts.some(
-      account =>
-        account.username === newName
-    )
-  ){
-
-    toast(
-      "Benutzername bereits vergeben."
-    );
-
-    return;
-  }
-
-
-  cards.forEach(card => {
-
-    if(card.seller === oldName){
-      card.seller = newName;
-    }
-
-  });
-
-
-  req.forEach(request => {
-
-    if(request.buyer === oldName){
-      request.buyer = newName;
-    }
-
-    if(request.seller === oldName){
-      request.seller = newName;
-    }
-
-  });
-
-
-  msg.forEach(message => {
-
-    if(message.from === oldName){
-      message.from = newName;
-    }
-
-    if(message.to === oldName){
-      message.to = newName;
-    }
-
-  });
-
-
-  ratings.forEach(rating => {
-
-    if(rating.seller === oldName){
-      rating.seller = newName;
-    }
-
-    if(rating.buyer === oldName){
-      rating.buyer = newName;
-    }
-
-  });
-
-
-  not.forEach(notification => {
-
-    if(notification.user === oldName){
-      notification.user = newName;
-    }
-
-  });
-
-
-  wallets[newName] =
-    wallets[oldName] || 0;
-
-
-  if(newName !== oldName){
-
-    delete wallets[oldName];
-
-  }
-
-
-  const account =
-    accounts.find(
-      item =>
-        item.username === oldName
-    );
-
-
-  if(account){
-
-    account.username =
-      newName;
-
-    account.bio =
-      newBio;
-
-  }
-
-
-  user =
-    newName;
-
-
-  profile = {
-
-    username:user,
-
-    bio:
-      newBio ||
-      "Fußballkarten-Sammler"
-
-  };
-
-
-  localStorage.setItem(
-    K.user,
-    user
-  );
-
-
-  saveData(K.profile,profile);
-  saveData(K.cards,cards);
-  saveData(K.req,req);
-  saveData(K.msg,msg);
-  saveData(K.rating,ratings);
-  saveData(K.not,not);
-  saveData(K.accounts,accounts);
-  saveData(K.wallet,wallets);
-
-
-  toast(
-    "Profil gespeichert."
-  );
-
-
-  renderAll();
-
-}
-
-
-/* ================= RENDER PROFILE ================= */
-
-function renderProfile(){
-
-  const mine =
-    cards.filter(
-      card =>
-        card.seller === user
-    );
-
-
-  const sales =
-    req.filter(
-      request =>
-        request.seller === user &&
-        request.status === "accepted"
-    );
-
-
-  const userRatings =
-    ratings.filter(
-      rating =>
-        rating.seller === user
-    );
-
-
-  const average =
-    userRatings.length
-
-    ? userRatings.reduce(
-        (sum,item) =>
-          sum + Number(item.rating),
-        0
-      ) /
-      userRatings.length
-
-    : null;
-
-
-  document.getElementById("pn")
-    .textContent = user;
-
-
-  document.getElementById("pb")
-    .textContent =
-      profile.bio ||
-      "Fußballkarten-Sammler";
-
-
-  document.getElementById("pr")
-    .textContent =
-      average === null
-
-      ? "Noch keine Bewertung"
-
-      : `★ ${average.toFixed(1)}
-         · ${userRatings.length}
-         Bewertungen`;
-
-
-  document.getElementById("big")
-    .textContent =
-      user[0]?.toUpperCase() ||
-      "P";
-
-
-  document.getElementById("un")
-    .value = user;
-
-
-  document.getElementById("bio")
-    .value =
-      profile.bio || "";
-
-
-  document.getElementById("pstats")
-    .innerHTML = `
-
-      <div class="stat">
-        <small>Angebote</small>
-        <strong>
-          ${
-            mine.filter(
-              card => !card.sold
-            ).length
-          }
-        </strong>
-      </div>
-
-
-      <div class="stat">
-        <small>Verkäufe</small>
-        <strong>
-          ${sales.length}
-        </strong>
-      </div>
-
-
-      <div class="stat">
-        <small>Bewertungen</small>
-        <strong>
-          ${userRatings.length}
-        </strong>
-      </div>
-
-
-      <div class="stat">
-        <small>Bewertung</small>
-        <strong class="accent">
-          ${
-            average === null
-            ? "–"
-            : average.toFixed(1)
-          }
-        </strong>
-      </div>
-
-    `;
-
-
-  const mineElement =
-    document.getElementById("mine");
-
-
-  mineElement.innerHTML =
-    mine.length
-
-    ? mine.map(cardHTML).join("")
-
-    : `
-      <div class="empty">
-        Noch keine Karten.
-      </div>
-    `;
-
-}
-
-
-/* ================= RENDER ALL ================= */
 
 function renderAll(){
 
   render();
 
+  const active=cards
+    .filter(c=>!c.sold)
+    .sort((a,b)=>b.createdAt-a.createdAt);
 
-  const favoritesElement =
-    document.getElementById("favs");
+  const el=document.getElementById("popular");
+
+  if(!el)return;
+
+  el.innerHTML=active.length
+    ?active.map(card).join("")
+    :
+    `<div class="empty">
+      Noch keine echten Karten eingestellt.
+    </div>`;
+
+  renderTestOffers();
+}
 
 
-  const favoriteCards =
-    fav
-      .map(
-        id =>
-          cards.find(
-            card =>
-              card.id === id
-          )
-      )
-      .filter(Boolean)
-      .filter(
-        card => !card.sold
+let demoOffers=[];
+
+
+function renderTestOffers(){
+
+  const el=document.getElementById("testOffers");
+
+  if(!el)return;
+
+
+  demoOffers=[
+
+    {
+      id:"demo1",
+      demo:true,
+      player:"Lamine Yamal",
+      club:"FC Barcelona",
+      price:29.99,
+      condition:"Sehr gut",
+      seller:"Max",
+      image:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=85",
+      createdAt:Date.now(),
+      views:42
+    },
+
+    {
+      id:"demo2",
+      demo:true,
+      player:"Jude Bellingham",
+      club:"Real Madrid",
+      price:34.50,
+      condition:"Neu",
+      seller:"Leo",
+      image:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=85",
+      createdAt:Date.now(),
+      views:31
+    },
+
+    {
+      id:"demo3",
+      demo:true,
+      player:"Kylian Mbappé",
+      club:"Real Madrid",
+      price:39.99,
+      condition:"Gut",
+      seller:"FootballFan",
+      image:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=85",
+      createdAt:Date.now(),
+      views:55
+    },
+
+    {
+      id:"demo4",
+      demo:true,
+      player:"Jamal Musiala",
+      club:"FC Bayern",
+      price:24.90,
+      condition:"Sehr gut",
+      seller:"CardKing",
+      image:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=85",
+      createdAt:Date.now(),
+      views:27
+    },
+
+    {
+      id:"demo5",
+      demo:true,
+      player:"Pedri",
+      club:"FC Barcelona",
+      price:27.50,
+      condition:"Neu",
+      seller:"ProCards",
+      image:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=85",
+      createdAt:Date.now(),
+      views:46
+    },
+
+    {
+      id:"demo6",
+      demo:true,
+      player:"Vinícius Júnior",
+      club:"Real Madrid",
+      price:32.90,
+      condition:"Sehr gut",
+      seller:"Madridista",
+      image:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=85",
+      createdAt:Date.now(),
+      views:38
+    }
+
+  ];
+
+
+  el.innerHTML=demoOffers
+    .map(card)
+    .join("");
+}
+
+
+function toggleFav(id){
+
+  const c=cards.find(x=>x.id===id);
+
+  if(!c)return;
+
+  if(c.seller===user){
+    return toast(
+      "Eigene Karten können nicht favorisiert werden."
+    );
+  }
+
+  fav=fav.includes(id)
+    ?fav.filter(x=>x!==id)
+    :[...fav,id];
+
+  S(K.fav,fav);
+
+  renderAll();
+  renderFavorites();
+}
+
+
+function reset(){
+
+  ["q","min","max"].forEach(x=>{
+    const el=document.getElementById(x);
+    if(el)el.value="";
+  });
+
+  document.getElementById("club").value="";
+
+  document.getElementById("cond").value="";
+
+  document.getElementById("sort").value="new";
+
+  render();
+}
+
+
+function view(id){
+
+  views[id]??=[];
+
+  if(!views[id].includes(user)){
+
+    views[id].push(user);
+
+    const c=cards.find(x=>x.id===id);
+
+    if(c){
+      c.views=(c.views||0)+1;
+    }
+
+    S(K.views,views);
+    S(K.cards,cards);
+  }
+}
+
+
+function details(id){
+
+  let c=cards.find(x=>x.id===id);
+
+
+  if(!c){
+
+    const d=demoOffers.find(x=>x.id===id);
+
+    if(d){
+
+      modal(
+        d.player,
+        `
+        <p>
+          Demo-Angebot zur Vorschau.
+        </p>
+
+        <p style="margin-top:10px">
+          <b>${esc(d.club)}</b>
+          ·
+          ${esc(d.condition)}
+        </p>
+
+        <div class="price">
+          ${(+d.price).toFixed(2)} €
+        </div>
+
+        <button
+          class="btn primary"
+          onclick="closeM()">
+          Schließen
+        </button>
+        `
       );
 
+      return;
+    }
 
-  favoritesElement.innerHTML =
-    favoriteCards.length
+    return;
+  }
 
-    ? favoriteCards
-        .map(cardHTML)
-        .join("")
 
-    : `
-      <div class="empty">
-        Keine Favoriten.
+  view(id);
+
+
+  modal(
+    c.player,
+    `
+    <p>
+      Verein:
+      <b>${esc(c.club||"Kein Verein")}</b>
+    </p>
+
+    <p>
+      Zustand:
+      <b>${esc(c.condition||"Gut")}</b>
+    </p>
+
+    <p>
+      Verkäufer:
+      <b>${esc(c.seller)}</b>
+    </p>
+
+    <p>
+      Aufrufe:
+      <b>${c.views||0}</b>
+    </p>
+
+    <div class="price">
+      ${(+c.price).toFixed(2)} €
+    </div>
+
+    ${
+      c.seller!==user && !c.sold
+      ?
+      `<button
+        class="btn primary"
+        onclick="closeM();buy('${esc(c.id)}')">
+        Kaufen
+      </button>`
+      :""
+    }
+    `
+  );
+}
+
+
+function buy(id){
+
+  const c=cards.find(x=>x.id===id);
+
+
+  if(!c){
+
+    if(
+      demoOffers.some(x=>x.id===id)
+    ){
+      toast(
+        "Demo-Angebot – echte Käufe funktionieren bei eingestellten Karten."
+      );
+    }
+
+    return;
+  }
+
+
+  if(c.seller===user){
+    return toast(
+      "Du kannst deine eigene Karte nicht kaufen."
+    );
+  }
+
+
+  if(c.sold){
+    return toast(
+      "Diese Karte wurde bereits verkauft."
+    );
+  }
+
+
+  modal(
+    "Kaufanfrage",
+    `
+    <p>
+      Möchtest du <b>${esc(c.player)}</b>
+      für
+      <b>${(+c.price).toFixed(2)} €</b>
+      anfragen?
+    </p>
+
+    <div class="actions2">
+
+      <button
+        class="btn"
+        onclick="closeM()">
+        Abbrechen
+      </button>
+
+      <button
+        class="btn primary"
+        onclick="request('${esc(c.id)}')">
+        Kaufanfrage senden
+      </button>
+
+    </div>
+    `
+  );
+}
+
+
+function request(id){
+
+  const c=cards.find(x=>x.id===id);
+
+  if(!c){
+    closeM();
+    return;
+  }
+
+
+  if(
+    req.some(r=>
+      r.cardId===id &&
+      r.buyer===user &&
+      r.status==="pending"
+    )
+  ){
+    closeM();
+
+    return toast(
+      "Du hast bereits eine Anfrage gesendet."
+    );
+  }
+
+
+  req.push({
+    id:"r_"+Date.now(),
+    cardId:id,
+    buyer:user,
+    seller:c.seller,
+    price:+c.price,
+    status:"pending",
+    createdAt:Date.now()
+  });
+
+
+  S(K.req,req);
+
+
+  notificationsData.push({
+    id:"n_"+Date.now(),
+    user:c.seller,
+    text:user+" möchte deine Karte "+c.player+" kaufen.",
+    read:false,
+    createdAt:Date.now()
+  });
+
+
+  S(K.not,notificationsData);
+
+  closeM();
+
+  toast("Kaufanfrage gesendet.");
+
+  badges();
+
+  renderAll();
+}
+
+
+function accept(id){
+
+  const r=req.find(x=>x.id===id);
+
+  if(!r)return;
+
+  const c=cards.find(x=>x.id===r.cardId);
+
+  if(!c)return;
+
+
+  c.sold=true;
+  c.soldTo=r.buyer;
+
+
+  req=req.map(x=>
+    x.cardId===r.cardId &&
+    x.id!==id &&
+    x.status==="pending"
+    ?
+    {...x,status:"declined"}
+    :
+    x.id===id
+    ?
+    {...x,status:"accepted"}
+    :
+    x
+  );
+
+
+  walletData[c.seller]=(walletData[c.seller]||0)+(+c.price);
+
+  S(K.cards,cards);
+  S(K.req,req);
+  S(K.wallet,walletData);
+
+
+  notificationsData.push({
+    id:"n_"+Date.now(),
+    user:r.buyer,
+    text:"Deine Kaufanfrage für "+c.player+" wurde angenommen.",
+    read:false,
+    createdAt:Date.now()
+  });
+
+
+  S(K.not,notificationsData);
+
+  toast("Anfrage angenommen.");
+
+  renderRequests();
+  renderAll();
+  badges();
+}
+
+
+function decline(id){
+
+  const r=req.find(x=>x.id===id);
+
+  if(!r)return;
+
+  req=req.map(x=>
+    x.id===id
+    ?{...x,status:"declined"}
+    :x
+  );
+
+  S(K.req,req);
+
+  notificationsData.push({
+    id:"n_"+Date.now(),
+    user:r.buyer,
+    text:"Deine Kaufanfrage wurde abgelehnt.",
+    read:false,
+    createdAt:Date.now()
+  });
+
+  S(K.not,notificationsData);
+
+  toast("Anfrage abgelehnt.");
+
+  renderRequests();
+  badges();
+}
+
+
+function renderRequests(){
+
+  const incoming=req.filter(x=>
+    x.seller===user
+  );
+
+  const outgoing=req.filter(x=>
+    x.buyer===user
+  );
+
+
+  const inc=document.getElementById("inc");
+  const out=document.getElementById("out");
+
+
+  inc.innerHTML=incoming.length
+    ?
+    incoming.map(r=>{
+
+      const c=cards.find(x=>x.id===r.cardId);
+
+      return `
+      <div class="row">
+
+        <div class="rowhead">
+
+          <div>
+            <b>${esc(c?.player||"Karte")}</b>
+            <div class="sub">
+              Käufer: ${esc(r.buyer)}
+            </div>
+          </div>
+
+          <b>
+            ${(+r.price).toFixed(2)} €
+          </b>
+
+        </div>
+
+        <div style="margin-top:10px">
+
+          ${
+            r.status==="pending"
+            ?
+            `
+            <div style="display:flex;gap:7px">
+
+              <button
+                class="btn primary"
+                onclick="accept('${r.id}')">
+                Annehmen
+              </button>
+
+              <button
+                class="btn"
+                onclick="decline('${r.id}')">
+                Ablehnen
+              </button>
+
+            </div>
+            `
+            :
+            `<span class="sub">
+              Status: ${esc(r.status)}
+            </span>`
+          }
+
+        </div>
+
+      </div>`;
+    }).join("")
+    :
+    `<div class="empty">
+      Keine Kaufanfragen.
+    </div>`;
+
+
+  out.innerHTML=outgoing.length
+    ?
+    outgoing.map(r=>{
+
+      const c=cards.find(x=>x.id===r.cardId);
+
+      return `
+      <div class="row">
+
+        <div class="rowhead">
+
+          <div>
+            <b>${esc(c?.player||"Karte")}</b>
+            <div class="sub">
+              Verkäufer: ${esc(r.seller)}
+            </div>
+          </div>
+
+          <b>
+            ${(+r.price).toFixed(2)} €
+          </b>
+
+        </div>
+
+        <div class="sub" style="margin-top:7px">
+          Status: ${esc(r.status)}
+        </div>
+
+      </div>`;
+    }).join("")
+    :
+    `<div class="empty">
+      Du hast noch keine Anfragen.
+    </div>`;
+}
+
+
+function del(id){
+
+  const c=cards.find(x=>x.id===id);
+
+  if(!c || c.seller!==user){
+    return;
+  }
+
+  if(!confirm("Karte wirklich löschen?")){
+    return;
+  }
+
+  cards=cards.filter(x=>x.id!==id);
+
+  fav=fav.filter(x=>x!==id);
+
+  S(K.cards,cards);
+  S(K.fav,fav);
+
+  toast("Karte gelöscht.");
+
+  renderAll();
+  renderMine();
+}
+
+
+function seller(name){
+
+  const own=cards.filter(c=>
+    c.seller===name
+  );
+
+  const sold=own.filter(c=>c.sold).length;
+
+  modal(
+    name,
+    `
+    <div class="profilebox">
+
+      <div class="bigavatar">
+        ${esc(name[0]?.toUpperCase()||"P")}
       </div>
-    `;
+
+      <div>
+        <h2>${esc(name)}</h2>
+        <div class="sub">
+          ${rt(name)}
+        </div>
+      </div>
+
+    </div>
+
+    <div class="stats">
+
+      <div class="stat">
+        <small>Karten</small>
+        <strong>${own.length}</strong>
+      </div>
+
+      <div class="stat">
+        <small>Verkäufe</small>
+        <strong>${sold}</strong>
+      </div>
+
+    </div>
+    `
+  );
+}
 
 
-  const active =
-    cards.filter(
-      card => !card.sold
+function notifications(){
+
+  const mine=notificationsData
+    .filter(n=>n.user===user)
+    .sort((a,b)=>b.createdAt-a.createdAt);
+
+
+  notificationsData=
+    notificationsData.map(n=>
+      n.user===user
+      ?{...n,read:true}
+      :n
     );
 
 
-  /* STARTSEITE – ANGEBOTE */
+  S(K.not,notificationsData);
 
-  document.getElementById("popular")
-    .innerHTML =
+  modal(
+    "Benachrichtigungen",
+    mine.length
+    ?
+    mine.map(n=>
+      `<div class="row" style="margin-bottom:8px">
+        ${esc(n.text)}
+      </div>`
+    ).join("")
+    :
+    `<div class="empty">
+      Keine neuen Benachrichtigungen.
+    </div>`
+  );
 
-      active.length
-
-      ? active
-          .map(cardHTML)
-          .join("")
-
-      : `
-        <div class="empty">
-          Noch keine Angebote.
-        </div>
-      `;
+  badges();
+}
 
 
-  /* STATS */
+function wallet(){
 
-  document.getElementById("stats")
-    .innerHTML = `
+  const amount=walletData[user]||0;
 
-      <div class="stat">
+  modal(
+    "Geldbeutel",
+    `
+    <div style="text-align:center;padding:20px">
 
-        <small>
-          Karten online
-        </small>
-
-        <strong>
-          ${active.length}
-        </strong>
-
+      <div class="sub">
+        Aktuelles Guthaben
       </div>
 
-
-      <div class="stat">
-
-        <small>
-          Meine Karten
-        </small>
-
-        <strong>
-          ${
-            cards.filter(
-              card =>
-                card.seller === user
-            ).length
-          }
-        </strong>
-
+      <div class="price"
+        style="font-size:38px">
+        ${amount.toFixed(2)} €
       </div>
 
-
-      <div class="stat">
-
-        <small>
-          Favoriten
-        </small>
-
-        <strong>
-          ${fav.length}
-        </strong>
-
-      </div>
+    </div>
+    `
+  );
+}
 
 
-      <div class="stat">
+function accountsUI(){
 
-        <small>
-          Verkäufe
-        </small>
+  modal(
+    "Accounts",
+    `
+    <div class="list">
 
-        <strong>
-          ${
-            req.filter(
-              request =>
-                request.seller === user &&
-                request.status === "accepted"
-            ).length
-          }
-        </strong>
+      ${
+        accounts.map(a=>
+          `
+          <div class="row">
 
-      </div>
+            <div class="rowhead">
 
-    `;
+              <b>${esc(a.username)}</b>
 
-
-  /* KÄUFE */
-
-  document.getElementById("buylist")
-    .innerHTML =
-
-      req
-        .filter(
-          request =>
-            request.buyer === user
-        )
-        .map(
-          request =>
-            requestItem(
-              request,
-              false
-            )
-        )
-        .join("")
-
-      ||
-
-      `
-        <div class="empty">
-          Noch keine Käufe.
-        </div>
-      `;
-
-
-  /* VERKÄUFE */
-
-  document.getElementById("saleslist")
-    .innerHTML =
-
-      req
-        .filter(
-          request =>
-            request.seller === user &&
-            request.status === "accepted"
-        )
-        .map(
-          request =>
-            requestItem(
-              request,
-              true
-            )
-        )
-        .join("")
-
-      ||
-
-      `
-        <div class="empty">
-          Noch keine Verkäufe.
-        </div>
-      `;
-
-
-  /* EINGEHENDE ANFRAGEN */
-
-  document.getElementById("inc")
-    .innerHTML =
-
-      req
-        .filter(
-          request =>
-            request.seller === user
-        )
-        .map(
-          request =>
-            requestItem(
-              request,
-              true
-            )
-        )
-        .join("")
-
-      ||
-
-      `
-        <div class="empty">
-          Keine eingehenden Anfragen.
-        </div>
-      `;
-
-
-  /* GESENDETE ANFRAGEN */
-
-  document.getElementById("out")
-    .innerHTML =
-
-      req
-        .filter(
-          request =>
-            request.buyer === user
-        )
-        .map(
-          request =>
-            requestItem(
-              request,
-              false
-            )
-        )
-        .join("")
-
-      ||
-
-      `
-        <div class="empty">
-          Keine gesendeten Anfragen.
-        </div>
-      `;
-
-
-  /* CHATS */
-
-  const people =
-    [
-      ...new Set(
-        msg
-          .filter(
-            message =>
-              message.from === user ||
-              message.to === user
-          )
-          .map(
-            message =>
-              message.from === user
-              ? message.to
-              : message.from
-          )
-      )
-    ];
-
-
-  document.getElementById("msgs")
-    .innerHTML =
-
-      people.length
-
-      ? people.map(person => {
-
-          const messages =
-            msg
-              .filter(
-                message =>
-                  message.from === person ||
-                  message.to === person
-              )
-              .sort(
-                (a,b) =>
-                  b.createdAt -
-                  a.createdAt
-              );
-
-
-          const latest =
-            messages[0];
-
-
-          return `
-
-            <div
-              class="item"
-              onclick="openChat('${esc(person)}')">
-
-              <div class="left">
-
-                <div class="avatar">
-                  ${esc(
-                    person[0]
-                    ?.toUpperCase() ||
-                    "P"
-                  )}
-                </div>
-
-                <div>
-
-                  <b>
-                    ${esc(person)}
-                  </b>
-
-                  <p>
-                    ${esc(
-                      latest?.text ||
-                      ""
-                    )}
-                  </p>
-
-                </div>
-
-              </div>
+              ${
+                a.username===user
+                ?'<span class="accent">Aktiv</span>'
+                :
+                `<button
+                  class="btn"
+                  onclick="switchAcc('${esc(a.username)}')">
+                  Wechseln
+                </button>`
+              }
 
             </div>
 
-          `;
+          </div>
+          `
+        ).join("")
+      }
 
-        }).join("")
+    </div>
 
-      : `
+    <button
+      class="btn primary"
+      style="margin-top:10px"
+      onclick="newAcc()">
+      + Account hinzufügen
+    </button>
+    `
+  );
+}
 
-        <div class="empty">
-          Noch keine Chats.
-        </div>
 
-      `;
+function newAcc(){
 
+  modal(
+    "Neuen Account erstellen",
+    `
+    <div class="form">
+
+      <label>Username</label>
+
+      <input
+        id="newUsername"
+        placeholder="z.B. CardMaster">
+
+      <button
+        class="btn primary"
+        onclick="createAcc()">
+        Account erstellen
+      </button>
+
+    </div>
+    `
+  );
+}
+
+
+function createAcc(){
+
+  const input=document.getElementById("newUsername");
+
+  const name=input?.value.trim();
+
+  if(!name){
+    return toast("Username eingeben.");
+  }
+
+  if(accounts.some(a=>
+    a.username.toLowerCase()===name.toLowerCase()
+  )){
+    return toast("Username existiert bereits.");
+  }
+
+
+  accounts.push({
+    username:name,
+    createdAt:Date.now()
+  });
+
+  S(K.accounts,accounts);
+
+  switchAcc(name);
+}
+
+
+function switchAcc(name){
+
+  user=name;
+
+  S(K.user,user);
+
+  if(walletData[user]===undefined){
+    walletData[user]=0;
+    S(K.wallet,walletData);
+  }
+
+  closeM();
+
+  renderProfile();
+  badges();
+  updateStats();
+
+  toast("Account gewechselt.");
+}
+
+
+function editProfile(){
+
+  const p=G(K.profile,{});
+
+  modal(
+    "Profil bearbeiten",
+    `
+    <div class="form">
+
+      <label>Bio</label>
+
+      <textarea
+        id="profileBio"
+        rows="4"
+        placeholder="Etwas über dich...">${esc(p[user]?.bio||"")}</textarea>
+
+      <button
+        class="btn primary"
+        onclick="saveProfile()">
+        Speichern
+      </button>
+
+    </div>
+    `
+  );
+}
+
+
+function saveProfile(){
+
+  const p=G(K.profile,{});
+
+  p[user]={
+    ...(p[user]||{}),
+    bio:document.getElementById("profileBio").value
+  };
+
+  S(K.profile,p);
+
+  closeM();
 
   renderProfile();
 
-  updateBadges();
+  toast("Profil gespeichert.");
+}
+
+
+function renderProfile(){
+
+  const p=G(K.profile,{});
+
+  const bioText=p[user]?.bio||
+    "Dein Pixel-Cards-Profil";
+
+  document.getElementById("pn").textContent=user;
+
+  document.getElementById("bio").textContent=bioText;
+
+  document.getElementById("big").textContent=
+    user[0]?.toUpperCase()||"P";
+
+
+  const mine=cards.filter(c=>
+    c.seller===user
+  );
+
+  const sales=mine.filter(c=>c.sold).length;
+
+  document.getElementById("pstats").innerHTML=`
+    <div class="stats">
+
+      <div class="stat">
+        <small>Meine Karten</small>
+        <strong>${mine.length}</strong>
+      </div>
+
+      <div class="stat">
+        <small>Verkäufe</small>
+        <strong>${sales}</strong>
+      </div>
+
+      <div class="stat">
+        <small>Favoriten</small>
+        <strong>${fav.length}</strong>
+      </div>
+
+      <div class="stat">
+        <small>Guthaben</small>
+        <strong>${(walletData[user]||0).toFixed(2)} €</strong>
+      </div>
+
+    </div>
+  `;
+
+  renderMine();
+}
+
+
+function renderMine(){
+
+  const el=document.getElementById("mine");
+
+  if(!el)return;
+
+  const mine=cards.filter(c=>
+    c.seller===user
+  );
+
+  el.innerHTML=mine.length
+    ?mine.map(card).join("")
+    :
+    `<div class="empty">
+      Du hast noch keine Karten eingestellt.
+    </div>`;
+}
+
+
+function renderFavorites(){
+
+  const el=document.getElementById("favCards");
+
+  const list=cards.filter(c=>
+    fav.includes(c.id)
+  );
+
+  el.innerHTML=list.length
+    ?list.map(card).join("")
+    :
+    `<div class="empty">
+      Noch keine Favoriten.
+    </div>`;
+}
+
+
+function renderBuys(){
+
+  const el=document.getElementById("buylist");
+
+  const bought=cards.filter(c=>
+    c.soldTo===user
+  );
+
+  el.innerHTML=bought.length
+    ?
+    bought.map(c=>
+      `
+      <div class="row">
+
+        <div class="rowhead">
+          <b>${esc(c.player)}</b>
+          <b>${(+c.price).toFixed(2)} €</b>
+        </div>
+
+        <div class="sub">
+          Verkäufer: ${esc(c.seller)}
+        </div>
+
+      </div>
+      `
+    ).join("")
+    :
+    `<div class="empty">
+      Du hast noch keine Karten gekauft.
+    </div>`;
+}
+
+
+function renderSales(){
+
+  const el=document.getElementById("saleslist");
+
+  const sold=cards.filter(c=>
+    c.seller===user && c.sold
+  );
+
+  el.innerHTML=sold.length
+    ?
+    sold.map(c=>
+      `
+      <div class="row">
+
+        <div class="rowhead">
+          <b>${esc(c.player)}</b>
+          <b>${(+c.price).toFixed(2)} €</b>
+        </div>
+
+        <div class="sub">
+          Verkauft an: ${esc(c.soldTo||"")}
+
+        </div>
+
+      </div>
+      `
+    ).join("")
+    :
+    `<div class="empty">
+      Noch keine Verkäufe.
+    </div>`;
+}
+
+
+function renderMessages(){
+
+  const el=document.getElementById("msgs");
+
+  const mine=messages.filter(m=>
+    m.from===user || m.to===user
+  );
+
+
+  if(!mine.length){
+
+    el.innerHTML=
+      `<div class="empty">
+        Noch keine Chats.
+      </div>`;
+
+    return;
+  }
+
+
+  const users=[
+    ...new Set(
+      mine.map(m=>
+        m.from===user?m.to:m.from
+      )
+    )
+  ];
+
+
+  el.innerHTML=users.map(other=>{
+
+    const last=mine
+      .filter(m=>
+        (m.from===user&&m.to===other)
+        ||
+        (m.from===other&&m.to===user)
+      )
+      .sort((a,b)=>b.createdAt-a.createdAt)[0];
+
+
+    return `
+    <div class="row"
+      onclick="chat('${esc(other)}')">
+
+      <div class="rowhead">
+
+        <b>${esc(other)}</b>
+
+        <span class="sub">
+          ${new Date(last.createdAt).toLocaleDateString("de-DE")}
+        </span>
+
+      </div>
+
+      <div class="sub" style="margin-top:6px">
+        ${esc(last.text)}
+      </div>
+
+    </div>`;
+  }).join("");
+}
+
+
+function chat(other){
+
+  const list=messages
+    .filter(m=>
+      (m.from===user&&m.to===other)
+      ||
+      (m.from===other&&m.to===user)
+    )
+    .sort((a,b)=>a.createdAt-b.createdAt);
+
+
+  modal(
+    "Chat mit "+other,
+    `
+    <div class="chatbox">
+
+      <div class="messages">
+
+        ${
+          list.length
+          ?
+          list.map(m=>
+            `
+            <div class="msg ${m.from===user?"me":""}">
+              ${esc(m.text)}
+            </div>
+            `
+          ).join("")
+          :
+          `<div class="empty">
+            Noch keine Nachrichten.
+          </div>`
+        }
+
+      </div>
+
+      <div style="display:flex;gap:7px">
+
+        <input
+          id="chatInput"
+          placeholder="Nachricht...">
+
+        <button
+          class="btn primary"
+          onclick="chatSend('${esc(other)}')">
+          Senden
+        </button>
+
+      </div>
+
+    </div>
+    `
+  );
+}
+
+
+function chatSend(other){
+
+  const input=document.getElementById("chatInput");
+
+  const text=input?.value.trim();
+
+  if(!text)return;
+
+
+  messages.push({
+    id:"m_"+Date.now(),
+    from:user,
+    to:other,
+    text,
+    createdAt:Date.now()
+  });
+
+
+  S(K.msg,messages);
+
+  closeM();
+
+  chat(other);
+
+  badges();
+}
+
+
+function send(){
+
+  modal(
+    "Neue Nachricht",
+    `
+    <div class="form">
+
+      <label>An</label>
+
+      <input
+        id="msgTo"
+        placeholder="Username">
+
+      <label>Nachricht</label>
+
+      <textarea
+        id="msgText"
+        rows="4"
+        placeholder="Nachricht..."></textarea>
+
+      <button
+        class="btn primary"
+        onclick="sendNow()">
+        Senden
+      </button>
+
+    </div>
+    `
+  );
+}
+
+
+function sendNow(){
+
+  const to=document.getElementById("msgTo").value.trim();
+
+  const text=document.getElementById("msgText").value.trim();
+
+  if(!to||!text){
+    return toast("Bitte alles ausfüllen.");
+  }
+
+  messages.push({
+    id:"m_"+Date.now(),
+    from:user,
+    to,
+    text,
+    createdAt:Date.now()
+  });
+
+  S(K.msg,messages);
+
+  closeM();
+
+  toast("Nachricht gesendet.");
+
+  renderMessages();
+
+  badges();
+}
+
+
+function preview(){
+
+  const input=document.getElementById("sco");
+
+  const img=document.getElementById("prev");
+
+  if(!input.files?.[0]){
+    img.style.display="none";
+    return;
+  }
+
+  const reader=new FileReader();
+
+  reader.onload=e=>{
+    img.src=e.target.result;
+    img.style.display="block";
+  };
+
+  reader.readAsDataURL(input.files[0]);
+}
+
+
+function create(){
+
+  const player=document.getElementById("sp").value.trim();
+
+  const club=document.getElementById("sc").value.trim();
+
+  const condition=document.getElementById("sx").value;
+
+  const price=+document.getElementById("sd").value;
+
+  const input=document.getElementById("sco");
+
+  const img=document.getElementById("prev");
+
+
+  if(!player){
+    return toast("Spieler eingeben.");
+  }
+
+  if(!club){
+    return toast("Verein eingeben.");
+  }
+
+  if(!price||price<=0){
+    return toast("Gültigen Preis eingeben.");
+  }
+
+  if(!input.files?.[0]){
+    return toast("Bitte ein Kartenbild auswählen.");
+  }
+
+
+  if(!img.src){
+    return toast("Kartenbild konnte nicht geladen werden.");
+  }
+
+
+  const c={
+    id:"c_"+Date.now()+"_"+Math.random().toString(36).slice(2),
+    player,
+    club,
+    condition,
+    price,
+    seller:user,
+    image:img.src,
+    createdAt:Date.now(),
+    views:0,
+    sold:false
+  };
+
+
+  cards.push(c);
+
+  S(K.cards,cards);
+
+  document.getElementById("sp").value="";
+  document.getElementById("sc").value="";
+  document.getElementById("sd").value="";
+  input.value="";
+  img.src="";
+  img.style.display="none";
+
+  toast("Karte erfolgreich eingestellt.");
+
+  renderAll();
+  renderMine();
+
+  go("home");
 
 }
 
 
-/* ================= BADGES ================= */
+function badges(){
 
-function updateBadges(){
-
-  const notificationBadge =
-    document.getElementById("nb");
-
-
-  const chatBadge =
-    document.getElementById("mb");
+  const unreadN=notificationsData.filter(n=>
+    n.user===user && !n.read
+  ).length;
 
 
-  const unreadNotifications =
-    not.filter(
-      item =>
-        item.user === user &&
-        !item.read
-    ).length;
+  const unreadM=messages.filter(m=>
+    m.to===user && !m.read
+  ).length;
 
 
-  const unreadMessages =
-    msg.filter(
-      item =>
-        item.to === user &&
-        !item.read
-    ).length;
+  const nb=document.getElementById("nb");
+  const mb=document.getElementById("mb");
 
 
-  notificationBadge.textContent =
-    unreadNotifications;
+  nb.textContent=unreadN||"";
+  mb.textContent=unreadM||"";
 
-
-  notificationBadge.style.display =
-    unreadNotifications
-    ? "block"
-    : "none";
-
-
-  chatBadge.textContent =
-    unreadMessages;
-
-
-  chatBadge.style.display =
-    unreadMessages
-    ? "block"
-    : "none";
-
+  nb.style.display=unreadN?"block":"none";
+  mb.style.display=unreadM?"block":"none";
 }
 
 
-/* ================= START ================= */
+function updateStats(){
 
+  document.getElementById("statCards").textContent=
+    cards.filter(c=>!c.sold).length;
+
+  document.getElementById("statSales").textContent=
+    cards.filter(c=>c.seller===user&&c.sold).length;
+
+  document.getElementById("statFav").textContent=
+    fav.length;
+
+  document.getElementById("statWallet").textContent=
+    (walletData[user]||0).toFixed(2)+" €";
+}
+
+
+document.querySelectorAll(
+  "#q,#min,#max,#club,#cond,#sort"
+).forEach(el=>{
+  el.addEventListener("input",render);
+  el.addEventListener("change",render);
+});
+
+
+renderTestOffers();
 renderAll();
+renderProfile();
+badges();
+updateStats();
 
 </script>
 
