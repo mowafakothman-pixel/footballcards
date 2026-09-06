@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -11,11 +11,12 @@
   --panel:#111;
   --panel2:#171717;
   --line:#292929;
-  --turq:#18d4c5;
+  --accent:#18d4c5;
   --text:#fff;
   --muted:#8d8d8d;
   --green:#39d98a;
   --red:#ff5555;
+  --yellow:#ffd34d;
 }
 
 *{
@@ -29,19 +30,19 @@ html,body{
   min-height:100%;
   overflow-x:hidden;
   background:var(--bg);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
-  touch-action:pan-y;
 }
 
 body{
-  padding-bottom:80px;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+  font-size:14px;
+  padding-bottom:82px;
 }
 
 button,
 input,
-select,
-textarea{
+textarea,
+select{
   font:inherit;
 }
 
@@ -54,195 +55,154 @@ button:disabled{
   cursor:not-allowed;
 }
 
-/* HEADER */
+/* =========================
+   TOP SEARCH
+========================= */
 
 .header{
   position:sticky;
   top:0;
-  z-index:20;
-  background:#080808f5;
+  z-index:30;
+  background:#080808ed;
   backdrop-filter:blur(18px);
   border-bottom:1px solid var(--line);
-}
-
-.headerInner{
-  max-width:1450px;
-  margin:auto;
-  padding:12px 18px;
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.logo{
-  font-size:23px;
-  font-weight:900;
-  white-space:nowrap;
-}
-
-.logo span{
-  color:var(--turq);
+  padding:10px;
 }
 
 .searchTop{
-  flex:1;
+  max-width:900px;
+  margin:auto;
   position:relative;
 }
 
 .searchTop input{
   width:100%;
-  height:44px;
-  padding:0 16px;
+  height:48px;
   background:#151515;
   border:1px solid #303030;
-  color:#fff;
-  border-radius:13px;
+  border-radius:15px;
+  color:white;
+  padding:0 17px 0 45px;
   outline:none;
+  transition:.2s;
 }
 
 .searchTop input:focus{
-  border-color:var(--turq);
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px #18d4c51a;
 }
 
-.profileTop{
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  border:1px solid var(--line);
-  background:var(--turq);
-  color:#000;
-  font-weight:900;
-  flex:none;
+.searchIcon{
+  position:absolute;
+  left:16px;
+  top:14px;
+  color:#888;
+  pointer-events:none;
 }
 
-/* LAYOUT */
+/* =========================
+   MAIN
+========================= */
 
 .wrap{
   width:100%;
   max-width:1450px;
   margin:auto;
-  padding:16px 18px 50px;
+  padding:12px 12px 25px;
 }
 
 .page{
   display:none;
+  animation:pageIn .25s ease;
 }
 
-.page.active{
+.page.onpage{
   display:block;
 }
 
-/* FILTERS */
-
-.filtersBox{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:12px;
-  margin-bottom:15px;
+@keyframes pageIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-.filterTop{
-  display:flex;
-  gap:8px;
-}
-
-.filterTop input{
-  flex:1;
-}
-
-.filters{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:8px;
-  margin-top:9px;
-}
-
-input,
-select,
-textarea{
-  background:#090909;
-  border:1px solid var(--line);
-  color:#fff;
-  border-radius:10px;
-  padding:11px;
-  outline:none;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:var(--turq);
-}
-
-/* BUTTONS */
-
-.btn{
-  border:1px solid var(--line);
-  background:#151515;
-  color:#fff;
-  border-radius:10px;
-  padding:10px 13px;
-}
-
-.btn:hover{
-  border-color:var(--turq);
-}
-
-.primary{
-  background:var(--turq);
-  color:#000;
-  border-color:var(--turq);
-  font-weight:900;
-}
-
-/* MARKETPLACE */
+/* =========================
+   MARKET GRID
+========================= */
 
 .marketTitle{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  margin-bottom:12px;
+  align-items:center;
+  margin:4px 2px 12px;
 }
 
 .marketTitle h1{
-  font-size:28px;
+  font-size:23px;
 }
 
-.marketTitle p{
+.marketTitle span{
   color:var(--muted);
-  margin-top:4px;
+  font-size:12px;
 }
 
-/* CARD GRID */
-
-.cardGrid{
+.grid{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:15px;
+  gap:12px;
 }
 
+/* =========================
+   OFFER CARD
+========================= */
+
 .card{
+  position:relative;
   background:var(--panel);
   border:1px solid var(--line);
-  border-radius:17px;
+  border-radius:15px;
   overflow:hidden;
-  min-width:0;
-  transition:.15s;
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease;
+  animation:cardIn .3s ease both;
+}
+
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(10px) scale(.98);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
 }
 
 .card:hover{
-  border-color:#3b3b3b;
-  transform:translateY(-2px);
+  transform:translateY(-3px);
+  border-color:#3c3c3c;
 }
+
+.card:active{
+  transform:scale(.985);
+}
+
+/* STARTSEITE: nur Bild + Herz */
 
 .cardImage{
   position:relative;
   width:100%;
   aspect-ratio:4/5;
-  background:#181818;
+  background:#191919;
   overflow:hidden;
-  cursor:zoom-in;
+  cursor:pointer;
 }
 
 .cardImage img{
@@ -250,165 +210,302 @@ textarea:focus{
   height:100%;
   display:block;
   object-fit:cover;
+  transition:transform .35s ease;
 }
 
-.cardBadges{
+.card:hover .cardImage img{
+  transform:scale(1.025);
+}
+
+/* kleine Badges oben links */
+
+.badges{
   position:absolute;
-  left:9px;
-  right:9px;
-  top:9px;
+  top:8px;
+  left:8px;
   display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  pointer-events:none;
+  gap:5px;
+  z-index:3;
 }
 
-.badge{
+.tag{
   background:#000c;
+  border:1px solid #ffffff22;
+  padding:5px 7px;
   border-radius:7px;
-  padding:6px 8px;
-  font-size:10px;
+  font-size:9px;
   font-weight:900;
+  backdrop-filter:blur(5px);
 }
 
-.badge.new{
-  background:var(--turq);
+.tag.new{
+  background:var(--accent);
   color:#000;
+  border-color:var(--accent);
 }
 
-.heart{
-  pointer-events:auto;
-  width:37px;
-  height:37px;
+/* Herz unten rechts */
+
+.favoriteBtn{
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  width:34px;
+  height:34px;
   border-radius:50%;
-  border:1px solid #444;
-  background:#000c;
-  color:#fff;
-  font-size:20px;
-}
-
-.heart.active{
-  color:var(--turq);
-}
-
-.cardBody{
-  padding:13px;
-}
-
-.player{
-  font-size:18px;
-  font-weight:900;
-}
-
-.club{
-  color:var(--muted);
-  font-size:12px;
-  margin-top:4px;
-}
-
-.price{
-  color:var(--turq);
-  font-size:22px;
-  font-weight:900;
-  margin-top:10px;
-}
-
-.condition{
-  color:#aaa;
-  font-size:11px;
-  margin-top:3px;
-}
-
-.seller{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  border-top:1px solid var(--line);
-  margin-top:11px;
-  padding-top:10px;
-  cursor:pointer;
-}
-
-.avatar{
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  background:var(--turq);
-  color:#000;
+  border:1px solid #ffffff33;
+  background:#050505d9;
+  color:white;
   display:grid;
   place-items:center;
-  font-weight:900;
-  flex:none;
+  font-size:17px;
+  transition:
+    transform .18s ease,
+    color .18s ease,
+    background .18s ease;
+  z-index:5;
 }
 
-.sellerInfo{
-  min-width:0;
+.favoriteBtn:hover{
+  transform:scale(1.1);
 }
 
-.sellerName{
-  font-weight:800;
-  font-size:13px;
+.favoriteBtn:active{
+  transform:scale(.88);
 }
 
-.rating{
-  color:#aaa;
-  font-size:11px;
-  margin-top:2px;
+.favoriteBtn.active{
+  color:var(--accent);
+  background:#101f1e;
 }
 
-.cardButtons{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:7px;
-  margin-top:11px;
+/* Auf Startseite versteckt */
+
+.cardInfo{
+  display:none;
 }
 
-.cardButtons .btn{
-  width:100%;
-}
+/* =========================
+   DETAIL
+========================= */
 
-/* EMPTY */
-
-.empty{
-  border:1px dashed #333;
-  border-radius:13px;
-  padding:40px 20px;
-  text-align:center;
-  color:#777;
-  grid-column:1/-1;
-}
-
-/* PROFILE */
-
-.profilePage{
+.detail{
   max-width:900px;
   margin:auto;
 }
 
-.profileHeader{
+.detailBack{
+  margin-bottom:10px;
+}
+
+.detailImageBox{
+  background:#101010;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:10px;
+  overflow:hidden;
+}
+
+.detailImage{
+  width:100%;
+  max-height:68vh;
+  object-fit:contain;
+  display:block;
+  margin:auto;
+  border-radius:12px;
+  transition:transform .25s ease;
+  cursor:zoom-in;
+}
+
+.zoomControls{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:10px;
+}
+
+.zoomControls button{
+  min-width:45px;
+}
+
+.detailInfo{
   background:var(--panel);
   border:1px solid var(--line);
   border-radius:18px;
-  padding:22px;
+  padding:18px;
+  margin-top:12px;
 }
 
-.profileMain{
+.detailInfo h1{
+  font-size:27px;
+  margin-bottom:6px;
+}
+
+.detailClub{
+  color:var(--muted);
+  margin-bottom:15px;
+}
+
+.detailPrice{
+  color:var(--accent);
+  font-size:27px;
+  font-weight:900;
+  margin-bottom:15px;
+}
+
+.detailDescription{
+  background:#0b0b0b;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:13px;
+  margin:15px 0;
+}
+
+.detailSeller{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 0;
+  border-top:1px solid var(--line);
+}
+
+.detailActions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:12px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+  border:1px solid var(--line);
+  background:#151515;
+  color:#fff;
+  border-radius:11px;
+  padding:11px 14px;
+  transition:.18s;
+}
+
+.btn:hover{
+  border-color:var(--accent);
+  transform:translateY(-1px);
+}
+
+.btn:active{
+  transform:scale(.97);
+}
+
+.primary{
+  background:var(--accent);
+  color:#000;
+  border-color:var(--accent);
+  font-weight:900;
+}
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottomNav{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:76px;
+  z-index:40;
+  background:#0b0b0bf5;
+  border-top:1px solid var(--line);
+  backdrop-filter:blur(18px);
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  padding:6px 8px env(safe-area-inset-bottom);
+}
+
+.bottomNav button{
+  border:0;
+  background:transparent;
+  color:#777;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  border-radius:12px;
+  transition:.18s;
+}
+
+.bottomNav button .navIcon{
+  font-size:20px;
+}
+
+.bottomNav button span:last-child{
+  font-size:10px;
+  font-weight:700;
+}
+
+.bottomNav button.active{
+  color:var(--accent);
+  background:#18d4c50d;
+}
+
+.bottomNav button:active{
+  transform:scale(.9);
+}
+
+/* verkaufen in der Mitte */
+
+.sellNav{
+  color:white!important;
+}
+
+.sellCircle{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:var(--accent);
+  color:#000;
+  display:grid;
+  place-items:center;
+  font-size:21px;
+  font-weight:900;
+  margin-top:-17px;
+  border:4px solid #0b0b0b;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profileTop{
+  background:
+    radial-gradient(circle at 90% 0%,#18d4c51d,transparent 40%),
+    var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:12px;
+}
+
+.profileHeader{
   display:flex;
   align-items:center;
   gap:15px;
 }
 
 .bigAvatar{
-  width:76px;
-  height:76px;
+  width:72px;
+  height:72px;
   border-radius:50%;
-  background:var(--turq);
+  background:var(--accent);
   color:#000;
   display:grid;
   place-items:center;
   font-size:27px;
   font-weight:900;
-  flex:none;
+  flex-shrink:0;
 }
 
 .profileName{
@@ -422,54 +519,129 @@ textarea:focus{
 }
 
 .profileRating{
-  color:#aaa;
-  margin-top:6px;
+  margin-top:7px;
+  color:var(--accent);
 }
+
+.profileStats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+  margin-top:17px;
+}
+
+.stat{
+  background:#0b0b0b;
+  border:1px solid var(--line);
+  padding:12px;
+  border-radius:11px;
+  text-align:center;
+}
+
+.stat small{
+  display:block;
+  color:var(--muted);
+}
+
+.stat strong{
+  display:block;
+  font-size:20px;
+  margin-top:4px;
+}
+
+/* Vinted-artige Bereiche untereinander */
 
 .profileMenu{
-  margin-top:20px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:8px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  margin-bottom:12px;
 }
 
-.profileMenu button{
+.profileMenuTitle{
+  padding:17px;
+  font-size:18px;
+  font-weight:900;
+  border-bottom:1px solid var(--line);
+}
+
+.menuRow{
+  width:100%;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  padding:15px;
-  border-radius:12px;
-  border:1px solid var(--line);
-  background:#0b0b0b;
-  color:#fff;
+  gap:13px;
+  padding:15px 16px;
+  background:transparent;
+  color:white;
+  border:0;
+  border-bottom:1px solid #222;
   text-align:left;
+  transition:.18s;
 }
 
-.profileMenu button:hover{
-  border-color:var(--turq);
+.menuRow:last-child{
+  border-bottom:0;
 }
 
-.profileMenu small{
-  color:#777;
+.menuRow:hover{
+  background:#181818;
+  padding-left:20px;
 }
 
-.profileEdit{
-  margin-top:14px;
+.menuIcon{
+  width:35px;
+  height:35px;
+  border-radius:10px;
+  background:#191919;
+  display:grid;
+  place-items:center;
+  font-size:17px;
+  flex-shrink:0;
 }
+
+.menuText{
+  flex:1;
+}
+
+.menuText b{
+  display:block;
+  font-size:14px;
+}
+
+.menuText small{
+  color:var(--muted);
+  display:block;
+  margin-top:2px;
+}
+
+.arrow{
+  color:#666;
+  font-size:18px;
+}
+
+/* =========================
+   PANELS / FORMS
+========================= */
 
 .panel{
   background:var(--panel);
   border:1px solid var(--line);
-  border-radius:16px;
-  padding:18px;
-  margin-top:14px;
-}
-
-.panel h2{
+  border-radius:17px;
+  padding:17px;
   margin-bottom:12px;
 }
 
-.formGrid{
+.panel h2{
+  margin-bottom:5px;
+}
+
+.panel p{
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.formgrid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:10px;
@@ -485,7 +657,75 @@ textarea:focus{
   grid-column:1/-1;
 }
 
-/* LISTS */
+.form input,
+.form textarea,
+.form select,
+.filterBox input,
+.filterBox select{
+  background:#090909;
+  color:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px;
+  outline:none;
+}
+
+.form input:focus,
+.form textarea:focus,
+.form select:focus{
+  border-color:var(--accent);
+}
+
+.upload{
+  min-height:240px;
+  border:1px dashed #444;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  overflow:hidden;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.upload img{
+  max-width:100%;
+  max-height:300px;
+  object-fit:contain;
+}
+
+/* =========================
+   SEARCH / FILTER
+========================= */
+
+.filterPanel{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:12px;
+  margin-bottom:12px;
+}
+
+.filterGrid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:7px;
+}
+
+.filterBox{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.filterBox input,
+.filterBox select{
+  width:100%;
+}
+
+/* =========================
+   LISTS
+========================= */
 
 .list{
   display:flex;
@@ -494,14 +734,20 @@ textarea:focus{
 }
 
 .item{
-  background:#0b0b0b;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:11px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:10px;
+  background:#0b0b0b;
+  border:1px solid var(--line);
+  padding:11px;
+  border-radius:12px;
+  transition:.18s;
+}
+
+.item:hover{
+  border-color:#3a3a3a;
+  transform:translateX(2px);
 }
 
 .itemLeft{
@@ -512,86 +758,87 @@ textarea:focus{
 }
 
 .thumb{
-  width:50px;
-  height:62px;
+  width:45px;
+  height:56px;
   object-fit:cover;
   border-radius:7px;
   background:#222;
+  flex-shrink:0;
 }
 
-.itemText{
-  min-width:0;
-}
-
-.itemText b{
-  display:block;
-}
-
-.itemText p{
-  color:var(--muted);
-  font-size:12px;
-  margin-top:3px;
-}
-
-/* SELL */
-
-.sellGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-
-.upload{
-  min-height:300px;
-  border:1px dashed #444;
-  border-radius:13px;
+.avatar{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:var(--accent);
+  color:#000;
   display:grid;
   place-items:center;
+  font-weight:900;
+  flex-shrink:0;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+.empty{
   text-align:center;
-  overflow:hidden;
-  cursor:pointer;
-}
-
-.upload img{
-  width:100%;
-  height:100%;
-  max-height:340px;
-  object-fit:contain;
-}
-
-.uploadText{
   color:#777;
+  border:1px dashed #333;
+  padding:35px 15px;
+  border-radius:13px;
 }
 
-/* MODAL */
+/* =========================
+   MODAL
+========================= */
 
 .modal{
   position:fixed;
   inset:0;
   z-index:100;
-  background:#000d;
-  backdrop-filter:blur(10px);
   display:none;
   align-items:center;
   justify-content:center;
+  background:#000d;
+  backdrop-filter:blur(9px);
   padding:12px;
 }
 
 .modal.show{
   display:flex;
+  animation:modalBg .2s ease;
+}
+
+@keyframes modalBg{
+  from{opacity:0}
+  to{opacity:1}
 }
 
 .modalBox{
-  width:min(760px,100%);
-  max-height:94vh;
+  width:min(720px,100%);
+  max-height:92vh;
   overflow:auto;
   background:#111;
   border:1px solid #333;
   border-radius:18px;
-  padding:16px;
+  padding:17px;
+  animation:modalIn .22s ease;
 }
 
-.modalHeader{
+@keyframes modalIn{
+  from{
+    transform:translateY(20px) scale(.97);
+    opacity:0;
+  }
+  to{
+    transform:translateY(0) scale(1);
+    opacity:1;
+  }
+}
+
+.modalHead{
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -599,150 +846,57 @@ textarea:focus{
 }
 
 .close{
-  width:38px;
-  height:38px;
-  border-radius:9px;
   background:#191919;
+  color:white;
   border:1px solid #333;
-  color:#fff;
+  border-radius:9px;
+  padding:8px 11px;
 }
 
-/* IMAGE ZOOM */
+/* =========================
+   TOAST
+========================= */
 
-.zoomArea{
-  width:100%;
-  height:min(65vh,620px);
-  background:#050505;
-  border-radius:14px;
-  overflow:hidden;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.zoomImage{
-  max-width:100%;
-  max-height:100%;
-  object-fit:contain;
-  transform:scale(1);
-  transition:transform .18s;
-  cursor:zoom-in;
-  user-select:none;
-  -webkit-user-drag:none;
-}
-
-.zoomControls{
-  position:absolute;
-  bottom:12px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:7px;
-  background:#000c;
-  padding:7px;
-  border-radius:12px;
-}
-
-.zoomControls button{
-  min-width:42px;
-  height:38px;
-  border-radius:8px;
-  border:1px solid #444;
-  background:#181818;
-  color:#fff;
-}
-
-.detailInfo{
-  margin-top:14px;
-}
-
-.detailTop{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  align-items:flex-start;
-}
-
-.detailPrice{
-  color:var(--turq);
-  font-size:25px;
-  font-weight:900;
-}
-
-.detailMeta{
-  color:#aaa;
-  margin-top:5px;
-}
-
-.detailDescription{
-  background:#0b0b0b;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:13px;
-  margin-top:12px;
-}
-
-.detailSeller{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-top:13px;
-  padding:12px;
-  background:#0b0b0b;
-  border:1px solid var(--line);
-  border-radius:12px;
-}
-
-.detailButtons{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:12px;
-}
-
-/* TOAST */
-
-.toastContainer{
+.toastBox{
   position:fixed;
+  left:12px;
   right:12px;
-  bottom:12px;
-  z-index:200;
+  bottom:88px;
+  z-index:150;
   display:flex;
   flex-direction:column;
-  gap:7px;
+  align-items:center;
+  gap:6px;
+  pointer-events:none;
 }
 
 .toast{
-  min-width:220px;
-  background:#181818;
+  background:#171717;
   border:1px solid #333;
-  border-left:4px solid var(--turq);
+  border-left:4px solid var(--accent);
+  padding:11px 14px;
   border-radius:10px;
-  padding:11px;
+  min-width:230px;
+  max-width:90%;
+  animation:toastIn .22s ease;
 }
 
-/* ACCOUNTS */
-
-.account{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:11px;
-  border:1px solid var(--line);
-  background:#0b0b0b;
-  border-radius:11px;
-  margin-bottom:7px;
+@keyframes toastIn{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-.accountGrow{
-  flex:1;
-}
-
-/* STATUS */
+/* =========================
+   STATUS
+========================= */
 
 .status{
-  display:inline-block;
   font-size:10px;
   font-weight:900;
   padding:5px 7px;
@@ -751,7 +905,7 @@ textarea:focus{
 
 .pending{
   background:#332b15;
-  color:#ffd34d;
+  color:var(--yellow);
 }
 
 .accepted{
@@ -764,182 +918,91 @@ textarea:focus{
   color:var(--red);
 }
 
-/* RESPONSIVE */
+/* =========================
+   DESKTOP
+========================= */
 
-@media(max-width:1150px){
-  .cardGrid{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-  }
-
-  .filters{
-    grid-template-columns:repeat(3,1fr);
+@media(min-width:1101px){
+  .wrap{
+    padding-left:20px;
+    padding-right:20px;
   }
 }
 
-/* IPAD / TABLET */
+/* iPad */
 
-@media(max-width:800px){
-  .wrap{
-    padding:12px 12px 50px;
-  }
-
-  .cardGrid{
+@media(min-width:701px) and (max-width:1100px){
+  .grid{
     grid-template-columns:repeat(3,minmax(0,1fr));
     gap:10px;
   }
 
-  .cardBody{
-    padding:10px;
-  }
-
-  .player{
-    font-size:15px;
-  }
-
-  .price{
-    font-size:19px;
-  }
-
-  .cardButtons{
-    grid-template-columns:1fr;
-  }
-
-  .sellGrid{
-    grid-template-columns:1fr;
-  }
-}
-
-/* HANDY */
-
-@media(max-width:600px){
-  body{
-    padding-bottom:65px;
-  }
-
-  .headerInner{
-    padding:9px;
-    gap:7px;
-  }
-
-  .logo{
-    font-size:18px;
-  }
-
-  .profileTop{
-    width:40px;
-    height:40px;
-  }
-
-  .searchTop input{
-    height:40px;
+  .filterGrid{
+    grid-template-columns:repeat(3,1fr);
   }
 
   .wrap{
-    padding:9px 7px 45px;
+    padding-left:14px;
+    padding-right:14px;
+  }
+}
+
+/* Handy */
+
+@media(max-width:700px){
+
+  body{
+    padding-bottom:80px;
   }
 
-  .marketTitle h1{
-    font-size:22px;
+  .wrap{
+    padding:9px 8px 20px;
   }
 
-  .marketTitle p{
-    font-size:12px;
-  }
-
-  /* GENAU 2 ANGEBOTE PRO REIHE */
-
-  .cardGrid{
+  .grid{
     grid-template-columns:repeat(2,minmax(0,1fr));
     gap:7px;
   }
 
   .card{
-    border-radius:13px;
+    border-radius:11px;
   }
 
-  .cardBody{
-    padding:9px;
+  .cardImage{
+    aspect-ratio:4/5;
   }
 
-  .player{
-    font-size:14px;
-  }
-
-  .club{
-    font-size:10px;
-  }
-
-  .price{
-    font-size:18px;
-    margin-top:7px;
-  }
-
-  .condition{
-    font-size:9px;
-  }
-
-  .seller{
-    margin-top:8px;
-    padding-top:8px;
-  }
-
-  .avatar{
-    width:27px;
-    height:27px;
-    font-size:11px;
-  }
-
-  .sellerName{
-    font-size:10px;
-  }
-
-  .rating{
-    font-size:9px;
-  }
-
-  .heart{
+  .favoriteBtn{
     width:32px;
     height:32px;
-    font-size:17px;
+    right:6px;
+    bottom:6px;
+    font-size:16px;
   }
 
-  .cardButtons{
-    grid-template-columns:1fr;
-    gap:5px;
-    margin-top:7px;
+  .badges{
+    top:6px;
+    left:6px;
   }
 
-  .cardButtons .btn{
-    padding:8px 5px;
-    font-size:11px;
+  .tag{
+    padding:4px 6px;
+    font-size:8px;
   }
 
-  .filtersBox{
-    border-radius:12px;
-    padding:8px;
+  .marketTitle{
+    margin:3px 2px 9px;
   }
 
-  .filters{
-    grid-template-columns:1fr 1fr;
+  .marketTitle h1{
+    font-size:19px;
   }
 
-  .filterTop{
-    flex-direction:column;
+  .profileStats{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .profileMenu{
-    grid-template-columns:1fr;
-  }
-
-  .profileHeader{
-    padding:15px;
-  }
-
-  .profileName{
-    font-size:21px;
-  }
-
-  .formGrid{
+  .formgrid{
     grid-template-columns:1fr;
   }
 
@@ -947,39 +1010,46 @@ textarea:focus{
     grid-column:auto;
   }
 
-  .item{
-    align-items:flex-start;
-    flex-direction:column;
+  .filterGrid{
+    grid-template-columns:1fr 1fr;
   }
 
-  .item .btn{
-    width:100%;
-  }
-
-  .detailButtons{
+  .detailActions{
     grid-template-columns:1fr;
+  }
+
+  .detailInfo{
+    padding:14px;
+  }
+
+  .detailInfo h1{
+    font-size:23px;
+  }
+
+  .bottomNav{
+    height:74px;
   }
 }
 
-@media(max-width:400px){
-  .logo{
-    display:none;
+/* Sehr kleine Handys */
+
+@media(max-width:390px){
+
+  .grid{
+    gap:5px;
   }
 
-  .cardGrid{
-    gap:6px;
+  .wrap{
+    padding-left:5px;
+    padding-right:5px;
   }
 
-  .cardBody{
-    padding:8px;
+  .searchTop input{
+    height:45px;
   }
 
-  .player{
-    font-size:13px;
-  }
-
-  .price{
-    font-size:17px;
+  .bottomNav button span:last-child{
+    font-size:9px;
   }
 }
 </style>
@@ -987,404 +1057,498 @@ textarea:focus{
 
 <body>
 
+<!-- =========================
+     SEARCH HEADER
+========================= -->
+
 <header class="header">
-  <div class="headerInner">
-
-    <div class="logo">
-      Pixel <span>Cards</span>
-    </div>
-
-    <div class="searchTop">
-      <input
-        id="topSearch"
-        type="search"
-        placeholder="Spieler, Verein oder Verkäufer suchen..."
-        oninput="renderMarketplace()"
-      >
-    </div>
-
-    <button
-      class="profileTop"
-      id="profileTop"
-      onclick="go('profile')"
-      aria-label="Profil"
-    >P</button>
-
+  <div class="searchTop">
+    <span class="searchIcon">⌕</span>
+    <input
+      id="globalSearch"
+      type="search"
+      placeholder="Spieler, Verein oder Verkäufer suchen..."
+      oninput="globalSearch()"
+    >
   </div>
 </header>
 
-
 <main class="wrap">
 
-<!-- MARKETPLACE / STARTSEITE -->
+<!-- =========================
+     STARTSEITE
+========================= -->
 
-<section id="market" class="page active">
+<section id="home" class="page onpage">
 
   <div class="marketTitle">
-    <div>
-      <h1>Angebote</h1>
-      <p>Fußballkarten von anderen Sammlern</p>
-    </div>
+    <h1>Angebote</h1>
+    <span id="offerCount"></span>
   </div>
 
-  <div class="filtersBox">
-
-    <div class="filterTop">
-      <button class="btn" onclick="toggleFilters()">Filter</button>
-      <button class="btn" onclick="resetFilters()">Zurücksetzen</button>
-    </div>
-
-    <div id="filterArea" class="filters">
-
-      <select id="clubFilter" onchange="renderMarketplace()">
-        <option value="">Alle Vereine</option>
-      </select>
-
-      <input
-        id="minPrice"
-        type="number"
-        placeholder="Preis ab €"
-        oninput="renderMarketplace()"
-      >
-
-      <input
-        id="maxPrice"
-        type="number"
-        placeholder="Preis bis €"
-        oninput="renderMarketplace()"
-      >
-
-      <select id="conditionFilter" onchange="renderMarketplace()">
-        <option value="">Alle Zustände</option>
-        <option>Neu</option>
-        <option>Sehr gut</option>
-        <option>Gut</option>
-        <option>Schlecht</option>
-      </select>
-
-      <select id="sortFilter" onchange="renderMarketplace()">
-        <option value="new">Neueste</option>
-        <option value="low">Preis aufsteigend</option>
-        <option value="high">Preis absteigend</option>
-        <option value="views">Beliebt</option>
-      </select>
-
-    </div>
-  </div>
-
-  <div id="marketplace" class="cardGrid"></div>
+  <div id="homeCards" class="grid"></div>
 
 </section>
 
+<!-- =========================
+     SUCHEN
+========================= -->
 
-<!-- FAVORITEN -->
+<section id="searchPage" class="page">
+
+  <div class="marketTitle">
+    <h1>Suchen</h1>
+  </div>
+
+  <div class="filterPanel">
+
+    <div class="filterGrid">
+
+      <div class="filterBox">
+        <label>Verein</label>
+        <select id="clubFilter" onchange="renderSearch()">
+          <option value="">Alle Vereine</option>
+        </select>
+      </div>
+
+      <div class="filterBox">
+        <label>Preis ab</label>
+        <input id="minPrice" type="number" placeholder="€" oninput="renderSearch()">
+      </div>
+
+      <div class="filterBox">
+        <label>Preis bis</label>
+        <input id="maxPrice" type="number" placeholder="€" oninput="renderSearch()">
+      </div>
+
+      <div class="filterBox">
+        <label>Zustand</label>
+        <select id="conditionFilter" onchange="renderSearch()">
+          <option value="">Alle</option>
+          <option>Neu</option>
+          <option>Sehr gut</option>
+          <option>Gut</option>
+          <option>Schlecht</option>
+        </select>
+      </div>
+
+      <div class="filterBox">
+        <label>Sortieren</label>
+        <select id="sortFilter" onchange="renderSearch()">
+          <option value="new">Neueste</option>
+          <option value="low">Preis niedrig</option>
+          <option value="high">Preis hoch</option>
+          <option value="views">Beliebt</option>
+        </select>
+      </div>
+
+    </div>
+
+    <button class="btn" style="margin-top:9px" onclick="resetFilters()">
+      Filter zurücksetzen
+    </button>
+
+  </div>
+
+  <div id="searchCards" class="grid"></div>
+
+</section>
+
+<!-- =========================
+     FAVORITEN
+========================= -->
 
 <section id="favorites" class="page">
 
   <div class="marketTitle">
-    <div>
-      <h1>Favoriten</h1>
-      <p>Deine gespeicherten Karten</p>
-    </div>
+    <h1>Favoriten</h1>
   </div>
 
-  <div id="favoriteCards" class="cardGrid"></div>
+  <div id="favoriteCards" class="grid"></div>
 
 </section>
 
+<!-- =========================
+     VERKAUFEN
+========================= -->
 
-<!-- KÄUFE -->
+<section id="sell" class="page">
+
+  <div class="marketTitle">
+    <h1>Karte verkaufen</h1>
+  </div>
+
+  <div class="panel">
+
+    <div class="formgrid">
+
+      <div class="form">
+        <label>Spieler *</label>
+        <input id="playerInput" placeholder="Lamine Yamal">
+      </div>
+
+      <div class="form">
+        <label>Verein *</label>
+        <input id="clubInput" placeholder="FC Barcelona">
+      </div>
+
+      <div class="form">
+        <label>Preis *</label>
+        <input id="priceInput" type="number" min=".01" step=".01" placeholder="25">
+      </div>
+
+      <div class="form">
+        <label>Zustand</label>
+        <select id="conditionInput">
+          <option>Neu</option>
+          <option>Sehr gut</option>
+          <option>Gut</option>
+          <option>Schlecht</option>
+        </select>
+      </div>
+
+      <div class="form full">
+        <label>Beschreibung</label>
+        <textarea id="descriptionInput" rows="5" placeholder="Beschreibe deine Karte..."></textarea>
+      </div>
+
+      <div class="form full">
+        <button class="btn primary" onclick="createCard()">
+          Karte einstellen
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="panel">
+
+    <h2>Kartenbild *</h2>
+
+    <p style="margin-top:5px">
+      Das Bild wird später direkt auf der Startseite angezeigt.
+    </p>
+
+    <label class="upload" for="imageInput">
+
+      <span id="uploadText">
+        📷 Bild auswählen
+      </span>
+
+      <img
+        id="imagePreview"
+        style="display:none"
+      >
+
+    </label>
+
+    <input
+      id="imageInput"
+      type="file"
+      accept="image/*"
+      hidden
+      onchange="previewImage(event)"
+    >
+
+  </div>
+
+</section>
+
+<!-- =========================
+     KÄUFE
+========================= -->
 
 <section id="purchases" class="page">
 
-  <div class="panel">
-    <h2>Meine Käufe</h2>
-    <p style="color:#888;margin-bottom:14px">
-      Deine Kaufanfragen und gekauften Karten
-    </p>
+  <div class="marketTitle">
+    <h1>Meine Käufe</h1>
+  </div>
 
+  <div class="panel">
     <div id="purchaseList" class="list"></div>
   </div>
 
 </section>
 
-
-<!-- VERKÄUFE -->
+<!-- =========================
+     VERKÄUFE
+========================= -->
 
 <section id="sales" class="page">
 
-  <div class="panel">
-    <h2>Meine Verkäufe</h2>
-    <p style="color:#888;margin-bottom:14px">
-      Deine verkauften Karten
-    </p>
+  <div class="marketTitle">
+    <h1>Meine Verkäufe</h1>
+  </div>
 
+  <div class="panel">
     <div id="salesList" class="list"></div>
   </div>
 
 </section>
 
-
-<!-- ANFRAGEN -->
+<!-- =========================
+     ANFRAGEN
+========================= -->
 
 <section id="requests" class="page">
 
+  <div class="marketTitle">
+    <h1>Kaufanfragen</h1>
+  </div>
+
   <div class="panel">
-    <h2>Eingehende Anfragen</h2>
+    <h2>Eingehend</h2>
+    <br>
     <div id="incomingRequests" class="list"></div>
   </div>
 
   <div class="panel">
-    <h2>Gesendete Anfragen</h2>
+    <h2>Gesendet</h2>
+    <br>
     <div id="outgoingRequests" class="list"></div>
   </div>
 
 </section>
 
-
-<!-- NACHRICHTEN -->
+<!-- =========================
+     NACHRICHTEN
+========================= -->
 
 <section id="messages" class="page">
 
-  <div class="panel">
-    <h2>Nachrichten</h2>
-    <p style="color:#888;margin-bottom:14px">
-      Deine Unterhaltungen
-    </p>
+  <div class="marketTitle">
+    <h1>Nachrichten</h1>
+  </div>
 
+  <div class="panel">
     <div id="messageList" class="list"></div>
   </div>
 
 </section>
 
+<!-- =========================
+     PROFIL
+========================= -->
 
-<!-- VERKAUFEN -->
+<section id="profile" class="page">
 
-<section id="sell" class="page">
+  <div class="profileTop">
 
-  <div class="panel">
+    <div class="profileHeader">
 
-    <h2>Karte verkaufen</h2>
-    <p style="color:#888;margin-bottom:15px">
-      Erstelle ein neues Angebot
-    </p>
-
-    <div class="sellGrid">
+      <div id="profileAvatar" class="bigAvatar">
+        P
+      </div>
 
       <div>
 
-        <div class="formGrid">
+        <div id="profileName" class="profileName">
+          Pixel User
+        </div>
 
-          <div class="form">
-            <label>Spieler *</label>
-            <input id="sellPlayer" placeholder="Lamine Yamal">
-          </div>
+        <div id="profileBio" class="profileBio">
+          Fußballkarten-Sammler
+        </div>
 
-          <div class="form">
-            <label>Verein *</label>
-            <input id="sellClub" placeholder="FC Barcelona">
-          </div>
-
-          <div class="form">
-            <label>Preis *</label>
-            <input id="sellPrice" type="number" step=".01" placeholder="25">
-          </div>
-
-          <div class="form">
-            <label>Zustand</label>
-            <select id="sellCondition">
-              <option>Neu</option>
-              <option>Sehr gut</option>
-              <option>Gut</option>
-              <option>Schlecht</option>
-            </select>
-          </div>
-
-          <div class="form full">
-            <label>Beschreibung</label>
-            <textarea id="sellDescription" rows="5"></textarea>
-          </div>
-
-          <div class="form full">
-            <button class="btn primary" onclick="createCard()">
-              Karte einstellen
-            </button>
-          </div>
-
+        <div id="profileRating" class="profileRating">
+          Noch keine Bewertung
         </div>
 
       </div>
 
-
-      <div>
-
-        <label class="upload" for="imageInput">
-
-          <div id="uploadText" class="uploadText">
-            Bild auswählen
-          </div>
-
-          <img
-            id="previewImage"
-            style="display:none"
-            alt=""
-          >
-
-        </label>
-
-        <input
-          id="imageInput"
-          type="file"
-          accept="image/*"
-          hidden
-          onchange="previewImage(event)"
-        >
-
-      </div>
-
     </div>
+
+    <div id="profileStats" class="profileStats"></div>
+
+  </div>
+
+
+  <!-- VINTED STYLE MENU -->
+
+  <div class="profileMenu">
+
+    <div class="profileMenuTitle">
+      Mein Bereich
+    </div>
+
+    <button class="menuRow" onclick="go('purchases')">
+      <div class="menuIcon">🛍️</div>
+      <div class="menuText">
+        <b>Meine Käufe</b>
+        <small>Deine gekauften Karten und Anfragen</small>
+      </div>
+      <div class="arrow">›</div>
+    </button>
+
+    <button class="menuRow" onclick="go('sales')">
+      <div class="menuIcon">💰</div>
+      <div class="menuText">
+        <b>Meine Verkäufe</b>
+        <small>Verkaufte Karten und Einnahmen</small>
+      </div>
+      <div class="arrow">›</div>
+    </button>
+
+    <button class="menuRow" onclick="go('requests')">
+      <div class="menuIcon">📩</div>
+      <div class="menuText">
+        <b>Kaufanfragen</b>
+        <small>Anfragen an dich und von dir</small>
+      </div>
+      <div class="arrow">›</div>
+    </button>
+
+    <button class="menuRow" onclick="go('messages')">
+      <div class="menuIcon">💬</div>
+      <div class="menuText">
+        <b>Nachrichten</b>
+        <small>Deine Unterhaltungen</small>
+      </div>
+      <div class="arrow">›</div>
+    </button>
+
+    <button class="menuRow" onclick="showWallet()">
+      <div class="menuIcon">💳</div>
+      <div class="menuText">
+        <b>Geldbeutel</b>
+        <small>Dein Guthaben</small>
+      </div>
+      <div class="arrow">›</div>
+    </button>
+
+    <button class="menuRow" onclick="showAccounts()">
+      <div class="menuIcon">👥</div>
+      <div class="menuText">
+        <b>Accounts</b>
+        <small>Accounts verwalten und wechseln</small>
+      </div>
+      <div class="arrow">›</div>
+    </button>
+
+    <button class="menuRow" onclick="go('sell')">
+      <div class="menuIcon">➕</div>
+      <div class="menuText">
+        <b>Karte verkaufen</b>
+        <small>Neues Angebot erstellen</small>
+      </div>
+      <div class="arrow">›</div>
+    </button>
+
+    <button class="menuRow" onclick="go('favorites')">
+      <div class="menuIcon">♥</div>
+      <div class="menuText">
+        <b>Favoriten</b>
+        <small>Gespeicherte Karten</small>
+      </div>
+      <div class="arrow">›</div>
+    </button>
+
+  </div>
+
+
+  <!-- PROFIL BEARBEITEN -->
+
+  <div class="profileMenu">
+
+    <div class="profileMenuTitle">
+      Einstellungen
+    </div>
+
+    <button class="menuRow" onclick="openEditProfile()">
+      <div class="menuIcon">✏️</div>
+      <div class="menuText">
+        <b>Profil bearbeiten</b>
+        <small>Benutzername und Beschreibung ändern</small>
+      </div>
+      <div class="arrow">›</div>
+    </button>
+
+  </div>
+
+
+  <!-- MEINE KARTEN -->
+
+  <div class="panel">
+
+    <div class="marketTitle">
+      <h2>Meine Karten</h2>
+    </div>
+
+    <div id="myCards" class="grid"></div>
 
   </div>
 
 </section>
 
+<!-- =========================
+     DETAIL PAGE
+========================= -->
 
-<!-- PROFIL -->
+<section id="detailPage" class="page">
 
-<section id="profile" class="page">
-
-  <div class="profilePage">
-
-    <div class="profileHeader">
-
-      <div class="profileMain">
-
-        <div id="bigAvatar" class="bigAvatar">
-          P
-        </div>
-
-        <div>
-
-          <div id="profileName" class="profileName">
-            Pixel User
-          </div>
-
-          <div id="profileBio" class="profileBio">
-            Fußballkarten-Sammler
-          </div>
-
-          <div id="profileRating" class="profileRating">
-            Noch keine Bewertung
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- VINTED ARTIGER BEREICH -->
-
-      <div class="profileMenu">
-
-        <button onclick="go('purchases')">
-          <span>Käufe</span>
-          <small>›</small>
-        </button>
-
-        <button onclick="go('sales')">
-          <span>Verkäufe</span>
-          <small>›</small>
-        </button>
-
-        <button onclick="go('requests')">
-          <span>Anfragen</span>
-          <small>›</small>
-        </button>
-
-        <button onclick="go('messages')">
-          <span>Nachrichten</span>
-          <small>›</small>
-        </button>
-
-        <button onclick="go('favorites')">
-          <span>Favoriten</span>
-          <small>›</small>
-        </button>
-
-        <button onclick="openWallet()">
-          <span>Geldbeutel</span>
-          <small>›</small>
-        </button>
-
-        <button onclick="openAccounts()">
-          <span>Accounts</span>
-          <small>›</small>
-        </button>
-
-        <button onclick="go('sell')">
-          <span>Karte verkaufen</span>
-          <small>›</small>
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="panel profileEdit">
-
-      <h2>Profil bearbeiten</h2>
-
-      <div class="formGrid">
-
-        <div class="form">
-          <label>Benutzername</label>
-          <input id="profileUsername">
-        </div>
-
-        <div class="form">
-          <label>Über mich</label>
-          <input id="profileBioInput">
-        </div>
-
-        <div class="form full">
-          <button class="btn primary" onclick="saveProfile()">
-            Profil speichern
-          </button>
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="panel">
-
-      <h2>Meine Karten</h2>
-
-      <div id="myCards" class="cardGrid"></div>
-
-    </div>
-
-  </div>
+  <div id="detailContent"></div>
 
 </section>
 
 </main>
 
 
-<!-- MODAL -->
+<!-- =========================
+     BOTTOM NAV
+========================= -->
 
-<div id="modal" class="modal" onclick="closeModalOutside(event)">
+<nav class="bottomNav">
 
-  <div class="modalBox">
+  <button id="navHome" class="active" onclick="go('home',this)">
+    <span class="navIcon">⌂</span>
+    <span>Start</span>
+  </button>
 
-    <div class="modalHeader">
+  <button id="navSearch" onclick="go('searchPage',this)">
+    <span class="navIcon">⌕</span>
+    <span>Suchen</span>
+  </button>
+
+  <button class="sellNav" onclick="go('sell',this)">
+    <span class="sellCircle">＋</span>
+    <span>Verkaufen</span>
+  </button>
+
+  <button id="navMessages" onclick="go('messages',this)">
+    <span class="navIcon">💬</span>
+    <span>Nachrichten</span>
+  </button>
+
+  <button id="navProfile" onclick="go('profile',this)">
+    <span class="navIcon">●</span>
+    <span>Profil</span>
+  </button>
+
+</nav>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+  id="modal"
+  class="modal"
+  onclick="closeModal(event)"
+>
+
+  <div
+    class="modalBox"
+    onclick="event.stopPropagation()"
+  >
+
+    <div class="modalHead">
 
       <h2 id="modalTitle"></h2>
 
       <button class="close" onclick="closeModal()">
-        ×
+        ✕
       </button>
 
     </div>
@@ -1396,41 +1560,40 @@ textarea:focus{
 </div>
 
 
-<div id="toastContainer" class="toastContainer"></div>
+<div id="toastBox" class="toastBox"></div>
 
 
 <script>
 
-/* =========================
-   DATEN
-========================= */
+/* =========================================================
+   STORAGE
+========================================================= */
 
 const KEY = {
 
-  cards:'pixel_cards_cards',
-  user:'pixel_cards_user',
-  profile:'pixel_cards_profile',
-  favorites:'pixel_cards_favorites',
-  requests:'pixel_cards_requests',
-  messages:'pixel_cards_messages',
-  notifications:'pixel_cards_notifications',
-  ratings:'pixel_cards_ratings',
-  views:'pixel_cards_views',
-  accounts:'pixel_cards_accounts',
-  wallet:'pixel_cards_wallet'
+  cards:'pc_cards',
+  user:'pc_user',
+  profile:'pc_profile',
+  fav:'pc_fav',
+  req:'pc_req',
+  msg:'pc_msg',
+  not:'pc_not',
+  rating:'pc_rating',
+  views:'pc_views',
+  accounts:'pc_accounts',
+  wallet:'pc_wallet'
 
 };
 
-
-function load(key, fallback){
+function getData(key, fallback){
 
   try{
 
     const value = localStorage.getItem(key);
 
-    return value
-      ? JSON.parse(value)
-      : fallback;
+    return value === null
+      ? fallback
+      : JSON.parse(value);
 
   }catch{
 
@@ -1440,8 +1603,7 @@ function load(key, fallback){
 
 }
 
-
-function save(key,value){
+function saveData(key,value){
 
   localStorage.setItem(
     key,
@@ -1451,56 +1613,56 @@ function save(key,value){
 }
 
 
-/* =========================
-   USER
-========================= */
+/* =========================================================
+   DATA
+========================================================= */
 
 let user =
   localStorage.getItem(KEY.user)
   || 'Pixel User';
 
 let profile =
-  load(KEY.profile,{
-    username:user,
-    bio:'Fußballkarten-Sammler'
-  });
+  getData(
+    KEY.profile,
+    {
+      username:user,
+      bio:'Fußballkarten-Sammler'
+    }
+  );
 
-user =
-  profile.username
-  || user;
-
+user = profile.username || user;
 
 let cards =
-  load(KEY.cards,[]);
+  getData(KEY.cards,[]);
 
 let favorites =
-  load(KEY.favorites,[]);
+  getData(KEY.fav,[]);
 
 let requests =
-  load(KEY.requests,[]);
+  getData(KEY.req,[]);
 
 let messages =
-  load(KEY.messages,[]);
+  getData(KEY.msg,[]);
 
 let notificationsData =
-  load(KEY.notifications,[]);
+  getData(KEY.not,[]);
 
 let ratings =
-  load(KEY.ratings,[]);
+  getData(KEY.rating,[]);
 
 let views =
-  load(KEY.views,{});
+  getData(KEY.views,{});
 
 let accounts =
-  load(KEY.accounts,[]);
+  getData(KEY.accounts,[]);
 
 let wallets =
-  load(KEY.wallet,{});
+  getData(KEY.wallet,{});
 
 
-/* =========================
-   ACCOUNT SETUP
-========================= */
+/* =========================================================
+   ACCOUNT INITIALIZATION
+========================================================= */
 
 if(!accounts.length){
 
@@ -1511,23 +1673,22 @@ if(!accounts.length){
     }
   ];
 
-  save(KEY.accounts,accounts);
+  saveData(KEY.accounts,accounts);
 
 }
-
 
 if(wallets[user] == null){
 
   wallets[user]=0;
 
-  save(KEY.wallet,wallets);
+  saveData(KEY.wallet,wallets);
 
 }
 
 
-/* =========================
-   DEMO KARTEN
-========================= */
+/* =========================================================
+   DEMO CARDS
+========================================================= */
 
 if(!cards.length){
 
@@ -1539,11 +1700,11 @@ if(!cards.length){
       club:'PSG',
       price:25,
       condition:'Sehr gut',
-      description:'Schöne Fußballkarte.',
-      seller:'MaxCards',
-      image:'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=90',
-      createdAt:Date.now()-100000,
-      views:42,
+      seller:'Max',
+      description:'Schöne Fußballkarte von Désiré Doué.',
+      image:'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1000&q=85',
+      createdAt:Date.now()-30000,
+      views:28,
       sold:false
     },
 
@@ -1553,11 +1714,11 @@ if(!cards.length){
       club:'FC Barcelona',
       price:35,
       condition:'Neu',
-      description:'Neue Karte.',
       seller:'LeoCards',
-      image:'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=90',
-      createdAt:Date.now()-200000,
-      views:57,
+      description:'Neue Karte in sehr gutem Zustand.',
+      image:'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1000&q=85',
+      createdAt:Date.now()-50000,
+      views:53,
       sold:false
     },
 
@@ -1567,230 +1728,285 @@ if(!cards.length){
       club:'Real Madrid',
       price:30,
       condition:'Gut',
-      description:'Gepflegte Karte.',
       seller:'FootballKing',
-      image:'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=90',
-      createdAt:Date.now()-300000,
-      views:49,
-      sold:false
-    },
-
-    {
-      id:'demo4',
-      player:'Jude Bellingham',
-      club:'Real Madrid',
-      price:28,
-      condition:'Sehr gut',
-      description:'Sehr gute Karte.',
-      seller:'CardMaster',
-      image:'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=90',
-      createdAt:Date.now()-400000,
-      views:38,
-      sold:false
-    },
-
-    {
-      id:'demo5',
-      player:'Vitinha',
-      club:'PSG',
-      price:22,
-      condition:'Gut',
-      description:'Guter Zustand.',
-      seller:'ParisCards',
-      image:'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=90',
-      createdAt:Date.now()-500000,
-      views:31,
-      sold:false
-    },
-
-    {
-      id:'demo6',
-      player:'Pedri',
-      club:'FC Barcelona',
-      price:24,
-      condition:'Sehr gut',
-      description:'Schöne Karte.',
-      seller:'BarcaCards',
-      image:'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=90',
-      createdAt:Date.now()-600000,
-      views:45,
+      description:'Gepflegte Karte.',
+      image:'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1000&q=85',
+      createdAt:Date.now()-70000,
+      views:42,
       sold:false
     }
 
   ];
 
-  save(KEY.cards,cards);
+  saveData(KEY.cards,cards);
 
 }
 
 
-/* =========================
-   ELEMENTE
-========================= */
-
-const marketplace =
-  document.getElementById('marketplace');
-
-const favoriteCards =
-  document.getElementById('favoriteCards');
-
-const myCards =
-  document.getElementById('myCards');
-
-const purchaseList =
-  document.getElementById('purchaseList');
-
-const salesList =
-  document.getElementById('salesList');
-
-const incomingRequests =
-  document.getElementById('incomingRequests');
-
-const outgoingRequests =
-  document.getElementById('outgoingRequests');
-
-const messageList =
-  document.getElementById('messageList');
-
-const modal =
-  document.getElementById('modal');
-
-const modalTitle =
-  document.getElementById('modalTitle');
-
-const modalContent =
-  document.getElementById('modalContent');
-
-const profileTop =
-  document.getElementById('profileTop');
-
-
-/* =========================
-   ESCAPE
-========================= */
+/* =========================================================
+   HELPERS
+========================================================= */
 
 function esc(value){
 
   return String(value ?? '')
-    .replace(/[&<>"']/g,m=>({
+    .replace(/[&<>"']/g,function(m){
 
-      '&':'&amp;',
-      '<':'&lt;',
-      '>':'&gt;',
-      '"':'&quot;',
-      "'":'&#039;'
+      return {
 
-    }[m]));
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&#039;'
+
+      }[m];
+
+    });
 
 }
 
-
-/* =========================
-   TOAST
-========================= */
 
 function toast(text){
 
   const box =
-    document.getElementById('toastContainer');
+    document.getElementById('toastBox');
 
-  const el =
+  const item =
     document.createElement('div');
 
-  el.className='toast';
+  item.className='toast';
 
-  el.textContent=text;
+  item.textContent=text;
 
-  box.appendChild(el);
+  box.appendChild(item);
 
-  setTimeout(()=>{
-    el.remove();
-  },2400);
+  setTimeout(function(){
+
+    item.remove();
+
+  },2300);
 
 }
 
 
-/* =========================
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 
-function go(id){
+function go(page,button){
 
   document
     .querySelectorAll('.page')
-    .forEach(page=>{
-      page.classList.remove('active');
+    .forEach(function(p){
+
+      p.classList.remove('onpage');
+
     });
 
-  const page =
-    document.getElementById(id);
+  const target =
+    document.getElementById(page);
 
-  if(page){
-    page.classList.add('active');
+  if(target){
+
+    target.classList.add('onpage');
+
   }
 
-  window.scrollTo(0,0);
+  document
+    .querySelectorAll('.bottomNav button')
+    .forEach(function(b){
+
+      b.classList.remove('active');
+
+    });
+
+  if(button){
+
+    button.classList.add('active');
+
+  }else{
+
+    if(page==='home')
+      document.getElementById('navHome').classList.add('active');
+
+    if(page==='searchPage')
+      document.getElementById('navSearch').classList.add('active');
+
+    if(page==='messages')
+      document.getElementById('navMessages').classList.add('active');
+
+    if(page==='profile')
+      document.getElementById('navProfile').classList.add('active');
+
+  }
 
   renderAll();
 
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
 }
 
 
-/* =========================
-   RATING
-========================= */
+/* =========================================================
+   GLOBAL SEARCH
+========================================================= */
 
-function sellerRating(name){
+function globalSearch(){
 
-  const list =
-    ratings.filter(
-      r=>r.seller===name
-    );
+  const value =
+    document
+      .getElementById('globalSearch')
+      .value
+      .trim();
 
-  if(!list.length){
+  if(value){
 
-    return 'Noch keine Bewertung';
+    go('searchPage');
+
+    renderSearch();
+
+  }else{
+
+    renderHome();
 
   }
 
-  const average =
-    list.reduce(
-      (sum,r)=>sum + Number(r.rating),
-      0
-    ) / list.length;
+}
 
-  return `★ ${average.toFixed(1)} · ${list.length} Bewertung${list.length===1?'':'en'}`;
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+function getSearchValue(){
+
+  return document
+    .getElementById('globalSearch')
+    .value
+    .trim()
+    .toLowerCase();
 
 }
 
 
-/* =========================
-   CARD
-========================= */
+function filterCards(){
 
-function cardHTML(c){
+  let result =
+    cards.filter(function(c){
 
-  const own =
-    c.seller===user;
+      return !c.sold;
 
-  const isFavorite =
-    favorites.includes(c.id);
+    });
 
-  const pending =
-    requests.some(
-      r=>
-        r.cardId===c.id &&
-        r.buyer===user &&
-        r.status==='pending'
+  const q =
+    getSearchValue();
+
+  const club =
+    document
+      .getElementById('clubFilter')
+      ?.value || '';
+
+  const condition =
+    document
+      .getElementById('conditionFilter')
+      ?.value || '';
+
+  const min =
+    document
+      .getElementById('minPrice')
+      ?.value || '';
+
+  const max =
+    document
+      .getElementById('maxPrice')
+      ?.value || '';
+
+  result =
+    result.filter(function(c){
+
+      const text =
+        `${c.player} ${c.club} ${c.seller}`
+          .toLowerCase();
+
+      return (
+
+        (!q || text.includes(q)) &&
+
+        (!club || c.club === club) &&
+
+        (!condition || c.condition === condition) &&
+
+        (!min || +c.price >= +min) &&
+
+        (!max || +c.price <= +max)
+
+      );
+
+    });
+
+  const sort =
+    document
+      .getElementById('sortFilter')
+      ?.value || 'new';
+
+  if(sort==='low'){
+
+    result.sort(
+      (a,b)=>+a.price-+b.price
     );
 
+  }
+
+  if(sort==='high'){
+
+    result.sort(
+      (a,b)=>+b.price-+a.price
+    );
+
+  }
+
+  if(sort==='views'){
+
+    result.sort(
+      (a,b)=>(b.views||0)-(a.views||0)
+    );
+
+  }
+
+  if(sort==='new'){
+
+    result.sort(
+      (a,b)=>b.createdAt-a.createdAt
+    );
+
+  }
+
+  return result;
+
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+function createCardHTML(c){
+
+  const isOwn =
+    c.seller === user;
+
+  const isFav =
+    favorites.includes(c.id);
+
   const isNew =
-    Date.now()-c.createdAt <
-    86400000;
+    Date.now()-c.createdAt < 86400000;
 
-  const popular =
-    (c.views || 0)>=40;
-
+  const isPopular =
+    (c.views||0) >= 40;
 
   return `
 
@@ -1806,133 +2022,47 @@ function cardHTML(c){
           alt="${esc(c.player)}"
         >
 
-        <div class="cardBadges">
-
-          <div>
-
-            ${
-              isNew
-              ? `<span class="badge new">NEU</span>`
-              :''
-            }
-
-            ${
-              popular
-              ? `<span class="badge">BELIEBT</span>`
-              :''
-            }
-
-          </div>
+        <div class="badges">
 
           ${
-            !own
-            ? `
-              <button
-                class="heart ${isFavorite?'active':''}"
-                onclick="event.stopPropagation();toggleFavorite('${esc(c.id)}')"
-              >
-                ${isFavorite?'♥':'♡'}
-              </button>
-            `
-            :''
+            isNew
+            ? `<span class="tag new">NEU</span>`
+            : ''
+          }
+
+          ${
+            isPopular
+            ? `<span class="tag">BELIEBT</span>`
+            : ''
           }
 
         </div>
+
+        ${
+          !isOwn
+          ? `
+            <button
+              class="favoriteBtn ${isFav?'active':''}"
+              onclick="event.stopPropagation();toggleFavorite('${esc(c.id)}')"
+              aria-label="Favorisieren"
+            >
+              ${isFav?'♥':'♡'}
+            </button>
+          `
+          : ''
+        }
 
       </div>
 
+      <!-- bewusst unsichtbar auf Startseite -->
 
-      <div class="cardBody">
+      <div class="cardInfo">
 
-        <div class="player">
-          ${esc(c.player)}
-        </div>
+        <b>${esc(c.player)}</b>
 
-        <div class="club">
-          ${esc(c.club || 'Kein Verein')}
-        </div>
-
-        <div class="condition">
-          Zustand: ${esc(c.condition || 'Gut')}
-        </div>
-
-        <div class="price">
-          ${Number(c.price).toFixed(2)} €
-        </div>
-
-
-        <div
-          class="seller"
-          onclick="openSeller('${esc(c.seller)}')"
-        >
-
-          <div class="avatar">
-            ${esc(c.seller?.[0]?.toUpperCase() || 'P')}
-          </div>
-
-          <div class="sellerInfo">
-
-            <div class="sellerName">
-              ${esc(c.seller)}
-            </div>
-
-            <div class="rating">
-              ${esc(sellerRating(c.seller))}
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="cardButtons">
-
-          <button
-            class="btn"
-            onclick="openDetails('${esc(c.id)}')"
-          >
-            Details
-          </button>
-
-          ${
-            own
-
-            ? `
-              <button
-                class="btn"
-                onclick="deleteCard('${esc(c.id)}')"
-              >
-                Löschen
-              </button>
-            `
-
-            : c.sold
-
-            ? `
-              <button class="btn" disabled>
-                Verkauft
-              </button>
-            `
-
-            : pending
-
-            ? `
-              <button class="btn" disabled>
-                Anfrage läuft
-              </button>
-            `
-
-            : `
-              <button
-                class="btn primary"
-                onclick="buyCard('${esc(c.id)}')"
-              >
-                Kaufen
-              </button>
-            `
-          }
-
-        </div>
+        <span>
+          ${esc(c.club||'Kein Verein')}
+        </span>
 
       </div>
 
@@ -1943,156 +2073,98 @@ function cardHTML(c){
 }
 
 
-/* =========================
-   MARKETPLACE
-========================= */
+/* =========================================================
+   HOME
+========================================================= */
 
-function renderMarketplace(){
+function renderHome(){
 
-  const search =
-    (
-      document.getElementById('topSearch')?.value
-      || ''
-    ).toLowerCase().trim();
+  const container =
+    document.getElementById('homeCards');
 
-  const club =
-    document.getElementById('clubFilter')?.value
-    || '';
+  if(!container)
+    return;
 
-  const condition =
-    document.getElementById('conditionFilter')?.value
-    || '';
-
-  const min =
-    document.getElementById('minPrice')?.value
-    || '';
-
-  const max =
-    document.getElementById('maxPrice')?.value
-    || '';
-
-  const sort =
-    document.getElementById('sortFilter')?.value
-    || 'new';
-
-
-  let list =
+  let result =
     cards.filter(c=>!c.sold);
 
+  const q =
+    getSearchValue();
 
-  if(search){
+  if(q){
 
-    list=list.filter(c=>{
+    result =
+      result.filter(function(c){
 
-      const text =
-        `${c.player} ${c.club} ${c.seller}`
-        .toLowerCase();
+        return `${c.player} ${c.club} ${c.seller}`
+          .toLowerCase()
+          .includes(q);
 
-      return text.includes(search);
-
-    });
-
-  }
-
-
-  if(club){
-
-    list=list.filter(
-      c=>c.club===club
-    );
+      });
 
   }
 
+  result.sort(
+    (a,b)=>b.createdAt-a.createdAt
+  );
 
-  if(condition){
-
-    list=list.filter(
-      c=>c.condition===condition
-    );
-
-  }
-
-
-  if(min){
-
-    list=list.filter(
-      c=>Number(c.price)>=Number(min)
-    );
-
-  }
-
-
-  if(max){
-
-    list=list.filter(
-      c=>Number(c.price)<=Number(max)
-    );
-
-  }
-
-
-  if(sort==='low'){
-
-    list.sort(
-      (a,b)=>Number(a.price)-Number(b.price)
-    );
-
-  }
-
-  if(sort==='high'){
-
-    list.sort(
-      (a,b)=>Number(b.price)-Number(a.price)
-    );
-
-  }
-
-  if(sort==='views'){
-
-    list.sort(
-      (a,b)=>(b.views||0)-(a.views||0)
-    );
-
-  }
-
-  if(sort==='new'){
-
-    list.sort(
-      (a,b)=>b.createdAt-a.createdAt
-    );
-
-  }
-
-
-  marketplace.innerHTML =
-    list.length
-
-    ? list.map(cardHTML).join('')
-
+  container.innerHTML =
+    result.length
+    ? result.map(createCardHTML).join('')
     : `
       <div class="empty">
-        <b>Keine Angebote gefunden</b>
-        <br>
-        Versuche eine andere Suche oder andere Filter.
+        Keine Angebote gefunden.
       </div>
     `;
 
+  document.getElementById('offerCount').textContent =
+    result.length+' Angebote';
+
+}
+
+
+/* =========================================================
+   SEARCH PAGE
+========================================================= */
+
+function renderSearch(){
+
+  const container =
+    document.getElementById('searchCards');
+
+  if(!container)
+    return;
+
+  const result =
+    filterCards();
+
+  container.innerHTML =
+    result.length
+    ? result.map(createCardHTML).join('')
+    : `
+      <div class="empty">
+        <b>Keine Karten gefunden.</b>
+        <br>
+        Ändere deine Suche oder Filter.
+      </div>
+    `;
 
   updateClubFilter();
 
 }
 
 
-/* =========================
+/* =========================================================
    CLUB FILTER
-========================= */
+========================================================= */
 
 function updateClubFilter(){
 
   const select =
     document.getElementById('clubFilter');
 
-  if(!select)return;
+  if(!select)
+    return;
 
   const old =
     select.value;
@@ -2104,67 +2176,50 @@ function updateClubFilter(){
         .filter(Boolean)
     )].sort();
 
-
   select.innerHTML =
-    `<option value="">Alle Vereine</option>`
-    +
-    clubs
-      .map(c=>`
+    `<option value="">Alle Vereine</option>`+
+    clubs.map(function(c){
+
+      return `
         <option value="${esc(c)}">
           ${esc(c)}
         </option>
-      `)
-      .join('');
+      `;
 
+    }).join('');
 
   select.value=old;
 
 }
 
 
-/* =========================
-   FILTER
-========================= */
-
-function toggleFilters(){
-
-  const area =
-    document.getElementById('filterArea');
-
-  area.style.display =
-    area.style.display==='none'
-    ? 'grid'
-    : 'none';
-
-}
-
-
 function resetFilters(){
 
-  document.getElementById('topSearch').value='';
-  document.getElementById('clubFilter').value='';
+  document.getElementById('globalSearch').value='';
   document.getElementById('minPrice').value='';
   document.getElementById('maxPrice').value='';
+  document.getElementById('clubFilter').value='';
   document.getElementById('conditionFilter').value='';
   document.getElementById('sortFilter').value='new';
 
-  renderMarketplace();
+  renderSearch();
 
 }
 
 
-/* =========================
-   FAVORITEN
-========================= */
+/* =========================================================
+   FAVORITES
+========================================================= */
 
 function toggleFavorite(id){
 
-  const c =
-    cards.find(x=>x.id===id);
+  const card =
+    cards.find(c=>c.id===id);
 
-  if(!c)return;
+  if(!card)
+    return;
 
-  if(c.seller===user){
+  if(card.seller===user){
 
     toast('Eigene Karten können nicht favorisiert werden.');
 
@@ -2172,110 +2227,90 @@ function toggleFavorite(id){
 
   }
 
-
   if(favorites.includes(id)){
 
     favorites =
-      favorites.filter(
-        x=>x!==id
-      );
+      favorites.filter(x=>x!==id);
+
+    toast('Aus Favoriten entfernt.');
 
   }else{
 
-    favorites=[
-      ...favorites,
-      id
-    ];
+    favorites.push(id);
+
+    toast('Zu Favoriten hinzugefügt ♥');
 
   }
 
-
-  save(KEY.favorites,favorites);
+  saveData(KEY.fav,favorites);
 
   renderAll();
 
 }
 
 
-/* =========================
-   AUFRUFE
-========================= */
+/* =========================================================
+   DETAIL
+========================================================= */
 
-function countView(id){
-
-  views[id] ||= [];
-
-
-  if(
-    !views[id].includes(user)
-  ){
-
-    views[id].push(user);
-
-    const c =
-      cards.find(x=>x.id===id);
-
-    if(c){
-
-      c.views =
-        (c.views||0)+1;
-
-    }
-
-    save(KEY.views,views);
-    save(KEY.cards,cards);
-
-  }
-
-}
-
-
-/* =========================
-   DETAILS MIT ZOOM
-========================= */
-
-let currentZoom=1;
+let detailZoom=1;
 
 
 function openDetails(id){
 
-  const c =
-    cards.find(x=>x.id===id);
+  const card =
+    cards.find(c=>c.id===id);
 
-  if(!c)return;
+  if(!card)
+    return;
 
-  countView(id);
+  registerView(id);
 
-  currentZoom=1;
+  detailZoom=1;
 
+  const detail =
+    document.getElementById('detailContent');
 
-  openModal(
+  detail.innerHTML=`
 
-    c.player,
+    <div class="detail">
 
-    `
+      <button
+        class="btn detailBack"
+        onclick="go('home')"
+      >
+        ← Zurück
+      </button>
 
-      <div class="zoomArea">
+      <div class="detailImageBox">
 
         <img
-          id="zoomImage"
-          class="zoomImage"
-          src="${esc(c.image)}"
-          alt="${esc(c.player)}"
-          onclick="zoomIn()"
+          id="detailImage"
+          class="detailImage"
+          src="${esc(card.image)}"
+          onclick="zoomDetail(0.25)"
         >
 
         <div class="zoomControls">
 
-          <button onclick="zoomOut()">
+          <button
+            class="btn"
+            onclick="zoomDetail(-0.25)"
+          >
             −
           </button>
 
-          <button onclick="resetZoom()">
+          <button
+            class="btn"
+            onclick="resetDetailZoom()"
+          >
             100%
           </button>
 
-          <button onclick="zoomIn()">
+          <button
+            class="btn"
+            onclick="zoomDetail(0.25)"
+          >
             +
           </button>
 
@@ -2286,26 +2321,18 @@ function openDetails(id){
 
       <div class="detailInfo">
 
-        <div class="detailTop">
+        <h1>
+          ${esc(card.player)}
+        </h1>
 
-          <div>
+        <div class="detailClub">
+          ${esc(card.club||'Kein Verein')}
+          ·
+          ${esc(card.condition||'Gut')}
+        </div>
 
-            <h2>
-              ${esc(c.player)}
-            </h2>
-
-            <div class="detailMeta">
-              ${esc(c.club || 'Kein Verein')}
-              ·
-              ${esc(c.condition || 'Gut')}
-            </div>
-
-          </div>
-
-          <div class="detailPrice">
-            ${Number(c.price).toFixed(2)} €
-          </div>
-
+        <div class="detailPrice">
+          ${(+card.price).toFixed(2)} €
         </div>
 
 
@@ -2313,45 +2340,47 @@ function openDetails(id){
 
           <b>Beschreibung</b>
 
-          <p style="color:#aaa;margin-top:6px">
-            ${esc(c.description || 'Keine Beschreibung.')}
+          <p style="margin-top:6px">
+            ${esc(card.description||'Keine Beschreibung.')}
           </p>
 
         </div>
 
 
-        <div
-          class="detailSeller"
-          onclick="openSeller('${esc(c.seller)}')"
-          style="cursor:pointer"
-        >
+        <div class="detailSeller">
 
           <div class="avatar">
-            ${esc(c.seller?.[0]?.toUpperCase() || 'P')}
+            ${esc(card.seller?.[0]?.toUpperCase()||'P')}
           </div>
 
-          <div>
+          <div style="flex:1">
 
-            <b>${esc(c.seller)}</b>
+            <b>${esc(card.seller)}</b>
 
-            <div class="rating">
-              ${esc(sellerRating(c.seller))}
+            <div class="muted">
+              ${sellerRating(card.seller)}
             </div>
 
           </div>
 
+          <button
+            class="btn"
+            onclick="openSeller('${esc(card.seller)}')"
+          >
+            Profil
+          </button>
+
         </div>
 
 
-        <div class="detailButtons">
+        <div class="detailActions">
 
           ${
-            c.seller!==user && !c.sold
-
+            card.seller!==user && !card.sold
             ? `
               <button
                 class="btn primary"
-                onclick="closeModal();buyCard('${esc(c.id)}')"
+                onclick="buyCard('${esc(card.id)}')"
               >
                 Kaufen
               </button>
@@ -2360,14 +2389,26 @@ function openDetails(id){
           }
 
           ${
-            c.seller!==user
-
+            card.seller!==user
             ? `
               <button
                 class="btn"
-                onclick="contactSeller('${esc(c.seller)}')"
+                onclick="sendMessage('${esc(card.seller)}')"
               >
-                Verkäufer kontaktieren
+                Nachricht
+              </button>
+            `
+            : ''
+          }
+
+          ${
+            card.seller===user
+            ? `
+              <button
+                class="btn"
+                onclick="deleteCard('${esc(card.id)}')"
+              >
+                Karte löschen
               </button>
             `
             : ''
@@ -2377,107 +2418,160 @@ function openDetails(id){
 
       </div>
 
-    `
+    </div>
 
-  );
+  `;
 
-}
-
-
-function zoomIn(){
-
-  currentZoom =
-    Math.min(
-      3,
-      currentZoom+0.25
-    );
-
-  applyZoom();
+  go('detailPage');
 
 }
 
 
-function zoomOut(){
+function zoomDetail(amount){
 
-  currentZoom =
+  detailZoom =
     Math.max(
       .6,
-      currentZoom-.25
+      Math.min(
+        2.7,
+        detailZoom+amount
+      )
     );
 
-  applyZoom();
-
-}
-
-
-function resetZoom(){
-
-  currentZoom=1;
-
-  applyZoom();
-
-}
-
-
-function applyZoom(){
-
   const img =
-    document.getElementById('zoomImage');
+    document.getElementById('detailImage');
 
   if(img){
 
-    img.style.transform=
-      `scale(${currentZoom})`;
+    img.style.transform =
+      `scale(${detailZoom})`;
 
   }
 
 }
 
 
-/* =========================
-   KAUFEN
-========================= */
+function resetDetailZoom(){
+
+  detailZoom=1;
+
+  const img =
+    document.getElementById('detailImage');
+
+  if(img){
+
+    img.style.transform='scale(1)';
+
+  }
+
+}
+
+
+/* =========================================================
+   VIEWS
+========================================================= */
+
+function registerView(id){
+
+  views[id] ||= [];
+
+  if(!views[id].includes(user)){
+
+    views[id].push(user);
+
+    const card =
+      cards.find(c=>c.id===id);
+
+    if(card){
+
+      card.views =
+        (card.views||0)+1;
+
+    }
+
+    saveData(KEY.views,views);
+    saveData(KEY.cards,cards);
+
+  }
+
+}
+
+
+/* =========================================================
+   SELLER RATING
+========================================================= */
+
+function sellerRating(name){
+
+  const list =
+    ratings.filter(
+      r=>r.seller===name
+    );
+
+  if(!list.length)
+    return 'Noch keine Bewertung';
+
+  const avg =
+    list.reduce(
+      (sum,r)=>sum+(+r.rating),
+      0
+    ) / list.length;
+
+  return `★ ${avg.toFixed(1)} · ${list.length} Bewertungen`;
+
+}
+
+
+/* =========================================================
+   BUY
+========================================================= */
 
 function buyCard(id){
 
-  const c =
-    cards.find(x=>x.id===id);
+  const card =
+    cards.find(c=>c.id===id);
 
-  if(!c)return;
+  if(!card)
+    return;
 
+  const existing =
+    requests.find(function(r){
 
-  if(
-    requests.some(
-      r=>
+      return (
         r.cardId===id &&
         r.buyer===user &&
         r.status==='pending'
-    )
-  ){
+      );
 
-    toast('Du hast bereits eine offene Anfrage.');
+    });
+
+  if(existing){
+
+    toast('Deine Anfrage läuft bereits.');
 
     return;
 
   }
 
-
   openModal(
-
     'Kaufanfrage',
-
     `
 
       <div class="panel">
 
-        <h2>${esc(c.player)}</h2>
+        <h2>
+          ${esc(card.player)}
+        </h2>
 
-        <p style="color:#888;margin-top:5px">
-          ${esc(c.club)}
+        <p>
+          ${esc(card.club)}
         </p>
 
-        <div class="price">
-          ${Number(c.price).toFixed(2)} €
+        <div
+          class="detailPrice"
+          style="margin-top:10px"
+        >
+          ${(+card.price).toFixed(2)} €
         </div>
 
       </div>
@@ -2485,13 +2579,12 @@ function buyCard(id){
       <button
         class="btn primary"
         style="width:100%"
-        onclick="sendPurchaseRequest('${esc(c.id)}')"
+        onclick="sendPurchaseRequest('${esc(id)}')"
       >
         Kaufanfrage senden
       </button>
 
     `
-
   );
 
 }
@@ -2499,11 +2592,11 @@ function buyCard(id){
 
 function sendPurchaseRequest(id){
 
-  const c =
-    cards.find(x=>x.id===id);
+  const card =
+    cards.find(c=>c.id===id);
 
-  if(!c)return;
-
+  if(!card)
+    return;
 
   requests.push({
 
@@ -2511,13 +2604,13 @@ function sendPurchaseRequest(id){
 
     cardId:id,
 
-    player:c.player,
+    player:card.player,
 
-    price:Number(c.price),
+    price:+card.price,
 
     buyer:user,
 
-    seller:c.seller,
+    seller:card.seller,
 
     status:'pending',
 
@@ -2525,14 +2618,13 @@ function sendPurchaseRequest(id){
 
   });
 
-
   notificationsData.push({
 
     id:'n'+Date.now(),
 
-    user:c.seller,
+    user:card.seller,
 
-    text:`${user} möchte deine Karte ${c.player} kaufen.`,
+    text:`${user} möchte ${card.player} kaufen.`,
 
     read:false,
 
@@ -2540,9 +2632,8 @@ function sendPurchaseRequest(id){
 
   });
 
-
-  save(KEY.requests,requests);
-  save(KEY.notifications,notificationsData);
+  saveData(KEY.req,requests);
+  saveData(KEY.not,notificationsData);
 
   closeModal();
 
@@ -2553,15 +2644,14 @@ function sendPurchaseRequest(id){
 }
 
 
-/* =========================
-   REQUEST LIST
-========================= */
+/* =========================================================
+   REQUEST ITEMS
+========================================================= */
 
-function requestHTML(r,incoming){
+function requestItem(r,incoming){
 
-  const c =
-    cards.find(x=>x.id===r.cardId);
-
+  const card =
+    cards.find(c=>c.id===r.cardId);
 
   return `
 
@@ -2569,31 +2659,23 @@ function requestHTML(r,incoming){
 
       <div class="itemLeft">
 
-        ${
-          c
-          ? `
-            <img
-              class="thumb"
-              src="${esc(c.image)}"
-              alt=""
-            >
-          `
-          :''
-        }
+        <img
+          class="thumb"
+          src="${esc(card?.image||'')}"
+        >
 
-        <div class="itemText">
+        <div>
 
-          <b>
-            ${esc(r.player)}
-          </b>
+          <b>${esc(r.player)}</b>
 
-          <p>
-            ${incoming
+          <p class="muted">
+            ${
+              incoming
               ? esc(r.buyer)
               : esc(r.seller)
             }
             ·
-            ${Number(r.price).toFixed(2)} €
+            ${(+r.price).toFixed(2)} €
           </p>
 
           <span class="status ${r.status}">
@@ -2615,7 +2697,6 @@ function requestHTML(r,incoming){
 
         ${
           incoming && r.status==='pending'
-
           ? `
             <button
               class="btn"
@@ -2631,14 +2712,11 @@ function requestHTML(r,incoming){
               Ablehnen
             </button>
           `
-
           : ''
         }
 
-
         ${
           !incoming && r.status==='accepted'
-
           ? `
             <button
               class="btn primary"
@@ -2647,14 +2725,12 @@ function requestHTML(r,incoming){
               Bewerten
             </button>
           `
-
           : ''
         }
 
-
         <button
           class="btn"
-          onclick="contactSeller('${esc(incoming?r.buyer:r.seller)}')"
+          onclick="sendMessage('${esc(incoming?r.buyer:r.seller)}')"
         >
           Nachricht
         </button>
@@ -2668,59 +2744,54 @@ function requestHTML(r,incoming){
 }
 
 
-/* =========================
-   ANNEHMEN
-========================= */
+/* =========================================================
+   ACCEPT / DECLINE
+========================================================= */
 
 function acceptRequest(id){
 
-  const r =
-    requests.find(x=>x.id===id);
+  const request =
+    requests.find(r=>r.id===id);
 
-  if(!r || r.seller!==user)return;
+  if(!request || request.seller!==user)
+    return;
 
+  request.status='accepted';
 
-  r.status='accepted';
+  const card =
+    cards.find(c=>c.id===request.cardId);
 
+  if(card){
 
-  const c =
-    cards.find(x=>x.id===r.cardId);
-
-  if(c){
-
-    c.sold=true;
-    c.soldTo=r.buyer;
+    card.sold=true;
+    card.soldTo=request.buyer;
 
   }
 
-
-  requests.forEach(x=>{
+  requests.forEach(function(r){
 
     if(
-      x.cardId===r.cardId &&
-      x.id!==id &&
-      x.status==='pending'
+      r.cardId===request.cardId &&
+      r.id!==id &&
+      r.status==='pending'
     ){
 
-      x.status='declined';
+      r.status='declined';
 
     }
 
   });
 
-
   wallets[user] =
-    (wallets[user]||0)
-    + Number(r.price);
-
+    (wallets[user]||0)+request.price;
 
   notificationsData.push({
 
     id:'n'+Date.now(),
 
-    user:r.buyer,
+    user:request.buyer,
 
-    text:`Deine Kaufanfrage für ${r.player} wurde angenommen.`,
+    text:`Deine Kaufanfrage für ${request.player} wurde angenommen.`,
 
     read:false,
 
@@ -2728,11 +2799,10 @@ function acceptRequest(id){
 
   });
 
-
-  save(KEY.requests,requests);
-  save(KEY.cards,cards);
-  save(KEY.wallet,wallets);
-  save(KEY.notifications,notificationsData);
+  saveData(KEY.req,requests);
+  saveData(KEY.cards,cards);
+  saveData(KEY.wallet,wallets);
+  saveData(KEY.not,notificationsData);
 
   toast('Verkauf angenommen.');
 
@@ -2743,14 +2813,15 @@ function acceptRequest(id){
 
 function declineRequest(id){
 
-  const r =
-    requests.find(x=>x.id===id);
+  const request =
+    requests.find(r=>r.id===id);
 
-  if(!r || r.seller!==user)return;
+  if(!request || request.seller!==user)
+    return;
 
-  r.status='declined';
+  request.status='declined';
 
-  save(KEY.requests,requests);
+  saveData(KEY.req,requests);
 
   toast('Anfrage abgelehnt.');
 
@@ -2759,11 +2830,11 @@ function declineRequest(id){
 }
 
 
-/* =========================
-   NACHRICHTEN
-========================= */
+/* =========================================================
+   MESSAGES
+========================================================= */
 
-function contactSeller(name){
+function sendMessage(to){
 
   openModal(
 
@@ -2771,21 +2842,29 @@ function contactSeller(name){
 
     `
 
-      <p style="color:#aaa">
-        Nachricht an ${esc(name)}
+      <p>
+        An ${esc(to)}
       </p>
 
       <textarea
         id="messageText"
         rows="5"
-        style="width:100%;margin-top:10px"
+        style="
+          width:100%;
+          margin:10px 0;
+          background:#090909;
+          color:#fff;
+          border:1px solid #292929;
+          border-radius:10px;
+          padding:12px;
+        "
         placeholder="Nachricht schreiben..."
       ></textarea>
 
       <button
         class="btn primary"
-        style="width:100%;margin-top:8px"
-        onclick="sendMessage('${esc(name)}')"
+        style="width:100%"
+        onclick="sendMessageNow('${esc(to)}')"
       >
         Senden
       </button>
@@ -2797,7 +2876,7 @@ function contactSeller(name){
 }
 
 
-function sendMessage(to){
+function sendMessageNow(to){
 
   const input =
     document.getElementById('messageText');
@@ -2812,7 +2891,6 @@ function sendMessage(to){
     return;
 
   }
-
 
   messages.push({
 
@@ -2830,7 +2908,6 @@ function sendMessage(to){
 
   });
 
-
   notificationsData.push({
 
     id:'n'+Date.now(),
@@ -2845,9 +2922,8 @@ function sendMessage(to){
 
   });
 
-
-  save(KEY.messages,messages);
-  save(KEY.notifications,notificationsData);
+  saveData(KEY.msg,messages);
+  saveData(KEY.not,notificationsData);
 
   closeModal();
 
@@ -2860,35 +2936,28 @@ function sendMessage(to){
 
 function openChat(person){
 
-  let conversation =
+  const chatMessages =
     messages
-      .filter(
-        m=>
-          (m.from===user && m.to===person)
-          ||
+      .filter(function(m){
+
+        return (
+          (m.from===user && m.to===person) ||
           (m.from===person && m.to===user)
-      )
+        );
+
+      })
       .sort(
         (a,b)=>a.createdAt-b.createdAt
       );
 
+  chatMessages.forEach(function(m){
 
-  messages.forEach(m=>{
-
-    if(
-      m.from===person &&
-      m.to===user
-    ){
-
+    if(m.to===user)
       m.read=true;
-
-    }
 
   });
 
-
-  save(KEY.messages,messages);
-
+  saveData(KEY.msg,messages);
 
   openModal(
 
@@ -2907,25 +2976,30 @@ function openChat(person){
       >
 
         ${
-          conversation.length
+          chatMessages.length
+          ? chatMessages.map(function(m){
 
-          ? conversation.map(m=>`
+              return `
 
-              <div
-                style="
-                  align-self:${m.from===user?'flex-end':'flex-start'};
-                  max-width:80%;
-                  padding:10px;
-                  border-radius:11px;
-                  background:${m.from===user?'var(--turq)':'#1b1b1b'};
-                  color:${m.from===user?'#000':'#fff'};
-                "
-              >
-                ${esc(m.text)}
-              </div>
+                <div
+                  style="
+                    align-self:
+                      ${m.from===user?'flex-end':'flex-start'};
+                    max-width:82%;
+                    padding:10px;
+                    border-radius:12px;
+                    background:
+                      ${m.from===user?'var(--accent)':'#1b1b1b'};
+                    color:
+                      ${m.from===user?'#000':'#fff'};
+                  "
+                >
+                  ${esc(m.text)}
+                </div>
 
-            `).join('')
+              `;
 
+            }).join('')
           : `
             <div class="empty">
               Noch keine Nachrichten.
@@ -2935,18 +3009,25 @@ function openChat(person){
 
       </div>
 
-
       <textarea
         id="chatText"
         rows="3"
-        style="width:100%;margin-top:10px"
+        style="
+          width:100%;
+          margin-top:10px;
+          background:#090909;
+          color:#fff;
+          border:1px solid #292929;
+          padding:10px;
+          border-radius:10px;
+        "
         placeholder="Nachricht schreiben..."
       ></textarea>
 
       <button
         class="btn primary"
         style="width:100%;margin-top:7px"
-        onclick="sendChatMessage('${esc(person)}')"
+        onclick="chatSend('${esc(person)}')"
       >
         Senden
       </button>
@@ -2958,7 +3039,7 @@ function openChat(person){
 }
 
 
-function sendChatMessage(person){
+function chatSend(person){
 
   const input =
     document.getElementById('chatText');
@@ -2966,8 +3047,8 @@ function sendChatMessage(person){
   const text =
     input?.value.trim();
 
-  if(!text)return;
-
+  if(!text)
+    return;
 
   messages.push({
 
@@ -2985,8 +3066,7 @@ function sendChatMessage(person){
 
   });
 
-
-  save(KEY.messages,messages);
+  saveData(KEY.msg,messages);
 
   openChat(person);
 
@@ -2995,27 +3075,131 @@ function sendChatMessage(person){
 }
 
 
-/* =========================
-   VERKÄUFERPROFIL
-========================= */
+/* =========================================================
+   RATINGS
+========================================================= */
+
+function rateSeller(id){
+
+  const request =
+    requests.find(r=>r.id===id);
+
+  if(!request || request.buyer!==user)
+    return;
+
+  openModal(
+
+    'Verkäufer bewerten',
+
+    `
+
+      <select
+        id="ratingValue"
+        style="
+          width:100%;
+          background:#090909;
+          color:#fff;
+          padding:12px;
+          border:1px solid #292929;
+          border-radius:10px;
+        "
+      >
+        <option value="5">5 — Sehr gut</option>
+        <option value="4">4 — Gut</option>
+        <option value="3">3 — Okay</option>
+        <option value="2">2 — Nicht so gut</option>
+        <option value="1">1 — Schlecht</option>
+      </select>
+
+      <textarea
+        id="ratingComment"
+        rows="3"
+        style="
+          width:100%;
+          margin-top:8px;
+          background:#090909;
+          color:#fff;
+          padding:10px;
+          border:1px solid #292929;
+          border-radius:10px;
+        "
+        placeholder="Kommentar optional"
+      ></textarea>
+
+      <button
+        class="btn primary"
+        style="width:100%;margin-top:8px"
+        onclick="saveRating('${esc(id)}')"
+      >
+        Bewertung abgeben
+      </button>
+
+    `
+
+  );
+
+}
+
+
+function saveRating(id){
+
+  const request =
+    requests.find(r=>r.id===id);
+
+  if(!request)
+    return;
+
+  if(
+    ratings.some(
+      r=>r.requestId===id && r.buyer===user
+    )
+  ){
+
+    toast('Bereits bewertet.');
+
+    return;
+
+  }
+
+  ratings.push({
+
+    requestId:id,
+
+    seller:request.seller,
+
+    buyer:user,
+
+    rating:+document.getElementById('ratingValue').value,
+
+    comment:
+      document
+        .getElementById('ratingComment')
+        .value
+        .trim()
+
+  });
+
+  saveData(KEY.rating,ratings);
+
+  closeModal();
+
+  toast('Bewertung gespeichert.');
+
+  renderAll();
+
+}
+
+
+/* =========================================================
+   SELLER PROFILE
+========================================================= */
 
 function openSeller(name){
 
-  const activeCards =
+  const sellerCards =
     cards.filter(
-      c=>
-        c.seller===name &&
-        !c.sold
+      c=>c.seller===name && !c.sold
     );
-
-
-  const sales =
-    requests.filter(
-      r=>
-        r.seller===name &&
-        r.status==='accepted'
-    ).length;
-
 
   openModal(
 
@@ -3023,10 +3207,10 @@ function openSeller(name){
 
     `
 
-      <div class="profileMain">
+      <div class="profileHeader">
 
         <div class="bigAvatar">
-          ${esc(name?.[0]?.toUpperCase() || 'P')}
+          ${esc(name?.[0]?.toUpperCase()||'P')}
         </div>
 
         <div>
@@ -3036,61 +3220,57 @@ function openSeller(name){
           </div>
 
           <div class="profileRating">
-            ${esc(sellerRating(name))}
+            ${sellerRating(name)}
           </div>
 
         </div>
 
       </div>
 
+      <br>
 
-      <div
-        class="profileMenu"
-        style="margin-top:15px"
-      >
+      <div class="profileStats">
 
-        <button>
-          <span>Angebote</span>
-          <b>${activeCards.length}</b>
-        </button>
+        <div class="stat">
+          <small>Angebote</small>
+          <strong>${sellerCards.length}</strong>
+        </div>
 
-        <button>
-          <span>Verkäufe</span>
-          <b>${sales}</b>
-        </button>
-
-      </div>
-
-
-      <div class="panel">
-
-        <h2>Angebote</h2>
-
-        <div class="cardGrid">
-
-          ${
-            activeCards.length
-            ? activeCards.map(cardHTML).join('')
-            : `
-              <div class="empty">
-                Keine aktiven Angebote.
-              </div>
-            `
-          }
-
+        <div class="stat">
+          <small>Verkäufe</small>
+          <strong>
+            ${
+              requests.filter(
+                r=>r.seller===name &&
+                r.status==='accepted'
+              ).length
+            }
+          </strong>
         </div>
 
       </div>
 
+      <br>
+
+      <div class="grid">
+
+        ${
+          sellerCards.length
+          ? sellerCards.map(createCardHTML).join('')
+          : `<div class="empty">Keine aktiven Karten.</div>`
+        }
+
+      </div>
 
       ${
         name!==user
-
         ? `
+          <br>
+
           <button
             class="btn primary"
-            style="width:100%;margin-top:10px"
-            onclick="contactSeller('${esc(name)}')"
+            style="width:100%"
+            onclick="sendMessage('${esc(name)}')"
           >
             Nachricht
           </button>
@@ -3105,288 +3285,11 @@ function openSeller(name){
 }
 
 
-/* =========================
-   BEWERTUNG
-========================= */
-
-function rateSeller(requestId){
-
-  const r =
-    requests.find(x=>x.id===requestId);
-
-  if(!r || r.buyer!==user)return;
-
-
-  openModal(
-
-    'Verkäufer bewerten',
-
-    `
-
-      <select
-        id="ratingValue"
-        style="width:100%"
-      >
-        <option value="5">5 — Sehr gut</option>
-        <option value="4">4 — Gut</option>
-        <option value="3">3 — Okay</option>
-        <option value="2">2 — Nicht so gut</option>
-        <option value="1">1 — Schlecht</option>
-      </select>
-
-      <textarea
-        id="ratingComment"
-        rows="4"
-        style="width:100%;margin-top:8px"
-        placeholder="Kommentar optional"
-      ></textarea>
-
-      <button
-        class="btn primary"
-        style="width:100%;margin-top:8px"
-        onclick="saveRating('${esc(requestId)}')"
-      >
-        Bewertung abgeben
-      </button>
-
-    `
-
-  );
-
-}
-
-
-function saveRating(requestId){
-
-  const r =
-    requests.find(x=>x.id===requestId);
-
-  if(!r)return;
-
-
-  if(
-    ratings.some(
-      x=>
-        x.requestId===requestId &&
-        x.buyer===user
-    )
-  ){
-
-    toast('Diese Anfrage wurde bereits bewertet.');
-
-    return;
-
-  }
-
-
-  ratings.push({
-
-    requestId,
-
-    seller:r.seller,
-
-    buyer:user,
-
-    rating:Number(
-      document.getElementById('ratingValue').value
-    ),
-
-    comment:
-      document
-        .getElementById('ratingComment')
-        .value
-        .trim()
-
-  });
-
-
-  save(KEY.ratings,ratings);
-
-  closeModal();
-
-  toast('Bewertung gespeichert.');
-
-  renderAll();
-
-}
-
-
-/* =========================
-   VERKAUFEN
-========================= */
-
-function previewImage(event){
-
-  const file =
-    event.target.files?.[0];
-
-  if(!file)return;
-
-
-  const reader =
-    new FileReader();
-
-  reader.onload=e=>{
-
-    const img =
-      document.getElementById('previewImage');
-
-    img.src=e.target.result;
-
-    img.style.display='block';
-
-    document.getElementById(
-      'uploadText'
-    ).style.display='none';
-
-  };
-
-  reader.readAsDataURL(file);
-
-}
-
-
-function createCard(){
-
-  const player =
-    document.getElementById('sellPlayer')
-      .value.trim();
-
-  const club =
-    document.getElementById('sellClub')
-      .value.trim();
-
-  const price =
-    Number(
-      document.getElementById('sellPrice')
-        .value
-    );
-
-  const condition =
-    document.getElementById('sellCondition')
-      .value;
-
-  const description =
-    document.getElementById('sellDescription')
-      .value.trim();
-
-  const image =
-    document.getElementById('previewImage')
-      .src;
-
-
-  if(!player || !club || !price){
-
-    toast('Spieler, Verein und Preis ausfüllen.');
-
-    return;
-
-  }
-
-
-  if(!image){
-
-    toast('Bitte ein Kartenbild auswählen.');
-
-    return;
-
-  }
-
-
-  cards.unshift({
-
-    id:'c'+Date.now(),
-
-    player,
-
-    club,
-
-    price,
-
-    condition,
-
-    description,
-
-    image,
-
-    seller:user,
-
-    createdAt:Date.now(),
-
-    views:0,
-
-    sold:false
-
-  });
-
-
-  save(KEY.cards,cards);
-
-
-  document.getElementById('sellPlayer').value='';
-  document.getElementById('sellClub').value='';
-  document.getElementById('sellPrice').value='';
-  document.getElementById('sellDescription').value='';
-
-  document.getElementById('previewImage').src='';
-  document.getElementById('previewImage').style.display='none';
-
-  document.getElementById('uploadText').style.display='block';
-
-  document.getElementById('imageInput').value='';
-
-
-  toast('Karte erfolgreich eingestellt.');
-
-  go('market');
-
-}
-
-
-/* =========================
-   KARTE LÖSCHEN
-========================= */
-
-function deleteCard(id){
-
-  const c =
-    cards.find(x=>x.id===id);
-
-  if(!c || c.seller!==user)return;
-
-
-  if(
-    !confirm('Karte wirklich löschen?')
-  )return;
-
-
-  cards =
-    cards.filter(
-      x=>x.id!==id
-    );
-
-
-  favorites =
-    favorites.filter(
-      x=>x!==id
-    );
-
-
-  save(KEY.cards,cards);
-  save(KEY.favorites,favorites);
-
-  toast('Karte gelöscht.');
-
-  renderAll();
-
-}
-
-
-/* =========================
+/* =========================================================
    WALLET
-========================= */
+========================================================= */
 
-function openWallet(){
+function showWallet(){
 
   openModal(
 
@@ -3394,21 +3297,26 @@ function openWallet(){
 
     `
 
-      <div class="panel">
+      <div class="stat">
 
-        <div style="color:#888">
+        <small>
           Verfügbares Guthaben
-        </div>
+        </small>
 
-        <div class="price">
+        <strong
+          style="color:var(--accent);font-size:28px"
+        >
           ${(wallets[user]||0).toFixed(2)} €
-        </div>
+        </strong>
 
       </div>
 
-      <p style="color:#777">
-        Das Guthaben wird aktuell lokal im Browser
-        gespeichert.
+      <br>
+
+      <p>
+        Das Guthaben wird aktuell lokal gespeichert.
+        Eine echte Auszahlung kann später über einen
+        Zahlungsdienst ergänzt werden.
       </p>
 
     `
@@ -3418,11 +3326,11 @@ function openWallet(){
 }
 
 
-/* =========================
+/* =========================================================
    ACCOUNTS
-========================= */
+========================================================= */
 
-function openAccounts(){
+function showAccounts(){
 
   openModal(
 
@@ -3430,38 +3338,40 @@ function openAccounts(){
 
     `
 
-      <div>
+      ${
+        accounts.map(function(a){
 
-        ${
-          accounts.map(a=>`
+          return `
 
-            <div class="account">
+            <div class="item">
 
-              <div class="avatar">
-                ${esc(a.username?.[0]?.toUpperCase() || 'P')}
-              </div>
+              <div class="itemLeft">
 
-              <div class="accountGrow">
+                <div class="avatar">
+                  ${esc(a.username?.[0]?.toUpperCase()||'P')}
+                </div>
 
-                <b>
-                  ${esc(a.username)}
-                </b>
+                <div>
 
-                <p style="color:#777;font-size:11px">
-                  ${esc(a.bio || '')}
-                </p>
+                  <b>
+                    ${esc(a.username)}
+                  </b>
+
+                  <p class="muted">
+                    ${esc(a.bio||'')}
+                  </p>
+
+                </div>
 
               </div>
 
               ${
                 a.username===user
-
                 ? `
                   <span class="status accepted">
                     Aktiv
                   </span>
                 `
-
                 : `
                   <button
                     class="btn primary"
@@ -3474,18 +3384,19 @@ function openAccounts(){
 
             </div>
 
-          `).join('')
-        }
+          `;
 
-      </div>
+        }).join('')
+      }
 
+      <br>
 
       <button
         class="btn"
-        style="width:100%;margin-top:8px"
-        onclick="createAccountModal()"
+        style="width:100%"
+        onclick="newAccount()"
       >
-        Neuen Account erstellen
+        + Neuen Account erstellen
       </button>
 
     `
@@ -3495,7 +3406,7 @@ function openAccounts(){
 }
 
 
-function createAccountModal(){
+function newAccount(){
 
   openModal(
 
@@ -3505,7 +3416,14 @@ function createAccountModal(){
 
       <input
         id="newAccountName"
-        style="width:100%"
+        style="
+          width:100%;
+          background:#090909;
+          color:#fff;
+          border:1px solid #292929;
+          padding:12px;
+          border-radius:10px;
+        "
         placeholder="Benutzername"
       >
 
@@ -3526,36 +3444,24 @@ function createAccountModal(){
 
 function createAccount(){
 
+  const input =
+    document.getElementById('newAccountName');
+
   const name =
-    document
-      .getElementById('newAccountName')
-      .value
-      .trim();
-
-
-  if(!name){
-
-    toast('Benutzername eingeben.');
-
-    return;
-
-  }
-
+    input?.value.trim();
 
   if(
+    !name ||
     accounts.some(
-      a=>
-        a.username.toLowerCase()
-        ===name.toLowerCase()
+      a=>a.username.toLowerCase()===name.toLowerCase()
     )
   ){
 
-    toast('Dieser Account existiert bereits.');
+    toast('Name leer oder bereits vergeben.');
 
     return;
 
   }
-
 
   accounts.push({
 
@@ -3565,13 +3471,10 @@ function createAccount(){
 
   });
 
-
   wallets[name]=0;
 
-
-  save(KEY.accounts,accounts);
-  save(KEY.wallet,wallets);
-
+  saveData(KEY.accounts,accounts);
+  saveData(KEY.wallet,wallets);
 
   switchAccount(name);
 
@@ -3585,48 +3488,87 @@ function switchAccount(name){
   profile =
     accounts.find(
       a=>a.username===name
-    )
-    || {
+    ) || {
       username:name,
-      bio:'Fußballkarten-Sammler'
+      bio:''
     };
-
 
   localStorage.setItem(
     KEY.user,
     user
   );
 
-  save(KEY.profile,profile);
-
+  saveData(
+    KEY.profile,
+    profile
+  );
 
   closeModal();
 
-  toast(`Account ${name} ist jetzt aktiv.`);
+  toast('Account gewechselt.');
 
   renderAll();
 
 }
 
 
-/* =========================
-   PROFIL SPEICHERN
-========================= */
+/* =========================================================
+   EDIT PROFILE
+========================================================= */
 
-function saveProfile(){
+function openEditProfile(){
+
+  openModal(
+
+    'Profil bearbeiten',
+
+    `
+
+      <div class="form">
+
+        <label>Benutzername</label>
+
+        <input
+          id="editUsername"
+          value="${esc(user)}"
+        >
+
+        <label>Über mich</label>
+
+        <textarea
+          id="editBio"
+          rows="4"
+        >${esc(profile.bio||'')}</textarea>
+
+        <button
+          class="btn primary"
+          onclick="saveProfileChanges()"
+        >
+          Speichern
+        </button>
+
+      </div>
+
+    `
+
+  );
+
+}
+
+
+function saveProfileChanges(){
 
   const newName =
     document
-      .getElementById('profileUsername')
+      .getElementById('editUsername')
       .value
       .trim();
 
   const newBio =
     document
-      .getElementById('profileBioInput')
+      .getElementById('editBio')
       .value
       .trim();
-
 
   if(!newName){
 
@@ -3636,16 +3578,12 @@ function saveProfile(){
 
   }
 
-
   const oldName=user;
-
 
   if(
     newName!==oldName &&
     accounts.some(
-      a=>
-        a.username.toLowerCase()
-        ===newName.toLowerCase()
+      a=>a.username.toLowerCase()===newName.toLowerCase()
     )
   ){
 
@@ -3655,19 +3593,14 @@ function saveProfile(){
 
   }
 
+  cards.forEach(function(c){
 
-  cards.forEach(c=>{
-
-    if(c.seller===oldName){
-
+    if(c.seller===oldName)
       c.seller=newName;
-
-    }
 
   });
 
-
-  requests.forEach(r=>{
+  requests.forEach(function(r){
 
     if(r.buyer===oldName)
       r.buyer=newName;
@@ -3677,8 +3610,7 @@ function saveProfile(){
 
   });
 
-
-  messages.forEach(m=>{
+  messages.forEach(function(m){
 
     if(m.from===oldName)
       m.from=newName;
@@ -3688,8 +3620,7 @@ function saveProfile(){
 
   });
 
-
-  ratings.forEach(r=>{
+  ratings.forEach(function(r){
 
     if(r.seller===oldName)
       r.seller=newName;
@@ -3699,31 +3630,22 @@ function saveProfile(){
 
   });
 
-
-  notificationsData.forEach(n=>{
+  notificationsData.forEach(function(n){
 
     if(n.user===oldName)
       n.user=newName;
 
   });
 
+  wallets[newName]=wallets[oldName]||0;
 
-  wallets[newName] =
-    wallets[oldName] || 0;
-
-
-  if(newName!==oldName){
-
+  if(newName!==oldName)
     delete wallets[oldName];
-
-  }
-
 
   const account =
     accounts.find(
       a=>a.username===oldName
     );
-
 
   if(account){
 
@@ -3732,30 +3654,28 @@ function saveProfile(){
 
   }
 
-
   user=newName;
 
   profile={
     username:newName,
-    bio:newBio || 'Fußballkarten-Sammler'
+    bio:newBio||'Fußballkarten-Sammler'
   };
-
 
   localStorage.setItem(
     KEY.user,
     user
   );
 
+  saveData(KEY.profile,profile);
+  saveData(KEY.cards,cards);
+  saveData(KEY.req,requests);
+  saveData(KEY.msg,messages);
+  saveData(KEY.rating,ratings);
+  saveData(KEY.not,notificationsData);
+  saveData(KEY.accounts,accounts);
+  saveData(KEY.wallet,wallets);
 
-  save(KEY.profile,profile);
-  save(KEY.cards,cards);
-  save(KEY.requests,requests);
-  save(KEY.messages,messages);
-  save(KEY.ratings,ratings);
-  save(KEY.notifications,notificationsData);
-  save(KEY.accounts,accounts);
-  save(KEY.wallet,wallets);
-
+  closeModal();
 
   toast('Profil gespeichert.');
 
@@ -3764,82 +3684,275 @@ function saveProfile(){
 }
 
 
-/* =========================
+/* =========================================================
+   CREATE CARD
+========================================================= */
+
+function previewImage(event){
+
+  const file =
+    event.target.files?.[0];
+
+  if(!file)
+    return;
+
+  const reader =
+    new FileReader();
+
+  reader.onload=function(e){
+
+    const preview =
+      document.getElementById('imagePreview');
+
+    preview.src=e.target.result;
+
+    preview.style.display='block';
+
+    document.getElementById(
+      'uploadText'
+    ).style.display='none';
+
+  };
+
+  reader.readAsDataURL(file);
+
+}
+
+
+function createCard(){
+
+  const player =
+    document
+      .getElementById('playerInput')
+      .value
+      .trim();
+
+  const club =
+    document
+      .getElementById('clubInput')
+      .value
+      .trim();
+
+  const price =
+    +document
+      .getElementById('priceInput')
+      .value;
+
+  const condition =
+    document
+      .getElementById('conditionInput')
+      .value;
+
+  const description =
+    document
+      .getElementById('descriptionInput')
+      .value
+      .trim();
+
+  const preview =
+    document
+      .getElementById('imagePreview');
+
+  if(!player || !club || !price){
+
+    toast('Spieler, Verein und Preis ausfüllen.');
+
+    return;
+
+  }
+
+  if(
+    !preview.src ||
+    preview.style.display==='none'
+  ){
+
+    toast('Bitte zuerst ein Bild auswählen.');
+
+    return;
+
+  }
+
+  cards.unshift({
+
+    id:'card'+Date.now(),
+
+    player:player,
+
+    club:club,
+
+    price:price,
+
+    condition:condition,
+
+    description:description,
+
+    image:preview.src,
+
+    seller:user,
+
+    createdAt:Date.now(),
+
+    views:0,
+
+    sold:false
+
+  });
+
+  saveData(KEY.cards,cards);
+
+  document.getElementById('playerInput').value='';
+  document.getElementById('clubInput').value='';
+  document.getElementById('priceInput').value='';
+  document.getElementById('descriptionInput').value='';
+
+  preview.src='';
+  preview.style.display='none';
+
+  document.getElementById(
+    'uploadText'
+  ).style.display='block';
+
+  document.getElementById(
+    'imageInput'
+  ).value='';
+
+  toast('Karte eingestellt 🎉');
+
+  go('home');
+
+}
+
+
+/* =========================================================
+   DELETE CARD
+========================================================= */
+
+function deleteCard(id){
+
+  const card =
+    cards.find(c=>c.id===id);
+
+  if(!card || card.seller!==user)
+    return;
+
+  if(!confirm('Karte wirklich löschen?'))
+    return;
+
+  cards =
+    cards.filter(
+      c=>c.id!==id
+    );
+
+  favorites =
+    favorites.filter(
+      x=>x!==id
+    );
+
+  saveData(KEY.cards,cards);
+  saveData(KEY.fav,favorites);
+
+  toast('Karte gelöscht.');
+
+  go('home');
+
+}
+
+
+/* =========================================================
    PROFILE RENDER
-========================= */
+========================================================= */
 
 function renderProfile(){
 
-  const myCards =
+  const mine =
     cards.filter(
       c=>c.seller===user
     );
 
+  const sales =
+    requests.filter(
+      r=>r.seller===user &&
+      r.status==='accepted'
+    );
 
-  const myRatings =
+  const ownRatings =
     ratings.filter(
       r=>r.seller===user
     );
 
-
   let average=null;
 
-
-  if(myRatings.length){
+  if(ownRatings.length){
 
     average =
-      myRatings.reduce(
-        (sum,r)=>sum+Number(r.rating),
+      ownRatings.reduce(
+        (sum,r)=>sum+(+r.rating),
         0
-      ) / myRatings.length;
+      ) / ownRatings.length;
 
   }
 
+  document.getElementById(
+    'profileAvatar'
+  ).textContent =
+    user[0]?.toUpperCase() || 'P';
 
   document.getElementById(
     'profileName'
   ).textContent=user;
 
-
   document.getElementById(
     'profileBio'
-  ).textContent=
-    profile.bio || 'Fußballkarten-Sammler';
-
+  ).textContent =
+    profile.bio ||
+    'Fußballkarten-Sammler';
 
   document.getElementById(
     'profileRating'
   ).textContent =
     average===null
     ? 'Noch keine Bewertung'
-    : `★ ${average.toFixed(1)} · ${myRatings.length} Bewertungen`;
-
-
-  document.getElementById(
-    'bigAvatar'
-  ).textContent =
-    user[0]?.toUpperCase() || 'P';
-
-
-  profileTop.textContent =
-    user[0]?.toUpperCase() || 'P';
-
+    : `★ ${average.toFixed(1)} · ${ownRatings.length} Bewertungen`;
 
   document.getElementById(
-    'profileUsername'
-  ).value=user;
+    'profileStats'
+  ).innerHTML=`
 
+    <div class="stat">
+      <small>Angebote</small>
+      <strong>
+        ${mine.filter(c=>!c.sold).length}
+      </strong>
+    </div>
+
+    <div class="stat">
+      <small>Verkäufe</small>
+      <strong>
+        ${sales.length}
+      </strong>
+    </div>
+
+    <div class="stat">
+      <small>Favoriten</small>
+      <strong>
+        ${favorites.length}
+      </strong>
+    </div>
+
+    <div class="stat">
+      <small>Bewertung</small>
+      <strong style="color:var(--accent)">
+        ${average===null?'–':average.toFixed(1)}
+      </strong>
+    </div>
+
+  `;
 
   document.getElementById(
-    'profileBioInput'
-  ).value=profile.bio || '';
-
-
-  myCards.innerHTML =
-    myCards.length
-
-    ? myCards.map(cardHTML).join('')
-
+    'myCards'
+  ).innerHTML =
+    mine.length
+    ? mine.map(createCardHTML).join('')
     : `
       <div class="empty">
         Du hast noch keine Karten eingestellt.
@@ -3849,28 +3962,25 @@ function renderProfile(){
 }
 
 
-/* =========================
-   FAVORITEN RENDER
-========================= */
+/* =========================================================
+   FAVORITES RENDER
+========================================================= */
 
 function renderFavorites(){
 
-  const list =
+  const result =
     favorites
       .map(
-        id=>cards.find(
-          c=>c.id===id
-        )
+        id=>cards.find(c=>c.id===id)
       )
       .filter(Boolean)
       .filter(c=>!c.sold);
 
-
-  favoriteCards.innerHTML =
-    list.length
-
-    ? list.map(cardHTML).join('')
-
+  document.getElementById(
+    'favoriteCards'
+  ).innerHTML =
+    result.length
+    ? result.map(createCardHTML).join('')
     : `
       <div class="empty">
         Noch keine Favoriten.
@@ -3880,25 +3990,24 @@ function renderFavorites(){
 }
 
 
-/* =========================
-   KÄUFE / VERKÄUFE
-========================= */
+/* =========================================================
+   PURCHASES / SALES
+========================================================= */
 
 function renderPurchases(){
 
-  const list =
+  const result =
     requests.filter(
       r=>r.buyer===user
     );
 
-
-  purchaseList.innerHTML =
-    list.length
-
-    ? list.map(
-        r=>requestHTML(r,false)
+  document.getElementById(
+    'purchaseList'
+  ).innerHTML =
+    result.length
+    ? result.map(
+        r=>requestItem(r,false)
       ).join('')
-
     : `
       <div class="empty">
         Noch keine Käufe oder Anfragen.
@@ -3910,21 +4019,19 @@ function renderPurchases(){
 
 function renderSales(){
 
-  const list =
+  const result =
     requests.filter(
-      r=>
-        r.seller===user &&
-        r.status==='accepted'
+      r=>r.seller===user &&
+      r.status==='accepted'
     );
 
-
-  salesList.innerHTML =
-    list.length
-
-    ? list.map(
-        r=>requestHTML(r,true)
+  document.getElementById(
+    'salesList'
+  ).innerHTML =
+    result.length
+    ? result.map(
+        r=>requestItem(r,true)
       ).join('')
-
     : `
       <div class="empty">
         Noch keine Verkäufe.
@@ -3934,9 +4041,9 @@ function renderSales(){
 }
 
 
-/* =========================
-   REQUESTS
-========================= */
+/* =========================================================
+   REQUEST RENDER
+========================================================= */
 
 function renderRequests(){
 
@@ -3945,34 +4052,31 @@ function renderRequests(){
       r=>r.seller===user
     );
 
-
   const outgoing =
     requests.filter(
       r=>r.buyer===user
     );
 
-
-  incomingRequests.innerHTML =
+  document.getElementById(
+    'incomingRequests'
+  ).innerHTML =
     incoming.length
-
     ? incoming.map(
-        r=>requestHTML(r,true)
+        r=>requestItem(r,true)
       ).join('')
-
     : `
       <div class="empty">
         Keine eingehenden Anfragen.
       </div>
     `;
 
-
-  outgoingRequests.innerHTML =
+  document.getElementById(
+    'outgoingRequests'
+  ).innerHTML =
     outgoing.length
-
     ? outgoing.map(
-        r=>requestHTML(r,false)
+        r=>requestItem(r,false)
       ).join('')
-
     : `
       <div class="empty">
         Keine gesendeten Anfragen.
@@ -3982,9 +4086,9 @@ function renderRequests(){
 }
 
 
-/* =========================
+/* =========================================================
    MESSAGES RENDER
-========================= */
+========================================================= */
 
 function renderMessages(){
 
@@ -3993,37 +4097,42 @@ function renderMessages(){
       ...new Set(
         messages
           .filter(
-            m=>
-              m.from===user ||
-              m.to===user
+            m=>m.from===user || m.to===user
           )
           .map(
-            m=>
-              m.from===user
+            m=>m.from===user
               ? m.to
               : m.from
           )
       )
     ];
 
-
-  messageList.innerHTML =
+  document.getElementById(
+    'messageList'
+  ).innerHTML =
     people.length
+    ? people.map(function(person){
 
-    ? people.map(person=>{
-
-        const last =
+        const conversation =
           messages
             .filter(
-              m=>
-                (m.from===user && m.to===person)
-                ||
-                (m.from===person && m.to===user)
+              m=>m.from===person ||
+                 m.to===person
             )
             .sort(
               (a,b)=>b.createdAt-a.createdAt
-            )[0];
+            );
 
+        const last =
+          conversation[0];
+
+        const unread =
+          messages.filter(
+            m=>
+              m.from===person &&
+              m.to===user &&
+              !m.read
+          ).length;
 
         return `
 
@@ -4036,29 +4145,38 @@ function renderMessages(){
             <div class="itemLeft">
 
               <div class="avatar">
-                ${esc(person[0]?.toUpperCase() || 'P')}
+                ${esc(person[0]?.toUpperCase()||'P')}
               </div>
 
-              <div class="itemText">
+              <div>
 
                 <b>
                   ${esc(person)}
                 </b>
 
-                <p>
-                  ${esc(last?.text || '')}
+                <p class="muted">
+                  ${esc(last?.text||'')}
                 </p>
 
               </div>
 
             </div>
 
+            ${
+              unread
+              ? `
+                <span class="status accepted">
+                  ${unread} neu
+                </span>
+              `
+              : ''
+            }
+
           </div>
 
         `;
 
       }).join('')
-
     : `
       <div class="empty">
         Noch keine Nachrichten.
@@ -4068,50 +4186,67 @@ function renderMessages(){
 }
 
 
-/* =========================
+/* =========================================================
+   BADGES
+========================================================= */
+
+function updateBadges(){
+
+  /* Wird bewusst nicht oben angezeigt,
+     weil oben nur die Suchleiste sein soll. */
+
+}
+
+
+/* =========================================================
    MODAL
-========================= */
+========================================================= */
 
-function openModal(title,content){
+function openModal(title,html){
 
-  modalTitle.textContent=title;
+  document.getElementById(
+    'modalTitle'
+  ).textContent=title;
 
-  modalContent.innerHTML=content;
+  document.getElementById(
+    'modalContent'
+  ).innerHTML=html;
 
-  modal.classList.add('show');
+  document.getElementById(
+    'modal'
+  ).classList.add('show');
 
 }
 
 
-function closeModal(){
-
-  modal.classList.remove('show');
-
-}
-
-
-function closeModalOutside(event){
+function closeModal(event){
 
   if(
-    event.target===modal
-  ){
+    event &&
+    event.target!==event.currentTarget
+  )
+    return;
 
-    closeModal();
-
-  }
+  document.getElementById(
+    'modal'
+  ).classList.remove('show');
 
 }
 
 
-/* =========================
-   ALLES RENDERN
-========================= */
+/* =========================================================
+   RENDER ALL
+========================================================= */
 
 function renderAll(){
 
-  renderMarketplace();
+  renderHome();
+
+  renderSearch();
 
   renderFavorites();
+
+  renderProfile();
 
   renderPurchases();
 
@@ -4121,14 +4256,14 @@ function renderAll(){
 
   renderMessages();
 
-  renderProfile();
+  updateBadges();
 
 }
 
 
-/* =========================
+/* =========================================================
    START
-========================= */
+========================================================= */
 
 renderAll();
 
